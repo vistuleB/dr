@@ -1,0 +1,115 @@
+|> Chapter
+    title=A motivating example for martingales
+
+A *martingale* is a mathematical model for a
+sequence of fair gambles which has found many
+applications in both theoretical and applied
+probability. (In particular, martingales play 
+an important role in the mathematics of 
+investing and other areas of mathematical 
+finance --- so knowing about them can actually 
+make you money!) One of the most important facts 
+about martingales is that under fairly mild 
+assumptions they converge (almost surely, or 
+in $L_1$ or according to some other notion of 
+convergence). This is made precise in a family 
+of important results known as \emph{martingale 
+convergence theorems}. Our goal in the next few 
+chapters will be to develop the basic theory 
+of martingales and its applications and prove 
+some of the martingale convergence theorems.
+
+We start our study of martingales with a
+motivating example: a famous experiment
+known as *Pólya's urn experiment*.
+In this model, an urn originally contains $a$ 
+white balls and $b$ black balls. 
+The experimenter samples a uniformly random 
+ball from the urn, examines its color, then 
+puts the ball back and adds another ball of 
+the same color; this is repeated to infinity. 
+Let $X_n$ denote the number of white balls in 
+the urn after the $n$th step. Clearly $X_0 = a$ 
+and the distribution of $X_{n+1}$ can be expressed 
+most naturally by conditioning on $X_n$, namely
+
+|> Labeled
+    handle=eq:polya-conditional
+
+    {X_{n+1}}_{\big| X_n = m} = \begin{cases} 
+    \                           m+1 & \textrm{with probability }\frac{m}{n+a+b}, \\
+    \                           m & \textrm{with probability }\frac{n+a+b-m}{n+a+b}. \\
+    \                           \end{cases}
+
+It turns out that it is not too difficult
+to find an unconditional formula for the
+probability distribution of $X_n$.
+Let $I_n$ be the indicator random variable of
+the event that in the $n$th sampling step a
+white ball was drawn. First, an amusing
+observation is that the probability of
+observing a particular sequence of white/black
+samples in the first $n$ sampling steps is
+only dependent on the number of white and
+black balls. That is, for any sequence
+$(x_1, x_2, \ldots, x_n) \in \{0,1\}^n$ the
+probability $\prob(I_1 = x_1, \ldots, I_n = x_n)$
+only depends on $k=\sum_{j=1}^n x_j$. To
+see this, note that if at a given stage
+$t$ of the experiment the urn
+contained $A$ white and $B$ black balls, the
+probability to draw ``white then black'' in
+the next two steps would be 
+
+$$
+\frac{A}{t+a+b}\cdot \frac{B}{t+a+b+1}
+$$
+
+which is clearly equal to the probability of
+drawing ``black then white,'' given by
+
+$$
+\frac{B}{t+a+b}\cdot \frac{A}{t+a+b+1}.
+$$
+
+Thus, permuting the 1's and 0's in the sequence 
+$(x_1,\ldots,x_n)$ has no effect on the 
+probability
+|> footnote
+    A sequence of r.v.'s with this property is
+    called *exchangeable*. There is an
+    important result about such sequences (that
+    we will not talk about here) called *De-Finetti's theorem*,
+    which you might want to read about.
+It follows that for any such $(x_1,\ldots,x_n)$
+with $\sum x_j=k$ we have
+
+\begin{align}
+\prob(I_j = x_j,\ j=1,\ldots,n) &= \prob(I_1=\ldots=I_k=1,\ I_{k+1}=\ldots=I_n=0)
+\nonumber \\ &= \frac{a(a+1)\ldots(a+k-1)\cdot b(b+1)\ldots(b+n-k-1)}{(a+b)(a+b+1)\ldots(a+b+n)}.
+\label{eq:polyaurn-formula}
+\end{align}
+
+Therefore the probability of having $p$ white
+balls after $n$ steps is
+
+\begin{align*}
+\prob(X_n = p) &= \binom{n}{p-a}
+\prob(I_1=\ldots=I_{p-a}=1,\ I_{p-a+1}=\ldots=I_n=0)
+\\ &=
+\binom{n}{p-a}
+\frac{a(a+1)\ldots(a+p-a-1)\cdot b(b+1)\ldots(b+n-p+a-1)}{(a+b)(a+b+1)\ldots(a+b+n)}
+\end{align*}
+
+for $a \le p \le n+a$. This formula is so explicit
+that it is easy to analyze the distribution of $X_n$
+and show for example the convergence in distribution
+
+
+\begin{equation} \label{eq:polya-beta-dist}
+\frac{X_n}{n+a+b} \implies \textrm{Beta}(a,b).
+\end{equation}
+That is, the \emph{proportion} of white balls in the urn converges to a limiting beta distribution.
+
+\begin{exercise} Prove \eqref{eq:polya-beta-dist}.
+\end{exercise}

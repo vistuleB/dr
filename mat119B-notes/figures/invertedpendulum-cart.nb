@@ -1,0 +1,141 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4995,        131]
+NotebookOptionsPosition[      4739,        117]
+NotebookOutlinePosition[      5096,        133]
+CellTagsIndexPosition[      5053,        130]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[1, 0.5, 0], EdgeForm[{RGBColor[0., 0., 0.], Opacity[1.], 
+    AbsoluteThickness[1]}], EdgeForm[None], FaceForm[Hue[
+     NCache[
+      Rational[2, 3], 0.6666666666666666], 1, 1]], 
+    RectangleBox[{0.76648899663677, 0.36661236597953595`}, \
+{1.121952494761835, 0.29994569931286974`}]}, 
+   {RGBColor[1, 0.5, 0], AbsolutePointSize[12], AbsoluteThickness[2], 
+    Arrowheads[{0.03}], StrokeForm[{RGBColor[0., 0., 0.], Opacity[1.]}], 
+    EdgeForm[{RGBColor[0., 0., 0.], Opacity[1.], AbsoluteThickness[1]}], 
+    FaceForm[None], 
+    ArrowBox[{{0.5706826963468952, 0.3666123659795363}, {0.9351691153122966, 
+     0.3666123659795363}}]}, 
+   StyleBox[InsetBox[Cell[BoxData[
+      FormBox["x", TraditionalForm]],
+      GeneratedCell->False,
+      CellAutoOverwrite->False,
+      CellBaseline->Baseline,
+      TextAlignment->Left], {0.7529259058295951, 0.3808068904805648}, {
+     Left, Baseline}, {0.02712618161434978, 0.06422900321543408}, {{1., 0.}, {
+     0., 1.}},
+     Alignment->{Left, Top}],
+    StripOnInput->False,
+    FontSize->18,
+    Background->RGBColor[1., 1., 1., 0]], InsetBox[
+    GraphicsBox[
+     CircleBox[{0, 0}, 1, 
+      NCache[{0, Rational[1, 2] Pi}, {0, 1.5707963267948966`}]]], 
+    Scaled[{0.6734672644696937, 0.3086874202443828}], 
+    Center, {0.12414075202405275`, 0.11283304969624135`}, {{1., 0.}, {0., 
+    1.}}], 
+   {EdgeForm[{GrayLevel[0.], Opacity[1.]}], EdgeForm[None], FaceForm[
+    GrayLevel[1.]], 
+    PolygonBox[{{0.9442207456993025, 0.36661236597953595`}, {
+     1.0037930970445055`, 0.47944539028858135`}, {0.9344703056647511, 
+     0.5179827835470092}}]}, 
+   {AbsoluteThickness[6], CapForm["Butt"], StrokeForm[Hue[
+    0.08333333333333333, 1., 1.]], EdgeForm[RGBColor[0., 0., 0.]], EdgeForm[
+    None], GeometricTransformationBox[
+     {RGBColor[1, 0.5, 0], StrokeForm[Opacity[1.]], EdgeForm[Opacity[1.]], 
+      EdgeForm[None], 
+      LineBox[{{0.6666665, 0.26060606060606073`}, {0.8984846818181819, 
+       0.76969696969697}}]}, {{{{1.0597162329092766`, 0.}, {0., 
+       0.9358672829249616}}, {0.2376399612616418, 0.12406851054011658`}}}]}, 
+   {RGBColor[1, 0.5, 0], AbsolutePointSize[12], AbsoluteThickness[1], 
+    Arrowheads[{{0.03, 1, {
+        GraphicsBox[{
+          EdgeForm[None], 
+          Dashing[{}], 
+          PolygonBox[{{-1, 0.5}, {0, 0}, {-1, -0.5}}]}], 0.98}}}], 
+    StrokeForm[{GrayLevel[0.], Opacity[1.]}], EdgeForm[{RGBColor[0., 0., 0.], 
+    Opacity[1.], AbsoluteThickness[1]}], FaceForm[None], 
+    ArrowBox[{{0.5706826963468945, 0.3332790326462022}, {0.7673621173729707, 
+     0.3332790326462022}}]}, 
+   StyleBox[InsetBox[Cell[TextData[{
+      "force ",
+      Cell[BoxData[
+       FormBox["u", TraditionalForm]]]
+     }],
+      GeneratedCell->False,
+      CellAutoOverwrite->False,
+      CellBaseline->Baseline,
+      TextAlignment->Left], {0.5706826963468945, 0.27746553273537733`}, {
+     Left, Baseline},
+     Alignment->{Left, Top}],
+    StripOnInput->False,
+    FontSize->18,
+    Background->RGBColor[1., 1., 1., 0]], 
+   StyleBox[InsetBox[Cell[BoxData[
+      FormBox[
+       RowBox[{" ", "\[Theta]", "  "}], TraditionalForm]],
+      GeneratedCell->False,
+      CellAutoOverwrite->False,
+      CellBaseline->Baseline,
+      TextAlignment->Left], {0.9903691374310059, 0.37945816300977375`}, {
+     Left, Baseline}, {0.04342465902247348, 0.07065188764044986}, {{1., 0.}, {
+     0., 1.}},
+     Alignment->{Left, Top}],
+    StripOnInput->False,
+    FontSize->18,
+    Background->RGBColor[1., 1., 1., 0]], 
+   {AbsolutePointSize[8], 
+    PointBox[{0.570682696346895, 0.3679610898374781}]}, 
+   {AbsoluteThickness[1], Dashing[{Small, Small}], StrokeForm[{RGBColor[
+    0., 0., 0.], Opacity[1.]}], EdgeForm[{RGBColor[0., 0., 0.], Opacity[1.]}],
+     EdgeForm[None], 
+    LineBox[{{0.5706826963468942, 0.8727373516364361}, {0.570682696346894, 
+     0.36604081603507627`}}]}},
+  AspectRatio->0.8897338403041825,
+  ContentSelectable->True,
+  ImagePadding->{{0., 0.}, {0., 0.}},
+  ImageSize->{263., 234.},
+  PlotRange->{{0.472622, 1.265309}, {0.190269, 0.941748}},
+  PlotRangePadding->Automatic]], "Input",
+ CellChangeTimes->{{3.545477021587635*^9, 3.545477032009411*^9}}]
+},
+WindowSize->{740, 867},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 4178, 95, 249, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

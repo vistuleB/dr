@@ -1,0 +1,93 @@
+\contentsline {paragraph}{Note to the reader.}{5}{}%
+\contentsline {section}{Chapter 1: Introduction}{6}{}%
+\contentsline {subsection}{\numberline {1.1}What is probability theory?}{6}{}%
+\contentsline {subsection}{\numberline {1.2}The algebra of events}{6}{}%
+\contentsline {section}{Chapter 2: Probability spaces}{11}{}%
+\contentsline {subsection}{\numberline {2.1}Basic definitions}{11}{}%
+\contentsline {subsection}{\numberline {2.2}Properties and examples}{12}{}%
+\contentsline {section}{Chapter 3: Random variables}{17}{}%
+\contentsline {subsection}{\numberline {3.1}Random variables and their distributions}{17}{}%
+\contentsline {subsection}{\numberline {3.2}Distribution functions}{18}{}%
+\contentsline {subsection}{\numberline {3.3}Examples}{21}{}%
+\contentsline {section}{Chapter 4: Random vectors and independence}{24}{}%
+\contentsline {subsection}{\numberline {4.1}Random vectors}{24}{}%
+\contentsline {subsection}{\numberline {4.2}Multi-dimensional distribution functions}{25}{}%
+\contentsline {subsection}{\numberline {4.3}Independence}{27}{}%
+\contentsline {section}{Chapter 5: The Borel-Cantelli lemmas}{30}{}%
+\contentsline {section}{Chapter 6: A brief excursion into measure theory}{32}{}%
+\contentsline {section}{Chapter 7: Expected values}{34}{}%
+\contentsline {subsection}{\numberline {7.1}Construction of the expectation operator}{34}{}%
+\contentsline {paragraph}{Remark.}{36}{}%
+\contentsline {subsection}{\numberline {7.2}Properties }{36}{}%
+\contentsline {paragraph}{1. Expectation is invariant under ``almost-sure equivalence'':}{36}{}%
+\contentsline {paragraph}{2. Triangle inequality:}{36}{}%
+\contentsline {paragraph}{3. Markov's inequality}{36}{}%
+\contentsline {paragraph}{4. Variance:}{36}{}%
+\contentsline {paragraph}{5. Chebyshev's inequality:}{37}{}%
+\contentsline {paragraph}{6. Cauchy-Schwartz inequality:}{37}{}%
+\contentsline {paragraph}{7. Jensen's inequality:}{37}{}%
+\contentsline {paragraph}{8. $L_p$-norm monotonicity:}{37}{}%
+\contentsline {subsection}{\numberline {7.3}Convergence theorems for expectations}{38}{}%
+\contentsline {subsection}{\numberline {7.4}Computing expected values}{40}{}%
+\contentsline {subsection}{\numberline {7.5}Expectation and independent random variables}{41}{}%
+\contentsline {subsection}{\numberline {7.6}Moments}{43}{}%
+\contentsline {section}{Chapter 8: Special distributions and their properties}{45}{}%
+\contentsline {subsection}{\numberline {8.1}The Bernoulli distribution}{45}{}%
+\contentsline {subsection}{\numberline {8.2}The binomial distribution}{45}{}%
+\contentsline {subsection}{\numberline {8.3}The geometric distribution}{46}{}%
+\contentsline {subsection}{\numberline {8.4}The negative binomial distribution}{47}{}%
+\contentsline {subsection}{\numberline {8.5}The Poisson distribution}{47}{}%
+\contentsline {subsection}{\numberline {8.6}The uniform distribution}{48}{}%
+\contentsline {subsection}{\numberline {8.7}The normal distribution}{48}{}%
+\contentsline {subsection}{\numberline {8.8}The exponential distribution}{50}{}%
+\contentsline {subsection}{\numberline {8.9}The gamma distribution}{51}{}%
+\contentsline {subsection}{\numberline {8.10}The beta distribution}{52}{}%
+\contentsline {subsection}{\numberline {8.11}The Cauchy distribution}{53}{}%
+\contentsline {section}{Chapter 9: Laws of large numbers}{55}{}%
+\contentsline {subsection}{\numberline {9.1}Weak laws of large numbers}{55}{}%
+\contentsline {subsection}{\numberline {9.2}Strong laws of large numbers}{56}{}%
+\contentsline {section}{Chapter 10: Applications and further examples}{63}{}%
+\contentsline {subsection}{\numberline {10.1}The Weierstrass approximation theorem}{63}{}%
+\contentsline {subsection}{\numberline {10.2}Infinite expectations and triangular arrays}{64}{}%
+\contentsline {subsection}{\numberline {10.3}Random series of independent samples}{68}{}%
+\contentsline {section}{Chapter 11: The Central Limit Theorem, Stirling's formula and the de Moivre-Laplace theorem}{72}{}%
+\contentsline {section}{Chapter 12: Convergence in distribution}{76}{}%
+\contentsline {subsection}{\numberline {12.1}Definition}{76}{}%
+\contentsline {subsection}{\numberline {12.2}Examples}{77}{}%
+\contentsline {subsection}{\numberline {12.3}Compactness and tightness}{78}{}%
+\contentsline {paragraph}{Note.}{79}{}%
+\contentsline {section}{Chapter 13: Characteristic functions}{82}{}%
+\contentsline {subsection}{\numberline {13.1}Definition and basic properties}{82}{}%
+\contentsline {paragraph}{A note on terminology.}{83}{}%
+\contentsline {subsection}{\numberline {13.2}Examples}{83}{}%
+\contentsline {subsection}{\numberline {13.3}The inversion formula}{85}{}%
+\contentsline {subsection}{\numberline {13.4}The continuity theorem}{88}{}%
+\contentsline {subsection}{\numberline {13.5}Moments}{89}{}%
+\contentsline {section}{Chapter 14: Central limit theorems}{91}{}%
+\contentsline {subsection}{\numberline {14.1}The case of i.i.d. r.v.'s}{91}{}%
+\contentsline {subsection}{\numberline {14.2}Generalizations}{91}{}%
+\contentsline {subsubsection}{\numberline {14.2.1}Triangular arrays}{92}{}%
+\contentsline {subsubsection}{\numberline {14.2.2}Erd\"os-Kac theorem}{93}{}%
+\contentsline {subsubsection}{\numberline {14.2.3}The Euclidean algorithm}{94}{}%
+\contentsline {section}{Chapter 15: Random number generation}{95}{}%
+\contentsline {subsection}{\numberline {15.1}Unbiasing a source of randomness: simulating an unbiased coin using biased coin tosses}{95}{}%
+\contentsline {paragraph}{Simulation Method 1.}{95}{}%
+\contentsline {subsection}{\numberline {15.2}Simulating a biased coin using unbiased coin tosses}{96}{}%
+\contentsline {paragraph}{Simulation Method 2.}{96}{}%
+\contentsline {subsection}{\numberline {15.3}Simulating an arbitrary discrete distribution using unbiased coin tosses}{97}{}%
+\contentsline {paragraph}{Simulation Method 3.}{97}{}%
+\contentsline {subsection}{\numberline {15.4}Simulating a general r.v.\ using a uniform r.v.}{98}{}%
+\contentsline {paragraph}{Simulation Method 4.}{98}{}%
+\contentsline {subsection}{\numberline {15.5}Simulating an exponential r.v.}{98}{}%
+\contentsline {paragraph}{Simulation Method 5.}{99}{}%
+\contentsline {subsection}{\numberline {15.6}Simulating a normal r.v.}{99}{}%
+\contentsline {paragraph}{Simulation Method 6.}{99}{}%
+\contentsline {subsection}{\numberline {15.7}Simulating a Poisson r.v.}{99}{}%
+\contentsline {paragraph}{Simulation Method 7.}{99}{}%
+\contentsline {section}{Chapter 16: Additional topics}{101}{}%
+\contentsline {subsection}{\numberline {16.1}The Kolmogorov 0-1 law}{101}{}%
+\contentsline {subsection}{\numberline {16.2}The Kolmogorov three-series theorem }{101}{}%
+\contentsline {subsection}{\numberline {16.3}The Poisson limit law}{103}{}%
+\contentsline {section}{Exercises}{106}{}%
+\contentsline {paragraph}{Notes.}{122}{}%
+\contentsline {paragraph}{4.}{123}{}%

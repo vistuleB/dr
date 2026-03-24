@@ -139,11 +139,6 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" id=\"MathJax-script\" src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js\"></script>",
-        ),
-        OutputLine(
-          blame,
-          2,
           "<script type=\"text/javascript\" src=\"./app.js\"></script>",
         ),
         OutputLine(

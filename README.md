@@ -5,10 +5,19 @@ On MacOS, install pdflatex with `brew install --cask basictex`
 Convert LaTeX to pdf with `pdflatex file.tex`
 
 
-# Shared `app.css` and `app.js`
+# Add a shared asset to a course
 
-How to create symlinks of shared css and js for new course such as `235A`
+As an example, say we would like to add `mathjax_setup.js` to course `235A`. We would follow these steps
 
 1. `cd` into project root
-2. `ln -s ../../shared/app.css 235A/public/app.css`
-3. `ln -s ../../shared/app.js 235A/public/app.js`
+2. `ln -s ../../shared/mathjax_setup.js 235A/public/mathjax_setup.js`
+
+# Setting Environment
+
+Create a `.env` file at the root of the project
+
+```
+COURSE=235A
+OFFLINE_MODE=true
+MATHJAX_VERSION=3
+```

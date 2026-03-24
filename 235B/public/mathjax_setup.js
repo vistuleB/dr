@@ -1,0 +1,1 @@
+../../shared/mathjax_setup.js

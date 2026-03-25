@@ -1,5 +1,6 @@
 import blame.{Ext}
 import desugaring as ds
+import gleam/dict
 import gleam/io
 import gleam/list
 import gleam/option.{None, Some}
@@ -106,6 +107,7 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), TI2SplitterError) {
 fn index_emitter(
   fragment: Fragment(VXML),
   title_banner: String,
+  author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   let blame = Ext([], "index_emitter")
   let lines =
@@ -130,6 +132,18 @@ fn index_emitter(
           2,
           "<link rel=\"stylesheet\" type=\"text/css\" href=\"app.css\" />",
         ),
+      ],
+      case author_mode {
+        True -> [
+          OutputLine(
+            blame,
+            2,
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"local.css\" />",
+          ),
+        ]
+        False -> []
+      },
+      [
         OutputLine(
           blame,
           2,
@@ -166,6 +180,7 @@ fn index_emitter(
 fn chapter_emitter(
   fragment: Fragment(VXML),
   title_banner: String,
+  author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   let assert Chapter(n) = fragment.classifier
   let blame = Ext([], "chapter_emitter")
@@ -193,6 +208,18 @@ fn chapter_emitter(
           2,
           "<link rel=\"stylesheet\" type=\"text/css\" href=\"app.css\" />",
         ),
+      ],
+      case author_mode {
+        True -> [
+          OutputLine(
+            blame,
+            2,
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"local.css\" />",
+          ),
+        ]
+        False -> []
+      },
+      [
         OutputLine(
           blame,
           2,
@@ -247,6 +274,7 @@ fn chapter_emitter(
 fn subchapter_emitter(
   fragment: Fragment(VXML),
   title_banner: String,
+  author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   let assert Sub(chapter_n, sub_n) = fragment.classifier
   let blame = Ext([], "subchapter_emitter")
@@ -276,6 +304,18 @@ fn subchapter_emitter(
           2,
           "<link rel=\"stylesheet\" type=\"text/css\" href=\"app.css\" />",
         ),
+      ],
+      case author_mode {
+        True -> [
+          OutputLine(
+            blame,
+            2,
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"local.css\" />",
+          ),
+        ]
+        False -> []
+      },
+      [
         OutputLine(
           blame,
           2,
@@ -332,11 +372,12 @@ fn subchapter_emitter(
 fn our_emitter(
   fragment: Fragment(VXML),
   title_banner: String,
+  author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   case fragment.classifier {
-    Index -> index_emitter(fragment, title_banner)
-    Chapter(_) -> chapter_emitter(fragment, title_banner)
-    Sub(_, _) -> subchapter_emitter(fragment, title_banner)
+    Index -> index_emitter(fragment, title_banner, author_mode)
+    Chapter(_) -> chapter_emitter(fragment, title_banner, author_mode)
+    Sub(_, _) -> subchapter_emitter(fragment, title_banner, author_mode)
   }
 }
 
@@ -460,6 +501,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     )
     |> ds.amend_renderer_paramaters_by_command_line_amendments(amendments)
 
+  let author_mode = dict.has_key(amendments.user_args, "--local")
   let amendments = expand_filename_shorthands_to_path_fragments(amendments)
 
   let renderer =
@@ -468,7 +510,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       parser: ds.default_writerly_parser(amendments.only_key_values),
       pipeline: pipeline.pipeline(),
       splitter: our_splitter,
-      emitter: our_emitter(_, title_banner),
+      emitter: our_emitter(_, title_banner, author_mode),
       writer: ds.default_writer,
       prettifier: ds.default_prettier_prettifier,
     )

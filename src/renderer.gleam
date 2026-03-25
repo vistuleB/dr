@@ -1,6 +1,5 @@
 import blame.{Ext}
 import desugaring as ds
-import gleam/dict
 import gleam/io
 import gleam/list
 import gleam/option.{None, Some}
@@ -461,14 +460,13 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     )
     |> ds.amend_renderer_paramaters_by_command_line_amendments(amendments)
 
-  let author_mode = dict.has_key(amendments.user_args, "--local")
   let amendments = expand_filename_shorthands_to_path_fragments(amendments)
 
   let renderer =
     ds.Renderer(
       assembler: ds.default_writerly_assembler(amendments.only_paths),
       parser: ds.default_writerly_parser(amendments.only_key_values),
-      pipeline: pipeline.pipeline(author_mode),
+      pipeline: pipeline.pipeline(),
       splitter: our_splitter,
       emitter: our_emitter(_, title_banner),
       writer: ds.default_writer,

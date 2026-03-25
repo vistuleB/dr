@@ -81,13 +81,6 @@ export default defineConfig(({ mode }) => {
       port: serverPort,
       host: "0.0.0.0",
       cors: true,
-      // watch: {
-      //   // Prevent Vite from watching/processing the mathjax files
-      //   ignored: ["**/mathjax4/**"],
-      // },
     },
-    // optimizeDeps: {
-    //   exclude: ["mathjax4"],
-    // },
   };
 });

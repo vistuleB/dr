@@ -155,7 +155,7 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
-          "<title>" <> title_banner <> "Inhaltsverzeichnis</title>",
+          "<title>" <> title_banner <> "Table of Contents</title>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -240,7 +240,7 @@ fn chapter_emitter(
           2,
           "<title>"
             <> title_banner
-            <> "Kapitel "
+            <> "Chapter "
             <> string.inspect(n)
             <> "</title>",
         ),
@@ -329,7 +329,7 @@ fn subchapter_emitter(
           2,
           "<title>"
             <> title_banner
-            <> "Kapitel "
+            <> "Chapter "
             <> string.inspect(chapter_n)
             <> "."
             <> string.inspect(sub_n)

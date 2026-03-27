@@ -34,6 +34,10 @@ pub type TI2SplitterError {
   NoIndex
 }
 
+type DocumentInfo {
+  DocumentInfo(banner: String, title: String)
+}
+
 fn index_error(e: infra.SingletonError) -> TI2SplitterError {
   case e {
     infra.MoreThanOne -> MoreThanOneIndex
@@ -104,7 +108,7 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), TI2SplitterError) {
 // index emitter - handles index fragments
 fn index_emitter(
   fragment: Fragment(VXML),
-  title_banner: String,
+  document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   let blame = Ext([], "index_emitter")
@@ -123,7 +127,9 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
-          "<meta name=\"description\" content=\"Table of contents for TI-2 - Theoretische Informatik 2\">",
+          "<meta name=\"description\" content=\"Table of contents for "
+            <> document_info.title
+            <> "\">",
         ),
         OutputLine(
           blame,
@@ -155,7 +161,7 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
-          "<title>" <> title_banner <> "Table of Contents</title>",
+          "<title>" <> document_info.banner <> "Table of Contents</title>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -177,7 +183,7 @@ fn index_emitter(
 // chapter emitter - handles chapter fragments
 fn chapter_emitter(
   fragment: Fragment(VXML),
-  title_banner: String,
+  document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   let assert Chapter(n) = fragment.classifier
@@ -199,7 +205,9 @@ fn chapter_emitter(
           2,
           "<meta name=\"description\" content=\"Chapter "
             <> string.inspect(n)
-            <> " of TI-2 - Theoretische Informatik 2\">",
+            <> " of "
+            <> document_info.title
+            <> "\">",
         ),
         OutputLine(
           blame,
@@ -239,7 +247,7 @@ fn chapter_emitter(
           blame,
           2,
           "<title>"
-            <> title_banner
+            <> document_info.banner
             <> "Chapter "
             <> string.inspect(n)
             <> "</title>",
@@ -264,7 +272,7 @@ fn chapter_emitter(
 // subchapter emitter - handles sub fragments
 fn subchapter_emitter(
   fragment: Fragment(VXML),
-  title_banner: String,
+  document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   let assert Sub(chapter_n, sub_n) = fragment.classifier
@@ -288,7 +296,9 @@ fn subchapter_emitter(
             <> string.inspect(chapter_n)
             <> "."
             <> string.inspect(sub_n)
-            <> " of TI-2 - Theoretische Informatik 2\">",
+            <> " of "
+            <> document_info.title
+            <> "\">",
         ),
         OutputLine(
           blame,
@@ -328,7 +338,7 @@ fn subchapter_emitter(
           blame,
           2,
           "<title>"
-            <> title_banner
+            <> document_info.banner
             <> "Chapter "
             <> string.inspect(chapter_n)
             <> "."
@@ -355,13 +365,13 @@ fn subchapter_emitter(
 // main emitter that dispatches to appropriate sub-emitters
 fn our_emitter(
   fragment: Fragment(VXML),
-  title_banner: String,
+  document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   case fragment.classifier {
-    Index -> index_emitter(fragment, title_banner, author_mode)
-    Chapter(_) -> chapter_emitter(fragment, title_banner, author_mode)
-    Sub(_, _) -> subchapter_emitter(fragment, title_banner, author_mode)
+    Index -> index_emitter(fragment, document_info, author_mode)
+    Chapter(_) -> chapter_emitter(fragment, document_info, author_mode)
+    Sub(_, _) -> subchapter_emitter(fragment, document_info, author_mode)
   }
 }
 
@@ -468,14 +478,18 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
   let assert Ok(contents) = simplifile.read(parent)
   let assert Ok([parsed_contents, ..]) = writerly.parse_string(contents, "")
   let parsed_contents = writerly.writerly_to_vxml(parsed_contents)
-  let title_banner = case
-    infra.v_first_attr_with_key(parsed_contents, "banner")
-  {
+  let banner = case infra.v_first_attr_with_key(parsed_contents, "banner") {
     None ->
       panic as "__parent.wly did not specify the banner attribute (what should appear in the browser tab)"
     Some(x) -> x.val
   }
-  io.println("author set banner to be " <> title_banner)
+  io.println("author set banner to be " <> banner)
+  let title = case infra.v_first_attr_with_key(parsed_contents, "title") {
+    None -> panic as "__parent.wly did not specify any title attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set title to be " <> title)
+  let document_info = DocumentInfo(banner: banner, title: title)
 
   let parameters =
     ds.RendererParameters(
@@ -494,7 +508,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       parser: ds.default_writerly_parser(amendments.only_key_values),
       pipeline: pipeline.pipeline(),
       splitter: our_splitter,
-      emitter: our_emitter(_, title_banner, author_mode),
+      emitter: our_emitter(_, document_info, author_mode),
       writer: ds.default_writer,
       prettifier: ds.default_prettier_prettifier,
     )

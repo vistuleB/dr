@@ -1,5 +1,9 @@
 |> Document
-    title=MATH 235B – Probability Theory Lecture Notes, Winter 2011
-    program=Department of Mathematics
+    title=Probability Theory Lecture Notes
+    course=MATH 235B
+    term=Winter 2011
+    department=Department of Mathematics
     institution=UC Davis
     lecturer=Dan Romik
+    date=February 3, 2026
+    banner=MATH 235B-

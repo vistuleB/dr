@@ -16,8 +16,6 @@ import writerly
 
 const favicon_loc = "./img/favicon.svg"
 
-const mathjax_loc = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-
 pub type FragmentType {
   Chapter(Int)
   Sub(Int, Int)
@@ -235,13 +233,6 @@ fn chapter_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" id=\"MathJax-script\" src=\""
-            <> mathjax_loc
-            <> "\"></script>",
-        ),
-        OutputLine(
-          blame,
-          2,
           "<script type=\"text/javascript\" src=\"./app.js\"></script>",
         ),
         OutputLine(
@@ -327,13 +318,6 @@ fn subchapter_emitter(
           blame,
           2,
           "<script type=\"text/javascript\" src=\"./mathjax_setup.js\"></script>",
-        ),
-        OutputLine(
-          blame,
-          2,
-          "<script type=\"text/javascript\" id=\"MathJax-script\" src=\""
-            <> mathjax_loc
-            <> "\"></script>",
         ),
         OutputLine(
           blame,

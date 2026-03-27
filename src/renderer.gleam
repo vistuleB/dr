@@ -3,12 +3,13 @@ import desugaring as ds
 import gleam/dict
 import gleam/io
 import gleam/list
-import gleam/option.{None, Some}
+import gleam/option.{type Option, None, Some}
 import gleam/regexp.{type Regexp}
 import gleam/result
 import gleam/string.{inspect as ins}
 import infrastructure as infra
 import io_lines.{type OutputLine, OutputLine}
+import on
 import pipeline
 import simplifile
 import vxml.{type VXML}
@@ -35,7 +36,16 @@ pub type TI2SplitterError {
 }
 
 type DocumentInfo {
-  DocumentInfo(banner: String, title: String)
+  DocumentInfo(
+    title: String,
+    course: String,
+    term: String,
+    department: String,
+    institution: String,
+    lecturer: String,
+    date: String,
+    banner: String,
+  )
 }
 
 fn index_error(e: infra.SingletonError) -> TI2SplitterError {
@@ -118,19 +128,9 @@ fn index_emitter(
         OutputLine(blame, 0, "<!DOCTYPE html>"),
         OutputLine(blame, 0, "<html>"),
         OutputLine(blame, 0, "<head>"),
-        OutputLine(blame, 2, "<meta charset=\"utf-8\">"),
-        OutputLine(
-          blame,
-          2,
-          "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\">",
-        ),
-        OutputLine(
-          blame,
-          2,
-          "<meta name=\"description\" content=\"Table of contents for "
-            <> document_info.title
-            <> "\">",
-        ),
+      ],
+      document_meta_tags(blame, None, document_info),
+      [
         OutputLine(
           blame,
           2,
@@ -188,27 +188,17 @@ fn chapter_emitter(
 ) -> Result(Fragment(OL), String) {
   let assert Chapter(n) = fragment.classifier
   let blame = Ext([], "chapter_emitter")
+  let chapter_title = "Chapter " <> string.inspect(n)
+
   let lines =
     list.flatten([
       [
         OutputLine(blame, 0, "<!DOCTYPE html>"),
         OutputLine(blame, 0, "<html>"),
         OutputLine(blame, 0, "<head>"),
-        OutputLine(blame, 2, "<meta charset=\"utf-8\">"),
-        OutputLine(
-          blame,
-          2,
-          "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\">",
-        ),
-        OutputLine(
-          blame,
-          2,
-          "<meta name=\"description\" content=\"Chapter "
-            <> string.inspect(n)
-            <> " of "
-            <> document_info.title
-            <> "\">",
-        ),
+      ],
+      document_meta_tags(blame, Some(chapter_title), document_info),
+      [
         OutputLine(
           blame,
           2,
@@ -242,15 +232,6 @@ fn chapter_emitter(
           blame,
           2,
           "<script type=\"text/javascript\" src=\"./app.js\"></script>",
-        ),
-        OutputLine(
-          blame,
-          2,
-          "<title>"
-            <> document_info.banner
-            <> "Chapter "
-            <> string.inspect(n)
-            <> "</title>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -277,29 +258,17 @@ fn subchapter_emitter(
 ) -> Result(Fragment(OL), String) {
   let assert Sub(chapter_n, sub_n) = fragment.classifier
   let blame = Ext([], "subchapter_emitter")
+  let subchapter_title =
+    "Chapter " <> string.inspect(chapter_n) <> "." <> string.inspect(sub_n)
   let lines =
     list.flatten([
       [
         OutputLine(blame, 0, "<!DOCTYPE html>"),
         OutputLine(blame, 0, "<html>"),
         OutputLine(blame, 0, "<head>"),
-        OutputLine(blame, 2, "<meta charset=\"utf-8\">"),
-        OutputLine(
-          blame,
-          2,
-          "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\">",
-        ),
-        OutputLine(
-          blame,
-          2,
-          "<meta name=\"description\" content=\"Section "
-            <> string.inspect(chapter_n)
-            <> "."
-            <> string.inspect(sub_n)
-            <> " of "
-            <> document_info.title
-            <> "\">",
-        ),
+      ],
+      document_meta_tags(blame, Some(subchapter_title), document_info),
+      [
         OutputLine(
           blame,
           2,
@@ -334,17 +303,6 @@ fn subchapter_emitter(
           2,
           "<script type=\"text/javascript\" src=\"./app.js\"></script>",
         ),
-        OutputLine(
-          blame,
-          2,
-          "<title>"
-            <> document_info.banner
-            <> "Chapter "
-            <> string.inspect(chapter_n)
-            <> "."
-            <> string.inspect(sub_n)
-            <> "</title>",
-        ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
       ],
@@ -360,6 +318,103 @@ fn subchapter_emitter(
       ],
     ])
   Ok(ds.OutputFragment(..fragment, payload: lines))
+}
+
+fn document_meta_tags(
+  blame: blame.Blame,
+  chapter_or_sub_title: Option(String),
+  document_info: DocumentInfo,
+) -> List(OutputLine) {
+  let title = generate_title(document_info)
+  [
+    OutputLine(blame, 2, "<meta charset=\"utf-8\">"),
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\">",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<title>"
+        <> on.eager_none_some(
+        chapter_or_sub_title,
+        title,
+        fn(chapter_or_sub_title) { chapter_or_sub_title <> " of " <> title },
+      )
+        <> "</title>",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"description\" content=\""
+        <> generate_description(document_info)
+        <> "\">",
+    ),
+    // Author & publisher
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"author\" content=\"" <> document_info.lecturer <> "\">",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"publisher\" content=\""
+        <> generate_publisher(document_info)
+        <> "\">",
+    ),
+
+    // Course / academic metadata
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"course\" content=\"" <> document_info.course <> "\">",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"term\" content=\"" <> document_info.term <> "\">",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"subject\" content=\"" <> document_info.title <> "\">",
+    ),
+
+    // Date
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"date\" content=\"" <> document_info.date <> "\">",
+    ),
+  ]
+}
+
+fn generate_description(document_info: DocumentInfo) -> String {
+  document_info.title
+  <> " for "
+  <> document_info.course
+  <> ", "
+  <> document_info.term
+  <> ", by "
+  <> document_info.lecturer
+  <> ", "
+  <> document_info.department
+  <> ", "
+  <> document_info.institution
+}
+
+fn generate_title(document_info: DocumentInfo) -> String {
+  document_info.title
+  <> " - "
+  <> document_info.course
+  <> " | "
+  <> document_info.institution
+}
+
+fn generate_publisher(document_info: DocumentInfo) -> String {
+  document_info.institution <> ", " <> document_info.department
 }
 
 // main emitter that dispatches to appropriate sub-emitters
@@ -489,7 +544,51 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     Some(x) -> x.val
   }
   io.println("author set title to be " <> title)
-  let document_info = DocumentInfo(banner: banner, title: title)
+  let course = case infra.v_first_attr_with_key(parsed_contents, "course") {
+    None -> panic as "__parent.wly did not specify any course attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set course to be " <> course)
+  let term = case infra.v_first_attr_with_key(parsed_contents, "term") {
+    None -> panic as "__parent.wly did not specify any term attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set term to be " <> term)
+  let department = case
+    infra.v_first_attr_with_key(parsed_contents, "department")
+  {
+    None -> panic as "__parent.wly did not specify any department attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set department to be " <> department)
+  let institution = case
+    infra.v_first_attr_with_key(parsed_contents, "institution")
+  {
+    None -> panic as "__parent.wly did not specify any institution attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set institution to be " <> institution)
+  let lecturer = case infra.v_first_attr_with_key(parsed_contents, "lecturer") {
+    None -> panic as "__parent.wly did not specify any lecturer attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set lecturer to be " <> lecturer)
+  let date = case infra.v_first_attr_with_key(parsed_contents, "date") {
+    None -> panic as "__parent.wly did not specify any date attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set lecturer to be " <> date)
+  let document_info =
+    DocumentInfo(
+      title: title,
+      course: course,
+      term: term,
+      department: department,
+      institution: institution,
+      lecturer: lecturer,
+      date: date,
+      banner: banner,
+    )
 
   let parameters =
     ds.RendererParameters(

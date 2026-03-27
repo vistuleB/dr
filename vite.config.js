@@ -1,5 +1,4 @@
 import { defineConfig, loadEnv } from "vite";
-import { exec } from "child_process";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -22,7 +21,7 @@ export default defineConfig(({ mode }) => {
           const mathjax_url = () => {
             switch (version_offline) {
               case "3-true":
-                return "/mathjax3/tex-svg.js";
+                return "./mathjax3/tex-svg.js";
               case "4-true":
                 console.warn(
                   "Currently MATHJAX_VERSION 4 OFFLINE_MODE is not supported. Using CDN version instead.",
@@ -41,8 +40,11 @@ export default defineConfig(({ mode }) => {
             }
           };
 
-          const tag = `<script type="text/javascript" id="MathJax-script" src="${mathjax_url()}"></script>`;
-          return html.replace("</head>", `${tag}\n</head>`);
+          // inject MathJax script between mathjax_setup.js and app.js
+          return html.replace(
+            /(<script[^>]+src="\.\/mathjax_setup\.js"><\/script>)/,
+            `$1\n<script type="text/javascript" id="mathjax-script" src="${mathjax_url()}"></script>`,
+          );
         },
       },
     ],

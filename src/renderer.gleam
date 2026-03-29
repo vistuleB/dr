@@ -130,6 +130,7 @@ fn index_emitter(
         OutputLine(blame, 0, "<head>"),
       ],
       document_meta_tags(blame, None, document_info),
+      social_share_meta_tags(blame, None, document_info),
       [
         OutputLine(
           blame,
@@ -198,6 +199,7 @@ fn chapter_emitter(
         OutputLine(blame, 0, "<head>"),
       ],
       document_meta_tags(blame, Some(chapter_title), document_info),
+      social_share_meta_tags(blame, Some(chapter_title), document_info),
       [
         OutputLine(
           blame,
@@ -268,6 +270,7 @@ fn subchapter_emitter(
         OutputLine(blame, 0, "<head>"),
       ],
       document_meta_tags(blame, Some(subchapter_title), document_info),
+      social_share_meta_tags(blame, Some(subchapter_title), document_info),
       [
         OutputLine(
           blame,
@@ -387,6 +390,71 @@ fn document_meta_tags(
       blame,
       2,
       "<meta name=\"date\" content=\"" <> document_info.date <> "\">",
+    ),
+  ]
+}
+
+fn social_share_meta_tags(
+  blame: blame.Blame,
+  chapter_or_sub_title: Option(String),
+  document_info: DocumentInfo,
+) -> List(OutputLine) {
+  let title = generate_title(document_info)
+  [
+    // Open Graph
+    OutputLine(
+      blame,
+      2,
+      "<meta property=\"og:title\" content=\""
+        <> on.eager_none_some(
+        chapter_or_sub_title,
+        title,
+        fn(chapter_or_sub_title) { chapter_or_sub_title <> " of " <> title },
+      )
+        <> "\">",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<meta property=\"og:description\" content=\""
+        <> generate_description(document_info)
+        <> "\">",
+    ),
+    OutputLine(blame, 2, "<meta property=\"og:type\" content=\"article\">"),
+    OutputLine(
+      blame,
+      2,
+      "<meta property=\"og:site_name\" content=\""
+        <> document_info.institution
+        <> " "
+        <> document_info.department
+        <> "\">",
+    ),
+    OutputLine(blame, 2, "<meta property=\"og:locale\" content=\"en_US\">"),
+
+    // Twitter card
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"twitter:card\" content=\"summary_large_image\">",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<meta name=\"twitter:title\" content=\""
+        <> on.eager_none_some(
+        chapter_or_sub_title,
+        title,
+        fn(chapter_or_sub_title) { chapter_or_sub_title <> " of " <> title },
+      )
+        <> "\">",
+    ),
+    OutputLine(
+      blame,
+      2,
+      "<meta property=\"twitter:description\" content=\""
+        <> generate_description(document_info)
+        <> "\">",
     ),
   ]
 }

@@ -21,3 +21,8 @@ COURSE=235A
 OFFLINE_MODE=true
 MATHJAX_VERSION=3
 ```
+
+# Set env variable with `npm run dev`
+
+If you like to start a server for a course such as `235A`,
+you can do `COURSE=235A npm run dev`

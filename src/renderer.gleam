@@ -29,7 +29,7 @@ type Fragment(z) =
 type OL =
   List(OutputLine)
 
-pub type TI2SplitterError {
+pub type DRSplitterError {
   NoChapters
   MoreThanOneIndex
   NoIndex
@@ -48,14 +48,14 @@ type DocumentInfo {
   )
 }
 
-fn index_error(e: infra.SingletonError) -> TI2SplitterError {
+fn index_error(e: infra.SingletonError) -> DRSplitterError {
   case e {
     infra.MoreThanOne -> MoreThanOneIndex
     infra.LessThanOne -> NoIndex
   }
 }
 
-fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), TI2SplitterError) {
+fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
   use index <- result.try(
     infra.descendants_with_class(root, "index")
     |> infra.read_singleton

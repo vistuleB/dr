@@ -9,7 +9,7 @@ pub fn pipeline() -> List(Pipe) {
     "Document",
     "footnote",
     "Labeled",
-    "Sub",
+    "Section",
     "SubTitle",
     "WriterlyBlankLine",
   ]
@@ -41,16 +41,16 @@ pub fn pipeline() -> List(Pipe) {
       "title",
     )),
     dl.auto_generate_child_if_missing_from_attribute(#(
-      "Sub",
+      "Section",
       "SubTitle",
       "title",
     )),
 
-    dl.ti2_create_index(),
+    dl.dr_create_index(),
     dl.append_class__batch([
       #("Index", "index"),
       #("Chapter", "chapter"),
-      #("Sub", "subchapter"),
+      #("Section", "subchapter"),
     ]),
     dl.rename__batch([
       #("Index", "div"),
@@ -58,7 +58,7 @@ pub fn pipeline() -> List(Pipe) {
       #("ChapterTitle", "div"),
       #("footnote", "div"),
       #("Labeled", "div"),
-      #("Sub", "div"),
+      #("Section", "div"),
       #("SubTitle", "div"),
     ]),
     dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),

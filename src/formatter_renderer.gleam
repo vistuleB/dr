@@ -19,7 +19,7 @@ const default_indentation_penalty = 0
 type FragmentType {
   Root
   Chapter
-  Sub
+  Section
   Unknown
 }
 
@@ -61,9 +61,12 @@ fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
     chapters
     |> list.fold(#([], []), fn(acc, chapter) {
       let #(chapter, subs) =
-        infra.v_extract_children(chapter, infra.is_v_and_tag_equals(_, "Sub"))
+        infra.v_extract_children(chapter, infra.is_v_and_tag_equals(
+          _,
+          "Section",
+        ))
       let chapter = fragment_bundler(chapter, Chapter, None)
-      let subs = list.map(subs, fragment_bundler(_, Sub, None))
+      let subs = list.map(subs, fragment_bundler(_, Section, None))
       #([chapter, ..acc.0], list.append(acc.1, subs))
     })
 

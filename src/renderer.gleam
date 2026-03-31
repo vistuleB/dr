@@ -19,7 +19,7 @@ const favicon_loc = "./img/favicon.svg"
 
 pub type FragmentType {
   Chapter(Int)
-  Sub(Int, Int)
+  Section(Int, Int)
   Index
 }
 
@@ -96,7 +96,7 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
       list.index_map(chapter_subs, fn(sub, sub_index) {
         let sub_number = sub_index + 1
         ds.OutputFragment(
-          Sub(chapter_number, sub_number),
+          Section(chapter_number, sub_number),
           string.inspect(chapter_number)
             <> "-"
             <> string.inspect(sub_number)
@@ -258,7 +258,7 @@ fn subchapter_emitter(
   document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
-  let assert Sub(chapter_n, sub_n) = fragment.classifier
+  let assert Section(chapter_n, sub_n) = fragment.classifier
   let blame = Ext([], "subchapter_emitter")
   let subchapter_title =
     "Chapter " <> string.inspect(chapter_n) <> "." <> string.inspect(sub_n)
@@ -494,7 +494,7 @@ fn our_emitter(
   case fragment.classifier {
     Index -> index_emitter(fragment, document_info, author_mode)
     Chapter(_) -> chapter_emitter(fragment, document_info, author_mode)
-    Sub(_, _) -> subchapter_emitter(fragment, document_info, author_mode)
+    Section(_, _) -> subchapter_emitter(fragment, document_info, author_mode)
   }
 }
 

@@ -10,7 +10,7 @@ pub fn pipeline() -> List(Pipe) {
     "footnote",
     "Labeled",
     "Section",
-    "SubTitle",
+    "SectionTitle",
     "WriterlyBlankLine",
   ]
 
@@ -42,7 +42,7 @@ pub fn pipeline() -> List(Pipe) {
     )),
     dl.auto_generate_child_if_missing_from_attribute(#(
       "Section",
-      "SubTitle",
+      "SectionTitle",
       "title",
     )),
 
@@ -59,7 +59,7 @@ pub fn pipeline() -> List(Pipe) {
       #("footnote", "div"),
       #("Labeled", "div"),
       #("Section", "div"),
-      #("SubTitle", "div"),
+      #("SectionTitle", "div"),
     ]),
     dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),
   ]

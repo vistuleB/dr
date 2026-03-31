@@ -11,6 +11,8 @@ pub fn pipeline() -> List(Pipe) {
     "Labeled",
     "Section",
     "SectionTitle",
+    "SubSection",
+    "SubSectionTitle",
     "WriterlyBlankLine",
   ]
 
@@ -45,12 +47,17 @@ pub fn pipeline() -> List(Pipe) {
       "SectionTitle",
       "title",
     )),
-
+    dl.auto_generate_child_if_missing_from_attribute(#(
+      "SubSection",
+      "SubSectionTitle",
+      "title",
+    )),
     dl.dr_create_index(),
     dl.append_class__batch([
       #("Index", "index"),
       #("Chapter", "chapter"),
-      #("Section", "subchapter"),
+      #("Section", "section"),
+      #("SubSection", "subsection"),
     ]),
     dl.rename__batch([
       #("Index", "div"),
@@ -60,6 +67,8 @@ pub fn pipeline() -> List(Pipe) {
       #("Labeled", "div"),
       #("Section", "div"),
       #("SectionTitle", "div"),
+      #("SubSection", "div"),
+      #("SubSectionTitle", "div"),
     ]),
     dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),
   ]

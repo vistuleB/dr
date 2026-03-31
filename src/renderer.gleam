@@ -20,6 +20,7 @@ const favicon_loc = "./img/favicon.svg"
 pub type FragmentType {
   Chapter(Int)
   Section(Int, Int)
+  SubSection(Int, Int, Int)
   Index
 }
 
@@ -69,48 +70,79 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
     },
   )
 
-  let #(chapters, list_list_subs) =
+  let #(chapters, list_list_sections) =
     chapters
     |> list.map(
       infra.v_extract_children(_, fn(child) {
-        infra.is_v_and_has_class(child, "subchapter")
+        infra.is_v_and_has_class(child, "section")
       }),
     )
     |> list.unzip
 
-  let chapter_fragments =
-    chapters
-    |> list.index_map(fn(chapter, chapter_index) {
-      let chapter_number = chapter_index + 1
-      ds.OutputFragment(
-        Chapter(chapter_number),
-        string.inspect(chapter_number) <> "-0" <> ".html",
-        chapter,
+  let #(list_list_sections, list_list_list_subsections) =
+    list_list_sections
+    |> list.map(fn(chapter_sections) {
+      chapter_sections
+      |> list.map(
+        infra.v_extract_children(_, fn(child) {
+          infra.is_v_and_has_class(child, "subsection")
+        }),
       )
+      |> list.unzip
     })
+    |> list.unzip
 
-  let sub_fragments =
-    list_list_subs
-    |> list.index_map(fn(chapter_subs, chapter_index) {
-      let chapter_number = chapter_index + 1
-      list.index_map(chapter_subs, fn(sub, sub_index) {
-        let sub_number = sub_index + 1
-        ds.OutputFragment(
-          Section(chapter_number, sub_number),
-          string.inspect(chapter_number)
-            <> "-"
-            <> string.inspect(sub_number)
-            <> ".html",
-          sub,
-        )
-      })
-    })
+  let chapter_fragments = {
+    use chapter, chapter_idx <- list.index_map(chapters)
+    let chapter_n = chapter_idx + 1
+    let filename = string.inspect(chapter_n) <> "-0.html"
+    ds.OutputFragment(Chapter(chapter_n), filename, chapter)
+  }
+
+  let section_fragments =
+    {
+      use chapter_sections, chapter_idx <- list.index_map(list_list_sections)
+      let chapter_n = chapter_idx + 1
+      use section, section_idx <- list.index_map(chapter_sections)
+      let section_n = section_idx + 1
+      let filename =
+        [chapter_n, section_n]
+        |> list.map(string.inspect)
+        |> string.join("-")
+        <> ".html"
+      ds.OutputFragment(Section(chapter_n, section_n), filename, section)
+    }
+    |> list.flatten
+
+  let subsection_fragments =
+    {
+      use chapter_subs, chapter_idx <- list.index_map(
+        list_list_list_subsections,
+      )
+      let chapter_n = chapter_idx + 1
+      use section_subs, section_idx <- list.index_map(chapter_subs)
+      let section_n = section_idx + 1
+      use subsection, subsection_idx <- list.index_map(section_subs)
+      let subsection_n = subsection_idx + 1
+      let filename =
+        [chapter_n, section_n, subsection_n]
+        |> list.map(string.inspect)
+        |> string.join("-")
+        <> ".html"
+      ds.OutputFragment(
+        SubSection(chapter_n, section_n, subsection_n),
+        filename,
+        subsection,
+      )
+    }
+    |> list.flatten
     |> list.flatten
 
   list.flatten([
     [ds.OutputFragment(Index, "index.html", index)],
     chapter_fragments,
-    sub_fragments,
+    section_fragments,
+    subsection_fragments,
   ])
   |> Ok
 }
@@ -252,16 +284,16 @@ fn chapter_emitter(
   Ok(ds.OutputFragment(..fragment, payload: lines))
 }
 
-// subchapter emitter - handles sub fragments
-fn subchapter_emitter(
+// section emitter - handles section fragments
+fn section_emitter(
   fragment: Fragment(VXML),
   document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
-  let assert Section(chapter_n, sub_n) = fragment.classifier
-  let blame = Ext([], "subchapter_emitter")
-  let subchapter_title =
-    "Chapter " <> string.inspect(chapter_n) <> "." <> string.inspect(sub_n)
+  let assert Section(chapter_n, section_n) = fragment.classifier
+  let blame = Ext([], "section_emitter")
+  let section_title =
+    "Chapter " <> string.inspect(chapter_n) <> "." <> string.inspect(section_n)
   let lines =
     list.flatten([
       [
@@ -269,8 +301,85 @@ fn subchapter_emitter(
         OutputLine(blame, 0, "<html>"),
         OutputLine(blame, 0, "<head>"),
       ],
-      document_meta_tags(blame, Some(subchapter_title), document_info),
-      social_share_meta_tags(blame, Some(subchapter_title), document_info),
+      document_meta_tags(blame, Some(section_title), document_info),
+      social_share_meta_tags(blame, Some(section_title), document_info),
+      [
+        OutputLine(
+          blame,
+          2,
+          "<link rel=\"stylesheet\" type=\"text/css\" href=\"app.css\" />",
+        ),
+      ],
+      case author_mode {
+        True -> [
+          OutputLine(
+            blame,
+            2,
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"local.css\" />",
+          ),
+        ]
+        False -> []
+      },
+      [
+        OutputLine(
+          blame,
+          2,
+          "<link rel=\"icon\" type=\"image/x-icon\" href=\""
+            <> favicon_loc
+            <> "\">",
+        ),
+        OutputLine(
+          blame,
+          2,
+          "<script type=\"text/javascript\" src=\"./mathjax_setup.js\"></script>",
+        ),
+        OutputLine(
+          blame,
+          2,
+          "<script type=\"text/javascript\" src=\"./app.js\"></script>",
+        ),
+        OutputLine(blame, 0, "</head>"),
+        OutputLine(blame, 0, "<body>"),
+      ],
+      vxml.vxmls_to_html_output_lines(
+        fragment.payload |> infra.v_get_children,
+        2,
+        2,
+      ),
+      [
+        OutputLine(blame, 0, "</body>"),
+        OutputLine(blame, 0, "</html>"),
+        OutputLine(blame, 0, ""),
+      ],
+    ])
+  Ok(ds.OutputFragment(..fragment, payload: lines))
+}
+
+// subsection emitter - handles subsection fragments
+fn subsection_emitter(
+  fragment: Fragment(VXML),
+  document_info: DocumentInfo,
+  author_mode: Bool,
+) -> Result(Fragment(OL), String) {
+  let assert SubSection(chapter_n, section_n, subsection_n) =
+    fragment.classifier
+  let blame = Ext([], "subsection_emitter")
+  let subsection_title =
+    "Chapter "
+    <> string.inspect(chapter_n)
+    <> "."
+    <> string.inspect(section_n)
+    <> "."
+    <> string.inspect(subsection_n)
+  let lines =
+    list.flatten([
+      [
+        OutputLine(blame, 0, "<!DOCTYPE html>"),
+        OutputLine(blame, 0, "<html>"),
+        OutputLine(blame, 0, "<head>"),
+      ],
+      document_meta_tags(blame, Some(subsection_title), document_info),
+      social_share_meta_tags(blame, Some(subsection_title), document_info),
       [
         OutputLine(
           blame,
@@ -485,7 +594,7 @@ fn generate_publisher(document_info: DocumentInfo) -> String {
   document_info.institution <> ", " <> document_info.department
 }
 
-// main emitter that dispatches to appropriate sub-emitters
+// main emitter that dispatches to appropriate section-emitters
 fn our_emitter(
   fragment: Fragment(VXML),
   document_info: DocumentInfo,
@@ -494,7 +603,9 @@ fn our_emitter(
   case fragment.classifier {
     Index -> index_emitter(fragment, document_info, author_mode)
     Chapter(_) -> chapter_emitter(fragment, document_info, author_mode)
-    Section(_, _) -> subchapter_emitter(fragment, document_info, author_mode)
+    Section(_, _) -> section_emitter(fragment, document_info, author_mode)
+    SubSection(_, _, _) ->
+      subsection_emitter(fragment, document_info, author_mode)
   }
 }
 
@@ -548,12 +659,21 @@ fn filename_shorthand_to_path_fragment(
   }
   case regexp.scan(filename_shorthand_regexp, shorthand) {
     [one] -> {
-      let assert [Some(ch_no), Some(sub_no)] = one.submatches
-      zero_pad(ch_no)
-      <> "/"
-      <> case zero_pad(sub_no) {
-        "00" -> "__parent.wly"
-        x -> x
+      case one.submatches {
+        [Some(ch_no), Some(section_no), None] ->
+          zero_pad(ch_no)
+          <> "/"
+          <> case zero_pad(section_no) {
+            "00" -> "__parent.wly"
+            x -> x
+          }
+        [Some(ch_no), Some(section_no), Some(subsection_no)] ->
+          zero_pad(ch_no)
+          <> "/"
+          <> zero_pad(section_no)
+          <> "/"
+          <> zero_pad(subsection_no)
+        _ -> shorthand
       }
     }
     _ -> shorthand
@@ -564,7 +684,9 @@ fn expand_filename_shorthands_to_path_fragments(
   amendments: ds.CommandLineAmendments,
 ) -> ds.CommandLineAmendments {
   let assert Ok(filename_shorthand_regexp) =
-    regexp.from_string("^([1-9][\\d]{0,1})[\\.]([1-9][\\d]{0,1})$")
+    regexp.from_string(
+      "^([1-9][\\d]{0,1})[\\.]([\\d]{1,2})(?:[\\.]([1-9][\\d]{0,1})){0,1}$",
+    )
 
   let only_paths =
     list.map(amendments.only_paths, filename_shorthand_to_path_fragment(

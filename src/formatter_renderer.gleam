@@ -20,6 +20,7 @@ type FragmentType {
   Root
   Chapter
   Section
+  SubSection
   Unknown
 }
 
@@ -57,23 +58,45 @@ fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
   let #(root, chapters) =
     infra.v_extract_children(root, infra.is_v_and_tag_equals(_, "Chapter"))
   let root = fragment_bundler(root, Root, None)
-  let #(chapters, subs) =
+  let #(chapters, sections, subsections) =
     chapters
-    |> list.fold(#([], []), fn(acc, chapter) {
-      let #(chapter, subs) =
+    |> list.fold(#([], [], []), fn(acc, chapter) {
+      let #(chapter, sections) =
         infra.v_extract_children(chapter, infra.is_v_and_tag_equals(
           _,
           "Section",
         ))
-      let chapter = fragment_bundler(chapter, Chapter, None)
-      let subs = list.map(subs, fragment_bundler(_, Section, None))
-      #([chapter, ..acc.0], list.append(acc.1, subs))
+      let chapter_fragment = fragment_bundler(chapter, Chapter, None)
+
+      let #(sections, subsections) =
+        sections
+        |> list.fold(#([], []), fn(acc_inner, section) {
+          let #(section, subsections) =
+            infra.v_extract_children(section, infra.is_v_and_tag_equals(
+              _,
+              "SubSection",
+            ))
+          let section_fragment = fragment_bundler(section, Section, None)
+          let subsection_fragments =
+            list.map(subsections, fragment_bundler(_, SubSection, None))
+          #(
+            [section_fragment, ..acc_inner.0],
+            list.append(acc_inner.1, subsection_fragments),
+          )
+        })
+
+      #(
+        [chapter_fragment, ..acc.0],
+        list.append(acc.1, sections),
+        list.append(acc.2, subsections),
+      )
     })
 
   list.flatten([
     [root],
     chapters,
-    subs,
+    sections,
+    subsections,
   ])
   |> Ok
 }

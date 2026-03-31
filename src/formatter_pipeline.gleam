@@ -27,6 +27,8 @@ const p_cannot_contain = [
   "Statement",
   "Section",
   "SectionTitle",
+  "SubSection",
+  "SubSectionTitle",
   "SubtopicAnnouncement",
   "Theorem",
   "TopicAnnouncement",
@@ -67,6 +69,7 @@ const p_cannot_be_contained_in = [
   "Carousel",
   "ChapterTitle",
   "SectionTitle",
+  "SubSectionTitle",
   "Math",
   "MathBlock",
   "Menu",
@@ -152,7 +155,7 @@ pub fn formatter_pipeline(
       dl.wrap_adjacent_non_whitespace_text_with(#(["Math"], "NoWrap")),
       dl.line_rewrap_no2__outside(
         #(
-          ["Chapter", "Section"],
+          ["Chapter", "Section", "SubSection"],
           line_length,
           minimum_line_wrap_length,
           indentation_line_length_penalty,
@@ -318,6 +321,7 @@ pub fn formatter_pipeline(
       )),
       dl.prepend(#("Chapter", "WriterlyBlankLine")),
       dl.prepend(#("Section", "WriterlyBlankLine")),
+      dl.prepend(#("SubSection", "WriterlyBlankLine")),
       dl.unwrap("p"),
       dl.unwrap("MathBlock"),
       dl.delete_attribute__batch(["test", "t"]),

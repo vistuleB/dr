@@ -22,7 +22,8 @@ OFFLINE_MODE=true
 MATHJAX_VERSION=3
 ```
 
-# Set env variable with `npm run dev`
+# Running the local server
 
-If you like to start a server for a course such as `235A`,
-you can do `COURSE=235A npm run dev`
+Serve the default course specified in `.env` with
+`npm run dev`. Override the `COURSE` variable specified
+in `.env` by prefixing the command with a `COURSE=<dir>`, e.g., `COURSE=235B npm run dev`.

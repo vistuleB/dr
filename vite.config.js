@@ -12,13 +12,13 @@ export default defineConfig(({ mode }) => {
   if (!fs.existsSync(courseFolder)) {
     // check if the base directory even exists
     console.error(
-      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[37m' not found.`,
+      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[0m' not found.`,
     );
     process.exit(1);
   } else if (!fs.existsSync(rootPath)) {
     // base directory exists, but /public is missing
     console.error(
-      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[37m' does not have a '\x1b[33mpublic\x1b[37m' folder.`,
+      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[0m' does not have a '\x1b[33mpublic/\x1b[0m' folder.`,
     );
     process.exit(1);
   }

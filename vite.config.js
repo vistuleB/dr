@@ -9,15 +9,18 @@ export default defineConfig(({ mode }) => {
   const serverPort = Number(env.PORT) || 3003;
 
   // --- validate existence of a course ---
-  // check if the directory exists and is a directory
-  if (!fs.existsSync(rootPath)) {
+  if (!fs.existsSync(courseFolder)) {
+    // check if the base directory even exists
     console.error(
-      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory not found: \x1b[33m${rootPath}\x1b[0m`,
+      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[37m' not found.`,
     );
+    process.exit(1);
+  } else if (!fs.existsSync(rootPath)) {
+    // base directory exists, but /public is missing
     console.error(
-      `Please check your environment variable. COURSE=${courseFolder} does not contain a /public folder.\n`,
+      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[37m' does not have a '\x1b[33mpublic\x1b[37m' folder.`,
     );
-    process.exit(1); // refuse to start the server
+    process.exit(1);
   }
 
   return {
@@ -29,10 +32,7 @@ export default defineConfig(({ mode }) => {
           const _print = server.printUrls;
           server.printUrls = () => {
             console.log(
-              `\n  \x1b[32m➜\x1b[0m  \x1b[1mServing Course:\x1b[0m \x1b[36m${courseFolder}\x1b[0m`,
-            );
-            console.log(
-              `  \x1b[32m➜\x1b[0m  \x1b[1mRoot Path:\x1b[0m      \x1b[36m${rootPath}\x1b[0m`,
+              `  \x1b[32m➜\x1b[0m  \x1b[1mServing:\x1b[0m \x1b[36m${rootPath}\x1b[0m`,
             );
             _print();
           };

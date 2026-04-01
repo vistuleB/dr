@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv } from "vite";
+import fs from "node:fs";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -7,9 +8,36 @@ export default defineConfig(({ mode }) => {
   const rootPath = `${courseFolder}/public`;
   const serverPort = Number(env.PORT) || 3003;
 
+  // --- validate existence of a course ---
+  // check if the directory exists and is a directory
+  if (!fs.existsSync(rootPath)) {
+    console.error(
+      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory not found: \x1b[33m${rootPath}\x1b[0m`,
+    );
+    console.error(
+      `Please check your environment variable. COURSE=${courseFolder} does not contain a /public folder.\n`,
+    );
+    process.exit(1); // refuse to start the server
+  }
+
   return {
     root: rootPath,
     plugins: [
+      {
+        name: "server-log-customizer",
+        configureServer(server) {
+          const _print = server.printUrls;
+          server.printUrls = () => {
+            console.log(
+              `\n  \x1b[32m➜\x1b[0m  \x1b[1mServing Course:\x1b[0m \x1b[36m${courseFolder}\x1b[0m`,
+            );
+            console.log(
+              `  \x1b[32m➜\x1b[0m  \x1b[1mRoot Path:\x1b[0m      \x1b[36m${rootPath}\x1b[0m`,
+            );
+            _print();
+          };
+        },
+      },
       {
         name: "mathjax-injector",
         transformIndexHtml(html) {

@@ -9,7 +9,6 @@ import gleam/result
 import gleam/string.{inspect as ins}
 import infrastructure as infra
 import io_lines.{type OutputLine, OutputLine}
-import on
 import pipeline
 import simplifile
 import vxml.{type VXML}
@@ -434,10 +433,9 @@ fn subsection_emitter(
 
 fn document_meta_tags(
   blame: blame.Blame,
-  chapter_or_sub_title: Option(String),
+  title: Option(String),
   document_info: DocumentInfo,
 ) -> List(OutputLine) {
-  let title = generate_title(document_info)
   [
     OutputLine(blame, 2, "<meta charset=\"utf-8\">"),
     OutputLine(
@@ -448,13 +446,7 @@ fn document_meta_tags(
     OutputLine(
       blame,
       2,
-      "<title>"
-        <> on.eager_none_some(
-        chapter_or_sub_title,
-        title,
-        fn(chapter_or_sub_title) { chapter_or_sub_title <> " of " <> title },
-      )
-        <> "</title>",
+      "<title>" <> generate_title(document_info, title) <> "</title>",
     ),
     OutputLine(
       blame,
@@ -505,21 +497,16 @@ fn document_meta_tags(
 
 fn social_share_meta_tags(
   blame: blame.Blame,
-  chapter_or_sub_title: Option(String),
+  title: Option(String),
   document_info: DocumentInfo,
 ) -> List(OutputLine) {
-  let title = generate_title(document_info)
   [
     // Open Graph
     OutputLine(
       blame,
       2,
       "<meta property=\"og:title\" content=\""
-        <> on.eager_none_some(
-        chapter_or_sub_title,
-        title,
-        fn(chapter_or_sub_title) { chapter_or_sub_title <> " of " <> title },
-      )
+        <> generate_title(document_info, title)
         <> "\">",
     ),
     OutputLine(
@@ -551,11 +538,7 @@ fn social_share_meta_tags(
       blame,
       2,
       "<meta name=\"twitter:title\" content=\""
-        <> on.eager_none_some(
-        chapter_or_sub_title,
-        title,
-        fn(chapter_or_sub_title) { chapter_or_sub_title <> " of " <> title },
-      )
+        <> generate_title(document_info, title)
         <> "\">",
     ),
     OutputLine(
@@ -582,8 +565,15 @@ fn generate_description(document_info: DocumentInfo) -> String {
   <> document_info.institution
 }
 
-fn generate_title(document_info: DocumentInfo) -> String {
-  document_info.title
+fn generate_title(
+  document_info: DocumentInfo,
+  chapter_or_section_title: Option(String),
+) -> String {
+  case chapter_or_section_title {
+    None -> ""
+    Some(x) -> x <> " of "
+  }
+  <> document_info.title
   <> " - "
   <> document_info.course
   <> " | "

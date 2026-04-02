@@ -521,9 +521,9 @@ fn social_share_meta_tags(
       blame,
       2,
       "<meta property=\"og:site_name\" content=\""
-        <> document_info.institution
-        <> " "
         <> document_info.department
+        <> " | "
+        <> document_info.institution
         <> "\">",
     ),
     OutputLine(blame, 2, "<meta property=\"og:locale\" content=\"en_US\">"),

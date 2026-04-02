@@ -190,11 +190,6 @@ fn index_emitter(
           2,
           "<script type=\"text/javascript\" src=\"/app.js\"></script>",
         ),
-        OutputLine(
-          blame,
-          2,
-          "<title>" <> document_info.banner <> "Table of Contents</title>",
-        ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
       ],

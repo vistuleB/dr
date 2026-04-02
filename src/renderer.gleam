@@ -14,8 +14,6 @@ import simplifile
 import vxml.{type VXML}
 import writerly
 
-const favicon_loc = "./img/favicon.svg"
-
 pub type FragmentType {
   Chapter(Int)
   Section(Int, Int)
@@ -247,13 +245,6 @@ fn chapter_emitter(
         OutputLine(
           blame,
           2,
-          "<link rel=\"icon\" type=\"image/x-icon\" href=\""
-            <> favicon_loc
-            <> "\">",
-        ),
-        OutputLine(
-          blame,
-          2,
           "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
         ),
         OutputLine(
@@ -315,13 +306,6 @@ fn section_emitter(
         False -> []
       },
       [
-        OutputLine(
-          blame,
-          2,
-          "<link rel=\"icon\" type=\"image/x-icon\" href=\""
-            <> favicon_loc
-            <> "\">",
-        ),
         OutputLine(
           blame,
           2,
@@ -392,13 +376,6 @@ fn subsection_emitter(
         False -> []
       },
       [
-        OutputLine(
-          blame,
-          2,
-          "<link rel=\"icon\" type=\"image/x-icon\" href=\""
-            <> favicon_loc
-            <> "\">",
-        ),
         OutputLine(
           blame,
           2,

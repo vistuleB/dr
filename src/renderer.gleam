@@ -183,12 +183,12 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
         ),
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./app.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/app.js\"></script>",
         ),
         OutputLine(
           blame,
@@ -259,12 +259,12 @@ fn chapter_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
         ),
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./app.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/app.js\"></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -330,12 +330,12 @@ fn section_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
         ),
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./app.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/app.js\"></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -407,12 +407,12 @@ fn subsection_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
         ),
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"./app.js\"></script>",
+          "<script type=\"text/javascript\" src=\"/app.js\"></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),

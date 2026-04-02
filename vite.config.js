@@ -78,8 +78,10 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: serverPort,
-      host: "0.0.0.0",
-      cors: true,
+      host: "127.0.0.1",
+      cors: {
+        origin: ["http://localhost:*", "http://127.0.0.1:*"],
+      },
     },
   };
 });

@@ -100,6 +100,7 @@ window.MathJax = {
       NSPACE: "\\textnormal{NSPACE}}",
       up: ["\\rule{0pt}{#1em}", 1],
       dn: ["\\Rule{0pt}{0em}{#1em}", 1],
+      emph: ["\\text{\\it #1}", 1],
     },
   },
 };

@@ -56,9 +56,9 @@ pub fn pipeline() -> List(Pipe) {
       )),
     ],
     pp.create_math_elements(
-      [infra.SingleDollar],
+      [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
-      infra.SingleDollar,
+      infra.BackslashParenthesis,
     ),
     [
       dl.fold_contents_into_text("Math"),

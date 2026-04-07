@@ -1,7 +1,7 @@
 |> Section
     title=What is probability theory
 
-    In this course we'll learn about probability theory. But what exactly is probability theory? Like some other mathematical fields (but unlike some others), it has a dual role:
+    In this course we'll learn about probability theory. But what exactly _is_ probability theory? Like some other mathematical fields (but unlike some others), it has a dual role:
 
     \begin{itemize}
     \item It is a \textbf{rigorous mathematical theory} -- with definitions, lemmas, theorems, proofs etc.

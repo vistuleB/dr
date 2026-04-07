@@ -29,6 +29,7 @@ pub fn pipeline() -> List(Pipe) {
     "div",
     "h1",
     "header",
+    "i",
     "li",
     "ol",
   ]
@@ -60,6 +61,10 @@ pub fn pipeline() -> List(Pipe) {
       infra.SingleDollar,
       infra.BackslashParenthesis,
     ),
+    pp.barbaric_symmetric_delim_splitting("_", "_", "i", [
+      "MathBlock",
+      "Math",
+    ]),
     [
       dl.fold_contents_into_text("Math"),
       dl.dr_create_index(),

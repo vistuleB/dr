@@ -49,7 +49,7 @@ export default defineConfig(({ mode }) => {
           const mathjax_url = () => {
             switch (version_offline) {
               case "3-true":
-                return "/mathjax3/tex-svg.js";
+                return "/tex-svg.js";
               case "4-true":
                 console.warn(
                   "Currently MATHJAX_VERSION 4 OFFLINE_MODE is not supported. Using CDN version instead.",

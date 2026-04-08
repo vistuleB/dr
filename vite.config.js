@@ -4,9 +4,16 @@ import fs from "node:fs";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
-  const courseFolder = env.COURSE || "235A";
+  // disallow any param after `npm run dev`
+  const args = process.argv.slice(4); // anything beyond `node vite --config vite.config.js`
+  if (args.length !== 0) {
+    console.error(`\n\x1b[41m\x1b[37m ERROR \x1b[0m Unknown command.`);
+    process.exit(1);
+  }
+
+  const courseFolder = env.COURSE || env.COURSE || "235A";
   const rootPath = `${courseFolder}/public`;
-  const serverPort = Number(env.PORT) || 3003;
+  const serverPort = Number(env.PORT || env.PORT) || 3003;
 
   // --- validate existence of a course ---
   if (!fs.existsSync(courseFolder)) {

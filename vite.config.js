@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   // disallow any param after `npm run dev`
   const args = process.argv.slice(4); // anything beyond `node vite --config vite.config.js`
   if (args.length !== 0) {
-    console.error(`\n\x1b[41m\x1b[37m ERROR \x1b[0m Unknown command.`);
+    console.error(`\n\x1b[41m\x1b[37m ERROR \x1b[0m Unknown command: '${args[0]}'. Please put '.env' arguments as prefixes to 'npm run'.`);
     process.exit(1);
   }
 

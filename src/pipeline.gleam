@@ -3,18 +3,39 @@ import gleam/list
 import infrastructure.{type Pipe} as infra
 import prefabricated_pipelines as pp
 
+const p_cannot_contain = [
+  "Chapter",
+  "ChapterTitle",
+  "Labeled",
+  "MathBlock",
+  "Section",
+  "SectionTitle",
+  "SubSection",
+  "SubSectionTitle",
+  "WriterlyBlankLine",
+  "li",
+  "ol",
+  "p",
+]
+
+const p_cannot_be_contained_in = [
+  "Math",
+  "MathBlock",
+  "p",
+]
+
 pub fn pipeline() -> List(Pipe) {
   let pre_transformation_document_tags = [
     "Chapter",
     "ChapterTitle",
     "Document",
-    "footnote",
     "Labeled",
     "Section",
     "SectionTitle",
     "SubSection",
     "SubSectionTitle",
     "WriterlyBlankLine",
+    "footnote",
   ]
 
   let pre_transformation_html_tags = []
@@ -25,6 +46,7 @@ pub fn pipeline() -> List(Pipe) {
   let post_transformation_document_tags = ["Document", "WriterlyBlankLine"]
   let post_transformation_html_tags = [
     "a",
+    "b",
     "br",
     "div",
     "h1",
@@ -32,6 +54,7 @@ pub fn pipeline() -> List(Pipe) {
     "i",
     "li",
     "ol",
+    "p",
   ]
   let post_transformation_approved_tags =
     [post_transformation_document_tags, post_transformation_html_tags]
@@ -56,6 +79,10 @@ pub fn pipeline() -> List(Pipe) {
         "title",
       )),
     ],
+    pp.create_mathblock_elements(
+      [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
+      infra.DoubleDollar,
+    ),
     pp.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
@@ -65,8 +92,19 @@ pub fn pipeline() -> List(Pipe) {
       "MathBlock",
       "Math",
     ]),
+    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", [
+      "MathBlock",
+      "Math",
+    ]),
     [
       dl.fold_contents_into_text("Math"),
+      dl.group_consecutive_children__outside(
+        #("p", p_cannot_contain),
+        p_cannot_be_contained_in,
+      ),
+      dl.unwrap("WriterlyBlankLine"),
+      dl.trim("p"),
+      dl.delete_if_empty("p"),
       dl.dr_create_index(),
       dl.append_class__batch([
         #("Index", "index"),
@@ -75,15 +113,16 @@ pub fn pipeline() -> List(Pipe) {
         #("SubSection", "subsection"),
       ]),
       dl.rename__batch([
-        #("Index", "div"),
         #("Chapter", "div"),
         #("ChapterTitle", "div"),
-        #("footnote", "div"),
+        #("Index", "div"),
         #("Labeled", "div"),
+        #("MathBlock", "div"),
         #("Section", "div"),
         #("SectionTitle", "div"),
         #("SubSection", "div"),
         #("SubSectionTitle", "div"),
+        #("footnote", "div"),
       ]),
       dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),
     ],

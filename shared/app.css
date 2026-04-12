@@ -2,3 +2,48 @@ html,
 body {
     background-color: snow;
 }
+
+/*
+We have 6 list types
+- ul for bullet/disc ✅
+For ol
+- (i) **default** (lower-roman with prefix and suffix) ✅
+- (a) (lower-alpha with prefix and suffix) ✅
+- i. (lower-roman) ✅
+- M1. ✅
+- 1. (decimal) ✅
+*/
+
+ul {
+    list-style-type: disc;
+}
+
+ol.list {
+    --marker-prefix: "(";
+    --marker-suffix: ")";
+    list-style-type: none;
+    counter-reset: m-counter;
+}
+
+ol.list li {
+    counter-increment: m-counter;
+}
+
+ol.list li::before {
+    content: var(--marker-prefix) counter(m-counter, lower-roman)
+        var(--marker-suffix);
+    font-weight: bold;
+    color: #2c3e50;
+    display: inline-block;
+    width: 2.5rem;
+}
+
+ol.list[data-style="decimal"] li::before {
+    content: var(--marker-prefix) counter(m-counter, decimal)
+        var(--marker-suffix);
+}
+
+ol.list[data-style="alpha"] li::before {
+    content: var(--marker-prefix) counter(m-counter, lower-alpha)
+        var(--marker-suffix);
+}

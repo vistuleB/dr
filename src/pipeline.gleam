@@ -16,6 +16,7 @@ const p_cannot_contain = [
   "li",
   "ol",
   "p",
+  "ul",
 ]
 
 const p_cannot_be_contained_in = [
@@ -24,6 +25,7 @@ const p_cannot_be_contained_in = [
   "SubSectionTitle",
   "Math",
   "MathBlock",
+  "li",
   "p",
 ]
 
@@ -41,7 +43,7 @@ pub fn pipeline() -> List(Pipe) {
     "footnote",
   ]
 
-  let pre_transformation_html_tags = []
+  let pre_transformation_html_tags = ["li", "ol", "ul"]
   let pre_transformation_approved_tags =
     [pre_transformation_document_tags, pre_transformation_html_tags]
     |> list.flatten
@@ -58,6 +60,7 @@ pub fn pipeline() -> List(Pipe) {
     "li",
     "ol",
     "p",
+    "ul",
   ]
   let post_transformation_approved_tags =
     [post_transformation_document_tags, post_transformation_html_tags]

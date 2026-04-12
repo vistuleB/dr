@@ -1,9 +1,84 @@
 |> Section
     title=What is probability theory
 
-    In this course we'll learn about probability theory. But what exactly _is_ probability theory? Like some other mathematical fields (but unlike some others), it has a dual role:
+    In this course we'll learn about probability theory. But what exactly _is_ probability theory? Like some other mathematical fields (but unlike some others), it $\text{hello}$ has a dual role:
+    
+    |> ol
+        class=list
+        |> li
+            Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+            
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+            
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+            
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+        |> li
+            Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+    
+    |> ol
+        class=list
+        data-style=alpha
+        |> li
+            This is alpha list such as (a), (b)
+    
+        |> li
+            New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+            
+    |> ol
+        class=list
+        data-style=roman
+        data-suffix=. 
+        |> li
+            New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+    
+        |> li
+            New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+    
+    |> ol
+        class=list
+        data-style=decimal
+        data-prefix=M
+        data-suffix=. 
+        |> li
+            New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+    
+        |> li
+            New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+            
+    |> ol
+        class=list
+        data-style=decimal
+        data-suffix=. 
+        |> li
+            New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+    
+        |> li
+            New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
+    
+    
+    
+    
+    
+    
 
-    \begin{itemize}
-    \item It is a \textbf{rigorous mathematical theory} -- with definitions, lemmas, theorems, proofs etc.
-    \item It is a \textbf{mathematical model} that purports to explain or model real-life phenomena.
-    \end{itemize}

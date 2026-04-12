@@ -19,6 +19,9 @@ const p_cannot_contain = [
 ]
 
 const p_cannot_be_contained_in = [
+  "ChapterTitle",
+  "SectionTitle",
+  "SubSectionTitle",
   "Math",
   "MathBlock",
   "p",
@@ -114,14 +117,14 @@ pub fn pipeline() -> List(Pipe) {
       ]),
       dl.rename__batch([
         #("Chapter", "div"),
-        #("ChapterTitle", "div"),
+        #("ChapterTitle", "h1"),
         #("Index", "div"),
         #("Labeled", "div"),
         #("MathBlock", "div"),
         #("Section", "div"),
-        #("SectionTitle", "div"),
+        #("SectionTitle", "h1"),
         #("SubSection", "div"),
-        #("SubSectionTitle", "div"),
+        #("SubSectionTitle", "h1"),
         #("footnote", "div"),
       ]),
       dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),

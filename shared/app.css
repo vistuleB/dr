@@ -3,16 +3,38 @@ body {
     background-color: snow;
 }
 
-/*
-We have 6 list types
-- ul for bullet/disc ✅
-For ol
-- (i) **default** (lower-roman with prefix and suffix) ✅
-- (a) (lower-alpha with prefix and suffix) ✅
-- i. (lower-roman) ✅
-- M1. ✅
-- 1. (decimal) ✅
-*/
+/**********
+There are 6 list types
+1. ul for bullet/disc
+For ol (use class `list`; example attributes shown)
+2. (i) **default**
+    ```
+    class=list
+    ```
+3. (a)
+    ```
+    class=list
+    data-style=alpha
+    ```
+4. i.
+    ```
+    class=list
+    data-style=roman
+    data-suffix=.
+    ```
+5. M1.
+    ```
+    class=list
+    data-style=decimal
+    data-prefix=M
+    data-suffix=.
+    ```
+6. 1. (decimal)
+    ```
+    class=list
+    data-style=decimal
+    ```
+**********/
 
 ul {
     list-style-type: disc;

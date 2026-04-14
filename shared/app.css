@@ -1,6 +1,16 @@
-html,
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    padding: 1rem 2rem;
+}
 body {
+    position: relative;
     background-color: snow;
+    /*border: 1px solid blue;*/
 }
 
 /**********
@@ -41,31 +51,43 @@ ul {
 }
 
 ol.list {
-    --marker-prefix: "(";
-    --marker-suffix: ")";
-    list-style-type: none;
+    list-style: none;
+
     counter-reset: m-counter;
+
+    display: grid;
+    grid-template-columns: max-content 1fr; /* marker | content */
+    row-gap: 0.5rem;
+    column-gap: 0.4rem;
 }
 
+/* `display:contents` unwrap contents of <li> and let direct
+   children ::before, <p> etc behave as direct grid
+   items of <ol>
+*/
 ol.list li {
-    counter-increment: m-counter;
+    display: contents;
 }
 
+/* Marker */
 ol.list li::before {
-    content: var(--marker-prefix) counter(m-counter, lower-roman)
-        var(--marker-suffix);
+    counter-increment: m-counter;
+    content: "(" counter(m-counter, lower-roman) ")";
     font-weight: bold;
     color: #2c3e50;
-    display: inline-block;
-    width: 2.5rem;
+
+    grid-column: 1;
 }
 
 ol.list[data-style="decimal"] li::before {
-    content: var(--marker-prefix) counter(m-counter, decimal)
-        var(--marker-suffix);
+    content: "(" counter(m-counter, decimal) ")";
 }
 
 ol.list[data-style="alpha"] li::before {
-    content: var(--marker-prefix) counter(m-counter, lower-alpha)
-        var(--marker-suffix);
+    content: "(" counter(m-counter, lower-alpha) ")";
+}
+
+/* All content goes to column 2 */
+ol.list li > * {
+    grid-column: 2;
 }

@@ -25,7 +25,6 @@ const p_cannot_be_contained_in = [
   "SubSectionTitle",
   "Math",
   "MathBlock",
-  "li",
   "p",
 ]
 

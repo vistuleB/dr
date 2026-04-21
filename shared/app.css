@@ -57,6 +57,7 @@ ul {
 }
 
 ol.list {
+    padding-left: 0;
     list-style: none;
 
     counter-reset: m-counter;
@@ -71,12 +72,12 @@ ol.list {
    children ::before, <p> etc behave as direct grid
    items of <ol>
 */
-ol.list li {
+ol.list > li {
     display: contents;
 }
 
 /* Marker */
-ol.list li::before {
+ol.list > li::before {
     counter-increment: m-counter;
     content: "(" counter(m-counter, lower-roman) ")";
     font-weight: bold;
@@ -85,11 +86,11 @@ ol.list li::before {
     grid-column: 1;
 }
 
-ol.list[data-style="decimal"] li::before {
+ol.list[data-style="decimal"] > li::before {
     content: "(" counter(m-counter, decimal) ")";
 }
 
-ol.list[data-style="alpha"] li::before {
+ol.list[data-style="alpha"] > li::before {
     content: "(" counter(m-counter, lower-alpha) ")";
 }
 

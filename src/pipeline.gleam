@@ -122,11 +122,8 @@ pub fn pipeline() -> List(Pipe) {
           "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter ",
         ),
         #("Example", "::øøChapterCounter.::øøStatementCounter "),
+        #("Statement", "*::øøChapterCounter.::øøStatementCounter*" <> " "),
       ]),
-      dl.prepend_text_node(#(
-        "Statement",
-        "*::øøChapterCounter.::øøStatementCounter*" <> " ",
-      )),
       dl.insert_attribute_as_text(#("Statement", "title")),
       dl.substitute_counters(),
     ],

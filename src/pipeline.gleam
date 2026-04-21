@@ -68,6 +68,26 @@ pub fn pipeline() -> List(Pipe) {
   [
     [
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
+      dl.append_attribute__batch([
+        #("Document", "counter", "ChapterCounter"),
+        #("Chapter", "counter", "SectionCounter"),
+        #("Section", "counter", "SubSectionCounter"),
+      ]),
+      dl.prepend_counter_incrementing_attribute(#(
+        "Chapter",
+        "ChapterCounter",
+        infra.GoBack,
+      )),
+      dl.prepend_counter_incrementing_attribute(#(
+        "Section",
+        "SectionCounter",
+        infra.GoBack,
+      )),
+      dl.prepend_counter_incrementing_attribute(#(
+        "SubSection",
+        "SubSectionCounter",
+        infra.GoBack,
+      )),
       dl.auto_generate_child_if_missing_from_attribute(#(
         "Chapter",
         "ChapterTitle",
@@ -111,6 +131,15 @@ pub fn pipeline() -> List(Pipe) {
       dl.trim("p"),
       dl.delete_if_empty("p"),
       dl.dr_create_index(),
+      dl.prepend_text_node__batch([
+        #("ChapterTitle", "::øøChapterCounter. "),
+        #("SectionTitle", "::øøChapterCounter.::øøSectionCounter "),
+        #(
+          "SubSectionTitle",
+          "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter ",
+        ),
+      ]),
+      dl.substitute_counters(),
       dl.append_class__batch([
         #("Index", "index"),
         #("Chapter", "chapter"),
@@ -128,6 +157,9 @@ pub fn pipeline() -> List(Pipe) {
         #("SubSection", "div"),
         #("SubSectionTitle", "h1"),
         #("footnote", "div"),
+      ]),
+      dl.delete_attribute__batch([
+        "counter",
       ]),
       dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),
     ],

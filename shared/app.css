@@ -46,6 +46,12 @@ For ol (use class `list`; example attributes shown)
     ```
 **********/
 
+ul,
+ol:not(.list) {
+    margin: 0.4rem 0;
+    padding-left: 2rem;
+}
+
 ul {
     list-style-type: disc;
 }

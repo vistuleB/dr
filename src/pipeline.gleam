@@ -47,7 +47,7 @@ pub fn pipeline() -> List(Pipe) {
     [pre_transformation_document_tags, pre_transformation_html_tags]
     |> list.flatten
 
-  let post_transformation_document_tags = ["Document", "WriterlyBlankLine"]
+  let post_transformation_document_tags = ["Document"]
   let post_transformation_html_tags = [
     "a",
     "b",

@@ -28,5 +28,73 @@
     1.2
     The algebra of events
   </h1>
+  <p>
+    A central notion in probability is that of the $\textbf{algebra of events}$ (we'll clarify later what the word "algebra" means here). We begin with an informal discussion. We imagine that probability is a function, denoted $\mathrm{P}$, that takes as its argument an "event" (i.e., occurrence of something in a real-life situation involving uncertainty) and returns a real number in $[0,1]$ representing how likely this event is to occur. For example, if a fair coin is tossed 10 times and we denote the results of the tosses by $X_1,X_2,\ldots,X_{10}$ (where each of $X_i$ is $0$ or $1$, signifying "tails" or "heads"), then we can write statements like
+  </p>
+  <div>
+    $$
+    \mathrm{P}(X_i = 0) = 1/2, \qquad (1\le i\le 10),
+    $$
+  </div>
+  <div>
+    $$
+    \mathrm{P}\left(\sum_{i=1}^{10} X_i = 4\right) = \frac{\binom{10}{4}}{2^{10}}.
+    $$
+  </div>
+  <p>
+    Note that if $A$ and $B$ represent events (meaning, for the purposes of the present informal discussion, objects that have a well-defined probability), then we expect that the phrases "$A$ did not occur", "$A$ and $B$ both occurred" and "at least one of $A$ and $B$ occurred" also represent events. We can use notation borrowed from mathematical logic and denote these new events by $\lnot A$, $A\wedge B$, and $A \vee B$, respectively.
+    Thus, the set of events is not just a set -- it is a set with some extra structure, namely the ability to perform $\textbf{negation}$, $\textbf{conjunction}$ and $\textbf{disjunction}$ operations on its elements. Such a set is called an $\textbf{algebra}$ in some contexts.
+  </p>
+  <p>
+    But what if the coin is tossed an
+    <i>infinite</i>
+    number of times? In other words, we now imagine an infinite sequence $X_1,X_2,X_3,\ldots$ of (independent) coin toss results. We want to be able to ask questions such as
+  </p>
+  <div>
+    $$
+    \begin{eqnarray*}
+    \mathrm{P}(\textrm{infinitely many of the $X_i$'s are 0}) &amp;=&amp; ? \\
+    \mathrm{P}\left(\lim_{n\to\infty} \frac{1}{n} \sum_{k=0}^n X_k = \frac12\right) &amp;=&amp; ? \\
+    \mathrm{P}\left(\sum_{k=1}^\infty \frac{2X_k-1}{k}\textrm{ converges}\right) &amp;=&amp; ?
+    \end{eqnarray*}
+    $$
+  </div>
+  <p>
+    Do such questions make sense? (And if they do, can you guess what the answers are?) Maybe it is not enough to have an
+    <i>informal</i>
+    discussion to answer this...
+  </p>
+  <p>
+    <div>
+      <b>Example</b>
+      <b>1.2</b>
+      
+    </div>
+  </p>
+  <p>
+    (a) An urn initially contains a white ball and a black ball. A ball is drawn out at random from the urn, then added back and another white ball is added to the urn. This procedure is repeated infinitely many times, so that after step $n$ the urn contains 1 black ball and $n+1$ white balls. For each $n\ge1$, let $A_n$ denote the event that at step $n$ the black ball was drawn. Now let $A_\infty$ denote the event
+  </p>
+  <div>
+    $$
+    A_\infty = \textrm{"in total, the black ball was selected infinitely many times"},
+    $$
+  </div>
+  <p>
+    (i.e., the event that infinitely many of the events $A_n$ occurred).
+  </p>
+  <p>
+    (b) While this experiment takes place, an identical copy of the experiment is taking place in the next room. The random selections in the two neighboring rooms have no connection to each other, i.e., they are "independent". For each $n\ge 1$, let $B_n$ be the event that at step $n$ the black ball was drawn out of the "copy" experiment urn. Now let $B_\infty$ denote the event
+  </p>
+  <div>
+    $$
+    \begin{eqnarray*}
+    B_\infty &amp;=&amp; \textrm{"in total, the black ball was selected infinitely many times in}\\&amp;&amp;
+    \textrm{the second copy of the experiment"},
+    \end{eqnarray*}
+    $$
+  </div>
+  <p>
+    (in other words, the event that infinitely many of the events $B_n$ occurred).
+  </p>
 </body>
 </html>

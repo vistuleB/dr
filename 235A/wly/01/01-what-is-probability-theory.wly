@@ -11,6 +11,12 @@
     
     We will concentrate on the rigorous mathematical aspects, but we will try not to forget the connections to the intuitive notion of real-life probability. These connections will enhance our intuition, and they make probability an extremely useful tool in all the sciences. And they make the study of probability much more _fun_, too! A note of caution is in order, though: mathematical models are only as good as the assumptions they are based on. So probability can be _used_, and it can be (and quite frequently is) _abused_...
     
+    |> Example
+    
+        The $\textbf{theory of differential equations}$ is another mathematical theory which has the dual role of a rigorous theory and an applied mathematical model. $\textbf{Game theory}$ is another one (for which the question of how to apply it to real-life situations is often very contentious).
+        On the other hand, $\textbf{number theory}$, $\textbf{complex analysis}$ and $\textbf{algebraic topology}$ are examples of fields which are not normally used to model real-life phenomena.
+        
+    
     
     
 

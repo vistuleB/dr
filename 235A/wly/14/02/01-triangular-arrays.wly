@@ -1,2 +1,7 @@
 |> SubSection
     title=Triangular arrays
+    
+    |> Example
+        Example 3 inside subsection
+    
+    

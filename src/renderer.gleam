@@ -147,6 +147,7 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
 // index emitter - handles index fragments
 fn index_emitter(
   fragment: Fragment(VXML),
+  offline_mathjax: Bool,
   document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
@@ -181,12 +182,26 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"mathjax_setup.js\"></script>",
         ),
+        case offline_mathjax {
+          True ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+            )
+          False ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+            )
+        },
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/app.js\"></script>",
+          "<script type=\"text/javascript\" src=\"app.js\"></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -208,6 +223,7 @@ fn index_emitter(
 // chapter emitter - handles chapter fragments
 fn chapter_emitter(
   fragment: Fragment(VXML),
+  offline_mathjax: Bool,
   document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
@@ -245,12 +261,26 @@ fn chapter_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"mathjax_setup.js\"></script>",
         ),
+        case offline_mathjax {
+          True ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+            )
+          False ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+            )
+        },
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/app.js\" defer></script>",
+          "<script type=\"text/javascript\" src=\"app.js\" defer></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -272,6 +302,7 @@ fn chapter_emitter(
 // section emitter - handles section fragments
 fn section_emitter(
   fragment: Fragment(VXML),
+  offline_mathjax: Bool,
   document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
@@ -309,12 +340,26 @@ fn section_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"mathjax_setup.js\"></script>",
         ),
+        case offline_mathjax {
+          True ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+            )
+          False ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+            )
+        },
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/app.js\" defer></script>",
+          "<script type=\"text/javascript\" src=\"app.js\" defer></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -336,6 +381,7 @@ fn section_emitter(
 // subsection emitter - handles subsection fragments
 fn subsection_emitter(
   fragment: Fragment(VXML),
+  offline_mathjax: Bool,
   document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
@@ -379,12 +425,26 @@ fn subsection_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/mathjax_setup.js\"></script>",
+          "<script type=\"text/javascript\" src=\"mathjax_setup.js\"></script>",
         ),
+        case offline_mathjax {
+          True ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+            )
+          False ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+            )
+        },
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"/app.js\" defer></script>",
+          "<script type=\"text/javascript\" src=\"app.js\" defer></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body>"),
@@ -559,15 +619,19 @@ fn generate_publisher(document_info: DocumentInfo) -> String {
 // main emitter that dispatches to appropriate section-emitters
 fn our_emitter(
   fragment: Fragment(VXML),
+  offline_mathjax: Bool,
   document_info: DocumentInfo,
   author_mode: Bool,
 ) -> Result(Fragment(OL), String) {
   case fragment.classifier {
-    Index -> index_emitter(fragment, document_info, author_mode)
-    Chapter(_) -> chapter_emitter(fragment, document_info, author_mode)
-    Section(_, _) -> section_emitter(fragment, document_info, author_mode)
+    Index ->
+      index_emitter(fragment, offline_mathjax, document_info, author_mode)
+    Chapter(_) ->
+      chapter_emitter(fragment, offline_mathjax, document_info, author_mode)
+    Section(_, _) ->
+      section_emitter(fragment, offline_mathjax, document_info, author_mode)
     SubSection(_, _, _) ->
-      subsection_emitter(fragment, document_info, author_mode)
+      subsection_emitter(fragment, offline_mathjax, document_info, author_mode)
   }
 }
 
@@ -751,6 +815,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     |> ds.amend_renderer_paramaters_by_command_line_amendments(amendments)
 
   let author_mode = dict.has_key(amendments.user_args, "--local")
+  let offline_mathjax = dict.has_key(amendments.user_args, "--offline-mathjax")
   let amendments = expand_filename_shorthands_to_path_fragments(amendments)
 
   let renderer =
@@ -759,7 +824,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       parser: ds.default_writerly_parser(amendments.only_key_values),
       pipeline: pipeline.pipeline(),
       splitter: our_splitter,
-      emitter: our_emitter(_, document_info, author_mode),
+      emitter: our_emitter(_, offline_mathjax, document_info, author_mode),
       writer: ds.default_writer,
       prettifier: ds.default_prettier_prettifier,
     )

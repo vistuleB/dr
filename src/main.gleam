@@ -31,6 +31,9 @@ fn local_usage_message() {
   io.println(margin <> "  -> include source-linking tooltips")
   io.println(margin <> "     server !)")
   io.println("")
+  io.println(margin <> "--offline-mathjax")
+  io.println(margin <> "  -> use local mathjax library instead of CDN url")
+  io.println("")
   io.println("...and don't forget to include '--which <course dir>' in")
   io.println("order to specify which course you want to compile/run!")
   io.println("")
@@ -70,7 +73,12 @@ pub fn main() {
 
   use amendments <- on.stay(
     case
-      ds.process_command_line_arguments(args, ["--fmt", "--local", "--which"])
+      ds.process_command_line_arguments(args, [
+        "--fmt",
+        "--local",
+        "--which",
+        "--offline-mathjax",
+      ])
     {
       Error(error) -> {
         io.println("")

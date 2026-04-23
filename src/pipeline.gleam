@@ -1,7 +1,11 @@
+import blame as bl
 import desugarer_library as dl
 import gleam/list
 import infrastructure.{type Pipe} as infra
 import prefabricated_pipelines as pp
+import vxml
+
+const our_blame = bl.Des([], "pipeline", 8)
 
 const p_cannot_contain = [
   "Chapter",
@@ -35,6 +39,7 @@ pub fn pipeline() -> List(Pipe) {
     "Document",
     "Example",
     "Labeled",
+    "Proof",
     "Section",
     "SectionTitle",
     "SubSection",
@@ -61,15 +66,29 @@ pub fn pipeline() -> List(Pipe) {
     "li",
     "ol",
     "p",
+    "span",
     "ul",
   ]
   let post_transformation_approved_tags =
     [post_transformation_document_tags, post_transformation_html_tags]
     |> list.flatten
+  let qed = [
+    vxml.V(
+      our_blame,
+      "span",
+      [vxml.Attr(our_blame, "style", "color:#0000;visibility:none;")],
+      [vxml.T(our_blame, [vxml.Line(our_blame, "A")])],
+    ),
+    vxml.V(our_blame, "span", [vxml.Attr(our_blame, "class", "qed")], [
+      vxml.T(our_blame, [vxml.Line(our_blame, "\\(\\square\\)")]),
+    ]),
+  ]
 
   [
     [
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
+      dl.append(#("Proof", "QED", infra.Continue)),
+      dl.replace_with_arbitrary(#("QED", qed)),
       dl.rename_with_attributes__batch([
         #("Example", "Statement", [#("title", "*Example*")]),
         #("Theorem", "Statement", [#("title", "*Theorem*")]),
@@ -169,6 +188,7 @@ pub fn pipeline() -> List(Pipe) {
         #("Index", "div"),
         #("Labeled", "div"),
         #("MathBlock", "div"),
+        #("Proof", "div"),
         #("Section", "div"),
         #("SectionTitle", "h1"),
         #("Statement", "div"),

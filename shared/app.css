@@ -98,3 +98,7 @@ ol.list[data-style="alpha"] > li::before {
 ol.list li > * {
     grid-column: 2;
 }
+
+.qed {
+    float: right;
+}

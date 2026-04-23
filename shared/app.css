@@ -1,3 +1,7 @@
+:root {
+    --line-height: 1.8rem;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -11,6 +15,24 @@ body {
     position: relative;
     background-color: snow;
     /*border: 1px solid blue;*/
+}
+
+p {
+    line-height: var(--line-height);
+    overflow: visible;
+}
+
+.math-block {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: scroll;
+    overflow-y: clip;
+}
+
+.math-block::-webkit-scrollbar {
+    display: none;
 }
 
 /**********

@@ -12,8 +12,10 @@ const p_cannot_contain = [
   "ChapterTitle",
   "Labeled",
   "MathBlock",
+  "Proof",
   "Section",
   "SectionTitle",
+  "Statement",
   "SubSection",
   "SubSectionTitle",
   "WriterlyBlankLine",
@@ -175,6 +177,9 @@ pub fn pipeline() -> List(Pipe) {
       dl.unwrap("WriterlyBlankLine"),
       dl.trim("p"),
       dl.delete_if_empty("p"),
+      dl.append_class__batch([
+        #("MathBlock", "math-block"),
+      ]),
       dl.append_class__batch([
         #("Index", "index"),
         #("Chapter", "chapter"),

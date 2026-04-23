@@ -39,6 +39,7 @@ pub fn pipeline() -> List(Pipe) {
     "SectionTitle",
     "SubSection",
     "SubSectionTitle",
+    "Theorem",
     "WriterlyBlankLine",
     "footnote",
   ]
@@ -71,6 +72,7 @@ pub fn pipeline() -> List(Pipe) {
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
       dl.rename_with_attributes__batch([
         #("Example", "Statement", [#("title", "*Example*")]),
+        #("Theorem", "Statement", [#("title", "*Theorem*")]),
       ]),
       dl.append_attribute__batch([
         #("Document", "counter", "ChapterCounter"),
@@ -122,6 +124,7 @@ pub fn pipeline() -> List(Pipe) {
           "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter ",
         ),
         #("Example", "::øøChapterCounter.::øøStatementCounter "),
+        #("Theorem", "::øøChapterCounter.::øøStatementCounter "),
         #("Statement", "*::øøChapterCounter.::øøStatementCounter*" <> " "),
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
@@ -171,6 +174,7 @@ pub fn pipeline() -> List(Pipe) {
         #("Statement", "div"),
         #("SubSection", "div"),
         #("SubSectionTitle", "h1"),
+        #("Theorem", "div"),
         #("footnote", "div"),
       ]),
       dl.delete_attribute__batch([

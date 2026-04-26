@@ -149,6 +149,7 @@ pub fn pipeline() -> List(Pipe) {
         #("Statement", "*::øøChapterCounter.::øøStatementCounter*" <> " "),
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
+      dl.prepend_attribute_as_text(#("Proof", "title")),
       dl.substitute_counters(),
     ],
     pp.create_mathblock_elements(

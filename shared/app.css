@@ -25,13 +25,29 @@ html {
 }
 body {
     position: relative;
-    background-color: snow;
+    background-color: #f4f3ee;
     /*border: 1px solid blue;*/
+}
+
+a {
+    color: #2f2f2f;
+}
+
+a:visited {
+    color: #d5896f;
+}
+
+h1 {
+    color: #2f2f2f;
 }
 
 p {
     line-height: var(--line-height);
     overflow: visible;
+}
+
+p:first-child + p {
+    margin-top: 0;
 }
 
 p + p {

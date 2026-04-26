@@ -92,27 +92,21 @@ ul {
 }
 
 ol.list {
+    display: block;
     padding-left: var(--list-indent-left);
     padding-right: var(--list-indent-right);
     list-style: none;
 
     counter-reset: m-counter;
-
-    display: grid;
-    grid-template-columns: 3rem 1fr; /* marker | content */
-    row-gap: 0.5rem;
-    column-gap: 0.4rem;
-    align-items: baseline;
-    overflow-x: visible;
-    /*border: 1px solid red;*/
 }
 
-/* `display:contents` unwrap contents of <li> and let direct
-   children ::before, <p> etc behave as direct grid
-   items of <ol>
-*/
 ol.list > li {
-    display: contents;
+    display: grid;
+    grid-template-columns: 3rem 1fr; /* marker | content */
+    column-gap: 0.4rem;
+    margin-bottom: var(--list-gap-y);
+    align-items: baseline;
+    overflow-x: visible;
 }
 
 /* Marker */
@@ -137,7 +131,7 @@ ol.list[data-list-style="alpha"] > li::before {
         var(--list-marker-suffix);
 }
 
-/* All content goes to column 2 */
+/* Each list item content goes to column 2 */
 ol.list li > * {
     grid-column: 2;
 }

@@ -4,6 +4,7 @@ document.querySelectorAll("ol.list").forEach((list) => {
   const suffix = list.dataset.listSuffix;
   const indentLeft = list.dataset.listIndentLeft;
   const indentRight = list.dataset.listIndentRight;
+  const gapY = list.dataset.listGapY;
 
   // Set prefix and suffix
   if (prefix) {
@@ -19,4 +20,5 @@ document.querySelectorAll("ol.list").forEach((list) => {
   if (indentLeft) list.style.setProperty("--list-indent-left", `${indentLeft}`);
   if (indentRight)
     list.style.setProperty("--list-indent-right", `${indentRight}`);
+  if (gapY) list.style.setProperty("--list-gap-y", `${gapY}`);
 });

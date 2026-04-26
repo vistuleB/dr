@@ -3,7 +3,7 @@
     /*** List ***/
     --list-indent-left: 0;
     --list-indent-right: 0;
-    --list-gap-y: 0; /* gap between list items */
+    --list-items-gap: 0; /* gap between list items */
     --list-marker-align: end;
     --list-marker-font: "serif"; /* marker font family*/
     --list-marker-gap: 0.4rem; /* space between marker and item */
@@ -103,7 +103,7 @@ ol.list > li {
     display: grid;
     grid-template-columns: 3rem 1fr; /* marker | content */
     column-gap: var(--list-marker-gap);
-    margin-bottom: var(--list-gap-y);
+    margin-bottom: var(--list-items-gap);
     align-items: baseline;
     overflow-x: visible;
 }

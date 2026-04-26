@@ -5,7 +5,7 @@ document.querySelectorAll("ol.list").forEach((list) => {
   const markerSuffix = list.dataset.listMarkerSuffix;
   const indentLeft = list.dataset.listIndentLeft;
   const indentRight = list.dataset.listIndentRight;
-  const gapY = list.dataset.listGapY;
+  const itemsGap = list.dataset.listItemsGap;
 
   // Set marker props
   if (markerPrefix) {
@@ -24,5 +24,5 @@ document.querySelectorAll("ol.list").forEach((list) => {
   if (indentLeft) list.style.setProperty("--list-indent-left", `${indentLeft}`);
   if (indentRight)
     list.style.setProperty("--list-indent-right", `${indentRight}`);
-  if (gapY) list.style.setProperty("--list-gap-y", `${gapY}`);
+  if (itemsGap) list.style.setProperty("--list-items-gap", `${itemsGap}`);
 });

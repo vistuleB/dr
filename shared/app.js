@@ -2,7 +2,10 @@
 document.querySelectorAll("ol.list").forEach((list) => {
   const prefix = list.dataset.listPrefix;
   const suffix = list.dataset.listSuffix;
+  const indentLeft = list.dataset.listIndentLeft;
+  const indentRight = list.dataset.listIndentRight;
 
+  // Set prefix and suffix
   if (prefix) {
     list.style.setProperty("--list-marker-prefix", `"${prefix}"`);
   } else {
@@ -11,4 +14,9 @@ document.querySelectorAll("ol.list").forEach((list) => {
     if (suffix) list.style.setProperty("--list-marker-prefix", `""`);
   }
   if (suffix) list.style.setProperty("--list-marker-suffix", `"${suffix}"`);
+
+  // Set rest of the properties
+  if (indentLeft) list.style.setProperty("--list-indent-left", `${indentLeft}`);
+  if (indentRight)
+    list.style.setProperty("--list-indent-right", `${indentRight}`);
 });

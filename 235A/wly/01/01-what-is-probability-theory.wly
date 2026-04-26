@@ -20,6 +20,8 @@
     
     |> ol
         class=list
+        data-list-indent-left=2rem
+        data-list-indent-right=1rem
         |> li
             This is multiline list
             

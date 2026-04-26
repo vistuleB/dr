@@ -3,6 +3,7 @@ document.querySelectorAll("ol.list").forEach((list) => {
   const markerAlign = list.dataset.listMarkerAlign;
   const markerGap = list.dataset.listMarkerGap;
   const markerFontStyle = list.dataset.listMarkerFontStyle;
+  const markerFontWeight = list.dataset.listMarkerFontWeight;
   const markerPrefix = list.dataset.listMarkerPrefix;
   const markerSuffix = list.dataset.listMarkerSuffix;
   const indentLeft = list.dataset.listIndentLeft;
@@ -35,6 +36,9 @@ document.querySelectorAll("ol.list").forEach((list) => {
 
   if (markerFontStyle)
     list.style.setProperty("--list-marker-font-style", `${markerFontStyle}`);
+
+  if (markerFontWeight)
+    list.style.setProperty("--list-marker-font-weight", `${markerFontWeight}`);
 
   // Set rest of the properties
   if (indentLeft) list.style.setProperty("--list-indent-left", `${indentLeft}`);

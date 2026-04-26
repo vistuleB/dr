@@ -6,9 +6,9 @@
     --list-items-gap: 0; /* gap between list items */
     --list-marker-align: end;
     --list-marker-font: "serif"; /* marker font family*/
+    --list-marker-font-style: normal; /* marker font style */
     --list-marker-gap: 0.4rem; /* space between marker and item */
     --list-marker-prefix: "(";
-    --list-marker-style: "normal"; /* marker font style */
     --list-marker-suffix: ")";
     --list-marker-weight: "600"; /* marker font weight */
     /*** ***/
@@ -112,7 +112,7 @@ ol.list > li::before {
     counter-increment: m-counter;
     content: var(--list-marker-prefix) counter(m-counter, lower-roman)
         var(--list-marker-suffix);
-    font-weight: bold;
+    font-style: var(--list-marker-font-style);
     color: #2c3e50;
 
     grid-column: 1;

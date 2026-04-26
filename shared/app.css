@@ -5,7 +5,7 @@
     --list-indent-right: 0;
     --list-items-gap: 0; /* gap between list items */
     --list-marker-align: end;
-    --list-marker-font: "serif"; /* marker font family*/
+    --list-marker-font-family: serif; /* marker font family*/
     --list-marker-font-style: normal; /* marker font style */
     --list-marker-font-weight: normal; /* marker font weight */
     --list-marker-gap: 0.4rem; /* space between marker and item */
@@ -114,6 +114,7 @@ ol.list > li::before {
         var(--list-marker-suffix);
     font-style: var(--list-marker-font-style);
     font-weight: var(--list-marker-font-weight);
+    font-family: var(--list-marker-font-family);
     color: #2c3e50;
 
     grid-column: 1;

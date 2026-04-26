@@ -2,6 +2,7 @@
 document.querySelectorAll("ol.list").forEach((list) => {
   const markerAlign = list.dataset.listMarkerAlign;
   const markerGap = list.dataset.listMarkerGap;
+  const markerFontFamily = list.dataset.listMarkerFontFamily;
   const markerFontStyle = list.dataset.listMarkerFontStyle;
   const markerFontWeight = list.dataset.listMarkerFontWeight;
   const markerPrefix = list.dataset.listMarkerPrefix;
@@ -39,6 +40,40 @@ document.querySelectorAll("ol.list").forEach((list) => {
 
   if (markerFontWeight)
     list.style.setProperty("--list-marker-font-weight", `${markerFontWeight}`);
+
+  if (markerFontFamily) {
+    switch (markerFontFamily) {
+      case "serif":
+        list.style.setProperty(
+          "--list-marker-font-family",
+          `${markerFontFamily}`,
+        );
+        break;
+      case "sans-serif":
+        list.style.setProperty(
+          "--list-marker-font-family",
+          `${markerFontFamily}`,
+        );
+        break;
+      case "cursive":
+        list.style.setProperty(
+          "--list-marker-font-family",
+          `${markerFontFamily}`,
+        );
+        break;
+      case "system-ui":
+        list.style.setProperty(
+          "--list-marker-font-family",
+          `${markerFontFamily}`,
+        );
+        break;
+      default:
+        list.style.setProperty(
+          "--list-marker-font-family",
+          `"${markerFontFamily}"`,
+        );
+    }
+  }
 
   // Set rest of the properties
   if (indentLeft) list.style.setProperty("--list-indent-left", `${indentLeft}`);

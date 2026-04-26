@@ -88,10 +88,11 @@ ol.list {
     counter-reset: m-counter;
 
     display: grid;
-    grid-template-columns: max-content 1fr; /* marker | content */
+    grid-template-columns: 3rem 1fr; /* marker | content */
     row-gap: 0.5rem;
     column-gap: 0.4rem;
     align-items: baseline;
+    overflow-x: visible;
 }
 
 /* `display:contents` unwrap contents of <li> and let direct
@@ -112,7 +113,6 @@ ol.list > li::before {
 
     grid-column: 1;
     justify-self: var(--list-marker-align);
-    /*border: 1px solid red;*/
 }
 
 ol.list[data-list-style="decimal"] > li::before {

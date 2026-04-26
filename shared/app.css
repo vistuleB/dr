@@ -1,17 +1,16 @@
 :root {
     --line-height: 1.8rem;
     /*** List ***/
-    --list-marker-align: end;
-    --list-marker-style: "normal"; /* marker font style */
-    --list-marker-weight: "600"; /* marker font weight */
-    --list-marker-font: "serif"; /* marker font family*/
-    --list-marker-prefix: "(";
-    --list-marker-suffix: ")";
-    --list-marker-suffix: ")";
-    --list-marker-gap: ; /* space between marker and item */
     --list-indent-left: 0;
     --list-indent-right: 0;
     --list-gap-y: 0; /* gap between list items */
+    --list-marker-align: end;
+    --list-marker-font: "serif"; /* marker font family*/
+    --list-marker-gap: 0.4rem; /* space between marker and item */
+    --list-marker-prefix: "(";
+    --list-marker-style: "normal"; /* marker font style */
+    --list-marker-suffix: ")";
+    --list-marker-weight: "600"; /* marker font weight */
     /*** ***/
 }
 
@@ -65,14 +64,14 @@ For ol (use class `list`; example attributes shown)
     ```
     class=list
     data-list-style=roman
-    data-list-suffix=.
+    data-list-marker-suffix=.
     ```
 5. M1.
     ```
     class=list
     data-list-style=decimal
-    data-list-prefix=M
-    data-list-suffix=.
+    data-list-marker-prefix=M
+    data-list-marker-suffix=.
     ```
 6. 1. (decimal)
     ```
@@ -103,7 +102,7 @@ ol.list {
 ol.list > li {
     display: grid;
     grid-template-columns: 3rem 1fr; /* marker | content */
-    column-gap: 0.4rem;
+    column-gap: var(--list-marker-gap);
     margin-bottom: var(--list-gap-y);
     align-items: baseline;
     overflow-x: visible;

@@ -91,6 +91,7 @@ ol.list {
     grid-template-columns: max-content 1fr; /* marker | content */
     row-gap: 0.5rem;
     column-gap: 0.4rem;
+    align-items: baseline;
 }
 
 /* `display:contents` unwrap contents of <li> and let direct

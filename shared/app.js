@@ -1,5 +1,6 @@
 // List operations
 document.querySelectorAll("ol.list").forEach((list) => {
+  const markerAlign = list.dataset.listMarkerAlign;
   const markerGap = list.dataset.listMarkerGap;
   const markerPrefix = list.dataset.listMarkerPrefix;
   const markerSuffix = list.dataset.listMarkerSuffix;
@@ -19,6 +20,17 @@ document.querySelectorAll("ol.list").forEach((list) => {
     list.style.setProperty("--list-marker-suffix", `"${markerSuffix}"`);
 
   if (markerGap) list.style.setProperty("--list-marker-gap", `${markerGap}`);
+
+  if (markerAlign) {
+    switch (markerAlign) {
+      case "right":
+        list.style.setProperty("--list-marker-align", "end");
+        break;
+      case "left":
+        list.style.setProperty("--list-marker-align", "start");
+        break;
+    }
+  }
 
   // Set rest of the properties
   if (indentLeft) list.style.setProperty("--list-indent-left", `${indentLeft}`);

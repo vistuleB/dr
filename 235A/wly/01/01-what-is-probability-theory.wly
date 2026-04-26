@@ -24,6 +24,7 @@
         data-list-indent-right=1rem
         data-list-items-gap=1.5rem
         data-list-marker-gap=1.5rem
+        data-list-marker-align=left
         |> li
             This is multiline list
             

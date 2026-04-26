@@ -1,5 +1,8 @@
 :root {
     --line-height: 1.8rem;
+    --list-marker-align: end;
+    --list-marker-prefix: "(";
+    --list-marker-suffix: ")";
 }
 
 * {
@@ -101,19 +104,24 @@ ol.list > li {
 /* Marker */
 ol.list > li::before {
     counter-increment: m-counter;
-    content: "(" counter(m-counter, lower-roman) ")";
+    content: var(--list-marker-prefix) counter(m-counter, lower-roman)
+        var(--list-marker-suffix);
     font-weight: bold;
     color: #2c3e50;
 
     grid-column: 1;
+    justify-self: var(--list-marker-align);
+    /*border: 1px solid red;*/
 }
 
-ol.list[data-style="decimal"] > li::before {
-    content: "(" counter(m-counter, decimal) ")";
+ol.list[data-list-style="decimal"] > li::before {
+    content: var(--list-marker-prefix) counter(m-counter, decimal)
+        var(--list-marker-suffix);
 }
 
-ol.list[data-style="alpha"] > li::before {
-    content: "(" counter(m-counter, lower-alpha) ")";
+ol.list[data-list-style="alpha"] > li::before {
+    content: var(--list-marker-prefix) counter(m-counter, lower-alpha)
+        var(--list-marker-suffix);
 }
 
 /* All content goes to column 2 */

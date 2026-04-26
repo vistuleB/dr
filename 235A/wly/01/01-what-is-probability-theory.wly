@@ -84,7 +84,7 @@
     
     |> ol
         class=list
-        data-style=alpha
+        data-list-style=alpha
         |> li
             This is alpha list such as (a), (b)
     
@@ -93,8 +93,8 @@
             
     |> ol
         class=list
-        data-style=roman
-        data-suffix=. 
+        data-list-style=roman
+        data-list-suffix=. 
         |> li
             New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
     
@@ -103,9 +103,9 @@
     
     |> ol
         class=list
-        data-style=decimal
-        data-prefix=M
-        data-suffix=. 
+        data-list-style=decimal
+        data-list-prefix=M
+        data-list-suffix=. 
         |> li
             New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
     
@@ -114,8 +114,8 @@
             
     |> ol
         class=list
-        data-style=decimal
-        data-suffix=. 
+        data-list-style=decimal
+        data-list-suffix=. 
         |> li
             New List Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
     

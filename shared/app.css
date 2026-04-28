@@ -71,6 +71,10 @@ p + p {
     display: none;
 }
 
+.proof {
+    font-style: italic;
+}
+
 /**********
 There are 6 list types
 1. ul for bullet/disc

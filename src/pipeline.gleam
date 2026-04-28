@@ -91,9 +91,18 @@ pub fn pipeline() -> List(Pipe) {
     ]),
   ]
 
+  let proof_span =
+    vxml.V(our_blame, "span", [vxml.Attr(our_blame, "class", "proof")], [])
+
+  let proof_default =
+    vxml.V(our_blame, "span", [vxml.Attr(our_blame, "class", "proof")], [
+      vxml.T(our_blame, [vxml.Line(our_blame, "Proof. ")]),
+    ])
+
   [
     [
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
+      dl.unwrap_if_first_child("WriterlyBlankLine"),
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),
       dl.rename_with_attributes__batch([
@@ -155,7 +164,12 @@ pub fn pipeline() -> List(Pipe) {
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
       dl.wrap_if_first_child_of(#("Statement", "h3")),
-      dl.prepend_attribute_as_text(#("Proof", "title")),
+      dl.prepend_attribute_wrapped_else_custom(#(
+        "Proof",
+        "alt-title",
+        proof_span,
+        proof_default,
+      )),
       dl.substitute_counters(),
     ],
     pp.create_mathblock_elements(

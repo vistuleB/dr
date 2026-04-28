@@ -21,6 +21,8 @@ const p_cannot_contain = [
   "WriterlyBlankLine",
   "li",
   "ol",
+  "h1",
+  "h3",
   "p",
   "ul",
 ]
@@ -31,6 +33,8 @@ const p_cannot_be_contained_in = [
   "SubSectionTitle",
   "Math",
   "MathBlock",
+  "h1",
+  "h3",
   "p",
 ]
 
@@ -63,6 +67,7 @@ pub fn pipeline() -> List(Pipe) {
     "br",
     "div",
     "h1",
+    "h3",
     "header",
     "i",
     "li",
@@ -149,6 +154,7 @@ pub fn pipeline() -> List(Pipe) {
         #("Statement", "*::øøChapterCounter.::øøStatementCounter*" <> " "),
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
+      dl.wrap_if_first_child_of(#("Statement", "h3")),
       dl.prepend_attribute_as_text(#("Proof", "title")),
       dl.substitute_counters(),
     ],

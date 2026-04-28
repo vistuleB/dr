@@ -22,29 +22,29 @@
     Do such questions make sense? (And if they do, can you guess what the answers are?) Maybe it is not enough to have an _informal_ discussion to answer this...
     
     |> Example
-    
-    (a) An urn initially contains a white ball and a black ball. A ball is drawn out at random from the urn, then added back and another white ball is added to the urn. This procedure is repeated infinitely many times, so that after step $n$ the urn contains 1 black ball and $n+1$ white balls. For each $n\ge1$, let $A_n$ denote the event that at step $n$ the black ball was drawn. Now let $A_\infty$ denote the event
-    $$ A_\infty = \textrm{"in total, the black ball was selected infinitely many times"}, $$
-    (i.e., the event that infinitely many of the events $A_n$ occurred).
-    
-    (b) While this experiment takes place, an identical copy of the experiment is taking place in the next room. The random selections in the two neighboring rooms have no connection to each other, i.e., they are "independent". For each $n\ge 1$, let $B_n$ be the event that at step $n$ the black ball was drawn out of the "copy" experiment urn. Now let $B_\infty$ denote the event
-    
-    $$
-    \begin{eqnarray*}
-    B_\infty &=& \textrm{"in total, the black ball was selected infinitely many times in}\\&&
-    \textrm{the second copy of the experiment"},
-    \end{eqnarray*}
-    $$
-    (in other words, the event that infinitely many of the events $B_n$ occurred).
-    
-    (c) For each $n\ge 1$, let $C_n$ be the event that both $A_n$ and $B_n$ occurred, i.e.
-    $$
-    \begin{eqnarray*}
-    C_n &=& \textrm{"at step $n$, the black ball was selected simultaneously}
-    \\ & & \textrm{ in both experiments",}
-    \end{eqnarray*}
-    $$
-    and let $C_\infty$ denote the event "$C_n$ occurred for infinitely many values of $n$".
+        test=test
+        (a) An urn initially contains a white ball and a black ball. A ball is drawn out at random from the urn, then added back and another white ball is added to the urn. This procedure is repeated infinitely many times, so that after step $n$ the urn contains 1 black ball and $n+1$ white balls. For each $n\ge1$, let $A_n$ denote the event that at step $n$ the black ball was drawn. Now let $A_\infty$ denote the event
+        $$ A_\infty = \textrm{"in total, the black ball was selected infinitely many times"}, $$
+        (i.e., the event that infinitely many of the events $A_n$ occurred).
+        
+        (b) While this experiment takes place, an identical copy of the experiment is taking place in the next room. The random selections in the two neighboring rooms have no connection to each other, i.e., they are "independent". For each $n\ge 1$, let $B_n$ be the event that at step $n$ the black ball was drawn out of the "copy" experiment urn. Now let $B_\infty$ denote the event
+        
+        $$
+        \begin{eqnarray*}
+        B_\infty &=& \textrm{"in total, the black ball was selected infinitely many times in}\\&&
+        \textrm{the second copy of the experiment"},
+        \end{eqnarray*}
+        $$
+        (in other words, the event that infinitely many of the events $B_n$ occurred).
+        
+        (c) For each $n\ge 1$, let $C_n$ be the event that both $A_n$ and $B_n$ occurred, i.e.
+        $$
+        \begin{eqnarray*}
+        C_n &=& \textrm{"at step $n$, the black ball was selected simultaneously}
+        \\ & & \textrm{ in both experiments",}
+        \end{eqnarray*}
+        $$
+        and let $C_\infty$ denote the event "$C_n$ occurred for infinitely many values of $n$".
     
     |> Theorem
     

@@ -96,7 +96,7 @@ pub fn pipeline() -> List(Pipe) {
 
   let proof_default =
     vxml.V(our_blame, "span", [vxml.Attr(our_blame, "class", "proof")], [
-      vxml.T(our_blame, [vxml.Line(our_blame, "Proof. ")]),
+      vxml.T(our_blame, [vxml.Line(our_blame, "Proof.")]),
     ])
 
   [

@@ -75,6 +75,10 @@ p + p {
     font-style: italic;
 }
 
+.proof:after {
+    content: "\00a0";
+}
+
 /**********
 There are 6 list types
 1. ul for bullet/disc

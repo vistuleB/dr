@@ -164,7 +164,7 @@ pub fn pipeline() -> List(Pipe) {
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
       dl.wrap_if_first_child_of(#("Statement", "h3")),
-      dl.prepend_attribute_wrapped_else_custom(#(
+      dl.prepend_attribute_as_wrapped_text_else_custom(#(
         "Proof",
         "alt-title",
         proof_span,

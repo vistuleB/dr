@@ -191,10 +191,10 @@ pub fn pipeline() -> List(Pipe) {
     ]),
     [
       dl.fold_contents_into_text("Math"),
-      dl.replace_string_if_has_ancestors_else(
+      dl.find_replace_regexp_if_has_ancestor_else(
         #(["Math", "MathBlock"], #("``", "“"), #("``", "\"")),
       ),
-      dl.replace_string(#("''", "\"")),
+      dl.find_replace_regexp(#("''", "\"")),
       dl.group_consecutive_children__outside(
         #("p", p_cannot_contain),
         p_cannot_be_contained_in,

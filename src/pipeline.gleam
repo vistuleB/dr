@@ -197,7 +197,9 @@ pub fn pipeline() -> List(Pipe) {
       dl.find_replace_regexp_if_has_ancestor_else(
         #(["Math", "MathBlock"], #("``", "“"), #("``", "\"")),
       ),
-      dl.find_replace_regexp(#("''", "\"")),
+      dl.find_replace_regexp_if_has_ancestor_else(
+        #(["Math", "MathBlock"], #("''", "”"), #("''", "\"")),
+      ),
       dl.group_consecutive_children__outside(
         #("p", p_cannot_contain),
         p_cannot_be_contained_in,

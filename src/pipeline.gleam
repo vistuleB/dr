@@ -1,6 +1,7 @@
 import blame as bl
 import desugarer_library as dl
 import gleam/list
+import gleam/string
 import infrastructure.{type Pipe} as infra
 import prefabricated_pipelines as pp
 import vxml
@@ -102,6 +103,8 @@ pub fn pipeline() -> List(Pipe) {
   [
     [
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
+      dl.delete("WriterlyComment"),
+      dl.delete_attribute_if(fn(key, _) { string.starts_with(key, "!!") }),
       dl.unwrap_if_first_child("WriterlyBlankLine"),
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),

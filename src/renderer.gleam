@@ -720,20 +720,9 @@ fn expand_filename_shorthands_to_path_fragments(
       filename_shorthand_regexp,
     ))
 
-  let only_key_values =
-    list.map(amendments.only_key_values, fn(x) {
-      let #(path, k, v) = x
-      #(
-        filename_shorthand_to_path_fragment(path, filename_shorthand_regexp),
-        k,
-        v,
-      )
-    })
-
   ds.CommandLineAmendments(
     ..amendments,
     only_paths: only_paths,
-    only_key_values: only_key_values,
   )
 }
 
@@ -746,9 +735,8 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
   let assert None = amendments.input_dir
   let assert None = amendments.output_dir
   let parent = course_dir <> "/wly/__parent.wly"
-  let assert Ok(contents) = simplifile.read(parent)
-  let assert Ok([parsed_contents, ..]) = writerly.parse_string(contents, "")
-  let parsed_contents = writerly.writerly_to_vxml(parsed_contents)
+  let assert Ok(#(_, assembled)) = writerly.assemble_input_lines(parent, [])
+  let assert Ok(parsed_contents) = writerly.input_lines_to_vxml(assembled)
   let banner = case infra.v_first_attr_with_key(parsed_contents, "banner") {
     None ->
       panic as "__parent.wly did not specify the banner attribute (what should appear in the browser tab)"
@@ -820,8 +808,8 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
 
   let renderer =
     ds.Renderer(
-      assembler: ds.default_writerly_assembler(amendments.only_paths),
-      parser: ds.default_writerly_parser(amendments.only_key_values),
+      assembler: ds.default_writerly_assembler(_, amendments.only_paths),
+      parser: ds.default_writerly_parser,
       pipeline: pipeline.pipeline(),
       splitter: our_splitter,
       emitter: our_emitter(_, offline_mathjax, document_info, author_mode),

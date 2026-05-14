@@ -203,8 +203,8 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
 
   let renderer =
     ds.Renderer(
-      assembler: ds.default_writerly_assembler(amendments.only_paths),
-      parser: ds.default_writerly_parser(amendments.only_key_values),
+      assembler: ds.default_writerly_assembler(_, amendments.only_paths),
+      parser: ds.default_writerly_parser,
       pipeline: pipeline,
       splitter: case files {
         [] -> whole_book_splitter

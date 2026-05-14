@@ -1,7 +1,7 @@
 import desugarer_library as dl
 import gleam/list
 import gleam/string
-import infrastructure.{type Pipe} as infra
+import infrastructure as infra
 import prefabricated_pipelines as pp
 
 const minimum_line_wrap_length = 40
@@ -95,7 +95,7 @@ pub fn formatter_pipeline(
   line_length: Int,
   indentation_line_length_penalty: Int,
   // amount subtracted from the line_length at each new level of indentation (with Section, Chapter)
-) -> List(Pipe) {
+) -> List(infra.Desugarer) {
   [
     [
       dl.identity(),
@@ -328,5 +328,4 @@ pub fn formatter_pipeline(
     ],
   ]
   |> list.flatten
-  |> infra.desugarers_2_pipeline
 }

@@ -2,7 +2,7 @@ import blame as bl
 import desugarer_library as dl
 import gleam/list
 import gleam/string
-import infrastructure.{type Pipe} as infra
+import infrastructure as infra
 import prefabricated_pipelines as pp
 import vxml
 
@@ -39,7 +39,7 @@ const p_cannot_be_contained_in = [
   "p",
 ]
 
-pub fn pipeline() -> List(Pipe) {
+pub fn pipeline() -> List(infra.Desugarer) {
   let pre_transformation_document_tags = [
     "Chapter",
     "ChapterTitle",
@@ -241,5 +241,4 @@ pub fn pipeline() -> List(Pipe) {
     ],
   ]
   |> list.flatten
-  |> infra.desugarers_2_pipeline
 }

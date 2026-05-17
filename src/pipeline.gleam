@@ -161,8 +161,6 @@ pub fn pipeline() -> List(infra.Desugarer) {
           "SubSectionTitle",
           "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter ",
         ),
-        #("Example", "::øøChapterCounter.::øøStatementCounter "),
-        #("Theorem", "::øøChapterCounter.::øøStatementCounter "),
         #("Statement", "*::øøChapterCounter.::øøStatementCounter*" <> " "),
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
@@ -219,7 +217,6 @@ pub fn pipeline() -> List(infra.Desugarer) {
       dl.rename__batch([
         #("Chapter", "div"),
         #("ChapterTitle", "h1"),
-        #("Example", "div"),
         #("Index", "div"),
         #("Labeled", "div"),
         #("MathBlock", "div"),
@@ -229,7 +226,6 @@ pub fn pipeline() -> List(infra.Desugarer) {
         #("Statement", "div"),
         #("SubSection", "div"),
         #("SubSectionTitle", "h1"),
-        #("Theorem", "div"),
         #("footnote", "div"),
       ]),
       dl.delete_attribute__batch([

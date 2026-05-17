@@ -43,6 +43,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
   let pre_transformation_document_tags = [
     "Chapter",
     "ChapterTitle",
+    "Definition",
     "Document",
     "Example",
     "Labeled",
@@ -108,7 +109,9 @@ pub fn pipeline() -> List(infra.Desugarer) {
       dl.unwrap_if_first_child("WriterlyBlankLine"),
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),
+      dl.prepend_attribute_as_first_line(#("Definition", "label")),
       dl.rename_with_attributes__batch([
+        #("Definition", "Statement", [#("title", "*Definition*")]),
         #("Example", "Statement", [#("title", "*Example*")]),
         #("Theorem", "Statement", [#("title", "*Theorem*")]),
       ]),

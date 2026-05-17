@@ -39,10 +39,19 @@ a:visited {
 
 h1 {
     color: #2f2f2f;
+    font-style: normal;
 }
 
 h3 {
-    padding: 2rem 0 0.5rem 0;
+    font-style: normal;
+}
+
+.statement {
+    padding: 1.6rem 0;
+}
+
+.statement > h3:first-child {
+    padding-bottom: 0.4rem;
 }
 
 p {
@@ -171,4 +180,8 @@ ol.list li > * {
 
 .qed {
     float: right;
+}
+
+.definition {
+    font-style: italic;
 }

@@ -111,9 +111,18 @@ pub fn pipeline() -> List(infra.Desugarer) {
       dl.replace_with_arbitrary(#("QED", qed)),
       dl.prepend_attribute_as_first_line(#("Definition", "label")),
       dl.rename_with_attributes__batch([
-        #("Definition", "Statement", [#("title", "*Definition*")]),
-        #("Example", "Statement", [#("title", "*Example*")]),
-        #("Theorem", "Statement", [#("title", "*Theorem*")]),
+        #("Definition", "Statement", [
+          #("title", "*Definition*"),
+          #("class", "statement definition"),
+        ]),
+        #("Example", "Statement", [
+          #("title", "*Example*"),
+          #("class", "statement"),
+        ]),
+        #("Theorem", "Statement", [
+          #("title", "*Theorem*"),
+          #("class", "statement"),
+        ]),
       ]),
       dl.append_attribute__batch([
         #("Document", "counter", "ChapterCounter"),

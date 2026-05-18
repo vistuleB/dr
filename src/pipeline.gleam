@@ -46,6 +46,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
     "Definition",
     "Document",
     "Example",
+    "Exercise",
     "Labeled",
     "Lemma",
     "Proof",
@@ -120,6 +121,10 @@ pub fn pipeline() -> List(infra.Desugarer) {
         #("Example", "Statement", [
           #("title", "*Example*"),
           #("class", "statement"),
+        ]),
+        #("Exercise", "Statement", [
+          #("title", "*Exercise*"),
+          #("class", "statement exercise"),
         ]),
         #("Lemma", "Statement", [
           #("title", "*Lemma*"),

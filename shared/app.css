@@ -150,7 +150,8 @@ ol.list li > * {
     grid-column: 2;
 }
 
-.definition {
+.definition,
+.exercise {
     font-style: italic;
 }
 

@@ -155,6 +155,24 @@ ol.list li > * {
     font-style: italic;
 }
 
+.definition .label::before,
+.theorem .label::before {
+    content: "(";
+}
+
+.definition .label::after,
+.theorem .label::after {
+    content: "). ";
+}
+
+.example .label {
+    font-weight: bold;
+}
+
+.example .label:after {
+    content: ". ";
+}
+
 .math-block {
     display: block;
     width: fit-content;

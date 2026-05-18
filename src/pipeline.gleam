@@ -103,6 +103,9 @@ pub fn pipeline() -> List(infra.Desugarer) {
       vxml.T(our_blame, [vxml.Line(our_blame, "Proof.")]),
     ])
 
+  let label_span =
+    vxml.V(our_blame, "span", [vxml.Attr(our_blame, "class", "label")], [])
+
   [
     [
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
@@ -111,9 +114,9 @@ pub fn pipeline() -> List(infra.Desugarer) {
       dl.unwrap_if_first_child("WriterlyBlankLine"),
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),
-      dl.prepend_attribute_as_first_line(#("Definition", "label")),
-      dl.prepend_attribute_as_first_line(#("Example", "label")),
-      dl.prepend_attribute_as_first_line(#("Theorem", "label")),
+      dl.prepend_attribute_as_wrapped_text(#("Definition", "label", label_span)),
+      dl.prepend_attribute_as_wrapped_text(#("Example", "label", label_span)),
+      dl.prepend_attribute_as_wrapped_text(#("Theorem", "label", label_span)),
       dl.rename_with_attributes__batch([
         #("Definition", "Statement", [
           #("title", "*Definition*"),
@@ -121,7 +124,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
         ]),
         #("Example", "Statement", [
           #("title", "*Example*"),
-          #("class", "statement"),
+          #("class", "statement example"),
         ]),
         #("Exercise", "Statement", [
           #("title", "*Exercise*"),
@@ -133,7 +136,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
         ]),
         #("Theorem", "Statement", [
           #("title", "*Theorem*"),
-          #("class", "statement"),
+          #("class", "statement theorem"),
         ]),
       ]),
       dl.append_attribute__batch([

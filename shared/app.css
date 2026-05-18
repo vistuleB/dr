@@ -23,6 +23,7 @@
 html {
     padding: 1rem 2rem;
 }
+
 body {
     position: relative;
     background-color: #f4f3ee;
@@ -46,14 +47,6 @@ h3 {
     font-style: normal;
 }
 
-.statement {
-    padding: 1.6rem 0;
-}
-
-.statement > h3:first-child {
-    padding-bottom: 0.4rem;
-}
-
 p {
     line-height: var(--line-height);
     overflow: visible;
@@ -65,27 +58,6 @@ p:first-child + p {
 
 p + p {
     margin-top: 2rem;
-}
-
-.math-block {
-    display: block;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto;
-    overflow-x: scroll;
-    overflow-y: clip;
-}
-
-.math-block::-webkit-scrollbar {
-    display: none;
-}
-
-.proof {
-    font-style: italic;
-}
-
-.proof:after {
-    content: "\00a0";
 }
 
 /**********
@@ -178,10 +150,39 @@ ol.list li > * {
     grid-column: 2;
 }
 
-.qed {
-    float: right;
-}
-
 .definition {
     font-style: italic;
+}
+
+.math-block {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: scroll;
+    overflow-y: clip;
+}
+
+.math-block::-webkit-scrollbar {
+    display: none;
+}
+
+.proof {
+    font-style: italic;
+}
+
+.proof:after {
+    content: "\00a0";
+}
+
+.statement {
+    padding: 1.6rem 0;
+}
+
+.statement > h3:first-child {
+    padding-bottom: 0.4rem;
+}
+
+.qed {
+    float: right;
 }

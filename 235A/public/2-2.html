@@ -29,5 +29,299 @@
     2.2
     Properties and examples
   </h1>
+  <div class="statement">
+    <h3>
+      <b>Lemma</b>
+      <b>2.7</b>
+      
+    </h3>
+    <p>
+      If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space, then we have:
+    </p>
+    <ol class="list">
+      <li>
+        <p>
+          $\textbf{Monotonicity:}$ If $A,B \in {\cal F}$, $A\subset B$ then $\mathrm(A)\le \mathrm(B)$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\textbf{Sub-additivity:}$ If $A_1,A_2,\ldots \in {\cal F}$ then $\mathrm{P}(\cup_{n=1}^\infty A_n) \le \sum_{n=1}^\infty \mathrm{P}(A_n)$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\textbf{Continuity from below:}$ If $A_1,A_2,\ldots \in {\cal F}$ such that $A_1 \subset A_2 \subset A_3 \subset \ldots$, then
+        </p>
+        <div class="math-block">
+          $$
+          \mathrm{P}(\cup_{n=1}^\infty A_n) = \lim_{n\to\infty} \mathrm{P}(A_n).
+          $$
+        </div>
+      </li>
+      <li>
+        <p>
+          $\textbf{Continuity from above:}$ If $A_1,A_2,\ldots \in {\cal F}$ such that $A_1 \supset A_2 \supset A_3 \supset \ldots$, then
+        </p>
+        <div class="math-block">
+          $$
+          \mathrm{P}(\cap_{n=1}^\infty A_n) = \lim_{n\to\infty} \mathrm{P}(A_n).
+          $$
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.8</b>
+      
+    </h3>
+    <p>
+      Prove Lemma 2.7.
+    </p>
+  </div>
+  <div
+    label="Discrete probability spaces"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.9</b>
+      
+    </h3>
+    <p>
+      <span class="label">Discrete probability spaces</span>Let $\Omega$ be a countable set and let $p:\Omega\to[0,1]$ be a function such that
+    </p>
+    <div class="math-block">
+      $$
+      \sum_{\omega \in \Omega} p(\omega) = 1.
+      $$
+    </div>
+    <p>
+      This corresponds to the intuitive notion of a probabilistic experiment with a finite or countably infinite number of outcomes, where each individual outcome $\omega$ has a probability $p(\omega)$ of occurring. We can put such an "elementary" or "discrete" experiment in our more general framework by defining the $\sigma$-algebra of events ${\cal F}$ to be the set of subsets of $\Omega$, and defining the probability measure $\mathrm{P}$ by
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}(A) = \sum_{\omega \in A} p(\omega), \qquad A\in {\cal F}.
+      $$
+    </div>
+    <p>
+      If $\Omega$ is a finite set, a natural probability measure to consider is the \textbf{uniform measure}, defined by
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}(A) = \frac{|A|}{|\Omega|}.
+      $$
+    </div>
+  </div>
+  <div
+    label="Choosing a random number uniformly in $(0,1)$"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.10</b>
+      
+    </h3>
+    <p>
+      <span class="label">Choosing a random number uniformly in $(0,1)$</span>The archetypical example of a "non-elementary" probability space (i.e., one which does not fall within the scope of the previous example) is the experiment of choosing a random number uniformly in the interval $(0,1)$. How do we know that it makes sense to speak of such an experiment? We don't,
+      <i>yet</i>. But let us imagine what constructing such an experiment might entail. We are looking for a hypothetical probability space $(\Omega, {\cal F}, \mathrm{P})$, in which the sample space $\Omega$ is simply $(0,1)$, ${\cal F}$ is some $\sigma$-algebra of subsets of $(0,1)$, and $\mathrm{P}$ is a probability measure that corresponds to our notion of a "uniform" choice of a random number. One plausible way to formalize this is to require that intervals of the form $(a,b) \subset (0,1)$ be considered as events, and that the probability for our "uniform" number to fall in such an interval should be equal to its length $b-a$. In other words, we shall require that
+    </p>
+    <div class="math-block">
+      $$
+      (a,b) \in {\cal F}, \qquad (0\le a&lt;b\le 1),
+      $$
+    </div>
+    <p>
+      and that
+    </p>
+    <p>
+      \begin{equation} \label{eq:lebesgue}
+      \mathrm{P}\big((a,b)\big) = b-a, \qquad (0\le a&lt;b\le 1).
+      \end{equation}
+    </p>
+    <p>
+      How do we generate a $\sigma$-algebra of subsets of $(0,1)$ that contains all the intervals? We already saw that the set of
+      <i>all</i>
+      subsets of $(0,1)$ will work. But that is too large! If we take all subsets, we will see in an exercise later that it will be impossible to construct the probability measure $\mathrm{P}$ to satisfy our requirements. So let's try to build the
+      <i>smallest possible</i>
+      $\sigma$-algebra. One way (which can perhaps be described as the $\textbf{bottom-up}$ approach) would be to start with the intervals, then take all countable unions of such and add them to our collection of sets, then add all countable intersections of such sets, then add all countable unions, etc. Will this work? In principle it can be made to work, but is a bit difficult and requires knowing something about $\textbf{transfinite induction}$. Fortunately there is a more elegant way (but somewhat more abstract and less intuitive) of constructing the minimal $\sigma$-algebra, that is outlined in the next exercise below, and can be thought of as the $\textbf{top-down}$ approach. The resulting $\sigma$-algebra of subsets of $(0,1)$ is called the $\textbf{Borel$\sigma$-algebra}$; its elements are called $\textbf{Borel sets}$.
+    </p>
+    <p>
+      What about the probability measure $\mathrm{P}$? Here we will simply cite a result from measure theory that says that the measure we are looking for exists, and is unique. This is not too difficult to prove, but doing so would take us a bit too far off course.
+    </p>
+  </div>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>2.11</b>
+      
+    </h3>
+    <p>
+      Let ${\cal B}$ be the $\sigma$-algebra of Borel sets on $(0,1)$, the minimal $\sigma$-algebra containing all the sub-intervals of $(0,1)$, proved to exist in the exercise below. There exists a unique measure $\mathrm{P}$ on the measure space satisfying \eqref{eq:lebesgue}, called $\textbf{Lebesgue measure}$ on $(0,1)$.
+    </p>
+  </div>
+  <div
+    label="The $\sigma$-algebra generated by a set of subsets of $\Omega$"
+    class="statement exercise"
+  >
+    <h3>
+      <b>Exercise</b>
+      <b>2.12</b>
+      
+    </h3>
+    <p>
+      (i) Let $\Omega$ be a set, and let $\{{\cal F}_i\}_{i\in I}$ be some collection of $\sigma$-algebras of subsets of $\Omega$, indexed by some index set $I$. Prove that the intersection of all the ${\cal F}_i$'s (i.e., the collection of subsets of $\Omega$ that are elements of all the ${\cal F}_i$'s) is also a $\sigma$-algebra. \\
+      (ii) Let $\Omega$ be a set, and let ${\cal A}$ be a collection of subsets of $\Omega$. Prove that there exists a unique $\sigma$-algebra $\sigma({\cal A})$ of subsets of $\Omega$ that satisfies the following two properties:
+    </p>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          ${\cal A} \subset \sigma({\cal A})$ (in words, $\sigma({\cal A})$ contains all the elements of ${\cal A}$).
+        </p>
+      </li>
+      <li>
+        <p>
+          $\sigma({\cal A})$ is the minimal $\sigma$-algebra satisfying property 1 above, in the sense that if ${\cal F}$ is any other $\sigma$-algebra that contains all the elements of ${\cal A}$, then $\sigma({\cal A}) \subset {\cal F}$.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Hint for (ii): Let $({\cal F}_i)_{i\in I}$ be the collection of all $\sigma$-algebras of subsets of $\Omega$ that contain ${\cal A}$. This is a non-empty collection, since it contains for example ${\cal P}(\Omega)$, the set of all subsets of $\Omega$. Any $\sigma$-algebra $\sigma({\cal A})$ that satisfies the two properties above is necessarily a subset of any of the ${\cal F}_i$'s, hence it is also contained in the intersection of all the ${\cal F}_i$'s, which is a $\sigma$-algebra by part (i) of the exercise.
+    </p>
+  </div>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>2.13</b>
+      
+    </h3>
+    <p>
+      If ${\cal A}$ is a collection of subsets of a set $\Omega$, the $\sigma$-algebra $\sigma({\cal A})$ discussed above is called $\textbf{the$\sigma$-algebra generated by${\cal A}$}$.
+    </p>
+  </div>
+  <div
+    label="The space of infinite coin toss sequences"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.14</b>
+      
+    </h3>
+    <p>
+      <span class="label">The space of infinite coin toss sequences</span>Another archetypical experiment in probability theory is that of a sequence of independent fair coin tosses, so let's try to model this experiment with a suitable probability space. If for convenience we represent the result of each coin as a binary value of $0$ or $1$, then the sample space $\Omega$ is simply the set of infinite sequences of $0$'s and $1$'s, namely
+    </p>
+    <div class="math-block">
+      $$
+      \Omega = \big\{ (x_1, x_2, x_3, \ldots) : x_i \in \{0,1\}, i=1,2,\ldots \big\}
+      = \{ 0,1 \}^{\mathbb{N}}.
+      $$
+    </div>
+    <p>
+      What about the $\sigma$-algebra ${\cal F}$? We will take the same approach as we did in the previous example, which is to require certain natural sets to be events, and to take as our $\sigma$-algebra the $\sigma$-algebra generated by these "elementary" events. In this case, surely, for each $n\ge 1$, we would like the set
+    </p>
+    <div class="math-block">
+      $$
+      \begin{equation}
+      A_n(1) := \{ \mathbf{x}=(x_1,x_2,\ldots) \in \Omega : x_n = 1 \}
+      \label{eq:specialcase}
+      \end{equation}
+      $$
+    </div>
+    <p>
+      to be an event (in words, this represents the event "the coin toss $x_n$ came out Heads"). Therefore we take ${\cal F}$ to be the $\sigma$-algebra generated by the collection of sets of this form.
+    </p>
+    <p>
+      Finally, the probability measure $\mathrm{P}$ should conform to our notion of a sequence of independent fair coin tosses. Generalizing the notation in \eqref{eq:specialcase}, for $a\in\{0,1\}$ define
+    </p>
+    <div class="math-block">
+      $$
+      A_n(a) = \{ \mathbf{x}=(x_1,x_2,\ldots) \in \Omega : x_n = a \}.
+      $$
+    </div>
+    <p>
+      Then $\mathrm{P}$ should satisfy
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}(A_n(a)) = \frac12,
+      $$
+    </div>
+    <p>
+      representing the fact that the $n$-th coin toss is unbiased. But more generally, for any $n\ge 1$ and $(a_1,a_2,\ldots,a_n) \in \{0,1\}^n$, since the first $n$ coin tosses are independent, $\mathrm{P}$ should satisfy
+    </p>
+    <div class="math-block">
+      $$
+      \begin{equation}
+      \mathrm{P}\big(A_1(a_1) \cap A_2(a_2) \cap \ldots \cap A_n(a_n)\big) = \frac{1}{2^n}.
+      %quad (n\ge 1, \ \ (a_1,\ldots,a_n)\in\{0,1\}^n) 
+      \label{eq:indcointosses}
+      \end{equation}
+      $$
+    </div>
+    <p>
+      As in the example of Lebesgue measure discussed above, the fact that a probability measure $\mathrm{P}$  on $(\Omega, {\cal F})$ that satisfies \eqref{eq:indcointosses} exists and is unique follows from some slightly non-trivial facts from measure theory, and we will take it on faith for the time being. Below we quote the relevant theorem from measure theory, which generalizes the setting discussed in this example to the more general situation of a $\textbf{product}$ of probability spaces.
+    </p>
+  </div>
+  <div
+    label="Products of probability spaces"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>2.15</b>
+      
+    </h3>
+    <p>
+      <span class="label">Products of probability spaces</span>$\label{thm-productspaces}$
+      Let $\big((\Omega_n, {\cal F}_n, \mathrm{P}_n)\big)_{n=1}^\infty$ be a sequence of probability spaces. Denote $\Omega = \prod_{n=1}^\infty \Omega_n$ (the cartesian product of the outcome sets), and let ${\cal F}$ be the $\sigma$-algbera of subsets of $\Omega$ generated by sets which are of the form
+    </p>
+    <div class="math-block">
+      $$
+      \{ (x_1,x_2,\ldots) \in \Omega : x_n \in A \}
+      $$
+    </div>
+    <p>
+      for some $n\ge1$ and set $A \in {\cal F}_n$.
+      Then there exists a unique probability measure $\mathrm{P}$ on $(\Omega, {\cal F})$ such that for any $n\ge 1$ and any finite sequence
+    </p>
+    <div class="math-block">
+      $$
+      (A_1, A_2, \ldots, A_n) \in {\cal F}_1 \times {\cal F}_2
+      \times \ldots \times {\cal F}_n
+      $$
+    </div>
+    <p>
+      the equation
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}\Big(\big\{ (x_1,x_2,\ldots ) \in \Omega : x_1\in A_1, x_2 \in A_2, \ldots, x_n \in A_n \big\} \Big)
+      =
+      \prod_{k=1}^n \mathrm{P}_k(A_k)
+      $$
+    </div>
+    <p>
+      holds.
+    </p>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.16</b>
+      
+    </h3>
+    <p>
+      Explain why the "infinite sequence of coin tosses" experiment is a special case of  a product of probability spaces, and why the existence and uniqueness of a probability measure satisfying \eqref{eq:indcointosses} follows from Theorem \ref{thm-productspaces}.
+    </p>
+  </div>
+  <p>
+    In an upcoming homework exercise we will show an alternative way of proving the existence of the probability space of infinite coin toss sequences using Lebesgue measure on $(0,1)$.
+  </p>
 </body>
 </html>

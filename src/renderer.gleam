@@ -720,10 +720,7 @@ fn expand_filename_shorthands_to_path_fragments(
       filename_shorthand_regexp,
     ))
 
-  ds.CommandLineAmendments(
-    ..amendments,
-    only_paths: only_paths,
-  )
+  ds.CommandLineAmendments(..amendments, only_paths: only_paths)
 }
 
 pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
@@ -735,7 +732,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
   let assert None = amendments.input_dir
   let assert None = amendments.output_dir
   let parent = course_dir <> "/wly/__parent.wly"
-  let assert Ok(#(_, assembled)) = writerly.assemble_input_lines(parent, [])
+  let assert Ok(#(_, assembled)) = writerly.assemble_input_lines(parent)
   let assert Ok(parsed_contents) = writerly.input_lines_to_vxml(assembled)
   let banner = case infra.v_first_attr_with_key(parsed_contents, "banner") {
     None ->

@@ -112,6 +112,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),
       dl.prepend_attribute_as_first_line(#("Definition", "label")),
+      dl.prepend_attribute_as_first_line(#("Example", "label")),
       dl.prepend_attribute_as_first_line(#("Theorem", "label")),
       dl.rename_with_attributes__batch([
         #("Definition", "Statement", [

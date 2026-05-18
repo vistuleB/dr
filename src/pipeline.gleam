@@ -47,6 +47,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
     "Document",
     "Example",
     "Labeled",
+    "Lemma",
     "Proof",
     "Section",
     "SectionTitle",
@@ -110,6 +111,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),
       dl.prepend_attribute_as_first_line(#("Definition", "label")),
+      dl.prepend_attribute_as_first_line(#("Theorem", "label")),
       dl.rename_with_attributes__batch([
         #("Definition", "Statement", [
           #("title", "*Definition*"),
@@ -117,6 +119,10 @@ pub fn pipeline() -> List(infra.Desugarer) {
         ]),
         #("Example", "Statement", [
           #("title", "*Example*"),
+          #("class", "statement"),
+        ]),
+        #("Lemma", "Statement", [
+          #("title", "*Lemma*"),
           #("class", "statement"),
         ]),
         #("Theorem", "Statement", [

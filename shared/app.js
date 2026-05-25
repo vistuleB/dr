@@ -82,6 +82,12 @@ document.querySelectorAll("ol.list").forEach((list) => {
   if (itemsGap) list.style.setProperty("--list-items-gap", `${itemsGap}`);
 });
 
+let inputBuffer = "";
+let bufferTimeout;
+
+const meta = document.querySelector('meta[name="course"]');
+const course = meta ? meta.content : null;
+
 // chapter navigation functions
 const navigateToChapter = (elementId) => {
   const element = document.getElementById(elementId);
@@ -92,14 +98,43 @@ const navigateToChapter = (elementId) => {
 
 const atIndexPage = window.location.pathname === "/";
 
-const onKeyDown = (e) => {
-  // prevent default browser behavior for Arrow
-  if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-    e.preventDefault();
-    e.stopPropagation();
+const navigateWithKey = (course, num) => {
+  switch (course) {
+    case "MATH/STAT 235A":
+      return resolveCourse235ANavigation(num);
+    default:
+      return undefined;
   }
+};
 
-  // check if any input fields are focused to avoid interfering with typing
+const resolveCourse235ANavigation = (num) => {
+  const chapterMap = {
+    1: 1,
+    2: 1,
+    3: 1,
+    4: 1,
+    5: 0,
+    6: 0,
+    7: 1,
+    8: 1,
+    9: 1,
+    10: 1,
+    11: 0,
+    12: 1,
+    13: 1,
+    14: 1,
+    15: 1,
+    16: 1,
+  };
+
+  const section = chapterMap[num];
+
+  if (section === undefined) return undefined;
+
+  return `${num}-${section}.html`;
+};
+
+const onKeyDown = (e) => {
   const activeElement = document.activeElement;
   const isInputFocused =
     activeElement &&
@@ -109,22 +144,53 @@ const onKeyDown = (e) => {
 
   if (isInputFocused) return;
 
-  // If at index page, go to first section of first chapter
+  // INDEX PAGE → go to first chapter
   if (atIndexPage && e.key === "ArrowRight") {
+    e.preventDefault();
     window.location.href = "/1-1.html";
+    return;
   }
 
+  // PAGE NAVIGATION
   if (!atIndexPage && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
-    switch (e.key) {
-      case "ArrowLeft":
-        navigateToChapter("prev-page");
-        break;
-      case "ArrowRight":
-        navigateToChapter("next-page");
-        break;
+    e.preventDefault();
+
+    if (e.key === "ArrowLeft") {
+      navigateToChapter("prev-page");
+    } else {
+      navigateToChapter("next-page");
     }
+
     return;
+  }
+
+  // NUMBER INPUT BUFFER (multi-digit chapter selection)
+  if (/^\d$/.test(e.key)) {
+    inputBuffer += e.key;
+
+    clearTimeout(bufferTimeout);
+
+    bufferTimeout = setTimeout(() => {
+      const num = Number(inputBuffer);
+
+      if (num === 0) {
+        window.location.href = "/";
+        inputBuffer = "";
+        return;
+      }
+
+      const route = navigateWithKey(course, num);
+
+      // do nothing if invalid route
+      if (!route) {
+        inputBuffer = "";
+        return;
+      }
+
+      window.location.href = route;
+      inputBuffer = "";
+    }, 500);
   }
 };
 
-document.addEventListener("keydown", onKeyDown, { capture: true });
+document.addEventListener("keydown", onKeyDown);

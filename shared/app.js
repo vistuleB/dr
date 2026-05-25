@@ -81,3 +81,50 @@ document.querySelectorAll("ol.list").forEach((list) => {
     list.style.setProperty("--list-indent-right", `${indentRight}`);
   if (itemsGap) list.style.setProperty("--list-items-gap", `${itemsGap}`);
 });
+
+// chapter navigation functions
+const navigateToChapter = (elementId) => {
+  const element = document.getElementById(elementId);
+  if (element && element.tagName === "A" && element.href) {
+    window.location.href = element.href;
+  }
+};
+
+const atIndexPage = window.location.pathname === "/";
+
+const onKeyDown = (e) => {
+  // prevent default browser behavior for Arrow
+  if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  // check if any input fields are focused to avoid interfering with typing
+  const activeElement = document.activeElement;
+  const isInputFocused =
+    activeElement &&
+    (activeElement.tagName === "INPUT" ||
+      activeElement.tagName === "TEXTAREA" ||
+      activeElement.isContentEditable);
+
+  if (isInputFocused) return;
+
+  // If at index page, go to first section of first chapter
+  if (atIndexPage && e.key === "ArrowRight") {
+    window.location.href = "/1-1.html";
+  }
+
+  if (!atIndexPage && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+    switch (e.key) {
+      case "ArrowLeft":
+        navigateToChapter("prev-page");
+        break;
+      case "ArrowRight":
+        navigateToChapter("next-page");
+        break;
+    }
+    return;
+  }
+};
+
+document.addEventListener("keydown", onKeyDown, { capture: true });

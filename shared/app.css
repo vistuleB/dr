@@ -186,6 +186,19 @@ ol.list li > * {
     display: none;
 }
 
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav > #prev-page:before {
+    content: "prev";
+}
+
+.nav > #next-page:before {
+    content: "next";
+}
+
 .proof {
     font-style: italic;
 }

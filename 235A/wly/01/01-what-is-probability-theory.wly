@@ -1,5 +1,6 @@
 |> Section
     title=What is probability theory
+    test=test
 
     In this course we'll learn about probability theory. But what exactly _is_ probability theory? Like some other mathematical fields (but unlike some others), it has a dual role:
     

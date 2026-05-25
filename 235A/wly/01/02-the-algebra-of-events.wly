@@ -22,7 +22,6 @@
     Do such questions make sense? (And if they do, can you guess what the answers are?) Maybe it is not enough to have an _informal_ discussion to answer this...
     
     |> Example
-        test=test
         (a) An urn initially contains a white ball and a black ball. A ball is drawn out at random from the urn, then added back and another white ball is added to the urn. This procedure is repeated infinitely many times, so that after step $n$ the urn contains 1 black ball and $n+1$ white balls. For each $n\ge1$, let $A_n$ denote the event that at step $n$ the black ball was drawn. Now let $A_\infty$ denote the event
         $$ A_\infty = \textrm{``in total, the black ball was selected infinitely many times''}, $$
         (i.e., the event that infinitely many of the events $A_n$ occurred).

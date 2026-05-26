@@ -264,6 +264,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
         "counter",
         "title",
       ]),
+      dl.dr_generate_js_course_235a("235A/public"),
       dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),
     ],
   ]

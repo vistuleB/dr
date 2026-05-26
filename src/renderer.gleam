@@ -202,6 +202,11 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
+          "<script type=\"text/javascript\" src=\"course.js\"></script>",
+        ),
+        OutputLine(
+          blame,
+          2,
           "<script type=\"text/javascript\" src=\"app.js\"></script>",
         ),
         OutputLine(blame, 0, "</head>"),
@@ -281,6 +286,11 @@ fn chapter_emitter(
         OutputLine(
           blame,
           2,
+          "<script type=\"text/javascript\" src=\"course.js\"></script>",
+        ),
+        OutputLine(
+          blame,
+          2,
           "<script type=\"text/javascript\" src=\"app.js\" defer></script>",
         ),
         OutputLine(blame, 0, "</head>"),
@@ -357,6 +367,11 @@ fn section_emitter(
               "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
             )
         },
+        OutputLine(
+          blame,
+          2,
+          "<script type=\"text/javascript\" src=\"course.js\"></script>",
+        ),
         OutputLine(
           blame,
           2,
@@ -442,6 +457,11 @@ fn subsection_emitter(
               "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
             )
         },
+        OutputLine(
+          blame,
+          2,
+          "<script type=\"text/javascript\" src=\"course.js\"></script>",
+        ),
         OutputLine(
           blame,
           2,

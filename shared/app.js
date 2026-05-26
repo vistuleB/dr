@@ -98,21 +98,16 @@ const navigateToChapter = (elementId) => {
 
 const atIndexPage = window.location.pathname === "/";
 
-const navigateWithKey = (course, num) => {
-  switch (course) {
-    case "MATH/STAT 235A":
-      return resolveCourse235ANavigation(num);
-    default:
-      return undefined;
-  }
+const navigateWithKey = (num) => {
+  if (typeof chapterMap === "undefined") return undefined;
+  const section = chapterMap[num];
+  if (section === undefined) return undefined;
+  return `${num}-${section}.html`;
 };
 
-const resolveCourse235ANavigation = (num) => {
-  const section = chapterMap[num];
-
-  if (section === undefined) return undefined;
-
-  return `${num}-${section}.html`;
+const getMatchingChapters = (prefix) => {
+  if (typeof chapterMap === "undefined") return null;
+  return Object.keys(chapterMap).filter((key) => key.startsWith(prefix));
 };
 
 const onKeyDown = (e) => {
@@ -151,6 +146,33 @@ const onKeyDown = (e) => {
 
     clearTimeout(bufferTimeout);
 
+    // "0" always navigates to index immediately
+    if (inputBuffer === "0") {
+      window.location.href = "/";
+      inputBuffer = "";
+      return;
+    }
+
+    const matches = getMatchingChapters(inputBuffer);
+
+    // No valid chapter can start with this buffer — discard immediately
+    if (matches !== null && matches.length === 0) {
+      inputBuffer = "";
+      return;
+    }
+
+    // Exactly one chapter matches and it's an exact match — no need to wait
+    if (
+      matches !== null &&
+      matches.length === 1 &&
+      matches[0] === inputBuffer
+    ) {
+      const route = navigateWithKey(Number(inputBuffer));
+      if (route) window.location.href = route;
+      inputBuffer = "";
+      return;
+    }
+
     bufferTimeout = setTimeout(() => {
       const num = Number(inputBuffer);
 
@@ -160,7 +182,7 @@ const onKeyDown = (e) => {
         return;
       }
 
-      const route = navigateWithKey(course, num);
+      const route = navigateWithKey(num);
 
       // do nothing if invalid route
       if (!route) {

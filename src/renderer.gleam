@@ -9,6 +9,7 @@ import gleam/result
 import gleam/string.{inspect as ins}
 import infrastructure as infra
 import io_lines.{type OutputLine, OutputLine}
+import on
 import pipeline
 import simplifile
 import vxml.{type VXML}
@@ -732,7 +733,13 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
   let assert None = amendments.input_dir
   let assert None = amendments.output_dir
   let parent = course_dir <> "/wly/__parent.wly"
-  let assert Ok(#(_, assembled)) = writerly.assemble_input_lines(parent)
+  use contents <- on.error_ok(simplifile.read(parent), fn(_) {
+    case simplifile.is_file(parent) {
+      Ok(True) | Error(_) -> io.println("\nunable to read '" <> parent <> "'")
+      Ok(False) -> io.println("\nfile not found: '" <> parent <> "'")
+    }
+  })
+  let assembled = io_lines.string_to_input_lines(contents, parent, 0)
   let assert Ok(parsed_contents) = writerly.input_lines_to_vxml(assembled)
   let banner = case infra.v_first_attr_with_key(parsed_contents, "banner") {
     None ->

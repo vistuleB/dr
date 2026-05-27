@@ -94,6 +94,8 @@ const navigateToChapter = (elementId) => {
   if (element && element.tagName === "A" && element.href) {
     window.location.href = element.href;
   }
+
+  console.log("element", element);
 };
 
 const atIndexPage = window.location.pathname === "/";
@@ -123,7 +125,7 @@ const onKeyDown = (e) => {
   // INDEX PAGE → go to first chapter
   if (atIndexPage && e.key === "ArrowRight") {
     e.preventDefault();
-    window.location.href = "/1-1.html";
+    window.location.href = "1-1.html";
     return;
   }
 
@@ -148,7 +150,7 @@ const onKeyDown = (e) => {
 
     // "0" always navigates to index immediately
     if (inputBuffer === "0") {
-      window.location.href = "/";
+      window.location.href = "index.html";
       inputBuffer = "";
       return;
     }

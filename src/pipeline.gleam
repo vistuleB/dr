@@ -244,6 +244,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
         #("Section", "section"),
         #("SubSection", "subsection"),
       ]),
+      dl.dr_generate_js_course("235A/public"),
       dl.rename__batch([
         #("Chapter", "div"),
         #("ChapterTitle", "h1"),
@@ -264,7 +265,6 @@ pub fn pipeline() -> List(infra.Desugarer) {
         "counter",
         "title",
       ]),
-      dl.dr_generate_js_course_235a("235A/public"),
       dl.check_tags(#(post_transformation_approved_tags, "post-transformation")),
     ],
   ]

@@ -200,10 +200,18 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
         _ -> f |> infra.ensure_prefix("/")
       }
     })
+  let options =
+    ds.RendererOptions(
+      ..ds.vanilla_options(),
+      verbose: False,
+      artifacts: True,
+      profiling_table: None,
+    )
+    |> ds.amend_renderer_options_by_command_line_amendments(amendments)
 
   let renderer =
     ds.Renderer(
-      assembler: ds.default_writerly_assembler(_, amendments.only_paths),
+      assembler: ds.default_writerly_assembler(_, options),
       parser: ds.default_writerly_parser,
       pipeline: pipeline,
       splitter: case files {
@@ -213,6 +221,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       emitter: ds.default_writerly_emitter,
       writer: ds.default_writer,
       prettifier: ds.default_prettier_prettifier,
+      filterer: ds.default_filterer(_, options, []),
     )
     |> ds.amend_renderer_by_command_line_amendments(amendments)
 

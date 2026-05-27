@@ -830,15 +830,25 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
   let offline_mathjax = dict.has_key(amendments.user_args, "--offline-mathjax")
   let amendments = expand_filename_shorthands_to_path_fragments(amendments)
 
+  let options =
+    ds.RendererOptions(
+      ..ds.vanilla_options(),
+      verbose: False,
+      artifacts: True,
+      profiling_table: None,
+    )
+    |> ds.amend_renderer_options_by_command_line_amendments(amendments)
+
   let renderer =
     ds.Renderer(
-      assembler: ds.default_writerly_assembler(_, amendments.only_paths),
+      assembler: ds.default_writerly_assembler(_, options),
       parser: ds.default_writerly_parser,
       pipeline: pipeline.pipeline(),
       splitter: our_splitter,
       emitter: our_emitter(_, offline_mathjax, document_info, author_mode),
       writer: ds.default_writer,
       prettifier: ds.default_prettier_prettifier,
+      filterer: ds.default_filterer(_, options, []),
     )
     |> ds.amend_renderer_by_command_line_amendments(amendments)
 

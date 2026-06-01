@@ -210,7 +210,7 @@ fn index_emitter(
           "<script type=\"text/javascript\" src=\"app.js\"></script>",
         ),
         OutputLine(blame, 0, "</head>"),
-        OutputLine(blame, 0, "<body>"),
+        OutputLine(blame, 0, "<body data-page=\"toc\">"),
       ],
       vxml.vxmls_to_html_output_lines(
         fragment.payload |> infra.v_get_children,

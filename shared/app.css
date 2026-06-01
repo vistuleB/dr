@@ -195,7 +195,7 @@ ol.list li > * {
     content: "prev";
 }
 
-.nav > #next-page:before {
+body:not([data-page="toc"]) .nav > #next-page:before {
     content: "next";
 }
 

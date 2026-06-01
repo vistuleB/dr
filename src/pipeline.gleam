@@ -148,6 +148,24 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Section", "counter", "SubSectionCounter"),
         #("Chapter", "counter", "StatementCounter"),
       ]),
+      dl.prepend_attribute(#(
+        "Chapter",
+        "path",
+        "./::øøChapterCounter-0.html",
+        infra.GoBack,
+      )),
+      dl.prepend_attribute(#(
+        "Section",
+        "path",
+        "./::øøChapterCounter-::øøSectionCounter.html",
+        infra.GoBack,
+      )),
+      dl.prepend_attribute(#(
+        "SubSection",
+        "path",
+        "./::øøChapterCounter-::øøSectionCounter-::øøSubSectionCounter.html",
+        infra.GoBack,
+      )),
       dl.prepend_counter_incrementing_attribute(#(
         "Chapter",
         "ChapterCounter",
@@ -183,32 +201,13 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "SubSectionTitle",
         "title",
       )),
-      dl.prepend_attribute(#(
-        "Chapter",
-        "path",
-        "./::øøChapterCounter-0.html",
-        infra.GoBack,
-      )),
-      dl.prepend_attribute(#(
-        "Section",
-        "path",
-        "./::øøChapterCounter-::øøSectionCounter.html",
-        infra.GoBack,
-      )),
-      dl.prepend_attribute(#(
-        "SubSection",
-        "path",
-        "./::øøChapterCounter-::øøSectionCounter-::øøSubSectionCounter.html",
-        infra.GoBack,
-      )),
       dl.set_handle_value(#("Chapter", "::øøChapterCounter", infra.GoBack)),
-      dl.handles_add_ids(),
-      dl.handles_generate_dictionary_and_id_list("path"),
-      dl.handles_substitute_and_fix_nonlocal_id_links(
-        #("path", "a", "a", [], [], ["a"]),
-      ),
+      dl.set_handle_value(#(
+        "Statement",
+        "::øøChapterCounter.::øøStatementCounter",
+        infra.Continue,
+      )),
       dl.dr_create_index(),
-      dl.dr_create_menu(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
         #("SectionTitle", "::øøChapterCounter.::øøSectionCounter "),
@@ -227,6 +226,17 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         proof_default,
       )),
       dl.substitute_counters(),
+      dl.dr_create_menu(),
+      dl.handles_add_ids(),
+      dl.handles_generate_dictionary_and_id_list("path"),
+      dl.handles_substitute_and_fix_nonlocal_id_links(
+        #("path", "a", "a", [], [], ["a"]),
+      ),
+      dl.tokenize_href_surroundings(),
+      dl.rearrange_links_4_pre_tokenized_src__batch([
+        #("Lemma <a href=1>_1_</a>", "<a href=1>Lemma _1_</a>"),
+      ]),
+      dl.detokenize_href_surroundings(),
     ],
     pp.create_mathblock_elements(
       [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],

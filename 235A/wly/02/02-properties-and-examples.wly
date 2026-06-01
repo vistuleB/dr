@@ -2,6 +2,7 @@
     title=Properties and examples
 
     |> Lemma
+        handle=probspaceproperties
     
         If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space, then we have:
 
@@ -21,7 +22,7 @@
 
     |> Exercise
     
-        Prove Lemma 2.7.
+        Prove Lemma >>probspaceproperties
 
     |> Example
         label=Discrete probability spaces

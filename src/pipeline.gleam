@@ -41,7 +41,7 @@ const p_cannot_be_contained_in = [
   "p",
 ]
 
-pub fn pipeline() -> List(infra.Desugarer) {
+pub fn pipeline(course: String) -> List(infra.Desugarer) {
   let pre_transformation_document_tags = [
     "Chapter",
     "ChapterTitle",
@@ -244,7 +244,7 @@ pub fn pipeline() -> List(infra.Desugarer) {
         #("Section", "section"),
         #("SubSection", "subsection"),
       ]),
-      dl.dr_generate_js_course("235A/public"),
+      dl.dr_generate_js_course(course),
       dl.rename__batch([
         #("Chapter", "div"),
         #("ChapterTitle", "h1"),

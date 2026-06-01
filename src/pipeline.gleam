@@ -81,6 +81,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "p",
     "span",
     "ul",
+    "InTextWarning",
   ]
   let post_transformation_approved_tags =
     [post_transformation_document_tags, post_transformation_html_tags]
@@ -182,6 +183,30 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "SubSectionTitle",
         "title",
       )),
+      dl.prepend_attribute(#(
+        "Chapter",
+        "path",
+        "./::øøChapterCounter-0.html",
+        infra.GoBack,
+      )),
+      dl.prepend_attribute(#(
+        "Section",
+        "path",
+        "./::øøChapterCounter-::øøSectionCounter.html",
+        infra.GoBack,
+      )),
+      dl.prepend_attribute(#(
+        "SubSection",
+        "path",
+        "./::øøChapterCounter-::øøSectionCounter-::øøSubSectionCounter.html",
+        infra.GoBack,
+      )),
+      dl.set_handle_value(#("Chapter", "::øøChapterCounter", infra.GoBack)),
+      dl.handles_add_ids(),
+      dl.handles_generate_dictionary_and_id_list("path"),
+      dl.handles_substitute_and_fix_nonlocal_id_links(
+        #("path", "a", "a", [], [], ["a"]),
+      ),
       dl.dr_create_index(),
       dl.dr_create_menu(),
       dl.prepend_text_node__batch([

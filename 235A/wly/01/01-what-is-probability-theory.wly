@@ -2,7 +2,7 @@
     title=What is probability theory
     test=test
 
-    In this course we'll learn about probability theory. But what exactly _is_ probability theory? Like some other mathematical fields (but unlike some others), it has a dual role:
+    In this course >>list_item we'll learn about probability theory. But what exactly _is_ probability theory? Like some other mathematical fields (but unlike some others), it has a dual role:
     
     |> ul
         |> li 
@@ -63,6 +63,8 @@
                     
                     Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
         |> li
+            handle=list_item list
+            test=test2
             Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
         |> li
             Hello Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.

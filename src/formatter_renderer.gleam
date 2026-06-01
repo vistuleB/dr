@@ -201,12 +201,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       }
     })
   let options =
-    ds.RendererOptions(
-      ..ds.vanilla_options(),
-      verbose: False,
-      artifacts: True,
-      profiling_table: None,
-    )
+    ds.vanilla_options()
     |> ds.amend_renderer_options_by_command_line_amendments(amendments)
 
   let renderer =
@@ -225,10 +220,6 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     )
     |> ds.amend_renderer_by_command_line_amendments(amendments)
 
-  let debug_options =
-    ds.RendererOptions(..ds.vanilla_options(), verbose: True)
-    |> ds.amend_renderer_options_by_command_line_amendments(amendments)
-
   let _ = simplifile.delete(parameters.output_dir <> "/*")
 
   list.each(
@@ -243,7 +234,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
           ..parameters,
           input_dir: parameters.input_dir <> f,
         )
-      case ds.run_renderer(renderer, parameters, debug_options) {
+      case ds.run_renderer(renderer, parameters, options) {
         Error(error) -> io.println("\nrenderer error: " <> ins(error) <> "\n")
         _ -> Nil
       }

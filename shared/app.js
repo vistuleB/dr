@@ -98,7 +98,7 @@ const navigateToChapter = (elementId) => {
   console.log("element", element);
 };
 
-const atIndexPage = window.location.pathname === "/";
+const atIndexPage = window.location.pathname === "/index.html";
 
 const navigateWithKey = (num) => {
   if (typeof chapterMap === "undefined") return undefined;

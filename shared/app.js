@@ -94,11 +94,8 @@ const navigateToChapter = (elementId) => {
   if (element && element.tagName === "A" && element.href) {
     window.location.href = element.href;
   }
-
-  console.log("element", element);
+  return;
 };
-
-const atIndexPage = window.location.pathname === "/index.html";
 
 const navigateWithKey = (num) => {
   if (typeof chapterMap === "undefined") return undefined;
@@ -122,24 +119,15 @@ const onKeyDown = (e) => {
 
   if (isInputFocused) return;
 
-  // INDEX PAGE → go to first chapter
-  if (atIndexPage && e.key === "ArrowRight") {
+  // PAGE NAVIGATION
+  if (e.key === "ArrowLeft") {
     e.preventDefault();
-    window.location.href = "1-1.html";
-    return;
+    navigateToChapter("prev-page");
   }
 
-  // PAGE NAVIGATION
-  if (!atIndexPage && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+  if (e.key === "ArrowRight") {
     e.preventDefault();
-
-    if (e.key === "ArrowLeft") {
-      navigateToChapter("prev-page");
-    } else {
-      navigateToChapter("next-page");
-    }
-
-    return;
+    navigateToChapter("next-page");
   }
 
   // NUMBER INPUT BUFFER (multi-digit chapter selection)

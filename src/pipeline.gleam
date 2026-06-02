@@ -235,6 +235,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.tokenize_href_surroundings(),
       dl.rearrange_links_4_pre_tokenized_src__batch([
         #("Lemma <a href=1>_1_</a>", "<a href=1>Lemma _1_</a>"),
+        #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
       ]),
       dl.detokenize_href_surroundings(),
     ],

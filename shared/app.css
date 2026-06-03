@@ -186,6 +186,10 @@ ol.list li > * {
     display: none;
 }
 
+g[id^="mjx-eqn:eq:"] {
+    scroll-margin-top: 1rem;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;

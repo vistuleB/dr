@@ -1,5 +1,6 @@
 |> Section
     title=Basic definitions
+    handle=basic-def
 
     We now formalize the concepts introduced in the previous lecture. It turns out that it's easiest to deal with events as subsets of a large set called the $\textbf{probability space}$, instead of as abstract logical statements. The logical operations of negation, conjunction and disjunction are replaced by the set-theoretic operations of taking the complement, intersection or union, but the intuitive meaning attached to those operations is the same.
 

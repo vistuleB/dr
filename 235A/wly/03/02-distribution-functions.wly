@@ -1,2 +1,122 @@
 |> Section
     title=Distribution functions
+
+    Instead of working with distributions of random variables (which are probability measure on the measurable space $(\R, {\cal B})$ and themselves quite unwieldy objects), we will encode them in a simpler object called a $\textbf{distribution function}$ (sometimes referred to as a $\textbf{cumulative distribution function}$, or $\textbf{c.d.f.})$.
+
+    |> Definition
+
+        The $\textbf{cumulative distribution function}$ (or $\textbf{c.d.f.}$, or just $\textbf{distribution function}$) of a random variable $X$ defined on a probability space $(\Omega, {\cal F}, \mathrm{P})$ is the function $ F_X:\R \to [0,1]$ defined by
+        $$ F_X(x) = \mathrm{P}( X \le x ) = \mathrm{P}( X^{-1}((-\infty,x])) = \mathrm{P}( \{ \omega \in \Omega : X(\omega) \le x \} ),
+        \quad (x\in \R).
+        $$
+
+    Note that we have introduced here a useful notational device that will be used again many times in the following sections: if $A$ is a Borel set, we will often write $\{X \in A\}$ as shorthand for the set $\{ \omega \in \Omega : X(\omega) \in A \}$. In words, we may refer to this as ``the event that $X$ falls in $A$''. When discussing its probability, we may omit the curly braces and simply write $P(X\in A)$. Of course, one should always remember that on the formal level this is just the set-theoretic inverse image of a set by a function!
+
+    |> Theorem
+        label=Properties of distribution functions
+
+        If $F=F_X$ is a distribution function, then it has the following properties:
+
+        |> ol
+            class=list
+            |> li
+                $F$ is nondecreasing.
+            |> li
+                $\lim_{x\to\infty} F(x) = 1, \ \ \lim_{x\to-\infty} F(x) = 0$.
+            |> li
+                $F$ is right-continuous, i.e., $F(x+) := \lim_{y\downarrow x} F(y) = F(x). $
+            |> li
+                $F(x-) := \lim_{y\uparrow x} F(y) = \mathbb{P}(X < x)$.
+            |> li
+                $\mathbb{P}(X=x) = F(x) - F(x-)$.
+            |> li
+                If $G=F_Y$ is another distribution function of a random variable $Y$, then $X$ and $Y$ are equal in distribution if and only if $F \equiv G$.
+
+    |> Proof
+        Exercise (recommended), or see page 9 of [Dur2010].
+
+    |> Definition
+
+        A function $F:\R\to[0,1]$ satisfying properties (i)--(iii) in the previous theorem is called a $\textbf{cumulative distribution function}$, or just $\textbf{distribution function}$.
+
+    |> Theorem
+        handle=thm-rvexistence
+
+        If $F$ is a distribution function, then there exists a random variable $X$ such that $F=F_X$.
+
+    This fact has a measure-theoretic proof similar to the proof of Theorem >>thm-lebesgue, but fortunately in this case, there is a more probabilistic proof that relies only on the existence of Lebesgue measure. (This is one of many examples of probabilistic ideas turning out to be useful to prove facts in analysis and measure theory.) This involves the probabilistic concept of a $\textbf{quantile}$ (a generalization of the concepts of percentile and median that we frequently hear about in news reports).
+
+    |> Definition
+
+        If $X$ is a random variable on a probability space $(\Omega, {\cal F}, \mathrm{P})$ and $0<p<1$ is a number, then a real number $x$ is called a $\textbf{$p$-quantile}$ of $X$ if the inequalities
+       
+        $$
+        \begin{eqnarray*}
+        \mathrm{P}(X \le x) &\ge& p, \\
+        \mathrm{P}(X \ge x) & \ge & 1-p 
+        \end{eqnarray*}
+        $$
+        hold.
+
+    Note that the question of whether $t$ is a $p$-quantile of $X$ can be answered just by knowing the distribution function $F_X$ of $X$: since $\mathrm{P}(X\le x)=F_X(x)$ and $\mathrm{P}(X\ge x)=1-F(x-)$, we can write the conditions above as
+    $$ F_X(x-) \le p \le F_X(x). $$
+    
+    |> Lemma
+        handle=lem-quantile
+
+        A $p$-quantile for $X$ always exists. Moreover, the set of $p$-quantiles of $X$ is equal to the (possibly degenerate) closed interval $[a_p, b_p]$, where
+       
+        $$ 
+        \begin{eqnarray*}
+        a_p &=& \sup \{ x : F_X(x) < p \}, \\
+        b_p &=& \inf \{ x : F_X(x) > p \}.
+        \end{eqnarray*}
+        $$
+
+    |> Exercise
+    
+        Prove Lemma >>lem-quantile.
+
+    |> Proof
+        alt-title=Proof of Theorem >>thm-rvexistence
+
+        Let $((0,1), {\cal B}, \mathrm{P})$ be the unit interval with Lebesgue measure, representing the experiment of drawing a uniform random number in $(0,1)$. We shall construct our random variable $X$ on this space. Inspired by the discussion of quantiles above, we define
+        $$ X(p) = \sup\{ y : F(y) < p \}, \qquad (0<p<1). $$
+        If $F$ were the distribution function of a random variable, then $X(p)$ would be its (minimal) $p$-quantile. 
+
+        Note that properties (i) and (ii) of $F$ imply that $X(p)$ is defined and finite for any $p$ and that it is a monotone nondecreasing function on $(0,1)$. In particular, it is measurable, so it is in fact a random variable on the probability space $((0,1), {\cal B}, \mathrm{P})$. We need to show that $F$ is its distribution function. We will show that for each $p\in (0,1)$ and $x\in \R$, we have that $X(p) \le x$ if and only if $p \le F(x)$. This will imply that for every $x\in \R$ we have the equality of sets
+        $$ \{ p : X(p) \le x \} = \{ p : p \le F(x) \}, $$
+        and, applying $\mathrm{P}$ to both sides of this equation we will get
+        $$ F_X(x) = \mathrm{P}(X\le x) = \mathrm{P}\big( p : p \le F(x) \big) = \mathrm{P}\big( (0,F(x)] \big)
+        = F(x) $$
+        (since $\mathrm{P}$ is Lebesgue measure).
+        
+        To prove the claim, note that if $p \le F(x)$ then all elements of the set $\{ y : F(y) < p\}$
+        satisfy $y\le x$, and therefore the supremum $X(p)$ of this set also satisfies $X(p) \le x$. Conversely, if $p > F(x)$, then, since $F$ is right-continuous, we have $p > F(x+\epsilon)$ for some $\epsilon>0$. It follows that $X(p)\ge x+\epsilon>x$ (since $x+\epsilon$ is in the set $\{ y : F(y)<p \}$).
+
+    The function $X$ defined in the proof above is sometimes referred to as the (lower) quantile function of the distribution $F$. Note that if $F$ is a strictly increasing function then $X$ is simply its ordinary (set-theoretic) inverse function.
+        
+        
+
+        
+    
+     
+
+    
+
+        
+
+        
+
+        
+
+        
+                
+                
+                
+                
+                
+
+    
+
+    

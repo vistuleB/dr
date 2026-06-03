@@ -39,5 +39,203 @@
     3.2
     Distribution functions
   </h1>
+  <p>
+    Instead of working with distributions of random variables (which are probability measure on the measurable space $(\R, {\cal B})$ and themselves quite unwieldy objects), we will encode them in a simpler object called a $\textbf{distribution function}$ (sometimes referred to as a $\textbf{cumulative distribution function}$, or $\textbf{c.d.f.})$.
+  </p>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>3.7</b>
+      
+    </h3>
+    <p>
+      The $\textbf{cumulative distribution function}$ (or $\textbf{c.d.f.}$, or just $\textbf{distribution function}$) of a random variable $X$ defined on a probability space $(\Omega, {\cal F}, \mathrm{P})$ is the function $F_X:\R \to [0,1]$ defined by
+    </p>
+    <div class="math-block">
+      $$
+      F_X(x) = \mathrm{P}( X \le x ) = \mathrm{P}( X^{-1}((-\infty,x])) = \mathrm{P}( \{ \omega \in \Omega : X(\omega) \le x \} ),
+      \quad (x\in \R).
+      $$
+    </div>
+  </div>
+  <p>
+    Note that we have introduced here a useful notational device that will be used again many times in the following sections: if $A$ is a Borel set, we will often write $\{X \in A\}$ as shorthand for the set $\{ \omega \in \Omega : X(\omega) \in A \}$. In words, we may refer to this as "the event that $X$ falls in $A$". When discussing its probability, we may omit the curly braces and simply write $P(X\in A)$. Of course, one should always remember that on the formal level this is just the set-theoretic inverse image of a set by a function!
+  </p>
+  <div
+    label="Properties of distribution functions"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>3.8</b>
+      
+    </h3>
+    <p>
+      <span class="label">Properties of distribution functions</span>If $F=F_X$ is a distribution function, then it has the following properties:
+    </p>
+    <ol class="list">
+      <li>
+        <p>
+          $F$ is nondecreasing.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\lim_{x\to\infty} F(x) = 1, \ \ \lim_{x\to-\infty} F(x) = 0$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $F$ is right-continuous, i.e., $F(x+) := \lim_{y\downarrow x} F(y) = F(x).$
+        </p>
+      </li>
+      <li>
+        <p>
+          $F(x-) := \lim_{y\uparrow x} F(y) = \mathbb{P}(X &lt; x)$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\mathbb{P}(X=x) = F(x) - F(x-)$.
+        </p>
+      </li>
+      <li>
+        <p>
+          If $G=F_Y$ is another distribution function of a random variable $Y$, then $X$ and $Y$ are equal in distribution if and only if $F \equiv G$.
+        </p>
+      </li>
+    </ol>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof.</span>Exercise (recommended), or see page 9 of [Dur2010].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>3.9</b>
+      
+    </h3>
+    <p>
+      A function $F:\R\to[0,1]$ satisfying properties (i)--(iii) in the previous theorem is called a $\textbf{cumulative distribution function}$, or just $\textbf{distribution function}$.
+    </p>
+  </div>
+  <div
+    handle="thm-rvexistence"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>3.10</b>
+      
+    </h3>
+    <p>
+      If $F$ is a distribution function, then there exists a random variable $X$ such that $F=F_X$.
+    </p>
+  </div>
+  <p>
+    This fact has a measure-theoretic proof similar to the proof of Theorem &gt;&gt;thm-lebesgue, but fortunately in this case, there is a more probabilistic proof that relies only on the existence of Lebesgue measure. (This is one of many examples of probabilistic ideas turning out to be useful to prove facts in analysis and measure theory.) This involves the probabilistic concept of a $\textbf{quantile}$ (a generalization of the concepts of percentile and median that we frequently hear about in news reports).
+  </p>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>3.11</b>
+      
+    </h3>
+    <p>
+      If $X$ is a random variable on a probability space $(\Omega, {\cal F}, \mathrm{P})$ and $0&lt;p&lt;1$ is a number, then a real number $x$ is called a $\textbf{$p$-quantile}$ of $X$ if the inequalities
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*}
+      \mathrm{P}(X \le x) &amp;\ge&amp; p, \\
+      \mathrm{P}(X \ge x) &amp; \ge &amp; 1-p 
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      hold.
+    </p>
+  </div>
+  <p>
+    Note that the question of whether $t$ is a $p$-quantile of $X$ can be answered just by knowing the distribution function $F_X$ of $X$: since $\mathrm{P}(X\le x)=F_X(x)$ and $\mathrm{P}(X\ge x)=1-F(x-)$, we can write the conditions above as
+  </p>
+  <div class="math-block">
+    $$
+    F_X(x-) \le p \le F_X(x).
+    $$
+  </div>
+  <div
+    handle="lem-quantile"
+    class="statement"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>3.12</b>
+      
+    </h3>
+    <p>
+      A $p$-quantile for $X$ always exists. Moreover, the set of $p$-quantiles of $X$ is equal to the (possibly degenerate) closed interval $[a_p, b_p]$, where
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*}
+      a_p &amp;=&amp; \sup \{ x : F_X(x) &lt; p \}, \\
+      b_p &amp;=&amp; \inf \{ x : F_X(x) &gt; p \}.
+      \end{eqnarray*}
+      $$
+    </div>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>3.13</b>
+      
+    </h3>
+    <p>
+      Prove Lemma &gt;&gt;lem-quantile.
+    </p>
+  </div>
+  <div alt-title="Proof of Theorem >>thm-rvexistence">
+    <p>
+      <span class="proof">Proof of Theorem &gt;&gt;thm-rvexistence</span>Let $((0,1), {\cal B}, \mathrm{P})$ be the unit interval with Lebesgue measure, representing the experiment of drawing a uniform random number in $(0,1)$. We shall construct our random variable $X$ on this space. Inspired by the discussion of quantiles above, we define
+    </p>
+    <div class="math-block">
+      $$
+      X(p) = \sup\{ y : F(y) &lt; p \}, \qquad (0&lt;p&lt;1).
+      $$
+    </div>
+    <p>
+      If $F$ were the distribution function of a random variable, then $X(p)$ would be its (minimal) $p$-quantile.
+    </p>
+    <p>
+      Note that properties (i) and (ii) of $F$ imply that $X(p)$ is defined and finite for any $p$ and that it is a monotone nondecreasing function on $(0,1)$. In particular, it is measurable, so it is in fact a random variable on the probability space $((0,1), {\cal B}, \mathrm{P})$. We need to show that $F$ is its distribution function. We will show that for each $p\in (0,1)$ and $x\in \R$, we have that $X(p) \le x$ if and only if $p \le F(x)$. This will imply that for every $x\in \R$ we have the equality of sets
+    </p>
+    <div class="math-block">
+      $$
+      \{ p : X(p) \le x \} = \{ p : p \le F(x) \},
+      $$
+    </div>
+    <p>
+      and, applying $\mathrm{P}$ to both sides of this equation we will get
+    </p>
+    <div class="math-block">
+      $$
+      F_X(x) = \mathrm{P}(X\le x) = \mathrm{P}\big( p : p \le F(x) \big) = \mathrm{P}\big( (0,F(x)] \big)
+      = F(x)
+      $$
+    </div>
+    <p>
+      (since $\mathrm{P}$ is Lebesgue measure).
+    </p>
+    <p>
+      To prove the claim, note that if $p \le F(x)$ then all elements of the set $\{ y : F(y) &lt; p\}$
+      satisfy $y\le x$, and therefore the supremum $X(p)$ of this set also satisfies $X(p) \le x$. Conversely, if $p &gt; F(x)$, then, since $F$ is right-continuous, we have $p &gt; F(x+\epsilon)$ for some $\epsilon&gt;0$. It follows that $X(p)\ge x+\epsilon&gt;x$ (since $x+\epsilon$ is in the set $\{ y : F(y)&lt;p \}$).<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    The function $X$ defined in the proof above is sometimes referred to as the (lower) quantile function of the distribution $F$. Note that if $F$ is a strictly increasing function then $X$ is simply its ordinary (set-theoretic) inverse function.
+  </p>
 </body>
 </html>

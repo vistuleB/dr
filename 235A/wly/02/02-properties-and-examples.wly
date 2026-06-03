@@ -49,6 +49,7 @@
         What about the probability measure $\mathrm{P}$? Here we will simply cite a result from measure theory that says that the measure we are looking for exists, and is unique. This is not too difficult to prove, but doing so would take us a bit too far off course.
 
     |> Theorem
+        handle=thm-lebesgue
 
         Let ${\cal B}$ be the $\sigma$-algebra of Borel sets on $(0,1)$, the minimal $\sigma$-algebra containing all the sub-intervals of $(0,1)$, proved to exist in the exercise below. There exists a unique measure $\mathrm{P}$ on the measure space satisfying \eqref{eq:lebesgue}, called $\textbf{Lebesgue measure}$ on $(0,1)$.
 

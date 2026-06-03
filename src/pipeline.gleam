@@ -203,6 +203,16 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       )),
       dl.set_handle_value(#("Chapter", "::øøChapterCounter", infra.GoBack)),
       dl.set_handle_value(#(
+        "Section",
+        "::øøChapterCounter.::øøSectionCounter",
+        infra.GoBack,
+      )),
+      dl.set_handle_value(#(
+        "SubSection",
+        "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter",
+        infra.GoBack,
+      )),
+      dl.set_handle_value(#(
         "Statement",
         "::øøChapterCounter.::øøStatementCounter",
         infra.Continue,
@@ -235,6 +245,8 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.tokenize_href_surroundings(),
       dl.rearrange_links_4_pre_tokenized_src__batch([
         #("Lemma <a href=1>_1_</a>", "<a href=1>Lemma _1_</a>"),
+        #("Section <a href=1>_1_</a>", "<a href=1>Section _1_</a>"),
+        #("Subsection <a href=1>_1_</a>", "<a href=1>Subsection _1_</a>"),
         #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
       ]),
       dl.detokenize_href_surroundings(),

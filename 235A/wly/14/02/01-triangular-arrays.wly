@@ -1,5 +1,6 @@
 |> SubSection
     title=Triangular arrays
+    handle=trig-arrays
     
     |> Example
         Example 3 inside subsection

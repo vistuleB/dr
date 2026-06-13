@@ -237,24 +237,12 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       )),
       dl.substitute_counters(),
       dl.dr_create_menu(),
-      dl.handles_add_ids(),
-      dl.handles_generate_dictionary_and_id_list("path"),
-      dl.handles_substitute_and_fix_nonlocal_id_links(
-        #("path", "a", "a", [], [], ["a"]),
-      ),
-      dl.tokenize_href_surroundings(),
-      dl.rearrange_links_4_pre_tokenized_src__batch([
-        #("Lemma <a href=1>_1_</a>", "<a href=1>Lemma _1_</a>"),
-        #("Section <a href=1>_1_</a>", "<a href=1>Section _1_</a>"),
-        #("Subsection <a href=1>_1_</a>", "<a href=1>Subsection _1_</a>"),
-        #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
-      ]),
-      dl.detokenize_href_surroundings(),
     ],
     pp.create_mathblock_elements(
       [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
       infra.DoubleDollar,
     ),
+    [dl.dr_process_equation_labels()],
     pp.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
@@ -268,8 +256,22 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       "MathBlock",
       "Math",
     ]),
+    [dl.dr_eqref_to_markdown_link()],
     pp.markdown_link_splitting(["MathBlock", "Math"]),
     [
+      dl.handles_add_ids(),
+      dl.handles_generate_dictionary_and_id_list("path"),
+      dl.handles_substitute_and_fix_nonlocal_id_links(
+        #("path", "a", "a", [], [], ["a"]),
+      ),
+      dl.tokenize_href_surroundings(),
+      dl.rearrange_links_4_pre_tokenized_src__batch([
+        #("Lemma <a href=1>_1_</a>", "<a href=1>Lemma _1_</a>"),
+        #("Section <a href=1>_1_</a>", "<a href=1>Section _1_</a>"),
+        #("Subsection <a href=1>_1_</a>", "<a href=1>Subsection _1_</a>"),
+        #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
+      ]),
+      dl.detokenize_href_surroundings(),
       dl.fold_contents_into_text("Math"),
       dl.find_replace_if_has_ancestor_else(
         #(["Math", "MathBlock"], #("``", "“"), #("``", "\"")),

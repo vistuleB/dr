@@ -41,9 +41,11 @@
         $$ (a,b) \in {\cal F}, \qquad (0\le a<b\le 1),$$
         and that
 
+        $$
         \begin{equation} \label{eq:lebesgue}
         \mathrm{P}\big((a,b)\big) = b-a, \qquad (0\le a<b\le 1).
         \end{equation}
+        $$
 
         How do we generate a $\sigma$-algebra of subsets of $(0,1)$ that contains all the intervals? We already saw that the set of _all_ subsets of $(0,1)$ will work. But that is too large! If we take all subsets, we will see in an exercise later that it will be impossible to construct the probability measure $\mathrm{P}$ to satisfy our requirements. So let's try to build the _smallest possible_ $\sigma$-algebra. One way (which can perhaps be described as the $\textbf{bottom-up}$ approach) would be to start with the intervals, then take all countable unions of such and add them to our collection of sets, then add all countable intersections of such sets, then add all countable unions, etc. Will this work? In principle it can be made to work, but is a bit difficult and requires knowing something about $\textbf{transfinite induction}$. Fortunately there is a more elegant way (but somewhat more abstract and less intuitive) of constructing the minimal $\sigma$-algebra, that is outlined in the next exercise below, and can be thought of as the $\textbf{top-down}$ approach. The resulting $\sigma$-algebra of subsets of $(0,1)$ is called the $\textbf{Borel $\sigma$-algebra}$; its elements are called $\textbf{Borel sets}$.
 

@@ -268,6 +268,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       "MathBlock",
       "Math",
     ]),
+    pp.markdown_link_splitting(["MathBlock", "Math"]),
     [
       dl.fold_contents_into_text("Math"),
       dl.find_replace_if_has_ancestor_else(

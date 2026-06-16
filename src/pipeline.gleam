@@ -146,6 +146,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Document", "counter", "ChapterCounter"),
         #("Chapter", "counter", "SectionCounter"),
         #("Section", "counter", "SubSectionCounter"),
+        #("Section", "counter", "EquationCounter"),
         #("Chapter", "counter", "StatementCounter"),
       ]),
       dl.prepend_attribute(#(
@@ -236,6 +237,13 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         proof_default,
       )),
       dl.substitute_counters(),
+    ],
+    pp.create_mathblock_elements(
+      [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
+      infra.DoubleDollar,
+    ),
+    [
+      dl.handles_generate_v_definitions_from_t_definitions(),
       dl.dr_create_menu(),
       dl.handles_add_ids(),
       dl.handles_generate_dictionary_and_id_list("path"),
@@ -251,10 +259,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       ]),
       dl.detokenize_href_surroundings(),
     ],
-    pp.create_mathblock_elements(
-      [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
-      infra.DoubleDollar,
-    ),
     pp.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,

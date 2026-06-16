@@ -138,6 +138,32 @@
 
     Test
     Links to Section >>basic-def and also Subsection >>trig-arrays
+
+    Hello.
+
+    $$
+    a = b \tag{eq:firstline##<<(A)}
+    $$
+
+    In (>>eq:firstline) we see the equation labeled (A).
+
+    $$
+    c = d \tag{eq:secondline##<<(B)}
+    $$
+
+    And (>>eq:secondline) uses label (B).
+
+    $$
+    x = y \tag{eq:withcounter##<<::øøSectionCounter}
+    $$
+
+    In (>>eq:withcounter) we see the equation labeled with the section counter.
+
+    $$
+    a = b \tag{eq:lebesgue##<<::øøSectionCounter.::++EquationCounter}
+    $$
+
+    In (>>eq:lebesgue) we see the equation labeled with section.equation counter.
             
 
         

@@ -34,6 +34,10 @@ fn local_usage_message() {
   io.println(margin <> "--offline-mathjax")
   io.println(margin <> "  -> use local mathjax library instead of CDN url")
   io.println("")
+  io.println(margin <> "--last-command")
+  io.println(margin <> "  -> run the same arguments as the previous command (from local")
+  io.println(margin <> "     .last-command file)")
+  io.println("")
   io.println("...and don't forget to include '--which <course dir>' in")
   io.println("order to specify which course you want to compile/run!")
   io.println("")
@@ -55,6 +59,32 @@ pub fn main() {
         _ -> x
       }
     })
+
+  let #(args, use_last_command) = case list.contains(args, "--last-command") {
+    True -> {
+      let args = list.filter(args, fn(s) { s != "--last-command" })
+      #(args, True)
+    }
+    False -> #(args, False)
+  }
+
+  assert !list.contains(args, "--last-command")
+
+  let args = case use_last_command {
+    True ->
+      case simplifile.read(".last-command") {
+        Ok(contents) -> {
+          string.split(contents, " ")
+          |> list.map(string.trim)
+          |> list.filter(fn(s) { !string.is_empty(s) })
+          |> list.append(args)
+        }
+        Error(_) -> panic as "unable to find '.last-command'"
+      }
+    False -> args
+  }
+
+  let args_string = string.join(args, " ")
 
   use _ <- on.stay(case args {
     ["--help"] | ["-help"] | ["-h"] -> {
@@ -142,5 +172,10 @@ pub fn main() {
       renderer.render(amendments, course_dir)
       io.println("")
     }
+  }
+
+  case simplifile.write(".last-command", args_string) {
+    Ok(_) -> Nil
+    _ -> io.println("Warning: unable to write args_string to .last-command")
   }
 }

@@ -1,3 +1,22 @@
+# `--last-command` (VSCode build task integration)
+
+The `--last-command` flag reruns the exact same arguments as the previous successful run,
+reading them from a local `.last-command` file written automatically at the end of each run.
+
+This is useful when combined with a VSCode build task that fires on every `.wly` file save.
+Create `.vscode/tasks.json` in the project root (you can copy `sample_tasks_dot_json.json`
+from this repo as a starting point):
+
+```sh
+cp sample_tasks_dot_json.json .vscode/tasks.json
+```
+
+The task runs `gleam run -- --last-command`, which picks up whatever flags you last used
+(e.g. `--which 235A --offline-mathjax`). The first time you run with `--last-command` you
+must have run the renderer at least once without it so that a `.last-command` file exists.
+
+The `.last-command` file is local; add it to `.gitignore` if you do not want it committed.
+
 # PDFLaTeX
 
 On MacOS, install pdflatex with `brew install --cask basictex`

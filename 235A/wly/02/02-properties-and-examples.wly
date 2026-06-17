@@ -160,10 +160,10 @@
     In (>>eq:withcounter) we see the equation labeled with the section counter.
 
     $$
-    a = b \tag{eq:lebesgue##<<::øøSectionCounter.::++EquationCounter}
+    a = b \label{eq:label-test}
     $$
 
-    In (>>eq:lebesgue) we see the equation labeled with section.equation counter.
+    In (>>eq:label-test) we see the equation labeled via \label{} syntax.
             
 
         

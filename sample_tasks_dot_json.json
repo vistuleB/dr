@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "gleam run -- --last-command",
+      "type": "shell",
+      "command": "gleam",
+      "group": {
+        "kind": "build",
+        "glob": "**/*.wly",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "runOptions": {
+        "reevaluateOnRerun": true,
+        "instanceLimit": 1
+      },
+      "args": ["run", "--", "--last-command"]
+    }
+  ]
+}

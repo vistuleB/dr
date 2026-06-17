@@ -142,16 +142,16 @@
     Hello.
 
     $$
-    a = b \tag{eq:firstline##<<(A)}
+    a = b \tag{eq:firstline##<<A}
     $$
 
-    In (>>eq:firstline) we see the equation labeled (A).
+    In (>>eq:firstline) we see the equation labeled A.
 
     $$
-    c = d \tag{eq:secondline##<<(B)}
+    c = d \tag{eq:secondline##<<B}
     $$
 
-    And (>>eq:secondline) uses label (B).
+    And (>>eq:secondline) uses label B.
 
     $$
     x = y \tag{eq:withcounter##<<::øøSectionCounter}
@@ -160,10 +160,10 @@
     In (>>eq:withcounter) we see the equation labeled with the section counter.
 
     $$
-    a = b \label{eq:label-test}
+    a = b \label{eq:label-test##<<}
     $$
 
-    In (>>eq:label-test) we see the equation labeled via \label{} syntax.
+    In (>>eq:label-test) we see the equation labeled via the label syntax.
             
 
         

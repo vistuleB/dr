@@ -40,7 +40,7 @@
     Distribution functions
   </h1>
   <p>
-    Instead of working with distributions of random variables (which are probability measure on the measurable space $(\R, {\cal B})$ and themselves quite unwieldy objects), we will encode them in a simpler object called a $\textbf{distribution function}$ (sometimes referred to as a $\textbf{cumulative distribution function}$, or $\textbf{c.d.f.})$.
+    Instead of working with distributions of random variables (which are probability measure on the measurable space ($\R, {\cal B})$ and themselves quite unwieldy objects), we will encode them in a simpler object called a $\textbf{distribution function}$ (sometimes referred to as a $\textbf{cumulative distribution function}$, or $\textbf{c.d.f.})$.
   </p>
   <div class="statement definition">
     <h3>
@@ -59,7 +59,7 @@
     </div>
   </div>
   <p>
-    Note that we have introduced here a useful notational device that will be used again many times in the following sections: if $A$ is a Borel set, we will often write $\{X \in A\}$ as shorthand for the set $\{ \omega \in \Omega : X(\omega) \in A \}$. In words, we may refer to this as "the event that $X$ falls in $A$". When discussing its probability, we may omit the curly braces and simply write $P(X\in A)$. Of course, one should always remember that on the formal level this is just the set-theoretic inverse image of a set by a function!
+    Note that we have introduced here a useful notational device that will be used again many times in the following sections: if $A$ is a Borel set, we will often write $\{X \in A\}$ as shorthand for the set $\{ \omega \in \Omega : (X\omega) \in A \}$. In words, we may refer to this as "the event that $X$ falls in $A$". When discussing its probability, we may omit the curly braces and simply write ($PX\in A)$. Of course, one should always remember that on the formal level this is just the set-theoretic inverse image of a set by a function!
   </p>
   <div
     label="Properties of distribution functions"
@@ -123,7 +123,7 @@
   </div>
   <div
     class="statement theorem"
-    id="_10_h.a.i_"
+    id="_8_h.a.i_"
   >
     <h3>
       <b>Theorem</b>
@@ -163,7 +163,7 @@
     </p>
   </div>
   <p>
-    Note that the question of whether $t$ is a $p$-quantile of $X$ can be answered just by knowing the distribution function $F_X$ of $X$: since $\mathrm{P}(X\le x)=F_X(x)$ and $\mathrm{P}(X\ge x)=1-F(x-)$, we can write the conditions above as
+    Note that the question of whether $t$ is a $p$-quantile of $X$ can be answered just by knowing the distribution function $F_X$ of $X$: since ($\mathrm{P}X\le (x)=F_Xx)$ and ($\mathrm{P}X\ge (x)=1-Fx-)$, we can write the conditions above as
   </p>
   <div class="math-block">
     $$
@@ -172,7 +172,7 @@
   </div>
   <div
     class="statement"
-    id="_11_h.a.i_"
+    id="_9_h.a.i_"
   >
     <h3>
       <b>Lemma</b>
@@ -200,7 +200,7 @@
     <p>
       Prove
       <a
-        href="./3-2.html#_11_h.a.i_"
+        href="./3-2.html#_9_h.a.i_"
         class=""
       >Lemma 3.12</a>.
     </p>
@@ -209,7 +209,7 @@
     <p>
       <span class="proof">Proof of
         <a
-          href="./3-2.html#_10_h.a.i_"
+          href="./3-2.html#_8_h.a.i_"
           class=""
         >Theorem 3.10</a>
         </span>Let $((0,1), {\cal B}, \mathrm{P})$ be the unit interval with Lebesgue measure, representing the experiment of drawing a uniform random number in $(0,1)$. We shall construct our random variable $X$ on this space. Inspired by the discussion of quantiles above, we define

@@ -49,7 +49,7 @@
       
     </h3>
     <p>
-      <span class="label">Indicator random variables</span>If $A$ is an event in a probability space $(\Omega, {\cal F}, \mathrm{P})$, its $\textbf{indicator random variable}$ is the r.v. $\mathbf{1}_A$ defined by
+      <span class="label">Indicator random variables</span>If $A$ is an event in a probability space ($\Omega, {\cal F}, \mathrm{P})$, its $\textbf{indicator random variable}$ is the r.v. $\mathbf{1}_A$ defined by
     </p>
     <div class="math-block">
       $$
@@ -69,6 +69,78 @@
       \end{equation}
       $$
     </div>
+    <p>
+      then we say that $\textbf{$X$has a density function$f$}$. Note that $f$ determines $F$ but is itself only determined by $F$ up to "small" changes that do not affect the integral in (<a href="./3-3.html#_10_h.a.i_">4</a>) (in measure-theoretic terminology we say that $f$ is determined "up to a set of measure $0$"). For example, changing the value$f$ in a finite number of points results in a density function that is equally valid for computing $F$.
+    </p>
+  </div>
+  <div
+    label="Uniform random variables"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>3.15</b>
+      
+    </h3>
+    <p>
+      <span class="label">Uniform random variables</span>We say that $\textbf{$X$is a uniform random variable on$(0,1)$}$ if it has the distribution function
+    </p>
+    <div class="math-block">
+      $$
+      F(x) = \begin{cases} 0 &amp; x \le 0, \\
+      x &amp; 0\le x \le 1, \\
+      1 &amp; x \ge 1.
+      \end{cases}
+      $$
+    </div>
+    <p>
+      Such a r.v. has as its density function the function
+    </p>
+    <div class="math-block">
+      $$
+      f(x) = \begin{cases} 1 &amp; 0\le x\le 1,\\ 0&amp;\textrm{otherwise.}\end{cases}
+      $$
+    </div>
+    <p>
+      More generally, if $a&lt;b$ we say that $X$ is a $\textbf{uniform random variable in the interval$(a,b)$}$ if it has the (respective) distribution and density functions
+    </p>
+    <div class="math-block">
+      $$
+      F(x) = \begin{cases} 0 &amp; x \le a, \\ \frac{x-a}{b-a} &amp; a\le x\le b, \\ 1 &amp; x\ge b, \end{cases}
+      \qquad
+      f(x) = \begin{cases} \frac{1}{b-a} &amp; a\le x\le b, \\ 0 &amp; \textrm{otherwise.}
+      \end{cases}
+      $$
+    </div>
+  </div>
+  <div
+    label="Standard normal distribution"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>3.16</b>
+      
+    </h3>
+    <p>
+      <span class="label">Standard normal distribution</span>The normal (or gaussian) distribution is given in terms of its density function
+    </p>
+    <div class="math-block">
+      $$
+      f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}.
+      $$
+    </div>
+    <p>
+      The cumulative distribution function is denoted by
+    </p>
+    <div class="math-block">
+      $$
+      \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-y^2/2} dy.
+      $$
+    </div>
+    <p>
+      This integral cannot be evaluated explicitly in terms of more familiar functions, but $\Phi$ is an important special function of mathematics nonetheless.
+    </p>
   </div>
 </body>
 </html>

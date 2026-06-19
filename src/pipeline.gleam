@@ -238,10 +238,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         proof_span,
         proof_default,
       )),
-      dl.math_label_to_tag_handle(#(
-        "",
-        "::øøSectionCounter.::++EquationCounter",
-      )),
+      dl.math_label_to_tag_handle(#("", "::++EquationCounter")),
       dl.substitute_counters(),
     ],
     pp.create_mathblock_elements(

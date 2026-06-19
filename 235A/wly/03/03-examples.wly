@@ -1,2 +1,16 @@
 |> Section
     title=Examples
+
+    |> Example
+        label=Indicator random variables
+        
+        If $A$ is an event in a probability space $(\Omega, {\cal F}, \mathrm{P})$, its $\textbf{indicator random variable}$ is the r.v. $\mathbf{1}_A$ defined by
+        $$ \mathbf{1}_A(\omega) = \begin{cases} 0 & \omega \notin A, \\ 1 & \omega \in A. \end{cases} $$
+
+        The above discussion shows that to specify the behavior of a random variable, it is enough to specify its distribution function. Another useful concept is that of a $\textbf{density function}$. If $F=F_X$ is a distribution function such that for some nonnegative function $f:\R\to\R$ we have
+
+        $$
+        \begin{equation} \label{eq:density##<<::++EquationCounter}
+        F(x) = \int_{-\infty}^x f(y)\,dy, \qquad (y\in\R),
+        \end{equation}
+        $$

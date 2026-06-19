@@ -145,9 +145,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.append_attribute__batch([
         #("Document", "counter", "ChapterCounter"),
         #("Chapter", "counter", "SectionCounter"),
+        #("Chapter", "counter", "StatementCounter"),
+        #("Chapter", "counter", "EquationCounter"),
         #("Section", "counter", "SubSectionCounter"),
         #("Section", "counter", "EquationCounter"),
-        #("Chapter", "counter", "StatementCounter"),
+        #("SubSection", "counter", "EquationCounter"),
       ]),
       dl.prepend_attribute(#(
         "Chapter",
@@ -236,7 +238,10 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         proof_span,
         proof_default,
       )),
-      dl.math_label_to_tag_handle(#("", "::øøSectionCounter.::++EquationCounter")),
+      dl.math_label_to_tag_handle(#(
+        "",
+        "::øøSectionCounter.::++EquationCounter",
+      )),
       dl.substitute_counters(),
     ],
     pp.create_mathblock_elements(

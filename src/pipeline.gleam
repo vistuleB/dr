@@ -248,6 +248,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
       infra.DoubleDollar,
     ),
+    pp.markdown_link_splitting(["MathBlock"]),
     [
       dl.handles_generate_v_definitions_from_t_definitions(),
       dl.dr_create_menu(),
@@ -278,7 +279,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       "MathBlock",
       "Math",
     ]),
-    pp.markdown_link_splitting(["MathBlock", "Math"]),
     [
       dl.fold_contents_into_text("Math"),
       dl.find_replace_if_has_ancestor_else(

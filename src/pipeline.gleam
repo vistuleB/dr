@@ -146,10 +146,10 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Document", "counter", "ChapterCounter"),
         #("Chapter", "counter", "SectionCounter"),
         #("Chapter", "counter", "StatementCounter"),
-        #("Chapter", "counter", "EquationCounter"),
+        // #("Chapter", "counter", "EquationCounter"),
         #("Section", "counter", "SubSectionCounter"),
-        #("Section", "counter", "EquationCounter"),
-        #("SubSection", "counter", "EquationCounter"),
+        // #("Section", "counter", "EquationCounter"),
+      // #("SubSection", "counter", "EquationCounter"),
       ]),
       dl.prepend_attribute(#(
         "Chapter",

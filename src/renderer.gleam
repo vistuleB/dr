@@ -545,6 +545,11 @@ fn document_meta_tags(
       2,
       "<meta name=\"date\" content=\"" <> document_info.date <> "\">",
     ),
+    OutputLine(
+      blame,
+      2,
+      "<link rel=\"icon\" type=\"image/svg+xml\" href=\"favicon.svg\">",
+    ),
   ]
 }
 

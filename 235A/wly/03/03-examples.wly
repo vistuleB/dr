@@ -10,7 +10,7 @@
         The above discussion shows that to specify the behavior of a random variable, it is enough to specify its distribution function. Another useful concept is that of a $\textbf{density function}$. If $F=F_X$ is a distribution function such that for some nonnegative function $f:\R\to\R$ we have
 
         $$
-        \begin{equation} \label{eq:density##<<}
+        \begin{equation} eq:density##<<
         F(x) = \int_{-\infty}^x f(y)\,dy, \qquad (y\in\R),
         \end{equation}
         $$

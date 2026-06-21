@@ -42,7 +42,7 @@
         and that
 
         $$
-        \begin{equation} \label{eq:lebesgue##<<::++EquationCounter}
+        \begin{equation} \label{eq:lebesgue##<<}
         \mathrm{P}\big((a,b)\big) = b-a, \qquad (0\le a<b\le 1).
         \end{equation}
         $$
@@ -90,7 +90,7 @@
         $$
         \begin{equation}
         A_n(1) := \{ \mathbf{x}=(x_1,x_2,\ldots) \in \Omega : x_n = 1 \}
-        \label{eq:specialcase##<<::++EquationCounter}
+        \label{eq:specialcase##<<}
         \end{equation}
         $$
         
@@ -106,7 +106,7 @@
         \begin{equation}
         \mathrm{P}\big(A_1(a_1) \cap A_2(a_2) \cap \ldots \cap A_n(a_n)\big) = \frac{1}{2^n}.
         %quad (n\ge 1, \ \ (a_1,\ldots,a_n)\in\{0,1\}^n) 
-        \label{eq:indcointosses##<<::++EquationCounter}
+        \label{eq:indcointosses##<<}
         \end{equation}
         $$
 

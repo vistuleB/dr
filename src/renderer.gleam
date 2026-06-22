@@ -15,6 +15,8 @@ import simplifile
 import vxml.{type VXML}
 import writerly
 
+const favicon = "favicon.svg"
+
 pub type FragmentType {
   Chapter(Int)
   Section(Int, Int)
@@ -548,7 +550,7 @@ fn document_meta_tags(
     OutputLine(
       blame,
       2,
-      "<link rel=\"icon\" type=\"image/svg+xml\" href=\"favicon.svg\">",
+      "<link rel=\"icon\" type=\"image/svg+xml\" href=\"" <> favicon <> "\">",
     ),
   ]
 }

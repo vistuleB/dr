@@ -58,6 +58,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "SubSectionTitle",
     "Theorem",
     "WriterlyBlankLine",
+    "WriterlyComment",
     "footnote",
   ]
 

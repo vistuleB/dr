@@ -40,5 +40,122 @@
     4.2
     Multi-dimensional distribution functions
   </h1>
+  <p>
+    If $\mathbf{X}=(X_1,\ldots,X_d)$ is a $d$-dimensional random vector, we define its $\textbf{distribution}$ to be the probability measure
+  </p>
+  <div class="math-block">
+    $$
+    \mu_{\mathbf{X}}(A) = \mathrm{P}(X^{-1}(A)) = \mathrm{P}(\omega \in \Omega : X(\omega) \in A),
+    \qquad A \in {\cal B}(\R^d),
+    $$
+  </div>
+  <p>
+    similarly to the one-dimensional case. The measure $\mu_X$ is also called the $\textbf{joint distribution}$ (or $\textbf{joint law}$) of the random variables $X_1,\ldots,X_d$.
+  </p>
+  <p>
+    Once again, to avoid having to work with measures, we introduce the concept of a $\textbf{$d$-dimensional distribution function}$.
+  </p>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>4.7</b>
+      
+    </h3>
+    <p>
+      The $d$-dimensional distribution function of a $d$-dimensional random vector $\mathbf{X}=(X_1,\ldots,X_d)$ (also called the joint distribution function of $X_1,\ldots,X_d$) is the function $F_{\mathbf{X}}:\R^d\to[0,1]$ defined by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      F_{\mathbf{X}}(x_1,x_2,\ldots,x_d)
+      &amp;= \mathrm{P}( X_1 \le x_1, X_2 \le x_2, \ldots, X_d \le x_d) \\
+      &amp;= \mu_{\mathbf{X}}\Big( (-\infty,x_1] \times (-\infty,x_2] \times \cdots \times (-\infty,x_d] \Big)
+      \end{align*}
+      $$
+    </div>
+  </div>
+  <div
+    label="Properties of distribution functions"
+    class="statement theorem"
+    id="_13_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>4.8</b>
+      
+    </h3>
+    <p>
+      <span class="label">Properties of distribution functions</span>If $F=F_{\mathbf X}$ is a distribution function of a $d$-dimensional random vector, then it has the following properties:
+    </p>
+    <ol class="list">
+      <li>
+        <p>
+          $F$ is nondecreasing in each coordinate.
+        </p>
+      </li>
+      <li>
+        <p>
+          For any $1\le i\le d$, $\lim_{x_i\to-\infty} F(\mathbf{x}) = 0$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\lim_{\mathbf{x}\to(\infty,\ldots,\infty)} F(\mathbf{x}) = 1$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $F$ is right-continuous, i.e., $F(\mathbf{x}+) := \lim_{\mathbf{y}\downarrow \mathbf{x}} F(\mathbf{y}) = F(\mathbf{x}),$
+          where here $\mathbf{y}\downarrow \mathbf{x}$ means that $y_i\downarrow x_i$ in each coordinate.
+        </p>
+      </li>
+      <li>
+        <p>
+          For $1\le i\le d$ and $a&lt;b$, denote by
+          $\Delta_{a,b}^{x}$
+          the \emph{differencing operator in the variable $x$}, which takes a function $f$ of the real variable $x$ (and possibly also dependent on other variables) and returns the value
+        </p>
+        <div class="math-block">
+          $$
+          \Delta_{a,b}^{x}f = f(b) - f(a)
+          $$
+        </div>
+        <p>
+          Then, for any real numbers $a_1 &lt; b_1$, $a_2&lt;b_2$, \ldots, $a_d &lt; b_d$, we have
+        </p>
+        <div class="math-block">
+          $$
+          \Delta^{x_1}_{a_1,b_1} \Delta^{x_2}_{a_d,b_d}
+          \ldots \Delta^{x_d}_{a_d,b_d} F \ge 0.
+          $$
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof.</span>See Chapter 1 in [Dur2010] or Appendix A.2 in [Dur2004].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>4.9</b>
+      
+    </h3>
+    <p>
+      Any function $F$ satisfying the properties in
+      <a
+        href="./4-2.html#_13_h.a.i_"
+        class=""
+      >Theorem 4.8</a>
+      above is a distribution function of some random vector $\mathbf{X}$.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof.</span>See Chapter 1 in [Dur2010] or Appendix A.2 in [Dur2004].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
 </body>
 </html>

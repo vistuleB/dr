@@ -102,10 +102,9 @@
         representing the fact that the $n$-th coin toss is unbiased. But more generally, for any $n\ge 1$ and $(a_1,a_2,\ldots,a_n) \in \{0,1\}^n$, since the first $n$ coin tosses are independent, $\mathrm{P}$ should satisfy
 
         $$
-        \begin{equation}
+        \begin{equation} eq:indcointosses##<<
         \mathrm{P}\big(A_1(a_1) \cap A_2(a_2) \cap \ldots \cap A_n(a_n)\big) = \frac{1}{2^n}.
-        %quad (n\ge 1, \ \ (a_1,\ldots,a_n)\in\{0,1\}^n) 
-        eq:indcointosses##<<
+        %quad (n\ge 1, \ \ (a_1,\ldots,a_n)\in\{0,1\}^n)
         \end{equation}
         $$
 

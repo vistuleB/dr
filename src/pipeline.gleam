@@ -146,10 +146,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Document", "counter", "ChapterCounter"),
         #("Chapter", "counter", "SectionCounter"),
         #("Chapter", "counter", "StatementCounter"),
-        // #("Chapter", "counter", "EquationCounter"),
         #("Section", "counter", "SubSectionCounter"),
-        // #("Section", "counter", "EquationCounter"),
-      // #("SubSection", "counter", "EquationCounter"),
       ]),
       dl.prepend_attribute(#(
         "Chapter",
@@ -238,8 +235,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         proof_span,
         proof_default,
       )),
-      dl.math_label_to_tag_handle(#("", "::++EquationCounter")),
-      dl.substitute_counters(),
     ],
     pp.create_mathblock_elements(
       [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
@@ -247,6 +242,8 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     ),
     pp.markdown_link_splitting(["MathBlock"]),
     [
+      dl.math_label_to_tag_handle(#("MathBlock", "::++EquationCounter")),
+      dl.substitute_counters(),
       dl.handles_generate_v_definitions_from_t_definitions(),
       dl.dr_create_menu(),
       dl.handles_add_ids(),

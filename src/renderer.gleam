@@ -15,8 +15,6 @@ import simplifile
 import vxml.{type VXML}
 import writerly
 
-const favicon = "favicon.svg"
-
 pub type FragmentType {
   Chapter(Int)
   Section(Int, Int)
@@ -46,6 +44,7 @@ type DocumentInfo {
     lecturer: String,
     date: String,
     banner: String,
+    favicon: String,
   )
 }
 
@@ -550,7 +549,9 @@ fn document_meta_tags(
     OutputLine(
       blame,
       2,
-      "<link rel=\"icon\" type=\"image/svg+xml\" href=\"" <> favicon <> "\">",
+      "<link rel=\"icon\" type=\"image/svg+xml\" href=\""
+        <> document_info.favicon
+        <> "\">",
     ),
   ]
 }
@@ -813,6 +814,11 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     Some(x) -> x.val
   }
   io.println("author set lecturer to be " <> date)
+  let favicon = case infra.v_first_attr_with_key(parsed_contents, "favicon") {
+    None -> panic as "__parent.wly did not specify any favicon attribute"
+    Some(x) -> x.val
+  }
+  io.println("author set favicon to be " <> favicon)
   let document_info =
     DocumentInfo(
       title: title,
@@ -823,6 +829,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       lecturer: lecturer,
       date: date,
       banner: banner,
+      favicon: favicon,
     )
 
   let parameters =

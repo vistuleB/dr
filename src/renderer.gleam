@@ -813,7 +813,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     None -> panic as "__parent.wly did not specify any date attribute"
     Some(x) -> x.val
   }
-  io.println("author set lecturer to be " <> date)
+  io.println("author set date to be " <> date)
   let favicon = case infra.v_first_attr_with_key(parsed_contents, "favicon") {
     None -> panic as "__parent.wly did not specify any favicon attribute"
     Some(x) -> x.val

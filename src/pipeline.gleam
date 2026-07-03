@@ -248,10 +248,9 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.handles_generate_v_definitions_from_t_definitions(),
       dl.dr_create_menu(),
       dl.handles_add_ids(),
-      dl.handles_generate_dictionary_and_id_list("path"),
-      dl.handles_substitute_and_fix_nonlocal_id_links(
-        #("path", "a", "a", [], [], ["a"]),
-      ),
+      dl.handles_generate_dictionary("path"),
+      dl.handles_substitute(#("path", "a", "a", [], [], ["a"])),
+      dl.unwrap("GrandWrapper"),
       dl.tokenize_href_surroundings(),
       dl.rearrange_links_4_pre_tokenized_src__batch([
         #("Lemma <a href=1>_1_</a>", "<a href=1>Lemma _1_</a>"),

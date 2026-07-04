@@ -1,2 +1,56 @@
 |> Section
     title=Properties
+    handle=sec-expec-prop
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            *Expectation is invariant under ``almost-sure equivalence'':* If $X\le Y$ _almost surely_, meaning $\mathrm{P}(X\le Y)=1$, then by the definition we have $\mathbf{E} X \le \mathbf{E} Y$, since any simple function $Z$ such that $Z\le X$ can be replaced with another simple function $Z'$ such that $Z'\le Y$ and $Z=Z'$ almost surely. It follows also that if $X=Y$ almost surely then $\mathbf{E} X=\mathbf{E} Y$.
+        |> li
+            *Triangle inequality:* $|\mathbf{E} X| \le \mathbf{E} |X|$.
+            |> Proof
+                $$ |\mathbf{E} X| = |\mathbf{E} X_+ - \mathbf{E} X_- |  \le \mathbf{E} X_+ + \mathbf{E} X_- = \mathbf{E} |X|. $$
+        |> li
+            *Markov's inequality* (Called Chebyshev's inequality in [Dur2010]):
+            $$ \mathrm{P}(X \ge t) \le \frac{\mathbf{E} X}{t}. $$
+            |> Proof
+                Use monotonicity twice to deduce:
+                $$ \mathrm{P}(X \ge t) = \mathbf{E}(1_{\{X\ge t\}}) \le \mathbf{E}\left[ \frac{1}{t} X 1_{\{X\ge t\}} \right] \le \frac{\mathbf{E} X}{t}. $$
+        |> li
+            *Variance:* If $X$ has finite expectation, we define its $\textbf{variance}$ to be
+            $$ \mathbf{V}(X) = \mathbf{E}(X-\mathbf{E} X)^2. $$
+            If $\mathbf{V}(X)<\infty$, by expanding the square it is easy to rewrite the variance as
+            $$ \mathbf{V}(X) = \mathbf{E}(X^2)-(\mathbf{E} X)^2. $$
+            We denote $\sigma(X) = \sqrt{\mathbf{V}(X)}$ and call this quantity the $\textbf{standard deviation of } X$. Note that if $a\in \R$ then $\mathbf{V}(a X) = a^2 \mathbf{V}(X)$ and $\sigma(a X)=|a| \sigma(X)$.
+        |> li
+            *Chebyshev's inequality:*
+            $$ \mathrm{P} ( | X-\mathbf{E} X| \ge t) \le \frac{\mathbf{V}(X)}{t^2}. $$
+            |> Proof
+                Apply Markov's inequality to $Y=(X-\mathbf{E} X)^2$.
+        |> li
+            *Cauchy-Schwartz inequality:*
+            $$ \mathbf{E}|XY| \le \left(\mathbf{E} X^2 \mathbf{E} Y^2\right)^{1/2}. $$
+            Equality holds if and only if $X$ and $Y$ are linearly dependent, i.e. $aX+bY\equiv 0$ holds for some $a,b\in \R$.
+            |> Proof
+                Consider the function
+                $$ p(t) = \mathbf{E}(|X| + t |Y|)^2 = t^2 \mathbf{E} Y^2 + 2t \mathbf{E}|XY| + \mathbf{E} X^2. $$
+                Since $p(t)=at^2+bt+c$ is a quadratic polynomial in $t$ that satisfies $p(t)\ge 0$ for all $t$, its discriminant $b^2-4ac$ must be non-positive. This gives
+                $$ (\mathbf{E}|XY|)^2 - \mathbf{E} X^2 \mathbf{E} Y^2 \le 0, $$
+                as claimed. The condition for equality is left as an exercise.
+        |> li
+            *Jensen's inequality:* A function $\varphi:\R\to\R$ is called convex if it satisfies
+            $$ \varphi(\alpha x + (1-\alpha)y) \le \alpha \varphi(x)+(1-\alpha)\varphi(y) $$
+            for all $x,y\in\R$ and $\alpha\in [0,1]$. If $\varphi$ is convex then
+            $$ \varphi(\mathbf{E} X) \le \mathbf{E} (\varphi(X)). $$
+            |> Proof
+                See homework.
+        |> li
+            *$L_p$-norm monotonicity:* If $0<r\le s$ then
+            $$
+            \begin{equation} eq:lpnormmono##<<
+            (\mathbf{E}|X|^r)^{1/r} \le (\mathbf{E} |X|^s)^{1/s}.
+            \end{equation}
+            $$
+            |> Proof
+                Apply Jensen's inequality to the r.v. $|X|^r$ with the convex function $\varphi(x) = x^{s/r}$.

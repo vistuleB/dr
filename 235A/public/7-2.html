@@ -40,5 +40,176 @@
     7.2
     Properties
   </h1>
+  <ol
+    class="list"
+    data-list-style="decimal"
+  >
+    <li>
+      <p>
+        <b>Expectation is invariant under "almost-sure equivalence":</b>
+        If $X\le Y$
+        <i>almost surely</i>, meaning $\mathrm{P}(X\le Y)=1$, then by the definition we have $\mathbf{E} X \le \mathbf{E} Y$, since any simple function $Z$ such that $Z\le X$ can be replaced with another simple function $Z'$ such that $Z'\le Y$ and $Z=Z'$ almost surely. It follows also that if $X=Y$ almost surely then $\mathbf{E} X=\mathbf{E} Y$.
+      </p>
+    </li>
+    <li>
+      <p>
+        <b>Triangle inequality:</b>
+        $|\mathbf{E} X| \le \mathbf{E} |X|$.
+      </p>
+      <div>
+        <p>
+          <span class="proof">Proof</span>
+        </p>
+        <div class="math-block">
+          $$
+          |\mathbf{E} X| = |\mathbf{E} X_+ - \mathbf{E} X_- |  \le \mathbf{E} X_+ + \mathbf{E} X_- = \mathbf{E} |X|.
+          $$
+        </div>
+        <p>
+          <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+        </p>
+      </div>
+    </li>
+    <li>
+      <p>
+        <b>Markov's inequality</b>
+        (Called Chebyshev's inequality in [Dur2010]):
+      </p>
+      <div class="math-block">
+        $$
+        \mathrm{P}(X \ge t) \le \frac{\mathbf{E} X}{t}.
+        $$
+      </div>
+      <div>
+        <p>
+          <span class="proof">Proof</span>Use monotonicity twice to deduce:
+        </p>
+        <div class="math-block">
+          $$
+          \mathrm{P}(X \ge t) = \mathbf{E}(1_{\{X\ge t\}}) \le \mathbf{E}\left[ \frac{1}{t} X 1_{\{X\ge t\}} \right] \le \frac{\mathbf{E} X}{t}.
+          $$
+        </div>
+        <p>
+          <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+        </p>
+      </div>
+    </li>
+    <li>
+      <p>
+        <b>Variance:</b>
+        If $X$ has finite expectation, we define its $\textbf{variance}$ to be
+      </p>
+      <div class="math-block">
+        $$
+        \mathbf{V}(X) = \mathbf{E}(X-\mathbf{E} X)^2.
+        $$
+      </div>
+      <p>
+        If $\mathbf{V}(X)&lt;\infty$, by expanding the square it is easy to rewrite the variance as
+      </p>
+      <div class="math-block">
+        $$
+        \mathbf{V}(X) = \mathbf{E}(X^2)-(\mathbf{E} X)^2.
+        $$
+      </div>
+      <p>
+        We denote $\sigma(X) = \sqrt{\mathbf{V}(X)}$ and call this quantity the $\textbf{standard deviation of } X$. Note that if $a\in \R$ then $\mathbf{V}(a X) = a^2 \mathbf{V}(X)$ and $\sigma(a X)=|a| \sigma(X)$.
+      </p>
+    </li>
+    <li>
+      <p>
+        <b>Chebyshev's inequality:</b>
+      </p>
+      <div class="math-block">
+        $$
+        \mathrm{P} ( | X-\mathbf{E} X| \ge t) \le \frac{\mathbf{V}(X)}{t^2}.
+        $$
+      </div>
+      <div>
+        <p>
+          <span class="proof">Proof</span>Apply Markov's inequality to $Y=(X-\mathbf{E} X)^2$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+        </p>
+      </div>
+    </li>
+    <li>
+      <p>
+        <b>Cauchy-Schwartz inequality:</b>
+      </p>
+      <div class="math-block">
+        $$
+        \mathbf{E}|XY| \le \left(\mathbf{E} X^2 \mathbf{E} Y^2\right)^{1/2}.
+        $$
+      </div>
+      <p>
+        Equality holds if and only if $X$ and $Y$ are linearly dependent, i.e. $aX+bY\equiv 0$ holds for some $a,b\in \R$.
+      </p>
+      <div>
+        <p>
+          <span class="proof">Proof</span>Consider the function
+        </p>
+        <div class="math-block">
+          $$
+          p(t) = \mathbf{E}(|X| + t |Y|)^2 = t^2 \mathbf{E} Y^2 + 2t \mathbf{E}|XY| + \mathbf{E} X^2.
+          $$
+        </div>
+        <p>
+          Since $p(t)=at^2+bt+c$ is a quadratic polynomial in $t$ that satisfies $p(t)\ge 0$ for all $t$, its discriminant $b^2-4ac$ must be non-positive. This gives
+        </p>
+        <div class="math-block">
+          $$
+          (\mathbf{E}|XY|)^2 - \mathbf{E} X^2 \mathbf{E} Y^2 \le 0,
+          $$
+        </div>
+        <p>
+          as claimed. The condition for equality is left as an exercise.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+        </p>
+      </div>
+    </li>
+    <li>
+      <p>
+        <b>Jensen's inequality:</b>
+        A function $\varphi:\R\to\R$ is called convex if it satisfies
+      </p>
+      <div class="math-block">
+        $$
+        \varphi(\alpha x + (1-\alpha)y) \le \alpha \varphi(x)+(1-\alpha)\varphi(y)
+        $$
+      </div>
+      <p>
+        for all $x,y\in\R$ and $\alpha\in [0,1]$. If $\varphi$ is convex then
+      </p>
+      <div class="math-block">
+        $$
+        \varphi(\mathbf{E} X) \le \mathbf{E} (\varphi(X)).
+        $$
+      </div>
+      <div>
+        <p>
+          <span class="proof">Proof</span>See homework.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+        </p>
+      </div>
+    </li>
+    <li>
+      <p>
+        <b>$L_p$-norm monotonicity:</b>
+        If $0&lt;r\le s$ then
+      </p>
+      <div
+        id="_16_h.a.i_"
+        class="math-block"
+      >
+        $$
+        \begin{equation} \tag{6}
+        (\mathbf{E}|X|^r)^{1/r} \le (\mathbf{E} |X|^s)^{1/s}.
+        \end{equation}
+        $$
+      </div>
+      <div>
+        <p>
+          <span class="proof">Proof</span>Apply Jensen's inequality to the r.v. $|X|^r$ with the convex function $\varphi(x) = x^{s/r}$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+        </p>
+      </div>
+    </li>
+  </ol>
 </body>
 </html>

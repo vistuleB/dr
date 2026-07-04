@@ -22,7 +22,7 @@
   <meta property="twitter:description" content="Probability Theory Lecture Notes for MATH/STAT 235A, Fall 2013, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -38,7 +38,36 @@
   </div>
   <h1>
     8.11
-    The uniform distribution
+    The Cauchy distribution
   </h1>
+  <p>
+    <b>Summary: Special distributions</b>
+  </p>
+  <div class="math-block">
+    $$
+    \begin{array}{|l|l|lc|c|c|c|}
+    \hline
+    \text{Name} &amp; \text{Notation} &amp; \text{Formula} &amp; &amp; \textbf{E}(X) &amp; \textbf{V}(X) &amp; \textbf{E}(X^k) \\
+    \hline
+    \text{Discrete uniform} &amp; X\sim U\{1,\ldots,n\} &amp; \mathbf{P}(X=k) = \frac{1}{n} &amp; (1\le k\le n) &amp; \frac{n+1}{2} &amp; \frac{n^2-1}{12} &amp; \\
+    \text{Bernoulli} &amp; X\sim \textrm{Bernoulli}(p) &amp; \mathbf{P}(X=0)=1-p,\ \mathbf{P}(X=1)=p &amp; &amp; p &amp; p(1-p) &amp; p \\
+    \text{Binomial} &amp; X\sim \textrm{Binomial}(n,p) &amp; \mathbf{P}(X=k)=\binom{n}{k}p^k (1-p)^{n-k} &amp; (0\le k\le n) &amp; np &amp; np(1-p) &amp; \\
+    \text{Geometric (from 0)} &amp; X\sim \textrm{Geom}_0(p) &amp; \mathbf{P}(X=k)=p(1-p)^{k} &amp; (k\ge 0) &amp; \frac{1}{p}-1 &amp; \frac{1-p}{p^2} &amp; \\
+    \text{Geometric (from 1)} &amp; X\sim \textrm{Geom}(p) &amp; \mathbf{P}(X=k)=p(1-p)^{k-1} &amp; (k\ge 1) &amp; \frac{1}{p} &amp; \frac{1-p}{p^2} &amp; \\
+    \text{Poisson} &amp; X\sim \textrm{Poisson}(\lambda) &amp; \mathbf{P}(X=k)=e^{-\lambda} \frac{\lambda^k}{k!} &amp; (k\ge 0) &amp; \lambda &amp; \lambda &amp; {\scriptsize \text{Bell numbers (for } \lambda=1 \text{)}} \\
+    \text{Negative binomial} &amp; X\sim \textrm{NB}(m,p) &amp; \mathbf{P}(X=k)=\binom{k+m-1}{m-1} p^m (1-p)^k &amp; (k\ge 0) &amp; \frac{m(1-p)}{p} &amp; \frac{m(1-p)}{p^2} &amp; \\
+    \hline
+    \text{Uniform} &amp; X\sim U(a,b) &amp; f_X(x) = \frac{1}{b-a} &amp; (a&lt;x&lt;b) &amp; \frac{a+b}{2} &amp; \frac{(b-a)^2}{12} &amp; \frac{b^{k+1}-a^{k+1}}{(k+1)(b-a)} \\
+    \text{Exponential} &amp; X\sim \textrm{Exp}(\lambda) &amp; f_X(x) = \lambda e^{-\lambda x} &amp; (x&gt;0) &amp; \frac{1}{\lambda} &amp; \frac{1}{\lambda^2} &amp; \lambda^{-k} k! \\
+    \text{Standard normal} &amp; X\sim N(0,1) &amp; f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2} &amp; (x\in\mathbb{R}) &amp; 0 &amp; 1 &amp; {\scriptsize \begin{cases} \dfrac{k!}{(k/2)!\,2^{k/2}} &amp; k \text{ even}\\ 0 &amp; k \text{ odd}\end{cases}} \\
+    \text{Normal} &amp; X\sim N(\mu,\sigma^2) &amp; f_X(x) = \frac{1}{\sqrt{2\pi}\,\sigma} e^{-(x-\mu)^2/2\sigma^2} &amp; (x\in\mathbb{R}) &amp; \mu &amp; \sigma^2 &amp; \\
+    \text{Gamma} &amp; X\sim \textrm{Gamma}(\alpha, \lambda) &amp; f_X(x)=\frac{\lambda^\alpha}{\Gamma(\alpha)} e^{-\lambda x} x^{\alpha-1} &amp; (x&gt;0) &amp; \frac{\alpha}{\lambda} &amp; \frac{\alpha}{\lambda^2} &amp; \lambda^{-k} \frac{\Gamma(\alpha+k)}{\Gamma(\alpha)} \\
+    \text{Cauchy} &amp; X \sim \textrm{Cauchy} &amp; f_X(x) = \frac{1}{\pi} \frac{1}{1+x^2} &amp; (x\in\mathbb{R}) &amp; \text{N/A} &amp; \text{N/A} &amp; \text{N/A} \\
+    \text{Beta} &amp; X \sim \textrm{Beta}(a,b) &amp; f_X(x) = \frac{1}{B(a,b)} x^{a-1} (1-x)^{b-1} &amp; (0&lt;x&lt;1) &amp; \frac{a}{a+b} &amp; \frac{a b}{(a+b)^2(a+b+1)} &amp; \frac{B(a+k,b)}{B(a,b)} \\
+    \text{Chi-squared} &amp; X\sim \chi^2_{(n)} &amp; f_X(x) = \frac{1}{2^{n/2}\Gamma(n/2)} e^{-x/2} x^{\frac{n}{2}-1} &amp; (x&gt;0) &amp; n &amp; 2n &amp; \\
+    \hline
+    \end{array}
+    $$
+  </div>
 </body>
 </html>

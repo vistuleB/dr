@@ -1,2 +1,29 @@
 |> Section
-    title=The uniform distribution
+    title=The Cauchy distribution
+
+    *Summary: Special distributions*
+
+    $$
+    \begin{array}{|l|l|lc|c|c|c|}
+    \hline
+    \text{Name} & \text{Notation} & \text{Formula} & & \textbf{E}(X) & \textbf{V}(X) & \textbf{E}(X^k) \\
+    \hline
+    \text{Discrete uniform} & X\sim U\{1,\ldots,n\} & \mathbf{P}(X=k) = \frac{1}{n} & (1\le k\le n) & \frac{n+1}{2} & \frac{n^2-1}{12} & \\
+    \text{Bernoulli} & X\sim \textrm{Bernoulli}(p) & \mathbf{P}(X=0)=1-p,\ \mathbf{P}(X=1)=p & & p & p(1-p) & p \\
+    \text{Binomial} & X\sim \textrm{Binomial}(n,p) & \mathbf{P}(X=k)=\binom{n}{k}p^k (1-p)^{n-k} & (0\le k\le n) & np & np(1-p) & \\
+    \text{Geometric (from 0)} & X\sim \textrm{Geom}_0(p) & \mathbf{P}(X=k)=p(1-p)^{k} & (k\ge 0) & \frac{1}{p}-1 & \frac{1-p}{p^2} & \\
+    \text{Geometric (from 1)} & X\sim \textrm{Geom}(p) & \mathbf{P}(X=k)=p(1-p)^{k-1} & (k\ge 1) & \frac{1}{p} & \frac{1-p}{p^2} & \\
+    \text{Poisson} & X\sim \textrm{Poisson}(\lambda) & \mathbf{P}(X=k)=e^{-\lambda} \frac{\lambda^k}{k!} & (k\ge 0) & \lambda & \lambda & {\scriptsize \text{Bell numbers (for } \lambda=1 \text{)}} \\
+    \text{Negative binomial} & X\sim \textrm{NB}(m,p) & \mathbf{P}(X=k)=\binom{k+m-1}{m-1} p^m (1-p)^k & (k\ge 0) & \frac{m(1-p)}{p} & \frac{m(1-p)}{p^2} & \\
+    \hline
+    \text{Uniform} & X\sim U(a,b) & f_X(x) = \frac{1}{b-a} & (a<x<b) & \frac{a+b}{2} & \frac{(b-a)^2}{12} & \frac{b^{k+1}-a^{k+1}}{(k+1)(b-a)} \\
+    \text{Exponential} & X\sim \textrm{Exp}(\lambda) & f_X(x) = \lambda e^{-\lambda x} & (x>0) & \frac{1}{\lambda} & \frac{1}{\lambda^2} & \lambda^{-k} k! \\
+    \text{Standard normal} & X\sim N(0,1) & f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2} & (x\in\mathbb{R}) & 0 & 1 & {\scriptsize \begin{cases} \dfrac{k!}{(k/2)!\,2^{k/2}} & k \text{ even}\\ 0 & k \text{ odd}\end{cases}} \\
+    \text{Normal} & X\sim N(\mu,\sigma^2) & f_X(x) = \frac{1}{\sqrt{2\pi}\,\sigma} e^{-(x-\mu)^2/2\sigma^2} & (x\in\mathbb{R}) & \mu & \sigma^2 & \\
+    \text{Gamma} & X\sim \textrm{Gamma}(\alpha, \lambda) & f_X(x)=\frac{\lambda^\alpha}{\Gamma(\alpha)} e^{-\lambda x} x^{\alpha-1} & (x>0) & \frac{\alpha}{\lambda} & \frac{\alpha}{\lambda^2} & \lambda^{-k} \frac{\Gamma(\alpha+k)}{\Gamma(\alpha)} \\
+    \text{Cauchy} & X \sim \textrm{Cauchy} & f_X(x) = \frac{1}{\pi} \frac{1}{1+x^2} & (x\in\mathbb{R}) & \text{N/A} & \text{N/A} & \text{N/A} \\
+    \text{Beta} & X \sim \textrm{Beta}(a,b) & f_X(x) = \frac{1}{B(a,b)} x^{a-1} (1-x)^{b-1} & (0<x<1) & \frac{a}{a+b} & \frac{a b}{(a+b)^2(a+b+1)} & \frac{B(a+k,b)}{B(a,b)} \\
+    \text{Chi-squared} & X\sim \chi^2_{(n)} & f_X(x) = \frac{1}{2^{n/2}\Gamma(n/2)} e^{-x/2} x^{\frac{n}{2}-1} & (x>0) & n & 2n & \\
+    \hline
+    \end{array}
+    $$

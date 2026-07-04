@@ -1,2 +1,21 @@
 |> Section
     title=The Poisson distribution
+
+    We say that $X$ has the Poisson distribution with parameter $\lambda>0$, and denote $X\sim \operatorname{Poi}(\lambda)$, if $X$ satisfies
+    $$
+    \mathrm{P}(X=k) = e^{-\lambda} \frac{\lambda^k}{k!} \qquad (k\ge 0).
+    $$
+
+    $\textbf{Properties:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $\operatorname{Poi}(\lambda) \mathop{\boxplus} \operatorname{Poi}(\mu) = \operatorname{Poi}(\lambda+\mu)$.
+        |> li
+            The Poisson distribution is the limit of the binomial distributions $\operatorname{Bin}(n,p)$ where the number $n$ of experiments tends to infinity and the probability $p$ of success in each individual experiment goes to $0$ in such a way that the mean number $np$ of successes stays fixed. More precisely, if $X\sim \operatorname{Poi}(\lambda)$ and for each $n$, $W_n$ is a r.v. with distribution $\operatorname{Bin}(n,\lambda/n)$, then
+            $$ \mathrm{P}(W_n = k) \xrightarrow[n\to\infty]{} \mathrm{P}(X=k) \qquad (k\ge 0). $$
+            (This is known as the $\textbf{law of rare events}$; see Section >>sec-poisson-limit for the proof of a similar result that holds in much greater generality.)
+        |> li
+            If $X \sim \operatorname{Poi}(\lambda)$ then $\mathbf{E} X = \lambda$, $\mathbf{V}(X)=\lambda$.

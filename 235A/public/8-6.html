@@ -40,5 +40,36 @@
     8.6
     The uniform distribution
   </h1>
+  <p>
+    We say that $X$ has the uniform distribution in the interval $[a,b]$, and denote $X\sim U[a,b]$, if $X$ has density function
+  </p>
+  <div class="math-block">
+    $$
+    f_X(x) = \begin{cases} \frac{1}{b-a} &amp; \textrm{if }a&lt;x&lt;b, \\ 0 &amp; \textrm{otherwise}. \end{cases},
+    $$
+  </div>
+  <p>
+    or equivalently if the c.d.f. of $X$ is given by
+  </p>
+  <div class="math-block">
+    $$
+    F_X(x) = \begin{cases} 0 &amp; \textrm{if }x&lt;a, \\
+    \frac{x-a}{b-a} &amp; \textrm{if }a\le x\le b, \\
+    1 &amp; \textrm{if }x&gt;b. \end{cases}.
+    $$
+  </div>
+  <p>
+    $\textbf{Properties:}$
+  </p>
+  <ol
+    class="list"
+    data-list-style="decimal"
+  >
+    <li>
+      <p>
+        $\mathbf{E}(X) = \frac{a+b}{2}$, $\mathbf{V}(X) = \frac{(b-a)^2}{12}$.
+      </p>
+    </li>
+  </ol>
 </body>
 </html>

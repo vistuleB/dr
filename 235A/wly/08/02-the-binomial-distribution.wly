@@ -1,2 +1,21 @@
 |> Section
     title=The binomial distribution
+
+    We say that $X$ has the binomial distribution with parameters $n\ge 1$ and $0<p<1$, and denote $X\sim \operatorname{Bin}(n,p)$, if $X$ satisfies
+    $$
+    \mathrm{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \qquad (0\le k\le n).
+    $$
+
+    $\textbf{Properties:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $\operatorname{Bin}(1,p) \stackrel{d}{=} \operatorname{Ber}(p)$.
+        |> li
+            $\operatorname{Bin}(n,p) \boxplus \operatorname{Bin}(m,p) \stackrel{d}{=} \operatorname{Bin}(n+m,p)$.
+        |> li
+            $\operatorname{Bin}(n,p) \stackrel{d}{=} \mathop{\boxplus}\limits_{k=1}^n \operatorname{Ber}(p)$. That is, the binomial distribution models the number of successes when $n$ identical experiments are performed independently, where each experiment has probability $p$ of success.
+        |> li
+            If $X\sim \operatorname{Bin}(n,p)$ then $\mathbf{E} X = np$, $\mathbf{V}(X) = np(1-p)$.

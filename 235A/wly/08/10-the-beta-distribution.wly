@@ -1,2 +1,36 @@
 |> Section
-    title=The Cauchy distribution
+    title=The beta distribution
+
+    Define the $\textbf{Euler beta function}$ (which is closely related to the Euler gamma function) by
+    $$ B(a,b) = \int_0^1 u^{a-1}(1-u)^{b-1}\,du \qquad (a,b>0). $$
+
+    $\textbf{Properties of the beta function:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $B(a,b) = \frac{\Gamma(a) \Gamma(b)}{\Gamma(a+b)}$.
+        |> li
+            For integer $m,n\ge 1$, $B(m,n) = \frac{(m-1)! (n-1)!}{(m+n-1)!}$.
+
+    We say that $X$ has the beta distribution with parameters $a,b>0$, and denote $X\sim \operatorname{Beta}(a,b)$, if $X$ has density function
+    $$
+    f_X(x) = \frac{1}{B(a,b)} x^{a-1} (1-x)^{b-1} \qquad (0<x<1).
+    $$
+
+    $\textbf{Properties of the beta distribution:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $U[0,1] \stackrel{d}{=} \operatorname{Beta}(1,1)$.
+        |> li
+            If $X \sim \operatorname{Gamma}(\alpha,\lambda)$ and $Y\sim \operatorname{Gamma}(\beta,\lambda)$ are independent, then $U = \frac{X}{X+Y}$ has distribution $\operatorname{Beta}(\alpha,\beta)$, and is independent of $X+Y$.
+        |> li
+            If $X_1,X_2,\ldots$ is a sequence of i.i.d. r.v.s with distribution $\operatorname{Exp}(\lambda)$, and $S_m = \sum_{k=1}^m X_k$ are the cumulative sums of the sequence, then for all $n\ge k\ge1$, $S_k/S_n \sim \operatorname{Beta}(k,n-k)$, and $S_k/S_n$ is independent of $S_n$.
+        |> li
+            If $X\sim \operatorname{Beta}(a,b)$ then $\mathbf{E} X = \frac{a}{a+b}$, $\mathbf{V}(X) = \frac{ab}{(a+b)^2 (a+b+1)}$.
+        |> li
+            If $X_1,\ldots,X_n$ are i.i.d. $U[0,1]$ random variables, and $X^{(1)} < X^{(2)} < \ldots < X^{(n)}$ are their order statistics, i.e., $X^{(k)}$ is defined as the $k$th smallest among the numbers $X_1,\ldots,X_n$, then $X^{(k)} \sim \operatorname{Beta}(k,n+1-k)$.

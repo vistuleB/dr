@@ -1,2 +1,23 @@
 |> Section
     title=The negative binomial distribution
+
+    We say that $X$ has the negative binomial distribution with parameters $m\ge1$ and $0<p<1$, and denote $X\sim \operatorname{NB}(m,p)$, if $X$ satisfies
+    $$
+    \mathrm{P}(X=k) = \binom{k+m-1}{k} p^m (1-p)^k \qquad (k\ge 0).
+    $$
+
+    $\textbf{Properties:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $\operatorname{NB}(1,p) \stackrel{d}{=} \operatorname{Geom_0}(1-p)$.
+        |> li
+            $\operatorname{NB}(m,p) \boxplus \operatorname{NB}(n,p) = \operatorname{NB}(n+m,p)$.
+        |> li
+            If $W_1,W_2,W_3, \ldots$ is a sequence of i.i.d. r.v.'s with distribution $\operatorname{Ber}(p)$, then
+            $$ X = \min\left\{ k\ge 0\,:\, \sum_{j=1}^{k+m} (1-W_j) = m\right\}  \sim \operatorname{NB}(m,p). $$
+            In words, when performing a sequence of identical experiments, each with probability $p$ of success, the number of successes observed before the $m$th failure is distributed according to $\operatorname{NB}(m,p)$.
+        |> li
+            $\operatorname{NB}(m,p) = \mathop{\boxplus}\limits_{k=1}^m \operatorname{Geom_0}(1-p)$.

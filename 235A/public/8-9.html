@@ -40,5 +40,77 @@
     8.9
     The gamma distribution
   </h1>
+  <p>
+    To define the gamma distribution, first we define the $\textbf{Euler gamma function}$ (also called the $\textbf{generalized factorial function}$), an important special function of mathematical analysis, denoted $\Gamma(t)$, by
+  </p>
+  <div class="math-block">
+    $$
+    \Gamma(t) = \int_0^\infty e^{-x} x^{t-1}\,dt \qquad (t&gt;0).
+    $$
+  </div>
+  <p>
+    $\textbf{Properties of the gamma function:}$
+  </p>
+  <ol
+    class="list"
+    data-list-style="decimal"
+  >
+    <li>
+      <p>
+        $\Gamma(n)=(n-1)!$ for integer $n\ge1$.
+      </p>
+    </li>
+    <li>
+      <p>
+        $\Gamma(t+1) = t\, \Gamma(t)$ for all $t&gt;0$.
+      </p>
+    </li>
+    <li>
+      <p>
+        $\Gamma(1/2)=\sqrt{\pi}$.
+      </p>
+    </li>
+  </ol>
+  <p>
+    Next, we say that $X$ has the gamma distribution with parameters $\alpha, \lambda&gt;0$, and denote $X\sim \operatorname{Gamma}(\lambda)$, if $X$ has density function
+  </p>
+  <div class="math-block">
+    $$
+    f_X(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} e^{-\lambda x} x^{\alpha-1} \qquad (x&gt;0).
+    $$
+  </div>
+  <p>
+    $\textbf{Properties of the gamma distribution:}$
+  </p>
+  <ol
+    class="list"
+    data-list-style="decimal"
+  >
+    <li>
+      <p>
+        $\operatorname{Exp}(\lambda) \stackrel{d}{=} \operatorname{Gamma}(1,\lambda)$.
+      </p>
+    </li>
+    <li>
+      <p>
+        The parameter $\lambda$ has the role of a scale parameter in the same sense as for the exponential distribution: for $c&gt;0$ we have $c \operatorname{Gamma}(\alpha,\lambda) \stackrel{d}{=} \operatorname{Gamma}(\alpha, \lambda/c)$.
+      </p>
+    </li>
+    <li>
+      <p>
+        $\operatorname{Gamma}(\alpha,\lambda) \boxplus \operatorname{Gamma}(\beta,\lambda) = \operatorname{Gamma}(\alpha+\beta,\lambda)$.
+      </p>
+    </li>
+    <li>
+      <p>
+        $\operatorname{Gamma}(\alpha,\lambda) = \mathop{\boxplus}\limits_{k=1}^n \operatorname{Exp}(\lambda)$.
+      </p>
+    </li>
+    <li>
+      <p>
+        If $X\sim \operatorname{Gamma}(\alpha,\lambda)$ then $\mathbf{E} X = \frac{\alpha}{\lambda}$, $\mathbf{V}(X) = \frac{\alpha}{\lambda^2}$.
+      </p>
+    </li>
+  </ol>
 </body>
 </html>

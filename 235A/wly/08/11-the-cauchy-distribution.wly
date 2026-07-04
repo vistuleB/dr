@@ -1,6 +1,26 @@
 |> Section
     title=The Cauchy distribution
 
+    We say that $X$ has the Cauchy distribution, and denote $X \sim \textrm{Cauchy}$, if $X$ has the density
+    $$
+    f_X(x) = \frac{1}{\pi} \frac{1}{1+x^2}.
+    $$
+
+    $\textbf{Properties:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $\mathbf{E} |X|=\infty$, i.e., the Cauchy distribution has no expectation.
+        |> li
+            If $X,Y \sim \textrm{Cauchy}$ are independent then their average $\frac12(X+Y)$ is also distributed according to the Cauchy distribution.
+        |> li
+            More generally, if $X_1,\ldots,X_n \sim \textrm{Cauchy}$ and $\alpha_1,\ldots,\alpha_n\ge 0$ are numbers such that $\sum_j \alpha_j = 1$, then the weighted average
+            $$ \sum_{j=1}^n \alpha_j X_j \sim \textrm{Cauchy}. $$
+        |> li
+            If $\Theta \sim U[-\pi/2,\pi/2]$ then $X=\tan \Theta \sim \textrm{Cauchy}$.
+
     *Summary: Special distributions*
 
     $$

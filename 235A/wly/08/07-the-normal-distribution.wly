@@ -1,2 +1,48 @@
 |> Section
     title=The normal distribution
+    handle=sec-normal-dist
+
+    We say that $X$ has the normal (a.k.a. gaussian) distribution with mean $\mu$ and variance $\sigma^2$, and denote $X\sim N(\mu,\sigma^2)$, if $X$ has density function
+    $$
+    f_X(x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-(x-\mu)^2/2\sigma^2} \qquad (x\in\R).
+    $$
+    In particular, the standard normal distribution is the distribution $N(0,1)$, whose density function is given by
+    $$
+    f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2} \qquad (x\in\R).
+    $$
+
+    $\textbf{Properties:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            If $X\sim N(\mu,\sigma^2)$ then $\mathbf{E}(X)=\mu$, $\mathbf{V}(X) =\sigma^2$.
+        |> li
+            $N(\mu_1,\sigma_1^2) \boxplus N(\mu_2,\sigma_2^2) = N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$.
+        |> li
+            If $X,Y\sim N(0,1)$ are independent and standard normal then $\frac{1}{\sqrt{2}}(X+Y) \sim N(0,1)$.
+        |> li
+            More generally, if $X_1,\ldots,X_n \sim N(0,1)$ are independent standard normal r.v.s then
+            $$ \frac{1}{\sqrt{n}}(X_1+\ldots+X_n) \sim N(0,1), $$
+            and also
+            $$ \sum_{j=1}^n \alpha_j X_j \sim N(0,1) $$
+            if $\alpha_1,\ldots,\alpha_n$ are real numbers such that $\sum_j \alpha_j^2 = 1$. (Geometrically, $\mathbf{\alpha}\cdot \mathbf{X} = \sum_{j=1}^n \alpha_j X_j$ can be interpreted as the projection of the random vector $(X_1,\ldots,X_n)$ in $\R^n$ in the direction of the unit vector $\mathbf{\alpha}=(\alpha_1,\ldots,\alpha_n)$.)
+        |> li
+            If $X\sim N(0,1)$ then
+            $$
+            \mathbf{E}(X^k) = \begin{cases}
+            0 & \textrm{if } k \textrm{ is odd}, \\
+            1\cdot 3 \cdot 5 \cdot \ldots \cdot (k-1) & \textrm{if } k \textrm{ is even}.
+            \end{cases}
+            $$
+        |> li
+            The normal distribution is the single most important distribution in probability! The theoretical reason for this is the $\textbf{Central Limit Theorem}$, a result we will discuss in detail in chapters 11--14.
+        |> li
+            The polar decomposition of a bivariate standard normal vector: given a pair $(X,Y)$ of random variables which in the polar representation are written as $X=R\cos\Theta$, $Y=R\sin \Theta$, where $R>0$ and $0\le \Theta<2\pi$, we have
+            $$
+            \begin{align*}
+            X,Y\sim N(0,1), & \ X,Y\textrm{ are independent }
+            \\ & \iff R^2 \sim \operatorname{Exp}(1/2), \ \Theta\sim U[0,2\pi]\ \textrm{and } R,\Theta \textrm{ are independent.}
+            \end{align*}
+            $$

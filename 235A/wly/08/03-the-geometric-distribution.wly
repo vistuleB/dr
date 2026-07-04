@@ -1,2 +1,31 @@
 |> Section
     title=The geometric distribution
+
+    We say that $X$ has the geometric distribution with parameter $0<p<1$, and denote $X\sim \operatorname{Geom}(p)$, if $X$ satisfies
+    $$
+    \mathrm{P}(X=k) = p(1-p)^{k-1} \qquad (k \ge 1).
+    $$
+
+    Some authors prefer a slightly different convention whereby the geometric random variables take nonnegative values (including $0$) rather than only positive values. Thus, denote $X' \sim \operatorname{Geom_0}(p)$, and say that $X'$ has the geometric distribution starting from $0$, if it satisfies
+    $$
+    \mathrm{P}(X'=k) = p(1-p)^{k} \qquad (k \ge ).
+    $$
+
+    $\textbf{Properties:}$
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $\operatorname{Geom}(p) \stackrel{d}{=} \operatorname{Geom_0}(p) + 1$.
+        |> li
+            If $W_1,W_2,W_3, \ldots$ is a sequence of i.i.d. r.v.'s with distribution $\operatorname{Ber}(p)$, then
+            $$ X = \min\{ k\ge 1\,:\, W_k = 1\}  \sim \operatorname{Geom}(p). $$
+            That is, the distribution $\operatorname{Geom}(p)$ models the number of identical independent experiments we had to perform to get the first successful outcome, when each experiment has probability $p$ of success. The variant $\operatorname{Geom_0}(p)$ corresponds to the number of _failed_ experiments before the first success.
+        |> li
+            The geometric distribution has the (discrete) $\textbf{lack of memory property}$. More precisely, if $X \sim \operatorname{Geom}(p)$ then
+            $$ \mathrm{P}(X \ge n+k \ |\ X \ge k) = \mathrm{P}(X \ge n)\qquad \textrm{ for all $n,k\ge 1$}. $$
+        |> li
+            If $X\sim \operatorname{Geom}(p)$ then $\mathbf{E} X = \frac1p$, $\mathbf{V}(X) = \frac{1-p}{p^2}$.
+        |> li
+            If $X'\sim \operatorname{Geom}(p)$ then $\mathbf{E} X' = \frac{1-p}{p}$, $\mathbf{V}(X') = \frac{1-p}{p^2}$.

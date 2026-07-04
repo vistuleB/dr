@@ -13,8 +13,8 @@
     assumptions they converge (almost surely, or
     in $L_1$ or according to some other notion of
     convergence). This is made precise in a family
-    of important results known as \emph{martingale
-    convergence theorems}. Our goal in the next few
+    of important results known as _martingale
+    convergence theorems_. Our goal in the next few
     chapters will be to develop the basic theory
     of martingales and its applications and prove
     some of the martingale convergence theorems.

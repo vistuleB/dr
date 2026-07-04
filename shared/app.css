@@ -156,12 +156,14 @@ ol.list li > * {
 }
 
 .definition .label::before,
-.theorem .label::before {
+.theorem .label::before,
+.lemma .label::before {
     content: "(";
 }
 
 .definition .label::after,
-.theorem .label::after {
+.theorem .label::after,
+.lemma .label::after {
     content: "). ";
 }
 

@@ -1,7 +1,7 @@
 |> Section
     title=Random vectors
 
-    A random variable is a real-valued measurable function defined on a probability space $(\Omega, {\cal F}, \mathrm{P})$ (when we talk of $\R$ as a measurable space, it will always be taken to mean with the $\sigma$-algebra of Borel sets). Similarly, we now wish to talk about \emph{vector}-valued measurable functions on a probability space, i.e., functions taking values in $\R^d$. First, we need to identify a good $\sigma$-algebra of subsets of $\R^d$. Risking some confusion, we will still call it the Borel $\sigma$-algebra and denote it by ${\cal B}$, or sometimes by ${\cal B}(\R^d)$.
+    A random variable is a real-valued measurable function defined on a probability space $(\Omega, {\cal F}, \mathrm{P})$ (when we talk of $\R$ as a measurable space, it will always be taken to mean with the $\sigma$-algebra of Borel sets). Similarly, we now wish to talk about _vector_-valued measurable functions on a probability space, i.e., functions taking values in $\R^d$. First, we need to identify a good $\sigma$-algebra of subsets of $\R^d$. Risking some confusion, we will still call it the Borel $\sigma$-algebra and denote it by ${\cal B}$, or sometimes by ${\cal B}(\R^d)$.
 
     |> Definition
         handle=defi-borelrd

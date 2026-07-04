@@ -121,6 +121,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.prepend_attribute_as_wrapped_text(#("Definition", "label", label_span)),
       dl.prepend_attribute_as_wrapped_text(#("Example", "label", label_span)),
       dl.prepend_attribute_as_wrapped_text(#("Theorem", "label", label_span)),
+      dl.prepend_attribute_as_wrapped_text(#("Lemma", "label", label_span)),
       dl.rename_with_attributes__batch([
         #("Definition", "Statement", [
           #("title", "*Definition*"),
@@ -136,7 +137,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         ]),
         #("Lemma", "Statement", [
           #("title", "*Lemma*"),
-          #("class", "statement"),
+          #("class", "statement lemma"),
         ]),
         #("Theorem", "Statement", [
           #("title", "*Theorem*"),

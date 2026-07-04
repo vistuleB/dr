@@ -48,7 +48,7 @@
             |> li 
                 For $1\le i\le d$ and $a<b$, denote by
                 $ \Delta_{a,b}^{x} $
-                the \emph{differencing operator in the variable $x$}, which takes a function $f$ of the real variable $x$ (and possibly also dependent on other variables) and returns the value
+                the _differencing operator in the variable $x$_, which takes a function $f$ of the real variable $x$ (and possibly also dependent on other variables) and returns the value
                 $$ \Delta_{a,b}^{x}f = f(b) - f(a) $$
                 Then, for any real numbers $a_1 < b_1$, $a_2<b_2$, \ldots, $a_d < b_d$, we have
                 $$ \Delta^{x_1}_{a_1,b_1} \Delta^{x_2}_{a_d,b_d}

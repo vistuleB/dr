@@ -75,7 +75,7 @@
         $$
         In particular, in order for the event $C_\infty$ to happen, $D_N$ must happen for any fixed value of $N$ (for example, $D_{100}$ must happen, $D_{101}$ must happen, etc.). It follows that $C_\infty$ is at most as likely to happen as any of the $D_N$'s; in other words we have 
         $$ \mathrm{P}(C_\infty) \le \mathrm{P}(D_N), \qquad (N\ge 1). $$
-        Now, what can we say about $\mathrm{P}(D_N)$? Looking at the definition of $D_N$, we see that it too can be written as an infinite \emph{disjunction} of events, namely
+        Now, what can we say about $\mathrm{P}(D_N)$? Looking at the definition of $D_N$, we see that it too can be written as an infinite _disjunction_ of events, namely
         $$
         \begin{eqnarray*}
         D_N &=& C_N \vee C_{N+1} \vee C_{N+2} \vee \ldots \quad \textrm{(infinite disjunction)} \\

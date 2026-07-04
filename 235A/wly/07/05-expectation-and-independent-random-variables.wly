@@ -1,2 +1,79 @@
 |> Section
     title=Expectation and independent random variables
+
+    |> Theorem
+
+        |> ol
+            class=list
+            |> li
+                If $X,Y$ are independent r.v.'s then $\mathbf{E}(X Y) = \mathbf{E} X \mathbf{E} Y$.
+            |> li
+                $X,Y$ are independent if and only if $\mathbf{E}[g(X)h(Y)] = \mathbf{E} g(X) \mathbf{E} h(Y)$ for all bounded measurable functions $g,h:\R\to\R$.
+
+    |> Proof
+        alt-title=Sketch of proof
+
+        Part (i) follows either by approximation of $X,Y$ using simple functions, or using Fubini's theorem, which you can read about in section 1.7 of [Dur2010] (Note that Fubini's theorem in turn is proved by approximation using simple functions, so these two seemingly different approaches are really equivalent).
+
+        For part (ii), the ``only if'' follows from part (i) together with the observation that if $X,Y$ are independent then so are $g(X), h(Y)$. For the ``if'' part, observe that the function $1_{(a,b)}$ is a bounded measurable function, so in particular the condition $\mathbf{E}[g(X)h(Y)]=\mathbf{E} g(X) \mathbf{E} h(Y)$ includes the information that $\mathrm{P}(X\in I, Y\in J)=\mathrm{P}(X \in I) \mathrm{P}(Y\in J)$ for any two finite intervals $I,J$, which we already know is enough to imply independence.
+
+    |> Theorem
+
+        |> ol
+            class=list
+            |> li
+                If $X_1,X_2,\ldots,X_n$ are independent r.v.'s then $\mathbf{E}(X_1 \ldots X_n) = \prod_{k=1}^n \mathbf{E} X_k$.
+            |> li
+                $X_1,\ldots,X_n$ are independent if and only if $\mathbf{E}\left(\prod_{k=1}^n g_k(X_k)\right) = \prod_{k=1}^n \mathbf{E} g_k(X_k)$ for all bounded measurable functions $g_1,\ldots,g_n:\R\to\R$.
+
+    The fact that expectation is multiplicative for independent random variables implies an important fact about the variance of a sum of independent r.v.'s. Let $X,Y$ be independent r.v.'s with finite variance. Then we get immediately that
+    $$
+    \begin{eqnarray*}
+    \mathbf{V}(X+Y) &=& \mathbf{E}\left[(X-\mathbf{E} X)+(Y-\mathbf{E} Y)\right]^2 \\ &=&
+    \mathbf{E}(X-\mathbf{E} X)^2 + \mathbf{E}(Y-\mathbf{E} Y)^2 +2 \mathbf{E}\left[ (X-\mathbf{E} X)(Y-\mathbf{E} Y)\right]
+    \\ &=& \mathbf{V}(X)+\mathbf{V}(Y) + 0 = \mathbf{V}(X)+\mathbf{V}(Y).
+    \end{eqnarray*}
+    $$
+    More generally, if $X,Y$ are not necessarily independent, then we can define the covariance of $X$ and $Y$ by
+    $$ \textrm{Cov}(X,Y) = \mathbf{E}\left[ (X-\mathbf{E} X)(Y-\mathbf{E} Y)\right]. $$
+    We then get the more general formula
+    $$ \mathbf{V}(X+Y) = \mathbf{V}(X) + \mathbf{V}(Y) + 2 \textrm{Cov}(X,Y). $$
+    Repeating this computation with a sum of $n$ variables instead of just two, we get the following formula for the variance of a sum of r.v.'s.
+
+    |> Lemma
+
+        If $X_1,\ldots,X_n$ are r.v.'s with finite variance, then
+        $$ \mathbf{V}\left(\sum_{k=1}^n X_k\right) = \sum_{k=1}^n \mathbf{V}(X_k) + 2 \sum_{1\le i<j\le n} \textrm{Cov}(X_i,X_j). $$
+
+    |> Lemma
+        label=Properties of the covariance
+
+        If $X,Y$ are r.v.'s with finite variance, then:
+
+        |> ol
+            class=list
+            data-list-style=decimal
+            |> li
+                $\textrm{Cov}(X,Y)=\textrm{Cov}(Y,X) = \mathbf{E}(XY) - \mathbf{E}(X) \mathbf{E}(Y)$.
+            |> li
+                $\textrm{Cov}(X,X) = \mathbf{V}(X)$.
+            |> li
+                $\textrm{Cov}(aX_1+bX_2,Y) = a\textrm{Cov}(X_1,Y)+b\textrm{Cov}(X_2,Y)$
+            |> li
+                $\textrm{Cov}(X,aY_1+bY_2) = a\textrm{Cov}(X,Y_1)+b\textrm{Cov}(X,Y_2)$
+            |> li
+                If $X,Y$ are independent then $\textrm{Cov}(X,Y)=0$.
+            |> li
+                $|\textrm{Cov}(X,Y)| \le \sigma(X) \sigma(Y)$, with equality if and only if $X$ and $Y$ are linearly dependent.
+
+    |> Proof
+
+        Properties 1--5 are obvious. Property 6 follows by applying the Cauchy-Schwartz inequality to the r.v.'s $X-\mathbf{E} X$ and $Y-\mathbf{E} Y$.
+
+    If $\textrm{Cov}(X,Y)=0$ we say that $X$ and $Y$ are $\textbf{uncorrelated}$, or $\textbf{orthogonal}$. This is a weaker condition than being independent, but because of the way the variance of a sum of r.v.'s behaves, it is still often useful for deriving bounds, as we shall see.
+
+    Define the *correlation coefficient of $X$ and $Y$* by
+    $$ \rho(X,Y) = \frac{\textrm{Cov}(X,Y)}{\sigma(X)\sigma(Y)}. $$
+    This measures the correlation in units of the standard deviation of $X$ and $Y$ so does not depend on the choice of scale. From property 6 in the above lemma, we get that
+    $$ -1\le \rho(X,Y)\le 1, $$
+    with equality on either side if and only if $X$ and $Y$ are linearly dependent.

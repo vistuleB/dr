@@ -69,5 +69,20 @@
     \end{array}
     $$
   </div>
+  <p>
+    <b>Useful facts:</b>
+    ("$\boxplus$" denotes convolution, i.e., sum of independent samples; "$\stackrel{d}{=}$" denotes equality of distributions)
+  </p>
+  <div class="math-block">
+    $$
+    \begin{array}{lll}
+    \textrm{Binomial}(n,p) \boxplus \textrm{Binomial}(m,p) \stackrel{d}{=} \textrm{Binomial}(n+m,p) &amp; \ \ \ \ &amp; \textrm{Gamma}(\alpha, \lambda) \boxplus \textrm{Gamma}(\beta, \lambda) \stackrel{d}{=} \textrm{Gamma}(\alpha+\beta,\lambda) \\
+    \textrm{Poisson}(\lambda) \boxplus \textrm{Poisson}(\mu) \stackrel{d}{=} \textrm{Poisson}(\lambda+\mu) &amp; &amp; N(\mu_1,\sigma_1^2) \boxplus N(\mu_2,\sigma_2^2) \stackrel{d}{=} N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2) \\
+    \textrm{Geom}_0(p) \stackrel{d}{=} \textrm{NB}(1,1-p) &amp; &amp; \textrm{Exp}(\lambda)\stackrel{d}{=}\textrm{Gamma}(1,\lambda) \\
+    \textrm{NB}(n,p)\boxplus\textrm{NB}(m,p)\stackrel{d}{=}\textrm{NB}(n+m,p) &amp; &amp; \big(\alpha\,\textrm{Cauchy}\big) \boxplus \big((1-\alpha)\,\textrm{Cauchy}\big) \stackrel{d}{=} \textrm{Cauchy} \ \ \ \ (0\le\alpha\le1) \\
+    N(0,1)^2 \stackrel{d}{=} \textrm{Gamma}(1/2,1/2) \stackrel{d}{=} \chi^2_{(1)} &amp; &amp; \chi^2_{(n)} \stackrel{d}{=} \textrm{Gamma}(n/2,1/2)
+    \end{array}
+    $$
+  </div>
 </body>
 </html>

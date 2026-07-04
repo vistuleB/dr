@@ -252,6 +252,17 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.handles_generate_dictionary("path"),
       dl.handles_substitute(#("path", "a", "a", [], [], ["a"])),
       dl.unwrap("GrandWrapper"),
+    ],
+    // Parse inline math into Math nodes BEFORE href tokenization: tokenize_href_surroundings
+    // only recurses into T-nodes and href-bearing V-nodes, so Math nodes are opaque to it.
+    // This protects inline math like `$\max(X,0)$` from the paren tokenize/detokenize round-trip
+    // (which otherwise corrupts a `\command(...)` group that is a sibling of a link node).
+    pp.create_math_elements(
+      [infra.BackslashParenthesis, infra.SingleDollar],
+      infra.SingleDollar,
+      infra.BackslashParenthesis,
+    ),
+    [
       dl.tokenize_href_surroundings(),
       dl.rearrange_links_4_pre_tokenized_src__batch([
         #("Lemma <a href=1>_1_</a>", "<a href=1>Lemma _1_</a>"),
@@ -261,11 +272,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       ]),
       dl.detokenize_href_surroundings(),
     ],
-    pp.create_math_elements(
-      [infra.BackslashParenthesis, infra.SingleDollar],
-      infra.SingleDollar,
-      infra.BackslashParenthesis,
-    ),
     pp.barbaric_symmetric_delim_splitting("_", "_", "i", [
       "MathBlock",
       "Math",

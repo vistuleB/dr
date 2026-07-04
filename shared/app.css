@@ -210,7 +210,7 @@ body:not([data-page="toc"]) .nav > #next-page:before {
 }
 
 .proof:after {
-    content: "\00a0";
+    content: ".\00a0";
 }
 
 .statement {

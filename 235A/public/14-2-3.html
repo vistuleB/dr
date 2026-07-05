@@ -40,5 +40,37 @@
     14.2.3
     The Euclidean algorithm
   </h1>
+  <p>
+    As a final example from number theory, consider the following problem: For some $n\ge 1$, choose $X_n$ and $Y_n$ independently and uniformly at random in $\{1,2,\ldots,n\}$, and compute their greatest common divisor (g.c.d.) using the Euclidean algorithm. Let $N_n$ be the number of division (with remainder) steps that were required. For example, if $X = 58$ and $Y=24$ then the application of the Euclidean algorithm would result in the sequence of steps
+  </p>
+  <div class="math-block">
+    $$
+    (58,24) \to (24,10) \to (10,4) \to (4,2) \to (2,0),
+    $$
+  </div>
+  <p>
+    so 4 division operations were required (and the g.c.d. is 2).
+  </p>
+  <div
+    label="CLT for the number of steps in the Euclidean algorithm; D. Hensley (1992)"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>14.5</b>
+      
+    </h3>
+    <p>
+      <span class="label">CLT for the number of steps in the Euclidean algorithm; D. Hensley (1992)</span>There exists a constant $\sigma_\infty$ (which has a very complicated definition) such that
+    </p>
+    <div class="math-block">
+      $$
+      \frac{N_n - \frac{12 \log 2}{\pi^2} \log n}{\sigma_\infty \sqrt{\log n}} \implies N(0,1).
+      $$
+    </div>
+  </div>
+  <p>
+    Hensley's theorem was in recent years significantly generalized and the techniques extended by Brigitte Vallée, a French mathematician. The fact that the average value of $N_n$ is approximately $(12\log 2/\pi^2)\log n$ was previously known from work of Heilbronn and Dixon in 1969--1970, using ideas dating back to Gauss, who discovered the probability distribution now called the "Gauss measure". This is the probability distribution on $(0,1)$ with density $\frac{1}{\log 2(1+x)}$, which Gauss found (but did not prove!) describes the limiting distribution of the ratio of a pair of independent $U(0,1)$ random variables after many iterations of the division-with-remainder step in the Euclidean algorithm.
+  </p>
 </body>
 </html>

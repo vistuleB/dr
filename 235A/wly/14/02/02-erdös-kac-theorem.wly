@@ -1,2 +1,18 @@
 |> SubSection
     title=Erdös-Kac theorem
+
+    |> Theorem
+        label=Erdös-Kac theorem (1940)
+
+        Let $g(m)$ denote the number of prime divisors of an integer $k$ (for example, $g(28)=2)$. For each $n\ge 1$, let $X_n$ be a uniformly random integer chosen in $\{1,2,\ldots,n\}$, and let $Y_n=g(X_n)$ be the number of prime divisors of $X_n$. Then we have
+        $$ \frac{Y_n - \log\log n}{\sqrt{\log\log n}} \implies N(0,1). $$
+        In other words, for any $x\in\R$ we have
+        $$ \frac{1}{n}\# \left\{ 1\le k\le n: g(k) \le \log\log n + k \sqrt{\log\log n} \right\} \xrightarrow[n\to\infty]{} \Phi(x). $$
+
+    |> Proof
+
+        See [Dur2010], p. 114--117 or [Dur2004], p. 119--124. The proof uses the moment method.
+
+    Note that $Y_n$ can be written in the form $\sum_{p\le n} \mathbf{1}_{\{p | X_n\}}$, namely the sum over all primes $p\le n$ of the indicator of the event that $X_n$ is divisible by $p$. The probability that $X_n$ is divisible by $p$ is roughly $1/p$, at least if $p$ is significantly smaller than $n$. Therefore we can expect $Y_n$  to be on the average around
+    $$ \sum_{\textrm{prime }p\le n} \frac{1}{p}, $$
+    a sum that is known (thanks to Euler) to behave roughly like $\log\log n$. The Erdös-Kac theorem is intuitively related to the observation that these indicators $\mathbf{1}_{\{p | X_n\}}$ for different $p$'s are also close to being independent (a fact which follows from the Chinese remainder theorem). Of course, they are only approximately independent, and making these observations precise is the challenge to proving the theorem. In fact, many famous open problems in number theory (even the Riemann Hypothesis, widely considered to be the most important open problem in mathematics) can be formulated in terms of a statement about approximate independence (in some loose sense) of some arithmetic sequence relating to the prime numbers.

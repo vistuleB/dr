@@ -1,5 +1,24 @@
 |> Section
     title=The case of i.i.d. r.v.’s
-    
-    |> Example
-        Example 2 inside section
+
+    We are now ready to prove:
+
+    |> Theorem
+        label=The central limit theorem
+
+        Let $X_1, X_2, \ldots $ be an i.i.d. sequence of r.v.'s with finite variance. Denote $\mu = \mathbf{E} X_1$, $\sigma = \sigma(X_1)$ and $S_n = \sum_{k=0}^n X_k$. Then as $n\to\infty $ we have the convergence in distribution
+        $$ \frac{S_n-n\mu}{\sqrt{n}\sigma} \implies N(0,1). $$
+
+    |> Proof
+
+        For convenience, denote $\hat{X}_k = (X_k - \mu)/\sigma$ and $\hat{S}_n = \sum_{k=0}^n \hat{X}_k$.
+        Then
+        $$ \varphi_{\hat{S}_n/\sqrt{n}}(t) = \varphi_{\hat{S}_n}(t/\sqrt{n})
+        = \prod_{k=1}^n \varphi_{\hat{X}_k}(t/\sqrt{n}) = \left(\varphi_{\hat{X}_1}(t/\sqrt{n})\right)^n.
+        $$
+        Note that $\mathbf{E} \hat{X}_1 = 0$ and $\mathbf{V}(\hat{X}_1)=\mathbf{E} \hat{X}_1^2 = 1$. Therefore by Theorem >>thm-charfun-secondmoment, $\varphi_{\hat{X}_1}$ satisfies
+        $$ \varphi_{\hat{X}_1}(u) = 1 - \frac{u^2}{2} + o(u^2) $$
+        as $u\to0$. It follows that
+        $$ \varphi_{\hat{S}_n/\sqrt{n}}(t) = \left(1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right) \right)^n \xrightarrow[n\to\infty]{} e^{-t^2/2}
+        $$
+        for any $t\in\R$. Using the continuity theorem (Theorem >>thm-continuity) and our previous computations, it follows that $\hat{S}_n \implies N(0,1)$, as claimed.

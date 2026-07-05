@@ -40,14 +40,81 @@
     14.2.1
     Triangular arrays
   </h1>
-  <div class="statement example">
+  <div
+    label="Lindeberg-Feller CLT for triangular arrays"
+    class="statement theorem"
+    id="_46_h.a.i_"
+  >
     <h3>
-      <b>Example</b>
+      <b>Theorem</b>
       <b>14.2</b>
       
     </h3>
     <p>
-      Example 3 inside subsection
+      <span class="label">Lindeberg-Feller CLT for triangular arrays</span>Let $(X_{n,k})_{1\le k\le n&lt;\infty}$ be a triangular array of r.v.'s. Denote $S_n = \sum_{k=1}^n X_{n,k}$ (the sum of the $n$-th row). Assume that:
+    </p>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          For each $n$, the r.v.'s $(X_{n,k})_{k=1}^n$ are independent.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\mathbf{E} X_{n,k}=0$ for all $n,k$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\mathbf{V}(S_n) = \sigma_n^2 \to \sigma^2&lt;\infty$ as $n\to\infty$.
+        </p>
+      </li>
+      <li>
+        <p>
+          For all $\epsilon&gt;0$, ${\displaystyle \lim_{n\to\infty}} \sum_{k=1}^n \mathbf{E}\left( X_{n,k}^2 \mathbf{1}_{\{|X_{n,k}|&gt;\epsilon\}}\right)=0$.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Then $S_n \implies N(0,\sigma^2)$ as $n\to\infty$.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>See [Dur2010], p. 110--111 or [Dur2004], p. 115--116. The proof uses the characteristic function technique and is a straightforward extension of the proof for the i.i.d. case.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div class="statement example">
+    <h3>
+      <b>Example</b>
+      <b>14.3</b>
+      
+    </h3>
+    <p>
+      (Record times and cycles in permutations). Let $X_1, X_2, \ldots$ be i.i.d. $U(0,1)$ r.v.'s. Let $A_n$ be the event that $\{X_n = \max(X_1,\ldots,X_n)\}$ (in this case, we say that $n$ is a $\textbf{record time}$). Let $S_n = \sum_{k=1}^n \mathbf{1}_{A_k}$ be the number of record times up to time $n$. We saw in a homework exercise that the $A_k$'s are independent events and $\mathrm{P}(A_k) = 1/k$. This implies that $\mathbf{E}(S_n) = \sum_{k=1}^n \frac{1}{k} = H_n$ (the $n$-th $\textbf{harmonic number}$) and $\mathbf{V}(S_n) = \sum_{k=1}^n \frac{k-1}{k^2}$. Note that both $\mathbf{E}(S_n)$ and $\mathbf{V}(S_n)$ are approximately equal to $\log n$, with an error term that is $O(1)$. Now taking $X_{n,k} = (\mathbf{1}_{A_k}-k^{-1})/\sqrt{\mathbf{V}(S_n)}$ in
+      <a
+        href="./14-2-1.html#_46_h.a.i_"
+        class=""
+      >Theorem 14.2</a>, it is easy to check that the assumptions of the theorem hold. It follows that
+    </p>
+    <div class="math-block">
+      $$
+      \frac{S_n-H_n}{\sigma(S_n)} \implies N(0,1).
+      $$
+    </div>
+    <p>
+      Equivalently, because of the asymptotic behavior of $\mathbf{E}(S_n)$ and $\mathbf{V}(S_n)$ it is also true that
+    </p>
+    <div class="math-block">
+      $$
+      \frac{S_n-\log n}{\sqrt{\log n}} \implies N(0,1).
+      $$
+    </div>
+    <p>
+      $\textbf{Note:}$ $S_n$ describes the distribution of another interesting statistic on random permutations. It is not too difficult to show by induction (using an amusing construction often referred to as the $\textbf{Chinese restaurant process}$) that if $\sigma \in S_n$ is a uniformly random permutation on $n$ elements, then the number of cycles in $\sigma$ is a random variable which is equal in distribution to $S_n$.
     </p>
   </div>
 </body>

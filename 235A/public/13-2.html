@@ -40,5 +40,129 @@
     13.2
     Examples
   </h1>
+  <p>
+    No study of characteristic functions is complete without "dirtying your hands" a little to compute the characteristic function for some important cases. The following exercise is highly recommended
+  </p>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>13.2</b>
+      
+    </h3>
+    <p>
+      Compute the characteristic functions for the following distributions.
+    </p>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          $\textbf{Coin flips:}$ Compute $\varphi_X$ when $\mathrm{P}(X=-1)=\mathrm{P}(X=1)=1/2$ (this comes out slightly more symmetrical than the usual Bernoulli r.v. for which $\mathrm{P}(X=0)=\mathrm{P}(X=1)=1/2$).
+        </p>
+      </li>
+      <li>
+        <p>
+          $\textbf{Symmetric random walk:}$ Compute $\varphi_{S_n}$ where $S_n=\sum_{k=1}^n X_k$ is the sum of $n$ i.i.d. copies of the coin flip distribution above.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\textbf{Poisson distribution:}$ $X\sim \textrm{Poisson}(\lambda)$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\textbf{Uniform distribution:}$ $X \sim U[a,b]$, and in particular $X\sim [-1,1]$ which is especially symmetric and useful in applications.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\textbf{Exponential distribution:}$ $X\sim \textrm{Exp}(\lambda)$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\textbf{Symmetrized exponential:}$ A r.v. $Z$ with density function $f_Z(x) = e^{-|x|}$. Note that this is the distribution of the exponential distribution after being "symmetrized" in either of two ways: (i) We showed that if $X,Y\sim \textrm{Exp}(1)$ are independent then $X-Y$ has density $e^{-|x|}$; (ii) alternatively, it is the distribution of an "exponential variable with random sign", namely $\varepsilon\cdot X$ where $X\sim \textrm{Exp}(1)$ and $\varepsilon$ is a random sign (same as the coin flip distribution mentioned above) that is independent of $X$.
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>
+    The normal distribution has the nice property that its characteristic function is equal, up to a constant, to its density function.
+  </p>
+  <div class="statement lemma">
+    <h3>
+      <b>Lemma</b>
+      <b>13.3</b>
+      
+    </h3>
+    <p>
+      If $Z\sim N(0,1)$ then
+    </p>
+    <div class="math-block">
+      $$
+      \varphi_Z(t) = e^{-t^2/2}.
+      $$
+    </div>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*} \varphi_Z(t) &amp;=&amp; \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{itx} e^{-x^2/2}\,dx = \frac{1}{\sqrt{2\pi}}
+      \int_{-\infty}^\infty e^{-t^2/2} e^{(x-it)^2/2}\,dx \\
+      &amp;=&amp; e^{-t^2/2} \left( \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty  e^{(x-it)^2/2}\,dx \right).
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      As Durrett suggests in his "physics proof" (p. 92 in [Dur2010], 91 in [Dur2004]), the expression in parentheses is $1$, since it is the integral of a normal density with mean $it$ and variance $1$. This is a nonsensical argument, of course ($it$ being an imaginary number), but the claim is true, easy  and is proved in any complex analysis course using contour integration.
+    </p>
+    <p>
+      Alternatively, let $S_n=\sum_{k=1}^n X_k$ where $X_1,X_2,\ldots$ are i.i.d. coin flips with $\mathrm{P}(X_k)=-1=\mathrm{P}(X_k)=1=1/2$. We know from the de Moivre-Laplace theorem (<a
+        href="./11-0.html#_31_h.a.i_"
+        class=""
+      >Theorem 11.1</a>) that
+    </p>
+    <div class="math-block">
+      $$
+      S_n/\sqrt{n} \implies N(0,1),
+      $$
+    </div>
+    <p>
+      so that
+    </p>
+    <div class="math-block">
+      $$
+      \varphi_{S_n/\sqrt{n}}(t) = \mathbf{E}\left( e^{it S_n/\sqrt{n}} \right) \xrightarrow[n\to\infty]{} \varphi_Z(t),
+      \qquad (t\in\R),
+      $$
+    </div>
+    <p>
+      since the function $x\to e^{i t x}$ is bounded and continuous. On the other hand, from the exercise above it is easy to compute that $\varphi_{S_n}(t) = \cos^n(t)$, which implies that
+    </p>
+    <div class="math-block">
+      $$
+      \varphi_{S_n/\sqrt{n}}(t) = \cos^n\left(\frac{t}{\sqrt{n}}\right)= \left(1-\frac{t^2}{2n} + O\left(\frac{t^4}{n^2}\right)\right)^n \xrightarrow[n\to\infty]{} e^{-t^2/2}.
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    As a consequence, let $X\sim N(0,\sigma_1^2)$ and $Y\sim N(0,\sigma_2^2)$ be independent, and let $Z=X+Y$. Then
+  </p>
+  <div class="math-block">
+    $$
+    \varphi_X(t) = e^{-\sigma_1^2 t^2/2}, \qquad \varphi_Y(t) = e^{-\sigma_2^2 t^2/2},
+    $$
+  </div>
+  <p>
+    so $\varphi_Z(t) = e^{-(\sigma_1^2+\sigma_2^2)/2}$. This is the same as $\varphi_W(t)$, where $W\sim N(0,\sigma_1^2+\sigma_2^2)$. It would be nice if we could deduce from this that $Z \sim N(0,\sigma_1^2+\sigma_2^2)$ (we already proved this fact in a homework exercise, but it's always nice to have several proofs of a result, especially an important one like this one). This naturally leads us to an important question about characteristic functions, which we consider in the next section.
+  </p>
 </body>
 </html>

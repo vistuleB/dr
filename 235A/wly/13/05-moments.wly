@@ -1,2 +1,62 @@
 |> Section
     title=Moments
+
+    The final step in our lengthy preparation for the proof of the central limit theorem will be to tie the behavior of the characteristic function $\varphi_X(t)$ near $t=0$ to the moments of $X$. Note that, computing formally without regards to rigor, we can write
+    $$ \varphi_X(t) = \mathbf{E} (e^{itX}) = \mathbf{E}\left[\sum_{n=0}^\infty \frac{i^n t^n X^n}{n!} \right]
+    = \sum_{n=0}^\infty \frac{i^n \mathbf{E} X^n}{n!} t^n. $$
+    So it appears that the moments of $X$ appear as (roughly) the coefficients in the Taylor expansion of $\varphi_X$ around $t=0$. However, for CLT we don't want to assume anything beyond the existence of the second moment, so a (slightly) more delicate estimate is required.
+
+    |> Lemma
+        handle=lem-taylor-estimate
+
+        $\left|e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!}\right| \le \min\left(\frac{|x|^{n+1}}{(n+1)!},\frac{2|x|^n}{n!}\right). $
+
+    |> Proof
+
+        Start with the identity
+        $$ R_n(x) := e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!} = \frac{i^{n+1}}{n!}\int_0^x(x-s)^n e^{is}\,ds, $$
+        which follows from Lemma >>lem-prevlemma that we used in the proof of Stirling's formula.
+        Taking the absolute value and using the fact that $|e^{is}|=1$ gives
+        $$
+        \begin{eqnarray*}
+        eq:firstbound##<<
+        |R_n(x)| \le \frac{1}{n!} \left|\int_0^x |x-s|^n\,ds\right| = \frac{|x|^{n+1}}{n!}.
+        \end{eqnarray*}
+        $$
+        To get a bound that is better-behaved for large $x$, note that
+        $$
+        \begin{eqnarray*} R_n(x) &=& R_{n-1}(x) - \frac{(ix)^n}{n!} = R_{n-1}(x) - \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}\,ds
+        \\ &=& \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}(e^{is}-1)\,ds.
+        \end{eqnarray*}
+        $$
+        So, since $|e^{is}-1|\le 2$, we get that
+        $$
+        \begin{eqnarray*}
+        eq:secondbound##<<
+        |R_n(x)| \le \frac{2}{(n-1)!} \left|\int_0^x |x-s|^{n-1}\,ds\right| = \frac{2|x|^{n}}{(n-1)!}.
+        \end{eqnarray*}
+        $$
+        Combining (>>eq:firstbound) and (>>eq:secondbound) gives the claim.
+
+    Now let $X$ be a r.v. with $\mathbf{E}|X|^n < \infty$. Letting $x=tX$ in Lemma >>lem-taylor-estimate, taking expectations and using the triangle inequality, we get that
+    $$
+    \begin{eqnarray*}
+    eq:taylor-expec##<<
+    \left|\varphi_X(t)-\sum_{m=0}^n \frac{i^m \mathbf{E} X^m}{m!}t^m \right| \le \mathbf{E}\left[ \min\left(
+    \frac{|t|^{n+1} |X|^{n+1}}{(n+1)!}, \frac{2 |t|^n |X|^n}{n!} \right) \right].
+    \end{eqnarray*}
+    $$
+    Note that in this minimum of two terms, when $t$ is very small the first term gives a better bound, but when taking expectations we need the second term to ensure that the expectation is finite if $X$ is only assumed to have a finite $n$-th moment.
+
+    |> Theorem
+        handle=thm-charfun-secondmoment
+
+        If $X$ is a r.v. with mean $\mu=\mathbf{E} X$ and $\mathbf{V}(X)<\infty$ then
+        $$ \varphi_X(t) = 1 + i \mu t - \frac{\mathbf{E} X^2}{2} t^2 + o(t^2) \qquad \textrm{as }t\to 0.$$
+
+    |> Proof
+
+        By (>>eq:taylor-expec) above, we have
+        $$ \frac{1}{t^2}\left|\varphi_X(t) - \left(1 + i \mu t - \frac{\mathbf{E} X^2}{2} t^2\right)\right| \le \mathbf{E} \left[ \min\left(|t| \cdot |X|^3/6,
+        X^2 \right) \right]. $$
+        As $t\to 0$, the right-hand side converges to 0 by the dominated convergence theorem.

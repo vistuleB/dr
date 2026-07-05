@@ -11,6 +11,7 @@ const our_blame = bl.Des([], "pipeline", 8)
 const p_cannot_contain = [
   "Chapter",
   "ChapterTitle",
+  "Footnote",
   "Labeled",
   "MathBlock",
   "Navigation",
@@ -60,7 +61,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "Theorem",
     "WriterlyBlankLine",
     "WriterlyComment",
-    "footnote",
+    "Footnote",
   ]
 
   let pre_transformation_html_tags = ["li", "ol", "ul"]
@@ -154,6 +155,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Document", "counter", "ChapterCounter"),
         #("Chapter", "counter", "SectionCounter"),
         #("Chapter", "counter", "StatementCounter"),
+        #("Chapter", "counter", "FootnoteCounter"),
         #("Section", "counter", "SubSectionCounter"),
       ]),
       dl.prepend_attribute(#(
@@ -194,6 +196,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "StatementCounter",
         infra.GoBack,
       )),
+      dl.prepend_counter_incrementing_attribute(#(
+        "Footnote",
+        "FootnoteCounter",
+        infra.GoBack,
+      )),
       dl.auto_generate_child_if_missing_from_attribute(#(
         "Chapter",
         "ChapterTitle",
@@ -225,6 +232,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "::øøChapterCounter.::øøStatementCounter",
         infra.Continue,
       )),
+      dl.set_handle_value(#(
+        "Footnote",
+        "::øøFootnoteCounter",
+        infra.GoBack,
+      )),
       dl.dr_create_index(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
@@ -234,6 +246,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
           "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter ",
         ),
         #("Statement", "*::øøChapterCounter.::øøStatementCounter*" <> " "),
+        #("Footnote", "(::øøFootnoteCounter) "),
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
       dl.wrap_if_first_child_of(#("Statement", "h3")),
@@ -309,6 +322,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Chapter", "chapter"),
         #("Section", "section"),
         #("SubSection", "subsection"),
+        #("Footnote", "footnote"),
       ]),
       dl.dr_generate_js_course(course),
       dl.rename__batch([
@@ -324,7 +338,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Statement", "div"),
         #("SubSection", "div"),
         #("SubSectionTitle", "h1"),
-        #("footnote", "div"),
+        #("Footnote", "div"),
       ]),
       dl.delete_attribute__batch([
         "_",

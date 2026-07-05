@@ -35,13 +35,13 @@
         $$
 
     |> Lemma
-        handle=lem-prob-as-subseq
+        handle=lem:prob-as-subseq
 
         If $(X_n)_{n=1}^\infty$ is a sequence of r.v.s such that $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$ then there exists a subsequence $(X_{n_k})_{k=1}^\infty$ such that $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
 
     |> Exercise
 
-        Prove Lemma >>lem-prob-as-subseq.
+        Prove Lemma >>lem:prob-as-subseq.
 
     We can now formulate the fundamental convergence theorems for Lebesgue integration.
 

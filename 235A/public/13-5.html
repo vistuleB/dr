@@ -40,5 +40,141 @@
     13.5
     Moments
   </h1>
+  <p>
+    The final step in our lengthy preparation for the proof of the central limit theorem will be to tie the behavior of the characteristic function $\varphi_X(t)$ near $t=0$ to the moments of $X$. Note that, computing formally without regards to rigor, we can write
+  </p>
+  <div class="math-block">
+    $$
+    \varphi_X(t) = \mathbf{E} (e^{itX}) = \mathbf{E}\left[\sum_{n=0}^\infty \frac{i^n t^n X^n}{n!} \right]
+    = \sum_{n=0}^\infty \frac{i^n \mathbf{E} X^n}{n!} t^n.
+    $$
+  </div>
+  <p>
+    So it appears that the moments of $X$ appear as (roughly) the coefficients in the Taylor expansion of $\varphi_X$ around $t=0$. However, for CLT we don't want to assume anything beyond the existence of the second moment, so a (slightly) more delicate estimate is required.
+  </p>
+  <div
+    class="statement lemma"
+    id="_41_h.a.i_"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>13.10</b>
+      
+    </h3>
+    <p>
+      $\left|e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!}\right| \le \min\left(\frac{|x|^{n+1}}{(n+1)!},\frac{2|x|^n}{n!}\right).$
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Start with the identity
+    </p>
+    <div class="math-block">
+      $$
+      R_n(x) := e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!} = \frac{i^{n+1}}{n!}\int_0^x(x-s)^n e^{is}\,ds,
+      $$
+    </div>
+    <p>
+      which follows from
+      <a
+        href="./11-0.html#_33_h.a.i_"
+        class=""
+      >Lemma 11.3</a>
+      that we used in the proof of Stirling's formula.
+      Taking the absolute value and using the fact that $|e^{is}|=1$ gives
+    </p>
+    <div
+      id="_42_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{eqnarray*}
+      \tag{14}
+      |R_n(x)| \le \frac{1}{n!} \left|\int_0^x |x-s|^n\,ds\right| = \frac{|x|^{n+1}}{n!}.
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      To get a bound that is better-behaved for large $x$, note that
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*} R_n(x) &amp;=&amp; R_{n-1}(x) - \frac{(ix)^n}{n!} = R_{n-1}(x) - \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}\,ds
+      \ &amp;=&amp; \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}(e^{is}-1)\,ds.
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      So, since $|e^{is}-1|\le 2$, we get that
+    </p>
+    <div
+      id="_43_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{eqnarray*}
+      \tag{15}
+      |R_n(x)| \le \frac{2}{(n-1)!} \left|\int_0^x |x-s|^{n-1}\,ds\right| = \frac{2|x|^{n}}{(n-1)!}.
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      Combining (<a href="./13-5.html#_42_h.a.i_">14</a>) and (<a href="./13-5.html#_43_h.a.i_">15</a>) gives the claim.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    Now let $X$ be a r.v. with $\mathbf{E}|X|^n &lt; \infty$. Letting $x=tX$ in
+    <a
+      href="./13-5.html#_41_h.a.i_"
+      class=""
+    >Lemma 13.10</a>, taking expectations and using the triangle inequality, we get that
+  </p>
+  <div
+    id="_44_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{eqnarray*}
+    \tag{16}
+    \left|\varphi_X(t)-\sum_{m=0}^n \frac{i^m \mathbf{E} X^m}{m!}t^m \right| \le \mathbf{E}\left[ \min\left(
+    \frac{|t|^{n+1} |X|^{n+1}}{(n+1)!}, \frac{2 |t|^n |X|^n}{n!} \right) \right].
+    \end{eqnarray*}
+    $$
+  </div>
+  <p>
+    Note that in this minimum of two terms, when $t$ is very small the first term gives a better bound, but when taking expectations we need the second term to ensure that the expectation is finite if $X$ is only assumed to have a finite $n$-th moment.
+  </p>
+  <div
+    class="statement theorem"
+    id="_45_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>13.11</b>
+      
+    </h3>
+    <p>
+      If $X$ is a r.v. with mean $\mu=\mathbf{E} X$ and $\mathbf{V}(X)&lt;\infty$ then
+    </p>
+    <div class="math-block">
+      $$
+      \varphi_X(t) = 1 + i \mu t - \frac{\mathbf{E} X^2}{2} t^2 + o(t^2) \qquad \textrm{as }t\to 0.
+      $$
+    </div>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>By (<a href="./13-5.html#_44_h.a.i_">16</a>) above, we have
+    </p>
+    <div class="math-block">
+      $$
+      \frac{1}{t^2}\left|\varphi_X(t) - \left(1 + i \mu t - \frac{\mathbf{E} X^2}{2} t^2\right)\right| \le \mathbf{E} \left[ \min\left(|t| \cdot |X|^3/6,
+      X^2 \right) \right].
+      $$
+    </div>
+    <p>
+      As $t\to 0$, the right-hand side converges to 0 by the dominated convergence theorem.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
 </body>
 </html>

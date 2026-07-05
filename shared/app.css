@@ -226,3 +226,9 @@ body:not([data-page="toc"]) .nav > #next-page:before {
 .qed {
     float: right;
 }
+
+.footnote {
+    font-size: 0.9rem;
+    padding: 0.6rem 0 0.6rem 1.2rem;
+    border-left: 2px solid #ccc;
+}

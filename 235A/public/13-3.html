@@ -40,5 +40,184 @@
     13.3
     The inversion formula
   </h1>
+  <p>
+    A fundamental question about characteristic functions is whether they contain all the information about a distribution, or in other words whether knowing the characteristic function determines the distribution uniquely. This question is answered (affirmatively) by the following theorem, which is a close cousin of the standard inversion formula from analysis for the Fourier transform.
+  </p>
+  <div
+    label="The inversion formula"
+    class="statement theorem"
+    id="_36_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>13.4</b>
+      
+    </h3>
+    <p>
+      <span class="label">The inversion formula</span>If $X$ is a r.v. with distribution $\mu_X$, then for any $a&lt;b$ we have
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*} \lim_{T\to\infty} \frac{1}{2\pi} \int_{-T}^T \frac{e^{-iat}-e^{-ibt}}{it}\varphi_X(t)\,dt &amp;=&amp; \mu_X((a,b)) + \frac12
+      \mu_X(\{a,b\}) \\ &amp;=&amp; \mathrm{P}(a&lt;X&lt;b) + \frac12 \mathrm{P}(X=a)+\frac12 \mathrm{P}(X=b).
+      \end{eqnarray*}
+      $$
+    </div>
+  </div>
+  <div
+    class="statement corollary"
+    id="_37_h.a.i_"
+  >
+    <h3>
+      <b>Corollary</b>
+      <b>13.5</b>
+      
+    </h3>
+    <p>
+      If $X,Y$ are r.v.s such that $\varphi_X(t)\equiv \varphi_Y(t)$ for all $t\in\R$ then $X \stackrel{d}{=} Y$.
+    </p>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>13.6</b>
+      
+    </h3>
+    <p>
+      Explain why Corollary
+      <a href="./13-3.html#_37_h.a.i_">13.5</a>
+      follows from the inversion formula.
+    </p>
+  </div>
+  <div alt-title="Proof of Theorem >>thm-inversion">
+    <p>
+      <span class="proof">Proof of
+        <a
+          href="./13-3.html#_36_h.a.i_"
+          class=""
+        >Theorem 13.4</a>
+        </span>Throughout the proof, denote $\varphi(t)=\varphi_X(t)$ and $\mu=\mu_X$. For convenience, we use the notation of Lebesgue-Stieltjes integration with respect to the measure $\mu$, remembering that this really means taking the expectation of some function of the r.v. $X$. Denote
+    </p>
+    <div
+      id="_38_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{eqnarray*}
+      \tag{12}
+      I_T = \int_{-T}^T \frac{e^{-i a t}-e^{-i b t}}{it} \varphi(t)\,dt
+      = \int_{-T}^T \int_{-\infty}^\infty \frac{e^{-i a t}-e^{-i b t}}{it} e^{itx}d\mu(x)\,dt.
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      Since $\frac{e^{-i a t}-e^{-i b t}}{it} = \int_a^b e^{-i t y}\,dy$ is a bounded function of $t$ (it is bounded in absolute value by $b-a$), it follows by Fubini's theorem that we can change the order of integration, so
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*}
+      I_T&amp;=&amp; \int_{-\infty}^\infty \int_{-T}^T \frac{e^{-i a t}-e^{-i b t}}{it} e^{itx} dt\,d\mu(x) \\
+      &amp;=&amp;
+      \int_{-\infty}^\infty \left[ \int_{-T}^T \frac{\sin(t(x-a))}{t}\,dt-\int_{-T}^T \frac{\sin(t(x-b))}{t}\,dt \right]d\mu(x)
+      \ &amp;=&amp; \int_{-\infty}^\infty \left( R(x-a,T)-R(x-b,T) \right) d\mu(x),
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      where we denote $R(\theta, T) = \int_{-T}^T \sin(\theta t)/t\,dt$. Note that in the notation of expectations this can be written as
+      $I_T = \mathbf{E}\left( R(X-a,T)-R(X-b,T)\ \right)$.
+      This can be simplified somewhat; in fact, observe also that
+    </p>
+    <div class="math-block">
+      $$
+      R(\theta,T)= 2\textrm{sgn}(\theta) \int_0^{|\theta|T} \frac{\sin x}{x}\,dx = 2 \textrm{sgn}(\theta) S(|\theta| T),
+      $$
+    </div>
+    <p>
+      where we denote $S(x) = \int_0^x \frac{\sin(u)}{u}\,du$ and $\textrm{sgn}(\theta)$ is $1$ if $\theta&gt;0$, $-1$ if $\theta&lt;0$ and $0$ if $\theta=0$. By a standard convergence test for integrals, the improper integral $\int_0^\infty \frac{\sin u}{u}\,du = \lim_{x\to\infty}S(x)$ converges; denote its value by $C/4$. Thus, we have shown that $R(\theta,T)\to \frac12\textrm{sgn}(\theta) C$ as $T\to \infty$, hence that
+    </p>
+    <div class="math-block">
+      $$
+      R(x-a,T)-R(x-b,T) \xrightarrow[T\to\infty]{} \begin{cases}
+      C &amp; a&lt;x&lt;b, \\
+      C/2 &amp; x=a\textrm{ or }x=b, \\
+      0 &amp; x&lt;a\textrm{ or }x&gt;b.
+      \end{cases}
+      $$
+    </div>
+    <p>
+      Furthermore, the function $R(x-a,T)-R(x-b,T)$ is bounded in absolute value by $2\sup_{x\ge 0} S(x)$. It follows that we can apply the bounded convergence theorem in (<a href="./13-3.html#_38_h.a.i_">12</a>) to get that
+    </p>
+    <div
+      id="_39_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{eqnarray*}
+      \tag{13}
+      I_T \xrightarrow[T\to\infty]{} C \mathbf{E}(1_{a&lt;X&lt;b}) + (C/2) \mathbf{E}(\mathbf{1}_{\{X=a\}} + \mathbf{1}_{\{X=b\}}) = C \mu((a,b)) + (C/2)\mu(\{a,b\}).
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      This is just what we claimed, minus the fact that $C=2\pi$. This fact is a well-known integral evaluation from complex analysis. We can also deduce it in a self-contained manner, by applying what we proved to a specific measure $\mu$ and specific values of $a$ and $b$ for which we can evaluate the limit in (<a href="./13-3.html#_38_h.a.i_">12</a>) directly. This is not entirely easy to do, but one possibility, involving an additional limiting argument, is outlined in the next exercise; see also Exercise 1.7.5 on p. 35 in [Dur2010], (Exercise 6.6, p. 470 in Appendix A.6 of [Dur2004]) for a different approach to finding the value of $C$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>13.7</b>
+      
+    </h3>
+    <p>
+      ($\textbf{Recommended for aspiring analysts}$...) For each $\sigma&gt;0$, let $X_\sigma$ be a r.v. with distribution $N(0,\sigma^2)$ and therefore with density $f_X(x)=(\sqrt{2\pi}\sigma)^{-1} e^{-x^2/2\sigma^2}$ and characteristic function $\varphi_X(t) = e^{-\sigma^2 t^2/2}$. For fixed $\sigma$, apply
+      <a
+        href="./13-3.html#_36_h.a.i_"
+        class=""
+      >Theorem 13.4</a>
+      in its weak form given by (<a href="./13-3.html#_39_h.a.i_">13</a>) (that is, without the knowledge of the value of $C$), with parameters $X=X_\sigma$, $a=-1$ and $b=1$,  to deduce the identity
+    </p>
+    <div class="math-block">
+      $$
+      \frac{C}{\sqrt{2\pi}\sigma} \int_{-1}^1 e^{-x^2/2\sigma^2}\,dx = \int_{-\infty}^\infty \frac{2\sin t}{t} e^{-\sigma^2 t^2/2}\,dt.
+      $$
+    </div>
+    <p>
+      Now multiply both sides by $\sigma$ and take the limit as $\sigma\to\infty$. For the left-hand side this should give in the limit (why?) the value $(2C)/\sqrt{2\pi}$. For the right-hand side this should give $2\sqrt{2\pi}$. Justify these claims and compare the two numbers to deduce that $C=2\pi$.
+    </p>
+  </div>
+  <p>
+    The following theorem shows that the inversion formula can be written as a simpler connection between the characteristic function and the density function of a random variable, in the case when the characteristic function is integrable.
+  </p>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>13.8</b>
+      
+    </h3>
+    <p>
+      If $\int_{-\infty}^\infty |\varphi_X(t)|\,dt &lt; \infty$, then $X$ has a bounded and continuous density function $f_X$, and the density and characteristic function are related by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*}
+      \varphi_X(t) &amp;=&amp; \int_{-\infty}^\infty f_X(x) e^{itx}\,dx,  \\
+      f_X(x) &amp;=&amp; \frac{1}{2\pi} \int_{-\infty}^\infty \varphi_X(t) e^{-itx}\,dt.
+      \end{eqnarray*}
+      $$
+    </div>
+  </div>
+  <p>
+    In the lingo of Fourier analysis, this is known as the $\textbf{inversion formula for Fourier transforms}$.
+  </p>
+  <div>
+    <p>
+      <span class="proof">Proof</span>This is a straightforward corollary of
+      <a
+        href="./13-3.html#_36_h.a.i_"
+        class=""
+      >Theorem 13.4</a>. See p. 95 in either [Dur2010] or [Dur2004].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
 </body>
 </html>

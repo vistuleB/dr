@@ -21,7 +21,9 @@
         |> li
             If $\Theta \sim U[-\pi/2,\pi/2]$ then $X=\tan \Theta \sim \textrm{Cauchy}$.
 
-    *Summary: Special distributions*
+    |> span
+        class=center
+        *Summary: Special distributions*
 
     $$
     \begin{array}{|l|l|lc|c|c|c|}
@@ -48,7 +50,9 @@
     \end{array}
     $$
 
-    *Useful facts:* (``$\boxplus$'' denotes convolution, i.e., sum of independent samples; ``$\stackrel{d}{=}$'' denotes equality of distributions)
+    |> span
+        class=center
+        *Useful facts:* (``$\boxplus$'' denotes convolution, i.e., sum of independent samples; ``$\stackrel{d}{=}$'' denotes equality of distributions)
 
     $$
     \begin{array}{lll}

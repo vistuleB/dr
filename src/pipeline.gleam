@@ -64,7 +64,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "Footnote",
   ]
 
-  let pre_transformation_html_tags = ["li", "ol", "ul"]
+  let pre_transformation_html_tags = ["li", "ol", "span", "ul"]
   let pre_transformation_approved_tags =
     [pre_transformation_document_tags, pre_transformation_html_tags]
     |> list.flatten
@@ -232,11 +232,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "::øøChapterCounter.::øøStatementCounter",
         infra.Continue,
       )),
-      dl.set_handle_value(#(
-        "Footnote",
-        "::øøFootnoteCounter",
-        infra.GoBack,
-      )),
+      dl.set_handle_value(#("Footnote", "::øøFootnoteCounter", infra.GoBack)),
       dl.dr_create_index(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
@@ -272,7 +268,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.handles_substitute(#("path", "a", "a", [], [], ["a"])),
       dl.unwrap("GrandWrapper"),
     ],
-    // Parse inline math into Math nodes BEFORE href tokenization: tokenize_href_surroundings
+    // Parse inline math into Math nodes BEFORE href tokenization: pre-transformationtokenize_href_surroundings
     // only recurses into T-nodes and href-bearing V-nodes, so Math nodes are opaque to it.
     // This protects inline math like `$\max(X,0)$` from the paren tokenize/detokenize round-trip
     // (which otherwise corrupts a `\command(...)` group that is a sibling of a link node).

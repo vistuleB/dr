@@ -232,3 +232,8 @@ body:not([data-page="toc"]) .nav > #next-page:before {
     padding: 0.6rem 0 0.6rem 1.2rem;
     border-left: 2px solid #ccc;
 }
+
+.center {
+    display: block;
+    text-align: center;
+}

@@ -30,7 +30,7 @@
   <div class="nav">
     <a
       id="prev-page"
-      href="./8-11.html"
+      href="./9-0.html"
     ></a><a
       id="next-page"
       href="./9-2.html"
@@ -40,5 +40,44 @@
     9.1
     Weak laws of large numbers
   </h1>
+  <div
+    label="Weak Law of Large Numbers (WLLN)"
+    class="statement theorem"
+    id="_22_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>9.1</b>
+      
+    </h3>
+    <p>
+      <span class="label">Weak Law of Large Numbers (WLLN)</span>If $\mathbf{E}|X_1|&lt;\infty$ then
+    </p>
+    <div class="math-block">
+      $$
+      \frac{S_n}{n} \xrightarrow[n\to\infty]{\mathrm{P}} \mu.
+      $$
+    </div>
+  </div>
+  <div alt-title="Proof in the case of finite variance">
+    <p>
+      <span class="proof">Proof in the case of finite variance</span>In the most general case, proving this requires some work -- we shall deduce it from its stronger cousin, the Strong Law of Large Numbers. However, if we assume that $\sigma^2 = \mathbf{V}(X_1)&lt;\infty$, the proof is extremely easy! It suffices to note that in this case $\mathbf{V}(S_n) = n \sigma^2$ (this is true even when the $X_n$'s are not independent but only uncorrelated), or $\mathbf{V}(S_n/n) = \sigma^2/n$.
+      From Chebyshev's inequality we then have that for any $\epsilon&gt;0$,
+    </p>
+    <div
+      id="_23_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{eqnarray*}
+      \tag{7}
+      \mathrm{P}(|n^{-1} S_n - \mu|&gt;\epsilon) \le \frac{\sigma^2}{n \epsilon^2} \xrightarrow[n\to\infty]{} 0.
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
 </body>
 </html>

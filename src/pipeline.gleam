@@ -169,6 +169,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Section", "counter", "FootnoteCounter"),
         #("SubSection", "counter", "FootnoteCounter"),
         #("Exercises", "counter", "FootnoteCounter"),
+        #("Footnote", "id", "footnote"),
       ]),
       dl.prepend_attribute(#(
         "Chapter",
@@ -275,13 +276,15 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     ),
     [
       // must run before markdown_link_splitting: it emits
-      // `[handle_name##<<(counter_expr)](#handle_name)`
+      // `[handle_name##<<(counter_expr)](#footnote)`
       // markdown-link text inside a `sup`, which
-      // markdown_link_splitting then turns into a real `<a>`.
-      dl.footnote_marker_to_sup_handle("::++FootnoteCounter", [
-        "MathBlock",
-        "Math",
-      ]),
+      // markdown_link_splitting then turns into a real `<a>`
+      // pointing at the shared `id=footnote` anchor added to
+      // every `Footnote` node above.
+      dl.footnote_marker_to_sup_handle(
+        #("::++FootnoteCounter", "footnote"),
+        ["MathBlock", "Math"],
+      ),
     ],
     pp.markdown_link_splitting(["MathBlock"]),
     [

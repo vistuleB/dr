@@ -1,2 +1,37 @@
 |> Section
     title=The Weierstrass approximation theorem
+
+    As an application of WLLN (or, rather, of Chebyshev's inequality), we prove the following theorem in analysis, which seems to have no connection to probability whatsoever.
+
+    |> Theorem
+        label=The Weierstrass approximation theorem
+
+        If $f:[0,1]\to\R$ is a continuous function, then $f$ can be uniformly approximated by polynomials. That is, for any $\epsilon>0$ there exists a polynomial $p$ such that $||f-p||:=\max_{x\in[0,1]}|f(x)-p(x)|<\epsilon$.
+
+    |> Proof
+
+        Let $f:[0,1]\to\R$ be a continuous function. Define the sequence of $\textbf{Bernstein polynomials of } f$ by
+        $$ B_n(x)= B_n^f(x) = \sum_{k=0}^n f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k}. $$
+        We claim that $||B_n-f||\to 0 $ as $n\to\infty$, which will prove the theorem. We will prove this by giving a probabilistic interpretation to $B_n$. Indeed, fix $x\in [0,1]$, and let $X_1,X_2,\ldots$ be a sequence of i.i.d. r.v.'s with the Bernoulli distribution $\textrm{Binom}(1,x)$. Denote $S_n=\sum_{k=1}^\infty X_k$. Then it is easy to see that
+        $$ B_n(x) = \mathbf{E}_x \left[f\left(\frac{S_n}{n}\right)\right], $$
+        where the notation ``$\mathbf{E}_x$'' just means taking the expectation, while at the same time highlighting the fact that the distribution of $S_n$ depends on the parameter $x$.
+
+        Now the idea is that since the law of large numbers implies that $S_n/n$ is with high probability close to its mean $x$, and $f$ is a continuous function, then $f(S_n/n)$ should with high probability be close to $f(x)$, and therefore also the average value of $f(S_n/n)$, namely $B_n(x)$, should be close to $f(x)$, which is what we want. However, we want to make this claim uniformly in $x$, so instead of invoking the WLLN (Theorem >>thm-wlln) we have to go back and look ``under the hood'' at Chebyshev's inequality which we used to prove it. We estimate $|B_n(x)-f(x)|$ as follows. Fix some arbitrary $\epsilon>0$. Let $\delta>0$ be such that for any $u,v\in[0,1]$, if $|u-v|<\delta$ then $|f(u)-f(v)|<\epsilon$ (this is guaranteed to exist because $f$ is uniformly continuous on $[0,1]$). Then
+        $$
+        \begin{eqnarray*}
+        |B_n(x)-f(x)| &=& \left|\mathbf{E}_x f\left(\frac{S_n}{n}\right)-f(x)\right| \le \mathbf{E}_x \left|f\left(\frac{S_n}{n}\right)-f(x)\right|
+        \\ &=& \mathbf{E}_x \left[\left|f\left(\frac{S_n}{n}\right)-f(x)\right|\mathbf{1}_{\{ \left|\frac{S_n}{n}-x\right|>\delta \}}\right] +
+        \mathbf{E}_x \left[\left|f\left(\frac{S_n}{n}\right)-f(x)\right|\mathbf{1}_{\{ \left|\frac{S_n}{n}-x\right|\le\delta \}}\right]
+        \end{eqnarray*}
+        $$
+        In this last expression, each of the two expectations is small for a different reason.
+        The second expectation is bounded by $\epsilon$, since on the event that $|S_n/n-x|\le \delta$, we have that $|f(S_n/n)-f(x)|<\epsilon$. To bound the first expectation, denote $M=||f||:=\max_{x\in[0,1]}|f(x)|<\infty$. Then, by bounding the difference of $f$-values by $2M$ and then using Chebyshev's inequality, we get
+        $$
+        \mathbf{E}_x \left[\left|f\left(\frac{S_n}{n}\right)-f(x)\right|\mathbf{1}_{\{ \left|\frac{S_n}{n}-x\right|>\epsilon \}} \right]
+        \le 2M\cdot \mathrm{P}_x\left( \left|\frac{S_n}{n}-x\right|>\epsilon\right)
+        \le \frac{2 M \sigma^2(X_1)}{n \epsilon^2} = \frac{2 M x(1-x)}{n\epsilon^2}
+        $$
+        This bound converges to $0$, not just for a single $x$ but (fortunately for us) uniformly in $x\in[0,1]$, since it is bounded from above by $M/(2n\epsilon^2)$. So we have shown that
+        $$ ||B_n-f|| = \max_{x\in[0,1]} |B_n(x)-f(x)| \le
+        \epsilon + \frac{M}{2n\epsilon^2}. $$
+        It follows that $\limsup_{n\to\infty} ||B_n-f|| \le \epsilon$, and since $\epsilon$ was an arbitrary positive number the result follows.

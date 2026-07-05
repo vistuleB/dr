@@ -40,5 +40,80 @@
     10.1
     The Weierstrass approximation theorem
   </h1>
+  <p>
+    As an application of WLLN (or, rather, of Chebyshev's inequality), we prove the following theorem in analysis, which seems to have no connection to probability whatsoever.
+  </p>
+  <div
+    label="The Weierstrass approximation theorem"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>10.1</b>
+      
+    </h3>
+    <p>
+      <span class="label">The Weierstrass approximation theorem</span>If $f:[0,1]\to\R$ is a continuous function, then $f$ can be uniformly approximated by polynomials. That is, for any $\epsilon&gt;0$ there exists a polynomial $p$ such that $||f-p||:=\max_{x\in[0,1]}|f(x)-p(x)|&lt;\epsilon$.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Let $f:[0,1]\to\R$ be a continuous function. Define the sequence of $\textbf{Bernstein polynomials of } f$ by
+    </p>
+    <div class="math-block">
+      $$
+      B_n(x)= B_n^f(x) = \sum_{k=0}^n f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k}.
+      $$
+    </div>
+    <p>
+      We claim that $||B_n-f||\to 0$ as $n\to\infty$, which will prove the theorem. We will prove this by giving a probabilistic interpretation to $B_n$. Indeed, fix $x\in [0,1]$, and let $X_1,X_2,\ldots$ be a sequence of i.i.d. r.v.'s with the Bernoulli distribution $\textrm{Binom}(1,x)$. Denote $S_n=\sum_{k=1}^\infty X_k$. Then it is easy to see that
+    </p>
+    <div class="math-block">
+      $$
+      B_n(x) = \mathbf{E}_x \left[f\left(\frac{S_n}{n}\right)\right],
+      $$
+    </div>
+    <p>
+      where the notation "$\mathbf{E}_x$" just means taking the expectation, while at the same time highlighting the fact that the distribution of $S_n$ depends on the parameter $x$.
+    </p>
+    <p>
+      Now the idea is that since the law of large numbers implies that $S_n/n$ is with high probability close to its mean $x$, and $f$ is a continuous function, then $f(S_n/n)$ should with high probability be close to $f(x)$, and therefore also the average value of $f(S_n/n)$, namely $B_n(x)$, should be close to $f(x)$, which is what we want. However, we want to make this claim uniformly in $x$, so instead of invoking the WLLN (<a
+        href="./9-1.html#_22_h.a.i_"
+        class=""
+      >Theorem 9.1</a>) we have to go back and look "under the hood" at Chebyshev's inequality which we used to prove it. We estimate $|B_n(x)-f(x)|$ as follows. Fix some arbitrary $\epsilon&gt;0$. Let $\delta&gt;0$ be such that for any $u,v\in[0,1]$, if $|u-v|&lt;\delta$ then $|f(u)-f(v)|&lt;\epsilon$ (this is guaranteed to exist because $f$ is uniformly continuous on $[0,1]$). Then
+    </p>
+    <div class="math-block">
+      $$
+      \begin{eqnarray*}
+      |B_n(x)-f(x)| &amp;=&amp; \left|\mathbf{E}_x f\left(\frac{S_n}{n}\right)-f(x)\right| \le \mathbf{E}_x \left|f\left(\frac{S_n}{n}\right)-f(x)\right|
+      \ &amp;=&amp; \mathbf{E}_x \left[\left|f\left(\frac{S_n}{n}\right)-f(x)\right|\mathbf{1}_{\{ \left|\frac{S_n}{n}-x\right|&gt;\delta \}}\right] +
+      \mathbf{E}_x \left[\left|f\left(\frac{S_n}{n}\right)-f(x)\right|\mathbf{1}_{\{ \left|\frac{S_n}{n}-x\right|\le\delta \}}\right]
+      \end{eqnarray*}
+      $$
+    </div>
+    <p>
+      In this last expression, each of the two expectations is small for a different reason.
+      The second expectation is bounded by $\epsilon$, since on the event that $|S_n/n-x|\le \delta$, we have that $|f(S_n/n)-f(x)|&lt;\epsilon$. To bound the first expectation, denote $M=||f||:=\max_{x\in[0,1]}|f(x)|&lt;\infty$. Then, by bounding the difference of $f$-values by $2M$ and then using Chebyshev's inequality, we get
+    </p>
+    <div class="math-block">
+      $$
+      \mathbf{E}_x \left[\left|f\left(\frac{S_n}{n}\right)-f(x)\right|\mathbf{1}_{\{ \left|\frac{S_n}{n}-x\right|&gt;\epsilon \}} \right]
+      \le 2M\cdot \mathrm{P}_x\left( \left|\frac{S_n}{n}-x\right|&gt;\epsilon\right)
+      \le \frac{2 M \sigma^2(X_1)}{n \epsilon^2} = \frac{2 M x(1-x)}{n\epsilon^2}
+      $$
+    </div>
+    <p>
+      This bound converges to $0$, not just for a single $x$ but (fortunately for us) uniformly in $x\in[0,1]$, since it is bounded from above by $M/(2n\epsilon^2)$. So we have shown that
+    </p>
+    <div class="math-block">
+      $$
+      ||B_n-f|| = \max_{x\in[0,1]} |B_n(x)-f(x)| \le
+      \epsilon + \frac{M}{2n\epsilon^2}.
+      $$
+    </div>
+    <p>
+      It follows that $\limsup_{n\to\infty} ||B_n-f|| \le \epsilon$, and since $\epsilon$ was an arbitrary positive number the result follows.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
 </body>
 </html>

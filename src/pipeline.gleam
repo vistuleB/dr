@@ -24,6 +24,7 @@ const p_cannot_contain = [
   "SubSection",
   "SubSectionTitle",
   "WriterlyBlankLine",
+  "hr",
   "li",
   "ol",
   "h1",
@@ -67,6 +68,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "WriterlyBlankLine",
     "WriterlyComment",
     "Footnote",
+    "hr",
   ]
 
   let pre_transformation_html_tags = ["li", "ol", "span", "ul"]
@@ -83,11 +85,13 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "h1",
     "h3",
     "header",
+    "hr",
     "i",
     "li",
     "ol",
     "p",
     "span",
+    "sup",
     "ul",
     "InTextWarning",
   ]
@@ -162,6 +166,9 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Chapter", "counter", "StatementCounter"),
         #("Chapter", "counter", "FootnoteCounter"),
         #("Section", "counter", "SubSectionCounter"),
+        #("Section", "counter", "FootnoteCounter"),
+        #("SubSection", "counter", "FootnoteCounter"),
+        #("Exercises", "counter", "FootnoteCounter"),
       ]),
       dl.prepend_attribute(#(
         "Chapter",
@@ -207,11 +214,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "StatementCounter",
         infra.GoBack,
       )),
-      dl.prepend_counter_incrementing_attribute(#(
-        "Footnote",
-        "FootnoteCounter",
-        infra.GoBack,
-      )),
       dl.auto_generate_child_if_missing_from_attribute(#(
         "Chapter",
         "ChapterTitle",
@@ -248,7 +250,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "::øøChapterCounter.::øøStatementCounter",
         infra.Continue,
       )),
-      dl.set_handle_value(#("Footnote", "::øøFootnoteCounter", infra.GoBack)),
       dl.dr_create_index(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
@@ -258,7 +259,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
           "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter ",
         ),
         #("Statement", "*::øøChapterCounter.::øøStatementCounter*" <> " "),
-        #("Footnote", "(::øøFootnoteCounter) "),
       ]),
       dl.insert_attribute_as_text(#("Statement", "title")),
       dl.wrap_if_first_child_of(#("Statement", "h3")),
@@ -276,6 +276,10 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     pp.markdown_link_splitting(["MathBlock"]),
     [
       dl.math_label_to_tag_handle(#("MathBlock", "::++EquationCounter")),
+      dl.footnote_marker_to_sup_handle("::++FootnoteCounter", [
+        "MathBlock",
+        "Math",
+      ]),
       dl.substitute_counters(),
       dl.handles_generate_v_definitions_from_t_definitions(),
       dl.dr_create_menu(),

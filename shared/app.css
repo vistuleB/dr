@@ -227,10 +227,20 @@ body:not([data-page="toc"]) .nav > #next-page:before {
     float: right;
 }
 
+hr {
+    margin: 2rem 0 1rem 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
 .footnote {
-    font-size: 0.9rem;
-    padding: 0.6rem 0 0.6rem 1.2rem;
-    border-left: 2px solid #ccc;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.3rem;
+}
+
+sup {
+    font-size: 0.75em;
 }
 
 .center {

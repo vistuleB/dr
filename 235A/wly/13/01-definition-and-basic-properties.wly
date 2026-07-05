@@ -40,13 +40,15 @@
 
     $\textbf{A note on terminology.}$ If $X$ has a density function $f$, then the characteristic function can be computed as
     $$ \varphi_X(t) = \int_{-\infty}^\infty f_X(x) e^{itx}\,dx. $$
-    In all other branches of mathematics, this would be called the $\textbf{Fourier transform}$(>>fn-fourier-transform) of $f$.
-
-    |> Footnote
-        handle=fn-fourier-transform
-
-        Well, more or less -- it is really the inverse Fourier transform; but it will be the Fourier transform if we replace $t$ by $-t$, so that is almost the same thing.
+    In all other branches of mathematics, this would be called the $\textbf{Fourier transform}$(*>>fn-fourier-transform) of $f$.
 
     So the concept of a characteristic function generalizes the Fourier transform. If $\mu$ is the distribution measure of $X$, some authors write
     $$ \varphi_X(t) = \int_{-\infty}^\infty e^{itx} d\mu(x) $$
     (which is an example of a $\textbf{Lebesgue-Stieltjes integral}$) and call this the $\textbf{Fourier-Stieltjes transform}$ (or just the Fourier transform) of the measure $\mu$.
+
+    |> hr
+
+    |> Footnote
+        id=fn-fourier-transform
+
+        >>fn-fourier-transform Well, more or less -- it is really the inverse Fourier transform; but it will be the Fourier transform if we replace $t$ by $-t$, so that is almost the same thing.

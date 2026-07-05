@@ -1,2 +1,68 @@
 |> Section
     title=Compactness and tightness
+
+    |> Theorem
+        label=Helly's selection theorem
+        handle=thm-helly
+
+        If $(F_n)_{n=1}^\infty$ is a sequence of distribution functions, then there is a subsequence $F_{n_k}$ and a right-continuous, nondecreasing function $H:\R\to[0,1]$ such that
+        $$ F_{n_k}(x)\xrightarrow[n\to\infty]{} H(x)$$
+        holds for any $x\in\R$ which is a continuity point of $H$.
+
+    $\textbf{Note.}$ The subsequential limit $H$ need not be a distribution function, since it may not satisfy the properties $\lim_{x\to-\infty} H(x) = 0$ or $\lim_{x\to\infty} H(x)=1$. For example, taking $F_n = F_{X_n}$, where $X_n \sim U[-n,n]$, we see that $F_n(x)\to 1/2$ for all $x\in\R$. For a more interesting example, take $G_n = (F_n + F_{Z_n})/2$ where $F_n$ are as in the previous example, and $Z_n$ is some sequence of r.v.'s that converges in distribution.
+
+    |> Proof
+
+        First, note that we can find a subsequence $(n_k)_{k=1}^\infty$ such that $F_{n_k}(r)$ converges to a limit $G(r)$ at least for any _rational_ number $r$. This is done by combining the compactness of the interval $[0,1]$ (which implies that for any specific $a\in\R$ we can always take a subsequence to make the sequence of numbers $F_n(a)$ converge to a limit) with a diagonal argument (for some enumeration $r_1, r_2, r_3, \ldots$ of the rationals, first take a subsequence to force convergence at $r_1$; then take a subsequence of that subsequence to force convergence at $r_2$, etc.; now form a subsequence whose $k$-th term is the $k$-th term of the $k$-th subsequence in this series).
+
+        Now, use $G(\cdot)$, which is defined only on the rationals and not necessarily right-continuous (but is nondecreasing), to define a function $H:\R \to \R$ by
+        $$ H(x) = \inf\{ G(r) : r\in\mathbb{Q}, r>x \}. $$
+        This function is clearly nondecreasing, and is also right-continuous, since we have
+        $$ \lim_{x_n \downarrow x} H(x_n) = \inf\{ G(r) : r\in\mathbb{Q}, r>x_n\textrm{ for some }n \}
+        = \inf\{ G(r) : r\in\mathbb{Q}, r>x \} = H(x). $$
+
+        Finally, let $x$ be a continuity point of $H$. To show that $F_{n_k}(x)\to H(x)$, fix some $\epsilon>0$ and let $r_1,r_2,s$ be rationals such that $r_1 < r_2 < x < s$ and
+        $$ H(x)-\epsilon < H(r_1) \le H(r_2) \le H(x) \le H(s) < H(x)+\epsilon. $$
+        Then since $F_{n_k}(r_2)\to G(r_2)\ge H(r_1)$, and $F_{n_k}(s)\to G(s)\le H(s)$, it follows that for sufficiently large $k$ we have
+        $$ H(x)-\epsilon < F_{n_k}(r_2) \le F_{n_k}(x) \le F_{n_k}(s) < H(x)+\epsilon. $$
+        Therefore
+        $$ H(x)-\epsilon \le \liminf_{n\to\infty} F_{n_k}(x) \le \limsup_{n\to\infty} F_{n_k}(x) \le H(x)+\epsilon, $$
+        and since $\epsilon$ was arbitrary this proves the claim.
+
+    Theorem >>thm-helly can be thought of as a kind of compactness property for probability distributions, except that the subsequential limit guaranteed to exist by the theorem is not a distribution function. To ensure that we get a distribution function, it turns out that a certain property called $\textbf{tightness}$ has to hold.
+
+    |> Definition
+
+        A sequence $(\mu_n)_{n=1}^\infty$ of probability measures on $(\R,{\cal B})$ is called $\textbf{tight}$ if for any $\epsilon>0$ there exists an $M>0$ such that
+        $$ \liminf_{n\to\infty} \mu_n([-M,M]) \ge 1-\epsilon. $$
+        A sequence of distribution functions $(F_n)_{n=1}^\infty$ is called tight if the associated probability measures determined by $F_n$ form a tight sequence, or, more explicitly, if for any $\epsilon>0$ there exists an $M>0$ such that
+        $$ \limsup_{n\to\infty} (1-F_n(M)+F_n(-M)) < \epsilon. $$
+        A sequence of random variables is called tight if the sequence of their distribution functions is tight.
+
+    |> Theorem
+
+        If $(F_n)_{n=1}^\infty$ is a tight sequence of distribution functions, then there exists a subsequence $(F_{n_k})_{k=1}^\infty$ and a distribution function $F$ such that $F_{n_k} \implies F$. In fact, any subsequential limit $H$ as guaranteed to exist in the previous theorem is a distribution function.
+
+    |> Exercise
+
+        Prove that the converse is also true, i.e., if a sequence is not tight then it must have at least one subsequential limit $H$ (in the sense of the subsequence converging to $H$ at any continuity point of $H$) that is not a proper distribution function. In particular, it is worth noting that a sequence that converges in distribution is tight.
+
+    |> Proof
+
+        Let $H$ be a nondecreasing, right-continuous function that arises as a subsequential limit-in-distribution of a subsequence $F_{n_k}$, that we know exists by Theorem >>thm-helly. To show that $H$ is a distribution function, fix $\epsilon>0$, and let $M>0$ be the constant guaranteed to exist in the definition of tightness. Let $x<-M$ be a continuity point of $H$. We have
+        $$ H(x)=\lim_{k\to\infty} F_{n_k}(x) \le \limsup_{k\to\infty} F_{n_k}(-M) \le \limsup_{k\to\infty} (F_{n_k}(-M)+(1-F_{n_k}(M)) ) < \epsilon, $$
+        so this shows that $\lim_{x\to-\infty} H(x) = 0. $ Similarly, let $x>M$ be a continuity point of $H$. Then
+        $$ H(x)=\lim_{k\to\infty} F_{n_k}(x) \ge \liminf_{k\to\infty} F_{n_k}(M) \ge \liminf_{k\to\infty} (F_{n_k}(M))-F_{n_k}(-M) ) > 1-\epsilon, $$
+        which shows that $\lim_{x\to\infty} H(x)=1.$
+
+    The condition of tightness is not very restrictive, and in practical situations it is usually quite easy to verify. The following lemma gives an example that is relevant for our purposes.
+
+    |> Lemma
+
+        If $X_1,X_2,\ldots$ are r.v.'s such that $\mathbf{E} X_n=0$ and $\mathbf{V}(X_n)<C$ for all $n$, then $(X_n)_n$ is a tight sequence.
+
+    |> Proof
+
+        Use Chebyshev's inequality:
+        $$\mathrm{P}(|X_n|>M) \le \frac{\mathbf{V}(X_n)}{M^2} \le \frac{C}{M^2}, $$
+        so, if $\epsilon>0$ is given, taking $M=\sqrt{C/\epsilon}$ ensures that the left-hand side is bounded by $\epsilon$.

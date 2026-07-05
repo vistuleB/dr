@@ -1,2 +1,50 @@
 |> Section
     title=Definition
+
+    Since we will be talking about convergence of the distribution of random variables to the normal distribution, it makes sense to develop the general theory of convergence of distributions to a limiting distribution.
+
+    |> Definition
+
+        Let $(F_n)_{n=1}^\infty$ be a sequence of distribution functions. We say that $F_n$ $\textbf{converges to a limiting distribution function}$ $F$, and denote this by $F_n \implies F$, if $F_n(x)\to F(x)$ as $n\to\infty$ for any $x\in\R$ which is a continuity point of $F$. If $X, (X_n)_{n=1}^\infty$ are random variables, we say that $X_n$ $\textbf{converges in distribution to } X$ (or, interchangeably, $\textbf{converges in distribution to } F_X$) if $F_{X_n}\implies F_X$.
+
+    This definition, which may seem unnatural at first sight, will become more reasonable after we prove the following lemma.
+
+    |> Lemma
+
+        The following are equivalent:
+
+        |> ol
+            class=list
+            data-list-style=decimal
+            |> li
+                $X_n \implies X$.
+            |> li
+                $\mathbf{E} f(X_n) \xrightarrow[n\to\infty]{} \mathbf{E} f(X)$ for any bounded continuous function $f:\R\to\R$.
+            |> li
+                There exists a r.v. $Y$ and a sequence $(Y_n)_{n=1}^\infty$ of r.v.'s, all defined on some probability space $(\Omega, {\cal F}, \mathrm{P})$ such that $Y_n \to Y$ a.s., $Y$ is equal in distribution to $X$, and each $Y_n$ is equal in distribution to the respective $X_n$.
+
+    |> Proof
+
+        Proof that $2\implies 1$: Assume that $\mathbf{E} f(X_n) \xrightarrow[n\to\infty]{} \mathbf{E} f(X)$ for any bounded continuous function $f:\R\to\R$, and fix $x\in \R$.
+        For any $t\in \R$ and $\epsilon>0$, define a function
+        $g_{t,\epsilon}:\R\to\R$ by
+        $$ g_{t,\epsilon}(u) = \begin{cases}
+        1 & u<t, \\
+        \frac{t-u+\epsilon}{\epsilon} & u \le t \le t+\epsilon, \\
+        0 & u>t+\epsilon.
+        \end{cases}
+        $$
+        Then we have that
+        $$ \mathbf{E} (g_{x-\epsilon,\epsilon}(X_n)) \le F_{X_n}(x) = \mathbf{E}(\mathbf{1}_{(-\infty,x]}(X_n)) \le \mathbf{E}(g_{x,\epsilon}(X_n))$$
+        Letting $n\to\infty$ gives the chain of inequalities
+        $$ F_{X}(x-\epsilon) \le \mathbf{E}(g_{x-\epsilon,x}(X)) \le \liminf_{n\to\infty} F_{X_n}(x) \le \limsup_{n\to\infty}
+        F_{X_n}(x) \le \mathbf{E}(g_{x,\epsilon}(X)) \le F_X(x+\epsilon). $$
+        Now if $x$ is a point of continuity of $F_X$, letting $\epsilon \downarrow 0$ gives that $\lim_{n\to\infty}F_{X_n}(x) = F_X(x)$.
+
+        Proof that $3\implies 2$: this follows immediately by applying the bounded convergence theorem to the sequence $g(Y_n)$.
+
+        Proof that $1 \implies 3$: Take $(\Omega,{\cal F},\mathrm{P}) = ((0,1),{\cal B}(0,1), \textrm{Leb})$. For each $n\ge 1$, let $Y_n(x) = \sup\{ y : F_{X_n}(y) < x \}$ be the $\textbf{lower quantile function}$ of $X_n$, as discussed in a previous lecture, and similarly let $Y(x)=\sup\{ y : F_X(y)<x\}$ be the lower quantile function of $X$. Then as we previously showed, we have $F_Y \equiv F_X$ and $F_{Y_n}\equiv F_{X_n}$ for all $n$. It remains to show that $Y_n(x)\to Y(x)$ for almost all $x\in(0,1)$. In fact, we show that this is true for all but a countable set of $x$'s. Denote $Y^*(x) = \inf\{ y : F_X(y)>x\}$ (the $\textbf{upper quantile function}$ of $X$). As we have seen, we always have $Y(x) \le Y^*(x)$, and $Y(x) = Y^*(x)$ for all $x\in(0,1)$ except on a countable set of $x$'s (the exceptional $x$'s correspond to intervals where $F_X$ is constant; these intervals are disjoint and each one contains a rational point).
+
+        Let $x\in(0,1)$ be such that $Y(x)=Y^*(x)$. This means that for any $y<Y(x)$ we have $F_X(y)<x$, and for any $z>Y(x)$ we have $F_X(z)>x$. Now, take a $y<Y(x)$ which is a continuity point of $F_X$. Then $F_{X_n}(y)\to F_X(y)$ as $n\to\infty$, so also $F_{X_n}(y)< x$ for sufficiently large $n$, which means (by the definition of $Y_n$) that $Y_n(x)\ge y$ for such large $n$. This establishes that $\liminf_{n\to\infty} Y_n(x)\ge y$, and therefore that $\liminf_{n\to\infty} Y_n(x)\ge Y(x)$, since we have continuity points $y<Y(x)$ that are arbitrarily close to $Y(x)$.
+
+        Similarly, take a $z>Y(x)$ which is a continuity point of $F_X$. Then $F_{X_n}(z)\to F_x(z)$ as $n\to\infty$, so also $F_{X_n}(z)>x$ for large $n$, which implies that $Y_n(x)\le z$. Again, by taking continuity points $z>Y(x)$ that are arbitrarily close to $Y(x)$ we get that $\limsup_{n\to\infty} Y_n(x) \le Y(x)$. Combining these last two results shows that $Y_n(x)\to Y(x)$ which was what we wanted.

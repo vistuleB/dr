@@ -20,6 +20,7 @@ pub type FragmentType {
   Section(Int, Int)
   SubSection(Int, Int, Int)
   Index
+  Exercises
 }
 
 type Fragment(z) =
@@ -61,6 +62,18 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
     |> infra.read_singleton
     |> result.map_error(index_error),
   )
+
+  // Exercises is optional: at most one, appearing outside the chapter
+  // sequence (e.g. a trailing homework appendix). Courses without one
+  // simply produce no Exercises fragment.
+  let exercises_fragments = case
+    infra.descendants_with_class(root, "exercises")
+  {
+    [exercises, ..] -> [
+      ds.OutputFragment(Exercises, "exercises.html", exercises),
+    ]
+    [] -> []
+  }
 
   use chapters <- result.try(
     case infra.descendants_with_class(root, "chapter") {
@@ -142,6 +155,7 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
     chapter_fragments,
     section_fragments,
     subsection_fragments,
+    exercises_fragments,
   ])
   |> Ok
 }
@@ -247,6 +261,90 @@ fn chapter_emitter(
       ],
       document_meta_tags(blame, Some(chapter_title), document_info),
       social_share_meta_tags(blame, Some(chapter_title), document_info),
+      [
+        OutputLine(
+          blame,
+          2,
+          "<link rel=\"stylesheet\" type=\"text/css\" href=\"app.css\" />",
+        ),
+      ],
+      case author_mode {
+        True -> [
+          OutputLine(
+            blame,
+            2,
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"local.css\" />",
+          ),
+        ]
+        False -> []
+      },
+      [
+        OutputLine(
+          blame,
+          2,
+          "<script type=\"text/javascript\" src=\"mathjax_setup.js\"></script>",
+        ),
+        case offline_mathjax {
+          True ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+            )
+          False ->
+            OutputLine(
+              blame,
+              2,
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+            )
+        },
+        OutputLine(
+          blame,
+          2,
+          "<script type=\"text/javascript\" src=\"course.js\"></script>",
+        ),
+        OutputLine(
+          blame,
+          2,
+          "<script type=\"text/javascript\" src=\"app.js\" defer></script>",
+        ),
+        OutputLine(blame, 0, "</head>"),
+        OutputLine(blame, 0, "<body>"),
+      ],
+      vxml.vxmls_to_html_output_lines(
+        fragment.payload |> infra.v_get_children,
+        2,
+        2,
+      ),
+      [
+        OutputLine(blame, 0, "</body>"),
+        OutputLine(blame, 0, "</html>"),
+        OutputLine(blame, 0, ""),
+      ],
+    ])
+  Ok(ds.OutputFragment(..fragment, payload: lines))
+}
+
+// exercises emitter - handles the (optional, singular) exercises fragment,
+// a page outside the chapter sequence (e.g. a trailing homework appendix)
+fn exercises_emitter(
+  fragment: Fragment(VXML),
+  offline_mathjax: Bool,
+  document_info: DocumentInfo,
+  author_mode: Bool,
+) -> Result(Fragment(OL), String) {
+  let blame = Ext([], "exercises_emitter")
+  let page_title = "Exercises"
+
+  let lines =
+    list.flatten([
+      [
+        OutputLine(blame, 0, "<!DOCTYPE html>"),
+        OutputLine(blame, 0, "<html>"),
+        OutputLine(blame, 0, "<head>"),
+      ],
+      document_meta_tags(blame, Some(page_title), document_info),
+      social_share_meta_tags(blame, Some(page_title), document_info),
       [
         OutputLine(
           blame,
@@ -661,6 +759,8 @@ fn our_emitter(
       section_emitter(fragment, offline_mathjax, document_info, author_mode)
     SubSection(_, _, _) ->
       subsection_emitter(fragment, offline_mathjax, document_info, author_mode)
+    Exercises ->
+      exercises_emitter(fragment, offline_mathjax, document_info, author_mode)
   }
 }
 

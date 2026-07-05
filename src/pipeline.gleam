@@ -11,6 +11,8 @@ const our_blame = bl.Des([], "pipeline", 8)
 const p_cannot_contain = [
   "Chapter",
   "ChapterTitle",
+  "Exercises",
+  "ExercisesTitle",
   "Footnote",
   "Labeled",
   "MathBlock",
@@ -34,6 +36,7 @@ const p_cannot_be_contained_in = [
   "ChapterTitle",
   "SectionTitle",
   "SubSectionTitle",
+  "ExercisesTitle",
   "Math",
   "MathBlock",
   "Navigation",
@@ -51,6 +54,8 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "Document",
     "Example",
     "Exercise",
+    "Exercises",
+    "ExercisesTitle",
     "Labeled",
     "Lemma",
     "Proof",
@@ -176,6 +181,12 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "./::øøChapterCounter-::øøSectionCounter-::øøSubSectionCounter.html",
         infra.GoBack,
       )),
+      dl.prepend_attribute(#(
+        "Exercises",
+        "path",
+        "./exercises.html",
+        infra.GoBack,
+      )),
       dl.prepend_counter_incrementing_attribute(#(
         "Chapter",
         "ChapterCounter",
@@ -214,6 +225,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.auto_generate_child_if_missing_from_attribute(#(
         "SubSection",
         "SubSectionTitle",
+        "title",
+      )),
+      dl.auto_generate_child_if_missing_from_attribute(#(
+        "Exercises",
+        "ExercisesTitle",
         "title",
       )),
       dl.set_handle_value(#("Chapter", "::øøChapterCounter", infra.GoBack)),
@@ -319,6 +335,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Section", "section"),
         #("SubSection", "subsection"),
         #("Footnote", "footnote"),
+        #("Exercises", "exercises"),
       ]),
       dl.dr_generate_js_course(course),
       dl.rename__batch([
@@ -335,6 +352,8 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("SubSection", "div"),
         #("SubSectionTitle", "h1"),
         #("Footnote", "div"),
+        #("Exercises", "div"),
+        #("ExercisesTitle", "h1"),
       ]),
       dl.delete_attribute__batch([
         "_",

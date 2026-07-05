@@ -49,5 +49,6 @@
     |> hr
 
     |> Footnote
+        id=fn-fourier-transform
 
         >>fn-fourier-transform Well, more or less -- it is really the inverse Fourier transform; but it will be the Fourier transform if we replace $t$ by $-t$, so that is almost the same thing.

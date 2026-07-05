@@ -273,13 +273,19 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
       infra.DoubleDollar,
     ),
-    pp.markdown_link_splitting(["MathBlock"]),
     [
-      dl.math_label_to_tag_handle(#("MathBlock", "::++EquationCounter")),
+      // must run before markdown_link_splitting: it emits
+      // `[handle_name##<<(counter_expr)](#handle_name)`
+      // markdown-link text inside a `sup`, which
+      // markdown_link_splitting then turns into a real `<a>`.
       dl.footnote_marker_to_sup_handle("::++FootnoteCounter", [
         "MathBlock",
         "Math",
       ]),
+    ],
+    pp.markdown_link_splitting(["MathBlock"]),
+    [
+      dl.math_label_to_tag_handle(#("MathBlock", "::++EquationCounter")),
       dl.substitute_counters(),
       dl.handles_generate_v_definitions_from_t_definitions(),
       dl.dr_create_menu(),

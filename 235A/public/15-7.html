@@ -38,7 +38,45 @@
   </div>
   <h1>
     15.7
-    Simulating a Poisson r.v
+    Simulating a Poisson r.v.
   </h1>
+  <p>
+    Given a sequence $U_1,U_2,\ldots$ of i.i.d. $U[0,1]$ random variables, the following method simulates a $\operatorname{Poi}(\lambda)$ r.v.
+  </p>
+  <p>
+    $\textbf{Simulation Method 7.}$
+  </p>
+  <ol
+    class="list"
+    data-list-style="decimal"
+  >
+    <li>
+      <p>
+        Sample the $U_k$'s one at a time until the first time $m$ when $M_m =\prod_{k=1}^m U_k$ satisfies $M_m \le e^{-\lambda}$.
+      </p>
+    </li>
+    <li>
+      <p>
+        Output $m-1$.
+      </p>
+    </li>
+  </ol>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>15.8</b>
+      
+    </h3>
+    <p>
+      Explain why the output $Z$ of this algorithm has distribution $\operatorname{Poi}(\lambda)$, using the connection between the Poisson distribution and the cumulative sums of i.i.d. exponential random variables (see
+      <a
+        href="./8-8.html#_22_h.a.i_"
+        class=""
+      >Section 8.8</a>).
+    </p>
+  </div>
+  <p>
+    Note that the number of samples this method requires is equal to one plus the random variable $Z$ being simulated. In particular, the mean number of samples required is $\mathbf{E} Z = \lambda+1$.
+  </p>
 </body>
 </html>

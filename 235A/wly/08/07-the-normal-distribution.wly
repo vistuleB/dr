@@ -1,6 +1,6 @@
 |> Section
     title=The normal distribution
-    handle=sec-normal-dist
+    handle=sec:normal-dist
 
     We say that $X$ has the normal (a.k.a. gaussian) distribution with mean $\mu$ and variance $\sigma^2$, and denote $X\sim N(\mu,\sigma^2)$, if $X$ has density function
     $$

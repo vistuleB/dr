@@ -38,7 +38,29 @@
   </div>
   <h1>
     15.6
-    Simulating a normal r.v
+    Simulating a normal r.v.
   </h1>
+  <p>
+    Although Simulation Method 4 is very general, in many practical cases it is hard or annoying to compute the associated quantile function $g(p)$ (which in the case of an absolutely continuous distribution amounts to inverting the c.d.f.). The normal distribution is an example where there exists a more practical method that is based instead on the polar decomposition of a standard bivariate normal vector (<a
+      href="./8-7.html#_21_h.a.i_"
+      class=""
+    >Section 8.7</a>).
+  </p>
+  <p>
+    $\textbf{Simulation Method 6.}$ Given two independent r.v.s $U_1,U_2 \sim U[0,1]$, define
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \Theta &amp;= 2\pi U_1, \\
+    R &amp;= \sqrt{-2 \log U_2}, \\
+    X &amp;= R\cos \Theta, \\
+    Y &amp;= R \sin \Theta.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    Then $\Theta \sim U[0,2\pi]$, $R^2 \sim \operatorname{Exp}(1/2)$, and $R$ and $\Theta$ are independent. Therefore $X,Y$ are independent and have the standard normal distribution $N(0,1)$.
+  </p>
 </body>
 </html>

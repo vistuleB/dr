@@ -1,2 +1,12 @@
 |> Section
-    title=Simulating a general r.v. using a uniform r.v
+    title=Simulating a general r.v. using a uniform r.v.
+
+    Theorem >>thm-rvexistence from Section >>sec:dist-funs, which we proved earlier for its theoretical importance, can be interpreted about a statement about how to simulate a random variable with a specified distribution $F$ using a $U[0,1]$ random variable.
+
+    $\textbf{Simulation Method 4.}$ Given a c.d.f. $F$ and a $U[0,1]$-distributed random variable $U$, set $X=g(U)$, where
+    $$g(p) = \sup \{ x\in\R\,:\, F(x) < p \} \qquad (0<p<1).$$
+    (this is the lower quantile function associated with $F$; see Section >>sec:dist-funs).
+
+    |> Exercise
+
+        Explain why the above method works and its connection to Theorem >>thm-rvexistence.

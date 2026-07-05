@@ -1,5 +1,6 @@
 |> Section
     title=Distribution functions
+    handle=sec:dist-funs
 
     Instead of working with distributions of random variables (which are probability measure on the measurable space $(\R, {\cal B})$ and themselves quite unwieldy objects), we will encode them in a simpler object called a $\textbf{distribution function}$ (sometimes referred to as a $\textbf{cumulative distribution function}$, or $\textbf{c.d.f.})$.
 

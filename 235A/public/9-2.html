@@ -46,7 +46,7 @@
   <div
     label="Strong Law of Large Numbers (SLLN)"
     class="statement theorem"
-    id="_24_h.a.i_"
+    id="_25_h.a.i_"
   >
     <h3>
       <b>Theorem</b>
@@ -67,12 +67,12 @@
   </p>
   <div alt-title="Proof in the case of a finite fourth moment">
     <p>
-      <span class="proof">Proof in the case of a finite fourth moment</span>To prove that $S_n/n\to \mu$, we want to prove that $\mathrm{P}(|S_n/n-\mu|&gt;\epsilon\textrm{ i.o.})=0$. Looking at the bound (<a href="./9-1.html#_23_h.a.i_">7</a>), we see that if the bound $\sigma^2/n\epsilon^2$ were to form the $n$-th general term of a convergent series, then by the Borel-Cantelli lemma this would be enough to get the desired consequence. This is not the case, but if we assume that $X_1$ has a finite fourth moment, then we could do a similar trick that
+      <span class="proof">Proof in the case of a finite fourth moment</span>To prove that $S_n/n\to \mu$, we want to prove that $\mathrm{P}(|S_n/n-\mu|&gt;\epsilon\textrm{ i.o.})=0$. Looking at the bound (<a href="./9-1.html#_24_h.a.i_">7</a>), we see that if the bound $\sigma^2/n\epsilon^2$ were to form the $n$-th general term of a convergent series, then by the Borel-Cantelli lemma this would be enough to get the desired consequence. This is not the case, but if we assume that $X_1$ has a finite fourth moment, then we could do a similar trick that
       <i>will</i>
       give a convergent series. In that case, using Markov's inequality we can get that
     </p>
     <div
-      id="_25_h.a.i_"
+      id="_26_h.a.i_"
       class="math-block"
     >
       $$
@@ -106,7 +106,7 @@
       $$
     </div>
     <p>
-      where we denote $m_2 = \mathbf{E}(\hat{X}_k^2) = \mathbf{V}(X_k)$, $m_4=\mathbf{E}(\hat{X}_k^4)&lt;\infty$. This gives us the bound we wanted! In fact, all that matters is that $\mathbf{E}(T_n^4)\le C n^2$ for some constant $C&gt;0$. Combining this with (<a href="./9-2.html#_25_h.a.i_">8</a>), we get that
+      where we denote $m_2 = \mathbf{E}(\hat{X}_k^2) = \mathbf{V}(X_k)$, $m_4=\mathbf{E}(\hat{X}_k^4)&lt;\infty$. This gives us the bound we wanted! In fact, all that matters is that $\mathbf{E}(T_n^4)\le C n^2$ for some constant $C&gt;0$. Combining this with (<a href="./9-2.html#_26_h.a.i_">8</a>), we get that
     </p>
     <div class="math-block">
       $$
@@ -136,7 +136,7 @@
   </div>
   <div alt-title="Proof in the case of finite variance">
     <p>
-      <span class="proof">Proof in the case of finite variance</span>We are slowly refining our techniques to weaken the assumptions required to prove the SLLN. The following nice proof manages to harness the Chebyshev variance bound (<a href="./9-1.html#_23_h.a.i_">7</a>) after all to deduce the theorem in the case of r.v.'s with finite variance. Observe that while the series of terms on the right-hand side of (<a href="./9-1.html#_23_h.a.i_">7</a>) diverges, if we restrict it to a subsequence $n_k = k^2$, it will become a
+      <span class="proof">Proof in the case of finite variance</span>We are slowly refining our techniques to weaken the assumptions required to prove the SLLN. The following nice proof manages to harness the Chebyshev variance bound (<a href="./9-1.html#_24_h.a.i_">7</a>) after all to deduce the theorem in the case of r.v.'s with finite variance. Observe that while the series of terms on the right-hand side of (<a href="./9-1.html#_24_h.a.i_">7</a>) diverges, if we restrict it to a subsequence $n_k = k^2$, it will become a
       <i>convergent</i>
       series: $\sum_{k=1}^\infty \sigma^2/k^2\epsilon^2&lt;\infty$. This implies, again by the Borel-Cantelli lemma, that
     </p>
@@ -268,7 +268,7 @@
   </div>
   <p>
     Finally, we turn to the proof of the full SLLN for an i.i.d. sequence (<a
-      href="./9-2.html#_24_h.a.i_"
+      href="./9-2.html#_25_h.a.i_"
       class=""
     >Theorem 9.2</a>), assuming only a finite first moment. Etemadi's 1981 proof presented in [Dur2010] is based on a similar idea of proving convergence first for a subsequence, and introduces another useful technique, that of $\textbf{truncation}$.
   </p>
@@ -276,7 +276,7 @@
     <p>
       <span class="proof">Proof of
         <a
-          href="./9-2.html#_24_h.a.i_"
+          href="./9-2.html#_25_h.a.i_"
           class=""
         >Theorem 9.2</a>
         </span>First, observe that it is enough to prove the theorem in the case where $X_1\ge 0$, since in the general case we may decompose each $X_n$ into its positive and negative parts, and this gives two i.i.d. sequences of nonnegative r.v.'s. The validity of the SLLN for each of the two sequences implies the result for their difference.
@@ -327,7 +327,7 @@
       Therefore
     </p>
     <div
-      id="_26_h.a.i_"
+      id="_27_h.a.i_"
       class="math-block"
     >
       $$
@@ -385,7 +385,7 @@
       </p>
     </div>
     <p>
-      It follows that the infinite sum on the left-hand side of (<a href="./9-2.html#_26_h.a.i_">9</a>) converges, and therefore by the Borel-Cantelli lemma, we have that
+      It follows that the infinite sum on the left-hand side of (<a href="./9-2.html#_27_h.a.i_">9</a>) converges, and therefore by the Borel-Cantelli lemma, we have that
     </p>
     <div class="math-block">
       $$
@@ -430,7 +430,7 @@
     <p>
       which finishes the proof of
       <a
-        href="./9-2.html#_24_h.a.i_"
+        href="./9-2.html#_25_h.a.i_"
         class=""
       >Theorem 9.2</a>.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>

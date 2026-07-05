@@ -1,6 +1,6 @@
 |> Section
     title=The exponential distribution
-    handle=sec-exp-dist
+    handle=sec:exp-dist
 
     We say that $X$ has the exponential distribution with parameter $\lambda$, and denote $X\sim \operatorname{Exp}(\lambda)$, if $X$ has density function
     $$

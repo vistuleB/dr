@@ -40,5 +40,69 @@
     15.3
     Simulating an arbitrary discrete distribution using unbiased coin tosses
   </h1>
+  <p>
+    We can generalize Simulation Method 2 described above to get a method for simulating an arbitrary discrete random variable taking values $\alpha_1,\ldots,\alpha_k$ with respective probabilities $p_1,\ldots,p_k$, using a sequence of independent unbiased coin tosses $X_1,X_2,\ldots \sim \operatorname{Ber}(1/2)$. Let $U=\sum_{n=1}^\infty X_n/2^n$ as before, and for $m\ge 1$ let $U_m = \sum_{k=1}^m X_k/2^k$ be the partial sums of the binary expansion of $U$.
+  </p>
+  <p>
+    $\textbf{Simulation Method 3.}$
+    Denote $c_0 = 0, c_j = p_1+\ldots+p_j$. Note that the intervals $(c_0,c_1), (c_1,c_2),\ldots, (c_{k-1},c_k)$ form a partition of the interval $(0,1)$ into subintervals of lengths $p_1,\ldots,p_k$. To produce a sample from the discrete distribution with atoms of size $p_j$ at $\alpha_j$ for $j=1,\ldots,k$:
+  </p>
+  <ol
+    class="list"
+    data-list-style="decimal"
+  >
+    <li>
+      <p>
+        Sample $X_1,X_2,\ldots$ one at a time until the first time $m$ for which there is a $j$ such that the condition
+      </p>
+      <div class="math-block">
+        $$
+        c_{j-1} &lt; U_m &lt; U_m+\frac{1}{2^m} &lt; c_j
+        $$
+      </div>
+      <p>
+        holds. Note that this condition can be checked by comparing the binary string $(X_1,\ldots,X_m)$ against the first $m$ digits in the binary expansions of the numbers $c_0,\ldots,c_k$.
+      </p>
+    </li>
+    <li>
+      <p>
+        Output $\alpha_j$.
+      </p>
+    </li>
+  </ol>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>15.5</b>
+      
+    </h3>
+    <p>
+      Show that the condition $c_{j-1} &lt; U_m &lt; U_m+\frac{1}{2^m} &lt; c_j$ is equivalent to $c_{j-1} &lt; U &lt; c_j$, and that therefore for each $1\le j\le k$ the output $\alpha_j$ is obtained with probability $p_j$.
+    </p>
+  </div>
+  <p>
+    The average number of samples from $X_1,X_2,\ldots$ required for the simulation looks like a highly nontrivial function of the probabilities $p_1,\ldots,p_k$. Amazingly, to a good approximation it is equal to the $\textbf{entropy}$ of the distribution $p_1,\ldots,p_k$, a well-known function from information theory that is known to measure the information content of a random variable. The precise result to that effect is as follows.
+  </p>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>15.6</b>
+      
+    </h3>
+    <p>
+      The $\textbf{entropy}$ of the discrete probability distribution $p_1,\ldots,p_k$ is defined by $H(p_1,\ldots,p_j) = -\sum_{j=1}^k p_j \log_2 p_j$. The number of samples $N$ required in the simulation satisfies
+    </p>
+    <div class="math-block">
+      $$
+      H(p_1,\ldots,p_k) \le \mathbf{E} N \le H(p_1,\ldots,p_k) + 4.
+      $$
+    </div>
+  </div>
+  <p>
+    For the proof, see my paper
+    <i>Sharp entropy bounds for discrete statistical simulation (Stat. Prob. Lett. 42 (1999), 219--227)</i>, or section 5.11 of the book
+    <i>Elements of Information Theory, 2nd Ed.</i>
+    by T. M. Cover and J. A. Thomas, where a similar result is proved for a different simulation method for which $\mathbf{E} N$ can be bounded from above by the slightly better bound $H(p_1,\ldots,p_k)+2$.
+  </p>
 </body>
 </html>

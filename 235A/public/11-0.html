@@ -49,7 +49,7 @@
   <div
     label="The de Moivre-Laplace theorem"
     class="statement theorem"
-    id="_31_h.a.i_"
+    id="_32_h.a.i_"
   >
     <h3>
       <b>Theorem</b>
@@ -72,7 +72,7 @@
   </p>
   <div
     class="statement lemma"
-    id="_32_h.a.i_"
+    id="_33_h.a.i_"
   >
     <h3>
       <b>Lemma</b>
@@ -103,14 +103,14 @@
   <p>
     Note that an easy consequence of
     <a
-      href="./11-0.html#_32_h.a.i_"
+      href="./11-0.html#_33_h.a.i_"
       class=""
     >Lemma 11.2</a>
     is that $\binom{2n}{n} = (1+o(1))2^{2n}/C\sqrt{n/2}$. We shall now use this to find the value of $C$.
   </p>
   <div
     class="statement lemma"
-    id="_33_h.a.i_"
+    id="_34_h.a.i_"
   >
     <h3>
       <b>Lemma</b>
@@ -153,7 +153,7 @@
     <p>
       <span class="proof">Proof</span>Apply
       <a
-        href="./11-0.html#_33_h.a.i_"
+        href="./11-0.html#_34_h.a.i_"
         class=""
       >Lemma 11.3</a>
       with $f(x) = (1+x)^{2n+1}$ to compute $R_n(1)$:
@@ -197,16 +197,16 @@
   <p>
     Note that the proof is based on computing $\mathrm{P}(S_{2n+1} &gt; n)$ in two different ways, when $S_{2n+1}\sim \textrm{Binom}(2n+1,1/2)$. This is just the special case $p=1/2, t=0$ of
     <a
-      href="./11-0.html#_31_h.a.i_"
+      href="./11-0.html#_32_h.a.i_"
       class=""
     >Theorem 11.1</a>. In this very special case, by symmetry the probability is equal to $1/2$; on the other hand,
     <a
-      href="./11-0.html#_33_h.a.i_"
+      href="./11-0.html#_34_h.a.i_"
       class=""
     >Lemma 11.3</a>
     enables us to relate this to the asymptotic behavior of $n!$ and to (half of) the gaussian integral $\int_{-\infty}^\infty e^{-x^2}\,dx$. The evaluation of the constant $C$ in Stirling's formula is the part that is attributed to James Stirling. The form that appears in
     <a
-      href="./11-0.html#_32_h.a.i_"
+      href="./11-0.html#_33_h.a.i_"
       class=""
     >Lemma 11.2</a>
     is due to Abraham de Moivre (1733).
@@ -214,15 +214,15 @@
   <p>
     With this preparation, it is now possible to apply the same technique to prove
     <a
-      href="./11-0.html#_31_h.a.i_"
+      href="./11-0.html#_32_h.a.i_"
       class=""
     >Theorem 11.1</a>. Instead of the function $f(x)=(1+x)^{2n+1}$, take the function $g(x)=((1-p) + p x)^n=\sum_{k=0}^n \binom{n}{k} p^k (1-p)^{n-k} x^k$, and compute the remainder $R_k(1)$ of the Taylor expansion of $g$, where $k \approx np + t \sqrt{np(1-p)}$. This should converge to $1-\Phi(t)$, and indeed, this follows without too much difficulty from
     <a
-      href="./11-0.html#_33_h.a.i_"
+      href="./11-0.html#_34_h.a.i_"
       class=""
     >Lemma 11.3</a>. The computation is left as an exercise. We also sketch another way of proving
     <a
-      href="./11-0.html#_31_h.a.i_"
+      href="./11-0.html#_32_h.a.i_"
       class=""
     >Theorem 11.1</a>
     by directly approximating the probabilities $\binom{n}{k} p^k (1-p)^{n-k}$ by Gaussian densities.
@@ -231,7 +231,7 @@
     <p>
       <span class="proof">Sketch of Proof of
         <a
-          href="./11-0.html#_31_h.a.i_"
+          href="./11-0.html#_32_h.a.i_"
           class=""
         >Theorem 11.1</a>
         </span>Denote $q=1-p$. For a large $n$, let $k$ be approximately equal to $np+t\sqrt{npq}$, and use Stirling's formula to estimate the probability $\mathrm{P}(S_n=k)$, as follows:

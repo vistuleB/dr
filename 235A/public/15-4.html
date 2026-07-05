@@ -38,7 +38,47 @@
   </div>
   <h1>
     15.4
-    Simulating a general r.v. using a uniform r.v
+    Simulating a general r.v. using a uniform r.v.
   </h1>
+  <p>
+    <a
+      href="./3-2.html#_9_h.a.i_"
+      class=""
+    >Theorem 3.10</a>
+    from
+    <a
+      href="./3-2.html#_11_h.a.i_"
+      class=""
+    >Section 3.2</a>, which we proved earlier for its theoretical importance, can be interpreted about a statement about how to simulate a random variable with a specified distribution $F$ using a $U[0,1]$ random variable.
+  </p>
+  <p>
+    $\textbf{Simulation Method 4.}$ Given a c.d.f. $F$ and a $U[0,1]$-distributed random variable $U$, set $X=g(U)$, where
+  </p>
+  <div class="math-block">
+    $$
+    g(p) = \sup \{ x\in\R\,:\, F(x) &lt; p \} \qquad (0&lt;p&lt;1).
+    $$
+  </div>
+  <p>
+    (this is the lower quantile function associated with $F$; see
+    <a
+      href="./3-2.html#_11_h.a.i_"
+      class=""
+    >Section 3.2</a>).
+  </p>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>15.7</b>
+      
+    </h3>
+    <p>
+      Explain why the above method works and its connection to
+      <a
+        href="./3-2.html#_9_h.a.i_"
+        class=""
+      >Theorem 3.10</a>.
+    </p>
+  </div>
 </body>
 </html>

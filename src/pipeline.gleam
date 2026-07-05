@@ -45,6 +45,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
   let pre_transformation_document_tags = [
     "Chapter",
     "ChapterTitle",
+    "Corollary",
     "Definition",
     "Document",
     "Example",
@@ -122,6 +123,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.prepend_attribute_as_wrapped_text(#("Example", "label", label_span)),
       dl.prepend_attribute_as_wrapped_text(#("Theorem", "label", label_span)),
       dl.prepend_attribute_as_wrapped_text(#("Lemma", "label", label_span)),
+      dl.prepend_attribute_as_wrapped_text(#("Corollary", "label", label_span)),
       dl.rename_with_attributes__batch([
         #("Definition", "Statement", [
           #("title", "*Definition*"),
@@ -142,6 +144,10 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Theorem", "Statement", [
           #("title", "*Theorem*"),
           #("class", "statement theorem"),
+        ]),
+        #("Corollary", "Statement", [
+          #("title", "*Corollary*"),
+          #("class", "statement corollary"),
         ]),
       ]),
       dl.append_attribute__batch([

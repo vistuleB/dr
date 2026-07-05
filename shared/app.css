@@ -157,13 +157,15 @@ ol.list li > * {
 
 .definition .label::before,
 .theorem .label::before,
-.lemma .label::before {
+.lemma .label::before,
+.corollary .label::before {
     content: "(";
 }
 
 .definition .label::after,
 .theorem .label::after,
-.lemma .label::after {
+.lemma .label::after,
+.corollary .label::after {
     content: "). ";
 }
 

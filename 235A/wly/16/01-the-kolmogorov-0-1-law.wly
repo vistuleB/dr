@@ -1,2 +1,22 @@
 |> Section
     title=The Kolmogorov 0-1 law
+
+    In this section we prove a well-known and easy result due to Kolmogorov, the Kolmogorov $0$-$1$ law. This will be useful in the next section.
+
+    |> Theorem
+        label=Kolmogorov $0$-$1$ law
+
+        Let $X_1,X_2,\ldots$ be a sequence of independent random variables in some probability space $(\Omega, \mathcal{F}, \mathrm{P})$. An event $A\in \mathcal{F}$ is called a $\textbf{tail event}$ if
+        $$ A \in \sigma(X_n, X_{n+1}, \ldots) $$
+        for all $n$. That is, one can tell whether $A$ occurred or not by looking at the sequence $X_1,X_2,\ldots$, and the occurrence of $A$ is unaffected by changing a finite number of $X_k$'s. (Note that the set of tail events is a $\sigma$-algebra, called the $\textbf{tail } \sigma\textbf{-algebra}$ of the sequence, and denoted $\mathcal{T}$; formally, $\mathcal{T}=\cap_{n\ge 1}\sigma(X_n,X_{n+1},\ldots)$). Then for any tail event $A$ we have that $\mathrm{P}(A) = 0$ or $\mathrm{P}(A)=1$.
+
+    |> Proof
+
+        It will be enough to prove the somewhat strange statement that the tail event $A$ is independent of itself, since in that case we'll have
+        $$ \mathrm{P}(A) = \mathrm{P}(A\cap A) = \mathrm{P}(A)\mathrm{P}(A) = \mathrm{P}(A)^2, $$
+        which would imply the claim, since the only solutions to the equation $x^2=x$ are $x=0$ and $x=1$.
+        The fact that a tail event is independent of itself is a consequence of the following two claims: 1. If $A \in \sigma(X_1,\ldots,X_n)$ and $B\in \sigma(X_{n+1},X_{n+2},\ldots)$ then $A$ and $B$ are independent. This follows by observing that $\cup_{k\ge1} \sigma(X_{n+1},X_{n+2},\ldots,X_{n+k})$ is a $\pi$-system generating $\sigma(X_{n+1},X_{n+2},\ldots)$, and for $B$ in the $\pi$-system the claim is trivial. 2. If $A\in\sigma(X_1,X_2,\ldots)$ and $B\in\mathcal{T}$ then $A$ and $B$ are independent. The fact that is true when $A\in \sigma(X_1,\ldots,X_n)$ for some $n$ follows from claim 1. But $\cup_{n\ge 1} \sigma(X_1,\ldots,X_n)$ is a $\pi$-system generating $\sigma(X_1,X_2,\ldots)$, so the same is true also for $A$ in the generated $\sigma$-algebra.
+
+    |> Example
+
+        The events $\{ \displaystyle \lim_{n\to\infty} X_n\textrm{ exist} \}$ and $\{ \sum_{n=1}^\infty X_n \textrm{ converges} \}$ are tail events.

@@ -1,3 +1,78 @@
 |> Section
     title=The Poisson limit law
     handle=sec:poisson-limit
+
+    The Poisson distribution is the one-parameter family of distributions $\operatorname{Poisson}(\lambda), \lambda>0$, where $X\sim \operatorname{Poisson}(\lambda)$ is a discrete random variable satisfying
+    $$ \mathrm{P}(X=k) = e^{-\lambda} \frac{\lambda^k}{k!}, \qquad k=0,1,2,\ldots $$
+    This distribution arises naturally as measuring the number of successful coin tossing experiments when one performs a large number of independent coin tosses with equal bias, as long as the expected number of successes remains bounded away from $0$ and $\infty$. That is, if $X_1,X_2,\ldots,X_n$ denote i.i.d. Bernoulli random variables with bias $p=p(n)$ (which is a function of $n$0, and $S_n=\sum_{k=1}^n$, then if $n\cdot p(n) \to \lambda$ as $n\to\infty$, it is a simple exercise to check that
+    $$
+    \begin{equation}
+    eq:law-small-numbers-iid##<<
+    S_n \implies \operatorname{Poisson}(\lambda).
+    \end{equation}
+    $$
+
+    As in the case of the Central Limit Theorem, it turns out that the i.i.d. condition can be significantly weakened, so in fact the Poisson distribution arises almost universally as the limit law for counting numbers of ``rare events,'', i.e., sums of indicator functions of many independent or weakly correlated events each of which has a small chance of success, in the asymptotic regime in which the expected number of successes converges to a constant. For this reason, the Poisson distribution is considered an excellent model for many real-life phenomena, e.g.:
+
+    |> ul
+        |> li
+            The number of typographical errors in a web page or book chapter.
+        |> li
+            The number of radioactive particles emitted from a chunk of radioactive material in a unit of time.
+        |> li
+            The number of cars passing a point on a remote desert road in an hour.
+        |> li
+            The number of incandescent light-bulbs burning out in your house each month.
+        |> li
+            Etc. (try to think of more examples from science or your daily life...)
+
+    Our goal is to prove the following generalization of (>>eq:law-small-numbers-iid), analogous to the Lindeberg-Feller extension of the Central Limit Theorem. The technique used in the proof is also similar and uses characteristic functions.
+
+    |> Theorem
+
+        Let $(X_{n,m})_{1\le m\le n}$ be a triangular array of random variables such that for each $n\ge1$, the random variables $X_{n,1},\ldots,X_{n,n}$ are independent, and each $X_{n,m}$ satisfies $\mathrm{P}(X_{n,m}=1)=p_{n,m}, \mathrm{P}(X_{n,m}=0)=1-p_{n,m}$. Denote $S_n=\sum_{m=1}^n X_m$. Assume that the biases $(p_{n,m})_{n,m}$ satisfy the following conditions:
+
+        |> ol
+            class=list
+            |> li
+                $\mathbf{E} S_n = \sum_{m=1}^n p_{n,m} \to \lambda\in(0,\infty)$ as $n\to\infty$.
+            |> li
+                $\max_{1\le m\le n} p_{n,m} \to 0$ as $n\to\infty$.
+
+        Then $S_n \implies \operatorname{Poisson}(\lambda)$.
+
+    |> Proof
+
+        Let $\varphi_{n,m}(t)=\varphi_{X_{n,m}}(t)=\mathbf{E}(\exp(it X_{n,m})) = (1-p_{n,m})+p_{n,m}e^{it}$ denote the characteristic function of $X_{n,m}$. The ch. f. of $S_n$ is then
+        $$ \varphi_{S_n} = \prod_{k=1}^n \varphi_{n,m}(t) = \prod_{k=1}^n \left((1-p_{n,m})+p_{n,m}e^{it}\right). $$
+        Our goal is to show that $\varphi_{S_n}(t)\to \varphi_Z(t)$ where $Z\sim \operatorname{Poisson}(\lambda)$. From a past homework computation we know that
+        $$ \varphi_Z(t) = \sum_{k=0}^\infty e^{-\lambda} \frac{\lambda^k}{k!} e^{ikt} =\exp(\lambda(e^{it}-1)) = \lim_{n\to\infty} \prod_{m=1}^n \exp(p_{n,m}(e^{it}-1))
+        \ \ \textrm{(by assumption (i)),}$$
+        so let us investigate how closely $\prod_{m=1}^n\varphi_{n,m}(t)$ is approximated by $\prod_{m=1}^n\exp(p_{n,m}(e^{it}-1))$. Note that for any $0\le p\le 1$, we have
+        $$
+        \begin{align*}
+        |\exp(p(e^{it}-1))| &= \exp(p \operatorname{Re}(e^{it}-1)) \le \exp(0)=1, \\
+        |1-p+pe^{it}| &= |1+p(e^{it}-1)| \le 1 \ \ \textrm{(a convex combination of $1$ and $e^{it}$)}.
+        \end{align*}
+        $$
+        We therefore get using the exercise below that
+        $$
+        \begin{align*}
+        \Bigg| \prod_{m=1}^n &\exp\left(p_{n,m}(e^{it}-1)\right)-\prod_{m=1}^n (1+p_{n,m}(e^{it}-1))\Bigg| \\ &
+        \le \sum_{m=1}^n |\exp\left(p_{n,m}(e^{it}-1)\right)-(1+p_{n,m}(e^{it}-1))|
+        \\ &\le 10\sum_{m=1}^n p_{n,m}^2 |e^{it}-1|^2
+        \\ &\le 40\left(\max_{1\le m\le n} p_{n,m}\right) \sum_{m=1}^n p_{n,m} \xrightarrow[n\to\infty]{} 0.
+        \end{align*}
+        $$
+        This is exactly what was needed to finish the proof.
+
+    |> Exercise
+
+        |> ol
+            class=list
+            |> li
+                Let $z_1,\ldots,z_n, w_1,\ldots, w_n$ be complex numbers such that $|z_m|, |w_m|\le 1$ for all $1\le m\le n$. Prove that
+                $$ \left|\prod_{m=1}^n z_m - \prod_{m=1}^n w_m \right| \le \sum_{m=1}^n |z_m-w_m|. $$
+            |> li
+                Prove that if $z$ is a complex number with $|z|\le 2$ then
+                $$ |\exp(z)-(1+z)| \le 10 |z|^2. $$

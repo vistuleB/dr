@@ -37,5 +37,160 @@
     16.3
     The Poisson limit law
   </h1>
+  <p>
+    The Poisson distribution is the one-parameter family of distributions $\operatorname{Poisson}(\lambda), \lambda&gt;0$, where $X\sim \operatorname{Poisson}(\lambda)$ is a discrete random variable satisfying
+  </p>
+  <div class="math-block">
+    $$
+    \mathrm{P}(X=k) = e^{-\lambda} \frac{\lambda^k}{k!}, \qquad k=0,1,2,\ldots
+    $$
+  </div>
+  <p>
+    This distribution arises naturally as measuring the number of successful coin tossing experiments when one performs a large number of independent coin tosses with equal bias, as long as the expected number of successes remains bounded away from $0$ and $\infty$. That is, if $X_1,X_2,\ldots,X_n$ denote i.i.d. Bernoulli random variables with bias $p=p(n)$ (which is a function of $n$0, and $S_n=\sum_{k=1}^n$, then if $n\cdot p(n) \to \lambda$ as $n\to\infty$, it is a simple exercise to check that
+  </p>
+  <div
+    id="_50_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation}
+    \tag{20}
+    S_n \implies \operatorname{Poisson}(\lambda).
+    \end{equation}
+    $$
+  </div>
+  <p>
+    As in the case of the Central Limit Theorem, it turns out that the i.i.d. condition can be significantly weakened, so in fact the Poisson distribution arises almost universally as the limit law for counting numbers of "rare events,", i.e., sums of indicator functions of many independent or weakly correlated events each of which has a small chance of success, in the asymptotic regime in which the expected number of successes converges to a constant. For this reason, the Poisson distribution is considered an excellent model for many real-life phenomena, e.g.:
+  </p>
+  <ul>
+    <li>
+      <p>
+        The number of typographical errors in a web page or book chapter.
+      </p>
+    </li>
+    <li>
+      <p>
+        The number of radioactive particles emitted from a chunk of radioactive material in a unit of time.
+      </p>
+    </li>
+    <li>
+      <p>
+        The number of cars passing a point on a remote desert road in an hour.
+      </p>
+    </li>
+    <li>
+      <p>
+        The number of incandescent light-bulbs burning out in your house each month.
+      </p>
+    </li>
+    <li>
+      <p>
+        Etc. (try to think of more examples from science or your daily life...)
+      </p>
+    </li>
+  </ul>
+  <p>
+    Our goal is to prove the following generalization of (<a href="./16-3.html#_50_h.a.i_">20</a>), analogous to the Lindeberg-Feller extension of the Central Limit Theorem. The technique used in the proof is also similar and uses characteristic functions.
+  </p>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>16.3</b>
+      
+    </h3>
+    <p>
+      Let $(X_{n,m})_{1\le m\le n}$ be a triangular array of random variables such that for each $n\ge1$, the random variables $X_{n,1},\ldots,X_{n,n}$ are independent, and each $X_{n,m}$ satisfies $\mathrm{P}(X_{n,m}=1)=p_{n,m}, \mathrm{P}(X_{n,m}=0)=1-p_{n,m}$. Denote $S_n=\sum_{m=1}^n X_m$. Assume that the biases $(p_{n,m})_{n,m}$ satisfy the following conditions:
+    </p>
+    <ol class="list">
+      <li>
+        <p>
+          $\mathbf{E} S_n = \sum_{m=1}^n p_{n,m} \to \lambda\in(0,\infty)$ as $n\to\infty$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $\max_{1\le m\le n} p_{n,m} \to 0$ as $n\to\infty$.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Then $S_n \implies \operatorname{Poisson}(\lambda)$.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Let $\varphi_{n,m}(t)=\varphi_{X_{n,m}}(t)=\mathbf{E}(\exp(it X_{n,m})) = (1-p_{n,m})+p_{n,m}e^{it}$ denote the characteristic function of $X_{n,m}$. The ch. f. of $S_n$ is then
+    </p>
+    <div class="math-block">
+      $$
+      \varphi_{S_n} = \prod_{k=1}^n \varphi_{n,m}(t) = \prod_{k=1}^n \left((1-p_{n,m})+p_{n,m}e^{it}\right).
+      $$
+    </div>
+    <p>
+      Our goal is to show that $\varphi_{S_n}(t)\to \varphi_Z(t)$ where $Z\sim \operatorname{Poisson}(\lambda)$. From a past homework computation we know that
+    </p>
+    <div class="math-block">
+      $$
+      \varphi_Z(t) = \sum_{k=0}^\infty e^{-\lambda} \frac{\lambda^k}{k!} e^{ikt} =\exp(\lambda(e^{it}-1)) = \lim_{n\to\infty} \prod_{m=1}^n \exp(p_{n,m}(e^{it}-1))
+       \ \textrm{(by assumption (i)),}
+      $$
+    </div>
+    <p>
+      so let us investigate how closely $\prod_{m=1}^n\varphi_{n,m}(t)$ is approximated by $\prod_{m=1}^n\exp(p_{n,m}(e^{it}-1))$. Note that for any $0\le p\le 1$, we have
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      |\exp(p(e^{it}-1))| &amp;= \exp(p \operatorname{Re}(e^{it}-1)) \le \exp(0)=1, \\
+      |1-p+pe^{it}| &amp;= |1+p(e^{it}-1)| \le 1 \ \ \textrm{(a convex combination of $1$ and $e^{it}$)}.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      We therefore get using the exercise below that
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \Bigg| \prod_{m=1}^n &amp;\exp\left(p_{n,m}(e^{it}-1)\right)-\prod_{m=1}^n (1+p_{n,m}(e^{it}-1))\Bigg| \\ &amp;
+      \le \sum_{m=1}^n |\exp\left(p_{n,m}(e^{it}-1)\right)-(1+p_{n,m}(e^{it}-1))|
+      \ &amp;\le 10\sum_{m=1}^n p_{n,m}^2 |e^{it}-1|^2
+      \ &amp;\le 40\left(\max_{1\le m\le n} p_{n,m}\right) \sum_{m=1}^n p_{n,m} \xrightarrow[n\to\infty]{} 0.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      This is exactly what was needed to finish the proof.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>16.4</b>
+      
+    </h3>
+    <ol class="list">
+      <li>
+        <p>
+          Let $z_1,\ldots,z_n, w_1,\ldots, w_n$ be complex numbers such that $|z_m|, |w_m|\le 1$ for all $1\le m\le n$. Prove that
+        </p>
+        <div class="math-block">
+          $$
+          \left|\prod_{m=1}^n z_m - \prod_{m=1}^n w_m \right| \le \sum_{m=1}^n |z_m-w_m|.
+          $$
+        </div>
+      </li>
+      <li>
+        <p>
+          Prove that if $z$ is a complex number with $|z|\le 2$ then
+        </p>
+        <div class="math-block">
+          $$
+          |\exp(z)-(1+z)| \le 10 |z|^2.
+          $$
+        </div>
+      </li>
+    </ol>
+  </div>
 </body>
 </html>

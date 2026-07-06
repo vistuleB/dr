@@ -169,7 +169,6 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Section", "counter", "FootnoteCounter"),
         #("SubSection", "counter", "FootnoteCounter"),
         #("Exercises", "counter", "FootnoteCounter"),
-        #("Footnote", "id", "footnote"),
       ]),
       dl.prepend_attribute(#(
         "Chapter",
@@ -215,6 +214,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "StatementCounter",
         infra.GoBack,
       )),
+      dl.prepend_counter_incrementing_attribute(#(
+        "Footnote",
+        "FootnoteCounter",
+        infra.GoBack,
+      )),
       dl.auto_generate_child_if_missing_from_attribute(#(
         "Chapter",
         "ChapterTitle",
@@ -251,6 +255,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "::øøChapterCounter.::øøStatementCounter",
         infra.Continue,
       )),
+      dl.set_handle_value(#("Footnote", "::øøFootnoteCounter", infra.GoBack)),
       dl.dr_create_index(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
@@ -275,16 +280,18 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       infra.DoubleDollar,
     ),
     [
-      // must run before markdown_link_splitting: it emits
-      // `[handle_name##<<(counter_expr)](#footnote)`
-      // markdown-link text inside a `sup`, which
-      // markdown_link_splitting then turns into a real `<a>`
-      // pointing at the shared `id=footnote` anchor added to
-      // every `Footnote` node above.
-      dl.footnote_marker_to_sup_handle(
-        #("::++FootnoteCounter", "footnote"),
-        ["MathBlock", "Math"],
-      ),
+      // must run before markdown_link_splitting: it prepends
+      // `[(::øøFootnoteCounter)](>>handle-originator) ` markdown-link
+      // text to each `Footnote` node's content (linking back to the
+      // sup via that sup's own handle=handle-originator attribute),
+      // and wraps `(*>>handle)` call sites in `<sup handle=handle-
+      // originator><>'(>>handle)'</></sup>`. FootnoteCounter itself is
+      // incremented at the `Footnote` node above (prepend_counter_
+      // incrementing_attribute), not here.
+      dl.footnote_marker_to_sup_handle("FootnoteCounter", [
+        "MathBlock",
+        "Math",
+      ]),
     ],
     pp.markdown_link_splitting(["MathBlock"]),
     [
@@ -315,6 +322,19 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
       ]),
       dl.detokenize_href_surroundings(),
+      // pulls the literal parens the footnote_marker_to_sup_handle-
+      // produced `(>>handle)` text leaves outside the <a> (once
+      // handles_substitute turns it into `(<a href=...>N</a>)`) inside
+      // the link, so the whole "(N)" is clickable, not just "N". Must
+      // run after pp.create_math_elements above: rearrange_links does
+      // its own internal tokenize/detokenize round-trip that treats
+      // any non-href V-node as opaque, but raw un-parsed `$...$` text
+      // is not yet opaque before create_math_elements runs, and gets
+      // corrupted by the same class of bug fixed by moving
+      // create_math_elements before tokenize_href_surroundings above.
+      dl.rearrange_links__batch([
+        #("(<a href=0>_0_</a>)", "<a href=0>(_0_)</a>"),
+      ]),
     ],
     pp.barbaric_symmetric_delim_splitting("_", "_", "i", [
       "MathBlock",

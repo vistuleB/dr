@@ -77,10 +77,12 @@
       where the notation "$\mathbf{E}_x$" just means taking the expectation, while at the same time highlighting the fact that the distribution of $S_n$ depends on the parameter $x$.
     </p>
     <p>
-      Now the idea is that since the law of large numbers implies that $S_n/n$ is with high probability close to its mean $x$, and $f$ is a continuous function, then $f(S_n/n)$ should with high probability be close to $f(x)$, and therefore also the average value of $f(S_n/n)$, namely $B_n(x)$, should be close to $f(x)$, which is what we want. However, we want to make this claim uniformly in $x$, so instead of invoking the WLLN (<a
+      Now the idea is that since the law of large numbers implies that $S_n/n$ is with high probability close to its mean $x$, and $f$ is a continuous function, then $f(S_n/n)$ should with high probability be close to $f(x)$, and therefore also the average value of $f(S_n/n)$, namely $B_n(x)$, should be close to $f(x)$, which is what we want. However, we want to make this claim uniformly in $x$, so instead of invoking the WLLN
+      <a
         href="./9-1.html#_23_h.a.i_"
         class=""
-      >Theorem 9.1</a>) we have to go back and look "under the hood" at Chebyshev's inequality which we used to prove it. We estimate $|B_n(x)-f(x)|$ as follows. Fix some arbitrary $\epsilon&gt;0$. Let $\delta&gt;0$ be such that for any $u,v\in[0,1]$, if $|u-v|&lt;\delta$ then $|f(u)-f(v)|&lt;\epsilon$ (this is guaranteed to exist because $f$ is uniformly continuous on $[0,1]$). Then
+      >(Theorem 9.1)</a>
+      we have to go back and look "under the hood" at Chebyshev's inequality which we used to prove it. We estimate $|B_n(x)-f(x)|$ as follows. Fix some arbitrary $\epsilon&gt;0$. Let $\delta&gt;0$ be such that for any $u,v\in[0,1]$, if $|u-v|&lt;\delta$ then $|f(u)-f(v)|&lt;\epsilon$ (this is guaranteed to exist because $f$ is uniformly continuous on $[0,1]$). Then
     </p>
     <div class="math-block">
       $$

@@ -21,11 +21,9 @@
         |> li
             If $\Theta \sim U[-\pi/2,\pi/2]$ then $X=\tan \Theta \sim \textrm{Cauchy}$.
 
-    |> span
-        class=center
-        *Summary: Special distributions*
-
     $$
+    \begin{gathered}
+    \textbf{Summary: Special distributions} \\
     \begin{array}{|l|l|lc|c|c|c|}
     \hline
     \text{Name} & \text{Notation} & \text{Formula} & & \textbf{E}(X) & \textbf{V}(X) & \textbf{E}(X^k) \\
@@ -48,13 +46,12 @@
     \text{Chi-squared} & X\sim \chi^2_{(n)} & f_X(x) = \frac{1}{2^{n/2}\Gamma(n/2)} e^{-x/2} x^{\frac{n}{2}-1} & (x>0) & n & 2n & \\
     \hline
     \end{array}
+    \end{gathered}
     $$
 
-    |> span
-        class=center
-        *Useful facts:* (``$\boxplus$'' denotes convolution, i.e., sum of independent samples; ``$\stackrel{d}{=}$'' denotes equality of distributions)
-
     $$
+    \begin{gathered}
+    \textbf{Useful facts:} \text{ (``}\boxplus\text{'' denotes convolution, i.e., sum of independent samples; ``}\stackrel{d}{=}\text{'' denotes equality of distributions)} \\
     \begin{array}{lll}
     \textrm{Binomial}(n,p) \boxplus \textrm{Binomial}(m,p) \stackrel{d}{=} \textrm{Binomial}(n+m,p) & \ \ \ \ & \textrm{Gamma}(\alpha, \lambda) \boxplus \textrm{Gamma}(\beta, \lambda) \stackrel{d}{=} \textrm{Gamma}(\alpha+\beta,\lambda) \\
     \textrm{Poisson}(\lambda) \boxplus \textrm{Poisson}(\mu) \stackrel{d}{=} \textrm{Poisson}(\lambda+\mu) & & N(\mu_1,\sigma_1^2) \boxplus N(\mu_2,\sigma_2^2) \stackrel{d}{=} N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2) \\
@@ -62,4 +59,5 @@
     \textrm{NB}(n,p)\boxplus\textrm{NB}(m,p)\stackrel{d}{=}\textrm{NB}(n+m,p) & & \big(\alpha\,\textrm{Cauchy}\big) \boxplus \big((1-\alpha)\,\textrm{Cauchy}\big) \stackrel{d}{=} \textrm{Cauchy} \ \ \ \ (0\le\alpha\le1) \\
     N(0,1)^2 \stackrel{d}{=} \textrm{Gamma}(1/2,1/2) \stackrel{d}{=} \chi^2_{(1)} & & \chi^2_{(n)} \stackrel{d}{=} \textrm{Gamma}(n/2,1/2)
     \end{array}
+    \end{gathered}
     $$

@@ -1,0 +1,106 @@
+|> Section
+    title=Properties and examples of conditional expectations
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            If $X$ is measurable with respect to $\mathcal{G}$ (i.e., $\sigma(X) \subset \mathcal{G}$) then $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = X$. The intuition is that if the information given to us (encoded by the $\sigma$-algebra $\mathcal{G}$) is enough to tell the value of $X$ (see the exercise below), then our best guess for the average value of $X$ is $X$ itself.
+
+            |> Exercise
+                Let $X$ and $Y$ be random variables defined on the same probability space $(\Omega, \mathcal{F}, \mathrm{P})$. Show that $\sigma(X) \subset \sigma(Y)$ (in this case we say that *$X$ is measurable with respect to $Y$*) if and only if there exists a Borel-measurable function $h:\R\to\R$ such that $X=h(Y)$ a.s.
+        |> li
+            In particular, if $\mathcal{G}=\mathcal{F}$ is the original $\sigma$-algebra of the probability space $(\Omega, \mathcal{F}, \mathrm{P})$, then $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = X$.
+        |> li
+            At the opposite extreme, if $\mathcal{G}= \{ \emptyset, \Omega \}$, then $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = \mathbf{E}(X)$, the usual expectation of $X$. Intuitively, the minimal $\sigma$-algebra $\{\emptyset, \Omega\}$ represents zero information.
+        |> li
+            More generally, if $X$ is independent of $\mathcal{G}$ then $\mathbf{E}\left(X\,|\,\mathcal{G}\right)=\mathbf{E}(X)$, since $\mathbf{E}(X)$ is a $\mathcal{G}$-measurable random variable and for any $E\in\mathcal{G}$, since $X$ is independent of $\mathbf{1}_E$,
+
+            $$\mathbf{E}(X\mathbf{1}_E) = \mathbf{E}(X)\mathbf{E}(\mathbf{1}_E) = \mathbf{E}(\mathbf{E}(X)\mathbf{1}_E). $$
+        |> li
+            Conditional expectation is a linear operator: $\mathbf{E}\left(aX+bY\,|\,\mathcal{G}\right) = a \mathbf{E}\left(X\,|\,\mathcal{G}\right) + b \mathbf{E}\left(Y\,|\,\mathcal{G}\right).$
+
+            |> Proof
+                The random variable $Z=a \mathbf{E}\left(X\,|\,\mathcal{G}\right) + b \mathbf{E}\left(Y\,|\,\mathcal{G}\right)$ is $\mathcal{G}$-measurable and for any $E\in\mathcal{G}$ we have
+
+                $$
+                \begin{align*} \mathbf{E}(Z\mathbf{1}_E) &= a\mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{G}\right)\mathbf{1}_E)+b\mathbf{E}(\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\mathbf{1}_E) =
+                a \mathbf{E}(X\mathbf{1}_E)+b\mathbf{E}(Y\mathbf{1}_E) \\&=\mathbf{E}((aX+bY)\mathbf{1}_E),
+                \end{align*}
+                $$
+
+                so $Z$ satisfies the requirements that qualify it to be the conditional expectation of $aX+bY$.
+        |> li
+            Monotonicity: If $X\le Y$ then $\mathbf{E}\left(X\,|\,\mathcal{G}\right)\le\mathbf{E}\left(Y\,|\,\mathcal{G}\right)$ a.s.
+
+            |> Proof
+                For any $E\in\mathcal{G}$, we have that
+
+                $$ \mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{G}\right)\mathbf{1}_E) = \mathbf{E}(X\mathbf{1}_E) \le
+                \mathbf{E}(Y\mathbf{1}_E) \le \mathbf{E}(\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\mathbf{1}_E). $$
+
+                Taking $E=\{\mathbf{E}\left(X\,|\,\mathcal{G}\right)-\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\ge \epsilon\}$ for some arbitrary $\epsilon>0$, we get that $E$ must have probability $0$. Since this is true for any $\epsilon>0$, the result follows.
+        |> li
+            Conditional form of the monotone convergence theorem: If $X_n\ge 0$ and $X_n \uparrow X$ a.s.\ as $n\to\infty$, where $\mathbf{E}(X)<\infty$, then $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\nearrow \mathbf{E}\left(X\,|\,\mathcal{G}\right)$ a.s.\ as $n\to\infty$.
+
+            |> Proof
+                By the monotonicity proved above, the conditional expectations $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)$ are increasing to an a.s.\ limiting r.v.\ $Z$, which is $\mathcal{G}$-measurable. Note that $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\le \mathbf{E}\left(X\,|\,\mathcal{G}\right)$, which is an integrable upper bound, so we can apply the dominated convergence theorem and deduce that for every $E\in \mathcal{G}$,
+
+                $$ \mathbf{E}(Z\mathbf{1}_E) = \mathbf{E}(\lim_{n\to\infty} \mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\mathbf{1}_E)
+                = \lim_{n\to\infty} \mathbf{E}(\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\mathbf{1}_E) = \lim_{n\to\infty} \mathbf{E}(X_n\mathbf{1}_E)
+                = \mathbf{E}(X\mathbf{1}_E).
+                $$
+
+                Thus $Z$, qualifies as the conditional expectation of $X$ given $\mathcal{G}$.
+        |> li
+            Conditional form of Jensen's inequality: If $\varphi:\R\to\R$ is a convex function and $\mathbf{E}|X|, \mathbf{E}|\varphi(X)|<\infty$ then $ \varphi(\mathbf{E}\left(X\,|\,\mathcal{G}\right)) \le \mathbf{E}\left(\varphi(X)\,|\,\mathcal{G}\right). $
+
+            |> Proof
+                The proof is similar to the non-conditional case, with a small twist: we observe that $\varphi(x)$ is a supremum of a countable number of linear functions, namely
+
+                $$ \varphi(x) = \sup \{ ax+b\,:\,a,b\in \mathbb{Q}, ax+b\le \varphi(x)\textrm{ for all }x\}, $$
+
+                then continue as in the original proof. The restriction to a countable number of linear functions is necessary since all statements pertaining to conditional expectations are almost sure statements, which means that there is an exceptional $0$-probability set being discarded, and we can only allow a countable number of these.
+        |> li
+            For $p\ge 1$, $\mathbf{E}\left( \left|\mathbf{E}\left(X\,|\,\mathcal{G}\right)\right|^p \right) \le \mathbf{E}|X|^p$ (i.e., the conditional expectation operator is a contraction in $L_p(\Omega,\mathcal{G},\mathrm{P})$.)
+
+            |> Proof
+                By Jensen's inequality, $|\mathbf{E}\left(X\,|\,\mathcal{G}\right)|^p \le \mathbf{E}\left(|X|^p\,|\,\mathcal{G}\right)$. Now take expectations and use the fact that:
+        |> li
+            $\mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{G}\right)) = \mathbf{E}(X)$. This is a special case of:
+        |> li
+            If $\mathcal{G}_1\subseteq \mathcal{G}_2 \subseteq \mathcal{F}$ are sub-$\sigma$-algebras then we have
+
+            $$
+            \begin{align*}
+            \mathbf{E}\left(\mathbf{E}\left(X\,|\,\mathcal{G}_2\right)\,|\,\mathcal{G}_1\right) &= \mathbf{E}\left(X\,|\,\mathcal{G}_1\right), \\
+            \mathbf{E}\left(\mathbf{E}\left(X\,|\,\mathcal{G}_1\right)\,|\,\mathcal{G}_2\right) &= \mathbf{E}\left(X\,|\,\mathcal{G}_1\right),
+            \qquad  \textrm{(no, there is no typo here\ldots)}
+            \end{align*}
+            $$
+
+            |> Exercise
+                Prove this.
+        |> li
+            If $X$ is $\mathcal{G}$-measurable, then for any random variable $Y$, if $\mathbf{E}|Y|, \mathbf{E}|XY|<\infty$ then
+
+            $$ \mathbf{E}\left(XY\,|\,\mathcal{G}\right) = X \mathbf{E}\left(Y\,|\,\mathcal{G}\right).$$
+
+            The idea here is that if $X$ is measurable with respect to $\mathcal{G}$ then it appears like a constant from the point of view of conditional expectations given the information contained in $\mathcal{G}$ and can therefore be ``pulled outside'' of the expectation.
+
+            |> Proof
+                The random variable $Z=X\mathbf{E}\left(Y\,|\,\mathcal{G}\right)$ is $\mathcal{G}$-measurable, so we need to check that for any $E\in \mathcal{G}$,
+
+                $$
+                \begin{equation} eq:condexp-x-times-y##<<
+                \mathbf{E}(Z\mathbf{1}_E) = \mathbf{E}(XY \mathbf{1}_E).
+                \end{equation}
+                $$
+
+                First, if $X=\mathbf{1}_B$ for some $B\in\mathcal{G}$ then
+
+                $$ \mathbf{E}(Z \mathbf{1}_E) = \mathbf{E}(\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\mathbf{1}_{B\cap E}) = \mathbf{E}(Y\mathbf{1}_{B\cap E})
+                = \mathbf{E}(XY \mathbf{1}_E)
+                $$
+
+                so the claim is true. By linearity it follows that if $X$ is a ``simple'' random variable (a linear combination of finitely many indicator variables, i.e., a random variable taking finitely many values) then (>>eq:condexp-x-times-y) still holds. Now, assume that $X,Y\ge 0$, then we can take a sequence $(X_n)_{n=1}^\infty$ of simple random variables that are $\mathcal{G}$-measurable and such that $X_n\uparrow X$. By the monotone converegence theorem, it follows that (>>eq:condexp-x-times-y) holds also in this case. Finally, for general $X,Y$ one proves (>>eq:condexp-x-times-y) by splitting $X$ and $Y$ into their positive and negative parts.

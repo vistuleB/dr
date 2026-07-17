@@ -1,0 +1,326 @@
+|> Section
+    title=Ergodic sources and the Shannon-McMillan-Breiman theorem
+
+    We are now ready to discuss the situation for a general stationary ergodic source $X_1,X_2,\ldots$. It turns out that a version of the asymptotic equipartition property is valid for such a source. To prove it, we first need to correctly define the entropy of the source, and to prove an important convergence result that replaces the (trivial) use of the law of large numbers in the case of an i.i.d.\ source.
+
+    For a sequence $(x_1,\ldots,x_n)\in A^n$, denote
+
+    $$
+    \begin{align*}
+    p(x_1,\ldots,x_n) &= eq:psymbols1##<< \mathrm{P}((X_1,\ldots,X_n)=(x_1,\ldots,x_n)), \\
+    p(x_n\,|\,x_1,\ldots,x_{n-1}) &= eq:psymbols2##<< \mathrm{P}(X_n=x_n\,|\,(X_1,\ldots,X_{n-1})=(x_1,\ldots,x_{n-1})),
+    \\
+    H_n &= eq:psymbols3##<< -\mathbf{E}(\log_2 p(X_n\,|\,X_1,\ldots,X_{n-1})).
+    \end{align*}
+    $$
+
+    In information theory the quantity $H_n$ is often denoted by $H(X_n\,|\, X_1,\ldots,X_{n-1})$; it is a special case of a $\textbf{conditional entropy}$.
+
+    |> Lemma
+        handle=lem-entropy-ergodic
+
+        $(H_n)_{n=1}^\infty$ is a weakly monotone decreasing sequence, hence converges to a limit
+
+        $$
+        \begin{equation} eq:entropy-ergodic##<<
+        H \equiv \lim_{n\to\infty} H_n \ge 0.
+        \end{equation}
+        $$
+
+    The proof follows by induction by applying the result of the following exercise.
+
+    |> Exercise
+        Let $A=\{\alpha_1,\ldots,\alpha_d \}$ and $B=\{\beta_1,\ldots,\beta_m \}$ be two finite sets. If $X,Y$ are two random variables such that $\mathrm{P}(X\in A, Y\in B)=1$, the conditional entropy $H(X\,|\,Y)$ is defined by
+
+        $$
+        \begin{align*}
+        H(X\,|\,Y) &= -\sum_{j=1}^m \sum_{k=1}^d \mathrm{P}(X=\alpha_k, Y=\beta_j) \log_2 \mathrm{P}(X = \alpha_k\,|\,Y=\beta_j)
+        \\ &= \sum_{j=1}^m \mathrm{P}(Y=\beta_j) H(X\,|\,Y=\beta_j).
+        \end{align*}
+        $$
+
+        I.e., $H(X\,|\,Y)$ is the average of the entropies of the conditional distributions of $X$ given the outcome of $Y$. Prove that $H(X\,|\,Y) \le H(X)$, with equality if and only if $X$ and $Y$ are independent. Deduce also that $H(X\,|\,Y,Z) \le H(X\,|\,Z)$ if $Z$ is another random variable, and explain why this implies Lemma >>lem-entropy-ergodic.
+
+    We refer to $H$ in (>>eq:entropy-ergodic) as *the entropy of the source $(X_n)_{n=1}^\infty$*. There is an equivalent way to define it which is also interesting. Since $H_n\to H$, the Ces\`aro averages of $(H_n)_n$ also converge to $H$, i.e.,
+
+    $$ \frac{1}{n}(H_1+\ldots+H_n) \to H \textrm{ as }n\to\infty. $$
+
+    The average on the left-hand side can be written as
+
+    $$
+    \begin{align*}
+    -\frac1n \mathbf{E}&\Big[ \log_2 p(X_1) + \log_2 p(X_2\,|\,X_1)
+    + \log_2 p(X_3\,|\,X_1,X_2) + \ldots + p(X_n\,|\,X_1,\ldots,X_{n-1}) \Big]
+    \\ &= -\frac1n \mathbf{E} \left[\log_2 p(X_1,\ldots,X_n)\right] = \frac{1}{n}H(X_1,\ldots,X_n).
+    \end{align*}
+    $$
+
+    (Here, $H(X_1,\ldots,X_n)$ refers to the entropy of the discrete vector random variable $(X_1,\ldots,X_n)$, which takes values in the finite set $A^n$.) Thus, $H$ may be interpreted as the limit of $\frac{1}{n} H(X_1,\ldots,X_n)$, i.e., the asymptotic entropy per symbol in a long string of symbols sampled from the source.
+
+    The importance of $H$ is explained by the following fundamental result, sometimes referred to as ``the individual ergodic theorem of information theory''.
+
+    |> Theorem
+        label=Shannon-McMillan-Breiman theorem
+        handle=thm-shannon-mcmillan-breiman
+
+        We have the almost sure convergence
+
+        $$
+        \begin{equation} eq:shannon-mcmillan-breiman##<<
+        -\frac{1}{n}\log_2(p(X_1,\ldots,X_n)) \xrightarrow[n\to\infty]{\textrm{a.s.}} H
+        \end{equation}
+        $$
+
+    |> Lemma
+        handle=lem-aep-lemma
+
+        If $(Z_n)_n$ is a sequence of nonnegative random variables such that $\mathbf{E}(Z_n)\le 1$ for all $n$, then
+
+        $$
+        \begin{equation} eq:aep-lemma##<<
+        \mathrm{P}\left(\limsup_{n\to\infty} \frac{1}{n} \log Z_n \le 0\right) = 1.
+        \end{equation}
+        $$
+
+    |> Proof
+        Fix $\epsilon>0$. By Markov's inequality, we have
+
+        $$ \mathrm{P}(n^{-1} \log Z_n \ge \epsilon) = \mathrm{P}(Z_n \ge e^{n\epsilon}) \le e^{-n\epsilon}. $$
+
+        Since $\sum_n e^{-n\epsilon}<\infty$, the first Borel-Cantelli implies that $\mathrm{P}(n^{-1} \log Z_n \ge \epsilon \ \textrm{i.o.}) = 0$. This is true for any $\epsilon>0$, so taking a union of these events over $\epsilon=1/k, k=1,2,\ldots$ gives (>>eq:aep-lemma).
+
+    |> Proof
+        alt-title=Proof of Theorem >>thm-shannon-mcmillan-breiman
+
+        As explained in Section >>sec-stationary, we may assume without loss of generality that the sequence $(X_n)_n$ is actually a two-sided ergodic stationary sequence $(X_n)_{n=-\infty}^\infty$. We start by giving yet another, more subtle, interpretation of the source entropy $H$. By stationarity, we may rewrite $H_n$ as
+
+        $$ H_n = -\mathbf{E}(\log_2 p(X_0\,|\,X_{-n+1},\ldots,X_{-1})) = -\sum_{j=1}^d \mathbf{E}\Big[ L\big(
+        \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-n+1}^{-1}\right) \big)\Big],
+        $$
+
+        where we denote $L(p) = p\log_2 p$ and $\mathcal{G}_s^t = \sigma(X_m\,;\, s\le m\le t)$. Note that for each $j$, the expression $\mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-n+1}^{-1}\right)$ inside the conditional expectation above forms a martingale (as a function of $n$) taking values in $[0,1]$. By L\'evy's martingale convergence theorem (Theorem >>eq:levy-martingale-conv), we have
+
+        $$ \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-n+1}^{-1}\right) \to \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right) \ \textrm{ a.s. as }n\to\infty.
+        $$
+
+        Since $L(\cdot)$ is a bounded continuous function on $[0,1]$, using the bounded convergence theorem we therefore get also that
+
+        $$
+        \begin{align*} H_n
+        &\xrightarrow[n\to\infty]{} \mathbf{E}\left[ -\sum_{j=1}^d \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+        \log_2 \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+        \right]
+        \end{align*}
+        $$
+
+        Of course, the limit of $H_n$ is $H$, so we have derived another formula
+
+        $$
+        \begin{equation} eq:entropy-newformula##<<
+        H = \mathbf{E}\left[ -\sum_{j=1}^d \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+        \log_2 \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+        \right]
+        \end{equation}
+        $$
+
+        for the source entropy. Furthermore, this expression can be rewritten in the simpler form
+
+        $$
+        \begin{equation} eq:entropy-simpler##<<
+        H = -\mathbf{E} \log_2 p(X_0\,|\,\mathcal{G}_{-\infty}^{-1}),
+        \end{equation}
+        $$
+
+        where we adopt the notation (in the same vein as (>>eq:psymbols1) and (>>eq:psymbols2))
+
+        $$
+        \begin{equation} eq:psymbols-generalized##<<
+        p(x\,|\,\mathcal{G}_s^t) = \mathrm{P}\left(X_{t+1}=x\,|\,\mathcal{G}_s^t\right).
+        \end{equation}
+        $$
+
+        To see why, note that
+
+        $$ p(X_0\,|\,\mathcal{G}_{-\infty}^{-1}) = \sum_{j=1}^d \mathbf{1}_{\{X_0=\alpha_j\}} p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1}), $$
+
+        and use this to write the right-hand side of (>>eq:entropy-simpler) as
+
+        $$
+        \begin{align*}
+        -\mathbf{E} \log_2 p(X_0\,|\,\mathcal{G}_{-\infty}^{-1})
+        &=
+        -\sum_{j=1}^d \mathbf{E}\Big[
+        \mathbf{E}\left(
+        \mathbf{1}_{\{X_0=\alpha_j\}}
+        \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+        \,|\,\mathcal{G}_{-\infty}^{-1}\right)
+        \Big]
+        \\ &= -\sum_{j=1}^d \mathbf{E}\Big[ \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+        \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+        \Big]
+        \\ &= -\sum_{j=1}^d \mathbf{E}\Big[
+        p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+        \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+        \Big],
+        \end{align*}
+        $$
+
+        which is the same as the right-hand side of (>>eq:entropy-newformula).
+
+        Having derived the representation (>>eq:entropy-simpler) for the source entropy, we now apply another piece of heavy machinery, the ergodic theorem, which implies that
+
+        $$ -\frac{1}{n} \sum_{k=0}^{n-1} \log_2 p(X_k\,|\,\mathcal{G}_{-\infty}^{k-1}) \xrightarrow[n\to\infty]{\textrm{a.s.}} H. $$
+
+        Furthermore, one may verify without much difficulty that this ergodic average can be rewritten in the form
+
+        $$
+        \begin{equation} eq:aep-ergodic-average1##<<
+        -\frac{1}{n} \sum_{k=0}^{n-1} \log_2 p(X_k\,|\,\mathcal{G}_{-\infty}^{k-1}) = -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1}).
+        \end{equation}
+        $$
+
+        (where the notation $p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_s^t)$ is defined as an obvious generalization of (>>eq:psymbols-generalized)). So we conclude that
+
+        $$ -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
+        \to H \ \textrm{ a.s. as }n\to\infty. $$
+
+        This fact bears some resemblance to the claim (>>eq:shannon-mcmillan-breiman) that we are trying to prove, and indeed, we can deduce ``half'' of our result from it --- a one-sided asymptotic bound --- using Lemma >>lem-aep-lemma, as follows. Define a sequence of random variables $(Z_n)_{n=1}^\infty$ by $Z_n = \frac{p(X_0,\ldots,X_{n-1})}{p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})}$. We have
+
+        $$
+        \begin{align*}
+        \mathbf{E}(Z_n) &= \mathbf{E} \left[\mathbf{E}\left(Z_n\,|\,\mathcal{G}_{-\infty}^{-1}\right)\right]
+        \\ &= \mathbf{E}\left[
+        \sum_{x_0,\ldots,x_{n-1}\in A}
+        \mathbf{E}\left(
+        \frac{p(x_0,\ldots,x_{n-1})}{p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})}
+        p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
+        \,|\,\mathcal{G}_{-\infty}^{-1}\right)
+        \right]
+        \\ &= eq:aep-expec1##<< \sum_{x_0,\ldots,x_{n-1}\in A} p(x_0,\ldots,x_{n-1}) = 1.
+        \end{align*}
+        $$
+
+        So, we are in the situation described in Lemma >>lem-aep-lemma, and we conclude that almost surely we have the inequality
+
+        $$
+        \begin{align*}
+        0 &\le -\limsup_{n\to\infty} \frac{1}{n} \log_2 Z_n = \liminf_{n\to\infty} \left(-\frac{1}{n} \log_2 Z_n\right)
+        \\ &= \liminf_{n\to\infty} \left[
+        -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}) + \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1}) \right]
+        \\ &=
+        \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] +
+        \lim_{n\to\infty}
+        \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
+        \\ &=
+        \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] - H.
+        \end{align*}
+        $$
+
+        That is, we have proved that the inequality
+
+        $$
+        \begin{equation} eq:smb-first-half##<<
+        \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] \ge H.
+        \end{equation}
+        $$
+
+        holds with probability $1$.
+
+        To finish the proof, we will now prove an asymptotically matching upper bound; more precisely, we claim that for each fixed $k\ge1$, almost surely the inequality
+
+        $$
+        \begin{equation} eq:smb-second-half##<<
+        -\limsup_{n\to\infty} \frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}) \le H_k
+        \end{equation}
+        $$
+
+        holds. Since $H_k \searrow H$, the inequalities (>>eq:smb-first-half) and (>>eq:smb-second-half) together imply (>>eq:shannon-mcmillan-breiman). To this end, for each $k\ge 1$ we define the ``$k$th order Markov approximation'' to the function $p(x_1\ldots,x_n)$ by
+
+        $$
+        \begin{align*}
+        p_k(x_1,\ldots,x_n) &= p(x_1,\ldots,x_k) p(x_{k+1}\,|\,x_1,\ldots,x_k)
+        p(x_{k+2}\,|\,x_2,\ldots,x_{k+1}) \cdots p(x_n\,|\, x_{n-k},\ldots, x_{n-1}) \\ &= p(x_1,\ldots,x_k)
+        \prod_{j=k+1}^n p(x_j\,|\, x_{j-k},\ldots,x_{j-1}) \qquad \ \ \ (n\ge k).
+        \end{align*}
+        $$
+
+        The idea in this definition is that $p_k(x_1,\ldots,x_k)$ is the symbol distribution of a modified source process $(X_n^{(k)})_{n=1}^\infty$ in which the conditional distribution of observing a symbol $x_n$ given the past symbols $x_1,\ldots,x_{n-1}$ is computed from the symbol distribution of the original process by ``forgetting'' all the symbols before $x_{n-k}$, i.e., using only the information in the past $k$ symbols. This modified source is a generalized type of Markov chain known as a $\textbf{Markov chain of order $k$}$ or $\textbf{Markov chain with memory $k$}$.
+
+        Now observe that we have an expansion analogous to (>>eq:aep-ergodic-average1), namely
+
+        $$
+        -\frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) = -\frac{1}{n} \log_2 p(X_0,\ldots,X_{k-1}) - \frac{1}{n} \sum_{j=k}^{n-1} \log_2 p(X_j\,|\,X_{j-k},\ldots,X_{j-1}).
+        $$
+
+        Combining it with an application of the ergodic theorem, we deduce that
+
+        $$
+        -\frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) \xrightarrow[n\to\infty]{\textrm{a.s.}} -\mathbf{E} \big(\log_2 p(X_k\,|\,X_0,\ldots,X_{k-1})\big) = H_k.
+        $$
+
+        This again bears a resemblance to (>>eq:shannon-mcmillan-breiman), and we can relate the two using the lemma. Define a sequence $(Y_n)_{n=k}^\infty$ of random variables by $Y_n = \frac{p_k(X_0,\ldots,X_{n-1})}{p(X_0,\ldots,X_{n-1})}$. A short computation similar to (>>eq:aep-expec1), which we leave to the reader to verify, shows that $\mathbf{E}(Y_n) \le 1$ for all $n\ge k$, so from Lemma >>lem-aep-lemma we get that almost surely,
+
+        $$
+        \begin{align*}
+        0 &\ge \limsup_{n\to\infty} \frac{1}{n} \log_2 Y_n
+        \\ &= \limsup_{n\to\infty} \left[
+        \frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) - \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right]
+        \\ &=
+        -H_k + \limsup_{n\to\infty} \left(- \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right),
+        \end{align*}
+        $$
+
+        which proves (>>eq:smb-second-half) and thus finishes the proof.
+
+    |> Theorem
+        label=Asymptotic equipartition property for an ergodic source
+
+        Let $X_1,X_2,\ldots$ be a stationary ergodic information source over the alphabet $A=\{\alpha_1,\ldots,\alpha_d\}$. Fix $\epsilon>0$. There exists a large enough integer $N$ such that the sequences $A^N$ can be partitioned into a disjoint union of typical and exceptional sequences, namely, $A^N = T \sqcup E$, such that we have:
+
+        |> ol
+            class=list
+            data-list-style=decimal
+            |> li
+                $\mathrm{P}((X_1,\ldots,X_N) \in E) < \epsilon$.
+            |> li
+                $2^{-N\left(H + \epsilon\right)} \le \mathrm{P}((X_1,\ldots,X_N)=(x_1,\ldots,x_N)) \le 2^{-N\left(H - \epsilon\right)}$ for each typical sequence $(x_1,\ldots,x_N)\in T$.
+            |> li
+                Consequently, assuming $\epsilon<1/2$, the number of typical sequences satisfies
+
+                $$
+                2^{N (H-\epsilon)+1} \le |T| \le 2^{N (H+\epsilon)}.
+                $$
+
+    |> Proof
+        The proof is completely analogous to the proof of the i.i.d.\ case from the previous section; the random variable $S_n$ is redefined as $-\log p(X_1,\ldots,X_n)$, and the use of the weak law of large numbers is replaced by the Shannon-McMillan-Breiman theorem.
+
+    We conclude this chapter with some examples of stationary ergodic sequences and their entropies.
+
+    |> ol
+        class=list
+        data-list-style=decimal
+        |> li
+            $\textbf{i.i.d. source.}$ If $X_1,X_2,\ldots$ is an i.i.d.\ source whose distribution is described by the probability vector $(p_1,\ldots,p_d)$ then $H_n=H(X_n\,|\,X_1,\ldots,X_{n-1})=H(p_1,\ldots,p_d)$, so the entropy is the usual entropy we discussed before. For example, if $X$ is a Bernoulli random variable satisfying $\mathrm{P}(X=1)=1/3=1-\mathrm{P}(X=0)$ then $H=-\tfrac13 \log_2 \tfrac13 - \tfrac23 \log_2 \tfrac23 = 0.91829\ldots $ bits.
+        |> li
+            $\textbf{Markov source.}$ If $X_1,X_2,\ldots$ is a stationary Markov chain, then the ``$n$-step'' conditional entropy $H_n$ is given by $H_n=H(X_n\,|\,X_1,\ldots,X_{n-1})= H(X_n\,|\,X_{n-1}) = H(X_2\,|\,X_1)$ by the Markov property, so it is enough to compute this ``$1$-step'' conditional entropy. It is easy to see that this is simply an average with respect to the stationary probabilities of the entropies of each of the rows of the transition matrix. For example, if the Markov chain has the transition matrix $ \left( \begin{array}{cc} \tfrac12 & \tfrac12 \\ 1&0 \end{array} \right),$ then it is easy to check that $(\tfrac23,\tfrac13)$ is a stationary probability vector for the chain. The entropy is therefore given by
+
+            $$
+            H = H(X_2\,|\,X_1) = \tfrac23 H(\tfrac12,\tfrac12) + \tfrac13 H(1,0) = \tfrac23 \cdot 1 = \tfrac 23 = 0.6666\ldots \textrm{ bits}.
+            $$
+
+            Note that this stationary Markov chain has the same one-dimensional marginals as the i.i.d.\ source discussed above. Nonetheless, the entropy is lower, since it measures the incremental amount of information gained by examining a symbol once all the previous symbols are known, which is lower in the case where there is dependence.
+        |> li
+            $\textbf{Continued fractions.}$ From the results discussed in the previous chapter, the entropy of the sequence of quotients $(N\circ G^k)_{k=0}^\infty$ in the continued fraction expansion of a number chosen according to Gauss measure $\gamma$ is equal to $\pi^2/6\log 2$, _when measured in the natural base_. If we want to adhere to the information theory convention and measure this entropy in bits, we must divide by a further factor of $\log 2$, giving an entropy of
+
+            $$ \frac{\pi^2}{6(\log 2)^2} = 3.423714\ldots \textrm{ bits}. $$
+
+            One way of interpreting this fact is that, as we examine more and more of the continued fraction quotients of a number $x$ chosen uniformly at random from $(0,1)$, on the average each additional quotients will increase our knowledge of the _binary_ expansion of $x$ by about $3.42$ additional digits. Incidentally, while preparing these notes I discovered the curious fact (which I have not seen mentioned anywhere) that if we measure the entropy in base $10$, we get
+
+            $$ \frac{\pi^2}{6\log(2)\log(10)} = 1.03064\ldots, $$
+
+            i.e., on the average each continued fraction quotient adds an amount of information almost precisely equal to one decimal expansion digit.
+        |> li
+            $\textbf{Rotations of the circle.}$ Let $\alpha\in(0,1)$ be irrational, let $X$ be a random variable taking finitely many values on $((0,1), \mathcal{B}, \textrm{Leb})$, and let $X_n = X\circ R_\alpha^{n-1}$. Then $(X_n)_{n=1}^\infty$ is a stationary ergodic sequence.
+
+            |> Exercise
+                Prove that the entropy of this sequence is $0$.

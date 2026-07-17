@@ -1,0 +1,118 @@
+|> Section
+    title=Birkhoff's pointwise ergodic theorem
+
+    We will now prove _the_ fundamental result of ergodic theory, known alternately as  $\textbf{Birkhoff's pointwise ergodic theorem}$; $\textbf{Birkhoff's ergodic theorem}$; the $\textbf{pointwise ergodic theorem}$; or just the $\textbf{ergodic theorem}$(*>>fn-adjective).
+
+    |> Theorem
+        label=Birkhoff's ergodic theorem
+
+        Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. Let $\mathcal{I}$ denote as usual the $\sigma$-algebra of $T$-invariant sets. For any random variable $X \in L_1(\Omega, \mathcal{F}, \mathrm{P})$, we have
+
+        $$
+        \begin{equation} eq:birkhoffergodic1##<<
+        \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^k \xrightarrow[]{\textrm{\,a.s.\,}} \mathbf{E}\left(X\,|\,\mathcal{I}\right)\ \textrm{ as }n\to\infty.
+        \end{equation}
+        $$
+
+        When the system is ergodic, we have
+
+        $$
+        \begin{equation} eq:birkhoffergodic2##<<
+        \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^k \xrightarrow[]{\textrm{\,a.s.\,}} \mathbf{E}(X)\ \textrm{ as }n\to\infty.
+        \end{equation}
+        $$
+
+    For the proof, we start by proving a lemma, known as the $\textbf{maximal ergodic inequality}$.
+
+    |> Lemma
+        handle=lem-ergodic-maximal
+
+        With the same notation as above, denote also $S_0=0$, $S_n  = \sum_{k=0}^{n-1} X\circ T^k$, and let $M_n=\max\{ S_k \,:\,0\le k\le n\}$. For each $n\ge1$ we have
+
+        $$
+        \mathbf{E}(X \mathbf{1}_{\{M_n > 0 \}}) \ge 0.
+        $$
+
+    |> Proof
+        For each $0\le k\le n$ we have
+
+        $$ S_{k+1} = X + S_k\circ T \le X + M_n\circ T, $$
+
+        or equivalently $X \ge S_{k+1} - M_n\circ T$. Since this is true for each $0\le k\le n$, we get that
+
+        $$ X \ge \max(S_1,\ldots,S_n)-M_n\circ T, $$
+
+        and therefore, noting that on the event $\{M_n>0\}$, we have $M_n=\max(S_1,\ldots,S_n)$, we get that
+
+        $$
+        \begin{align*}
+        \mathbf{E}(X \mathbf{1}_{\{M_n > 0 \}})
+        &\ge
+        \mathbf{E}\left[(\max(S_1,\ldots,S_n) - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}}\right]
+        \\ &=
+        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}}\right]
+        \\ &=
+        \mathbf{E}\left[(M_n - M_n\circ T)\right]
+        -
+        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}^c}\right]
+        \\ &= 0 -
+        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n = 0 \}}\right]
+        \\ &=
+        \mathbf{E}\left[(M_n\circ T) \mathbf{1}_{\{M_n = 0 \}}\right] \ge 0.
+        \end{align*}
+        $$
+
+    |> Proof
+        alt-title=Proof of the ergodic theorem
+
+        $\mathbf{E}\left(X\,|\,\mathcal{I}\right)$ is an invariant random variable, so by replacing $X$ with $X-\mathbf{E}\left(X\,|\,\mathcal{I}\right)$, we can assume without loss of generality that $\mathbf{E}\left(X\,|\,\mathcal{I}\right)=0$; in this case, we need to prove that $S_n/n\to 0$ almost surely (where $S_n=\sum_{k=0}^{n-1} X\circ T^k$ as in the lemma above). Denote $\overline{X} = \limsup_{n\to\infty} S_n/n$. $\overline{X}$ is an invariant random variable, taking values in $\R\cup\{\pm\infty\}$. Fix $\epsilon>0$, and consider the invariant event $A= \{ \overline{X} > \epsilon \}$. We claim that $\mathrm{P}(A)=0$. Once we prove this, since $\epsilon$ is arbitrary it will follow that $\overline{X}\le 0$ almost surely. By applying the same result to $-X$ instead of $X$ the reverse inequality that almost surely $\liminf S_n/n\ge 0$ will also follow, and the theorem will be proved.
+
+        To prove the claim, define a new random variable $X^* = (X-\epsilon)\mathbf{1}_{A}$. Applying Lemma >>lem-ergodic-maximal to $X^*$ we get that
+
+        $$ \mathbf{E}\left[X^* \mathbf{1}_{\{ M_n^*>0\}}\right] \ge 0, $$
+
+        where $M_n^* = \max(0,S_1^*,\ldots,S_n^*)$ and
+
+        $$
+        S_k^* = \sum_{j=0}^{k-1} X^*\circ T^j = \sum_{j=0}^{k-1} \left((X-\epsilon)\circ T^{k-1}\right) \mathbf{1}_A = (S_k-k\epsilon)\mathbf{1}_A
+        $$
+
+        (since $A$ is an invariant event). Note that the events $\{M_n^* > 0\}$ are increasing, so $X^* \mathbf{1}_{\{ M_n^*>0\}} \to X^* \mathbf{1}_B$ almost surely as $n\to\infty$, where the event $B$ is defined by
+
+        $$B=\bigcup_{n=1}^\infty \{M_n^* > 0 \} =
+        \left\{ \sup_{n\ge 1} S_n^* > 0 \right\}
+        = \left\{ \sup_{n\ge 1} S_n^*/n > 0 \right\}.
+        $$
+
+        Furthermore, the convergence is dominated, since $\mathbf{E}|X^*| \le \mathbf{E}|X|+\epsilon<\infty$, so the dominated convergence theorem implies that
+
+        $$ \mathbf{E}(X^* \mathbf{1}_B) \ge 0. $$
+
+        Finally, observe that $A\subset B$, because
+
+        $$
+        \begin{align*}
+        A&=\{\limsup_{n\to\infty} S_n/n>\epsilon\} \subseteq A \cap \{ S_n>n\epsilon \textrm{ for some }n\ge 1\}
+        \\ &= \bigcup_{n=1}^\infty \{ (S_n-n\epsilon)\mathbf{1}_A > 0 \} = \left\{ \sup_{n\ge 1} S_n^*>0 \right\} = B.
+        \end{align*}
+        $$
+
+        So we have shown that
+
+        $$
+        \begin{align*}
+        0 &\le \mathbf{E}(X^*\mathbf{1}_B) = \mathbf{E}((X-\epsilon)\mathbf{1}_A \mathbf{1}_B) =
+        \mathbf{E}((X-\epsilon)\mathbf{1}_{A\cap B} ) = \mathbf{E}((X-\epsilon)\mathbf{1}_A ) \\&=
+        \mathbf{E}(X\mathbf{1}_A) - \epsilon \mathrm{P}(A)
+        = \mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{I}\right)\mathbf{1}_A) - \epsilon \mathrm{P}(A) = -\epsilon \mathrm{P}(A),
+        \end{align*}
+        $$
+
+        which proves our claim that $\mathrm{P}(A)=0$.
+
+    |> hr
+
+    |> Footnote
+        handle=fn-adjective
+
+        Incidentally, I've always found it strange that ergodic theory --- unlike other areas of math --- seems to be the only theory named after an adjective (as opposed to a noun, as in _the theory of numbers_, or as in the non-existent name _the theory of ergodicity_, which would perhaps have been a better name for ergodic theory). Similarly, the ergodic theorem is, as far as I know, the only theorem in math to be named after an adjective. (And what does the name mean, anyway? That the theorem has no nontrivial invariant sets...?) If you think of any counterexamples to this observation, please let me know!

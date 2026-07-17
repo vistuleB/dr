@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 3.3 of Probability Theory Lecture Notes - MATH 235B | UC Davis</title>
+  <meta name="description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 235B">
+  <meta name="term" content="Winter 2011">
+  <meta name="subject" content="Probability Theory Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 3.3 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="og:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 3.3 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="twitter:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./3-2.html"
+    ></a><a
+      id="next-page"
+      href="./3-4.html"
+    ></a>
+  </div>
+  <h1>
+    3.3
+    The upcrossing inequality
+  </h1>
+  <p>
+    An essential step on the way to the martingale convergence theorem is an inequality bounding the expected number of times a submartingale may cross between two values $a&lt;b$. Let $(X_n)_{n\ge 0}$ be a submartingale, and fix $a&lt;b$. We define an increasing sequence of stopping times
+  </p>
+  <div class="math-block">
+    $$
+    N_0 &lt; N_1 &lt; N_2 &lt; \ldots
+    $$
+  </div>
+  <p>
+    recursively by setting $N_0=-1$, and
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    N_{2k-1} &amp;= \inf \{ m &gt; N_{2k-2}\,:\,X_m\le a\}, \\
+    N_{2k} &amp;= \inf \{ m &gt; N_{2k-1}\,:\,X_m\ge b\},
+    \end{align*}
+    $$
+  </div>
+  <p>
+    for each $k\ge 1$. It is easy to check that the sequence
+  </p>
+  <div class="math-block">
+    $$
+    H_m = \begin{cases} 1 &amp;\textrm{ if }N_{2k-1}&lt;m\le N_{2k}\textrm{ for some }k, \\
+    0 &amp; \textrm{otherwise},
+    \end{cases}
+    $$
+  </div>
+  <p>
+    is a predictable sequence; it corresponds to the strategy of buying an investment unit as soon as the price dips below $a$ and selling the next time it goes above $b$. Let
+  </p>
+  <div class="math-block">
+    $$
+    U_n = U_n(a,b) = \sup \{ k\ge 0\,:\,N_{2k}\le n\}.
+    $$
+  </div>
+  <p>
+    We refer to $U_n$ as the number of $\textbf{upcrossings}$ the sequence $(X_n)_n$ completed up to time $n$ (where an upcrossing represents a cycle of going from a value below $a$ to a value above $b$).
+  </p>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>3.16</b>
+      
+    </h3>
+    <p>
+      We have
+    </p>
+    <div class="math-block">
+      $$
+      \mathbf{E} U_n \le \frac{1}{b-a}\left( \mathbf{E}(X_n-a)_+ - \mathbf{E}(X_0-a)_+ \right).
+      $$
+    </div>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Define $Y_m = a+(X_m-a)_+$. By Corollary
+      <a href="./3-1.html#_14_h.a.i_">3.13</a>, $(Y_m)_m$ is a submartingale. Note that $Y_m\le a$ if and only if $X_m\le a$ and $Y_m\ge b$ if and only if $X_m\ge b$, so the upcrossing number associated with the sequence $(Y_m)_m$ is $U_n$, the same as for $(X_m)_m$. Furthermore, we have the inequality
+    </p>
+    <div class="math-block">
+      $$
+      (b-a)U_n \le (H\bullet Y)_n,
+      $$
+    </div>
+    <p>
+      since $(H\bullet Y)$ would represent the profit made on using the investment strategy $H$ to invest in the sequence $Y_m$; each of the $U_n$ upcrossings gives a profit of $b-a$, and there is possibly a last incomplete stretch of investment when $Y_m$ dips to $a$ (unlike $X_m$, $Y_m$ never goes strictly below $a$) but has not yet increased above $b$, which gives additional nonnegative profit. Finally, by
+      <a
+        href="./3-2.html#_16_h.a.i_"
+        class=""
+      >Theorem 3.14</a>, $\mathbf{E}((1-H)\bullet Y)_n\ge 0$, so we have
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \mathbf{E}(H\bullet Y)_n &amp;\le \mathbf{E}(H\bullet Y)_n + \mathbf{E}((1-H)\bullet Y)_n = \mathbf{E}(1\bullet Y)_n \\ &amp;= \mathbf{E}(Y_n-Y_0) = \mathbf{E}(X_n-a)_+ - \mathbf{E}(X_0-a)_+.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Combining the two inequalities gives the result.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+|> Section
+    title=Von Neumann's $L_2$ ergodic theorem
+
+    Our first ergodic theorem is von Neumann's ergodic theorem, which in fact is a result in operator theory that has a nice interpretation for our problem of the convergence of ergodic averages in a measure preserving system.
+
+    |> Theorem
+        label=Von Neumann's ergodic theorem
+        handle=thm-vonneumann
+
+        Let $H$ be a Hilbert space, and let $U$ be a unitary operator on $H$. Let $P$ be the orthogonal projection operator onto the subspace $\operatorname{Ker}(U-I)$ (the subspace of $H$ consisting of $U$-invariant vectors). For any vector $v\in H$ we have
+
+        $$
+        \begin{equation} eq:vonneumann##<<
+        \frac{1}{n}\sum_{k=0}^{n-1} U^k v \to Pv \ \textrm{ as }n\to\infty.
+        \end{equation}
+        $$
+
+        (Equivalently, the sequence of operators $\frac{1}{n}\sum_{k=0}^{n-1} U^k$ converges to $P$ in the strong operator topology.)
+
+    |> Proof
+        Define two subspaces
+
+        $$
+        \begin{align*}
+        V&=\operatorname{Ker}(U-I) = \{ v\in H\,:\, Uv=v \}, \\
+        V'&=\operatorname{Range}(U-I) = \{ Uw-w \,:\, w\in H \}.
+        \end{align*}
+        $$
+
+        Note that (>>eq:vonneumann) holds trivially for $v\in V$. For a different reason, we also show that it holds for $v\in V'$: if $v=Uw-w$ then we have
+
+        $$
+        \frac{1}{n}\sum_{k=0}^{n-1} U^k v  = \frac{1}{n}\left( U^n w - w \right) \to 0\ \textrm{ as }n\to\infty.
+        $$
+
+        On the other hand, one can verify that $v\in V^\perp$, and therefore $Pv=0$, by observing that if $z\in V$ then
+
+        $$ \langle w, z \rangle = \langle Uw,Uz \rangle =
+        \langle Uw,z\rangle,
+        $$
+
+        hence $\langle Uw-w,z\rangle = 0$.
+
+        Combining the above observations we see that (>>eq:vonneumann) holds for $v\in V+V'$. Next, we claim that it also holds for $v\in \overline{V+V'}$, the norm closure of $V+V'$. Indeed, if $v\in \overline{V+V'}$ then for an arbitrary $\epsilon>0$ we can take $w\in V+V'$ such that $\lVert v-w\rVert < \epsilon$ and conclude that
+
+        $$
+        \begin{align*}
+        \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)v \right\rVert
+        & \le
+        \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)w \right\rVert
+        +
+        \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)(v-w) \right\rVert
+        \\ & \le
+        \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)w \right\rVert
+        +  \epsilon.
+        \end{align*}
+        $$
+
+        This implies that $\limsup_{n\to\infty} \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)v \right\rVert < \epsilon$, and since $\epsilon$ was an arbitrary positive number we get (>>eq:vonneumann).
+
+        Finally, we claim that $H=\overline{V+V'}$. Since $\overline{V+V'}$ is a _closed_ subspace of $H$, we have
+
+        $$\overline{V+V'} = \left( \left(\overline{V+V'}\right)^\perp \right)^\perp, $$
+
+        (in general, the orthogonal complement of the orthogonal complement of a subspace $W$ of a Hilbert space is equal to $\overline{W}$). So, it suffices to show that $\left(\overline{V+V'}\right)^\perp=\{0\}$, i.e., that the only vector orthogonal to all of $\overline{V+V'}$ is the zero vector. Assume $w$ is such a vector. Then $w \perp Uw-w$. But note that we have the identity
+
+        $$
+        \begin{align*}
+        \lVert Uw-w \rVert^2 &= \langle Uw-w, Uw-w\rangle = \lVert Uw \rVert^2 + \lVert w \rVert^2 - 2\operatorname{Re} \langle Uw,w\rangle  \\ &=
+        2\lVert w \rVert^2 - 2\operatorname{Re} \langle Uw,w\rangle
+        = - 2\operatorname{Re} \langle Uw-w,w\rangle
+        \end{align*}
+        $$
+
+        which means that $Uw-w = 0$, i.e., $w\in V$. Since $w\in \left(\overline{V+V'}\right)^\perp$ we get that $w$ is orthogonal to itself and therefore $w=0$, as claimed.
+
+    Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. We associate with $T$ an operator $U_T$ on the Hilbert space $L_2(\Omega)$, defined  by
+
+    $$ U_T(f) = f\circ T. $$
+
+    The fact that $T$ is measure preserving implies that $U_T$ is unitary:
+
+    $$ \langle U_T f, U_T g \rangle = \mathbf{E}( (U_T f) \overline{(U_T g)} )
+    = \mathbf{E}( (f\circ T) \overline{(g\circ T)} )
+    = \mathbf{E}( (f\overline{g})\circ T ) = \mathbf{E}( f\overline{g} ) = \langle f,g\rangle.
+    $$
+
+    Note also that the subspace $\operatorname{Ker}(U-I)$ consists exactly of the invariant (square-integrable) random variables, or equivalently those random variables which are measurable with respect to the $\sigma$-algebra $\mathcal{I}$ of invariant events. Recalling the discussion of conditional expectations in Chapter 2, we also see that the orthogonal projection operator $P$ is exactly the conditional expectation operator $\mathbf{E}\left(\cdot\,|\,\mathcal{I}\right)$ with respect to the $\sigma$-algebra of invariant events! Thus, Theorem >>thm-vonneumann applied to this setting gives the following result.
+
+    |> Theorem
+        label=The $L_2$ ergodic theorem
+
+        Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. For any random variable $X\in L_2(\Omega, \mathcal{F}, \mathrm{P})$, we have
+
+        $$ \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^{k} \to \mathbf{E}\left(X\,|\,\mathcal{I}\right)\ \ \textrm{in $L_2$ as }n\to\infty. $$
+
+        In particular, if the system is ergodic then
+
+        $$ \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^{k} \to \mathbf{E}(X)\ \ \textrm{in $L_2$ as }n\to\infty. $$

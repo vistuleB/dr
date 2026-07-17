@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 6.1 of Probability Theory Lecture Notes - MATH 235B | UC Davis</title>
+  <meta name="description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 235B">
+  <meta name="term" content="Winter 2011">
+  <meta name="subject" content="Probability Theory Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 6.1 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="og:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 6.1 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="twitter:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./5-0.html"
+    ></a><a
+      id="next-page"
+      href="./6-2.html"
+    ></a>
+  </div>
+  <h1>
+    6.1
+    Measure preserving systems
+  </h1>
+  <p>
+    In the previous section we cheated a little bit by considering dynamical systems without an underlying measurable structure or notion of measure (in fact, such a structure was implicit in the discussion of the orbit of a "typical" or "random" initial state). In ergodic theory we concentrate on dynamical systems which come equipped with a measure, and furthermore, we require the measure to be preserved under the action of the dynamics. This idea leads to the following definitions.
+  </p>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>6.1</b>
+      
+    </h3>
+    <p>
+      Let $(\Omega, \mathcal{F}, \mathrm{P})$ be a probability space. A measurable map $T:\Omega\to\Omega$ is called $\textbf{measure preserving}$ if for any event $E\in\mathcal{F}$ we have
+    </p>
+    <div
+      id="_33_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{13}
+      \mathrm{P}(T^{-1}(E)) = \mathrm{P}(E).
+      \end{equation}
+      $$
+    </div>
+    <p>
+      If $T$ is measure preserving, we say that the probability measure $\mathrm{P}$ is
+      <b>invariant under $T$</b>.
+    </p>
+  </div>
+  <p>
+    The condition
+    <a
+      href="./6-1.html#_33_h.a.i_"
+      class=""
+    >(13)</a>
+    is sometimes written in the form $\mathrm{P}=\mathrm{P}\circ T^{-1}$. This can be interpreted as the statement that the push-forward of $\mathrm{P}$ under $T$ is again $\mathrm{P}$; that is, if $X$ is an $\Omega$-valued random variable with distribution $\mathrm{P}$, then $T(X)$ has the same distribution.
+  </p>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>6.2</b>
+      
+    </h3>
+    <p>
+      A $\textbf{measure preserving system}$ is a probability space equipped with a measure preserving map, i.e., a quadruple $(\Omega, \mathcal{F}, \mathrm{P}, T)$, where $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space and $T:\Omega\to\Omega$ is a measure preserving map.
+    </p>
+  </div>
+  <p>
+    Measure preserving systems are the fundamental objects studied in ergodic theory (just like vector spaces are the fundamental objects of linear algebra, topological spaces are the fundamental objects of topology, etc.). It makes sense to ask to see some examples of such systems before proceeding with their theoretical study. Aside from some very interesting measure preserving systems that originate in dynamical systems (such as the billiard systems mentioned in the previous chapter), a huge class of examples arise in a very natural way in probability theory, and are intimately related to the notion of a $\textbf{stationary sequence}$, which is the subject of the next section.
+  </p>
+</body>
+</html>

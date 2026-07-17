@@ -1,0 +1,22 @@
+|> Section
+    title=Measure preserving systems
+
+    In the previous section we cheated a little bit by considering dynamical systems without an underlying measurable structure or notion of measure (in fact, such a structure was implicit in the discussion of the orbit of a ``typical'' or ``random'' initial state). In ergodic theory we concentrate on dynamical systems which come equipped with a measure, and furthermore, we require the measure to be preserved under the action of the dynamics. This idea leads to the following definitions.
+
+    |> Definition
+        Let $(\Omega, \mathcal{F}, \mathrm{P})$ be a probability space. A measurable map $T:\Omega\to\Omega$ is called $\textbf{measure preserving}$ if for any event $E\in\mathcal{F}$ we have
+
+        $$
+        \begin{equation} eq:measure-pres##<<
+        \mathrm{P}(T^{-1}(E)) = \mathrm{P}(E).
+        \end{equation}
+        $$
+
+        If $T$ is measure preserving, we say that the probability measure $\mathrm{P}$ is *invariant under $T$*.
+
+    The condition (>>eq:measure-pres) is sometimes written in the form $\mathrm{P}=\mathrm{P}\circ T^{-1}$. This can be interpreted as the statement that the push-forward of $\mathrm{P}$ under $T$ is again $\mathrm{P}$; that is, if $X$ is an $\Omega$-valued random variable with distribution $\mathrm{P}$, then $T(X)$ has the same distribution.
+
+    |> Definition
+        A $\textbf{measure preserving system}$ is a probability space equipped with a measure preserving map, i.e., a quadruple $(\Omega, \mathcal{F}, \mathrm{P}, T)$, where $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space and $T:\Omega\to\Omega$ is a measure preserving map.
+
+    Measure preserving systems are the fundamental objects studied in ergodic theory (just like vector spaces are the fundamental objects of linear algebra, topological spaces are the fundamental objects of topology, etc.). It makes sense to ask to see some examples of such systems before proceeding with their theoretical study. Aside from some very interesting measure preserving systems that originate in dynamical systems (such as the billiard systems mentioned in the previous chapter), a huge class of examples arise in a very natural way in probability theory, and are intimately related to the notion of a $\textbf{stationary sequence}$, which is the subject of the next section.

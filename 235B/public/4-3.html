@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 4.3 of Probability Theory Lecture Notes - MATH 235B | UC Davis</title>
+  <meta name="description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 235B">
+  <meta name="term" content="Winter 2011">
+  <meta name="subject" content="Probability Theory Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 4.3 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="og:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 4.3 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="twitter:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./4-2.html"
+    ></a><a
+      id="next-page"
+      href="./4-4.html"
+    ></a>
+  </div>
+  <h1>
+    4.3
+    Branching processes and the Galton-Watson tree
+  </h1>
+  <p>
+    The $\textbf{Galton-Watson tree}$, or $\textbf{Galton-Watson process}$, (named after the 19th century statistics pioneers Francis Galton and Henry William Watson) is a mathematical model for a genealogical tree, or for the population statistics of a unisexual animal species. It is the simplest in a family of models known as $\textbf{branching processes}$. The model was originally conceived at a time when family names were only passed on by male descendants and hence takes only male offspring into account, leading to a somewhat simpler (though socially anachronistic) mathematical model than some later more realistic variants.  (The original model is still used however to model various biological and physical phenomena.)
+  </p>
+  <p>
+    Let $p_0, p_1, \ldots$ be nonnegative numbers such that $\sum_k p_k = 1$, and let $X$ be a random variable with $\mathrm{P}(X=k)=p_k$, $n=0,1,2,\ldots$. We think of $p_k$ as the probability for a specimen to have $k$ offspring, and refer to the distribution of $X$ as the $\textbf{offspring distribution}$. Let $(X_{n,m})_{n,m\ge 0}$ be a family of i.i.d.\ copies of $X$. The Galton-Watson process is a sequence of random variables $Z_0, Z_1, Z_2, \ldots$, where for each $n$, $Z_n$ represents the number of $n$th-generation descendants of the original species patriarch at time $0$. $Z_n$ is defined by the initial condition $Z_0=1$ together with the recurrence relation
+  </p>
+  <div class="math-block">
+    $$
+    Z_n = \sum_{m=1}^{Z_{n-1}} X_{n-1,m},
+    $$
+  </div>
+  <p>
+    corresponding to the assumption that each of the $Z_{n-1}$ $(n-1)$th-generation specimens bear a number of offspring with the distribution of $X$, with all offspring numbers being independent of each other.
+  </p>
+  <p>
+    Let $\mu=\mathbf{E} X = \sum_k k p_k$ be the expected number of offspring. We will prove:
+  </p>
+  <div
+    class="statement theorem"
+    id="_24_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>4.3</b>
+      
+    </h3>
+    <p>
+      Let $E$ be the "extinction event"
+    </p>
+    <div class="math-block">
+      $$
+      E = \{ Z_n=0 \textnormal{ for all large enough }n\} = \{ \textnormal{the species eventually becomes extinct} \}.
+      $$
+    </div>
+    <p>
+      Then
+    </p>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          If $\mu&lt; 1$ then $\mathrm{P}(E) = 1$.
+        </p>
+      </li>
+      <li>
+        <p>
+          If $\mu=1$ and $\mathrm{P}(X=1)&lt;1$ then $\mathrm{P}(E)=1$.
+        </p>
+      </li>
+      <li>
+        <p>
+          If $\mu&gt;1$ then $\mathrm{P}(E)&lt;1$.
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>
+    The reason martingale theory is relevant to the problem is the following simple lemma.
+  </p>
+  <div class="statement lemma">
+    <h3>
+      <b>Lemma</b>
+      <b>4.4</b>
+      
+    </h3>
+    <p>
+      The sequence $(Z_n/\mu^n)_{n=0}^\infty$ is a martingale with respect to the filtration $\mathcal{G}_n = \sigma(X_{\ell,m}\,:\, 0\le \ell&lt; n, m\ge 0)$.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Compute $\mathbf{E}\left(Z_{n+1}\,|\,\mathcal{G}_n\right)$, using the standard properties of conditional expectation:
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \mathbf{E}\left(Z_{n+1}\,|\,\mathcal{G}_n\right) &amp;= \mathbf{E}\left(\sum_{m=1}^{Z_{n}} X_{n,m}\,|\,\mathcal{G}_n\right)
+      =
+      \mathbf{E}\left( \sum_{k=0}^\infty  \mathbf{1}_{\{Z_n=k\}} \sum_{m=1}^{Z_{n}} X_{n,m}\,|\,\mathcal{G}_n\right)
+      \\
+      &amp;= \sum_{k=0}^\infty
+      \mathbf{E}\left( \mathbf{1}_{\{Z_n=k\}} \sum_{m=1}^{k} X_{n,m}\,|\,\mathcal{G}_n\right)
+      = \sum_{k=0}^\infty \mathbf{1}_{\{Z_n=k\}}
+      \mathbf{E}\left(  \sum_{m=1}^{k} X_{n,m}\,|\,\mathcal{G}_n\right)
+      \ &amp;=
+      \sum_{k=0}^\infty \mathbf{1}_{\{Z_n=k\}} k \mathbf{E}(X_{n,1}) = \mu \sum_{k=0}^\infty k \mathbf{1}_{\{Z_n=k\}} = \mu Z_n.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Dividing by $\mu^{n+1}$ gives the result.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div alt-title="Proof of parts 1 and 2 of Theorem >>thm-galton-watson">
+    <p>
+      <span class="proof">Proof of parts 1 and 2 of
+        <a
+          href="./4-3.html#_24_h.a.i_"
+          class=""
+        >Theorem 4.3</a>
+        </span>By the lemma we have $\mathbf{E}(Z_n)=\mu^n$. If $\mu&lt;1$ then
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}(Z_n&gt;0)=\mathrm{P}(Z_n\ge 1)\le \mathbf{E}(Z_n) = \mu^n \to 0.
+      $$
+    </div>
+    <p>
+      Since $E^c = \cap_{n=1}^\infty \{ Z_n&gt;0 \}$, an intersection of a decreasing sequence of sets, we therefore get that $\mathrm{P}(E^c)=\displaystyle\lim_{n\to\infty} \mathrm{P}(Z_n&gt;0)=0$, which proves part 1.
+    </p>
+    <p>
+      To prove part 2, let
+    </p>
+    <div class="math-block">
+      $$
+      Z_\infty = \lim_{n\to\infty} \mu^{-n} Z_n
+      $$
+    </div>
+    <p>
+      be the limit of the nonnegative martingale $\mu^{-n} Z_n$, guaranteed to exist almost surely by Corollary
+      <a href="./3-4.html#_19_h.a.i_">3.18</a>. In the case when $\mu=1$, $Z_\infty$ is the limit of the sequence $Z_n$ itself. Under the assumption that $\mathrm{P}(X=1)&lt;1$, this limit can only be $0$, since on the event that $\{Z_n=k&gt;0\}$, $|Z_{n+1}-k|\ge 1$ with positive probability.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    To prove the final claim regarding the behavior when $\mu&gt;1$, associate with the random variable $X$ (which takes nonnegative integer values) a function
+  </p>
+  <div class="math-block">
+    $$
+    \varphi(z) = \mathbf{E}(z^X) = \sum_{k=0}^\infty p_k z^k, \qquad (0\le z\le 1).
+    $$
+  </div>
+  <p>
+    The function $\varphi(z)$ is called the
+    <b>generating function of $X$</b>. It turns out that the way it encodes information about the distribution of $X$ is especially suited to the problem at hand, because of the following lemma.
+  </p>
+  <div class="statement lemma">
+    <h3>
+      <b>Lemma</b>
+      <b>4.5</b>
+      
+    </h3>
+    <p>
+      The probability for the Galton-Watson process to become extinct by the $n$th generation is given by
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}(Z_n = 0) = \varphi^{(n)}(0) = (\overbrace{\varphi\circ \varphi\circ \ldots \circ \varphi}^{\textrm{$n$ times}})(0),
+      $$
+    </div>
+    <p>
+      (in words: the $n$th functional iterate of $\varphi$ evaluated at $z=0$.)
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>For $n=0$ the claim is true, with the natural convention that $\varphi^{(0)}(z)=z$. For general $n$, we have that
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \mathrm{P}(Z_n = 0) &amp;= \mathbf{E}\left[ \mathrm{P}\left( Z_n=0\,|\,Z_1 \right) \right] = \sum_{k=0}^\infty \mathrm{P}(Z_1=k) \mathrm{P}\left(Z_n=0\,|\,Z_1=k\right)
+      \ &amp;= \sum_{k=0}^\infty p_k \mathrm{P}\left(Z_n=0\,|\,Z_1=k\right).
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Now note that $\mathrm{P}\left(Z_n=0\,|\,Z_1=k\right)=\mathrm{P}(Z_{n-1}=0)^k$, since that is the probability for $k$ initial patriarchial specimens to become extinct within $n-1$ generations. So, by induction we get that
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}(Z_n=0) = \sum_{k=0}^\infty p_k \mathrm{P}(Z_{n-1}=0)^k = \varphi(\mathrm{P}(Z_{n-1}=0)) = \varphi(\varphi^{(n-1)}(0))
+      = \varphi^{(n)}(0).
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    Using the lemma we see that if we are able to prove that
+  </p>
+  <div class="math-block">
+    $$
+    \mathrm{P}\left(\bigcup_{n=1}^\infty \{Z_n=0\}\right)= \lim_{n\to\infty} \mathrm{P}(Z_n=0) = \lim_{n\to\infty} \varphi^{(n)}(0)&lt;1,
+    $$
+  </div>
+  <p>
+    the final part of
+    <a
+      href="./4-3.html#_24_h.a.i_"
+      class=""
+    >Theorem 4.3</a>
+    will follow. The question therefore reduces to studying the functional iterates $\varphi^{(n)}(0)$. Note that $\varphi$ is continuously differentiable on $(0,1)$ and satisfies
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \varphi(0) &amp;= p_0 \ge 0, \\
+    \varphi(1) &amp;=1, \\
+    \varphi'(z) &amp;= \sum_{k=1}^\infty k p_k z^{k-1} \ge 0 \qquad\quad\  \ \textrm{(so $\varphi$ is nondecreasing),}\\
+    \varphi”(z) &amp;= \sum_{k=2}^\infty k(k-1) p_k z^{k-2} \ge 0 \ \ \textrm{(so $\varphi$ is convex)}, \\
+    \lim_{z\uparrow 1} \varphi'(z) &amp;= \sum_{k=1}^\infty k p_k = \mu &gt; 1.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    In fact, since $\mu&gt;1$ there must be some $k\ge 2$ such that $p_k&gt;0$, so $\varphi$ is strictly increasing and strictly convex.
+  </p>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>4.6</b>
+      
+    </h3>
+    <p>
+      Show that from the properties above it follows that $\varphi$ has a unique fixed point $0\le \rho&lt;1$, i.e., a point where $\varphi(\rho)=\rho$ (drawing a rough sketch of the graph of $\varphi$ is very helpful to explain why this is true).
+    </p>
+  </div>
+  <div alt-title="Proof of part 3 of Theorem >>thm-galton-watson">
+    <p>
+      <span class="proof">Proof of part 3 of
+        <a
+          href="./4-3.html#_24_h.a.i_"
+          class=""
+        >Theorem 4.3</a>
+        </span>The sequence $a_n = \varphi^{(n)}(0)$ is increasing, so converges to a limit $L$. Since $\varphi$ is increasing, by induction $a_n\le \rho$ for all $n$. So also $L=\lim_{n\to\infty} a_n = \mathrm{P}(E) \le \rho &lt;1$, which was the claim. (In fact, it is easy to see that $L=\rho$ exactly, since we have
+    </p>
+    <div class="math-block">
+      $$
+      \varphi(L)=\varphi(\lim_{n\to\infty} a_n) = \lim_{n\to\infty} \varphi(a_n) = \lim_{n\to\infty} a_{n+1} = L,
+      $$
+    </div>
+    <p>
+      so $L$ is a fixed point of $\varphi$.)<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+|> Section
+    title=The martingale convergence theorem
+
+    With the help of the upcrossing inequality we can prove:
+
+    |> Theorem
+        label=The martingale convergence theorem
+
+        If $(X_n)_{n=0}^\infty$ is a submartingale with $\sup_{n\ge 0}\mathbf{E} (X_n)_+ < \infty$, then the limit
+
+        $$ X = \lim_{n\to\infty} X_n $$
+
+        exists almost surely and satisfies $\mathbf{E}|X|<\infty$.
+
+    |> Proof
+        For each $a<b$, let
+
+        $$ U(a,b) = \sup_{n\ge0} U_n(a,b) $$
+
+        denote the total number of $(a,b)$-upcrossings over the entire history of the sequence (which may be infinite). Since
+
+        $$ \mathbf{E} U_n(a,b) \le \frac{1}{b-a} \mathbf{E}(X_n-a)_+ \le \frac{1}{b-a} \left[ a + \mathbf{E} (X_n)_+ \right],
+        $$
+
+        by the assumption on $\sup_n \mathbf{E}(X_n)_+$ and the monotone convergence theorem we also get that $\mathbf{E} U(a,b) < \infty$, hence $U(a,b)<\infty$ almost surely. It follows that the event
+
+        $$ A = \bigcup_{\stackrel{a<b}{a,b\in\mathbb{Q}}} \{ U(a,b) = \infty \} $$
+
+        has probability $0$. On the almost sure complementary event $A^c$, the only way the sequence $X_n$ can diverge is by converging to $\pm \infty$. In other words, the limit
+
+        $$ X = \lim_{n\to\infty} X_n $$
+
+        exists as a generalized r.v.\ taking values in $\R\cup\{\pm\infty\}$. But then by Fatou's lemma we have that
+
+        $$ \mathbf{E} X_+ \le \liminf_{n\to\infty} \mathbf{E} (X_n)_+ \le \sup_{n\ge 0} \mathbf{E}(X_n)_+ < \infty, $$
+
+        which also implies that $X<\infty$ a.s. Similarly, note that
+
+        $$ \mathbf{E} (X_n)_- = \mathbf{E} (X_n)_+ - \mathbf{E}(X_n) \le \mathbf{E} (X_n)_+ - \mathbf{E} X_0, $$
+
+        since $X_n$ is a submartingale, so again by Fatou's lemma we have
+
+        $$ \mathbf{E} X_- \le \liminf_{n\to\infty} \mathbf{E} (X_n)_- \le \sup_n \mathbf{E}(X_n)_+ - \mathbf{E} X_0 < \infty, $$
+
+        which shows that $X>-\infty$ a.s. We have shown that $X_n$ converges a.s. to a finite limit both of whose positive and negative parts are integrable, so the proof is complete.
+
+    |> Corollary
+        handle=mart-conv-cor
+
+        |> ol
+            class=list
+            data-list-style=decimal
+            |> li
+                If $(X_n)_n$ is a submartingale bounded from above, i.e., there is an $M\in\R$ such that $X_n\le M$ for all $n$, then $X_n\to X$ a.s.\ where the limiting r.v.\ satisfies $\mathbf{E} X \ge \mathbf{E} X_0$.
+            |> li
+                If $(X_n)_n$ is a supermartingale bounded from below, i.e., there is an $M$ such that $X_n\ge M$ for all $n$, then $X_n\to X$ a.s.\ where the limiting r.v.\ satisfies $\mathbf{E} X \le \mathbf{E} X_0$.

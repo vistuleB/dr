@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 2.2 of Probability Theory Lecture Notes - MATH 235B | UC Davis</title>
+  <meta name="description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 235B">
+  <meta name="term" content="Winter 2011">
+  <meta name="subject" content="Probability Theory Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 2.2 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="og:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 2.2 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="twitter:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./2-1.html"
+    ></a><a
+      id="next-page"
+      href="./2-3.html"
+    ></a>
+  </div>
+  <h1>
+    2.2
+    General conditional expectations
+  </h1>
+  <p>
+    The above discussion brings us to the following important definition.
+  </p>
+  <div class="statement definition">
+    <h3>
+      <b>Definition</b>
+      <b>2.2</b>
+      
+    </h3>
+    <p>
+      Let $X$ be a random variable on $(\Omega, \mathcal{F}, \mathrm{P})$ with $\mathbf{E}|X|&lt;\infty$, and let $\mathcal{G}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. If a random variable $Z$ satisfies properties (i) and (ii) above, we say that $Z$ is the
+      <b>conditional expectation of $X$ given $\mathcal{G}$</b>, and denote $Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$. If $Y$ is another random variable on $(\Omega, \mathcal{F}, \mathrm{P})$, then taking $\mathcal{G}=\sigma(Y)$ we may denote $Z = \mathbf{E}\left(X\,|\,Y\right) = \mathbf{E}\left(X\,|\,\sigma(Y)\right)$, and refer to $Z$ as the
+      <b>conditional expectation of $X$ given $Y$</b>.
+    </p>
+  </div>
+  <p>
+    The use of the notation $Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$ contains the implicit assumption that the conditional expectation is unique. This is true with the convention that random variables are defined only up to almost sure equivalence. That is, if $Z=Z'$ a.s.\ we consider $Z$ and $Z'$ to be the same random variable (in particular, any event involving $Z$ will have the same probability as the corresponding event involving $Z'$). In fact, we will prove the following result which also answers the key questions regarding existence and integrability.
+  </p>
+  <div
+    class="statement theorem"
+    id="_7_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>2.3</b>
+      
+    </h3>
+    <p>
+      The conditional expectation exists, is an integrable random variable, and is unique up to almost sure equivalence.
+    </p>
+  </div>
+  <div alt-title="Proof of integrability">
+    <p>
+      <span class="proof">Proof of integrability</span>Let $A = \{ Z&gt;0 \}$. By (i), $A, A^c \in \mathcal{G}$. Therefore by (ii), we have
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \mathbf{E}(Z \mathbf{1}_A) &amp;= \mathbf{E}(X \mathbf{1}_A) \le \mathbf{E}\left( |X| \mathbf{1}_A \right), \\
+      \mathbf{E}(Z \mathbf{1}_{A^c}) &amp;= \mathbf{E}(X \mathbf{1}_{A^c}) \ge -\mathbf{E}\left( |X| \mathbf{1}_{A^c} \right),
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Subtracting the two equations gives
+    </p>
+    <div class="math-block">
+      $$
+      \mathbf{E}|Z| = \mathbf{E}(Z\mathbf{1}_A - Z\mathbf{1}_{A^c}) \le \mathbf{E}\left( |X| (\mathbf{1}_A + \mathbf{1}_{A^c}) \right) = \mathbf{E}|X| &lt; \infty.
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div alt-title="Proof of uniqueness">
+    <p>
+      <span class="proof">Proof of uniqueness</span>Assume that $Z$ and $Z'$ both satisfy properties (i), (ii). It follows that
+    </p>
+    <div class="math-block">
+      $$
+      \mathbf{E}(Z \mathbf{1}_A) = \mathbf{E}(Z' \mathbf{1}_A)\ \  \textrm{ for all }A \in \mathcal{G}.
+      $$
+    </div>
+    <p>
+      For some $\epsilon&gt;0$, take $A = \{ Z-Z' \ge \epsilon \}$ to get that
+    </p>
+    <div class="math-block">
+      $$
+      0 = \mathbf{E}( (Z-Z')\mathbf{1}_A ) \ge \epsilon \mathrm{P}(A),
+      $$
+    </div>
+    <p>
+      so $\mathrm{P}(A) = 0$. Since $\epsilon$ was an arbitrary positive number, this implies that $Z\le Z'$ a.s. Reversing the roles of $Z$ and $Z'$ gives that also $Z'\le Z$ a.s., so $Z=Z'$ a.s., which proves the uniqueness claim.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    The most tricky part in defining conditional expectations is proving that they exist. The usual proof involves an application of an important result from measure theory, the Radon-Nikodym theorem, which we review in the next section.
+  </p>
+</body>
+</html>

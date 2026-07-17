@@ -1,0 +1,17 @@
+|> Section
+    title=Recurrence of simple random walk on $\mathbb{Z}$
+
+    Let $S_n = \sum_{k=1}^n X_k$ denote the simple random walk on $\Z$; i.e., $S_0=0$ and $(X_n)_{n=1}^\infty$ are i.i.d.\ with $\mathrm{P}(X_n=-1)=\mathrm{P}(X_n=1)=\tfrac12$.
+
+    |> Theorem
+        The random walk is $\textbf{recurrent}$. That is, for any $m\in\Z$ we have
+
+        $$ \mathrm{P}(S_n = m \textrm{ i.o.}) = 1. $$
+
+    |> Proof
+        Define a random variable $N = \inf \{ n>0\,:\, S_n = -1 \}$ (on the event that $S_n$ never visits $-1$, set $N=\infty$). Let $M_n = S_{N\wedge n}$. By Theorem >>thm-stopping-mart, the sequence $(M_n)_{n=1}^\infty$ is a martingale with respect to the filtration $\mathcal{G}_n = \sigma(X_1,\ldots,X_n)$. Furthermore, $M_n \ge -1$ for all $n$, so by Corollary >>mart-conv-cor, the limit $M=\lim_{n\to\infty} M_n$ exists almost surely. But then we must have $M\equiv -1$ almost surely, since any other limit is impossible (until the sequence $S_{N\wedge n}$ stops at $-1$, it fluctuates by $\pm 1$ at each step). This implies that $N<\infty$ almost surely, so the random walk is guaranteed to visit $-1$ with probability $1$.
+
+    |> Exercise
+        Complete the proof by explaining why if the random walk almost surely visits $-1$ when starting from $0$ then it almost surely visits every lattice point $m\in\Z$, and therefore also almost surely visits every $m\in\Z$ infinitely often.
+
+    Note that the almost sure martingale limit $M=\lim_{n\to\infty} S_{N\wedge n}$ in the proof above satisfies $\mathbf{E} M=-1$, whereas $\mathbf{E}(S_{N \wedge n})=0$ for all $n$. This is therefore an example of a martingale that converges almost surely, but not in $L_1$.

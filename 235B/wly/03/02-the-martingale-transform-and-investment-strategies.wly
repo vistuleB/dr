@@ -1,0 +1,57 @@
+|> Section
+    title=The martingale transform and investment strategies
+
+    Let $(\mathcal{G}_n)_{n=0}^\infty$ be a filtration. Assume that we are given a sequence $(X_n)_{n=0}^\infty$ that is adapted to the filtration. Each increment $X_n-X_{n-1}$ can be thought of as representing an investment opportunity at time $n$. For example, $X_n$ can represent the price of a stock or other financial asset (which in the lingo of finance is referred to, somewhat  ironically, as a ``security'') on day $n$, so that $X_n-X_{n-1}$ will be the gain or loss of an investor holding one unit of the asset during day $n$. The $\textbf{martingale transform}$ $H\bullet X$ is a new sequence of random variables representing the accumulated profits of an investor employing a predefined investment strategy, represented by a sequence $(H_n)_{n=1}^\infty$.(*>>fn-marting-transform-name)
+
+    To make this more precise, we say that a sequence $(H_n)_{n=1}^\infty$ is $\textbf{predictable}$ with respect to the filtration $(\mathcal{G}_n)_{n=0}^\infty$ if for any $n\ge 1$, $H_n$ is $\mathcal{G}_{n-1}$-measurable. Think of $H_n$ as representing the number of investment units the investor holds during the $n$th trading day. An investment strategy must have this property, since (unless the investor is equipped with a crystal ball) the decision of how much to invest at time $n$ must depend only on information available at time $n-1$. Given a $(\mathcal{G}_n)_n$-adapted sequence $(X_n)_{n=0}^\infty$ and a predictable sequence $(H_n)_{n=1}^\infty$, we define the sequence $H\bullet X$ by
+
+    $$ (H\bullet X)_n = \sum_{m=1}^n H_m(X_m-X_{m-1}). $$
+
+    |> Theorem
+        handle=thm-marting-transform
+
+        |> ol
+            class=list
+            data-list-style=decimal
+            |> li
+                If $(X_n)_{n=0}^\infty$ is a supermartingale and $(H_n)_{n=1}^\infty$ is predictable, and for any $n$, $H_n$ is bounded and nonnegative, then $H\bullet X$ is a supermartingale.
+            |> li
+                If $(X_n)_{n=0}^\infty$ is a submartingale and $(H_n)_{n=1}^\infty$ is predictable, and for any $n$, $H_n$ is bounded and nonnegative, then $H\bullet X$ is a submartingale.
+            |> li
+                If $(X_n)_{n=0}^\infty$ is a martingale and $(H_n)_{n=1}^\infty$ is predictable, and for any $n$, $H_n$ is bounded, then $H\bullet X$ is a martingale.
+
+    |> Proof
+        We prove the first claim (the other ones are similar). It is obvious that $(H\bullet X)_n$ is adapted to $(\mathcal{G}_n)_n$, and furthermore, by the assumptions that $H_n$ is bounded and nonnegative, and the usual properties of conditional expectation, we get that
+
+        $$
+        \begin{align*}
+        \mathbf{E}\left((H\bullet X)_{n+1}\,|\,\mathcal{G}_n\right) &=
+        \mathbf{E}\left((H\bullet X)_{n}\,|\,\mathcal{G}_n\right) +
+        \mathbf{E}\left(H_{n+1}(X_{n+1}-X_n)\,|\,\mathcal{G}_n\right)
+        \\ &= (H\bullet X)_n +
+        H_{n+1} \mathbf{E}\left(X_{n+1}-X_n\,|\,\mathcal{G}_n\right) \le (H\bullet X)_n.
+        \end{align*}
+        $$
+
+    A random variable $N$ taking values in $\{1,2,\ldots\}\cup \{\infty\}$ is said to be a $\textbf{stopping time}$ with respect to the filtration $(\mathcal{G}_n)_{n=0}^\infty$ if for any $n\ge0$, the event $\{ N=n \}$ is in $\mathcal{G}_n$. That means that the decision to stop at time $n$ depends only on information available at that time. Given a stopping time $N$, one possible investment strategy (a version of the classic ``buy and hold'') is to buy one investment unit at time $0$ and hold it until time $N$. In other words, we may define a sequence $(H_n)_n$ by
+
+    $$ H_n = \mathbf{1}_{\{n\le N\}}, \qquad n\ge 1. $$
+
+    Note that $\{ n\le N\} = \{N\le n-1\}^\textrm{c} \in \mathcal{G}_{n-1}$, so $(H_n)_n$ is a predictable sequence, and we have
+
+    $$ (H\bullet X)_n = X_{N\wedge n} - X_0. $$
+
+    |> Theorem
+        handle=thm-stopping-mart
+
+        If $N$ is a stopping time and $(X_n)_{n=0}^\infty$ is a supermartingale (respectively, submartingale, martingale), then $(X_{n\wedge N})_{n=0}^\infty$ is a supermartingale (respectively, submartingale, martingale).
+
+    |> Proof
+        By Theorem >>thm-marting-transform, $X_{N\wedge n} - X_0$ is a supermartingale. Adding the constant sequence $Y_n=X_0$ to it (which is a martingale) gives a supermartingale.
+
+    |> hr
+
+    |> Footnote
+        handle=fn-marting-transform-name
+
+        The name ``martingale transform'' is a poor choice, as it seems to imply that $H\bullet X$ is defined only when $(X_n)_n$ is a martingale. This is not the case, although it's true that the most interesting cases are when $(X_n)_n$ is a submartingale or supermartingale or both.

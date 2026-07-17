@@ -1,0 +1,46 @@
+|> Section
+    title=General conditional expectations
+
+    The above discussion brings us to the following important definition.
+
+    |> Definition
+        Let $X$ be a random variable on $(\Omega, \mathcal{F}, \mathrm{P})$ with $\mathbf{E}|X|<\infty$, and let $\mathcal{G}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. If a random variable $Z$ satisfies properties (i) and (ii) above, we say that $Z$ is the *conditional expectation of $X$ given $\mathcal{G}$*, and denote $ Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$. If $Y$ is another random variable on $(\Omega, \mathcal{F}, \mathrm{P})$, then taking $\mathcal{G}=\sigma(Y)$ we may denote $Z = \mathbf{E}\left(X\,|\,Y\right) = \mathbf{E}\left(X\,|\,\sigma(Y)\right)$, and refer to $Z$ as the *conditional expectation of $X$ given $Y$*.
+
+    The use of the notation $ Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$ contains the implicit assumption that the conditional expectation is unique. This is true with the convention that random variables are defined only up to almost sure equivalence. That is, if $Z=Z'$ a.s.\ we consider $Z$ and $Z'$ to be the same random variable (in particular, any event involving $Z$ will have the same probability as the corresponding event involving $Z'$). In fact, we will prove the following result which also answers the key questions regarding existence and integrability.
+
+    |> Theorem
+        handle=thm-cond-ext
+
+        The conditional expectation exists, is an integrable random variable, and is unique up to almost sure equivalence.
+
+    |> Proof
+        alt-title=Proof of integrability
+
+        Let $A = \{ Z>0 \}$. By (i), $A, A^c \in \mathcal{G}$. Therefore by (ii), we have
+
+        $$
+        \begin{align*}
+        \mathbf{E}(Z \mathbf{1}_A) &= \mathbf{E}(X \mathbf{1}_A) \le \mathbf{E}\left( |X| \mathbf{1}_A \right), \\
+        \mathbf{E}(Z \mathbf{1}_{A^c}) &= \mathbf{E}(X \mathbf{1}_{A^c}) \ge -\mathbf{E}\left( |X| \mathbf{1}_{A^c} \right),
+        \end{align*}
+        $$
+
+        Subtracting the two equations gives
+
+        $$ \mathbf{E}|Z| = \mathbf{E}(Z\mathbf{1}_A - Z\mathbf{1}_{A^c}) \le \mathbf{E}\left( |X| (\mathbf{1}_A + \mathbf{1}_{A^c}) \right) = \mathbf{E}|X| < \infty.
+        $$
+
+    |> Proof
+        alt-title=Proof of uniqueness
+
+        Assume that $Z$ and $Z'$ both satisfy properties (i), (ii). It follows that
+
+        $$ \mathbf{E}(Z \mathbf{1}_A) = \mathbf{E}(Z' \mathbf{1}_A)\ \  \textrm{ for all }A \in \mathcal{G}. $$
+
+        For some $\epsilon>0$, take $A = \{ Z-Z' \ge \epsilon \}$ to get that
+
+        $$ 0 = \mathbf{E}( (Z-Z')\mathbf{1}_A ) \ge \epsilon \mathrm{P}(A), $$
+
+        so $\mathrm{P}(A) = 0$. Since $\epsilon$ was an arbitrary positive number, this implies that $Z\le Z'$ a.s. Reversing the roles of $Z$ and $Z'$ gives that also $Z'\le Z$ a.s., so $Z=Z'$ a.s., which proves the uniqueness claim.
+
+    The most tricky part in defining conditional expectations is proving that they exist. The usual proof involves an application of an important result from measure theory, the Radon-Nikodym theorem, which we review in the next section.

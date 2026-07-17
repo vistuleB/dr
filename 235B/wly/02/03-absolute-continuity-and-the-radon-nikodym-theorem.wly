@@ -1,0 +1,91 @@
+|> Section
+    title=Absolute continuity and the Radon-Nikodym theorem
+
+    We will formulate a version of the Radon-Nikodym theorem for probability spaces. The theorem involves the useful concept of absolute continuity of measures.
+
+    |> Definition
+        Let $P$ and $Q$ be two probability measures on a measurable space $(\Omega, \mathcal{F})$. We say that *$P$ is absolutely continuous with respect to $Q$*, and denote $P<<Q$, if for any $A\in\mathcal{F}$, if $Q(A)=0$ then $P(A)=0$.
+
+    There is an interesting intuitive interpretation to the notion of absolute continuity. In many real-life situations involving probability we know the measurable space $(\Omega, \mathcal{F})$ but do not know which probability measure correctly describes the statistical distribution of the outcome of the experiment (for example, someone hands us a die to roll but we are not sure if it is a fair or loaded die). Say there are two possible measures, $P$ and $Q$, which we are considering. It makes sense to perform the experiment and try to guess which of $P$ and $Q$ is the correct one based on the result. If we are lucky, the result might fall into an event $A \in \mathcal{F}$ which has the property that $Q(A)=0$ but $P(A)>0$, in which case we will know that we can safely rule out $Q$. The relation $P<<Q$ means that this cannot happen; i.e., based on a single experiment, or even a finite number of repeated experiments, we can never rule out $Q$ as the correct measure, although we may become increasingly convinced that $P$ is the correct one as the statistical evidence mounts(*>>fn-relative-entropy). If $P<<Q$ and $Q<<P$, meaning both measures are mutually absolutely continuous w.r.t.\ each other, we can also never rule out $P$ so we may never be entirely sure which measure correctly describes the experiment.
+
+    The following lemma sheds further light on the notion of absolute continuity. Its proof is a nice application of the first Borel-Cantelli lemma.
+
+    |> Lemma
+        handle=lem-abs-cont
+
+        $P$ is absolutely continuous with respect to $Q$ if and only if for any $\epsilon>0$ there exists a $\delta>0$ such that if $Q(A)<\delta$ then $P(A)<\epsilon$.
+
+    |> Proof
+        The ``if'' direction is immediate. To prove the ``only if,'' assume the negation of the condition ``for any $\epsilon>0$, $\ldots$'' That is, there must exist an $\epsilon>0$ such that for any $\delta>0$ there is an event $A_\delta$ such that $Q(A_\delta)< \delta$ but $P(A_\delta)\ge\epsilon$. Now consider the event
+
+        $$ E= \{ A_{1/{2^n}}\textrm{ i.o.} \} =  \bigcap_{N=1}^\infty \bigcup_{n=N}^\infty A_{1/2^n}
+        $$
+
+        Since $\sum_{n=1}^\infty 2^{-n}<\infty$, by the Borel-Cantelli lemma we get that $Q(E)=0$. On the other hand,
+
+        $$ P(E) = \lim_{N\to\infty} P\left[\bigcup_{n=N}^\infty A_{1/2^n}\right] \ge \limsup_{N\to\infty} P(A_{1/2^n}) \ge \epsilon>0.
+        $$
+
+        This shows that $P$ is not absolutely continuous with respect to $Q$.
+
+    If $Q$ is a probability measure on $(\Omega, \mathcal{F})$, one way to construct a probability measure $P$ for which $P<<Q$ is to let
+
+    $$
+    \begin{equation} eq:abs-cont-p-q##<<
+    P(E) = \mathbf{E}_{Q}(Z \mathbf{1}_E), \qquad (E\in \mathcal{F}).
+    \end{equation}
+    $$
+
+    where $Z$ is some nonnegative random variable on the probability space $(\Omega,\mathcal{F},Q)$ satisfying $\mathbf{E}(Z)=1$ (the notation $\mathbf{E}_{Q}(\cdot)$ emphasizes that the expectation operator is the one associated with the probability measure $Q$). The Radon-Nikodym theorem says that this construction is the most general one possible.
+
+    |> Theorem
+        label=The Radon-Nikodym theorem
+
+        $P<<Q$ if and only if there exists a random variable $Z$ on $(\Omega, \mathcal{F}, \mathrm{P})$, unique up to $Q$-a.s.-equivalence, such that $Z\ge 0$ a.s.\ and the relation $P(E) = \mathbf{E}_{Q} (Z \mathbf{1}_E)$ holds for any $E\in \mathcal{F}$. The random variable $Z$ is referred to as the $\textbf{Radon-Nikodym derivative}$ of $P$ relative to $Q$ and denoted
+
+        $$Z = \frac{dP}{dQ}. $$
+
+    As mentioned above, the ``if'' part of the theorem is immediate, so it is really the ``only if'' part which is interesting. The Radon-Nikodym theorem has several classical proofs which may be read in measure theory and analysis textbooks. We will assume it without proof for now, and later sketch a probabilistic proof that uses martingale theory. (This is almost circular logic, since we will use conditional expectations to develop martingales and conditional expectations rely on the Radon-Nikodym theorem. However, with a bit of care one can make sure to use only the ``elementary'' version of conditional expectations and thus obtain a genuinely new proof that does not make use of circular reasoning --- this is one of the nice examples of probability theory ``giving back'' to the rest of mathematics.)
+
+    Note that the Radon-Nikodym derivative generalizes the ordinary derivative: if $Q$ is Lebesgue measure on the measure space $((0,1),\mathcal{B})$ and $P<<Q$, then the random variable $Z$ in (>>eq:abs-cont-p-q) can be thought of as the density function of a random variable whose distribution measure is $P$, and can be computed as an actual derivative of the cumulative distribution function of this random variable, i.e.,
+
+    $$ Z(x) = \frac{d}{dx} P((0,x)) \quad\textrm{a.s.} $$
+
+    Another reason why it makes sense to think of $Z$ as a kind of ``derivative'' is that if one uses the Lebesgue integral notation $\int_E Z dQ$ instead of our more probabilistic notation $\mathbf{E}_{Q}(Z\mathbf{1}_E)$, the relation (>>eq:abs-cont-p-q) can be rewritten as an intuitive ``change of measures'' formula
+
+    $$
+    \begin{equation} eq:abs-cont-change-var##<<
+    \int_E dP = \int_E \frac{dP}{dQ} dQ.
+    \end{equation}
+    $$
+
+    |> Exercise
+        Prove that if $P<<Q$ are two probability measures on a measurable space $(\Omega, \mathcal{F})$ then (>>eq:abs-cont-change-var) generalizes to the identity
+
+        $$
+        \int_E X dP = \int_E X \frac{dP}{dQ} dQ
+        $$
+
+        which holds for any random variable $X$ for which $\mathbf{E}_P|X|<\infty$.
+
+    |> Proof
+        alt-title=Proof of existence in Theorem >>thm-cond-ext
+
+        We are now in a position to prove the existence of conditional expectations. Assume first that $X\ge 0$. Define the measure $Q$ on the measurable space $(\Omega, \mathcal{G})$ by
+
+        $$ Q(E) = \mathbf{E}_{\mathrm{P}}(X \mathbf{1}_E), \qquad E\in\mathcal{G}. $$
+
+        Note that $Q$ is not a _probability_ measure; rather, it is a _finite_ measure, which is like a probability measure but takes values in $[0,\infty)$ and is not required to satisfy $Q(\Omega)=1$. However, the Radon-Nikodym theorem remains true for such measures (even more generally for so-called _$\sigma$-finite_ measures), as can easily be seen by replacing $Q(\cdot)$ by its scalar multiple $Q(\Omega)^{-1} Q(\cdot)$, which is a probability measure. Now, the original probability measure $\mathrm{P}$ on $(\Omega, \mathcal{F})$ can also be thought of as a measure on the measurable space $(\Omega, \mathcal{G})$. Furthermore, it is easy to see that $Q << \mathrm{P}$. Thus, we are exactly in the situation described in the Radon-Nikodym theorem, and we conclude that there is a random variable $Z=dQ/dP$, measurable with respect to the $\sigma$-algebra $\mathcal{G}$, such that for any $E\in\mathcal{G}$ we have
+
+        $$ \mathbf{E}_{\mathrm{P}}(Z \mathbf{1}_E) = Q(E) = \mathbf{E}_{\mathrm{P}}(X \mathbf{1}_E). $$
+
+        Thus, $Z$ satisfies the two properties (i)--(ii) in the definition of the conditional expectation, so the conditional expectation $Z=\mathbf{E}\left(X\,|\,\mathcal{G}\right)$ exists.
+
+        Finally, for a general random variable $X$ with $\mathbf{E}|X|<\infty$, write $X=X_+-X_-$ where $X_+, X_-\ge 0$ are the non-negative and non-positive parts of $X$, respectively. It is immediate to check that the random variable $Z = \mathbf{E}\left(X_+\,|\,\mathcal{G}\right) - \mathbf{E}\left(X_-\,|\,\mathcal{G}\right)$ satisfies the properties (i)--(ii) required of the conditional expectation $\mathbf{E}\left(X\,|\,\mathcal{G}\right)$, so again we have shown that the conditional expectation exists.
+
+    |> hr
+
+    |> Footnote
+        handle=fn-relative-entropy
+
+        The question of precisely how fast can one become convinced of the correct answer leads to the concept of $\textbf{relative entropy}$, which will be the subject of a future homework problem.

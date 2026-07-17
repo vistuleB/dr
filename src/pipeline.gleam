@@ -24,6 +24,7 @@ const p_cannot_contain = [
   "SubSection",
   "SubSectionTitle",
   "WriterlyBlankLine",
+  "figure",
   "hr",
   "li",
   "ol",
@@ -41,6 +42,7 @@ const p_cannot_be_contained_in = [
   "Math",
   "MathBlock",
   "Navigation",
+  "figure",
   "h1",
   "h3",
   "p",
@@ -71,7 +73,15 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "hr",
   ]
 
-  let pre_transformation_html_tags = ["li", "ol", "span", "ul"]
+  let pre_transformation_html_tags = [
+    "figcaption",
+    "figure",
+    "img",
+    "li",
+    "ol",
+    "span",
+    "ul",
+  ]
   let pre_transformation_approved_tags =
     [pre_transformation_document_tags, pre_transformation_html_tags]
     |> list.flatten
@@ -82,11 +92,14 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
     "b",
     "br",
     "div",
+    "figcaption",
+    "figure",
     "h1",
     "h3",
     "header",
     "hr",
     "i",
+    "img",
     "li",
     "ol",
     "p",

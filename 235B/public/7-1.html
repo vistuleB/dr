@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 7.1 of Probability Theory Lecture Notes - MATH 235B | UC Davis</title>
+  <meta name="description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 235B">
+  <meta name="term" content="Winter 2011">
+  <meta name="subject" content="Probability Theory Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 7.1 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="og:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 7.1 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="twitter:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./6-4.html"
+    ></a><a
+      id="next-page"
+      href="./7-2.html"
+    ></a>
+  </div>
+  <h1>
+    7.1
+    Von Neumann's $L_2$ ergodic theorem
+  </h1>
+  <p>
+    Our first ergodic theorem is von Neumann's ergodic theorem, which in fact is a result in operator theory that has a nice interpretation for our problem of the convergence of ergodic averages in a measure preserving system.
+  </p>
+  <div
+    label="Von Neumann's ergodic theorem"
+    class="statement theorem"
+    id="_51_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>7.1</b>
+      
+    </h3>
+    <p>
+      <span class="label">Von Neumann's ergodic theorem</span>Let $H$ be a Hilbert space, and let $U$ be a unitary operator on $H$. Let $P$ be the orthogonal projection operator onto the subspace $\operatorname{Ker}(U-I)$ (the subspace of $H$ consisting of $U$-invariant vectors). For any vector $v\in H$ we have
+    </p>
+    <div
+      id="_50_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{17}
+      \frac{1}{n}\sum_{k=0}^{n-1} U^k v \to Pv \ \textrm{ as }n\to\infty.
+      \end{equation}
+      $$
+    </div>
+    <p>
+      (Equivalently, the sequence of operators $\frac{1}{n}\sum_{k=0}^{n-1} U^k$ converges to $P$ in the strong operator topology.)
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Define two subspaces
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      V&amp;=\operatorname{Ker}(U-I) = \{ v\in H\,:\, Uv=v \}, \\
+      V'&amp;=\operatorname{Range}(U-I) = \{ Uw-w \,:\, w\in H \}.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Note that
+      <a
+        href="./7-1.html#_50_h.a.i_"
+        class=""
+      >(17)</a>
+      holds trivially for $v\in V$. For a different reason, we also show that it holds for $v\in V'$: if $v=Uw-w$ then we have
+    </p>
+    <div class="math-block">
+      $$
+      \frac{1}{n}\sum_{k=0}^{n-1} U^k v  = \frac{1}{n}\left( U^n w - w \right) \to 0\ \textrm{ as }n\to\infty.
+      $$
+    </div>
+    <p>
+      On the other hand, one can verify that $v\in V^\perp$, and therefore $Pv=0$, by observing that if $z\in V$ then
+    </p>
+    <div class="math-block">
+      $$
+      \langle w, z \rangle = \langle Uw,Uz \rangle =
+      \langle Uw,z\rangle,
+      $$
+    </div>
+    <p>
+      hence $\langle Uw-w,z\rangle = 0$.
+    </p>
+    <p>
+      Combining the above observations we see that
+      <a
+        href="./7-1.html#_50_h.a.i_"
+        class=""
+      >(17)</a>
+      holds for $v\in V+V'$. Next, we claim that it also holds for $v\in \overline{V+V'}$, the norm closure of $V+V'$. Indeed, if $v\in \overline{V+V'}$ then for an arbitrary $\epsilon&gt;0$ we can take $w\in V+V'$ such that $\lVert v-w\rVert &lt; \epsilon$ and conclude that
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)v \right\rVert
+      &amp; \le
+      \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)w \right\rVert
+      +
+      \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)(v-w) \right\rVert
+      \ &amp; \le
+      \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)w \right\rVert
+      +  \epsilon.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      This implies that $\limsup_{n\to\infty} \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)v \right\rVert &lt; \epsilon$, and since $\epsilon$ was an arbitrary positive number we get (<a href="./7-1.html#_50_h.a.i_">17</a>).
+    </p>
+    <p>
+      Finally, we claim that $H=\overline{V+V'}$. Since $\overline{V+V'}$ is a
+      <i>closed</i>
+      subspace of $H$, we have
+    </p>
+    <div class="math-block">
+      $$
+      \overline{V+V'} = \left( \left(\overline{V+V'}\right)^\perp \right)^\perp,
+      $$
+    </div>
+    <p>
+      (in general, the orthogonal complement of the orthogonal complement of a subspace $W$ of a Hilbert space is equal to $\overline{W}$). So, it suffices to show that $\left(\overline{V+V'}\right)^\perp=\{0\}$, i.e., that the only vector orthogonal to all of $\overline{V+V'}$ is the zero vector. Assume $w$ is such a vector. Then $w \perp Uw-w$. But note that we have the identity
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \lVert Uw-w \rVert^2 &amp;= \langle Uw-w, Uw-w\rangle = \lVert Uw \rVert^2 + \lVert w \rVert^2 - 2\operatorname{Re} \langle Uw,w\rangle  \\ &amp;=
+      2\lVert w \rVert^2 - 2\operatorname{Re} \langle Uw,w\rangle
+      = - 2\operatorname{Re} \langle Uw-w,w\rangle
+      \end{align*}
+      $$
+    </div>
+    <p>
+      which means that $Uw-w = 0$, i.e., $w\in V$. Since $w\in \left(\overline{V+V'}\right)^\perp$ we get that $w$ is orthogonal to itself and therefore $w=0$, as claimed.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. We associate with $T$ an operator $U_T$ on the Hilbert space $L_2(\Omega)$, defined  by
+  </p>
+  <div class="math-block">
+    $$
+    U_T(f) = f\circ T.
+    $$
+  </div>
+  <p>
+    The fact that $T$ is measure preserving implies that $U_T$ is unitary:
+  </p>
+  <div class="math-block">
+    $$
+    \langle U_T f, U_T g \rangle = \mathbf{E}( (U_T f) \overline{(U_T g)} )
+    = \mathbf{E}( (f\circ T) \overline{(g\circ T)} )
+    = \mathbf{E}( (f\overline{g})\circ T ) = \mathbf{E}( f\overline{g} ) = \langle f,g\rangle.
+    $$
+  </div>
+  <p>
+    Note also that the subspace $\operatorname{Ker}(U-I)$ consists exactly of the invariant (square-integrable) random variables, or equivalently those random variables which are measurable with respect to the $\sigma$-algebra $\mathcal{I}$ of invariant events. Recalling the discussion of conditional expectations in Chapter 2, we also see that the orthogonal projection operator $P$ is exactly the conditional expectation operator $\mathbf{E}\left(\cdot\,|\,\mathcal{I}\right)$ with respect to the $\sigma$-algebra of invariant events! Thus,
+    <a
+      href="./7-1.html#_51_h.a.i_"
+      class=""
+    >Theorem 7.1</a>
+    applied to this setting gives the following result.
+  </p>
+  <div
+    label="The $L_2$ ergodic theorem"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>7.2</b>
+      
+    </h3>
+    <p>
+      <span class="label">The $L_2$ ergodic theorem</span>Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. For any random variable $X\in L_2(\Omega, \mathcal{F}, \mathrm{P})$, we have
+    </p>
+    <div class="math-block">
+      $$
+      \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^{k} \to \mathbf{E}\left(X\,|\,\mathcal{I}\right)\ \ \textrm{in $L_2$ as }n\to\infty.
+      $$
+    </div>
+    <p>
+      In particular, if the system is ergodic then
+    </p>
+    <div class="math-block">
+      $$
+      \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^{k} \to \mathbf{E}(X)\ \ \textrm{in $L_2$ as }n\to\infty.
+      $$
+    </div>
+  </div>
+</body>
+</html>

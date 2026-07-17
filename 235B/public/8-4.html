@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 8.4 of Probability Theory Lecture Notes - MATH 235B | UC Davis</title>
+  <meta name="description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 235B">
+  <meta name="term" content="Winter 2011">
+  <meta name="subject" content="Probability Theory Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 8.4 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="og:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 8.4 of Probability Theory Lecture Notes - MATH 235B | UC Davis">
+  <meta property="twitter:description" content="Probability Theory Lecture Notes for MATH 235B, Winter 2011, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./8-3.html"
+    ></a>
+  </div>
+  <h1>
+    8.4
+    Ergodic sources and the Shannon-McMillan-Breiman theorem
+  </h1>
+  <p>
+    We are now ready to discuss the situation for a general stationary ergodic source $X_1,X_2,\ldots$. It turns out that a version of the asymptotic equipartition property is valid for such a source. To prove it, we first need to correctly define the entropy of the source, and to prove an important convergence result that replaces the (trivial) use of the law of large numbers in the case of an i.i.d.\ source.
+  </p>
+  <p>
+    For a sequence $(x_1,\ldots,x_n)\in A^n$, denote
+  </p>
+  <div
+    id="_75_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{align*}
+    p(x_1,\ldots,x_n) &amp;= \tag{29} \mathrm{P}((X_1,\ldots,X_n)=(x_1,\ldots,x_n)), \\
+    p(x_n\,|\,x_1,\ldots,x_{n-1}) &amp;= \tag{30} \mathrm{P}(X_n=x_n\,|\,(X_1,\ldots,X_{n-1})=(x_1,\ldots,x_{n-1})),
+    \\
+    H_n &amp;= \tag{31} -\mathbf{E}(\log_2 p(X_n\,|\,X_1,\ldots,X_{n-1})).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    In information theory the quantity $H_n$ is often denoted by $H(X_n\,|\, X_1,\ldots,X_{n-1})$; it is a special case of a $\textbf{conditional entropy}$.
+  </p>
+  <div
+    class="statement lemma"
+    id="_77_h.a.i_"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>8.12</b>
+      
+    </h3>
+    <p>
+      $(H_n)_{n=1}^\infty$ is a weakly monotone decreasing sequence, hence converges to a limit
+    </p>
+    <div
+      id="_76_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{32}
+      H \equiv \lim_{n\to\infty} H_n \ge 0.
+      \end{equation}
+      $$
+    </div>
+  </div>
+  <p>
+    The proof follows by induction by applying the result of the following exercise.
+  </p>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>8.13</b>
+      
+    </h3>
+    <p>
+      Let $A=\{\alpha_1,\ldots,\alpha_d \}$ and $B=\{\beta_1,\ldots,\beta_m \}$ be two finite sets. If $X,Y$ are two random variables such that $\mathrm{P}(X\in A, Y\in B)=1$, the conditional entropy $H(X\,|\,Y)$ is defined by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      H(X\,|\,Y) &amp;= -\sum_{j=1}^m \sum_{k=1}^d \mathrm{P}(X=\alpha_k, Y=\beta_j) \log_2 \mathrm{P}(X = \alpha_k\,|\,Y=\beta_j)
+      \ &amp;= \sum_{j=1}^m \mathrm{P}(Y=\beta_j) H(X\,|\,Y=\beta_j).
+      \end{align*}
+      $$
+    </div>
+    <p>
+      I.e., $H(X\,|\,Y)$ is the average of the entropies of the conditional distributions of $X$ given the outcome of $Y$. Prove that $H(X\,|\,Y) \le H(X)$, with equality if and only if $X$ and $Y$ are independent. Deduce also that $H(X\,|\,Y,Z) \le H(X\,|\,Z)$ if $Z$ is another random variable, and explain why this implies
+      <a
+        href="./8-4.html#_77_h.a.i_"
+        class=""
+      >Lemma 8.12</a>.
+    </p>
+  </div>
+  <p>
+    We refer to $H$ in
+    <a
+      href="./8-4.html#_76_h.a.i_"
+      class=""
+    >(32)</a>
+    as
+    <b>the entropy of the source $(X_n)_{n=1}^\infty$</b>. There is an equivalent way to define it which is also interesting. Since $H_n\to H$, the Ces\`aro averages of $(H_n)_n$ also converge to $H$, i.e.,
+  </p>
+  <div class="math-block">
+    $$
+    \frac{1}{n}(H_1+\ldots+H_n) \to H \textrm{ as }n\to\infty.
+    $$
+  </div>
+  <p>
+    The average on the left-hand side can be written as
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    -\frac1n \mathbf{E}&amp;\Big[ \log_2 p(X_1) + \log_2 p(X_2\,|\,X_1)
+    + \log_2 p(X_3\,|\,X_1,X_2) + \ldots + p(X_n\,|\,X_1,\ldots,X_{n-1}) \Big]
+    \ &amp;= -\frac1n \mathbf{E} \left[\log_2 p(X_1,\ldots,X_n)\right] = \frac{1}{n}H(X_1,\ldots,X_n).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    (Here, $H(X_1,\ldots,X_n)$ refers to the entropy of the discrete vector random variable $(X_1,\ldots,X_n)$, which takes values in the finite set $A^n$.) Thus, $H$ may be interpreted as the limit of $\frac{1}{n} H(X_1,\ldots,X_n)$, i.e., the asymptotic entropy per symbol in a long string of symbols sampled from the source.
+  </p>
+  <p>
+    The importance of $H$ is explained by the following fundamental result, sometimes referred to as "the individual ergodic theorem of information theory".
+  </p>
+  <div
+    label="Shannon-McMillan-Breiman theorem"
+    class="statement theorem"
+    id="_79_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>8.14</b>
+      
+    </h3>
+    <p>
+      <span class="label">Shannon-McMillan-Breiman theorem</span>We have the almost sure convergence
+    </p>
+    <div
+      id="_78_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{33}
+      -\frac{1}{n}\log_2(p(X_1,\ldots,X_n)) \xrightarrow[n\to\infty]{\textrm{a.s.}} H
+      \end{equation}
+      $$
+    </div>
+  </div>
+  <div
+    class="statement lemma"
+    id="_81_h.a.i_"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>8.15</b>
+      
+    </h3>
+    <p>
+      If $(Z_n)_n$ is a sequence of nonnegative random variables such that $\mathbf{E}(Z_n)\le 1$ for all $n$, then
+    </p>
+    <div
+      id="_80_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{34}
+      \mathrm{P}\left(\limsup_{n\to\infty} \frac{1}{n} \log Z_n \le 0\right) = 1.
+      \end{equation}
+      $$
+    </div>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Fix $\epsilon&gt;0$. By Markov's inequality, we have
+    </p>
+    <div class="math-block">
+      $$
+      \mathrm{P}(n^{-1} \log Z_n \ge \epsilon) = \mathrm{P}(Z_n \ge e^{n\epsilon}) \le e^{-n\epsilon}.
+      $$
+    </div>
+    <p>
+      Since $\sum_n e^{-n\epsilon}&lt;\infty$, the first Borel-Cantelli implies that $\mathrm{P}(n^{-1} \log Z_n \ge \epsilon \ \textrm{i.o.}) = 0$. This is true for any $\epsilon&gt;0$, so taking a union of these events over $\epsilon=1/k, k=1,2,\ldots$ gives (<a href="./8-4.html#_80_h.a.i_">34</a>).<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div alt-title="Proof of Theorem >>thm-shannon-mcmillan-breiman">
+    <p>
+      <span class="proof">Proof of
+        <a
+          href="./8-4.html#_79_h.a.i_"
+          class=""
+        >Theorem 8.14</a>
+        </span>As explained in
+      <a
+        href="./6-2.html#_37_h.a.i_"
+        class=""
+      >Section 6.2</a>, we may assume without loss of generality that the sequence $(X_n)_n$ is actually a two-sided ergodic stationary sequence $(X_n)_{n=-\infty}^\infty$. We start by giving yet another, more subtle, interpretation of the source entropy $H$. By stationarity, we may rewrite $H_n$ as
+    </p>
+    <div class="math-block">
+      $$
+      H_n = -\mathbf{E}(\log_2 p(X_0\,|\,X_{-n+1},\ldots,X_{-1})) = -\sum_{j=1}^d \mathbf{E}\Big[ L\big(
+      \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-n+1}^{-1}\right) \big)\Big],
+      $$
+    </div>
+    <p>
+      where we denote $L(p) = p\log_2 p$ and $\mathcal{G}_s^t = \sigma(X_m\,;\, s\le m\le t)$. Note that for each $j$, the expression $\mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-n+1}^{-1}\right)$ inside the conditional expectation above forms a martingale (as a function of $n$) taking values in $[0,1]$. By L\'evy's martingale convergence theorem (<a
+        href="./3-6.html#_23_h.a.i_"
+        class=""
+      >Theorem 3.27</a>), we have
+    </p>
+    <div class="math-block">
+      $$
+      \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-n+1}^{-1}\right) \to \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right) \ \textrm{ a.s. as }n\to\infty.
+      $$
+    </div>
+    <p>
+      Since $L(\cdot)$ is a bounded continuous function on $[0,1]$, using the bounded convergence theorem we therefore get also that
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*} H_n
+      &amp;\xrightarrow[n\to\infty]{} \mathbf{E}\left[ -\sum_{j=1}^d \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+      \log_2 \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+      \right]
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Of course, the limit of $H_n$ is $H$, so we have derived another formula
+    </p>
+    <div
+      id="_82_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{35}
+      H = \mathbf{E}\left[ -\sum_{j=1}^d \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+      \log_2 \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+      \right]
+      \end{equation}
+      $$
+    </div>
+    <p>
+      for the source entropy. Furthermore, this expression can be rewritten in the simpler form
+    </p>
+    <div
+      id="_83_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{36}
+      H = -\mathbf{E} \log_2 p(X_0\,|\,\mathcal{G}_{-\infty}^{-1}),
+      \end{equation}
+      $$
+    </div>
+    <p>
+      where we adopt the notation (in the same vein as
+      <a
+        href="./8-4.html#_75_h.a.i_"
+        class=""
+      >(29)</a>
+      and (<a href="./8-4.html#_75_h.a.i_">30</a>))
+    </p>
+    <div
+      id="_84_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{37}
+      p(x\,|\,\mathcal{G}_s^t) = \mathrm{P}\left(X_{t+1}=x\,|\,\mathcal{G}_s^t\right).
+      \end{equation}
+      $$
+    </div>
+    <p>
+      To see why, note that
+    </p>
+    <div class="math-block">
+      $$
+      p(X_0\,|\,\mathcal{G}_{-\infty}^{-1}) = \sum_{j=1}^d \mathbf{1}_{\{X_0=\alpha_j\}} p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1}),
+      $$
+    </div>
+    <p>
+      and use this to write the right-hand side of
+      <a
+        href="./8-4.html#_83_h.a.i_"
+        class=""
+      >(36)</a>
+      as
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      -\mathbf{E} \log_2 p(X_0\,|\,\mathcal{G}_{-\infty}^{-1})
+      &amp;=
+      -\sum_{j=1}^d \mathbf{E}\Big[
+      \mathbf{E}\left(
+      \mathbf{1}_{\{X_0=\alpha_j\}}
+      \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+      \,|\,\mathcal{G}_{-\infty}^{-1}\right)
+      \Big]
+      \ &amp;= -\sum_{j=1}^d \mathbf{E}\Big[ \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+      \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
+      \Big]
+      \ &amp;= -\sum_{j=1}^d \mathbf{E}\Big[
+      p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+      \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+      \Big],
+      \end{align*}
+      $$
+    </div>
+    <p>
+      which is the same as the right-hand side of (<a href="./8-4.html#_82_h.a.i_">35</a>).
+    </p>
+    <p>
+      Having derived the representation
+      <a
+        href="./8-4.html#_83_h.a.i_"
+        class=""
+      >(36)</a>
+      for the source entropy, we now apply another piece of heavy machinery, the ergodic theorem, which implies that
+    </p>
+    <div class="math-block">
+      $$
+      -\frac{1}{n} \sum_{k=0}^{n-1} \log_2 p(X_k\,|\,\mathcal{G}_{-\infty}^{k-1}) \xrightarrow[n\to\infty]{\textrm{a.s.}} H.
+      $$
+    </div>
+    <p>
+      Furthermore, one may verify without much difficulty that this ergodic average can be rewritten in the form
+    </p>
+    <div
+      id="_85_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{38}
+      -\frac{1}{n} \sum_{k=0}^{n-1} \log_2 p(X_k\,|\,\mathcal{G}_{-\infty}^{k-1}) = -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1}).
+      \end{equation}
+      $$
+    </div>
+    <p>
+      (where the notation $p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_s^t)$ is defined as an obvious generalization of (<a href="./8-4.html#_84_h.a.i_">37</a>)). So we conclude that
+    </p>
+    <div class="math-block">
+      $$
+      -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
+      \to H \ \textrm{ a.s. as }n\to\infty.
+      $$
+    </div>
+    <p>
+      This fact bears some resemblance to the claim
+      <a
+        href="./8-4.html#_78_h.a.i_"
+        class=""
+      >(33)</a>
+      that we are trying to prove, and indeed, we can deduce "half" of our result from it --- a one-sided asymptotic bound --- using
+      <a
+        href="./8-4.html#_81_h.a.i_"
+        class=""
+      >Lemma 8.15</a>, as follows. Define a sequence of random variables $(Z_n)_{n=1}^\infty$ by $Z_n = \frac{p(X_0,\ldots,X_{n-1})}{p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})}$. We have
+    </p>
+    <div
+      id="_86_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{align*}
+      \mathbf{E}(Z_n) &amp;= \mathbf{E} \left[\mathbf{E}\left(Z_n\,|\,\mathcal{G}_{-\infty}^{-1}\right)\right]
+      \ &amp;= \mathbf{E}\left[
+      \sum_{x_0,\ldots,x_{n-1}\in A}
+      \mathbf{E}\left(
+      \frac{p(x_0,\ldots,x_{n-1})}{p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})}
+      p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
+      \,|\,\mathcal{G}_{-\infty}^{-1}\right)
+      \right]
+      \ &amp;= \tag{39} \sum_{x_0,\ldots,x_{n-1}\in A} p(x_0,\ldots,x_{n-1}) = 1.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      So, we are in the situation described in
+      <a
+        href="./8-4.html#_81_h.a.i_"
+        class=""
+      >Lemma 8.15</a>, and we conclude that almost surely we have the inequality
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      0 &amp;\le -\limsup_{n\to\infty} \frac{1}{n} \log_2 Z_n = \liminf_{n\to\infty} \left(-\frac{1}{n} \log_2 Z_n\right)
+      \ &amp;= \liminf_{n\to\infty} \left[
+      -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}) + \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1}) \right]
+      \ &amp;=
+      \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] +
+      \lim_{n\to\infty}
+      \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
+      \ &amp;=
+      \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] - H.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      That is, we have proved that the inequality
+    </p>
+    <div
+      id="_87_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{40}
+      \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] \ge H.
+      \end{equation}
+      $$
+    </div>
+    <p>
+      holds with probability $1$.
+    </p>
+    <p>
+      To finish the proof, we will now prove an asymptotically matching upper bound; more precisely, we claim that for each fixed $k\ge1$, almost surely the inequality
+    </p>
+    <div
+      id="_88_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{41}
+      -\limsup_{n\to\infty} \frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}) \le H_k
+      \end{equation}
+      $$
+    </div>
+    <p>
+      holds. Since $H_k \searrow H$, the inequalities
+      <a
+        href="./8-4.html#_87_h.a.i_"
+        class=""
+      >(40)</a>
+      and
+      <a
+        href="./8-4.html#_88_h.a.i_"
+        class=""
+      >(41)</a>
+      together imply (<a href="./8-4.html#_78_h.a.i_">33</a>). To this end, for each $k\ge 1$ we define the "$k$th order Markov approximation" to the function $p(x_1\ldots,x_n)$ by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      p_k(x_1,\ldots,x_n) &amp;= p(x_1,\ldots,x_k) p(x_{k+1}\,|\,x_1,\ldots,x_k)
+      p(x_{k+2}\,|\,x_2,\ldots,x_{k+1}) \cdots p(x_n\,|\, x_{n-k},\ldots, x_{n-1}) \\ &amp;= p(x_1,\ldots,x_k)
+      \prod_{j=k+1}^n p(x_j\,|\, x_{j-k},\ldots,x_{j-1}) \qquad \ \ \ (n\ge k).
+      \end{align*}
+      $$
+    </div>
+    <p>
+      The idea in this definition is that $p_k(x_1,\ldots,x_k)$ is the symbol distribution of a modified source process $(X_n^{(k)})_{n=1}^\infty$ in which the conditional distribution of observing a symbol $x_n$ given the past symbols $x_1,\ldots,x_{n-1}$ is computed from the symbol distribution of the original process by "forgetting" all the symbols before $x_{n-k}$, i.e., using only the information in the past $k$ symbols. This modified source is a generalized type of Markov chain known as a $\textbf{Markov chain of order$k$}$ or $\textbf{Markov chain with memory$k$}$.
+    </p>
+    <p>
+      Now observe that we have an expansion analogous to (<a href="./8-4.html#_85_h.a.i_">38</a>), namely
+    </p>
+    <div class="math-block">
+      $$
+      -\frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) = -\frac{1}{n} \log_2 p(X_0,\ldots,X_{k-1}) - \frac{1}{n} \sum_{j=k}^{n-1} \log_2 p(X_j\,|\,X_{j-k},\ldots,X_{j-1}).
+      $$
+    </div>
+    <p>
+      Combining it with an application of the ergodic theorem, we deduce that
+    </p>
+    <div class="math-block">
+      $$
+      -\frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) \xrightarrow[n\to\infty]{\textrm{a.s.}} -\mathbf{E} \big(\log_2 p(X_k\,|\,X_0,\ldots,X_{k-1})\big) = H_k.
+      $$
+    </div>
+    <p>
+      This again bears a resemblance to (<a href="./8-4.html#_78_h.a.i_">33</a>), and we can relate the two using the lemma. Define a sequence $(Y_n)_{n=k}^\infty$ of random variables by $Y_n = \frac{p_k(X_0,\ldots,X_{n-1})}{p(X_0,\ldots,X_{n-1})}$. A short computation similar to (<a href="./8-4.html#_86_h.a.i_">39</a>), which we leave to the reader to verify, shows that $\mathbf{E}(Y_n) \le 1$ for all $n\ge k$, so from
+      <a
+        href="./8-4.html#_81_h.a.i_"
+        class=""
+      >Lemma 8.15</a>
+      we get that almost surely,
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      0 &amp;\ge \limsup_{n\to\infty} \frac{1}{n} \log_2 Y_n
+      \ &amp;= \limsup_{n\to\infty} \left[
+      \frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) - \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right]
+      \ &amp;=
+      -H_k + \limsup_{n\to\infty} \left(- \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right),
+      \end{align*}
+      $$
+    </div>
+    <p>
+      which proves
+      <a
+        href="./8-4.html#_88_h.a.i_"
+        class=""
+      >(41)</a>
+      and thus finishes the proof.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div
+    label="Asymptotic equipartition property for an ergodic source"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>8.16</b>
+      
+    </h3>
+    <p>
+      <span class="label">Asymptotic equipartition property for an ergodic source</span>Let $X_1,X_2,\ldots$ be a stationary ergodic information source over the alphabet $A=\{\alpha_1,\ldots,\alpha_d\}$. Fix $\epsilon&gt;0$. There exists a large enough integer $N$ such that the sequences $A^N$ can be partitioned into a disjoint union of typical and exceptional sequences, namely, $A^N = T \sqcup E$, such that we have:
+    </p>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          $\mathrm{P}((X_1,\ldots,X_N) \in E) &lt; \epsilon$.
+        </p>
+      </li>
+      <li>
+        <p>
+          $2^{-N\left(H + \epsilon\right)} \le \mathrm{P}((X_1,\ldots,X_N)=(x_1,\ldots,x_N)) \le 2^{-N\left(H - \epsilon\right)}$ for each typical sequence $(x_1,\ldots,x_N)\in T$.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consequently, assuming $\epsilon&lt;1/2$, the number of typical sequences satisfies
+        </p>
+        <div class="math-block">
+          $$
+          2^{N (H-\epsilon)+1} \le |T| \le 2^{N (H+\epsilon)}.
+          $$
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>The proof is completely analogous to the proof of the i.i.d.\ case from the previous section; the random variable $S_n$ is redefined as $-\log p(X_1,\ldots,X_n)$, and the use of the weak law of large numbers is replaced by the Shannon-McMillan-Breiman theorem.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    We conclude this chapter with some examples of stationary ergodic sequences and their entropies.
+  </p>
+  <ol
+    class="list"
+    data-list-style="decimal"
+  >
+    <li>
+      <p>
+        $\textbf{i.i.d. source.}$ If $X_1,X_2,\ldots$ is an i.i.d.\ source whose distribution is described by the probability vector $(p_1,\ldots,p_d)$ then $H_n=H(X_n\,|\,X_1,\ldots,X_{n-1})=H(p_1,\ldots,p_d)$, so the entropy is the usual entropy we discussed before. For example, if $X$ is a Bernoulli random variable satisfying $\mathrm{P}(X=1)=1/3=1-\mathrm{P}(X=0)$ then $H=-\tfrac13 \log_2 \tfrac13 - \tfrac23 \log_2 \tfrac23 = 0.91829\ldots$ bits.
+      </p>
+    </li>
+    <li>
+      <p>
+        $\textbf{Markov source.}$ If $X_1,X_2,\ldots$ is a stationary Markov chain, then the "$n$-step" conditional entropy $H_n$ is given by $H_n=H(X_n\,|\,X_1,\ldots,X_{n-1})= H(X_n\,|\,X_{n-1}) = H(X_2\,|\,X_1)$ by the Markov property, so it is enough to compute this "$1$-step" conditional entropy. It is easy to see that this is simply an average with respect to the stationary probabilities of the entropies of each of the rows of the transition matrix. For example, if the Markov chain has the transition matrix $\left( \begin{array}{cc} \tfrac12 &amp; \tfrac12 \\ 1&amp;0 \end{array} \right),$ then it is easy to check that $(\tfrac23,\tfrac13)$ is a stationary probability vector for the chain. The entropy is therefore given by
+      </p>
+      <div class="math-block">
+        $$
+        H = H(X_2\,|\,X_1) = \tfrac23 H(\tfrac12,\tfrac12) + \tfrac13 H(1,0) = \tfrac23 \cdot 1 = \tfrac 23 = 0.6666\ldots \textrm{ bits}.
+        $$
+      </div>
+      <p>
+        Note that this stationary Markov chain has the same one-dimensional marginals as the i.i.d.\ source discussed above. Nonetheless, the entropy is lower, since it measures the incremental amount of information gained by examining a symbol once all the previous symbols are known, which is lower in the case where there is dependence.
+      </p>
+    </li>
+    <li>
+      <p>
+        $\textbf{Continued fractions.}$ From the results discussed in the previous chapter, the entropy of the sequence of quotients $(N\circ G^k)_{k=0}^\infty$ in the continued fraction expansion of a number chosen according to Gauss measure $\gamma$ is equal to $\pi^2/6\log 2$,
+        <i>when measured in the natural base</i>. If we want to adhere to the information theory convention and measure this entropy in bits, we must divide by a further factor of $\log 2$, giving an entropy of
+      </p>
+      <div class="math-block">
+        $$
+        \frac{\pi^2}{6(\log 2)^2} = 3.423714\ldots \textrm{ bits}.
+        $$
+      </div>
+      <p>
+        One way of interpreting this fact is that, as we examine more and more of the continued fraction quotients of a number $x$ chosen uniformly at random from $(0,1)$, on the average each additional quotients will increase our knowledge of the
+        <i>binary</i>
+        expansion of $x$ by about $3.42$ additional digits. Incidentally, while preparing these notes I discovered the curious fact (which I have not seen mentioned anywhere) that if we measure the entropy in base $10$, we get
+      </p>
+      <div class="math-block">
+        $$
+        \frac{\pi^2}{6\log(2)\log(10)} = 1.03064\ldots,
+        $$
+      </div>
+      <p>
+        i.e., on the average each continued fraction quotient adds an amount of information almost precisely equal to one decimal expansion digit.
+      </p>
+    </li>
+    <li>
+      <p>
+        $\textbf{Rotations of the circle.}$ Let $\alpha\in(0,1)$ be irrational, let $X$ be a random variable taking finitely many values on $((0,1), \mathcal{B}, \textrm{Leb})$, and let $X_n = X\circ R_\alpha^{n-1}$. Then $(X_n)_{n=1}^\infty$ is a stationary ergodic sequence.
+      </p>
+      <div class="statement exercise">
+        <h3>
+          <b>Exercise</b>
+          <b>8.17</b>
+          
+        </h3>
+        <p>
+          Prove that the entropy of this sequence is $0$.
+        </p>
+      </div>
+    </li>
+  </ol>
+</body>
+</html>

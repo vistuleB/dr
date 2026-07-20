@@ -358,6 +358,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       "Math",
     ]),
     [
+      // must come AFTER every splitting step above, or it would re-arm
+      // delimiters that splitting just neutralized. "$" is deliberately
+      // NOT escapable: browser-side MathJax re-scans the page, so a bare
+      // "$" in prose would open math -- "\$" has to survive to the output.
+      dl.unescape_delimiters__outside(["_", "*"], ["Math", "MathBlock"]),
       dl.fold_contents_into_text("Math"),
       dl.find_replace_if_has_ancestor_else(
         #(["Math", "MathBlock"], #("``", "“"), #("``", "\"")),

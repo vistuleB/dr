@@ -105,6 +105,28 @@ Equivalently: if a row break must lead a line, ensure it is **not followed by wh
 Two forms are already safe — a line that is exactly `\\` (nothing after it, so no match)
 and `\\[5pt]` (`[` is not whitespace).
 
+### Authoring rule: escaping `_` and `*`
+
+To write a literal underscore or asterisk in prose without triggering italics/bold,
+prefix it with a backslash: `\_` and `\*`. The backslash is consumed and does not
+appear in the output. This is handled by
+`dl.unescape_delimiters__outside(["_", "*"], ["Math", "MathBlock"])`, which runs
+**after** both `barbaric_symmetric_delim_splitting` steps — anything added to the
+pipeline that splits on a delimiter must go before it, or the escape will be re-armed.
+
+Deliberately **not** escapable:
+
+- **`$`** — math is emitted as literal `$…$` for browser-side MathJax, so a bare `$`
+  in prose would open math in the reader's browser. Write `\$` and it stays `\$`.
+- **`\` itself** — these documents use a trailing `\\` as a LaTeX row break in ordinary
+  prose, and collapsing `\\`→`\` corrupts them. Consequence: a literal backslash
+  directly in front of a live delimiter is not halved (`\\_x_` → `\\<i>x</i>`).
+- **`\(` and `\[`** — the delimiter itself begins with a backslash, so `\\(` is
+  ambiguous between "escaped delimiter" and "literal backslash then `(`".
+
+Italics inside a link (`[really _emphatic_ text](url)`) are legitimate and still work;
+the escape is the mechanism for suppressing a delimiter, not tag-based scoping.
+
 ### Post-render verification
 
 MathJax reports **no error** for the bug above — a lost `\\` yields valid-but-wrong TeX —

@@ -109,7 +109,10 @@ ol.list {
     padding-right: var(--list-indent-right);
     list-style: none;
 
-    counter-reset: m-counter;
+    /* --list-start lets an author continue numbering across a split list
+       (e.g. style=--list-start: 5 makes the first marker read 6). The HTML
+       `start` attribute cannot do this because the markers are CSS counters. */
+    counter-reset: m-counter var(--list-start, 0);
 }
 
 ol.list > li {

@@ -19,7 +19,7 @@
             R. Grimshaw, Nonlinear Ordinary Differential Equations. Blackwell Scientific Publications, 1990.
 
         |> li
-            J. K. Hunter, Lecture Notes on Applied Mathematics, available online at [http://www.math.ucdavis.edu/~hunter/m280_09/applied_math.html](http://www.math.ucdavis.edu/~hunter/m280_09/applied_math.html)
+            J. K. Hunter, [Lecture Notes on Applied Mathematics](http://www.math.ucdavis.edu/~hunter/m280_09/applied_math.html), available online.
 
         |> li
             L. A. Pars, An Introduction to the Calculus of Variations. Heinemann Educational Books, 1962 (reprinted by Dover Publications, 2010).
@@ -30,6 +30,7 @@
         class=list
         data-list-style=decimal
         start=6
+        style=--list-start: 5
 
         |> li
             D. Romik, Lecture Notes for Math 235B: Probability Theory, available online at [http://www.math.ucdavis.edu/~romik/teaching/mat235-2011-2012/#235b](http://www.math.ucdavis.edu/~romik/teaching/mat235-2011-2012/#235b)
@@ -43,6 +44,7 @@
         class=list
         data-list-style=decimal
         start=8
+        style=--list-start: 7
 
         |> li
             Chapter 5 of Arnold's book listed above.

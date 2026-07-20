@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.7 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.7 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.7 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-6.html"
+    ></a><a
+      id="next-page"
+      href="./1-8.html"
+    ></a>
+  </div>
+  <h1>
+    1.7
+    Systems with many degrees of freedom
+  </h1>
+  <p>
+    In the above discussion, we focused on a system with only one degree of freedom. In this case the equations of motion consisted of a single second order differential equation (the Euler-Lagrange equation), or in the equivalent Hamiltonian form, a planar system of first-order equations. We can describe the behavior of systems having more degrees of freedom, involving for example many particles or an unconstrained particle moving in three dimensions, using a multivariate form of the Euler-Lagrange and Hamilton equations. We describe these more general formulations of the laws of mechanics briefly, although we will not develop this general theory here.
+  </p>
+  <p>
+    Let the system be described by $n$ generalized coordinates $q_1, \ldots, q_n$. The Lagrangian will be a function of the coordinates and their time derivatives (generalized velocities):
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    L = L(q_1,\ldots,q_n,\dot{q}_1,\ldots,\dot{q}_n, t)
+    \end{align*}
+    $$
+  </div>
+  <p>
+    As before, the Lagrangian will be defined as the kinetic energy minus the potential energy of the system. The equations of motion will be given as a system of Euler-Lagrange second-order equations, one for each coordinate:
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q}_j} \right) = \frac{\partial L}{\partial q_j} \ \ \quad (j=1,\ldots,n).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    To write the Hamiltonian formulation of the system, first we define generalized momentum coordinates $p_1,\ldots,p_n$. They are given analogously to the one-dimensional case by
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    p_j = \frac{\partial L}{\partial \dot{q}_j} \ \ \quad (j=1,\ldots,n).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    The Hamiltonian system is written as a system of $2n$ first-order ODEs:
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \begin{array}{rl} \displaystyle
+    \dot{p}_j &amp;= \displaystyle-\frac{\partial H}{\partial q_j}, \\
+    \displaystyle \dot{q}_j &amp;= \displaystyle \ \ \frac{\partial H}{\partial p_j},
+    \end{array} \qquad (j=1,\ldots,n),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    where $H=H(p_1,\ldots,p_n,q_1,\ldots,q_n, t)$ is the Hamiltonian, which (like the Lagrangian) is still a scalar function. This is sometimes written as the pair of vector equations
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \dot{\mathbf{p}} &amp;= -\frac{\partial H}{\partial \mathbf{q}}, \\
+    \dot{\mathbf{q}} &amp;= \ \ \frac{\partial H}{\partial \mathbf{p}},
+    \end{align*}
+    $$
+  </div>
+  <p>
+    where we denote $\mathbf{p}=(p_1,\ldots,p_n)$, $\mathbf{q}=(q_1,\ldots,q_n)$.
+  </p>
+  <p>
+    As in the case of one-dimensional systems, it can be shown that (under some mild assumptions) the Hamiltonian and Lagrangian formulations are equivalent, and that they correctly describe the laws of motion for a Newtonian mechanical system if the Lagrangian is defined as the kinetic energy minus the potential energy. The relationship between the Lagrangian and Hamiltonian is given by
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    H = \sum_{j=1}^n \dot{q}_j p_j - L.
+    \end{align*}
+    $$
+  </div>
+  <div
+    label="A pendulum with a cart"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>1.7</b>
+      
+    </h3>
+    <p>
+      <span class="label">A pendulum with a cart</span>An important example that we will discuss later from the point of view of control theory is that of a simple pendulum whose point of support is allowed to slide without friction along a horizontal axis (e.g., you can imagine the pendulum hanging on a cart with wheels rolling on a track of some sort). We assume the sliding support has mass $M$. This system has two degrees of freedom: the angle $q_1 = \theta$ between the pendulum and the vertical line extending down from the point of support, and the distance $q_2 = s$ (measured in the positive $x$ direction) between the point of support and some fixed origin. To derive the equations of motion, we write the kinetic and potential energies:
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      K &amp;= \tfrac12 M \dot{s}^2 + \tfrac12 m \left[ \left(\dot{s}+\ell \dot{\theta} \cos \theta \right)^2 + \left(\ell \dot{\theta} \sin \theta \right)^2 \right], \\
+      U &amp;= -mg \ell \cos \theta.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      The Lagrangian $L=K-U$ is then given by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      L &amp;=
+      \tfrac12 M \dot{s}^2 + \tfrac12 m \left[ \left(\dot{s}+\ell \dot{\theta} \cos \theta \right)^2 + \left(\ell \dot{\theta} \sin \theta \right)^2 \right] + mg \ell \cos \theta \\
+      &amp;= \tfrac12(M+m)\dot{s}^2 + m\ell \dot{s} \dot{\theta} \cos \theta + \tfrac12 m \ell^2 \dot{\theta}^2 + mg\ell \cos\theta.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Therefore the equations of motion $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{s}}\right)=\frac{\partial L}{\partial s}$, $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\theta}}\right)=\frac{\partial L}{\partial \theta}$ become
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \frac{d}{dt}\left[ (M+m)\dot{s} + m\ell\dot{\theta}\cos \theta \right] &amp;= 0, \\
+      \frac{d}{dt}\left[m(\ell \dot{s}  \cos\theta + \ell^2 \dot{\theta})\right] &amp;= -m(\ell\dot{s} \dot{\theta} + g\ell)\sin \theta,
+      \end{align*}
+      $$
+    </div>
+    <p>
+      or, written more explicitly,
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      (M+m)\ddot{s} + m\ell \ddot{\theta} \cos \theta -m\ell \dot{\theta}^2 \sin\theta &amp;= 0, \\
+      \ddot{\theta} + \frac{1}{\ell}\ddot{x} \cos\theta + \frac{g}{\ell}  \sin\theta &amp;= 0.
+      \end{align*}
+      $$
+    </div>
+  </div>
+  <div
+    label="Double pendulum"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>1.8</b>
+      
+    </h3>
+    <p>
+      <span class="label">Double pendulum</span>The double pendulum consists of a mass $M$ hanging at the end of a rigid rod of negligible mass whose other end is attached to a fixed point of support, and another equal (for simplicity) mass hanging from another rigid rod, also of negligible mass attached to the free end of the first rod. Denote by $L_1$ and $L_2$ the respective lengths of the two rods. If we denote by $\theta_1, \theta_2$ the angles each of the rods forms with the vertical, a short computation gives the Lagrangian of the system:
+    </p>
+    <div
+      id="_15_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{13}
+      \begin{split}
+      L &amp;= K-U =
+      L_1 \dot{\theta}_1^2 + \tfrac12 L_2 \dot{\theta}_2^2 + L_1 L_2 \cos(\theta_1-\theta_2) \\
+      &amp; \qquad\qquad \qquad +2gL_1 \cos \theta_1 + gL_2 \cos \theta_2.
+      \end{split}
+      \end{equation}
+      $$
+    </div>
+    <p>
+      It follows that the generalized momenta are given by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      p_1 &amp;= \frac{\partial L}{\partial \dot{\theta}_1} = \tfrac12 L_1^2 \dot{\theta}_1 - 2 L_1 L_2 \sin(\theta_1-\theta_2), \\
+      p_2 &amp;= \frac{\partial L}{\partial \dot{\theta}_2} = \tfrac12 L_2^2 \dot{\theta}_2 + 2 L_1 L_2 \sin(\theta_1 - \theta_2),
+      \end{align*}
+      $$
+    </div>
+    <p>
+      and from this we get the equations of motion for the system:
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \tfrac12 L_1^2 \ddot{\theta}_1 - 2 L_1 L_2 \cos(\theta_1-\theta_2)\dot{\theta}_1 &amp;=
+      - L_1 L_2 \sin(\theta_1-\theta_2) + g L_1 \sin\theta_1, \\
+      \tfrac12 L_2^2 \ddot{\theta}_2 - 2 L_1 L_2 \cos(\theta_1-\theta_2)\dot{\theta}_2 &amp;=
+      L_1 L_2 \sin(\theta_1-\theta_2) + gL_2 \sin\theta_2.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      This system of two nonlinear coupled second-order ODEs is in practice impossible to solve analytically, and for certain values of the energy is known to exhibit chaotic behavior which is difficult to understand in any reasonable sense; see Figure 1. (Nonetheless, later in the course we will learn about some interesting things that can still be said about such systems.)
+    </p>
+    <figure>
+      <img
+        src="figures/doublependulum-flips.png"
+        style="max-width: 60%"
+      >
+      <figcaption>
+        Figure 1: A color-coded map of the time required for the double pendulum to flip over as a function of its initial conditions reveals a chaotic structure. (Source: Wikipedia)
+      </figcaption>
+    </figure>
+  </div>
+  <div
+    label="The Lorentz force"
+    class="statement exercise"
+  >
+    <h3>
+      <b>Exercise</b>
+      <b>1.9</b>
+      
+    </h3>
+    <p>
+      From the study of electricity and magnetism, it is known that the motion of a charged particle with mass $m$ and electric charge $q$ is described by the equation $\mathbf{F}=m \ddot{\mathbf{x}}$, where $\mathbf{x}$ is the (vector) position of the particle and $\mathbf{F}$ is the
+      <i>Lorentz force</i>, given by
+    </p>
+    <div class="math-block">
+      $$
+      \mathbf{F} = q\left(\mathbf{E} + \dot{\mathbf{x}}\times \mathbf{B}\right).
+      $$
+    </div>
+    <p>
+      The vector field $\mathbf{E}=\mathbf{E}(x,y,z,t)$ is the
+      <i>electric field</i>, and the vector field $\mathbf{B}=\mathbf{B}(x,y,z,t)$ is the
+      <i>magnetic field</i>. Using Maxwell's equations one can show that there exist functions $\phi=\phi(x,y,z,t)$ and $\mathbf{A}=\mathbf{A}(x,y,z,t)$ such that
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \mathbf{E} &amp;= - \nabla \phi - \frac{\partial \mathbf{A}}{\partial t}, \\
+      \mathbf{B} &amp;= \operatorname{curl} \mathbf{A}.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      The (scalar) function $\phi$ is called the
+      <i>electric potential</i>, and the vector $\mathbf{A}$ is called the
+      <i>magnetic potential</i>, or
+      <i>vector potential</i>. Note that $\mathbf{E}$ behaves exactly like a conventional force field, causing the particle an acceleration in the direction of $\mathbf{E}$ that is equal to the field magnitude multiplied by the (constant) scalar $q/m$, whereas the influence of the magnetic field $\mathbf{B}$ is of a more exotic nature, causing an acceleration that depends on the particle's
+      <i>velocity</i>
+      in a direction perpendicular to its direction of motion.
+    </p>
+    <p>
+      Show that motion under the Lorentz force is equivalent to the Euler-Lagrange equation $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\mathbf{x}}}\right)=\frac{\partial L}{\partial \mathbf{x}}$, where the Lagrangian is given by
+    </p>
+    <div class="math-block">
+      $$
+      L(\dot{\mathbf{x}},\mathbf{x},t) = \tfrac12 m |\dot{\mathbf{x}}|^2 - q \phi(\mathbf{x},t) +q \mathbf{A}(\mathbf{x},t)\cdot \dot{\mathbf{x}}.
+      $$
+    </div>
+  </div>
+</body>
+</html>

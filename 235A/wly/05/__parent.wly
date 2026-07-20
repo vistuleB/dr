@@ -12,8 +12,8 @@
     What is the meaning of these events? If we think of the sequence $A_n$ as representing a sequence of (not necessarily independent) probabilistic experiments, then we can translate the first event into words as
     $$
     \begin{eqnarray*}
-    \limsup A_n &=& \textrm{``the event that for all $N\ge 1$ there is an $n\ge N$ such}
-    \\ &  & \textrm{that $A_n$ occurred''} \\ &=& \textrm{``the event that infinitely many of the $A_n$'s occurred''.}
+    \limsup A_n &=& \textrm{``the event that for all $N\ge 1$ there is an $n\ge N$ such} \\
+    &  & \textrm{that $A_n$ occurred''} \\ &=& \textrm{``the event that infinitely many of the $A_n$'s occurred''.}
     \end{eqnarray*}
     $$
     For this reason, the event $\limsup A_n$ is often denoted by $\{ A_n\textrm{ infinitely often}\}$ or $\{A_n \textrm{ i.o.}\}$.
@@ -21,8 +21,8 @@
     The definition of the event $\liminf A_n$ can similarly be given meaning by writing
     $$
     \begin{eqnarray*}
-    \liminf A_n &=& \textrm{``the event that there exists an $N\ge 1$ such that $A_n$ }
-    \\ &  & \textrm{occurred for all $n\ge N$''} \\ &=& \textrm{``the event that all but finitely many of the $A_n$'s occurred''.}
+    \liminf A_n &=& \textrm{``the event that there exists an $N\ge 1$ such that $A_n$ } \\
+    &  & \textrm{occurred for all $n\ge N$''} \\ &=& \textrm{``the event that all but finitely many of the $A_n$'s occurred''.}
     \end{eqnarray*}
     $$
 
@@ -59,8 +59,8 @@
         Proof of (ii): Consider the complementary event that the $A_n$'s did _not_ occur for infinitely many values of $n$. Using De-Morgan's laws, we get
         $$
         \begin{eqnarray*}
-        \mathrm{P}(\{A_n\textrm{ i.o.}\}^c) &=& \mathrm{P}\left(\left(\bigcap_{N=1}^\infty \bigcup_{n=N}^\infty A_n\right)^c \right) = \mathrm{P}\left( \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty A_n^c \right)
-        \\ &\le &\sum_{N=1}^\infty \mathrm{P}\left( \bigcap_{n=N}^\infty A_n^c \right).
+        \mathrm{P}(\{A_n\textrm{ i.o.}\}^c) &=& \mathrm{P}\left(\left(\bigcap_{N=1}^\infty \bigcup_{n=N}^\infty A_n\right)^c \right) = \mathrm{P}\left( \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty A_n^c \right) \\
+        &\le &\sum_{N=1}^\infty \mathrm{P}\left( \bigcap_{n=N}^\infty A_n^c \right).
         \end{eqnarray*}
         $$
         So, to show that this is 0 (under the assumptions that $\sum_{n=1}^\infty \mathrm{P}(A_n) = \infty$ and that the events are independent), we show that $\mathrm{P}\left( \cap_{n=N}^\infty A_n^c \right) = 0$ for all $N\ge 1$. Since the events are independent, the probability of the intersection is the product of the probabilities, so we need to show that

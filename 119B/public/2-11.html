@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 2.11 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 2.11 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 2.11 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./2-10.html"
+    ></a><a
+      id="next-page"
+      href="./2-12.html"
+    ></a>
+  </div>
+  <h1>
+    2.11
+    Circle rotations and equidistribution on $(0,1)$
+  </h1>
+  <p>
+    Our next application of the ergodic theorem will be to the circle rotation map $R_\alpha(x)=x+\alpha\textrm{ mod }1$. Note that $R_\alpha^n(x)=x+n\alpha\textrm{ mod }1 = \left\{ x+n\alpha \right\}$ (where $\left\{u\right\}=u-\lfloor u \rfloor$ denotes the fractional part of a real number $u$).
+  </p>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>2.42</b>
+      
+    </h3>
+    <p>
+      The map $R_\alpha$ is ergodic if and only if $\alpha$ is irrational.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>If $\alpha=p/q$ is rational, the set
+    </p>
+    <div class="math-block">
+      $$
+      E = \left[0, \tfrac{1}{2q}\right]
+      \cup \left[\tfrac{1}{q}, \tfrac{3}{2q}\right]
+      \cup \left[\tfrac{2}{q}, \tfrac{5}{2q}\right]
+      \cup \left[\tfrac{3}{q}, \tfrac{7}{2q}\right]
+      \cup \ldots
+      \cup \left[\tfrac{q-1}{q}, \tfrac{2q-1}{2q}\right]
+      $$
+    </div>
+    <p>
+      is an example of a nontrivial invariant set. The other direction (that if $\alpha$ is irrational then the map is ergodic) can be proved using Fourier series. Here is a sketch of the proof. The idea is to check the ergodic theorem by taking some well-behaved function $g:[0,1)\to\mathbb{R}$ and looking at sums of the form
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \mu_x^{(n)}(g) = \frac{1}{n} \sum_{k=0}^{n-1} g(R_\alpha^k(x))
+      \end{align*}
+      $$
+    </div>
+    <p>
+      (such sums are called
+      <i>ergodic averages</i>, since they represent an averaging of the values of $g$ over orbits of $x$). It can be shown that if the averages converge to the "ideal average" $\int_0^1 g(x)\,dx$ (the average of $g$ with respect to the invariant measure, which in this case is simply Lebesgue measure) for a sufficiently large family of functions $g$, then the map is ergodic. It turns out that for the circle rotation map, this is particularly simple to check when $g_m(x)=e^{2\pi i m x}$ is a complex exponential, $m\in\mathbb{Z}$. For $m=0$ the claim is trivial, and for $m\neq 0$ we have
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \mu_x^{(n)}(g_m) &amp;=
+      \frac{1}{n} \sum_{k=0}^{n-1} g_m(R_\alpha^k(x)) =
+      \frac{1}{n} \sum_{k=0}^{n-1} \exp(2\pi i m R_\alpha^k(x)) \\ &amp;=
+      \frac{1}{n} \sum_{k=0}^{n-1} \exp(2\pi i m (x+k\alpha \textrm{ mod }1)) \\
+      &amp;=
+      \frac{1}{n} \sum_{k=0}^{n-1} \exp(2\pi i m (x+k\alpha))
+      =
+      \frac{1}{n} e^{2\pi i m x} \sum_{k=0}^{n-1} e^{2\pi i m k \alpha} \\
+      &amp;=
+      \frac{1}{n} e^{2\pi i m x} \frac{1-e^{2\pi i n m \alpha}}{1-e^{2\pi i m \alpha}} \xrightarrow[n\to\infty]{}0=\int_0^1 e^{2\pi i m x}\,dx = \int_0^1 g_m(x)\,dx.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    Applying the ergodic theorem, we get (see the exercise below the proof) the following famous result in number theory, proved in 1909 and 1910 independently by Weyl, Sierpinski and Bohl.
+  </p>
+  <div
+    label="Equidistribution theorem"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>2.43</b>
+      
+    </h3>
+    <p>
+      <span class="label">Equidistribution theorem</span>If $\alpha\in(0,1)$ is irrational then for any $0\le a&lt;b\le 1$
+    </p>
+    <div
+      id="_47_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{37}
+      \begin{split}
+      \frac{1}{n} \#\Big\{ 1\le k \le n \,:\, \left\{n\alpha\right\} \in (a,b) \Big\} \xrightarrow[n\to\infty]{} b-a.
+      \end{split}
+      \end{equation}
+      $$
+    </div>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.44</b>
+      
+    </h3>
+    <p>
+      The ergodic theorem only guarantees the result that
+    </p>
+    <div
+      id="_48_h.a.i_"
+      class="math-block"
+    >
+      $$
+      \begin{equation} \tag{38}
+      \begin{split}
+      \frac{1}{n} \#\Big\{ 1\le k \le n \,:\, \left\{x+n\alpha\right\} \in (a,b) \Big\} \xrightarrow[n\to\infty]{} b-a
+      \end{split}
+      \end{equation}
+      $$
+    </div>
+    <p>
+      holds for all $x\in [0,1)$ except on a measure-0 set. Explain why in the case of the rotation map $R_\alpha$, the truth of this claim is independent of the initial point $x$, and therefore
+      <a
+        href="./2-11.html#_47_h.a.i_"
+        class=""
+      >(37)</a>
+      follows from (<a href="./2-11.html#_48_h.a.i_">38</a>).
+    </p>
+  </div>
+</body>
+</html>

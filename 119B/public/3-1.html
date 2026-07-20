@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 3.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 3.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 3.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./2-12.html"
+    ></a><a
+      id="next-page"
+      href="./3-2.html"
+    ></a>
+  </div>
+  <h1>
+    3.1
+    Introduction: the problem of control
+  </h1>
+  <p>
+    The dynamical systems we find in nature are plagued by a host of undesirable effects such as instabilities, unpredictable and chaotic behavior, and unwanted oscillations. Left to their own devices, ecosystems can suffer cycles of uninhibited growth followed by mass starvation; economies undergo cyclical downturns; human hearts go into fibrillation; aircraft would plunge down to earth; etc. The goal of control theory is to devise methods to steer dynamical systems away from unfavorable modes of behavior and towards desired ones, by manipulating the differential equation itself --- usually through manipulation of a specific term (or set of terms) present in the equation, known as the
+    <i>control function</i>. Control theory is a large field, and its proper study requires a separate concentrated effort. In these notes we will merely give a short introduction to the subject, focusing on a few simple examples which illustrate some of the main ideas of this fascinating (and extremely useful) subject and how it relates to the theory of ODEs.
+  </p>
+  <p>
+    In mathematical terms, the problem of control can be formulated as follows. We are given a vector equation of the form
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \dot{\mathbf{x}} = G(\mathbf{x},\mathbf{u},t)
+    \end{align*}
+    $$
+  </div>
+  <p>
+    where $\mathbf{x}$ is a $d$-dimensional vector dynamic variable and $G:\mathbb{R}^{d+k+1}\to\R^d$ is a smooth function. We think of $\mathbf{u}$ as a $k$-dimensional input that is a parameter to the equation. That is, given a curve $\mathbf{u}(t)$ in $\mathbf{R}^k$, we can plug it into the equation to get an ODE $\dot{\mathbf{x}}(t) = G(\mathbf{x}(t),\mathbf{u}(t),t)$ for the vector variable $\mathbf{x}$. The assumption is that we can pick $\mathbf{u}$, with the goal being of steering the solution $x(t)$ towards a specified desired behavior. For example, $\mathbf{u}$ could represent a driving force in a mechanical system; an electric voltage applied by a digital controller in an electronic circuit; an interest rate on government-issued bonds set by a central bank, etc. A common goal is to make $\mathbf{x}$ go to a specific point in $\mathbb{R}^d$ and stay there, i.e., to stabilize the system at a state that it would not normally (in the absence of deliberate control) remain stable at. We refer to $\mathbf{u}$ as the
+    <i>control variable</i>
+    (or variables), or
+    <i>control function</i>.
+  </p>
+</body>
+</html>

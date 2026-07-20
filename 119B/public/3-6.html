@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 3.6 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 3.6 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 3.6 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./3-5-3.html"
+    ></a><a
+      id="next-page"
+      href="./3-6-1.html"
+    ></a>
+  </div>
+  <h1>
+    3.6
+    Linear Quadratic Performance control
+  </h1>
+  <p>
+    In this section we consider control problems which take the general form
+  </p>
+  <div
+    id="_57_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{45}
+    \begin{split}
+    \dot{\mathbf{x}} = A \mathbf{x} + B \mathbf{u},
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    where the state $\mathbf{x}$ of the dynamical system is an $n$-dimensional vector, the control variable $\mathbf{u}$ is an $m$-dimensional vector, and $A, B$ are linear operators (i.e., $A$ is an $n\times n$ matrix and $B$ is an $n\times m$ matrix). The goal of the control will be to bring the dynamical variable $\mathbf{x}$ to the origin. Moreover, we associate with any proposed solution a
+    <i>cost functional</i>
+    that measures how effective it is. The cost functional will take the form
+  </p>
+  <div
+    id="_58_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{46}
+    \begin{split}
+    J = \int_{t_1}^{t_2}
+    \left( \mathbf{x}^\top P \mathbf{x} + \mathbf{u}^\top Q \mathbf{u} \right)\, dt,
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    where $-\infty&lt;t_1&lt;t_2\le \infty$, $P$ is an $n\times n$ positive-definite matrix and $Q$ is an $m\times m$ positive-definite matrix. The idea is that we want to incentivize the controller to bring $\mathbf{x}$ to the origin as fast as possible by "pushing" on it as hard as possible; at the same time, in a typical situation the "pushing" also incurs a price since it uses resources such as electricity, fuel, etc. The problem of optimal control is to find the feedback-based solution $\mathbf{u}=\mathbf{u}(\mathbf{x})$ that minimizes the overall cost functional, which finds a balance between the cost of resources and the desire to achieve good performance. It turns out that the solution has the form
+  </p>
+  <div
+    id="_59_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{47}
+    \begin{split}
+    \mathbf{u} = -K \mathbf{x},
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    where $K$ is a time-dependent linear operator which we will identify. Usually $K$ is expressed in the form $K(t_2-t)$, i.e., as a function of the "time-to-go" variable $T=t_2-t$. The most interesting case is that of an infinite time horizon: $t_2=\infty$; in this case we look for a stationary solution in which $K$ is a constant matrix, called the
+    <i>gain matrix</i>.
+  </p>
+  <p>
+    Note that the mapping that takes a pair $(\mathbf{u},\mathbf{a})$ where $\mathbf{u}$ is the control function and $\mathbf{a}$ is the initial condition $\mathbf{x}(t_1)=\mathbf{a}$ to the solution of
+    <a
+      href="./3-6.html#_57_h.a.i_"
+      class=""
+    >(45)</a>
+    is linear, and the cost functional
+    <a
+      href="./3-6.html#_58_h.a.i_"
+      class=""
+    >(46)</a>
+    is a quadratic expression in $\mathbf{x}$ and $\mathbf{u}$. Thus this type of problem is referred to as Linear Quadratic Performance (LQP) control. The main advantage of LQP control problems is that they have an explicit solution in terms of an ordinary differential equation, the Ricatti equation, which furthermore is easy to solve numerically.
+  </p>
+</body>
+</html>

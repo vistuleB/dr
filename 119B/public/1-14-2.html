@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.14.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.14.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.14.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-14-1.html"
+    ></a><a
+      id="next-page"
+      href="./1-14-3.html"
+    ></a>
+  </div>
+  <h1>
+    1.14.2
+    Formula for the period
+  </h1>
+  <p>
+    We can now easily derive a formula for the period of oscillation $T$ of the pendulum. Let $t_{\textrm{max}}$ be the time at which the maximal angle $\theta_{\textrm{max}}$ is attained. We have
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    k = \sin(\theta_{\textrm{max}}/2) = k \operatorname{sn}(\sqrt{\lambda}\, t_{\textrm{max}},k),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    so $\operatorname{sn}(\sqrt{\lambda} t_{\textrm{max}},k)=1$, or equivalently,
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \sqrt{\lambda}\, t_{\textrm{max}} = \operatorname{sn}^{-1}(1,k) = \int_0^1 \frac{du}{\sqrt{(1-u^2)(1-k^2u^2)}}.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    The integral on the right-hand side is known as the
+    <i>complete elliptic integral of the second kind</i>, and denoted by $K(k)$:
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    K(k) = \int_0^1 \frac{du}{\sqrt{(1-u^2)(1-k^2u^2)}}.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    which is also sometimes written as
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    K(k) = \int_0^{\pi/2} \frac{d\phi}{\sqrt{1-k^2 \sin^2\phi}},
+    \end{align*}
+    $$
+  </div>
+  <p>
+    using the substitution $u=\sin \phi$. By symmetry, the period of oscillation of the pendulum is $4t_{\textrm{max}}$ (refer to Figure 5; the time from $0$ to $t_{\textrm{max}}$ represents a passage around one quadrant in the phase plane). So, we have derived the well-known formula
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    T= \frac{4}{\sqrt{\lambda}}K(k) = 4\sqrt{\frac{\ell}{g}} K(k)
+    = 4\sqrt{\frac{\ell}{g}} K(\sin (\theta_{\textrm{max}}/2)).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    Since $K(0)=\pi/2$, for small values of $\theta_{\textrm{max}}$ we get the approximate formula for small oscillations
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    T \approx T_0 = 2\pi \sqrt{\frac{\ell}{g}}.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    Figure 6 illustrates the dependence of the period on the oscillation amplitude $\theta_{\textrm{max}}$.
+  </p>
+  <figure>
+    <img
+      src="figures/pendulumperiod.png"
+      style="max-width: 70%"
+    >
+    <figcaption>
+      Figure 6: The period $T$ of a pendulum (measured in units of the period $T_0=2\pi\sqrt{\ell/g}$ for small oscillations) as a function of the oscillation amplitude $\theta_{\textrm{max}}$.
+    </figcaption>
+  </figure>
+</body>
+</html>

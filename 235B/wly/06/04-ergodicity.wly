@@ -120,8 +120,8 @@
                 \begin{align*}
                 \mathbf{1}_{R_\alpha^{-1}(A)}(x) &= (\mathbf{1}_A\circ R_\alpha)(x) = \mathbf{1}_A(R_\alpha(x))
                 = \sum_{n=-\infty}^\infty c_n e^{2\pi i n R_\alpha(x)}
-                = \sum_{n=-\infty}^\infty c_n e^{2\pi i n (x+\alpha\textrm{ mod }1)}
-                \\ &
+                = \sum_{n=-\infty}^\infty c_n e^{2\pi i n (x+\alpha\textrm{ mod }1)} \\
+                &
                 = \sum_{n=-\infty}^\infty c_n e^{2\pi i n (x+\alpha)}
                 = \sum_{n=-\infty}^\infty d_n  e^{2\pi i n x},
                 \end{align*}

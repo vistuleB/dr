@@ -61,8 +61,8 @@
         \mathrm{P}\left( \left|\frac{T_n-a_n}{b_n}\right| > \epsilon\right) &\le& \frac{\mathbf{V}(T_n)}{\epsilon^2 b_n^2}
         \le \frac{1}{\epsilon^2 b_n^2} \sum_{k=1}^n \mathbf{E}(Y_{n,k}^2) \\
         &\le& \frac{1}{\epsilon^2 b_n^2} \sum_{k=1}^n
-        \left(\frac12\cdot 2^2 + \frac14\cdot 4^2 + \frac18 \cdot 8^2 + \ldots + \frac{1}{2^{m_{n}}}\cdot 2^{2m_{n}} \right)
-        \\ &\le&
+        \left(\frac12\cdot 2^2 + \frac14\cdot 4^2 + \frac18 \cdot 8^2 + \ldots + \frac{1}{2^{m_{n}}}\cdot 2^{2m_{n}} \right) \\
+        &\le&
         \frac{1}{\epsilon^2 b_n^2} \sum_{k=1}^n 2\cdot 2^{m_n}
         \le \frac{2}{\epsilon^2 b_n^2} \sum_{k=1}^n b_n = \frac{2}{\epsilon^2 \log_2 n} \xrightarrow[n\to\infty]{} 0.
         \end{eqnarray*}

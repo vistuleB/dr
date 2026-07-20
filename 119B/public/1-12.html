@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.12 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.12 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.12 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-11.html"
+    ></a><a
+      id="next-page"
+      href="./1-13.html"
+    ></a>
+  </div>
+  <h1>
+    1.12
+    Poincaré recurrence theorem
+  </h1>
+  <p>
+    Liouville's theorem is the starting point for a set of important investigations into the qualitative behavior of Hamiltonian systems. The following theorem illustrates the kind of conclusions that the theorem will enable us to draw.
+  </p>
+  <div
+    label="Poincaré recurrence theorem"
+    class="statement theorem"
+    id="_23_h.a.i_"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>1.29</b>
+      
+    </h3>
+    <p>
+      <span class="label">Poincaré recurrence theorem</span>Let $D$ be a bounded region of the plane. Let $\varphi:D\to D$ be a continuous one-to-one map which is area-preserving. Then in any neighborhood $N\subset D$, there exists a point $\mathbf{p}=(p,q) \in N$ such that the sequence of points $(\varphi^k(\mathbf{p}))_{k=0}^\infty$ returns to $N$ infinitely many times. Here, $\varphi^k(\mathbf{p})$ denotes the
+      <i>$k$th iterate of $\varphi$</i>, i.e., $\varphi^2(\mathbf{p})=\varphi(\varphi(\mathbf{p})), \varphi^3(\mathbf{p})=\varphi(\varphi(\varphi(\mathbf{p})))$, etc.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>The images of the neighborhood $N$ under $\varphi$ are
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      N, \varphi(N), \varphi^2(N), \varphi^3(N), \ldots
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Since $\varphi$ preserves areas, these are all sets of equal area, which lie in the bounded region $D$. It follows that there must be two of them which intersect (otherwise the total area would be infinite), that is, we have $\varphi^k(N) \cap \varphi^\ell(N) \neq \emptyset$ for some $k&gt;\ell\ge 0$. If $\mathbf{p}_1, \mathbf{p}_2 \in N$ are two points such that $\varphi^\ell(\mathbf{p}_1)=\varphi^k(\mathbf{p}_2)=\varphi^\ell(\varphi^{k-\ell}(\mathbf{p}_2))$, then, since $\varphi$ is one-to-one, we get that $\varphi^{k-\ell}(\mathbf{p}_2)=\mathbf{p}_1$. We have shown that there is a point $\mathbf{p}_2\in N$ and an integer $j&gt;0$ such that $\varphi^j(\mathbf{p}_2)\in N$, i.e., the point returned to $N$ after $j$ iterations. To prove the stronger claim that there is a point that returns to $N$
+      <i>infinitely many times</i>, the idea is to apply the same argument again, replacing $N$ with $N\cap \varphi^j(N)$. This is left as an exercise to the reader.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    In the context of an autonomous Hamiltonian system,
+    <a
+      href="./1-12.html#_23_h.a.i_"
+      class=""
+    >Theorem 1.29</a>
+    becomes applicable (by taking $\varphi=\varphi_s$ for any fixed $s&gt;0$) when there is a set of trajectories that is known to be bounded; for example, trajectories with energy bounded from above in such a way that we know no trajectory can escape to infinity. The conclusion in this case is that in the vicinity of each state of the system included in the bounded region, there are states which, after evolving for some time, will return to the vicinity of the same state.
+  </p>
+  <p>
+    It should be noted that in all but the simplest possible systems, it is hopeless to solve the equations analytically. Many systems, such as the double pendulum, exhibit an additional complexity to their behavior, known as
+    <i>chaos</i>, which makes them even more difficult to analyze in detail. Thus, in many cases obtaining a rough understanding of the system's behavior, using qualitative results such as the Poincaré recurrence theorem, is our only hope. Note that Liouville's theorem also holds for Hamiltonian systems with more than one degree of freedom (we will not prove this, but the proof is not much more difficult than the planar case).
+  </p>
+</body>
+</html>

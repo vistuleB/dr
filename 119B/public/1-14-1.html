@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.14.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.14.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.14.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-14.html"
+    ></a><a
+      id="next-page"
+      href="./1-14-2.html"
+    ></a>
+  </div>
+  <h1>
+    1.14.1
+    Analytic solution using elliptic integrals
+  </h1>
+  <p>
+    We derive the solution under the assumption that $\theta(0) = 0$, $\dot{\theta}(0)&gt;0$. Let $\lambda=g/\ell$, so the equation becomes $\ddot{\theta}+\lambda \sin \theta=0$. Conservation of energy gives the equation
+  </p>
+  <div
+    id="_25_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{21}
+    \begin{split}
+    \tfrac12 \dot{\theta}^2-\lambda \cos \theta = \textrm{const}
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    (to verify this, differentiate both sides). For reasons which will become clear soon, denote the integration constant on the right by $\lambda(2k^2-1)$, where $k\ge0$ and use the relation $\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$. This brings
+    <a
+      href="./1-14-1.html#_25_h.a.i_"
+      class=""
+    >(21)</a>
+    to the form
+  </p>
+  <div
+    id="_26_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{22}
+    \begin{split}
+    (\dot{\theta})^2 = 4\lambda \left(k^2-\sin^2 \tfrac{\theta}{2} \right).
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    Note that this already makes it easy to plot the phase portrait (in the $\theta$-$\dot{\theta}$ plane, or wrapped around a cylinder, since adding multiples of $2\pi$ to $\theta$ does not change the physical state of the system); see Figure 5.
+  </p>
+  <figure>
+    <img
+      src="figures/pendulumphasediag.png"
+      style="max-width: 52%"
+    ><img
+      src="figures/pendulumphasediag3d.png"
+      style="max-width: 30%"
+    >
+    <figcaption>
+      Figure 5: The phase portrait of the simple pendulum: in the planar representation, the constant energy curves are given by the equation $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$ for different values of $k$.
+    </figcaption>
+  </figure>
+  <p>
+    The relation between the parameter $k$ and the initial angular velocity $\dot{\theta}(0)$ is found by setting $t=0$ in (<a href="./1-14-1.html#_26_h.a.i_">22</a>), giving
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    k=\frac{1}{2\sqrt{\lambda}} \dot{\theta}(0).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    It is also easy to see from the energy conservation equation
+    <a
+      href="./1-14-1.html#_26_h.a.i_"
+      class=""
+    >(22)</a>
+    that the periodic solutions (which are the solutions for which $\theta$ remains bounded) correspond to $0&lt;k&lt;1$, and that in that case we have $k=\sin (\theta_{\textrm{max}}/2)$ where $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is the maximal angle that the pendulum will reach (or approach asymptotically, in the case $\theta_{\textrm{max}}=\pi$). The equation
+    <a
+      href="./1-14-1.html#_26_h.a.i_"
+      class=""
+    >(22)</a>
+    is a first-order ODE, and is in a form suitable for separation of variables; e.g., we can write
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \frac{d\theta}{\sqrt{k^2-\sin^2 \tfrac{\theta}{2}}} = 2\sqrt{\lambda} \,dt,
+    \end{align*}
+    $$
+  </div>
+  <p>
+    or (since we stipulated that $\theta(0)=0$)
+  </p>
+  <div
+    id="_27_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{23}
+    \begin{split}
+    \int_0^\theta \frac{d\theta}{\sqrt{k^2-\sin^2 \tfrac{\theta}{2}}} = 2\sqrt{\lambda} t.
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    From this point on, assume that $k&lt;1$. Making the substitution $ku = \sin(\theta/2)$ in the integral on the left, we get the equivalent form
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \int_0^u \frac{du}{\sqrt{(1-u^2)(1-k^2 u^2)}} = \sqrt{\lambda} t.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    The integral on the left is related to a special function known as $\operatorname{sn}(u,k)$ (one of a family of special functions called the
+    <i>Jacobi elliptic functions</i>), by
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \operatorname{sn}^{-1}(u,k) = \int_0^u \frac{du}{\sqrt{(1-u^2)(1-k^2 u^2)}},
+    \end{align*}
+    $$
+  </div>
+  <p>
+    (meaning the inverse function of $\operatorname{sn}(u,k)$ as a function of $u$; the variable $k$ is thought of as a parameter, sometimes called the
+    <i>elliptic modulus</i>). It follows that
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \frac{1}{k}\sin\frac{\theta}{2} = u = \operatorname{sn}(\sqrt{\lambda}t ,k),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    so finally we get that
+  </p>
+  <div
+    id="_28_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{24}
+    \begin{split}
+    \sin\frac{\theta}{2} = k \operatorname{sn}(\sqrt{\lambda}t ,k).
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    We have thus obtained our analytic solution, given by the rather intimidating formula
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \theta  = 2 \arcsin \left[k \operatorname{sn}(\sqrt{\lambda}t ,k)\right].
+    \end{align*}
+    $$
+  </div>
+</body>
+</html>

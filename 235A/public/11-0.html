@@ -90,9 +90,9 @@
     <div class="math-block">
       $$
       \begin{eqnarray*}
-      \log n! &amp;=&amp; \sum_{k=1}^n \log k = \sum_{}^n \int_1^k \frac{dx}{x} = \int_1^n \frac{n-\lfloor x\rfloor}{x}\,dx
-      \ &amp;=&amp; \int_1^n \frac{n+\frac12 + (\{ x\}-\frac12)-x}{x}\, dx = (n+1/2)\log n - n + 1 + \int_1^n \frac{\{x\}-\frac12}{x}\,dx
-      \ &amp;=&amp; (n+1/2)\log n - n + 1 + \int_1^\infty \frac{\{x\}-\frac12}{x}\,dx + o(1),
+      \log n! &amp;=&amp; \sum_{k=1}^n \log k = \sum_{}^n \int_1^k \frac{dx}{x} = \int_1^n \frac{n-\lfloor x\rfloor}{x}\,dx \\
+      &amp;=&amp; \int_1^n \frac{n+\frac12 + (\{ x\}-\frac12)-x}{x}\, dx = (n+1/2)\log n - n + 1 + \int_1^n \frac{\{x\}-\frac12}{x}\,dx \\
+      &amp;=&amp; (n+1/2)\log n - n + 1 + \int_1^\infty \frac{\{x\}-\frac12}{x}\,dx + o(1),
       \end{eqnarray*}
       $$
     </div>
@@ -163,8 +163,8 @@
       \begin{eqnarray*}
       \frac{1}{2^{2n+1}} R_n(1) &amp;=&amp; \frac{1}{2^{2n+1}} \cdot \frac{1}{n!}\int_0^1 (2n+1)(2n)\cdots (n+1)(1+t)^n (1-t)^n
       \,dt \\ &amp;=&amp; \frac{2 \binom{2n}{n}}{2^{2n+1}} (n+\frac12) \int_0^1 (1-t^2)^n\, dt = \frac{ \binom{2n}{n} \sqrt{n}}{2^{2n}}
-      (1+\frac{1}{2n}) \int_0^{\sqrt{n}} \left(1-\frac{u^2}{n}\right)^n\,du
-      \ &amp;\xrightarrow[n\to\infty]{} &amp; \frac{\sqrt{2}}{C} \int_0^\infty e^{-u^2}\,du = \frac{\sqrt{2}}{C} \cdot \frac{\sqrt{\pi}}{2}.
+      (1+\frac{1}{2n}) \int_0^{\sqrt{n}} \left(1-\frac{u^2}{n}\right)^n\,du \\
+      &amp;\xrightarrow[n\to\infty]{} &amp; \frac{\sqrt{2}}{C} \int_0^\infty e^{-u^2}\,du = \frac{\sqrt{2}}{C} \cdot \frac{\sqrt{\pi}}{2}.
       \end{eqnarray*}
       $$
     </div>
@@ -239,9 +239,9 @@
     <div class="math-block">
       $$
       \begin{eqnarray*}
-      \mathrm{P}(S_n = k) &amp;=&amp; \binom{n}{k} p^k q^{n-k} = (1+o(1)) \frac{\sqrt{2\pi n} (n/e)^n p^k q^{n-k}}{ \sqrt{2\pi k} (k/e)^k \sqrt{2\pi (n-k)} ((n-k)/e)^{n-k}}
-      \ &amp;=&amp;  \frac{1+o(1)}{\sqrt{2\pi n p q}} \left(\frac{np}{k}\right)^k \left( \frac{nq}{n-k}\right)^{n-k}
-      \ &amp;=&amp; \frac{1+o(1)}{\sqrt{2\pi n p q}} \left(1+\frac{t\sqrt{q}}{\sqrt{np}}\right)^{-k} \left(1- \frac{t\sqrt{p}}{\sqrt{nq}}\right)^{-(n-k)}.
+      \mathrm{P}(S_n = k) &amp;=&amp; \binom{n}{k} p^k q^{n-k} = (1+o(1)) \frac{\sqrt{2\pi n} (n/e)^n p^k q^{n-k}}{ \sqrt{2\pi k} (k/e)^k \sqrt{2\pi (n-k)} ((n-k)/e)^{n-k}} \\
+      &amp;=&amp;  \frac{1+o(1)}{\sqrt{2\pi n p q}} \left(\frac{np}{k}\right)^k \left( \frac{nq}{n-k}\right)^{n-k} \\
+      &amp;=&amp; \frac{1+o(1)}{\sqrt{2\pi n p q}} \left(1+\frac{t\sqrt{q}}{\sqrt{np}}\right)^{-k} \left(1- \frac{t\sqrt{p}}{\sqrt{nq}}\right)^{-(n-k)}.
       \end{eqnarray*}
       $$
     </div>
@@ -251,13 +251,13 @@
     <div class="math-block">
       $$
       \begin{eqnarray*}
-      &amp;&amp;\log\left[\left(1+\frac{t\sqrt{q}}{\sqrt{np}}\right)^{-k} \left(1- \frac{t\sqrt{p}}{\sqrt{nq}}\right)^{-(n-k)}\right]
-      \ &amp;=&amp; -(np+t\sqrt{npq}) \log\left(1+\frac{t\sqrt{q}}{\sqrt{np}} \right)
-      - (nq-t\sqrt{npq}) \log\left(1-\frac{t\sqrt{p}}{nq}\right)
-      \ &amp;=&amp; -(np+t\sqrt{npq}) \left(\frac{t\sqrt{q}}{\sqrt{np}}-\frac{t^2 q}{2np} \right)
-      - (nq-t\sqrt{npq}) \left( -\frac{t\sqrt{p}}{\sqrt{nq}} - \frac{t^2 p}{2nq} \right) + O\left(\frac{t^3}{\sqrt{n}}\right)
-      \ &amp;=&amp; -t\sqrt{npq}  -t^2q + \frac{t^2 q}{2} + t \sqrt{npq} - t^2 p + \frac{t^2 p}{2} + O\left(\frac{t^3}{\sqrt{n}}\right)
-      \ &amp;=&amp; -\frac{t^2}{2} + O\left(\frac{t^3}{\sqrt{n}}\right).
+      &amp;&amp;\log\left[\left(1+\frac{t\sqrt{q}}{\sqrt{np}}\right)^{-k} \left(1- \frac{t\sqrt{p}}{\sqrt{nq}}\right)^{-(n-k)}\right] \\
+      &amp;=&amp; -(np+t\sqrt{npq}) \log\left(1+\frac{t\sqrt{q}}{\sqrt{np}} \right)
+      - (nq-t\sqrt{npq}) \log\left(1-\frac{t\sqrt{p}}{nq}\right) \\
+      &amp;=&amp; -(np+t\sqrt{npq}) \left(\frac{t\sqrt{q}}{\sqrt{np}}-\frac{t^2 q}{2np} \right)
+      - (nq-t\sqrt{npq}) \left( -\frac{t\sqrt{p}}{\sqrt{nq}} - \frac{t^2 p}{2nq} \right) + O\left(\frac{t^3}{\sqrt{n}}\right) \\
+      &amp;=&amp; -t\sqrt{npq}  -t^2q + \frac{t^2 q}{2} + t \sqrt{npq} - t^2 p + \frac{t^2 p}{2} + O\left(\frac{t^3}{\sqrt{n}}\right) \\
+      &amp;=&amp; -\frac{t^2}{2} + O\left(\frac{t^3}{\sqrt{n}}\right).
       \end{eqnarray*}
       $$
     </div>

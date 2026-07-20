@@ -1,0 +1,71 @@
+|> Section
+    title=Equivalence of the Lagrange and Hamilton formalisms
+
+    We now wish to show that the Euler-Lagrange equation is equivalent to the idea of a Hamiltonian system. Start with the equation (>>eq:euler-lagrange). Denote $p=\frac{\partial L}{\partial \dot{q}}$. The Hamiltonian will be defined by
+
+    $$
+    \begin{equation} eq:hamilton-lagrange##<<
+    \begin{split}
+    H(p,q,t) = p\dot{q} - L(\dot{q}, q, t),
+    \end{split}
+    \end{equation}
+    $$
+
+    where $\dot{q}$ is again interpreted as a symbol representing an independent variable, which is extracted from $p, q, t$ by inverting the relation $p=\frac{\partial L}{\partial \dot{q}}$ (i.e., this relation defines a transformation from the system of variables $\dot{q},q,t$ to the system $p,q,t$). Then, using the chain rule we can compute
+
+    $$
+    \begin{align*}
+    \frac{\partial H}{\partial p} &= \dot{q} + p \frac{\partial \dot{q}}{\partial p} - \frac{\partial L}{\partial \dot{q}} \frac{\partial \dot{q}}{\partial p} =
+    \dot{q} + p \frac{\partial \dot{q}}{\partial p} - p \frac{\partial \dot{q}}{\partial p} = \dot{q}, \\
+    \frac{\partial H}{\partial q} &= p \frac{\partial \dot{q}}{\partial q} - \frac{\partial L}{\partial \dot{q}}\frac{\partial \dot{q}}{\partial q}-\frac{\partial L}{\partial q} = -\frac{\partial L}{\partial q} =
+    - \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}}\right) = -\frac{dp}{dt} = -\dot{p},
+    \end{align*}
+    $$
+
+    which shows that we indeed get the Hamiltonian system (>>eq:hamiltoniansystem).
+
+    Going in the other direction, if we start with a Hamiltonian system, we can construct a Lagrangian by setting
+
+    $$
+    \begin{equation} eq:lagrange-hamilton##<<
+    \begin{split}
+    L(\dot{q}, q, t) = p\dot{q} - H(p,q,t),
+    \end{split}
+    \end{equation}
+    $$
+
+    where in this definition $p=p(q,\dot{q},t)$ is interpreted as a function of the independent variables $q, \dot{q}, t$, defined by the implicit equation $\dot{q} = \frac{\partial H}{\partial p}$. Again computing using the chain rule and the Hamiltonian equations (>>eq:hamiltoniansystem), we now have that
+
+    $$
+    \begin{align*}
+    \frac{\partial L}{\partial \dot{q}} &= p + \dot{q} \frac{\partial p}{\partial \dot{q}} - \frac{\partial H}{\partial p} \frac{\partial p}{\partial \dot{q}} = p, \\
+    \frac{\partial L}{\partial q} &= \dot{q}\frac{\partial p}{\partial q}-\frac{\partial H}{\partial p}\frac{\partial p}{\partial q}-\frac{\partial H}{\partial q}=-\frac{\partial H}{\partial q}=\dot{p} = \frac{d}{dt}
+    \left( \frac{\partial L}{\partial \dot{q}} \right),
+    \end{align*}
+    $$
+
+    so we have recovered the Euler-Lagrange equation (>>eq:euler-lagrange).
+
+    |> Exercise
+        label=Legendre transform
+
+        The connection between the Hamiltonian and Lagrangian is that each is obtained from the other via a transformation called the _Legendre transform_. Here is a simplified version of the definition of this transform: given a strictly convex smooth function $f(x)$ defined on some interval $[x_0,x_1]$ (i.e., $f''>0$), its Legendre transform is a function $g(p)$ defined on the interval $[p_0,p_1]$, where $p_i=f'(x_i)$. To compute $g(p)$, we first find the point $x$ such that $p=f'(x)$, and then set
+
+        $$
+        \begin{align*}
+        g(p) = px - f(x).
+        \end{align*}
+        $$
+
+        |> ol
+            class=list
+            data-list-style=decimal
+
+            |> li
+                Prove that $g$ is also strictly convex.
+
+            |> li
+                Prove that the Legendre transform is its own inverse: i.e., $f(x)$ is the Legendre transform of $g(p)$.
+
+            |> li
+                Compute the Legendre transforms of the following functions: (i) $f(x)=x^{\alpha}, \alpha>1$; (ii) $f(x)=e^x$; (iii) $f(x)=\cosh x$.

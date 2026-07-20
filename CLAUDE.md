@@ -83,6 +83,46 @@ Useful flags:
 | `--help` | Print full usage |
 | `--esoteric` | Print advanced/esoteric CLI options |
 
+### Authoring rule: a LaTeX row break must never start a line
+
+**When converting `.tex` → `.wly`, never begin a line with a row break followed by
+whitespace** (`\\ &= ...`). Writerly's beginning-of-line escape (`wly/writerly/src/writerly.gleam`,
+`includes_bol_te_escape = "^\\\\+(\\s|!!|```)"`) treats one-or-more leading backslashes
+before whitespace as an escape and strips one, so `\\ &= x` silently becomes `\ &= x`.
+The row break vanishes and a multi-row aligned derivation collapses into a single
+over-wide row. This is parser behaviour by design — put the row break at the **end of the
+previous line** instead:
+
+```
+\begin{eqnarray*}
+C_\infty &=& \textrm{“for all $N\ge 1$, $D_N$ occurred”} \\
+&=& D_1 \wedge D_2 \wedge D_3 \wedge \ldots \\
+&=& \bigwedge_{N=1}^\infty D_N
+\end{eqnarray*}
+```
+
+Equivalently: if a row break must lead a line, ensure it is **not followed by whitespace**.
+Two forms are already safe — a line that is exactly `\\` (nothing after it, so no match)
+and `\\[5pt]` (`[` is not whitespace).
+
+### Post-render verification
+
+MathJax reports **no error** for the bug above — a lost `\\` yields valid-but-wrong TeX —
+so the usual `mjx-merror === 0` plus `mjx-container > 0` assertions provably do **not**
+catch it. Always also grep the rendered HTML:
+
+```sh
+# row breaks eaten by the BOL escape; note the output is INDENTED,
+# so this must not be anchored at column 0
+grep -rnE '^[[:space:]]*\\[[:space:]]' <course>/public/*.html
+```
+
+Expect a handful of benign hits where the source legitimately begins a line with a single
+`\ ` (a LaTeX control space, which the escape correctly consumes) — currently 3 in 235A
+and 1 in 235B. Anything of the shape `\ &=` or `\ \textrm{` is a real eaten row break.
+Do not use `^\\ (&amp;|&)`: it anchors at column 0 (matching nothing) and misses rows
+that begin with something other than `&`.
+
 ### Format Writerly source in-place
 
 ```sh

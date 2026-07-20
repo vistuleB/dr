@@ -1,0 +1,300 @@
+|> Section
+    title=Lagrangian formulation of Newtonian mechanics
+
+    Assume a particle of mass $m$ is constrained to move in one dimension under the influence of a force $F=F(q,t)$, where $q$ is the position coordinate. The equation of motion is
+
+    $$
+    \begin{equation} eq:newtonmotion##<<
+    \begin{split}
+    \ddot{q} = \frac{F}{m} = -\frac{\partial U}{\partial q},
+    \end{split}
+    \end{equation}
+    $$
+
+    where $U=U(q,t)$ is the potential energy per unit mass associated with the force $F$ at time $t$, defined by $U(q)=-\frac{1}{m}\int_{q_0}^ q F(u)\,du$. Define a Lagrangian $L=L(\dot{q},q,t)$ by
+
+    $$
+    L(\dot{q},q,t) = \tfrac12 \dot{q}^2 - U(q,t)
+    $$
+
+    (the kinetic energy of the particle _minus_ the potential energy, divided by its mass). Now let us write the Euler-Lagrange equation for this Lagrangian. The relation $p=\frac{\partial L}{\partial q} = \dot{q}$ means that $p$ is simply equal to the velocity of the particle, and (>>eq:euler-lagrange) becomes
+
+    $$ \ddot{q} = \dot{p} = \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}} \right) = \frac{\partial L}{\partial q} = -\frac{\partial U}{\partial q}, $$
+
+    which is the same as (>>eq:newtonmotion). The strange-looking Lagrangian formalism has reproduced Newton's equation of motion! Also note that the Hamiltonian associated with the system, related to the Lagrangian by equations (>>eq:hamilton-lagrange) and (>>eq:lagrange-hamilton), is
+
+    $$
+    \begin{align*}
+    H = p \dot{q} - L = \dot{q}^2 - \left( \tfrac12 \dot{q}^2 - U(q,t) \right)
+    = \tfrac12 \dot{q}^2 + U(q,t),
+    \end{align*}
+    $$
+
+    i.e., the Hamiltonian is the kinetic energy _plus_ the potential energy, or the total energy of the particle, divided by the mass.
+
+    Let us now see whether this phenomenon can be generalized. Assume that the particle is now moving in _three_ dimensions, so its position $\mathbf{x}(t)$ as a function of time is a vector, which varies under the influence of an external force field, which we take to be conservative. However, since we prefer to keep working with planar ODEs for the time being, assume that the motion of the particle is nonetheless constrained to lie on some one-dimensional curve $\Gamma=\Gamma_t$ (which could itself be moving in space, so depends on $t$). For example, the physical interpretation can be of a bead sliding without friction along a curved wire, which may be moving in space. In this case, the equation of motion can be written in the form
+
+    $$
+    \begin{equation} eq:curve-forces##<<
+    \begin{split}
+    \ddot{\mathbf{x}} - \frac{1}{m}\mathbf{F} = \ddot{\mathbf{x}} + \nabla U = \frac{1}{m} \mathbf{G}(\mathbf{x},t),
+    \end{split}
+    \end{equation}
+    $$
+
+    where $\mathbf{F}(\mathbf{x},t)$ denotes the external force field, associated with the potential energy $U(\mathbf{x},t)$, and where a second force function $\mathbf{G}(\mathbf{x},t)$ is a _constraint force_ acting in a direction normal to the curve $\Gamma_t$. The role of the constraint force is to make sure that the particle's trajectory remains constrained to the curve.
+
+    Now, since the particle is constrained to a curve, we should be able to describe its position at any instant using a single real number. That means introducing a new (scalar) quantity $q$, such that $\mathbf{x}$ can be described in terms of a functional relation with $q$:
+
+    $$
+    \begin{align*}
+    \mathbf{x} = \mathbf{x}(q,t).
+    \end{align*}
+    $$
+
+    The idea is that $q$ is a parameter measuring position along the curve (in a way that may depend on $t$) in some way. For example, $q$ may measure arc length along the curve as measured from some known reference point $\mathbf{x_0}(t)$ on the curve. The details of the definition of $q$ depend on the specific problem (there are many possible choices of $q$ for a given situation) and are not important for the present analysis.
+
+    Let us now show that the equation of motion can be represented using the Lagrangian formalism as applied to the new coordinate $q$. Begin by observing that we have the relation
+
+    $$
+    \begin{align*}
+    \mathbf{G}\cdot \frac{\partial \mathbf{x}}{\partial q} = 0,
+    \end{align*}
+    $$
+
+    since $\mathbf{G}$ acts normally to the curve and $\frac{\partial \mathbf{x}}{\partial q}$ is tangential to it. Then taking the scalar product of both sides of (>>eq:curve-forces) with $\frac{\partial \mathbf{x}}{\partial q}$ gives
+
+    $$
+    \begin{align*}
+    \ddot{\mathbf{x}} \cdot \frac{\partial \mathbf{x}}{\partial q} + (\nabla U) \cdot \frac{\partial \mathbf{x}}{\partial q} = 0,
+    \end{align*}
+    $$
+
+    or
+
+    $$
+    \begin{equation} eq:curveeq1##<<
+    \begin{split}
+    \ddot{\mathbf{x}} \cdot \frac{\partial \mathbf{x}}{\partial q} + \frac{\partial U}{\partial q} = 0,
+    \end{split}
+    \end{equation}
+    $$
+
+    where we now interpret $U=U(\mathbf{x},t)$ as a function $U(q,t)$ of $q$ and $t$. Now define the Lagrangian $L$ by again taking the difference of the kinetic and potential energies, namely
+
+    $$
+    \begin{align*}
+    L = \tfrac12 |\dot{\mathbf{x}}|^2 - U
+    = \tfrac12 \left| \frac{\partial \mathbf{x}}{\partial q} \dot{q} + \frac{\partial \mathbf{x}}{\partial t} \right|^2 - U,
+    \end{align*}
+    $$
+
+    which can be interpreted as a function of $q$, $\dot{q}$ and $t$. Note that the velocity $\dot{\mathbf{x}}=\frac{\partial \mathbf{x}}{\partial q} \dot{q} + \frac{\partial \mathbf{x}}{\partial t}$, also considered as a function of $q, \dot{q}$ and $t$, satisfies
+
+    $$ \frac{\partial \dot{\mathbf{x}}}{\partial \dot{q}} = \frac{\partial \mathbf{x}}{\partial q}. $$
+
+    Taking partial derivatives of $L$ with respect to $q$ and $\dot{q}$, we get
+
+    $$
+    \begin{equation} eq:curveeq2##<<
+    \begin{split}
+    \frac{\partial L}{\partial \dot{q}} &=
+    \tfrac12 \frac{\partial }{\partial \dot{q}} \left( \dot{\mathbf{x}}\cdot \dot{\mathbf{x}} \right)
+    =
+    \dot{\mathbf{x}} \cdot \frac{\partial \mathbf{x}}{\partial q}, \\
+    \frac{\partial L}{\partial q} &=
+    \tfrac12 \frac{\partial }{\partial q} \left( \dot{\mathbf{x}}\cdot \dot{\mathbf{x}} \right) - \frac{\partial U}{\partial q}
+    =
+    \dot{\mathbf{x}}\cdot \frac{\partial \dot{\mathbf{x}}}{\partial q}-\frac{\partial U}{\partial q}.
+    \end{split}
+    \end{equation}
+    $$
+
+    Also, note that
+
+    $$
+    \begin{equation} eq:curveeq3##<<
+    \begin{split}
+    \frac{d}{dt}\left(\frac{\partial \mathbf{x}}{\partial q}\right) = \frac{\partial ^2 \mathbf{x}}{\partial q^2}\dot{q}
+    + \frac{\partial ^2 \mathbf{x}}{\partial q\partial t} = \frac{\partial }{\partial q}
+    \left( \frac{\partial \mathbf{x}}{\partial q}\dot{q}+\frac{\partial \mathbf{x}}{\partial t}
+    \right) = \frac{\partial \mathbf{\dot{x}}}{\partial q}
+    \end{split}
+    \end{equation}
+    $$
+
+    Combining the results (>>eq:curveeq1), (>>eq:curveeq2) and (>>eq:curveeq3), we get finally that
+
+    $$
+    \begin{align*}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}}\right)
+    &=
+    \ddot{\mathbf{x}} \cdot \frac{\partial \mathbf{x}}{\partial q}
+    + \dot{\mathbf{x}}\cdot \frac{d}{dt}\left( \frac{\partial \mathbf{x}}{\partial q}\right)
+    =
+    \ddot{\mathbf{x}} \cdot \frac{\partial \mathbf{x}}{\partial q}
+    + \dot{\mathbf{x}} \cdot \frac{\partial \dot{\mathbf{x}}}{\partial q} \\
+    &=
+    \ddot{\mathbf{x}} \cdot \frac{\partial \mathbf{x}}{\partial q}
+    + \frac{\partial }{\partial q}\left(\tfrac12|\dot{\mathbf{x}}|^2\right)
+    = -\frac{\partial U}{\partial q}+\frac{\partial }{\partial q}(L+U) \\
+    &= \frac{\partial L}{\partial q}.
+    \end{align*}
+    $$
+
+    Thus, the equation of motion becomes the Euler-Lagrange equation for the Lagrangian $L$ when the motion is parametrized using the scalar coordinate $q$.
+
+    It is interesting to find also the Hamiltonian associated with the system. Is it equal to the total energy per unit mass? The energy per unit mass is
+
+    $$
+    \begin{align*}
+    E = K + U,
+    \end{align*}
+    $$
+
+    where $U$ is the potential energy and $K = \tfrac12|\dot{x}|^2$ is the kinetic energy, which can be written more explicitly as
+
+    $$
+    \begin{align*}
+    K = \tfrac12 \left|\frac{\partial \mathbf{x}}{\partial q}\right|^2 \dot{q}^2 + \left(\frac{\partial \mathbf{x}}{\partial q}\cdot\frac{\partial \mathbf{x}}{\partial t}\right)
+    \dot{q} + \tfrac12\left|\frac{\partial \mathbf{x}}{\partial t}\right|^2,
+    \end{align*}
+    $$
+
+    (a quadratic polynomial in $\dot{q}$). The generalized momentum coordinate $p$ is in this case given by
+
+    $$
+    \begin{align*}
+    p = \frac{\partial L}{\partial \dot{q}} =
+    \left|\frac{\partial \mathbf{x}}{\partial q}\right|^2 \dot{q} + \frac{\partial \mathbf{x}}{\partial q}\cdot\frac{\partial \mathbf{x}}{\partial t}.
+    \end{align*}
+    $$
+
+    Note that it is in one-to-one correspondence with $\dot{q}$, as should happen. By (>>eq:hamilton-lagrange), we get the Hamiltonian as
+
+    $$
+    \begin{align*}
+    H &=
+    \left|\frac{\partial \mathbf{x}}{\partial q}\right|^2 \dot{q}^2 + \left(\frac{\partial \mathbf{x}}{\partial q}\cdot\frac{\partial \mathbf{x}}{\partial t}\right)\dot{q} - L \\
+    &=
+    \left|\frac{\partial \mathbf{x}}{\partial q}\right|^2 \dot{q}^2 + \left(\frac{\partial \mathbf{x}}{\partial q}\cdot\frac{\partial \mathbf{x}}{\partial t}\right)\dot{q} - (K-U) \\
+    &= E - \left(\frac{\partial \mathbf{x}}{\partial q}\cdot\frac{\partial \mathbf{x}}{\partial t}\right)\dot{q} -
+    \tfrac12\left|\frac{\partial \mathbf{x}}{\partial t}\right|^2.
+    \end{align*}
+    $$
+
+    In particular, if $\mathbf{x}$ does not have an explicit dependence on $t$ (which corresponds to a situation in which $\mathbf{x}=\mathbf{x}(q)$, i.e., the constraint curve is stationary), then $\frac{\partial \mathbf{x}}{\partial t}=0$, and in this case $H=E$. However, in the general case the Hamiltonian differs from the energy of the system.
+
+    |> Example
+        label=The harmonic oscillator
+
+        The one-dimensional harmonic oscillator corresponds to the motion of a particle in a parabolic potential well, $U(q)=\tfrac12 k q^2$, where $k>0$, or equivalently, motion under a linear restoring force $F(q)=-m k q$ (e.g., an oscillating weight attached to an idealized elastic spring satisfiying Hooke's law). In this case we have
+
+        $$
+        \begin{align*}
+        L &= \tfrac12 \dot{q}^2 - \tfrac12 kq^2, \\
+        H &= \tfrac12 \dot{q}^2 + \tfrac12 kq^2, \\
+        p &= \frac{\partial L}{\partial \dot{q}} = \dot{q},
+        \end{align*}
+        $$
+
+        and the equation of motion $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}}\right)=\frac{\partial L}{\partial q}$ is
+
+        $$
+        \begin{align*}
+        \ddot{q} = -kq.
+        \end{align*}
+        $$
+
+        Its general solution has the form
+
+        $$
+        \begin{align*}
+        q = A\cos(\omega t) + B \sin(\omega t),
+        \end{align*}
+        $$
+
+        where $\omega= \sqrt{k}$.
+
+    |> Example
+        label=The simple pendulum
+
+        Next, consider the simple pendulum, which consists of a point mass $m$ attached to the end of a rigid rod of length $\ell$ and negligible mass, whose other end is fixed to a point and is free to rotate in one vertical plane. This simple mechanical system also exhibits oscillatory behavior, but its behavior is much richer and more complex due to the nonlinearity of the underlying equation of motion. Let us use the Lagrangian formalism to derive the equation of motion. This is an example of the more generalized scenario of motion constrained to a curve (in this case a circle). The natural choice for the generalized coordinate $q$ is the angle $q=\theta$ between the two vectors pointing from the fixed end of the rod in the down direction and towards the pendulum, respectively. In this case, we can write
+
+        $$
+        \begin{align*}
+        \mathbf{x} &= (\ell\sin q, 0, -\ell \cos q), \\
+        K &= \textrm{Kinetic energy per unit mass} = \tfrac12|\dot{\mathbf{x}}|^2 = \tfrac12 \ell^2 \dot{q}^2, \\
+        U &= \textrm{Potential energy per unit mass} = -g\ell\cos q, \\
+        L &= K-U = \tfrac12 \ell^2 \dot{q}^2 + g \ell \cos q, \\
+        p &= \frac{\partial L}{\partial \dot{q}} = \ell^2 \dot{q}, \\
+        H &= E = K+U = \tfrac12 \ell^2 \dot{q}^2 - g \ell\cos q
+        = \frac{p^2}{2\ell^2} - g\ell\cos q.
+        \end{align*}
+        $$
+
+        The equation of motion becomes $\ell^2 \ddot{q}=\dot{p} = \frac{\partial L}{\partial q}=-g\ell \sin q$, or
+
+        $$
+        \begin{align*}
+        \ddot{q} = -\frac{g}{\ell} \sin q.
+        \end{align*}
+        $$
+
+        This is often written in the form
+
+        $$
+        \begin{equation} eq:pendulumeq##<<
+        \begin{split}
+        \ddot{q} + \omega^2 \sin q = 0,
+        \end{split}
+        \end{equation}
+        $$
+
+        where $\omega^2 = \frac{g}{\ell}$. In Hamiltonian form, the equations of motion will be
+
+        $$
+        \begin{align*}
+        \dot{p}&= -g\ell \sin q, \\ \dot{q}&=\frac{p}{\ell^2}.
+        \end{align*}
+        $$
+
+    |> Example
+        label=A rotating pendulum
+
+        Let us complicate matters by assuming that the pendulum is rotating around the vertical axis (the $z$-axis, in our coordinate system) with a fixed angular velocity $\omega$. In terms of the coordinate $q$, which still measures the angle subtended between the vector pointing from the origin to the particle and the vertical, the particle's position will now be
+
+        $$
+        \begin{align*}
+        \mathbf{x} = (\ell \sin q \cos(\omega t), \ell \sin q \sin(\omega t), -\ell\cos(\omega t)).
+        \end{align*}
+        $$
+
+        The kinetic and potential energies per unit mass, and from them the Lagrangian and Hamiltonian, and the generalized momentum coordinate $p$, can now be found to be
+
+        $$
+        \begin{align*}
+        K &= \tfrac12|\dot{x}|^2 = \tfrac12 \ell^2(\dot{q}^2 + \omega^2 \sin^2 q), \\
+        U &= -g\ell \cos q, \\
+        L &= \tfrac12\ell^2(\dot{q}^2+\omega^2\sin^2 q)+g\ell\cos q, \\
+        p &= \ell^2 \dot{q}, \\
+        H &= \frac{p^2}{2\ell^2}-g\ell\cos q-\tfrac12 \omega^2 \ell^2 \sin^2 q.
+        \end{align*}
+        $$
+
+        The Euler-Lagrange equation of motion is
+
+        $$
+        \begin{align*}
+        \ddot{q} + \Omega^2 \sin q - \omega^2 \sin q \cos q = 0,
+        \end{align*}
+        $$
+
+        where $\Omega^2 = \frac{g}{\ell}$. The system in Hamiltonian form is
+
+        $$
+        \begin{align*}
+        \dot{p} &= -g\ell \sin q + \omega^2 \ell^2 \sin q \cos q, \\
+        \dot{q} &= \frac{p}{\ell^2}.
+        \end{align*}
+        $$

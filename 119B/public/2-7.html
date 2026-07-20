@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 2.7 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 2.7 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 2.7 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./2-6.html"
+    ></a><a
+      id="next-page"
+      href="./2-8.html"
+    ></a>
+  </div>
+  <h1>
+    2.7
+    Measures and measure preserving maps
+  </h1>
+  <p>
+    Our study of maps so far has shown that even very simple maps such as the logistic map or the $3x+1$ map can lead to extremely complicated behavior of the associated dynamical system. Is there any hope of understanding such complicated systems in some meaningful sense? Yes, there is. A key insight is that one should focus on questions of a statistical nature: instead of trying to predict in detail where the orbit of a particular initial point $x_0$ will go (which is hopeless for a chaotic system), instead we will try to make predictions about statistical behavior of orbits, i.e., how often they visit each part of the state space. The mathematical object that encodes such a set of statistics is called a
+    <i>probability measure</i>, and as we will see, a natural condition for a measure to encode the correct information about a map is that the map is
+    <i>measure preserving</i>.
+  </p>
+  <p>
+    Let $\Omega$ be a set. The theory of probability measures can be developed in much greater generality, but for our purposes we will assume that $\Omega$ is a connected open (or closed) subset of $\mathbb{R}$ or of $\mathbb{R}^d$. Thus, on $\Omega$ there is a natural "measure" $d\mathbf{x}$ of $d$-dimensional volume familiar from multivariate calculus. The probability measures that we will consider take the form
+  </p>
+  <div class="math-block">
+    $$
+    P(d\mathbf{x})=f(\mathbf{x})\,d\mathbf{x}
+    $$
+  </div>
+  <p>
+    where $f$ is a nonnegative function such that $\int_{\Omega} f(\mathbf{x})\,d\mathbf{x} = 1$. Formally, the measure $P$ is considered to be a function $A\mapsto P(A)$ that takes a subset $A\subset \Omega$ and returns a number
+  </p>
+  <div class="math-block">
+    $$
+    P(A) = \int_A f(\mathbf{x})d\mathbf{x}.
+    $$
+  </div>
+  <p>
+    Both the function $f$, called the
+    <i>probability density function</i>
+    associated with $P$, and the set $A$ are assumed to be sufficiently well-behaved that $P(A)$ is defined. (You can learn about the precise technical definitions, which we will not discuss here, in an advanced class on real analysis, measure theory or probability theory). A set $A$ for which $P(A)$ is defined is called a
+    <i>measurable set</i>. It is an annoying fact of life that not all sets are measurable, but in practice all sets that you are ever likely to encounter will be measurable, so we will not worry about that.
+  </p>
+  <p>
+    Now, if $T:\Omega\to \Omega$ is a map and $P$ is a probability measure on $\Omega$, we say that $T$
+    <i>preserves the measure $P$</i>
+    (or
+    <i>is measure preserving for $P$</i>) if for any measurable set $A$ the following identity holds:
+  </p>
+  <div class="math-block">
+    $$
+    P(A) = P(T^{-1}(A)),
+    $$
+  </div>
+  <p>
+    that is,
+  </p>
+  <div class="math-block">
+    $$
+    \int_A f(\mathbf{x})d\mathbf{x} = \int_{T^{-1}(A)} f(\mathbf{x})d\mathbf{x}.
+    $$
+  </div>
+  <p>
+    For interval maps, it is sufficient to prove this when $A$ is an interval. The intuitive meaning of the definition is that if the measure $P$ represents the statistical distribution of a random element $x$ in $\Omega$ (corresponding to the state of the dynamical system at some time $n$), then $T(x)$, which corresponds to the state at time $n+1$, will have the same statistical distribution. In other words, the probabilistic behavior is stationary with respect to the time dynamics. A dynamical system $(\Omega, T)$ together with a probability measure $P$ that is preserved by $T$ is called a
+    <i>measure preserving system</i>. If $T$ preserves the measure $P$, we say that $P$ is an
+    <i>invariant measure</i>
+    for $T$.
+  </p>
+  <div
+    label="Circle rotation map"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.23</b>
+      
+    </h3>
+    <p>
+      <span class="label">Circle rotation map</span>The circle rotation map $R_\alpha$ preserves the standard length measure on $[0,1)$ (which in analysis is called
+      <i>Lebesgue measure</i>
+      --- pronounced like
+      <i>le-baig</i>), i.e., the measure with density $f(x)\equiv 1$.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>This fact is obvious if you think of the intuitive meaning of the circle rotation map, but for illustration purposes here is a formal proof. If $A$ is a subset of $[\alpha,1)$ then $R_\alpha^{-1}(A) = A-\alpha$, so clearly the length measure is preserved. Similarly, if $A \subset [0,\alpha)$ then $R_\alpha^{-1}(A) = A+1-\alpha$ and again the length measure is preserved. For a general $A\subset[0,1)$, write $A$ as a disjoint union $A=A'\sqcup A"$ where $A'\subset[0,\alpha)$, $A"\subset[\alpha,1)$, then $R_\alpha^{-1}(A) = R_\alpha^{-1}(A')\sqcup R_\alpha^{-1}(A")$ has the same Lebesgue measure as $A$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div
+    label="Doubling map"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.24</b>
+      
+    </h3>
+    <p>
+      <span class="label">Doubling map</span>The doubling map also preserves Lebesgue measure.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>
+    </p>
+    <div class="math-block">
+      $$
+      P(D^{-1}(A)) =
+      P\left(\tfrac12 A \sqcup \left(\tfrac12 A+\tfrac12\right) \right)
+      = \tfrac12 P(A)
+      + \tfrac12 P(\tfrac12+A) =
+      P(A).
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <div
+    label="Tent map $\Lambda_2$"
+    class="statement exercise"
+  >
+    <h3>
+      <b>Exercise</b>
+      <b>2.25</b>
+      
+    </h3>
+    <p>
+      Show that the tent map $\Lambda_2$ (the special case $a=2$ of the family of tent maps $\Lambda_a$) preserves Lebesgue measure.
+    </p>
+  </div>
+  <div
+    label="Logistic map $L_4$"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.26</b>
+      
+    </h3>
+    <p>
+      <span class="label">Logistic map $L_4$</span>For $r=4$, the logistic map $L_r=L_4$ preserves the measure
+    </p>
+    <div class="math-block">
+      $$
+      P(dx) = \frac{1}{\pi \sqrt{x(1-x)}}\,dx.
+      $$
+    </div>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>Denote $f(x)=\frac{1}{\pi \sqrt{x(1-x)}}$. If $A \subset [0,1]$ is an interval, then
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      P(L_4^{-1}(A)) &amp;= \int_{L_4^{-1}(A)} f(x)\,dx \\ &amp;=
+      \int_{L_4^{-1}(A)\cap\left[0,1/2\right]} f(x)\,dx +
+      \int_{L_4^{-1}(A)\cap\left[1/2,1\right]} f(x)\,dx \\
+      &amp;= \int_A f(\lambda_1(y))\frac{dy}{L_4'(\lambda_1(y))} + \int_A f(\lambda_2(z)) \frac{dz}{-L_4'(\lambda_2(z))},
+      \end{align*}
+      $$
+    </div>
+    <p>
+      where we define $\lambda_1(y)=\tfrac12(1-\sqrt{1-y}), \lambda_2(z)=\tfrac12(1+\sqrt{1-z})$ (the functions $x=\lambda_{1,2}(w)$ are the two solutions of the equation $L_4(w)=x$), and we make the substitutions
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      y&amp;=L_4(x) \leftrightarrow x=\lambda_1(y) \textrm{ in the first integral,} \\ z&amp;=L_4(x) \leftrightarrow x=\lambda_2(z) \textrm{ in the second integral}.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Note that $L_4$ is decreasing on $[1/2,1]$, which explains why we needed to insert a minus sign in front of the $L_4'(\lambda_2(z))$ term in the second integral.
+    </p>
+    <p>
+      Now, since we are trying to prove that the expression above is equal to $P(A)=\int_A f(x)\,dx$, it will be enough to show that the following identity holds:
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      f(x) = f(\lambda_1(x))\frac{1}{|L_4'(\lambda_1(x))|} + f(\lambda_2(x))\frac{1}{|L_4'(\lambda_2(x))|}
+      \end{align*}
+      $$
+    </div>
+    <p>
+      (the absolute value signs make the sum on the right more symmetric, though of course the first one is unnecessary). This identity is strange but easy to verify: noting the simple relations
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      L_4'(w) &amp;=4(1-2w), \\ f(w)&amp;=\frac{2}{\pi\sqrt{L_4(w)}}, \\ L_4(\lambda_1(x)) &amp;= L_4(\lambda_2(x)) =x,
+      \end{align*}
+      $$
+    </div>
+    <p>
+      the right-hand side of the identity becomes
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \frac{2}{\pi \sqrt{x}} &amp;\cdot \frac{1}{4(1-(1-\sqrt{1-x}))}
+      -
+      \frac{2}{\pi \sqrt{x}}\cdot \frac{1}{4(1-(1+\sqrt{1-x}))} \\
+      &amp; =
+      \frac{1}{2\pi} \left( \frac{1}{\sqrt{x}}\cdot \frac{1}{\sqrt{1-x}} +
+      \frac{1}{\sqrt{x}}\cdot \frac{1}{\sqrt{1-x}} \right) = \frac{1}{\pi\sqrt{x(1-x)}} = f(x).
+      \end{align*}
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    The idea used in the proof above can be generalized to give a criterion for checking whether a map is measure-preserving.
+  </p>
+  <div
+    class="statement lemma"
+    id="_43_h.a.i_"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>2.27</b>
+      
+    </h3>
+    <p>
+      Let $T:I\to I$ be an interval map that is piecewise smooth and monotonic, i.e., the interval $I$ can be decomposed into a union of finitely many subintervals on each of which $T$ is smooth and monotonic (in fact, the claim is true even if this is true for a subdivision into countably many subintervals). Then $T$ preserves the measure $P(dx)=f(x)dx$ if and only if the density $f(x)$ satisfies the equation
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      f(x) = \sum_{y\in T^{-1}(x)} \frac{f(y)}{|T'(y)|}
+      \end{align*}
+      $$
+    </div>
+    <p>
+      for all but countably many points $x\in I$, where the sum ranges over all pre-images of $x$.
+    </p>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.28</b>
+      
+    </h3>
+    <p>
+      Prove
+      <a
+        href="./2-7.html#_43_h.a.i_"
+        class=""
+      >Lemma 2.27</a>.
+    </p>
+  </div>
+  <div
+    label="Gauss map"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.29</b>
+      
+    </h3>
+    <p>
+      <span class="label">Gauss map</span>The Gauss map $G(x)$ preserves the measure $\gamma$ on $(0,1)$ (called
+      <i>Gauss measure</i>), defined by
+    </p>
+    <div class="math-block">
+      $$
+      \gamma(dx) = \frac{1}{\log 2}\cdot \frac{1}{1+x}\,dx.
+      $$
+    </div>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.30</b>
+      
+    </h3>
+    <p>
+      Use
+      <a
+        href="./2-7.html#_43_h.a.i_"
+        class=""
+      >Lemma 2.27</a>
+      to prove this.
+    </p>
+  </div>
+  <div
+    label="Additive Gauss map"
+    class="statement exercise"
+  >
+    <h3>
+      <b>Exercise</b>
+      <b>2.31</b>
+      
+    </h3>
+    <p>
+      The additive Gauss map $g:[0,1]\to[0,1]$ is defined by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      g(x) = \begin{cases} \frac{x}{1-x} &amp; \textrm{if }0\le x\le \tfrac12, \\
+      \frac{1-x}{x}&amp;\textrm{if }\tfrac12\le x\le 1
+      \end{cases}
+      \end{align*}
+      $$
+    </div>
+    <p>
+      (see Figure (11a)). Show that $g$ preserves the measure
+    </p>
+    <div class="math-block">
+      $$
+      m(dx)=\frac{1}{x}\,dx.
+      $$
+    </div>
+    <p>
+      (Note: this measure is not a probability measure, since the integral of the density is infinite. However, the concept of measure-preservation makes sense for such measures, and
+      <a
+        href="./2-7.html#_43_h.a.i_"
+        class=""
+      >Lemma 2.27</a>
+      is still valid in this context.)
+    </p>
+  </div>
+  <div
+    label="Boole map"
+    class="statement exercise"
+  >
+    <h3>
+      <b>Exercise</b>
+      <b>2.32</b>
+      
+    </h3>
+    <p>
+      Show that
+      <i>Boole's transformation</i>
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      B(x)=x-\frac{1}{x}
+      \end{align*}
+      $$
+    </div>
+    <p>
+      preserves Lebesgue measure on $\mathbb{R}$.
+    </p>
+  </div>
+  <div
+    label="Pythagorean triples map"
+    class="statement exercise"
+  >
+    <h3>
+      <b>Exercise</b>
+      <b>2.33</b>
+      
+    </h3>
+    <p>
+      The interval map $N:[0,1]\to[0,1]$
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \begin{cases}
+      \frac{x}{1-2x} &amp; \textrm{if }0\le x\le \tfrac13, \\
+      \frac{1}{x}-2 &amp; \textrm{if }\tfrac13 \le x \le \tfrac12, \\
+      2-\frac{1}{x} &amp; \textrm{if }\tfrac12 \le x \le 1,
+      \end{cases}
+      \end{align*}
+      $$
+    </div>
+    <p>
+      arises in the study of Pythagorean triples. (Figure 11(b) explains why it is denoted by $N$.) Show that it preserves the measure
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \pi(dx) = \frac{1}{x(1-x)}\,dx.
+      \end{align*}
+      $$
+    </div>
+  </div>
+  <p>
+    Although much of our discussion has been focused on interval maps, the concept of measure preserving systems appears in many different contexts (including some rather exotic ones), as the next few examples illustrate.
+  </p>
+  <figure>
+    <span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+        src="figures/slowgauss.png"
+        style="max-width: 100%; display: block; margin: 0 auto"
+      >(a)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+        src="figures/pythagorean.png"
+        style="max-width: 100%; display: block; margin: 0 auto"
+      >(b)</span>
+    <figcaption>
+      Figure 11: (a) The additive Gauss map; (b) The Pythagorean triples map.
+    </figcaption>
+  </figure>
+  <div
+    label="Hamiltonian flow"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.34</b>
+      
+    </h3>
+    <p>
+      <span class="label">Hamiltonian flow</span>By Liouville's theorem, the phase flow of a Hamiltonian system preserves area measure in $\mathbb{R}^2$ (also called the two-dimensional Lebesgue measure). This is a continuous-time dynamical system, but the notion of measure preserving dynamics makes sense for such systems as well. In particular, if the system is discretized by fixing a time step $\tau$, we get a map preserving Lebesgue measure.
+    </p>
+  </div>
+  <div
+    label="Geodesic flow"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.35</b>
+      
+    </h3>
+    <p>
+      <span class="label">Geodesic flow</span>The geodesic flow is a continuous-time dynamical system on a curved surface. Its phase space is the set of points $(x,v)$ where $x$ is a point on the surface and $v$ is a tangent vector to the surface based at $x$ (representing the direction and speed in which a person standing at $x$ will start walking). The flow $\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$ and maps it to a new pair $(x',v')=\varphi(x,v)$ representing where the person will be, and which direction they will be pointing at, $t$ time units later. It can be shown that the geodesic flow preserves the natural volume measure associated with the phase space (roughly speaking, the measure is product of the surface area measure of the surface in the component $x$, and a standard area measure in the $v$ component).
+    </p>
+  </div>
+  <div
+    label="Billiard map"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.36</b>
+      
+    </h3>
+    <p>
+      <span class="label">Billiard map</span>Billiard maps can be thought of as a limiting case of certain Hamiltonian systems (think of a limit in which the reflecting wall is actually a strongly repelling potential well that becomes steeper and steeper), so they too have an invariant measure. In certain natural coordinates $\phi, \theta, \ell$, the formula for the invariant measure becomes
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      P(A) = \int_A \frac{\sin \theta}{\sin \theta_1}\, d\theta\, d\phi\, d\ell.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      (For the meaning of these quantities, see the interesting article
+      <i>What is the ergodic theorem?</i>, G. D. Birkhoff,
+      <i>American Math. Monthly</i>, April 1942.)
+    </p>
+  </div>
+  <div
+    label="$3x+1$ map"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>2.37</b>
+      
+    </h3>
+    <p>
+      <span class="label">$3x+1$ map</span>One of the many (ultimately unsuccessful) attempts at solving the famous $3x+1$ problem mentioned in
+      <a
+        href="./2-1.html#_36_h.a.i_"
+        class=""
+      >Section 2.1</a>
+      was based on the observation that since the formula of the $3x+1$ map $T(x)$ depends on the parity of $x$, the range of definition of $T$ can be expanded to include numbers of the form
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      a_0 + a_1 \cdot 2 + a_2 \cdot 4 + a_3\cdot 8 + \ldots + a_n \cdot 2^n + \ldots = \sum_{n=0}^\infty a_n 2^n.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Such exotic numbers, which have an infinite binary expansion to the
+      <i>left</i>
+      of the "binary point", are called
+      <i>$2$-adic integers</i>
+      and have fascinating properties. In particular, there is a natural measure associated with them that is analogous to Lebesgue measure on $\mathbb{R}$. It can be shown that the extended $3x+1$ map preserves this measure.
+    </p>
+  </div>
+</body>
+</html>

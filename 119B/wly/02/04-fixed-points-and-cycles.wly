@@ -1,0 +1,19 @@
+|> Section
+    title=Fixed points and cycles
+
+    When we studied ODEs, we were interested in rest points, which are static points of the phase state which remain stationary under the ODE dynamics, and in periodic orbits which close in on themselves and lead to infinite repetition of a sequence of movements. In discrete-time systems, the analogous concepts are _fixed points_ and _cycles_. A point $x\in I$ is a fixed point of a map $T:I\to\mathbb{R}$ if $T(x)=x$. We call a finite sequence $(x_j)_{j=1}^n$ a cycle (or an $n$-cycle if we want to emphasize its length) of $T$ if all the $x_j$'s are distinct and $T(x_1)=x_2, T(x_2)=x_3, \ldots, T(x_{n-1})=x_n, T(x_n)=x_1$.
+
+    The fixed points can be found graphically by drawing the graph of $T$ and the graph of the curve $y=x$, and finding their intersections. Note that if $(x_j)_{j=1}^n$ is an $n$-cycle of $T$ then $x_1 = T(T(T(\ldots(T(x_1)))\ldots)$ (that is, iterating $T$ $n$-times starting from $x_1$ leads back to $x_1$). The map $T$ iterated $n$ times is denoted $T^n$ (usually it is understood from the context that this represents an iteration rather than raising to a power; when there is risk of confusion one needs to be careful and say explicitly what is meant). So, the $n$-cycles can be found by first computing the iterated map $T^n$ and then finding the fixed points of $T^n$. Note that such a fixed point could turn out to be the first point of an $n$-cycle, or it could be a fixed point of $T$, or a fixed point of $T^k$ for some $k<n$ that is a divisor of $n$ (in this case we can use it to generate a $k$-cycle $x_1,T(x_1,\ldots,T^{k-1}(x_1)$). In practice, finding the $n$-cycles often becomes very hard to do when $n$ is larger than some very small number.
+
+    |> Example
+
+        Consider the map $T(x)=x^2$ on $[0,1]$. The fixed points are solutions of $x^2=x$, i.e., $x=0$ and $x=1$. Computing the iterated maps gives $T^2(x)=T(T(x))=x^4, T^3(x)=x^8, \ldots, T^n(x)=x^{2^n}, \ldots$. The fixed points of $T^n$ are still $x=0$ and $x=1$, which means there are no $n$-cycles for $n>1$.
+
+    |> Example
+
+        The doubling map $D(x)=2x\textrm{ mod }1$ has no fixed points. What about $2$-cycles? We have $D^2(x)=D(D(x))=4x\textrm{ mod }1$. The equation $x=D(D(x))$ has two solutions: $x_1=4x_1-1$ gives $x_1=1/3$; $x_2=4x_2-2=2/3 = D(x_1)$. So we have found a $2$-cycle $(1/3,2/3)$. In general, it is possible to identify all $k$-cycles, by noting an important connection between the doubling map and the binary expansion of a real number.
+
+    |> Exercise
+        label=$k$-cycles of the doubling map
+
+        Identify all the $k$-cycles of the doubling map, by using the connection with binary expansions (see the discussion in Section >>sec:normalnumbers). Alternatively, plot $D^k(x)=2^k x \textrm{ mod }1$ and use a graphical approach to identify all the $k$-cycles.

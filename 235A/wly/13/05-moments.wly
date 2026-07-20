@@ -25,8 +25,8 @@
         $$
         To get a bound that is better-behaved for large $x$, note that
         $$
-        \begin{eqnarray*} R_n(x) &=& R_{n-1}(x) - \frac{(ix)^n}{n!} = R_{n-1}(x) - \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}\,ds
-        \\ &=& \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}(e^{is}-1)\,ds.
+        \begin{eqnarray*} R_n(x) &=& R_{n-1}(x) - \frac{(ix)^n}{n!} = R_{n-1}(x) - \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}\,ds \\
+        &=& \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}(e^{is}-1)\,ds.
         \end{eqnarray*}
         $$
         So, since $|e^{is}-1|\le 2$, we get that

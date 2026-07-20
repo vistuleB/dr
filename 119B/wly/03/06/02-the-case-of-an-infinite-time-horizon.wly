@@ -1,0 +1,35 @@
+|> SubSection
+    title=The case of an infinite time horizon
+
+    The case $t_2=\infty$ can be approached by letting $T\to\infty$ in the equation above. The solution $v(T)$ of the Ricatti equation should converge to a stationary point satisfying $v'(T)=0$, so we get for this case that the limiting value $v_\infty$ of $v(T)$ must satisfy the quadratic equation
+
+    $$
+    \begin{align*}
+    v_\infty^2 - \frac{2aq}{b^2} v_\infty - \frac{pq}{b^2} = 0,
+    \end{align*}
+    $$
+
+    giving that
+
+    $$
+    \begin{align*}
+    v_\infty = \frac{aq}{b^2}\left( 1 \pm \sqrt{1+\frac{pb^2}{qa^2}}\right).
+    \end{align*}
+    $$
+
+    Since we know that $v_\infty\ge 0$ and $p,q>0$, it can be checked that the correct choice of sign is:
+
+    $$
+    \begin{align*}
+    v_\infty = \begin{cases}
+    \frac{aq}{b^2}\left( 1 - \sqrt{1+\frac{pb^2}{qa^2}}\right)
+    &
+    \textrm{if }a<0,  \\
+    \frac{aq}{b^2}\left( 1 + \sqrt{1+\frac{pb^2}{qa^2}}\right)
+    &
+    \textrm{if }a>0.
+    \end{cases}
+    \end{align*}
+    $$
+
+    The optimal control gain $k=k_\infty$ is then given as before by $k_\infty = b v_\infty/q$. Note that the case $a<0$ corresponds to a situation in which the object is stable even in the absence of a control force, i.e., if we take $u=0$.

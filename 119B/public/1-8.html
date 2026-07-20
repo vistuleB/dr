@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.8 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.8 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.8 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-7.html"
+    ></a><a
+      id="next-page"
+      href="./1-9.html"
+    ></a>
+  </div>
+  <h1>
+    1.8
+    Rest points in autonomous Hamiltonian systems
+  </h1>
+  <p>
+    Assume that the Hamiltonian is autonomous. The rest points of the system correspond to the stationary points of the Hamiltonian, i.e., points for which
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \frac{\partial H}{\partial p} = 0, \quad \frac{\partial H}{\partial q} = 0.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    Let $(p_0,q_0)$ be a rest point of the system. We can analyze the stability properties of the rest point by linearizing. Setting
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    x = p-p_0, \quad y=q-q_0,
+    \end{align*}
+    $$
+  </div>
+  <p>
+    the behavior of the system near $(p_0,q_0)$ can be described as
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \dot{x} &amp;= -bx-cy + O(x^2+y^2), \\ \dot{y}&amp;= \ \ ax+by + O(x^2+y^2),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    where
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    a = \frac{\partial^2 H}{\partial p^2} \Big|_{(p_0,q_0)},\quad
+    b = \frac{\partial^2 H}{\partial p \partial q} \Big|_{(p_0,q_0)}, \quad
+    c = \frac{\partial^2 H}{\partial q^2} \Big|_{(p_0,q_0)}.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    By the theory of stability analysis of planar ODEs, the stability type of the rest point can now be understood in terms of the behavior of the eigenvalues of the matrix
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \left(\begin{array}{cc} -b&amp;-c\\a&amp;b\end{array}\right)
+    \end{align*}
+    $$
+  </div>
+  <p>
+    (the Jacobian matrix of the vector field at the rest point). The eigenvalues are given by
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \lambda^2 = b^2-ac.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    So we see that, when $b^2&lt;ac,$ the eigenvalues are pure imaginary numbers, and recall that in that case the rest point is a center. On the other hand, when $b^2&gt;ac$ the eigenvalues are the two real square roots $\pm \sqrt{b^2-ac}$. Since in that case we have one negative and one positive eigenvalue, the stability theory says that the rest point is a saddle point. (We assume that the Hessian matrix of second derivatives is non-degenerate, i.e., that $b^2\neq ac$, so that the usual criteria for stability apply.) Liouville's theorem, which we will discuss in a later section, will give another, more geometric, explanation why rest points cannot be asymptotically stable or unstable.
+  </p>
+</body>
+</html>

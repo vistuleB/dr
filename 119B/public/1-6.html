@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.6 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.6 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.6 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-5.html"
+    ></a><a
+      id="next-page"
+      href="./1-7.html"
+    ></a>
+  </div>
+  <h1>
+    1.6
+    An autonomous Hamiltonian is conserved
+  </h1>
+  <p>
+    In the last example above, it is important to note that although the system in its original form depends on time due to the motion of the constraint curve, the Hamiltonian, Lagrangian and the associated equations are
+    <i>autonomous</i>, i.e., do not depend on time. This is an illustration of the type of simplification that can be achieved using the Lagrangian and Hamiltonian formulations. Furthermore, the fact that the Hamiltonian is autonomous has an important consequence, given by the following lemma.
+  </p>
+  <div
+    class="statement lemma"
+    id="_14_h.a.i_"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>1.6</b>
+      
+    </h3>
+    <p>
+      If the Hamiltonian is autonomous, then $H$ is an integral (i.e., an invariant or conserved quantity) of Hamilton's equations.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>The assumption means that $\frac{\partial H}{\partial t} = 0$. By the chain rule, it follows that
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \frac{dH}{dt} &amp;= \frac{\partial H}{\partial p} \dot{p}+\frac{\partial H}{\partial q} \dot{q} + \frac{\partial H}{\partial t} \\
+      &amp;= \frac{\partial H}{\partial p}\left(-\frac{\partial H}{\partial q}\right)+\frac{\partial H}{\partial q}\left(\frac{\partial H}{\partial p}\right)+\frac{\partial H}{\partial t}
+      = \frac{\partial H}{\partial t} = 0.
+      \end{align*}
+      $$
+    </div>
+    <p>
+      <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+  <p>
+    In the first two examples of the harmonic oscillator and the simple pendulum, the Hamiltonian was equal to the system's energy, so
+    <a
+      href="./1-6.html#_14_h.a.i_"
+      class=""
+    >Lemma 1.6</a>
+    corresponds to the conservation of energy. In the example of the rotating pendulum, the Hamiltonian is
+    <i>not</i>
+    equal to the energy of the system, yet it is conserved. Can you think of a physical meaning to assign to this conserved quantity?
+  </p>
+</body>
+</html>

@@ -42,7 +42,7 @@
             The polar decomposition of a bivariate standard normal vector: given a pair $(X,Y)$ of random variables which in the polar representation are written as $X=R\cos\Theta$, $Y=R\sin \Theta$, where $R>0$ and $0\le \Theta<2\pi$, we have
             $$
             \begin{align*}
-            X,Y\sim N(0,1), & \ X,Y\textrm{ are independent }
-            \\ & \iff R^2 \sim \operatorname{Exp}(1/2), \ \Theta\sim U[0,2\pi]\ \textrm{and } R,\Theta \textrm{ are independent.}
+            X,Y\sim N(0,1), & \ X,Y\textrm{ are independent } \\
+            & \iff R^2 \sim \operatorname{Exp}(1/2), \ \Theta\sim U[0,2\pi]\ \textrm{and } R,\Theta \textrm{ are independent.}
             \end{align*}
             $$

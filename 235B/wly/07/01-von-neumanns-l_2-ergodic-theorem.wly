@@ -49,8 +49,8 @@
         & \le
         \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)w \right\rVert
         +
-        \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)(v-w) \right\rVert
-        \\ & \le
+        \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)(v-w) \right\rVert \\
+        & \le
         \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)w \right\rVert
         +  \epsilon.
         \end{align*}

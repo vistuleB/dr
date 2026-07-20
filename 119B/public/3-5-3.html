@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 3.5.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 3.5.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 3.5.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./3-5-2.html"
+    ></a><a
+      id="next-page"
+      href="./3-6.html"
+    ></a>
+  </div>
+  <h1>
+    3.5.3
+    Optimal switching control
+  </h1>
+  <p>
+    Although we have achieved our goal of designing a stable levitation control scheme, it is not necessary to stop here. A natural question is to ask for the
+    <i>optimal</i>
+    control rule, namely the one that causes the particle to reach the stable equilibrium point in the shortest time, regardless of its initial conditions. Using ideas from the theory of nonlinear optimal control which are beyond the scope of this course, it is possible to prove that the optimal control rule is
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    u(x) = -\operatorname{sgn}\left(x+\tfrac12 \dot{x}|\dot{x}|\right).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    This makes intuitive sense, since the idea behind this control rule is to toggle the electromagnet as soon as the state of the system reaches the curve $x=\tfrac12 y|y|$. The flow from that point on takes place along the parabola $x=\tfrac12 y^2$ (if $x&gt;0$) or $x=-\tfrac12 y^2$ (if $x&lt;0$) and leads directly to the origin with no further toggling of the controller's state required. The phase portrait of the system governed by this control rule is shown in Figure 17.
+  </p>
+  <figure>
+    <img
+      src="figures/phasediag-magnet-optimal.png"
+      style="max-width: 55%"
+    >
+    <figcaption>
+      Figure 17: Phase portrait for the optimal switching control.
+    </figcaption>
+  </figure>
+  <div
+    label="Optimal switching time"
+    class="statement exercise"
+  >
+    <h3>
+      <b>Exercise</b>
+      <b>3.7</b>
+      
+    </h3>
+    <p>
+      Find a formula for the time $\tau(x,\dot{x})$ it takes the particle to get to the origin when the optimal switching rule is used.
+    </p>
+  </div>
+  <figure>
+    <img
+      src="figures/levitator1.jpg"
+      style="max-width: 45%"
+    >
+    <figcaption>
+      Figure 18: A homemade electromagnetic levitation device.
+    </figcaption>
+  </figure>
+</body>
+</html>

@@ -1,0 +1,25 @@
+|> Section
+    title=Introduction
+    handle=sec:ergodic-intro
+
+    In this part of the course, we will consider a different flavor of nonlinear systems in which time flows in discrete steps instead of continuously. The set of states of such a system is a set $\Omega$ commonly referred to as the _state space_. In many cases $\Omega$ is a subset of $\mathbb{R}$ or the vector space $\mathbb{R}^d$. The state of the system as a function of time is a sequence $(x_n)_{n=0}^\infty$ of elements of $\Omega$; i.e., it can be thought of as a function of time $n\mapsto x_n$, where the time variable takes only discrete values (and therefore is frequently denoted by the letter $n$ instead of $t$).
+
+    With a continuous-time system, we commonly use an ordinary differential equation $\dot{x}=F(x,t)$ to describe the _dynamics_, i.e., the rules according to which the state of the system evolves. The analogous concept for a discrete-time system $(x_n)_{n\ge 0}$ is called a _difference equation_, which is an equation of the form
+
+    $$
+    \begin{equation} eq:differenceeq##<<
+    \begin{split}
+    x_{n+1}-x_n &= F(x_n, n),
+    \end{split}
+    \end{equation}
+    $$
+
+    where $F$ is a function $F:\Omega\times \mathbb{N}_0\to\Omega$ (note that this only makes sense if the set $\Omega$ is a subset of a vector space so that the operation of subtraction is defined). Given a state $a \in \Omega$, we can solve the difference equation (>>eq:differenceeq) starting from the initial condition $x_0=a$. The solution is obtained (and is easily seen to be unique) by rewriting (>>eq:differenceeq) as $x_{n+1}=x_n+F(x_n,n)$ and iterating this ``forward evolution'' rule, e.g.,
+
+    $$
+    \begin{align*}
+    x_1 &= x_0 + F(x_0,0), \\ x_2&= x_1+F(x_1,1), \\ x_3&=x_2+F(x_2,2), \ldots
+    \end{align*}
+    $$
+
+    You can see that this process of iteration is much more straightforward than the process of solving ODEs. For example, one does not have to deal with issues of existence or uniqueness of solutions. In fact, in many cases one does not even need to know calculus to work with such equations. On the other hand, as we shall see, many of the other delicate issues that show up in the study of ODEs (such as chaotic behavior, stability and instability, and bifurcations) exist also for difference equations.

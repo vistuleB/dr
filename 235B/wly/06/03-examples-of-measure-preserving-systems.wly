@@ -63,8 +63,8 @@
                 $$
                 \begin{align*}
                 \operatorname{Leb}(R_\alpha^{-1}(A)) &=
-                \operatorname{Leb}\Big( \big(A\cap[0,\alpha)+1\big) \sqcup \big(A\cap[\alpha,1)-1\big) \Big)
-                \\ &=
+                \operatorname{Leb}\Big( \big(A\cap[0,\alpha)+1\big) \sqcup \big(A\cap[\alpha,1)-1\big) \Big) \\
+                &=
                 \operatorname{Leb}\big(A\cap[0,\alpha)+1\big)
                 +  \operatorname{Leb}\big(A\cap[\alpha,1)-1\big) \\ &=
                 \operatorname{Leb}\big(A\cap[0,\alpha)\big)
@@ -112,8 +112,8 @@
             n_1 &= \textrm{the number of times a stick of length $x$ ``fits'' inside a stick of length $1$}, \\
             n_2 &= \textrm{the number of times a stick of length $x_2=(1-n_1x)$ fits inside a stick}\\ &\ \ \ \ \textrm{of length $x$},
             \\
-            n_3 &= \textrm{the number of times a stick of length $x_3=(x-n_2x_1)$ fits inside a stick}
-            \\ &\ \ \ \ \textrm{of length $x_2$}, \\
+            n_3 &= \textrm{the number of times a stick of length $x_3=(x-n_2x_1)$ fits inside a stick} \\
+            &\ \ \ \ \textrm{of length $x_2$}, \\
             & \ \,\vdots
             \end{align*}
             $$

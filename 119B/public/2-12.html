@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 2.12 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 2.12 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 2.12 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./2-11.html"
+    ></a><a
+      id="next-page"
+      href="./3-1.html"
+    ></a>
+  </div>
+  <h1>
+    2.12
+    Statistics of the logistic map $L_4$
+  </h1>
+  <p>
+    As a final example of the application of the ergodic theorem, we justify our earlier claim that the logistic map $L_4$ can be understood statistically even though its orbits are chaotic. We rely on another unproved fact from ergodic theory, which is that $L_4$ is ergodic.
+  </p>
+  <div class="statement theorem">
+    <h3>
+      <b>Theorem</b>
+      <b>2.45</b>
+      
+    </h3>
+    <p>
+      For all $0\le a&lt;b\le 1$ and for all $x\in[0,1]$ except on a set of measure $0$, we have
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \frac{1}{n}\# &amp;\left\{ 0\le k\le n-1\,:\, L_4^k(x) \in (a,b) \right\} \\
+      &amp; \xrightarrow[n\to\infty]{} \frac{1}{\pi} \int_a^b \frac{du}{\sqrt{u(1-u)}}
+      = \frac{2}{\pi}\arcsin(\sqrt{b})-\arcsin(\sqrt{a}).
+      \end{align*}
+      $$
+    </div>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.46</b>
+      
+    </h3>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          Prove that the logistic map $L_4$ is related to the tent map $\Lambda_2$ by
+        </p>
+        <div class="math-block">
+          $$
+          \Lambda_2(x) = (h\circ L_4 \circ h^{-1})(x),
+          $$
+        </div>
+        <p>
+          where $h(x) = \frac{2}{\pi}\arcsin(\sqrt{x})$. (Two interval maps that are related to each other via a relation of the type $T_1=h\circ T_2 h^{-1}$, where $h:I\to I$ is invertible, are called
+          <i>conjugate maps</i>, and share many similar properties.)
+        </p>
+      </li>
+      <li>
+        <p>
+          Use this to prove that the tent map satisfies a similar statistical distribution result, namely that for all $x\in[0,1]$ except on a set of measure 0, we have
+        </p>
+        <div class="math-block">
+          $$
+          \begin{align*}
+          \frac{1}{n}\#\left\{ 0\le k\le n-1\,:\, \Lambda_2^k(x) \in (a,b) \right\} \xrightarrow[n\to\infty]{} b-a.
+          \end{align*}
+          $$
+        </div>
+      </li>
+    </ol>
+  </div>
+</body>
+</html>

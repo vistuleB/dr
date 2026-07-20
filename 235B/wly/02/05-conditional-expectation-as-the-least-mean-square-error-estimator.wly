@@ -15,8 +15,8 @@
 
         $$
         \begin{align*}
-        \mathbf{E}(X-Y)^2 &= \mathbf{E}[((X-Z)-(Y-Z))^2]
-        \\ &= \mathbf{E}(X-Z)^2 + \mathbf{E}(Y-Z)^2
+        \mathbf{E}(X-Y)^2 &= \mathbf{E}[((X-Z)-(Y-Z))^2] \\
+        &= \mathbf{E}(X-Z)^2 + \mathbf{E}(Y-Z)^2
         + 2 \mathbf{E}[(X-Z)(Y-Z)]
         \end{align*}
         $$

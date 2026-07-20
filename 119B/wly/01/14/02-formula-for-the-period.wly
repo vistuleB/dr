@@ -1,0 +1,62 @@
+|> SubSection
+    title=Formula for the period
+
+    We can now easily derive a formula for the period of oscillation $T$ of the pendulum. Let $t_{\textrm{max}}$ be the time at which the maximal angle $\theta_{\textrm{max}}$ is attained. We have
+
+    $$
+    \begin{align*}
+    k = \sin(\theta_{\textrm{max}}/2) = k \operatorname{sn}(\sqrt{\lambda}\, t_{\textrm{max}},k),
+    \end{align*}
+    $$
+
+    so $\operatorname{sn}(\sqrt{\lambda} t_{\textrm{max}},k)=1$, or equivalently,
+
+    $$
+    \begin{align*}
+    \sqrt{\lambda}\, t_{\textrm{max}} = \operatorname{sn}^{-1}(1,k) = \int_0^1 \frac{du}{\sqrt{(1-u^2)(1-k^2u^2)}}.
+    \end{align*}
+    $$
+
+    The integral on the right-hand side is known as the _complete elliptic integral of the second kind_, and denoted by $K(k)$:
+
+    $$
+    \begin{align*}
+    K(k) = \int_0^1 \frac{du}{\sqrt{(1-u^2)(1-k^2u^2)}}.
+    \end{align*}
+    $$
+
+    which is also sometimes written as
+
+    $$
+    \begin{align*}
+    K(k) = \int_0^{\pi/2} \frac{d\phi}{\sqrt{1-k^2 \sin^2\phi}},
+    \end{align*}
+    $$
+
+    using the substitution $u=\sin \phi$. By symmetry, the period of oscillation of the pendulum is $4t_{\textrm{max}}$ (refer to Figure 5; the time from $0$ to $t_{\textrm{max}}$ represents a passage around one quadrant in the phase plane). So, we have derived the well-known formula
+
+    $$
+    \begin{align*}
+    T= \frac{4}{\sqrt{\lambda}}K(k) = 4\sqrt{\frac{\ell}{g}} K(k)
+    = 4\sqrt{\frac{\ell}{g}} K(\sin (\theta_{\textrm{max}}/2)).
+    \end{align*}
+    $$
+
+    Since $K(0)=\pi/2$, for small values of $\theta_{\textrm{max}}$ we get the approximate formula for small oscillations
+
+    $$
+    \begin{align*}
+    T \approx T_0 = 2\pi \sqrt{\frac{\ell}{g}}.
+    \end{align*}
+    $$
+
+    Figure 6 illustrates the dependence of the period on the oscillation amplitude $\theta_{\textrm{max}}$.
+
+    |> figure
+
+        |> img
+            src=figures/pendulumperiod.png
+            style=max-width: 70%
+
+        |> figcaption
+            Figure 6: The period $T$ of a pendulum (measured in units of the period $T_0=2\pi\sqrt{\ell/g}$ for small oscillations) as a function of the oscillation amplitude $\theta_{\textrm{max}}$.

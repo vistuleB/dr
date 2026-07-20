@@ -8,8 +8,8 @@
     A nice characterization of the variance is that it is the minimal second moment. To compute the second moment around a point $t$, we can write
     $$
     \begin{eqnarray*}
-    \mathbf{E}(X-t)^2 &=& \mathbf{E}[ (X-\mathbf{E} X)-(t-\mathbf{E} X)]^2 \\ &=& \mathbf{E}(X-\mathbf{E} X)^2 + \mathbf{E}(t-\mathbf{E} X)^2 + 2(t-\mathbf{E} X) \mathbf{E}(X-\mathbf{E} X)
-    \\ &=& \mathbf{V}(X) + (t-\mathbf{E} X)^2 \ge \mathbf{V}(X).
+    \mathbf{E}(X-t)^2 &=& \mathbf{E}[ (X-\mathbf{E} X)-(t-\mathbf{E} X)]^2 \\ &=& \mathbf{E}(X-\mathbf{E} X)^2 + \mathbf{E}(t-\mathbf{E} X)^2 + 2(t-\mathbf{E} X) \mathbf{E}(X-\mathbf{E} X) \\
+    &=& \mathbf{V}(X) + (t-\mathbf{E} X)^2 \ge \mathbf{V}(X).
     \end{eqnarray*}
     $$
     So the function $t\to\mathbf{E}(X-t)^2$ is a quadratic polynomial that attains its minimum at $t=\mathbf{E} X$, and the value of the minimum is $\mathbf{V}(X)$. In words, the identity

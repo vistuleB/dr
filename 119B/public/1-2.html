@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-1.html"
+    ></a><a
+      id="next-page"
+      href="./1-3.html"
+    ></a>
+  </div>
+  <h1>
+    1.2
+    Hamiltonian systems
+  </h1>
+  <p>
+    Recall that the general form of a planar differential equation (i.e., a system of two first-order ODEs) is
+  </p>
+  <div
+    id="_1_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{1}
+    \begin{split}
+    \dot{p} &amp;= F(p,q,t), \\
+    \dot{q} &amp;= G(p,q,t),
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    where, in keeping with a tradition in the theory of ODEs, $\dot{f}$ denotes the derivative of a quantity $f$ with respect to the time variable $t$. The system is called a
+    <i>Hamiltonian system</i>
+    if there is a function
+  </p>
+  <div class="math-block">
+    $$
+    H=H(p,q,t)
+    $$
+  </div>
+  <p>
+    (called the
+    <i>Hamiltonian</i>
+    associated with the system) such that the functions $F$ and $G$ satisfy
+  </p>
+  <div class="math-block">
+    $$
+    F(p,q,t) = -\frac{\partial H}{\partial q}, \quad G(p,q,t) = \frac{\partial H}{\partial p}.
+    $$
+  </div>
+  <p>
+    In this case the system has the form
+  </p>
+  <div
+    id="_2_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{2}
+    \begin{split}
+    \dot{p} &amp;= -\frac{\partial H}{\partial q}, \\
+    \dot{q} &amp;= \ \ \frac{\partial H}{\partial p}.
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    The variable $p$ is sometimes called a
+    <i>generalized coordinate</i>, and the variable $q$ is called the
+    <i>generalized momentum</i>
+    associated to $p$.
+  </p>
+  <p>
+    When can we say that a given system
+    <a
+      href="./1-2.html#_1_h.a.i_"
+      class=""
+    >(1)</a>
+    is Hamiltonian? Assuming that $F$ and $G$ are continuously differentiable, it is not difficult to see that a necessary condition is that
+  </p>
+  <div
+    id="_3_h.a.i_"
+    class="math-block"
+  >
+    $$
+    \begin{equation} \tag{3}
+    \begin{split}
+    \frac{\partial F}{\partial p} = -\frac{\partial G}{\partial q},
+    \end{split}
+    \end{equation}
+    $$
+  </div>
+  <p>
+    (or $\frac{\partial F}{\partial p} +\frac{\partial G}{\partial q}=0$) since both sides of the equation are equal to $-\frac{\partial^2 H}{\partial p \partial q}$. Equivalently, this condition can be written as
+  </p>
+  <div class="math-block">
+    $$
+    \operatorname{div} \mathbf{V} = 0,
+    $$
+  </div>
+  <p>
+    where $\mathbf{V}$ denotes the planar vector field $\mathbf{V}= (F,G)$ (we interpret the first coordinate of $\mathbf{V}$ as the "$p$-coordinate" and the second coordinate as the "$q$-coordinate"), and $\operatorname{div} \mathbf{V}$ denotes the divergence of $\mathbf{V}$. In physics, a vector field with this property is called
+    <i>divergence-free</i>
+    or
+    <i>solenoidal</i>. Yet another way to write
+    <a
+      href="./1-2.html#_3_h.a.i_"
+      class=""
+    >(3)</a>
+    is
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \operatorname{curl} \mathbf{W} = 0,
+    \end{align*}
+    $$
+  </div>
+  <p>
+    where $\mathbf{W}$ is the vector field $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the (2-dimensional version of the) curl operator, defined by $\operatorname{curl}(A,B) = \frac{\partial A}{\partial q}-\frac{\partial B}{\partial p}$. A vector field with this property is called
+    <i>curl-free</i>
+    or
+    <i>irrotational</i>.
+  </p>
+  <div
+    class="statement lemma"
+    id="_4_h.a.i_"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>1.1</b>
+      
+    </h3>
+    <p>
+      If the equation
+      <a
+        href="./1-2.html#_1_h.a.i_"
+        class=""
+      >(1)</a>
+      is defined on a simply connected domain, the condition
+      <a
+        href="./1-2.html#_3_h.a.i_"
+        class=""
+      >(3)</a>
+      is both necessary and sufficient for the system to be Hamiltonian.
+    </p>
+  </div>
+  <div>
+    <p>
+      <span class="proof">Proof</span>This is a slight reformulation of a familiar fact from vector calculus, that says that in a simply connected domain, a vector field $\mathbf{W}=(A,B)$ is curl-free if and only if it is
+      <i>conservative</i>. A conservative vector field is one for which the line integral of the field between two points is independent of the contour connecting them, or equivalently, such that the line integral on any
+      <i>closed</i>
+      contour vanishes. Such a vector field can always be represented as $\mathbf{W} = \nabla H$ (the gradient of $H$) for some scalar function $H$; one simply defines $H(p,q)$ as the line integral (which for a conservative field is independent of the path of integration)
+    </p>
+    <div class="math-block">
+      $$
+      H(p,q) = \int_{(p_0,q_0)}^{(p,q)} \mathbf{W}\cdot \mathbf{ds} = \int_{(p_0,q_0)}^{(p,q)} A\,dp + B\,dq
+      $$
+    </div>
+    <p>
+      between some fixed but arbitrary initial point $(p_0,q_0)$ and the point $(p,q)$. The fact that $\mathbf{W}=\nabla H$ is immediate from the fundamental theorem of calculus. In our case, $\mathbf{W}=(G,-F)$ so the equation $\mathbf{W}=\nabla H$ gives exactly the pair of equations $F=-\frac{\partial H}{\partial q}$, $G=\frac{\partial H}{\partial p}$, with $H$ serving as the desired Hamiltonian.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+    </p>
+  </div>
+</body>
+</html>

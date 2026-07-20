@@ -97,8 +97,8 @@
     <div class="math-block">
       $$
       \begin{align*}
-      H(X\,|\,Y) &amp;= -\sum_{j=1}^m \sum_{k=1}^d \mathrm{P}(X=\alpha_k, Y=\beta_j) \log_2 \mathrm{P}(X = \alpha_k\,|\,Y=\beta_j)
-      \ &amp;= \sum_{j=1}^m \mathrm{P}(Y=\beta_j) H(X\,|\,Y=\beta_j).
+      H(X\,|\,Y) &amp;= -\sum_{j=1}^m \sum_{k=1}^d \mathrm{P}(X=\alpha_k, Y=\beta_j) \log_2 \mathrm{P}(X = \alpha_k\,|\,Y=\beta_j) \\
+      &amp;= \sum_{j=1}^m \mathrm{P}(Y=\beta_j) H(X\,|\,Y=\beta_j).
       \end{align*}
       $$
     </div>
@@ -131,8 +131,8 @@
     $$
     \begin{align*}
     -\frac1n \mathbf{E}&amp;\Big[ \log_2 p(X_1) + \log_2 p(X_2\,|\,X_1)
-    + \log_2 p(X_3\,|\,X_1,X_2) + \ldots + p(X_n\,|\,X_1,\ldots,X_{n-1}) \Big]
-    \ &amp;= -\frac1n \mathbf{E} \left[\log_2 p(X_1,\ldots,X_n)\right] = \frac{1}{n}H(X_1,\ldots,X_n).
+    + \log_2 p(X_3\,|\,X_1,X_2) + \ldots + p(X_n\,|\,X_1,\ldots,X_{n-1}) \Big] \\
+    &amp;= -\frac1n \mathbf{E} \left[\log_2 p(X_1,\ldots,X_n)\right] = \frac{1}{n}H(X_1,\ldots,X_n).
     \end{align*}
     $$
   </div>
@@ -316,11 +316,11 @@
       \mathbf{1}_{\{X_0=\alpha_j\}}
       \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
       \,|\,\mathcal{G}_{-\infty}^{-1}\right)
-      \Big]
-      \ &amp;= -\sum_{j=1}^d \mathbf{E}\Big[ \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
+      \Big] \\
+      &amp;= -\sum_{j=1}^d \mathbf{E}\Big[ \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
       \mathbf{E}\left(\mathbf{1}_{\{X_0=\alpha_j\}}\,|\,\mathcal{G}_{-\infty}^{-1}\right)
-      \Big]
-      \ &amp;= -\sum_{j=1}^d \mathbf{E}\Big[
+      \Big] \\
+      &amp;= -\sum_{j=1}^d \mathbf{E}\Big[
       p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
       \log_2 p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
       \Big],
@@ -383,15 +383,15 @@
     >
       $$
       \begin{align*}
-      \mathbf{E}(Z_n) &amp;= \mathbf{E} \left[\mathbf{E}\left(Z_n\,|\,\mathcal{G}_{-\infty}^{-1}\right)\right]
-      \ &amp;= \mathbf{E}\left[
+      \mathbf{E}(Z_n) &amp;= \mathbf{E} \left[\mathbf{E}\left(Z_n\,|\,\mathcal{G}_{-\infty}^{-1}\right)\right] \\
+      &amp;= \mathbf{E}\left[
       \sum_{x_0,\ldots,x_{n-1}\in A}
       \mathbf{E}\left(
       \frac{p(x_0,\ldots,x_{n-1})}{p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})}
       p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
       \,|\,\mathcal{G}_{-\infty}^{-1}\right)
-      \right]
-      \ &amp;= \tag{39} \sum_{x_0,\ldots,x_{n-1}\in A} p(x_0,\ldots,x_{n-1}) = 1.
+      \right] \\
+      &amp;= \tag{39} \sum_{x_0,\ldots,x_{n-1}\in A} p(x_0,\ldots,x_{n-1}) = 1.
       \end{align*}
       $$
     </div>
@@ -405,14 +405,14 @@
     <div class="math-block">
       $$
       \begin{align*}
-      0 &amp;\le -\limsup_{n\to\infty} \frac{1}{n} \log_2 Z_n = \liminf_{n\to\infty} \left(-\frac{1}{n} \log_2 Z_n\right)
-      \ &amp;= \liminf_{n\to\infty} \left[
-      -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}) + \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1}) \right]
-      \ &amp;=
+      0 &amp;\le -\limsup_{n\to\infty} \frac{1}{n} \log_2 Z_n = \liminf_{n\to\infty} \left(-\frac{1}{n} \log_2 Z_n\right) \\
+      &amp;= \liminf_{n\to\infty} \left[
+      -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}) + \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1}) \right] \\
+      &amp;=
       \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] +
       \lim_{n\to\infty}
-      \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
-      \ &amp;=
+      \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1}) \\
+      &amp;=
       \liminf_{n\to\infty} \left[-\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1})\right] - H.
       \end{align*}
       $$
@@ -498,10 +498,10 @@
     <div class="math-block">
       $$
       \begin{align*}
-      0 &amp;\ge \limsup_{n\to\infty} \frac{1}{n} \log_2 Y_n
-      \ &amp;= \limsup_{n\to\infty} \left[
-      \frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) - \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right]
-      \ &amp;=
+      0 &amp;\ge \limsup_{n\to\infty} \frac{1}{n} \log_2 Y_n \\
+      &amp;= \limsup_{n\to\infty} \left[
+      \frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) - \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right] \\
+      &amp;=
       -H_k + \limsup_{n\to\infty} \left(- \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right),
       \end{align*}
       $$

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 2.5 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 2.5 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 2.5 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./2-4.html"
+    ></a><a
+      id="next-page"
+      href="./2-6.html"
+    ></a>
+  </div>
+  <h1>
+    2.5
+    Stability of fixed points
+  </h1>
+  <p>
+    What happens to the system $x_{n+1}=T(x_n)$ if we move slightly away from a fixed point $x_*$? We will call the fixed point $x_*$
+    <i>asymptotically stable</i>, or
+    <i>attracting</i>, if it has the property that for initial points $x_0$ in some small neighborhood $(x_*-\delta, x_*+\delta)$ of $x_*$, the sequence of iterates $x_n = T^n(x_0)$ converges to $x_*$. We will say that $x_*$ is
+    <i>asymptotically unstable</i>, or
+    <i>repelling</i>, if there is some $\delta&gt;0$ such that for any initial point $x_0\neq x_*$, the sequence of iterates $x_n=T^n(x_0)$ will eventually leave the interval $[x_*-\delta,x_*+\delta]$. It is also possible for a fixed point to exhibit a mixture of the two types of behavior; for example, it may be attracting for initial points $x_0&gt;x_*$ and repelling for $x_0&lt;x_*$.
+  </p>
+  <p>
+    To understand the stability properties near a fixed point, consider the linear approximation to $T$ around $x_*$ (assuming it is continuously differentiable in a neighborhood of the fixed point):
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    T(x) &amp;= T(x_*) + T'(x_*) (x-x_*) + o(x-x_*) \\ &amp;= x_* + T'(x_*) (x-x_*) + o(x-x_*),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    i.e., if the initial point $x_0$ is near $x_*$ then by the neglecting the little-o $o(x-x_*)$ term, we see that for the first few values we have approximately
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    x_{n+1} - x_* \approx T'(x_*) (x_n-x_*),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    or, denoting $y_n = x_n-x_*$ and $\lambda=T'(x_*)$,
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    y_{n+1} \approx \lambda y_n,
+    \end{align*}
+    $$
+  </div>
+  <p>
+    which is the recurrence for geometric growth. Ignoring the small inaccuracy that comes from the linearization, clearly $y_n\to 0$ if $|\lambda|&lt;1$, and $|y_n|$ becomes larger than some fixed small number $\delta&gt;0$ if $|\lambda|&gt;1$. Thus, we have essentially proved the following fact.
+  </p>
+  <div
+    class="statement lemma"
+    id="_42_h.a.i_"
+  >
+    <h3>
+      <b>Lemma</b>
+      <b>2.18</b>
+      
+    </h3>
+    <p>
+      For a fixed point $x_*$, if $|T'(x_*)|&lt;1$ then the fixed point is asymptotically stable, and if $|T'(x_*)|&gt;1$ then the fixed point is asymptotically unstable.
+    </p>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.19</b>
+      
+    </h3>
+    <p>
+      Complete the argument sketched above to get a rigorous proof of
+      <a
+        href="./2-5.html#_42_h.a.i_"
+        class=""
+      >Lemma 2.18</a>.
+    </p>
+  </div>
+  <div class="statement example">
+    <h3>
+      <b>Example</b>
+      <b>2.20</b>
+      
+    </h3>
+    <p>
+      In the example above involving $T(x)=x^2$, we have $T'(0)=0$ and $T'(1)=2$, so $0$ is an asymptotically stable fixed point, and $1$ is an asymptotically unstable fixed point.
+    </p>
+  </div>
+  <div class="statement example">
+    <h3>
+      <b>Example</b>
+      <b>2.21</b>
+      
+    </h3>
+    <p>
+      Pull out a pocket calculator and repeatedly press the "$\cos$" button. The value on the display will converge to the number $x_*\approx0.739085$, which is the unique fixed point of $T(x)=\cos x$. Note that $T'(x_*)=-\sin(x_*)\approx -0.673$, which shows that the fixed point is asymptotically stable. Note that the fact that $T'(x)&lt;0$ means that the values of $x_n=\cos^n(0)$ will oscillate around $x_*$, producing values that are alternately bigger and smaller than $x_*$.
+    </p>
+  </div>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>2.22</b>
+      
+    </h3>
+    <p>
+      In the case in which $|T'(x_*)|=1$ but $T"(x_*)\neq 0$, characterize the asymptotic stability of the fixed point as a function of $T'(x_*)$ and $T"(x_*)$.
+    </p>
+  </div>
+</body>
+</html>

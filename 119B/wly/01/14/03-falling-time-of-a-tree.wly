@@ -1,0 +1,46 @@
+|> SubSection
+    title=Falling time of a tree
+
+    A related question concerns the time it takes a vertical standing object such as a tree to fall over from its vertical position once it is given a small destabilizing push. This corresponds almost exactly to the pendulum starting from the inverted position $\theta(0)=\pi$, except for the fact that a tree is actually a _compound_ pendulum whose mass is distributed in some fashion along its entire length. However, the essential facts remain the same for such a pendulum --- one simply has to change the length parameter $\ell$ (see the exercise below, which deals with the case in which the distribution of mass is uniform along the length of the rod on which the pendulum swings). Of course, if the initial angular velocity $\dot{\theta}(0)$ is $0$, then we have an equilibrium state and the tree will not fall over. But this is an unstable equilibrium, so even a tiny non-zero initial angular velocity $\dot{\theta}(0)=\omega_0$ would lead to toppling.
+
+    To derive the toppling time, which we denote by $\tau$, observe that the question is equivalent to asking how long it would take for the pendulum starting from the modified initial condition $\theta(0)=0$, $\dot{\theta}(0)=\omega_{\textrm{max}}$ to swing between the angles $\theta=\pi/2$ and $\theta=\pi$, where $\omega_{\textrm{max}}$, the angular velocity at the bottom position $\theta=0$ (which is the maximal angular velocity the pendulum will attain during its motion), is related to $\omega_0$ by the conservation of energy equation
+
+    $$
+    \begin{align*}
+    \tfrac12 \omega_0^2 - \lambda \cos(\pi) = \tfrac12 \omega_{\textrm{max}}^2 - \lambda \cos(0),
+    \end{align*}
+    $$
+
+    giving the relation $\omega_{\textrm{max}} = \sqrt{\omega_0^2+4\lambda}$. In other words, using the solution we just derived for just such initial conditions, and specifically (>>eq:ellipticintegral-trig), the quantity we are trying to compute can be written as the difference of two times $\tau = t_2-t_1$, where
+
+    $$
+    \begin{align*}
+    2 \sqrt{\lambda}\, t_1 &= \int_0^{\pi/2} \frac{d\theta}{\sqrt{k^2-\sin^2\tfrac{\theta}{2}}}, \\
+    2 \sqrt{\lambda}\, t_2 &= \int_0^{\pi} \frac{d\theta}{\sqrt{k^2-\sin^2\tfrac{\theta}{2}}}
+    \end{align*}
+    $$
+
+    and $k=\omega_{\textrm{max}}/2\sqrt{\lambda} = \sqrt{1+\frac{\omega_0^2}{4\lambda}}$. This can be written succinctly in terms of the special function $K(k)$ and another variant, the _incomplete elliptic integral of the first kind_ $F(\alpha, k)$, defined by
+
+    $$
+    \begin{align*}
+    F(\alpha,k) = \int_0^\alpha \frac{d\phi}{\sqrt{1-k^2 \sin^2 \phi}}.
+    \end{align*}
+    $$
+
+    (Note that $K(k)=F(\pi/2,k)$.) In this notation, we have
+
+    $$
+    \begin{align*}
+    \tau &= \frac{1}{2\sqrt{\lambda}} \int_{\pi/2}^\pi \frac{d\theta}{\sqrt{k^2-\sin^2 \tfrac{\theta}{2}}}
+    = \frac{1}{k \sqrt{\lambda}} \int_{\pi/4}^{\pi/2} \frac{d\phi}{\sqrt{1-k^{-2}\sin^2 \phi}} \\ &=
+    K(k^{-1}) - F(\pi/4,k^{-1}).
+    \end{align*}
+    $$
+
+    Note that $\tau$ becomes arbitrarily large when $\omega_0$ approaches $0$.
+
+    |> Exercise
+        label=Compound pendulum
+
+        The falling tree problem is more accurately modeled by a _compound pendulum_, where we assume the mass $m$ is spread out uniformly along the length of the swinging rod, instead of being concentrated at its end. Show that the motion of a compound pendulum with length $\ell$ is equivalent to that of a simple pendulum with length $2\ell/3$.

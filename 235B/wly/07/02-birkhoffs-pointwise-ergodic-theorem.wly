@@ -48,16 +48,16 @@
         \begin{align*}
         \mathbf{E}(X \mathbf{1}_{\{M_n > 0 \}})
         &\ge
-        \mathbf{E}\left[(\max(S_1,\ldots,S_n) - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}}\right]
-        \\ &=
-        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}}\right]
-        \\ &=
+        \mathbf{E}\left[(\max(S_1,\ldots,S_n) - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}}\right] \\
+        &=
+        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}}\right] \\
+        &=
         \mathbf{E}\left[(M_n - M_n\circ T)\right]
         -
-        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}^c}\right]
-        \\ &= 0 -
-        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n = 0 \}}\right]
-        \\ &=
+        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n > 0 \}^c}\right] \\
+        &= 0 -
+        \mathbf{E}\left[(M_n - M_n\circ T) \mathbf{1}_{\{M_n = 0 \}}\right] \\
+        &=
         \mathbf{E}\left[(M_n\circ T) \mathbf{1}_{\{M_n = 0 \}}\right] \ge 0.
         \end{align*}
         $$
@@ -92,8 +92,8 @@
 
         $$
         \begin{align*}
-        A&=\{\limsup_{n\to\infty} S_n/n>\epsilon\} \subseteq A \cap \{ S_n>n\epsilon \textrm{ for some }n\ge 1\}
-        \\ &= \bigcup_{n=1}^\infty \{ (S_n-n\epsilon)\mathbf{1}_A > 0 \} = \left\{ \sup_{n\ge 1} S_n^*>0 \right\} = B.
+        A&=\{\limsup_{n\to\infty} S_n/n>\epsilon\} \subseteq A \cap \{ S_n>n\epsilon \textrm{ for some }n\ge 1\} \\
+        &= \bigcup_{n=1}^\infty \{ (S_n-n\epsilon)\mathbf{1}_A > 0 \} = \left\{ \sup_{n\ge 1} S_n^*>0 \right\} = B.
         \end{align*}
         $$
 

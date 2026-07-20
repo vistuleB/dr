@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 3.5.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 3.5.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 3.5.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./3-5-1.html"
+    ></a><a
+      id="next-page"
+      href="./3-5-3.html"
+    ></a>
+  </div>
+  <h1>
+    3.5.2
+    Taking velocity into account
+  </h1>
+  <p>
+    It is apparent that to achieve stable levitation, a new idea is needed. Note that until now we only used information about the position of the particle. Why not use information about its velocity (the $y$ coordinate of the system's state $(x,\dot{x})$ when represented as a planar system) as well? Intuitively, this should help, since it's clear that the reason for oscillations developing in the previous scheme is that we are allowing the particle to overshoot the equilibrium point from either direction before toggling the state of the electromagnet; by looking at the velocity we could predict where the particle will be in a short time and do the toggling in advance in a way that will gradually reduce the size of the oscillations.
+  </p>
+  <p>
+    Formally, the idea described above leads to a feedback rule of the type
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    u = -\operatorname{sgn}(x+b\dot{x}),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    where $b&gt;0$ is a small numerical constant. This leads to the modified system
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \dot{x} = y, \quad \dot{y}= - \operatorname{sgn}(x+b y).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    To draw the phase portrait for the modified system, again one has to combine the curves from the simple gravity system
+    <a
+      href="./3-5-1.html#_56_h.a.i_"
+      class=""
+    >(44)</a>
+    with their mirror images, but the choice of which one to draw at a given point goes according to which side of the line $x+by=0$ the point is on. Finding the intersection points of the parabolas $x=a-\tfrac12 y^2$ and $x=a+\tfrac12y^2$ with the line $x+by=0$ leads to quadratic equations which are easily solved, so the phase portrait can be plotted fairly easily. The result is shown in Figure 16.
+  </p>
+  <figure>
+    <img
+      src="figures/phasediag-magnet-stable.png"
+      style="max-width: 55%"
+    >
+    <figcaption>
+      Figure 16: A feedback rule based on a linear combination of position and velocity leads to stable levitation. The final stage of the convergence to the equilibrium point is a non-smooth "sliding motion" along a "chattering curve", shown in black.
+    </figcaption>
+  </figure>
+  <p>
+    A look at the phase portrait suggests that the idea is successful, and indeed results in stable levitation. It is not difficult to confirm this analytically. One interesting behavior that emerges upon closer examination of the properties of this system is that when $(x,y)$ crosses the switching line $x+by=0$, if the point is close enough to the origin then the equation of motion becomes ill-defined, since the vector field $(y,-\operatorname{sgn}(x+by))$ starts pointing back towards the switching line. In practice, due to time-delay effects in any physical implementation of the system, the particle will undergo a "sliding motion" in which it oscillates violently around both sides of the switching motion, all the while still sliding towards the origin. This phenomenon has been referred to as
+    <i>chattering</i>, since in physical implementations where the binary switching is done using an electrical relay, the high frequency switching makes a chattering noise. We can estimate the rate at which the particle will approach the origin during the sliding motion stage: since the sliding motion happens very near the line $x+by=0$ and we have the equation $\dot{x}=y$, the particle's position will approximately satisfy the ODE $\dot{x}=-x/b$, whose solution is given by
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    x(t) = c e^{-t/b}.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    That is, the convergence to the origin in the final sliding stage is exponential, with a time constant of $1/b$.
+  </p>
+  <div class="statement exercise">
+    <h3>
+      <b>Exercise</b>
+      <b>3.6</b>
+      
+    </h3>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          Show that the sliding motion for points along the line $x+by=0$ happens precisely for $|x|\le b^2$.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we start the system at a point $(x_0,y_0)$ that lies on the switching line $x+by=0$, find a formula for the time it takes the point to flow into the sliding motion area connecting the points $(-b^2,b)$ and $(b^2,-b)$.)
+        </p>
+      </li>
+    </ol>
+  </div>
+</body>
+</html>

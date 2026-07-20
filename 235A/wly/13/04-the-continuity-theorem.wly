@@ -18,8 +18,8 @@
         Part (i) follows immediately from the fact that convergence in distribution implies that $\mathbf{E} g(X_n)\to \mathbf{E} g(X)$ for any bounded continuous function. It remains to prove the less trivial claim in part (ii). Assume that $\varphi_{X_n}(t)\to \varphi(t)$ for all $t\in\R$ and that $\varphi$ is continuous at $0$. First, we show that the sequence $(X_n)_{n=1}^\infty$ is tight. Fixing an $M>0$, we can bound the probability $\mathrm{P}(|X_n|>M)$, as follows:
         $$
         \begin{eqnarray*} \mathrm{P}(|X_n|>M) &=& \mathbf{E}\left( \mathbf{1}_{\{|X_n|>M\}}\right) \le
-        \mathbf{E} \left[ 2 \left( 1-\frac{M}{2|X_n|} \right) \mathbf{1}_{\{|X_n|>M\}}\right]
-        \\ &\le&
+        \mathbf{E} \left[ 2 \left( 1-\frac{M}{2|X_n|} \right) \mathbf{1}_{\{|X_n|>M\}}\right] \\
+        &\le&
         \mathbf{E} \left[ 2 \left( 1-\frac{\sin(2X_n/M)}{2X_n/M} \right) \mathbf{1}_{\{|X_n|>M\}}\right].
         \end{eqnarray*}
         $$
@@ -27,8 +27,8 @@
         $$
         \begin{eqnarray*}
         &&\mathbf{E} \left[ 2 \left( 1-\frac{\sin(2X_n/M)}{2X_n/M} \right) \mathbf{1}_{\{|X_n|>M\}}\right]
-        \ \ =\ \  2\int_{|x|>2/\delta} \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x)
-        \\ &\le& 2\int_{-\infty}^\infty \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x)
+        \ \ =\ \  2\int_{|x|>2/\delta} \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x) \\
+        &\le& 2\int_{-\infty}^\infty \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x)
         = \int_{-\infty}^\infty \frac{1}{\delta}\left(\int_{-\delta}^\delta (1-e^{itx})\,dt\right)\,d\mu_{X_n}(x).
         \end{eqnarray*}
         $$

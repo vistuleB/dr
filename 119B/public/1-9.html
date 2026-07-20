@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 1.9 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 1.9 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 1.9 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./1-8.html"
+    ></a><a
+      id="next-page"
+      href="./1-10.html"
+    ></a>
+  </div>
+  <h1>
+    1.9
+    The principle of least action
+  </h1>
+  <p>
+    For times $t_0&lt;t_1$, define the
+    <i>action</i>
+    $A(t_0,t_1)$ of a Lagrangian system from time $t_0$ to time $t_1$ as the integral of the Lagrangian:
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    A(t_0,t_1)=\textrm{action} = \int_{t_0}^{t_1} L(\dot{q}(t),q(t),t)\,dt.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    The action is a function of an arbitrary curve $q(t)$. The
+    <i>principle of least action</i>
+    is the statement that if the system was in coordinate $q_0$ at time $t_0$ and in coordinate $q_1$ at time $t_1$, then its trajectory between time $t_0$ and time $t_1$ is that curve which minimizes the action $A(t_0,t_1)$, subject to the constraints $q(t_0)=q_0, q(t_1)=q_1$. This is a surprising statement, which we will see is
+    <i>almost</i>
+    equivalent to the Euler-Lagrange equation --- only almost, since, to get the equivalence, we will need to first modify the principle slightly to get the more precise version known as the
+    <i>principle of stationary action</i>.
+  </p>
+  <p>
+    The principle of least action can be thought of as a strange,
+    <i>non-causal</i>
+    interpretation of the laws of mechanics. We are used to thinking of the laws of nature as manifesting themselves through interactions that are local in space and time: a particle's position $\mathbf{x}+d\mathbf{x}$ and velocity $\mathbf{v}+d\mathbf{v}$ at time $t+dt$, are related to its position $\mathbf{x}$ and velocity $\mathbf{v}$ at time $t$, as well as to external forces acting on the particle, which are also determined by "local" events in the vicinity of $\mathbf{x}$ at time $t$. This way of thinking can be thought of as the
+    <i>causal</i>
+    interpretation, in which every effect produced at a given point in space and time is immediately preceded by, and can be directly attributable to, another event causing the effect. Mathematically, this means the laws of nature can be written as (ordinary or partial) differential equations.
+  </p>
+  <p>
+    On the other hand, the principle of least action (and other similar principles that appear in physics, including in more fundamental areas of physics such as quantum mechanics, that we know represent a more correct view of our physical reality) can be thought of as saying that, in order to bring a physical system from state $A$ to state $B$ over a given period of time, Nature somehow tries all possible ways of doing it, and selects the one that minimizes the action. The entire trajectory appears to be chosen "all at once," so that each part of it seems to depend on other parts which are far away in space and time. This rather unintuitive interpretation is nonetheless mathematically correct, and even at the physical level it has been suggested that there is some truth to it (the arguments for why this is so involve deep ideas from quantum mechanics that are beyond the scope of this course).
+  </p>
+</body>
+</html>

@@ -1,0 +1,134 @@
+|> SubSection
+    title=The one dimensional LQP control problem
+
+    Since the problem in this generality is somewhat complicated to analyze, to illustrate the main ideas we will focus on a simple one-dimensional settting in which $m=n=1$, the differential equation becomes
+
+    $$
+    \begin{align*}
+    \dot{x} = ax+bu
+    \end{align*}
+    $$
+
+    for some constants $a,b\in\mathbb{R}$, and the cost functional takes the form
+
+    $$
+    \begin{align*}
+    I = \int_{t_1}^{t_2} (px^2+qu^2)\,dt
+    \end{align*}
+    $$
+
+    for some numbers $p,q>0$. Note that, for a given control rule, to compute $I$ all that one needs to know is the initial condition $x(t_1)$ and the duration $T=t_2-t_1$ over which the cost is integrated (that is, changing the left endpoint $t_1$ of the interval $[t_1,t_2]$ while keeping its length fixed will not change the cost functional). Let $I_*(w,T)$ denote the optimal control cost associated with an initial condition $x(t_1)=w$ and an interval $[t_1,t_2]$ of length $T$:
+
+    $$
+    \begin{align*}
+    I_*(w,T) = \min_{\textrm{control rule $u$}} \int_{t_1}^{t_1+T} (p x^2+qu^2)\,dt
+    \ \qquad (x(t_1)=w).
+    \end{align*}
+    $$
+
+    In the derivation that follows, we assume that $t_2<\infty$ and that $I_*(w,T)$ is a smooth function of $w$ and $T$. Furthermore, it is not hard to see due to the quadratic nature of $I$ that the dependence of $I_*(w,T)$ on $w$ is also quadratic, i.e., we can write
+
+    $$
+    \begin{align*}
+    I_*(w,T) = v(T) w^2
+    \end{align*}
+    $$
+
+    for some smooth function $v(T)$. The variable $T=t_2-t_1$ is nonnegative, and for $T=0$ we clearly have $v(0)=0$.
+
+    Now, let $\delta$ be a small positive number. We separate the interval $[t_1,t_2]$ into the subintervals $[t_1,t_1+\delta]$ and $[t_1+\delta,t_2]$. When optimal control is used for the entire interval $[t_1,t_2]$, in particular the control rule for each subinterval is also optimal. Thus, we have the equation
+
+    $$
+    \begin{equation} eq:lqp-subintervals##<<
+    \begin{split}
+    I_*(w,T) = I_*(w,\delta) + I_*(z,T-\delta),
+    \end{split}
+    \end{equation}
+    $$
+
+    where $z=x(t_1+\delta)$ is the value obtained from the solution of the optimal control problem with initial condition $x(t_1)=w$ for the interval $[t_1,t_1+\delta]$. When $\delta$ is small, we have the following linear approximations in $\delta$:
+
+    $$
+    \begin{equation} eq:lqp-approx##<<
+    \begin{split}
+    I_*(w,\delta) &= (p w^2 + q u_*^2)\delta + O(\delta^2), \\
+    z &= w + \dot{x}(0)\delta + O(\delta)^2 = w + (aw+b u_*)\delta + O(\delta^2),
+    \end{split}
+    \end{equation}
+    $$
+
+    where $u_*$ is the value of the control variable at time $t=t_1$ when optimal control is used with initial condition $x(t_1)=w$ over the interval $[t_1,t_2]$. Note that like $I_*$, $u_*$ depends only on $w$ and $T=t_2-t_1$. Furthermore, by dimensional considerations, the dependence of $u_*$ on $w$ is linear, so we may write
+
+    $$
+    \begin{align*}
+    u_* = - k(T)w.
+    \end{align*}
+    $$
+
+    The scalar quantity $k(T)$ is a gain factor, analogous to the operator $K$ mentioned above in connection with the LQP control problem in arbitrary dimension.
+
+    Now, continuing (>>eq:lqp-subintervals), we may further expand all terms on the right-hand side as linear approximations in $\delta$:
+
+    $$
+    \begin{align*}
+    I_*(w,T) &= I_*(w,\delta) + I_*(z,T-\delta) \\
+    &= (p w^2 + q u_*^2)\delta \\ & \qquad +
+    I_*(w,T) + \frac{\partial I_*}{\partial w}(w,T)(z-w) + \frac{\partial I_*}{\partial T}(w,T)(-\delta) + O(\delta^2) \\
+    &=
+    I_*(w,T) + \delta\left[
+    (p w^2+qu_*^2) + 2w v(T)(aw+b u_*) - v'(T) w^2
+    \right] \\
+    & \qquad + O(\delta^2).
+    \end{align*}
+    $$
+
+    In the limit when $\delta\downarrow 0$ we therefore get that
+
+    $$
+    \begin{align*}
+    (p w^2+qu_*^2) + 2w v(T)(aw+b u_*) - v'(T) w^2 = 0,
+    \end{align*}
+    $$
+
+    or, substituting $-k(T)w$ for $u_*$, we have the equation
+
+    $$
+    \begin{align*}
+    w^2\left(
+    p + q k^2 + 2av(T) -2 b k v(T) -v'(T)
+    \right) = 0,
+    \end{align*}
+    $$
+
+    where we write $k$ instead of $k(T)$. Since $w$ is arbitrary, we get the relation
+
+    $$
+    \begin{equation} eq:lqp-quadratic-poly##<<
+    \begin{split}
+    p + q k^2 + 2av(T) -2 b k v(T) -v'(T) = 0.
+    \end{split}
+    \end{equation}
+    $$
+
+    We still don't know $k$ (or equivalently, $u_*$); but now, recalling that $u_*$ was defined from the value of the control variable _under optimal control_, we see that the left-hand side of (>>eq:lqp-quadratic-poly), which is a quadratic polynomial in $k$, must take its minimum at the correct value $k=k(T)$:
+
+    $$
+    \begin{align*}
+    k &= \textrm{value of $s$ for which }\  qs^2-2b v(T) s + p-v'(T)\ \textrm{ is minimized} \\
+    &= \frac{b v(T)}{q}.
+    \end{align*}
+    $$
+
+    (Recall that a quadratic polynomial $a_2s^2+a_1s+a_0$ has its extremum point when $s=-a_1/2a_2$, as can be seen by equating its derivative to $0$).
+
+    Summarizing, we have found that the unknown gain function $k(T)$ is given by $k(T) = b v(T)/q$, where $v(T)$, heretofore also unknown, is the solution of the differential equation
+
+    $$
+    \begin{equation} eq:lqp-ricatti1##<<
+    \begin{split}
+    v'(T) = p + 2 a v(T) - \frac{b^2}{q} v(T)^2
+    \end{split}
+    \end{equation}
+    $$
+
+    obtained by plugging the expression for $k(T)$ back into (>>eq:lqp-quadratic-poly), with the initial condition $v(0)=0$. This is the _Ricatti equation with constant coefficients_.

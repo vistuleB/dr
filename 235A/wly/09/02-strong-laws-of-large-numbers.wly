@@ -29,8 +29,8 @@
         $$
         \begin{eqnarray*}
         T_n^4 &=& \sum_{k=1}^n \hat{X_k}^4 + \binom{4}{1} \sum_{1 \le i\neq j \le n} \hat{X_i}^3 \hat{X_j}
-        + \frac12\binom{4}{2}\sum_{1 \le i\neq j \le n} \hat{X_i}^2 \hat{X_j}^2
-        \\ & & + \frac12\binom{4}{2,1,1} \sum_{1\le i,j,k \le n\textrm{ distinct}} \hat{X_i}^2 \hat{X_j} \hat{X_k}
+        + \frac12\binom{4}{2}\sum_{1 \le i\neq j \le n} \hat{X_i}^2 \hat{X_j}^2 \\
+        & & + \frac12\binom{4}{2,1,1} \sum_{1\le i,j,k \le n\textrm{ distinct}} \hat{X_i}^2 \hat{X_j} \hat{X_k}
         + \frac{1}{4!}\binom{4}{1,1,1,1} \sum_{1 \le i,j,k,\ell \le n\textrm{ distinct}} \hat{X_i} \hat{X_j} \hat{X_k} \hat{X_\ell}
         \end{eqnarray*}
         $$
@@ -58,13 +58,13 @@
         $$
         \begin{eqnarray*}
         \mathrm{P}\left( \left| \frac{T_n}{n}-\frac{T_{n_k}}{n_k} \right| > \epsilon \right) &=& \mathrm{P}\left( \left|
-        \frac{n_k T_n - n T_{n_k}}{n\cdot n_k} \right|>\epsilon\right)
-        \\ \textrm{(by triangle ineq.)}  &\le&
+        \frac{n_k T_n - n T_{n_k}}{n\cdot n_k} \right|>\epsilon\right) \\
+        \textrm{(by triangle ineq.)}  &\le&
         \mathrm{P}\left( \left| \frac{T_n -T_{n_k}}{n_k} \right| > \epsilon/2 \right)+ \mathrm{P}\left( \left|T_n\right| \frac{n-n_k}{n\cdot n_k}
-        > \epsilon/2 \right)
-        \\ \textrm{(by Chebyshev's ineq.)} &\le&
-        \frac{4 \mathbf{V}(T_n-T_{n_k})}{\epsilon^2 n_k^2} + \frac{4\mathbf{V}(T_n)(n-n_k)^2}{n^2 n_k^2}
-        \\ &\le&
+        > \epsilon/2 \right) \\
+        \textrm{(by Chebyshev's ineq.)} &\le&
+        \frac{4 \mathbf{V}(T_n-T_{n_k})}{\epsilon^2 n_k^2} + \frac{4\mathbf{V}(T_n)(n-n_k)^2}{n^2 n_k^2} \\
+        &\le&
         \frac{10 k \sigma^2}{\epsilon^2 k^4} + \frac{20 k^4 \sigma^2}{k^8} < \frac{20 \sigma^2}{k^3},
         \end{eqnarray*}
         $$
@@ -75,8 +75,8 @@
         \begin{eqnarray*}
         \mathrm{P}\left(\max_{n_k \le n < n_{k+1}} \left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon \right)
         &=&
-        \mathrm{P}\left(\bigcup_{n_k \le n < n_{k+1}} \left\{\left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon \right\}\right)
-        \\ &\le& \sum_{n=n_k}^{n_{k+1}-1}
+        \mathrm{P}\left(\bigcup_{n_k \le n < n_{k+1}} \left\{\left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon \right\}\right) \\
+        &\le& \sum_{n=n_k}^{n_{k+1}-1}
         \mathrm{P}\left(\left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon \right) < \frac{20 \sigma^2\cdot 2k}{k^3}
         = \frac{40\sigma^2}{k^2}.
         \end{eqnarray*}
@@ -178,13 +178,13 @@
             $$
             \begin{eqnarray*}
             \sum_{m=1}^\infty \frac{\mathbf{V}(Y_m)}{m^2} &\le& \sum_{m=1}^\infty \frac{1}{m^2} \mathbf{E}(Y_m^2)
-            =\sum_{m=1}^\infty \frac{1}{m^2}\mathbf{E}\left(X_m^2 \mathbf{1}_{\{X_m\le m\}}\right)
-            \\ &=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^\infty \mathrm{P}\left(X_m^2 \mathbf{1}_{\{X_m\le m\}}>t\right)dt
-            \\ &=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^\infty \mathrm{P}\left(\sqrt{t} \le X_m \le m \right)dt
-            \\ &=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^{m^2} \mathrm{P}\left(\sqrt{t} \le X_1 \le m \right)dt
-            \\ &\le& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^{m^2} \mathrm{P}\left(X_1 \ge \sqrt{t} \right)dt
-            \\ &=& \int_0^\infty \left(\sum_{m\ge \sqrt{t}} \frac{1}{m^2}\right) \mathrm{P}\left(X_1\ge \sqrt{t}\right)dt
-            \\ &\le& \int_0^\infty \frac{2}{\sqrt{t}} \mathrm{P}\left(X_1\ge \sqrt{t}\right)dt = 4 \int_0^\infty \mathrm{P}(X_1\ge u)du = 4\mathbf{E}(X_1).
+            =\sum_{m=1}^\infty \frac{1}{m^2}\mathbf{E}\left(X_m^2 \mathbf{1}_{\{X_m\le m\}}\right) \\
+            &=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^\infty \mathrm{P}\left(X_m^2 \mathbf{1}_{\{X_m\le m\}}>t\right)dt \\
+            &=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^\infty \mathrm{P}\left(\sqrt{t} \le X_m \le m \right)dt \\
+            &=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^{m^2} \mathrm{P}\left(\sqrt{t} \le X_1 \le m \right)dt \\
+            &\le& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^{m^2} \mathrm{P}\left(X_1 \ge \sqrt{t} \right)dt \\
+            &=& \int_0^\infty \left(\sum_{m\ge \sqrt{t}} \frac{1}{m^2}\right) \mathrm{P}\left(X_1\ge \sqrt{t}\right)dt \\
+            &\le& \int_0^\infty \frac{2}{\sqrt{t}} \mathrm{P}\left(X_1\ge \sqrt{t}\right)dt = 4 \int_0^\infty \mathrm{P}(X_1\ge u)du = 4\mathbf{E}(X_1).
             \end{eqnarray*}
             $$
 

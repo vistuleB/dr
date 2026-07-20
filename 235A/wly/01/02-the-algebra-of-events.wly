@@ -68,9 +68,9 @@
         For any $N\ge 1$, denote the event ``$C_n$ occurred for some $n\ge N$'' by $D_N$. Then
         $$
         \begin{eqnarray*}
-        C_\infty &=& \textrm{``for all $N\ge 1$, $D_N$ occurred''}
-        \\ &=& D_1 \wedge D_2 \wedge D_3 \wedge \ldots \ \ \, \textrm{(infinite conjunction...?!)}
-        \\ &=& \bigwedge_{N=1}^\infty D_N \quad \qquad \quad\ \ \ \ \ \ \textrm{(shorthand notation for infinite conjunction)}.
+        C_\infty &=& \textrm{``for all $N\ge 1$, $D_N$ occurred''} \\
+        &=& D_1 \wedge D_2 \wedge D_3 \wedge \ldots \ \ \, \textrm{(infinite conjunction...?!)} \\
+        &=& \bigwedge_{N=1}^\infty D_N \quad \qquad \quad\ \ \ \ \ \ \textrm{(shorthand notation for infinite conjunction)}.
         \end{eqnarray*}
         $$
         In particular, in order for the event $C_\infty$ to happen, $D_N$ must happen for any fixed value of $N$ (for example, $D_{100}$ must happen, $D_{101}$ must happen, etc.). It follows that $C_\infty$ is at most as likely to happen as any of the $D_N$'s; in other words we have 

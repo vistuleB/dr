@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 3.6.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 3.6.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 3.6.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./3-6-2.html"
+    ></a><a
+      id="next-page"
+      href="./4-0.html"
+    ></a>
+  </div>
+  <h1>
+    3.6.3
+    Generalization to arbitrary dimension
+  </h1>
+  <p>
+    By repeating the above analysis in a careful manner for the general LQP problem in arbitrary dimension discussed at the beginning of this section, one can derive the solution for that general case. For the LQP problem with a finite horizon, the gain matrix $K(T)$ from
+    <a
+      href="./3-6.html#_59_h.a.i_"
+      class=""
+    >(47)</a>
+    is expressed as a matrix product
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    K(T) = Q^{-1}B^\top V(T),
+    \end{align*}
+    $$
+  </div>
+  <p>
+    where $V(T)$ is a matrix related to the optimal cost function $J_*(\mathbf{w},T)$ (defined analogously to $I_*(w,T)$) by
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    J_*(\mathbf{w},T) = \mathbf{w}^\top V(T)\mathbf{w}.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    Furthermore, $V$ satisfies the matrix differential equation (also referred to as the Ricatti equation)
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \frac{dV}{dt} = P + A^\top V(T) + V(T) A - V(T) B Q^{-1} B^\top V(T)
+    \end{align*}
+    $$
+  </div>
+  <p>
+    with boundary condition $V(0) = 0$ (the zero matrix). For an infinite time horizon, we again look for stationary solutions, which leads to the
+    <i>algebraic Ricatti equation</i>
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    P + A^\top V + V A - V B Q^{-1} B^\top V = 0,
+    \end{align*}
+    $$
+  </div>
+  <p>
+    which is a system of quadratic equations in the entries of $V$. The (constant) gain matrix $K$ is again given by
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    K = Q^{-1}B^\top V.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    While these equations may seem intimidating at first sight, they are easy to solve numerically on a computer. Symbolic math software applications such as $\texttt{Mathematica}$ even contain specialized packages for control theory that make the process of deriving optimal LQP control rules highly automated and quite simple in practice, as the next example demonstrates.
+  </p>
+  <div
+    label="The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$"
+    class="statement example"
+  >
+    <h3>
+      <b>Example</b>
+      <b>3.8</b>
+      
+    </h3>
+    <p>
+      <span class="label">The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$</span>The controlled inverted pendulum with cart is a dynamical system with 2 degrees of freedom $\theta=\theta(t)$ (representing the angle of the pendulum relative to the positive $x$-axis) and $x=x(t)$ (representing the displacement of the cart along the $x$-axis), satisfying the equations of motion
+      <sup id="_64_h.a.i_">
+        <a
+          href="./3-6-3.html#_65_h.a.i_"
+          class=""
+        >(1)</a>
+        
+      </sup>
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      4\ddot{x} &amp;=  \ddot{\theta}\sin \theta + \dot{\theta}^2 \cos \theta + 2 u, \\
+      0 &amp;= \ddot{\theta}+2\cos \theta - 2\ddot{x} \sin\theta,
+      \end{align*}
+      $$
+    </div>
+    <p>
+      where $u$ is the control variable representing a control force being applied to the cart --- see Figure 19.
+    </p>
+    <figure>
+      <img
+        src="figures/invertedpendulum-cart.png"
+        style="max-width: 48%"
+      >
+      <figcaption>
+        Figure 19: The inverted pendulum and cart.
+      </figcaption>
+    </figure>
+    <p>
+      The system can be thought of in the usual way as a system of 4 coupled first-order ODEs in the variables $\theta, \dot{\theta}, x, \dot{x}$. The goal of the control problem is to bring the system to a stable equilibrium at $(x,\dot{x},\theta,\dot{\theta}) = (0,0,\pi/2,0)$. In $\texttt{Mathematica}$, we type the following commands:
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \scriptsize{\text{In[1]=}}\quad &amp; \text{eqns}=\left\{2 u[t]+\text{Cos}[\theta [t]] \theta '[t]^2+\text{Sin}[\theta [t]] \theta ”[t]==4 x”[t], \right.\\ &amp; \qquad\qquad \qquad  \qquad \left. 2 \text{Cos}[\theta [t]]-2 \text{Sin}[\theta [t]] x”[t]+\theta ”[t]==0\right\};
+      \\
+      \scriptsize{\text{In[2]=}}\quad &amp;\text{model}=\text{StateSpaceModel}\Big[\text{eqns}, \\ &amp; \qquad\qquad \left\{\{x[t],0\},\{x'[t],0\},\left\{\theta [t],\frac{\pi }{2}\right\},\{\theta '[t],0\}\right\},u[t],\{\},t\Big]
+      \\
+      \scriptsize{\text{Out[2]=}}\quad &amp;
+      \left(
+      \begin{array}{cccc|c}
+      0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+      0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
+      0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+      0 &amp; 0 &amp; 4 &amp; 0 &amp; 2 \\
+      \end{array}
+      \right)_{}^{\mathcal{S}}
+      \end{align*}
+      $$
+    </div>
+    <p>
+      The second command causes $\texttt{Mathematica}$ to linearize the equations of motion around the desired rest point. The output is an augmented matrix of the form $\left( A\,|\,B\right)$ where $A, B$ are the two matrices in the resulting linearized equation (<a href="./3-6.html#_57_h.a.i_">45</a>). This brings the problem to the familiar setup of LQP optimal control which we discussed above. We now type:
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      \scriptsize{\text{In[3]=}}\quad &amp;
+      \text{gains}=\text{LQRegulatorGains}[\text{N}[\text{model}], \\
+      &amp; \qquad\qquad
+      \{\text{DiagonalMatrix}[\{1,10,10,100\}],\{\{1\}\}\}]\text{//}\text{First}
+      \\
+      \scriptsize{\text{Out[3]=}}\quad &amp;
+      \{-1.,-5.97415,14.8452,13.7966\}
+      \end{align*}
+      $$
+    </div>
+    <p>
+      This asks $\texttt{Mathematica}$ to compute the gain matrix $K$ (in this case a vector with 4 coordinates) associated with the cost functional
+      <a
+        href="./3-6.html#_58_h.a.i_"
+        class=""
+      >(46)</a>
+      (in the case $t_2=\infty$ of an infinite time horizon), where the quadratic forms $P, Q$ are defined by
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      P = \left(\begin{array}{cccc}
+      1&amp;0&amp;0&amp;0\\0&amp;10&amp;0&amp;0\\0&amp;0&amp;100&amp;0\\0&amp;0&amp;0&amp;1000
+      \end{array}\right),
+      \qquad
+      Q = (1).
+      \end{align*}
+      $$
+    </div>
+    <p>
+      Using the gain matrix computed by $\texttt{Mathematica}$, we see that the solution to the optimal control problem we defined is given by the feedback rule
+    </p>
+    <div class="math-block">
+      $$
+      \begin{align*}
+      u = - x -5.97415\, \dot{x} + 14.8452\, \theta + 13.7966\, \dot{\theta}.
+      \end{align*}
+      $$
+    </div>
+  </div>
+  <hr>
+  <div
+    id="_65_h.a.i_"
+    class="footnote"
+  >
+    <p>
+      <a href="#_64_h.a.i_">(1)</a>
+      This example is based on a blog post written by Andrew Moylan on the website of Wolfram Research (maker of the $\texttt{Mathematica}$ software); see the link:
+      <a href="http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/">http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/</a>
+    </p>
+  </div>
+</body>
+</html>

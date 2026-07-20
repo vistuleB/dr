@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 2.9 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 2.9 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 2.9 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./2-8.html"
+    ></a><a
+      id="next-page"
+      href="./2-10.html"
+    ></a>
+  </div>
+  <h1>
+    2.9
+    Invariant sets, ergodicity and the ergodic theorem
+  </h1>
+  <p>
+    We now come to a key idea that underlies the basis for all of ergodic theory and explains the importance of invariant measures in discrete-time dynamics. Given a map $T:I\to I$ and the associated recurrence $x_{n+1}=T(x_n)$, for every sub-interval $A\subset I$ we can compute the frequency of visits of the dynamical system to $A$, namely
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \mu_{x}^{(n)}(A) = \frac{1}{n} \# \left\{ 0\le k \le n-1\,:\, T^k(x) \in A \right\}.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    Note that this depends on the set $A$ as well as on $n$ (the number of elements in the sequence of iterates we are using to compute the frequency) and $x$, the initial point. If we fix $n$ and $x$, the function $A\mapsto \mu_x^{(n)}(A)$ is a probability measure (but it is a discrete probability measure, which assigns a positive measure of $1/n$ to the specific points $x,T(x),\ldots,T^{n-1}(x)$, instead of the measures we considered earlier which were defined in terms of a density function $f(x)$). Now let $n\to\infty$ (for fixed $x$). If we are lucky, the probability measures $\mu_x^{(n)}(\cdot)$ will converge to a limiting measure $P(dx)=f(x)dx$, in the sense that
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \mu_x^{(n)}(A) \xrightarrow[n\to\infty]{} P(A) = \int_A f(x)\,dx \ \ \textrm{ for any subinterval }A\subset I.
+    \end{align*}
+    $$
+  </div>
+  <p>
+    It is not hard to see that the limiting measure needs to be an invariant measure for $T$:
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    P(T^{-1}(A)) &amp;= \lim_{n\to\infty} \mu_x^{(n)}(T^{-1}(A)) \\ &amp;
+    = \lim_{n\to\infty} \frac{1}{n}\#\left\{ 0\le k\le n-1\,:\,T^k(x)\in T^{-1}(A) \right\} \\
+    &amp;
+    = \lim_{n\to\infty} \frac{1}{n}\#\left\{ 0\le k\le n-1\,:\,T^{k+1}(x)\in A \right\} \\
+    &amp;
+    = \lim_{n\to\infty} \frac{1}{n}\#\left\{ 1\le k\le n\,:\,T^{k}(x)\in A \right\} \\
+    &amp;
+    = \lim_{n\to\infty} \frac{1}{n}\#\left\{ 0\le k\le n-1\,:\,T^{k}(x)\in A \right\} = P(A).
+    \end{align*}
+    $$
+  </div>
+  <p>
+    It is therefore clear that an invariant measure which arises in this way encodes useful statistical information about the orbit of the point $x$ under the map $T$. On the other hand, the limiting measure may depend on $x$ (or we may have convergence to a limiting measure for some values of $x$, and fail to have convergence for other values). It turns out that for a wide family of maps, called
+    <i>ergodic</i>
+    maps, the limit is mostly independent of the initial point $x$. We summarize the relevant facts, whose proof is beyond the scope of the course, in the following result, which is a version of a famous theorem known as Birkhoff's Pointwise Ergodic Theorem:
+  </p>
+  <div
+    label="The ergodic theorem"
+    class="statement theorem"
+  >
+    <h3>
+      <b>Theorem</b>
+      <b>2.39</b>
+      
+    </h3>
+    <p>
+      <span class="label">The ergodic theorem</span>If $T:I\to I$ is an interval map which preserves a measure $P(dx)=f(x)dx$, then:
+    </p>
+    <ol
+      class="list"
+      data-list-style="decimal"
+    >
+      <li>
+        <p>
+          There is a set $E\subset I$ such that $I\setminus E$ is a measure-$0$ set and for any $x\in E$, the measures $\mu_x^{(n)}(\cdot)$ converge to a limiting invariant measure $P_x$ in the sense described above.
+        </p>
+      </li>
+      <li>
+        <p>
+          If $T$ satisfies a natural condition known as ergodicity, then $P_x$ is independent of $x$ and is equal to the invariant measure $P$ for all $x\in E$.
+        </p>
+      </li>
+    </ol>
+  </div>
+  <p>
+    Maps for which the condition of part (b) applies are the ergodic maps. In such a case, one can say that "the statistics of most orbits reproduce the ideal statistics of the system", or that "time averages are equal to space averages". That is, by observing a typical orbit for a long time we can learn about the statistical behavior of almost all other orbits. We will not discuss the precise definition of ergodicity, preferring instead to explore some of the interesting consequences of the result above. Roughly speaking (setting aside some nuances involving measure 0 sets), a map is ergodic if $I$ can't be divided into two disjoint parts $A$ and $B$ such that $P(A)&gt;0$, $P(B)&gt;0$ and for any points $x\in A, y\in B$, $T^k(x)\in A$ and $T^j(y) \in B$ for all $j,k\ge 0$. Such sets $A$ and $B$ are called
+    <i>invariant sets</i>
+    for $T$. The existence of a nontrivial invariant set is a fairly obvious obstacle to the statement of part (b) in the theorem above holding true, and the main difficulty in proving the result is showing that when there are no invariant sets then (in some sense) there is nothing else that can go wrong and therefore the result must be true.
+  </p>
+  <p>
+    Another thing to note is that actually checking whether a given map is ergodic may be rather difficult. However, we will use the theorem in a few cases in which ergodicity is known and not very difficult to prove.
+  </p>
+</body>
+</html>

@@ -1,10 +1,11 @@
 |> Document
     title=Ordinary Differential Equations Lecture Notes
-    course=119B
-    term=SPRING 2012
+    course=MATH 119B
+    term=Spring 2012
     department=Department of Mathematics
     institution=UC Davis
     lecturer=Dan Romik
     date=February 3, 2026
-    banner=119B-
+    banner=MATH 119B—
+    counter=EquationCounter
     favicon=favicon.svg

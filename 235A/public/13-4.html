@@ -72,8 +72,8 @@
     <div class="math-block">
       $$
       \begin{eqnarray*} \mathrm{P}(|X_n|&gt;M) &amp;=&amp; \mathbf{E}\left( \mathbf{1}_{\{|X_n|&gt;M\}}\right) \le
-      \mathbf{E} \left[ 2 \left( 1-\frac{M}{2|X_n|} \right) \mathbf{1}_{\{|X_n|&gt;M\}}\right]
-      \ &amp;\le&amp;
+      \mathbf{E} \left[ 2 \left( 1-\frac{M}{2|X_n|} \right) \mathbf{1}_{\{|X_n|&gt;M\}}\right] \\
+      &amp;\le&amp;
       \mathbf{E} \left[ 2 \left( 1-\frac{\sin(2X_n/M)}{2X_n/M} \right) \mathbf{1}_{\{|X_n|&gt;M\}}\right].
       \end{eqnarray*}
       $$
@@ -85,8 +85,8 @@
       $$
       \begin{eqnarray*}
       &amp;&amp;\mathbf{E} \left[ 2 \left( 1-\frac{\sin(2X_n/M)}{2X_n/M} \right) \mathbf{1}_{\{|X_n|&gt;M\}}\right]
-       \ =\ \  2\int_{|x|&gt;2/\delta} \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x)
-      \ &amp;\le&amp; 2\int_{-\infty}^\infty \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x)
+       \ =\ \  2\int_{|x|&gt;2/\delta} \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x) \\
+      &amp;\le&amp; 2\int_{-\infty}^\infty \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x)
       = \int_{-\infty}^\infty \frac{1}{\delta}\left(\int_{-\delta}^\delta (1-e^{itx})\,dt\right)\,d\mu_{X_n}(x).
       \end{eqnarray*}
       $$

@@ -1,0 +1,11 @@
+|> Section
+    title=Alternating gradient focusing
+
+    While the example discussed above is interesting mostly for its curiosity value, the mathematical idea underlying it has found a serious application as a method for focusing beams of charged particles in particle accelerators. The method, known as _alternating gradient focusing_ or _strong focusing_, is an essential piece of technology used in all particle accelerator designs since the invention of the technique in the early 1950's. Roughly, the idea is as follows. In particle accelerators, beams of charged particles moving at close to the speed of light are directed along an approximately circular path by passing them through a sequence of powerful magnets. To focus the beams in order to achieve a high-quality beam suitable for performing useful experiments, the magnetic fields are carefully designed to create magnetic analogues of optical lenses. However, due to the way the physical law (called the Lorentz force) that governs how charged particles are influenced by magnetic fields works, it turns out that these magnetic lenses can only focus a beam along one axis: if the lens focuses the beam along the $x$-axis (where we imagine the beam to be moving in the $y$-direction), then it will _defocus_ the beam along the $z$-axis, and vice versa. The alternating gradient focusing technique is based on the observation that a series of magnetic lenses that focus the beam along alternating axes (an $x$-focusing lens, followed by a $z$-focusing lens, followed by an $x$-focusing lens, etc.) will achieve a net focusing effect along _both_ axes! Mathematically, the analysis showing the validity of the idea is virtually identical to the stability analysis we performed above for the inverted pendulum with an oscillating base.(*>>fn-alternating-gradient)
+
+    |> hr
+
+    |> Footnote
+        handle=fn-alternating-gradient
+
+        See equations (2.11), (2.12), (2.33) and (2.34) in the paper _Theory of the alternating gradient synchrotron_, by E. D. Courant and H. S. Snyder (Annals of Physics $\textbf{3}$ (1958), 1--48), available online at [http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf](http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf)

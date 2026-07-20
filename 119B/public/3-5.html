@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Chapter 3.5 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis</title>
+  <meta name="description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta name="author" content="Dan Romik">
+  <meta name="publisher" content="UC Davis, Department of Mathematics">
+  <meta name="course" content="MATH 119B">
+  <meta name="term" content="Spring 2012">
+  <meta name="subject" content="Ordinary Differential Equations Lecture Notes">
+  <meta name="date" content="February 3, 2026">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Chapter 3.5 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="og:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Department of Mathematics | UC Davis">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chapter 3.5 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
+  <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <script type="text/javascript" src="mathjax_setup.js"></script>
+  <script type="text/javascript" src="tex-svg.js"></script>
+  <script type="text/javascript" src="course.js"></script>
+  <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+  <div class="nav">
+    <a
+      id="prev-page"
+      href="./3-4.html"
+    ></a><a
+      id="next-page"
+      href="./3-5-1.html"
+    ></a>
+  </div>
+  <h1>
+    3.5
+    Electromagnetic levitation
+  </h1>
+  <p>
+    A famous practical demonstration of control theory is that of electromagnetic levitation. This is a method for causing a small magnetic object to hover in the air by causing an electromagnet (a coil that behaves like a magnet when an electric current is passed through it) positioned above the object to pull on it, balancing the magnetic attraction force against the force of gravity. There are several known ways to achieve stable levitation, a few of which use physical principles that are unrelated to control theory (for example, one of the most amusing demonstrations of levitation was in an experiment performed by a group of Dutch researchers in the year 2000 that used the physical effect of
+    <i>diamagnetism</i>
+    to levitate a live frog). However, the easiest --- and from our point of view, the most interesting --- approach is to modulate the attractive magnetic field of the electromagnet using a feedback control scheme.
+  </p>
+  <p>
+    We will discuss the following simple model for a levitation device. The levitating object is idealized as a particle moving along a one-dimensional (vertical) axis, whose position $x(t)$ satisfies the equation
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    \ddot{x} = \begin{cases} -1 &amp; \textrm{if the electromagnet is off}, \\
+    1 &amp; \textrm{if the electromagnet is on.}
+    \end{cases}
+    \end{align*}
+    $$
+  </div>
+  <p>
+    The idea is that when the electromagnet is turned off, the particle experiences a downward acceleration due to the effect of gravity, and when the electromagnet is switched on, the attractive magnetic force causes an upward acceleration that overcomes gravity and exactly negates it. For simplicity, we choose units such that the gravitational constant $g$ is equal to $1$, and assume that the acceleration when the electromagnet is switched on is exactly equal in magnitude (and opposite in its direction) to the gravitational acceleration. The control variable $u$ is a binary "on/off" variable that corresponds to the decision of when to activate the electromagnet (a control scheme based on a binary control variable is sometimes called a
+    <i>switching control</i>). Our goal is to design a feedback-based control rule
+  </p>
+  <div class="math-block">
+    $$
+    \begin{align*}
+    u = u(x, \dot{x})
+    \end{align*}
+    $$
+  </div>
+  <p>
+    (where we denote $u=\ddot{x}=\pm 1$ to correspond to the two states of the electromagnet) such that the system will have an asymptotically stable equilibrium point at $x=0$ to which all the orbits converge.
+  </p>
+</body>
+</html>

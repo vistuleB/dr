@@ -17,6 +17,9 @@ export default defineConfig(({ mode }) => {
   const courseFolder = env.COURSE || env.COURSE || "235A";
   const rootPath = `${courseFolder}/public`;
   const serverPort = Number(env.PORT || env.PORT) || 3003;
+  // Loopback by default. Set HOST=0.0.0.0 to also listen on the LAN, e.g. to
+  // open the notes on a phone at http://<your-lan-ip>:<port>/.
+  const serverHost = env.HOST || "127.0.0.1";
   const name = `vite ${rootPath} ${serverPort}-local server`;
   const projectRoot = path.resolve(process.cwd());
 
@@ -115,7 +118,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: serverPort,
-      host: "127.0.0.1",
+      host: serverHost,
       cors: {
         origin: ["http://localhost:*", "http://127.0.0.1:*"],
       },

@@ -23,7 +23,6 @@ On MacOS, install pdflatex with `brew install --cask basictex`
 
 Convert LaTeX to pdf with `pdflatex file.tex`
 
-
 # Add a shared asset to a course
 
 As an example, say we would like to add `mathjax_setup.js` to course `235A`. We would follow these steps
@@ -46,3 +45,5 @@ MATHJAX_VERSION=3
 Serve the default course specified in `.env` with
 `npm run dev`. Override the `COURSE` variable specified
 in `.env` by prefixing the command with a `COURSE=<dir>`, e.g., `COURSE=235B npm run dev`.
+
+HOST=0.0.0.0 npm run dev to access from mobile on the same network

@@ -1,3 +1,36 @@
+// Hold the page behind a spinner until MathJax has typeset, so the raw $...$
+// source is never briefly visible. This file is the first script in <head> and
+// is not deferred, so the class lands before any body content is painted.
+//
+// The class is added from JS on purpose: with scripting disabled nothing is
+// ever hidden, and the notes render as plain text rather than a stuck spinner.
+(function () {
+  var root = document.documentElement;
+  var revealed = false;
+
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    root.classList.remove("math-loading");
+  }
+
+  root.classList.add("math-loading");
+  window.__drRevealContent = reveal;
+
+  // If MathJax never loads at all (missing/blocked tex-svg.js) then pageReady
+  // below never runs. Detect that on `load` and reveal immediately rather than
+  // waiting out the timeout. Checking for startup.promise distinguishes "failed
+  // to load" from "loaded, still typesetting".
+  window.addEventListener("load", function () {
+    if (!(window.MathJax && window.MathJax.startup && window.MathJax.startup.promise)) {
+      reveal();
+    }
+  });
+
+  // Last resort: MathJax loaded but typesetting hung or threw.
+  setTimeout(reveal, 10000);
+})();
+
 window.MathJax = {
   loader: {
     load: [],
@@ -6,6 +39,13 @@ window.MathJax = {
     ready() {
       // run default startup
       MathJax.startup.defaultReady();
+    },
+    pageReady() {
+      // Resolves once the initial typeset is done. Reveal on rejection too, so
+      // a typesetting error shows the content instead of spinning.
+      return MathJax.startup
+        .defaultPageReady()
+        .then(window.__drRevealContent, window.__drRevealContent);
     },
   },
 

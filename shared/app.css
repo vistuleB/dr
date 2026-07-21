@@ -81,6 +81,64 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* ------------------------------------------------------- loading the typeset
+
+   mathjax_setup.js puts .math-loading on <html> before any body content is
+   painted, and removes it once MathJax has typeset the page. `visibility`
+   rather than `display` matters: hidden boxes still have layout, so MathJax
+   can measure them correctly while the page is covered. */
+
+html.math-loading body {
+    visibility: hidden;
+}
+
+html.math-loading::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: -0.875rem 0 0 -0.875rem;
+
+    border: 2px solid var(--rule);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+
+    /* Held at opacity 0 for a beat so a fast typeset shows no spinner at all —
+       a brief blank page reads better than a flash of spinner. */
+    opacity: 0;
+    animation:
+        dr-spin 0.7s linear infinite,
+        dr-spinner-in 1ms linear 0.25s forwards;
+}
+
+@keyframes dr-spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes dr-spinner-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.math-loading::after {
+        animation:
+            dr-spinner-pulse 1.4s ease-in-out 0.25s infinite,
+            dr-spinner-in 1ms linear 0.25s forwards;
+    }
+
+    @keyframes dr-spinner-pulse {
+        50% {
+            opacity: 0.25;
+        }
+    }
+}
+
 ::selection {
     background: color-mix(in srgb, var(--accent) 20%, transparent);
 }

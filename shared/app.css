@@ -101,7 +101,7 @@ body {
     /* explicit 3-column placement rather than space-between, so the centre
        item stays centred on pages where prev or next is absent */
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
     gap: var(--space-sm);
     min-height: 3.25rem;
@@ -251,6 +251,9 @@ strong {
 
 a {
     color: var(--accent);
+    /* bare URLs in the notes have no break opportunities and would otherwise
+       push the page wider than a phone screen */
+    overflow-wrap: break-word;
     text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;
@@ -335,7 +338,7 @@ ol.list {
 
 ol.list > li {
     display: grid;
-    grid-template-columns: 2.75rem 1fr; /* marker | content */
+    grid-template-columns: 2.75rem minmax(0, 1fr); /* marker | content */
     margin-bottom: var(--list-items-gap);
     align-items: baseline;
     overflow-x: visible;
@@ -519,8 +522,47 @@ li > p + p {
     scrollbar-width: none;
 }
 
+/* Inside a list the block lives in a narrow grid track, and a viewport-sized
+   width would force that track (and the page) wider than the screen. Fill the
+   track instead and let the block scroll on its own. */
+ol .math-block,
+ul .math-block {
+    width: auto;
+    margin-inline: 0;
+}
+
 .math-block::-webkit-scrollbar {
     display: none;
+}
+
+/* Inline math is atomic — MathJax cannot break a formula across lines. Source
+   that puts whole English phrases in math mode ($\textbf{...}$) produces very
+   wide unbreakable runs; in a narrow column one of those stretches its grid
+   track and drags the whole page wider, which is what makes neighbouring prose
+   appear to stop wrapping.
+   The container is `display: inline`, where max-width does not apply, so make
+   it inline-block and let the SVG scale down via its viewBox. line-height: 0
+   keeps the inline-block from picking up the paragraph leading — verified to
+   leave every paragraph's height unchanged. Only over-wide runs are affected;
+   formulas that already fit are untouched. Display math is excluded: it
+   already scrolls inside .math-block. */
+mjx-container[jax="SVG"]:not([display="true"]) {
+    display: inline-block;
+    max-width: 100%;
+    line-height: 0;
+}
+
+mjx-container[jax="SVG"]:not([display="true"]) > svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* MathJax's screen-reader MathML layer is absolutely positioned and clipped to
+   1px, but its box keeps the formula's full natural width — which extends the
+   page's scrollable area once the visible container above is capped. It stays
+   in the accessibility tree either way, so confining the box is safe. */
+mjx-assistive-mml {
+    max-width: 100%;
 }
 
 g[id^="mjx-eqn:eq:"] {
@@ -599,7 +641,7 @@ g[id^="mjx-eqn:eq:"] {
 
 .index__toc > li {
     counter-increment: ch;
-    grid-template-columns: 3rem 1fr;
+    grid-template-columns: 3rem minmax(0, 1fr);
     padding: var(--space-md) 0;
     border-bottom: 1px solid var(--rule-faint);
 }
@@ -629,7 +671,7 @@ g[id^="mjx-eqn:eq:"] {
 
 .index__toc > li > ol > li {
     counter-increment: sec;
-    grid-template-columns: 3.25rem 1fr;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
 }
 
 .index__toc > li > ol > li + li {
@@ -657,7 +699,7 @@ g[id^="mjx-eqn:eq:"] {
 
 .index__toc > li > ol > li > ol > li {
     counter-increment: sub;
-    grid-template-columns: 3.6rem 1fr;
+    grid-template-columns: 3.6rem minmax(0, 1fr);
 }
 
 .index__toc > li > ol > li > ol > li::before {
@@ -769,19 +811,19 @@ figcaption {
     }
 
     ol.list > li {
-        grid-template-columns: 2.25rem 1fr;
+        grid-template-columns: 2.25rem minmax(0, 1fr);
     }
 
     .index__toc > li {
-        grid-template-columns: 2.25rem 1fr;
+        grid-template-columns: 2.25rem minmax(0, 1fr);
     }
 
     .index__toc > li > ol > li {
-        grid-template-columns: 2.75rem 1fr;
+        grid-template-columns: 2.75rem minmax(0, 1fr);
     }
 
     .index__toc > li > ol > li > ol > li {
-        grid-template-columns: 3.1rem 1fr;
+        grid-template-columns: 3.1rem minmax(0, 1fr);
     }
 }
 

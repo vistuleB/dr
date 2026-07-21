@@ -3,6 +3,7 @@
     "vite": "^8.0.1"
   },
   "scripts": {
-    "dev": "vite --config vite.config.js"
+    "dev": "vite --config vite.config.js",
+    "dev:mobile": "HOST=0.0.0.0 npm run dev"
   }
 }

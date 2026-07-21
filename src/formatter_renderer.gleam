@@ -21,6 +21,7 @@ type FragmentType {
   Chapter
   Section
   SubSection
+  Exercises
   Unknown
 }
 
@@ -57,6 +58,15 @@ fn single_file_splitter(
 fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
   let #(root, chapters) =
     infra.v_extract_children(root, infra.is_v_and_tag_equals(_, "Chapter"))
+
+  // Exercises is optional: at most one, living in its own top-level file
+  // (235A's exercises.wly) outside the chapter sequence. It must be extracted
+  // like a chapter, else it stays in the root fragment and gets written back
+  // into __parent.wly -- duplicating it, since exercises.wly is left in place.
+  let #(root, exercises) =
+    infra.v_extract_children(root, infra.is_v_and_tag_equals(_, "Exercises"))
+  let exercises = list.map(exercises, fragment_bundler(_, Exercises, None))
+
   let root = fragment_bundler(root, Root, None)
   let #(chapters, sections, subsections) =
     chapters
@@ -94,6 +104,7 @@ fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
 
   list.flatten([
     [root],
+    exercises,
     chapters,
     sections,
     subsections,

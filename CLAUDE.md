@@ -230,6 +230,42 @@ The formatter is a **wly → wly** pass (not wly → HTML). It normalizes and re
 
 `formatter_renderer.gleam` — drives the formatter loop, reads from `<course_dir>/wly/`, writes back to `<course_dir>/wly/` (or a custom `--output-dir`). Can target a single file with `-file`.
 
+### Every source tag must appear in `p_cannot_contain`
+
+`formatter_pipeline.gleam`'s `p_cannot_contain` list must name **every tag that can appear
+in a `.wly` source file**. A tag missing from it is not treated as a paragraph barrier, so
+`group_consecutive_children__outside` wraps the whole element *inside* a `p` — and because
+`p_cannot_be_contained_in` contains `"p"`, nothing beneath it is ever grouped into paragraphs.
+The later `add_between(#("p", "p", "WriterlyBlankLine"))` then has no `p` siblings to work
+with, and **every blank line inside that subtree is silently deleted**, merging paragraphs.
+
+This is easy to miss because the main `pipeline.gleam` renames `Definition`/`Lemma`/… to
+`Statement` *before* grouping, so its list gets away with the post-rename names. The formatter
+does no such renaming and needs the raw authored names. When adding a tag to
+`src/pipeline.gleam`'s pre-transformation approved list, add it to `formatter_pipeline.gleam`'s
+`p_cannot_contain` too.
+
+Verify with a round-trip: format to a scratch dir, render both source and formatted output to
+HTML, and compare with whitespace collapsed (`tr -s ' \t\n' ' '`). The two must be identical —
+formatting must never change rendered output.
+
+### Known limitation: nested `$` inside `\textbf{…}`
+
+Constructs like `$\textbf{$\sigma$-algebra}$` may get a line break inserted at the inner
+`$`…`$` junction, which renders as a visible space (`σ -algebra`). The `$`-splitter reads
+this as *two* adjacent `Math` nodes joined by a text node, and
+`dl.wrap_adjacent_non_whitespace_text_with` builds a separate `NoWrap` group per `Math`
+instead of one spanning group, leaving a legal break point between them. Fixing it means
+changing that desugarer in `wly/desugaring/`, which is also used by `courses`' and
+`little-bo-peep-solid`'s **HTML** pipelines. Affects 6 of 235A's 73 pages; 235B and 119B
+are unaffected.
+
+### Convergence
+
+Formatting is content-stable on the first pass but layout-stable only from the second: a
+first run over never-formatted source can leave a few lines wrapped shorter than the target,
+which a second run rejoins. Pass 2 == pass 3, and pass 1 → pass 2 changes line breaks only.
+
 ## Writerly Repo Location
 
 The Writerly/desugaring library lives at `../../vistuleB/wly/` (relative to this project root). This project imports it as a local Gleam dependency. When adding or modifying desugarers, check `../../vistuleB/wly/desugaring/src/desugarer_library.gleam` for the full list of available `dl.*` functions.

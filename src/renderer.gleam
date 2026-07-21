@@ -205,13 +205,13 @@ fn index_emitter(
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+              "<script type=\"text/javascript\" src=\"tex-svg.js\" defer></script>",
             )
           False ->
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\" defer></script>",
             )
         },
         OutputLine(
@@ -222,7 +222,7 @@ fn index_emitter(
         OutputLine(
           blame,
           2,
-          "<script type=\"text/javascript\" src=\"app.js\"></script>",
+          "<script type=\"text/javascript\" src=\"app.js\" defer></script>",
         ),
         OutputLine(blame, 0, "</head>"),
         OutputLine(blame, 0, "<body data-page=\"toc\">"),
@@ -289,13 +289,13 @@ fn chapter_emitter(
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+              "<script type=\"text/javascript\" src=\"tex-svg.js\" defer></script>",
             )
           False ->
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\" defer></script>",
             )
         },
         OutputLine(
@@ -373,13 +373,13 @@ fn exercises_emitter(
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+              "<script type=\"text/javascript\" src=\"tex-svg.js\" defer></script>",
             )
           False ->
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\" defer></script>",
             )
         },
         OutputLine(
@@ -457,13 +457,13 @@ fn section_emitter(
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+              "<script type=\"text/javascript\" src=\"tex-svg.js\" defer></script>",
             )
           False ->
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\" defer></script>",
             )
         },
         OutputLine(
@@ -547,13 +547,13 @@ fn subsection_emitter(
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"tex-svg.js\"></script>",
+              "<script type=\"text/javascript\" src=\"tex-svg.js\" defer></script>",
             )
           False ->
             OutputLine(
               blame,
               2,
-              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\"></script>",
+              "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js\" defer></script>",
             )
         },
         OutputLine(

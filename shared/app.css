@@ -92,6 +92,13 @@ html.math-loading body {
     visibility: hidden;
 }
 
+/* The ring is a background image rather than a CSS border on purpose: border
+   and box decorations do not count as "contentful", so a bordered box does not
+   trigger first contentful paint — browsers keep holding the previous frame
+   (or a blank new tab) and the spinner is never actually shown. An image does
+   count, so this reliably brings up the paint.
+   Colours are inlined from --rule / --accent; custom properties cannot be
+   referenced from inside a data URI. */
 html.math-loading::after {
     content: "";
     position: fixed;
@@ -101,9 +108,8 @@ html.math-loading::after {
     height: 1.75rem;
     margin: -0.875rem 0 0 -0.875rem;
 
-    border: 2px solid var(--rule);
-    border-top-color: var(--accent);
-    border-radius: 50%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="%23d7d4c8" stroke-width="3"/><path d="M16 2a14 14 0 0 1 14 14" fill="none" stroke="%23a8452c" stroke-width="3" stroke-linecap="round"/></svg>')
+        center / contain no-repeat;
 
     /* Held at opacity 0 for a beat so a fast typeset shows no spinner at all —
        a brief blank page reads better than a flash of spinner. */

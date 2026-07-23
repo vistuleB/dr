@@ -315,6 +315,9 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.handles_add_ids(),
       dl.handles_generate_dictionary("path"),
       dl.handles_substitute(#("path", "a", "a", [], [], ["a"])),
+      // consumes the 'used' column that handles_substitute leaves on the
+      // GrandWrapper dictionary; must sit between the two
+      dl.handles_warn_unused(["MathBlock"]),
       dl.unwrap("GrandWrapper"),
     ],
     // Parse inline math into Math nodes BEFORE href tokenization: pre-transformationtokenize_href_surroundings

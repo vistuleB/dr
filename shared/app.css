@@ -547,19 +547,40 @@ li > p + p {
 
 /* --------------------------------------------------------------- proof & qed */
 
+/* A proof takes the same result-block styling as theorems and lemmas: a clay
+   rule hanging in the margin and an accent eyebrow label above the body. The
+   proof container is an unclassed <div> marked only by the inline
+   <span class="proof"> that opens its first paragraph, so it is matched with
+   :has(). */
+div:has(> p:first-child > .proof:first-child) {
+    margin: var(--space-lg) 0;
+    padding: 0 0 0 var(--statement-indent);
+    border-left: 2px solid var(--accent);
+}
+
+@media (min-width: 46rem) {
+    div:has(> p:first-child > .proof:first-child) {
+        margin-left: calc(-1 * var(--statement-indent));
+    }
+}
+
+/* a proof sits directly under the result it proves — collapse the gap so the
+   two read as one unit rather than two separate blocks */
+.statement + div:has(> p:first-child > .proof:first-child) {
+    margin-top: var(--space-md);
+}
+
 .proof {
-    display: inline-block;
+    display: block;
     font-family: var(--sans);
     font-size: var(--eyebrow-size);
     font-style: normal;
     font-weight: 600;
+    line-height: 1.2;
     letter-spacing: var(--eyebrow-tracking);
     text-transform: uppercase;
-    color: var(--ink-muted);
-}
-
-.proof:after {
-    content: "\2005"; /* four-per-em space; the tracking already sets it apart */
+    color: var(--accent);
+    padding-bottom: 0.9rem;
 }
 
 .qed {
@@ -588,11 +609,30 @@ li > p + p {
 
 /* Inside a list the block lives in a narrow grid track, and a viewport-sized
    width would force that track (and the page) wider than the screen. Fill the
-   track instead and let the block scroll on its own. */
+   track instead and let the block scroll on its own. Bordered blocks (statement,
+   proof) get the same containment so display math never breaks out past their
+   left rule. */
 ol .math-block,
-ul .math-block {
+ul .math-block,
+.statement .math-block,
+div:has(> p:first-child > .proof:first-child) .math-block {
     width: auto;
     margin-inline: 0;
+}
+
+/* On wide screens a bordered block is roomy, so scale a too-wide equation down
+   to fit its width rather than let its tail hide behind the (hidden) scrollbar.
+   min-width: 0 overrides the intrinsic width MathJax stamps on the SVG. On
+   narrow screens it scrolls instead, so math is never shrunk to illegibility. */
+@media (min-width: 46rem) {
+    .statement .math-block mjx-container[display="true"],
+    .statement .math-block mjx-container[display="true"] > svg,
+    div:has(> p:first-child > .proof:first-child) .math-block mjx-container[display="true"],
+    div:has(> p:first-child > .proof:first-child) .math-block mjx-container[display="true"] > svg {
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+    }
 }
 
 .math-block::-webkit-scrollbar {

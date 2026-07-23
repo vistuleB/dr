@@ -345,8 +345,23 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       // is not yet opaque before create_math_elements runs, and gets
       // corrupted by the same class of bug fixed by moving
       // create_math_elements before tokenize_href_surroundings above.
+      // Pull the literal parens of an equation reference `(>>handle)` inside
+      // the resulting link so the whole "(N)" is clickable. The surroundings
+      // tokenizer (tokenize_href_surroundings) splits on opening delimiters and
+      // spaces but never on a closing `)`, so a `)` glues to whatever follows
+      // it: `(N) ` tokenizes with a bare `)` but `(N).`, `(N),`, `(N))` do not.
+      // One pattern per trailing token is therefore needed to cover references
+      // that are followed by sentence punctuation or a closing group paren,
+      // rather than only those followed by whitespace. References embedded in
+      // display math (e.g. `...(>>handle)}\\` inside a `\textrm{}`) leave a
+      // `)}\\`-style token that matches none of these and is deliberately left
+      // untouched.
       dl.rearrange_links__batch([
         #("(<a href=0>_0_</a>)", "<a href=0>(_0_)</a>"),
+        #("(<a href=0>_0_</a>).", "<a href=0>(_0_)</a>."),
+        #("(<a href=0>_0_</a>),", "<a href=0>(_0_)</a>,"),
+        #("(<a href=0>_0_</a>))", "<a href=0>(_0_)</a>)"),
+        #("(<a href=0>_0_</a>)).", "<a href=0>(_0_)</a>)."),
       ]),
     ],
     pp.barbaric_symmetric_delim_splitting("_", "_", "i", [

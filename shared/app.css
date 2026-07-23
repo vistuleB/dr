@@ -678,6 +678,10 @@ g[id^="mjx-eqn:eq:"] {
 
 .index__toc li::before {
     grid-column: 1;
+    /* right-align the numbers in their gutter so the decimal points line up
+       and multi-digit markers (8.10, 8.11) stop hanging past the rest */
+    justify-self: end;
+    padding-right: 0.7rem;
     font-family: var(--sans);
     font-variant-numeric: lining-nums tabular-nums;
     letter-spacing: 0.04em;

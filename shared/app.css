@@ -24,9 +24,11 @@
     --leading: 1.72;
 
     /*** Measure & rhythm ***/
-    --measure: 45rem;
-    --pad-x: clamp(1.25rem, 4vw, 3rem);
-    --math-max: 56rem; /* display math may reach past the text measure */
+    /* Fixed reading column: content stays 45rem wide (48rem shell − 2×1.5rem
+       gutter). Deliberately no vw/calc in the width chain — a viewport-relative
+       column re-lays-out every math element on every resize; a fixed one makes
+       resizing above the column width free. */
+    --pad-x: 1.5rem;
     --statement-indent: 1.4rem;
     --space-sm: 1rem;
     --space-md: 1.75rem;
@@ -68,7 +70,7 @@ html {
 
 body {
     position: relative;
-    max-width: calc(var(--measure) + 2 * var(--pad-x));
+    max-width: 48rem;
     margin-inline: auto;
     padding-inline: var(--pad-x);
     padding-bottom: var(--space-xl);
@@ -76,7 +78,7 @@ body {
 
     color: var(--ink);
     font-family: var(--serif);
-    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+    font-size: 1.125rem;
     line-height: var(--leading);
     -webkit-font-smoothing: antialiased;
 }
@@ -170,8 +172,8 @@ html.math-loading::after {
     gap: var(--space-sm);
     min-height: 3.25rem;
 
-    /* full-bleed across the body's padding */
-    margin-inline: calc(-1 * var(--pad-x));
+    /* full-bleed across the body's padding (mirrors --pad-x) */
+    margin-inline: -1.5rem;
     padding-inline: var(--pad-x);
 
     background: var(--paper-veil);
@@ -232,23 +234,11 @@ body:not([data-page="toc"]) .nav > #next-page::before {
     content: "next\2005\2192";
 }
 
-/* Redundant where the reader has a keyboard — `0` already jumps to the index
-   (see app.js) — so surface it only on touch devices and narrow windows. */
-.nav > #index-page {
-    display: none;
-}
-
-@media (hover: none), (max-width: 48rem) {
-    .nav > #index-page {
-        display: block;
-    }
-}
-
 /* ------------------------------------------------------------------- headings */
 
 h1 {
     font-family: var(--serif);
-    font-size: clamp(1.9rem, 1.5rem + 1.5vw, 2.6rem);
+    font-size: 2.4rem;
     font-weight: 600;
     font-style: normal;
     line-height: 1.15;
@@ -271,7 +261,7 @@ body > h1:first-child:last-child {
     flex-direction: column;
     justify-content: center;
     min-height: 68vh;
-    font-size: clamp(2.4rem, 1.7rem + 3.2vw, 4rem);
+    font-size: 3.2rem;
     letter-spacing: -0.03em;
     padding-bottom: 0;
     border-bottom: none;
@@ -458,15 +448,6 @@ li > p + p {
     border-left: 2px solid var(--rule);
 }
 
-/* Where the gutter is wide enough, pull the block back by its own indent so the
-   rule hangs in the margin and the statement's text — and its display math —
-   line up with the body measure instead of sitting inset from it. */
-@media (min-width: 46rem) {
-    .statement {
-        margin-left: calc(-1 * var(--statement-indent));
-    }
-}
-
 .statement > h3:first-child {
     font-family: var(--sans);
     font-size: var(--eyebrow-size);
@@ -558,12 +539,6 @@ div:has(> p:first-child > .proof:first-child) {
     border-left: 2px solid var(--accent);
 }
 
-@media (min-width: 46rem) {
-    div:has(> p:first-child > .proof:first-child) {
-        margin-left: calc(-1 * var(--statement-indent));
-    }
-}
-
 /* a proof sits directly under the result it proves — collapse the gap so the
    two read as one unit rather than two separate blocks */
 .statement + div:has(> p:first-child > .proof:first-child) {
@@ -590,16 +565,11 @@ div:has(> p:first-child > .proof:first-child) {
 
 /* ---------------------------------------------------------------- display math */
 
-/* Breaks out symmetrically past the text measure, staying centred on the page
-   axis, so wide derivations do not have to scroll. --w collapses to the
-   available width on narrow screens, where the negative margins become 0. */
+/* Fills its column (fluid), centred. No viewport breakout: the column width is
+   fixed, so nothing here recomputes on resize. */
 .math-block {
-    --w: min(calc(100vw - 2 * var(--pad-x)), var(--math-max));
-
     display: block;
-    width: var(--w);
     margin-block: var(--space-md);
-    margin-inline: calc(50% - var(--w) / 2);
     text-align: center;
 
     overflow-x: auto;
@@ -607,32 +577,17 @@ div:has(> p:first-child > .proof:first-child) {
     scrollbar-width: none;
 }
 
-/* Inside a list the block lives in a narrow grid track, and a viewport-sized
-   width would force that track (and the page) wider than the screen. Fill the
-   track instead and let the block scroll on its own. Bordered blocks (statement,
-   proof) get the same containment so display math never breaks out past their
-   left rule. */
-ol .math-block,
-ul .math-block,
-.statement .math-block,
-div:has(> p:first-child > .proof:first-child) .math-block {
-    width: auto;
-    margin-inline: 0;
-}
-
-/* On wide screens a bordered block is roomy, so scale a too-wide equation down
-   to fit its width rather than let its tail hide behind the (hidden) scrollbar.
-   min-width: 0 overrides the intrinsic width MathJax stamps on the SVG. On
-   narrow screens it scrolls instead, so math is never shrunk to illegibility. */
-@media (min-width: 46rem) {
-    .statement .math-block mjx-container[display="true"],
-    .statement .math-block mjx-container[display="true"] > svg,
-    div:has(> p:first-child > .proof:first-child) .math-block mjx-container[display="true"],
-    div:has(> p:first-child > .proof:first-child) .math-block mjx-container[display="true"] > svg {
-        max-width: 100%;
-        min-width: 0;
-        height: auto;
-    }
+/* A display equation wider than the column scales down to fit rather than let
+   its tail hide behind the (hidden) scrollbar. MathJax stamps an intrinsic
+   `min-width` as an inline style (largest on numbered `width="full"`
+   equations), so the override needs !important to beat it — the legitimate case
+   of a stylesheet overriding a third-party inline style. The column is a fixed
+   width, so this costs nothing on resize. */
+.math-block mjx-container[display="true"],
+.math-block mjx-container[display="true"] > svg {
+    max-width: 100%;
+    min-width: 0 !important;
+    height: auto;
 }
 
 .math-block::-webkit-scrollbar {
@@ -681,7 +636,7 @@ g[id^="mjx-eqn:eq:"] {
 }
 
 .index__header__title {
-    font-size: clamp(2.2rem, 1.6rem + 2.8vw, 3.5rem);
+    font-size: 2.8rem;
     font-weight: 600;
     line-height: 1.03;
     letter-spacing: -0.032em;
@@ -883,11 +838,7 @@ sup {
 }
 
 figure {
-    --w: min(calc(100vw - 2 * var(--pad-x)), var(--math-max));
-
-    width: var(--w);
     margin-block: var(--space-lg);
-    margin-inline: calc(50% - var(--w) / 2);
     text-align: center;
 }
 
@@ -911,29 +862,7 @@ figcaption {
     text-wrap: pretty;
 }
 
-/* -------------------------------------------------------------- small screens */
-
-@media (max-width: 34rem) {
-    .statement {
-        padding-left: 1rem;
-    }
-
-    ol.list > li {
-        grid-template-columns: 2.25rem minmax(0, 1fr);
-    }
-
-    .index__toc > li {
-        grid-template-columns: 2.25rem minmax(0, 1fr);
-    }
-
-    .index__toc > li > ol > li {
-        grid-template-columns: 2.75rem minmax(0, 1fr);
-    }
-
-    .index__toc > li > ol > li > ol > li {
-        grid-template-columns: 3.1rem minmax(0, 1fr);
-    }
-}
+/* ---------------------------------------------------------- reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
     html {

@@ -230,6 +230,61 @@ The formatter is a **wly → wly** pass (not wly → HTML). It normalizes and re
 
 `formatter_renderer.gleam` — drives the formatter loop, reads from `<course_dir>/wly/`, writes back to `<course_dir>/wly/` (or a custom `--output-dir`). Can target a single file with `-file`.
 
+### Display-math delimiter normalization (the `$$` opinion)
+
+The formatter recognizes **every standalone LaTeX display environment** as a block and applies a
+per-environment `$$` opinion. Both are driven by one editable table,
+`display_delimiter_dollar_policy()` in `src/formatter_pipeline.gleam` — a
+`List(#(LatexDelimiterPair, Bool))` with **one row per environment**, the boolean meaning
+`True` = wrap the block in `$$`, `False` = leave it bare:
+
+```gleam
+#(infra.BeginEndAlign, False),          // bare
+#(infra.BeginEndAlignStar, False),      // bare
+#(infra.BeginEndEnvironment("equation"), True),   // $$-wrapped
+#(infra.BeginEndEnvironment("gather"), True),
+// … alignat(*), flalign(*), multline(*), eqnarray(*), equation* …
+```
+
+Two helpers derive from it: `recognized_display_delimiters()` (all rows → fed to
+`create_mathblock_elements` so a **bare** environment is captured as math instead of being
+line-wrapped as prose, which silently corrupts it) and `bare_display_openings()` (the
+`\begin{…}` tokens of the `False` rows → the `strip_delimiters_inside_if` predicate strips `$$`
+off exactly those). Matching is by the exact `\begin{env}` token (with its closing brace), so
+`\begin{align}` never matches `\begin{alignat}` or the subsidiary `\begin{aligned}`.
+
+- **Standalone** environments create their own display math and may legally appear bare:
+  `equation(*)`, `align(*)`, `alignat(*)`, `flalign(*)`, `gather(*)`, `multline(*)`,
+  `eqnarray(*)` — these are the policy rows.
+- **Subsidiary** environments (`split`, `aligned`, `cases`, `array`, `matrix`/`pmatrix`/…,
+  `gathered`, `subarray`) are only valid *inside* math mode; they are **not** in the table and
+  simply ride along inside their enclosing `$$` block.
+
+**Default opinion:** `align` / `align*` are the only rows set `False` (bare); every other
+environment is `$$`-wrapped (each `$$` on its own line).
+
+**Any row may be flipped to bare.** The HTML renderer (`src/pipeline.gleam`) reuses
+`recognized_display_delimiters()` in *its own* `create_mathblock_elements` call, so it wraps
+**every** standalone display environment in `$$` (if not already) before MathJax sees it. A bare
+`\begin{eqnarray*}` / `\begin{equation}` / … in source is therefore re-wrapped and typeset
+correctly. (Without this, a bare environment falls through to the prose pipeline, which mangles
+it — the `*` in `eqnarray*` bold-splits, `_` subscripts italic-split — and MathJax then renders
+it as raw literal text.) Whether an environment appears bare or `$$`-wrapped in the **source** is
+purely the formatter's cosmetic choice; the rendered HTML is correct either way. This shared
+recognition set is the invariant that keeps the renderer able to accept whatever `--fmt` emits.
+
+The parametric delimiter lives in `wly`: `LatexDelimiterPair.BeginEndEnvironment(name)` and its
+`BeginEnvironment`/`EndEnvironment` singletons (`wly/desugaring/src/infrastructure.gleam`), with
+splitter arms in `prefabricated_pipelines.gleam`. `wly` provides only the *mechanism*; the list
+of environments and their `$$` flags is consumer policy, living wholly in the formatter table.
+All string-based delimiter consumers (`strip_delimiters_inside*`, `normalize_*`) work through
+`opening_and_closing_string_for_pair` and needed no change.
+
+**Known cosmetic effect:** a run of *consecutive bare* `\begin{equation}` blocks (as in
+235A `02/01-basic-definitions.wly`) becomes separate `$$`-wrapped math-blocks with normal
+inter-block spacing, rather than the tight cluster the bare form rendered as. Math content is
+unchanged and MathJax reports no error; only vertical spacing differs.
+
 ## Writerly Repo Location
 
 The Writerly/desugaring library lives at `../../vistuleB/wly/` (relative to this project root). This project imports it as a local Gleam dependency. When adding or modifying desugarers, check `../../vistuleB/wly/desugaring/src/desugarer_library.gleam` for the full list of available `dl.*` functions.

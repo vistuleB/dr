@@ -91,6 +91,54 @@ fn ends_with_dollar_starts_with_punctuation(s1: String, s2: String) {
   }
 }
 
+// ┌──────────────────────────────────────────────────────────────────────────┐
+// │ Display-math delimiter `$$` policy                                         │
+// └──────────────────────────────────────────────────────────────────────────┘
+//
+// One row per standalone display environment the formatter recognizes, each
+// paired with a boolean:  True = wrap the block in `$$`,  False = leave it bare.
+// Authors: flip a boolean to change how that environment is normalized.
+//
+// Any row may be set to False (bare): the HTML renderer (src/pipeline.gleam)
+// recognizes exactly this set — it reuses recognized_display_delimiters() — and
+// always wraps a bare display environment back in `$$` before MathJax sees it,
+// so a bare `\begin{env}` in source still renders correctly. Whether it appears
+// bare or `$$`-wrapped in the SOURCE is purely the formatter's cosmetic choice.
+fn display_delimiter_dollar_policy() -> List(#(infra.LatexDelimiterPair, Bool)) {
+  [
+    #(infra.BeginEndAlign, False),
+    #(infra.BeginEndAlignStar, False),
+    #(infra.BeginEndEnvironment("equation"), True),
+    #(infra.BeginEndEnvironment("equation*"), True),
+    #(infra.BeginEndEnvironment("alignat"), True),
+    #(infra.BeginEndEnvironment("alignat*"), True),
+    #(infra.BeginEndEnvironment("flalign"), True),
+    #(infra.BeginEndEnvironment("flalign*"), True),
+    #(infra.BeginEndEnvironment("gather"), True),
+    #(infra.BeginEndEnvironment("gather*"), True),
+    #(infra.BeginEndEnvironment("multline"), True),
+    #(infra.BeginEndEnvironment("multline*"), True),
+    #(infra.BeginEndEnvironment("eqnarray"), True),
+    #(infra.BeginEndEnvironment("eqnarray*"), True),
+  ]
+}
+
+// every standalone display environment in the policy (regardless of its `$$`
+// flag). Both the formatter and the HTML renderer (src/pipeline.gleam) feed this
+// to create_mathblock_elements, so a bare occurrence is always captured as math
+// rather than prose — the invariant that lets any environment be emitted bare.
+pub fn recognized_display_delimiters() -> List(infra.LatexDelimiterPair) {
+  display_delimiter_dollar_policy() |> list.map(fn(row) { row.0 })
+}
+
+// the `\begin{…}` opening token of each environment flagged bare (policy False);
+// a MathBlock whose text contains one of these gets its `$$` wrapper stripped
+fn bare_display_openings() -> List(String) {
+  display_delimiter_dollar_policy()
+  |> list.filter(fn(row) { !row.1 })
+  |> list.map(fn(row) { { infra.opening_and_closing_string_for_pair(row.0) }.0 })
+}
+
 pub fn formatter_pipeline(
   line_length: Int,
   indentation_line_length_penalty: Int,
@@ -103,12 +151,15 @@ pub fn formatter_pipeline(
       dl.delete("QED"),
     ],
     pp.create_mathblock_elements(
-      [
-        infra.DoubleDollar,
-        infra.BackslashSquareBracket,
-        infra.BeginEndAlign,
-        infra.BeginEndAlignStar,
-      ],
+      // recognize every standalone display delimiter (see
+      // display_delimiter_dollar_policy) as a MathBlock, so a bare (un-`$$`-
+      // wrapped) environment like `\begin{equation}` or `\begin{gather}` is
+      // captured as math instead of being line-wrapped as prose (which silently
+      // corrupts it).
+      list.flatten([
+        [infra.DoubleDollar, infra.BackslashSquareBracket],
+        recognized_display_delimiters(),
+      ]),
       infra.DoubleDollar,
     ),
     [
@@ -130,12 +181,16 @@ pub fn formatter_pipeline(
         "WriterlyComment",
       ]),
       dl.trim_ending_spaces_except_last_line(),
+      // strip the `$$` wrapper off every MathBlock flagged bare in the policy.
+      // Matching is by the exact `\begin{env}` opening token (which carries its
+      // closing brace), so `\begin{align}` does NOT match `\begin{alignat}` or
+      // the subsidiary `\begin{aligned}` — those keep their `$$`.
       dl.strip_delimiters_inside_if(
-        #(
-          "MathBlock",
-          infra.latex_strippable_display_delimiters(),
-          infra.descendant_text_contains(_, "\\begin{align"),
-        ),
+        #("MathBlock", infra.latex_strippable_display_delimiters(), fn(vxml) {
+          list.any(bare_display_openings(), fn(opening) {
+            infra.descendant_text_contains(vxml, opening)
+          })
+        }),
       ),
       dl.group_consecutive_children__outside(
         #("p", p_cannot_contain),

@@ -1,5 +1,6 @@
 import blame as bl
 import desugarer_library as dl
+import formatter_pipeline
 import gleam/list
 import gleam/string
 import infrastructure as infra
@@ -288,8 +289,17 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         proof_default,
       )),
     ],
+    // Wrap EVERY standalone display environment in `$$` (if not already), so a
+    // bare `\begin{equation}` / `\begin{eqnarray*}` / … reaches MathJax as valid
+    // display math instead of being processed as prose (which mangles it — the
+    // `*` in `eqnarray*` bold-splits, `_` subscripts italic-split, etc.). The
+    // recognized set is shared with the formatter (recognized_display_delimiters)
+    // so the renderer always accepts whatever `--fmt` emits.
     pp.create_mathblock_elements(
-      [infra.DoubleDollar, infra.BeginEndAlign, infra.BeginEndAlignStar],
+      list.flatten([
+        [infra.DoubleDollar],
+        formatter_pipeline.recognized_display_delimiters(),
+      ]),
       infra.DoubleDollar,
     ),
     [

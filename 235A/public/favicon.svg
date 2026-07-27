@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="white"/>
-  <rect x="1" y="1" width="62" height="62" fill="none" stroke="black" stroke-width="1.5"/>
-  <text x="32" y="29" text-anchor="middle"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MATH/STAT 235A">
+  <title>MATH/STAT 235A</title>
+  <rect width="64" height="64" rx="13" fill="#a8452c"/>
+  <text x="32" y="29.5" text-anchor="middle"
         font-family="Georgia, 'Times New Roman', serif"
-        font-size="23" font-weight="bold" fill="black">235</text>
-  <text x="32" y="54" text-anchor="middle"
+        font-size="21" font-weight="600" fill="#f4f3ee">235</text>
+  <text x="32" y="55" text-anchor="middle"
         font-family="Georgia, 'Times New Roman', serif"
-        font-size="26" font-weight="bold" fill="black">A</text>
+        font-size="27" font-weight="700" fill="#f4f3ee">A</text>
 </svg>

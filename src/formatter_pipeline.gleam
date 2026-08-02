@@ -1,8 +1,8 @@
-import desugarer_library as dl
+import desugaring/desugarers as dl
 import gleam/list
 import gleam/string
-import infrastructure as infra
-import prefabricated_pipelines as pp
+import desugaring/core as infra
+import desugaring/pipelines as pp
 
 const minimum_line_wrap_length = 40
 
@@ -161,6 +161,7 @@ pub fn formatter_pipeline(
         recognized_display_delimiters(),
       ]),
       infra.DoubleDollar,
+      ["WriterlyBlankLine"],
     ),
     [
       dl.concatenate_consecutive_lines_if(
@@ -171,6 +172,7 @@ pub fn formatter_pipeline(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
+      ["WriterlyBlankLine"],
     ),
     [
       dl.trim_spaces_around_newlines__outside([

@@ -1,4 +1,4 @@
-import blame.{Ext}
+import vxml/blame.{Ext}
 import desugaring as ds
 import gleam/dict
 import gleam/io
@@ -7,8 +7,9 @@ import gleam/option.{type Option, None, Some}
 import gleam/regexp.{type Regexp}
 import gleam/result
 import gleam/string.{inspect as ins}
-import infrastructure as infra
-import io_lines.{type OutputLine, OutputLine}
+import desugaring/core as infra
+import desugaring/writerly_defaults as wd
+import vxml/io_lines.{type OutputLine, OutputLine}
 import on
 import pipeline
 import simplifile
@@ -938,7 +939,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       output_dir: "./" <> course_dir <> "/" <> output_dir_local_path <> "/",
       prettifier_behavior: ds.PrettifierOff,
     )
-    |> ds.amend_renderer_paramaters_by_command_line_amendments(amendments)
+    |> ds.amend_renderer_parameters_by_command_line_amendments(amendments)
 
   let author_mode = dict.has_key(amendments.user_args, "--local")
   let offline_mathjax = dict.has_key(amendments.user_args, "--offline-mathjax")
@@ -950,8 +951,8 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
 
   let renderer =
     ds.Renderer(
-      assembler: ds.default_writerly_assembler(_, options),
-      parser: ds.default_writerly_parser,
+      assembler: wd.default_writerly_assembler(_, options),
+      parser: wd.default_writerly_parser,
       filterer: ds.default_filterer(_, options, []),
       pipeline: pipeline.pipeline(course_dir),
       splitter: our_splitter,

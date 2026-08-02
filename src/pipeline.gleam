@@ -1,10 +1,10 @@
-import blame as bl
-import desugarer_library as dl
+import vxml/blame as bl
+import desugaring/desugarers as dl
 import formatter_pipeline
 import gleam/list
 import gleam/string
-import infrastructure as infra
-import prefabricated_pipelines as pp
+import desugaring/core as infra
+import desugaring/pipelines as pp
 import vxml
 
 const our_blame = bl.Des([], "pipeline", 8)
@@ -301,6 +301,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         formatter_pipeline.recognized_display_delimiters(),
       ]),
       infra.DoubleDollar,
+      ["WriterlyBlankLine"],
     ),
     [
       // must run before markdown_link_splitting: it prepends
@@ -316,7 +317,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "Math",
       ]),
     ],
-    pp.markdown_link_splitting(["MathBlock"]),
+    pp.markdown_link_splitting(["WriterlyBlankLine"], ["MathBlock"]),
     [
       dl.math_label_to_tag_handle(#("MathBlock", "::++EquationCounter")),
       dl.substitute_counters(),
@@ -338,6 +339,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
+      ["WriterlyBlankLine"],
     ),
     [
       dl.tokenize_href_surroundings(),
@@ -377,11 +379,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("(<a href=0>_0_</a>)).", "<a href=0>(_0_)</a>)."),
       ]),
     ],
-    pp.barbaric_symmetric_delim_splitting("_", "_", "i", [
+    pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine"], [
       "MathBlock",
       "Math",
     ]),
-    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", [
+    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", ["WriterlyBlankLine"], [
       "MathBlock",
       "Math",
     ]),

@@ -1,4 +1,4 @@
-import blame.{Src}
+import vxml/blame.{Src}
 import desugaring as ds
 import formatter_pipeline.{formatter_pipeline}
 import gleam/dict
@@ -7,7 +7,8 @@ import gleam/io
 import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/string.{inspect as ins}
-import infrastructure as infra
+import desugaring/core as infra
+import desugaring/writerly_defaults as wd
 import on
 import simplifile
 import vxml.{type VXML, V}
@@ -180,7 +181,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       output_dir: "./" <> course_dir <> "/" <> output_dir_local_path,
       prettifier_behavior: ds.PrettifierOff,
     )
-    |> ds.amend_renderer_paramaters_by_command_line_amendments(amendments)
+    |> ds.amend_renderer_parameters_by_command_line_amendments(amendments)
 
   let input_dir = parameters.input_dir
   let input_dir_name_only = case input_dir {
@@ -206,14 +207,14 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
 
   let renderer =
     ds.Renderer(
-      assembler: ds.default_writerly_assembler(_, options),
-      parser: ds.default_writerly_parser,
+      assembler: wd.default_writerly_assembler(_, options),
+      parser: wd.default_writerly_parser,
       pipeline: pipeline,
       splitter: case files {
         [] -> whole_book_splitter
         _ -> single_file_splitter(_, input_dir_name_only)
       },
-      emitter: ds.default_writerly_emitter,
+      emitter: wd.default_writerly_emitter,
       writer: ds.default_writer,
       prettifier: ds.default_prettier_prettifier,
       filterer: ds.default_filterer(_, options, []),

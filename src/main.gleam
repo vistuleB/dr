@@ -6,7 +6,7 @@ import gleam/io
 import gleam/list
 import gleam/option
 import gleam/string
-import infrastructure as infra
+import desugaring/core as infra
 import on
 import renderer
 import simplifile

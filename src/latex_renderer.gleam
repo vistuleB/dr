@@ -113,6 +113,15 @@ fn emit_mixed(s: String) -> String {
   |> string.concat
 }
 
+// Escape the characters that break inside `\href{...}`'s URL argument. `#` is
+// the critical one: a raw `#` in an href URL inside a `\footnote` (a moving
+// argument) triggers "Illegal parameter number"; `\#` is safe everywhere.
+fn escape_url(s: String) -> String {
+  s
+  |> string.replace("#", "\\#")
+  |> string.replace("%", "\\%")
+}
+
 fn strip_trailing_period(s: String) -> String {
   case string.ends_with(s, ".") {
     True -> string.drop_end(s, 1)
@@ -329,6 +338,64 @@ fn statement_env(tag: String) -> Result(String, Nil) {
 }
 
 // ---------------------------------------------------------------------------
+// Figures (`figure` > `img`* + `figcaption`)
+// ---------------------------------------------------------------------------
+
+// `\includegraphics` for one `img`. The web `style=max-width: N%` becomes
+// `width=0.N\linewidth`; images keep their aspect ratio. The `src` (e.g.
+// `figures/foo.png`) is emitted verbatim — the renderer copies the course's
+// `public/figures/` next to the .tex so the relative path resolves.
+fn img_to_latex(attrs: List(Attr)) -> String {
+  let src = find_attr(attrs, "src") |> option.unwrap("")
+  let assert Ok(re) = regexp.from_string("max-width:\\s*([0-9]+)")
+  let width = case find_attr(attrs, "style") {
+    Some(s) ->
+      case regexp.scan(re, s) {
+        // source percentages are two digits, e.g. "38" -> "0.38"
+        [m, ..] ->
+          case m.submatches {
+            [Some(pct)] -> "0." <> pct
+            _ -> "0.8"
+          }
+        [] -> "0.8"
+      }
+    None -> "0.8"
+  }
+  "\\includegraphics[width=" <> width <> "\\linewidth]{" <> src <> "}"
+}
+
+// A `figure` renders as a centered, non-floating block: its images side by side
+// (matching the web's side-by-side layout), then the caption. The caption text
+// already carries its own "Figure N:" number (the source hard-numbers figures
+// and refers to them by that number in prose), so we do NOT use `\caption`
+// (which would add a second, differently-scoped number) — just small centered
+// text below the images.
+fn figure_to_latex(children: List(VXML), ctx: Ctx) -> String {
+  let imgs =
+    children
+    |> list.filter_map(fn(c) {
+      case c {
+        V(_, "img", attrs, _) -> Ok(img_to_latex(attrs))
+        _ -> Error(Nil)
+      }
+    })
+    |> string.join("\\hspace{0.04\\linewidth}\n")
+  let caption =
+    children
+    |> list.find_map(fn(c) {
+      case c {
+        V(_, "figcaption", _, cc) -> Ok(nodes_to_latex(cc, ctx))
+        _ -> Error(Nil)
+      }
+    })
+  let caption_latex = case caption {
+    Ok(text) -> "\\\\[0.6em]\n{\\small " <> string.trim(text) <> "}"
+    Error(_) -> ""
+  }
+  "\n\\begin{center}\n" <> imgs <> caption_latex <> "\n\\end{center}\n"
+}
+
+// ---------------------------------------------------------------------------
 // Tree walk
 // ---------------------------------------------------------------------------
 
@@ -386,13 +453,19 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
           <> nodes_to_latex(children, ctx)
           <> "\n\\end{proof}\n"
         }
+        "figure" -> figure_to_latex(children, ctx)
+        // `img`/`figcaption` outside a `figure` are a fallback (normally the
+        // `figure` case consumes them); render sensibly anyway.
+        "img" ->
+          "\n\\begin{center}\n" <> img_to_latex(attrs) <> "\n\\end{center}\n"
+        "figcaption" -> "{\\small " <> nodes_to_latex(children, ctx) <> "}"
         "MathBlock" -> mathblock_to_latex(vxml, ctx)
         "Math" -> gather_text(vxml)
         "i" -> "\\emph{" <> nodes_to_latex(children, ctx) <> "}"
         "b" -> "\\textbf{" <> nodes_to_latex(children, ctx) <> "}"
         "a" -> {
           let href = find_attr(attrs, "href") |> option.unwrap("")
-          "\\href{" <> href <> "}{" <> nodes_to_latex(children, ctx) <> "}"
+          "\\href{" <> escape_url(href) <> "}{" <> nodes_to_latex(children, ctx) <> "}"
         }
         "ol" ->
           "\n\\begin{enumerate}"
@@ -623,6 +696,31 @@ fn our_emitter(
   Ok(ds.OutputFragment(..fragment, payload: lines))
 }
 
+// Copy the course's `public/figures/` next to the emitted `.tex`, so the
+// `figures/<name>` paths in `\includegraphics` resolve when compiling from the
+// output directory (and the .tex + images stay a self-contained bundle).
+// Returns how many files were copied.
+fn copy_figures(course_dir: String, output_dir: String) -> Int {
+  let src = course_dir <> "/public/figures"
+  let dst = output_dir <> "figures"
+  case simplifile.is_directory(src) {
+    Ok(True) -> {
+      let _ = simplifile.create_directory_all(dst)
+      case simplifile.read_directory(src) {
+        Ok(files) ->
+          list.fold(files, 0, fn(n, f) {
+            case simplifile.copy_file(src <> "/" <> f, dst <> "/" <> f) {
+              Ok(_) -> n + 1
+              Error(_) -> n
+            }
+          })
+        Error(_) -> 0
+      }
+    }
+    _ -> 0
+  }
+}
+
 pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
   let #(output_dir_local_path, amendments) = case amendments.output_dir {
     None -> #("latex", amendments)
@@ -685,7 +783,14 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       case ds.run_renderer(renderer, parameters, options) {
         Error(error) ->
           io.println("\nlatex renderer error: " <> ins(error) <> "\n")
-        _ -> io.println("\nwrote " <> output_dir <> filename <> "\n")
+        _ -> {
+          let n_figs = copy_figures(course_dir, output_dir)
+          let figs_note = case n_figs {
+            0 -> ""
+            _ -> " (+ " <> int.to_string(n_figs) <> " figures)"
+          }
+          io.println("\nwrote " <> output_dir <> filename <> figs_note <> "\n")
+        }
       }
     }
   }

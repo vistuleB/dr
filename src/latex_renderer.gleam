@@ -576,7 +576,12 @@ fn emit_document(root: VXML, di: DocumentInfo) -> String {
   let ctx = Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
   let body = node_to_latex(root, ctx)
   preamble(di)
-  <> "\n\\begin{document}\n\\maketitle\n\\tableofcontents\n\n"
+  // `\pdfbookmark[0]{Contents}{toc}` adds a top-level, unnumbered PDF outline
+  // entry for the table of contents itself (which \tableofcontents does not
+  // bookmark on its own), pointing at the TOC page.
+  <> "\n\\begin{document}\n\\maketitle\n"
+  <> "\\pdfbookmark[0]{Contents}{toc}\n"
+  <> "\\tableofcontents\n\n"
   <> body
   <> "\n\\end{document}\n"
 }

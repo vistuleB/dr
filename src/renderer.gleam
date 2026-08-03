@@ -22,6 +22,7 @@ pub type FragmentType {
   SubSection(Int, Int, Int)
   Index
   Exercises
+  Bibliography
 }
 
 type Fragment(z) =
@@ -72,6 +73,17 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
   {
     [exercises, ..] -> [
       ds.OutputFragment(Exercises, "exercises.html", exercises),
+    ]
+    [] -> []
+  }
+
+  // Bibliography is another optional standalone unit outside the chapter
+  // sequence (a bibliographic-notes appendix in 119B).
+  let bibliography_fragments = case
+    infra.descendants_with_class(root, "bibliography")
+  {
+    [bibliography, ..] -> [
+      ds.OutputFragment(Bibliography, "bibliography.html", bibliography),
     ]
     [] -> []
   }
@@ -157,6 +169,7 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
     section_fragments,
     subsection_fragments,
     exercises_fragments,
+    bibliography_fragments,
   ])
   |> Ok
 }
@@ -326,16 +339,18 @@ fn chapter_emitter(
   Ok(ds.OutputFragment(..fragment, payload: lines))
 }
 
-// exercises emitter - handles the (optional, singular) exercises fragment,
-// a page outside the chapter sequence (e.g. a trailing homework appendix)
-fn exercises_emitter(
+// standalone emitter - handles an (optional, singular) standalone-unit fragment
+// living outside the chapter sequence (the Exercises appendix in 235A, the
+// Bibliographic-notes appendix in 119B). `page_title` names the page for the
+// <title>/social meta tags.
+fn standalone_emitter(
   fragment: Fragment(VXML),
   offline_mathjax: Bool,
   document_info: DocumentInfo,
   author_mode: Bool,
+  page_title: String,
 ) -> Result(Fragment(OL), String) {
-  let blame = Ext([], "exercises_emitter")
-  let page_title = "Exercises"
+  let blame = Ext([], "standalone_emitter")
 
   let lines =
     list.flatten([
@@ -761,7 +776,21 @@ fn our_emitter(
     SubSection(_, _, _) ->
       subsection_emitter(fragment, offline_mathjax, document_info, author_mode)
     Exercises ->
-      exercises_emitter(fragment, offline_mathjax, document_info, author_mode)
+      standalone_emitter(
+        fragment,
+        offline_mathjax,
+        document_info,
+        author_mode,
+        "Exercises",
+      )
+    Bibliography ->
+      standalone_emitter(
+        fragment,
+        offline_mathjax,
+        document_info,
+        author_mode,
+        "Bibliographic notes",
+      )
   }
 }
 

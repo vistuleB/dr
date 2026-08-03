@@ -780,6 +780,9 @@ g[id^="mjx-eqn:eq:"] {
 
 .index__exercises-link {
     margin-top: var(--space-lg);
+    /* match the .index__toc (ol:not(.list)) left inset so the link lines up
+       with the chapter items and the rule above it */
+    padding-left: 1.6rem;
 }
 
 .index__exercises-link > a {
@@ -803,6 +806,29 @@ g[id^="mjx-eqn:eq:"] {
 .index__exercises-link > a:hover {
     color: var(--accent);
     border-color: var(--accent);
+}
+
+/* A plain standalone-unit link (e.g. Bibliographic notes) — sits at the end of
+   the table of contents styled like a top-level chapter entry, but unnumbered
+   and without the exercises pill treatment. No rule of its own: it sits under
+   the last chapter item's existing bottom border. */
+.index__standalone-link {
+    margin-top: var(--space-md);
+    /* match the .index__toc (ol:not(.list)) left inset so it lines up with the
+       chapter items and the rule above it */
+    padding-left: 1.6rem;
+}
+
+.index__standalone-link > a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.index__standalone-link > a:hover {
+    color: var(--accent);
 }
 
 /* ---------------------------------------------------- rules, notes, figures */

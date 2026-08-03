@@ -114,8 +114,11 @@ into `main.gleam` alongside `--fmt`). Design:
 
 - **`report` document class.** `Chapter` → `\chapter`, `Section` → `\section`,
   `SubSection` → `\subsection`; `\tableofcontents` + `hyperref`/`bookmark` give
-  the clickable TOC and the outline for free. `Exercises` → `\chapter*` +
-  `\addcontentsline`.
+  the clickable TOC and the outline for free. The standalone appendix units
+  `Exercises` (235A) and `Bibliography` (119B's "Bibliographic notes") → an
+  unnumbered `\chapter*` + `\addcontentsline` (title read from the tag's `title`
+  attr), so they sit outside the numbered chapter sequence but still appear in
+  the TOC + outline.
 - **Native LaTeX numbering** (not the web's baked counters). Theorem-like tags
   (`Definition`/`Theorem`/`Lemma`/`Corollary`/`Example`/`Exercise`) map to
   shared-counter `amsthm` `\newtheorem` environments (`[chapter]`-scoped, so

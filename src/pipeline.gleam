@@ -10,6 +10,8 @@ import vxml
 const our_blame = bl.Des([], "pipeline", 8)
 
 const p_cannot_contain = [
+  "Bibliography",
+  "BibliographyTitle",
   "Chapter",
   "ChapterTitle",
   "Exercises",
@@ -36,6 +38,7 @@ const p_cannot_contain = [
 ]
 
 const p_cannot_be_contained_in = [
+  "BibliographyTitle",
   "ChapterTitle",
   "SectionTitle",
   "SubSectionTitle",
@@ -51,6 +54,8 @@ const p_cannot_be_contained_in = [
 
 pub fn pipeline(course: String) -> List(infra.Desugarer) {
   let pre_transformation_document_tags = [
+    "Bibliography",
+    "BibliographyTitle",
     "Chapter",
     "ChapterTitle",
     "Corollary",
@@ -183,6 +188,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Section", "counter", "FootnoteCounter"),
         #("SubSection", "counter", "FootnoteCounter"),
         #("Exercises", "counter", "FootnoteCounter"),
+        #("Bibliography", "counter", "FootnoteCounter"),
       ]),
       dl.prepend_attribute(#(
         "Chapter",
@@ -206,6 +212,12 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "Exercises",
         "path",
         "./exercises.html",
+        infra.GoBack,
+      )),
+      dl.prepend_attribute(#(
+        "Bibliography",
+        "path",
+        "./bibliography.html",
         infra.GoBack,
       )),
       dl.prepend_counter_incrementing_attribute(#(
@@ -251,6 +263,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.auto_generate_child_if_missing_from_attribute(#(
         "Exercises",
         "ExercisesTitle",
+        "title",
+      )),
+      dl.auto_generate_child_if_missing_from_attribute(#(
+        "Bibliography",
+        "BibliographyTitle",
         "title",
       )),
       dl.set_handle_value(#("Chapter", "::øøChapterCounter", infra.GoBack)),
@@ -417,6 +434,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("SubSection", "subsection"),
         #("Footnote", "footnote"),
         #("Exercises", "exercises"),
+        #("Bibliography", "bibliography"),
       ]),
       dl.dr_generate_js_course(course),
       dl.rename__batch([
@@ -435,6 +453,8 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("Footnote", "div"),
         #("Exercises", "div"),
         #("ExercisesTitle", "h1"),
+        #("Bibliography", "div"),
+        #("BibliographyTitle", "h1"),
       ]),
       dl.delete_attribute__batch([
         "_",

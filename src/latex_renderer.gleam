@@ -316,13 +316,20 @@ fn mathblock_to_latex(vxml: VXML, ctx: Ctx) -> String {
 }
 
 fn enumerate_opts(attrs: List(Attr)) -> String {
-  case find_attr(attrs, "data-list-style") {
-    Some("decimal") -> "[label=\\arabic*.]"
-    Some("alpha") -> "[label=(\\alph*)]"
-    Some("roman") -> "[label=(\\roman*)]"
+  let label = case find_attr(attrs, "data-list-style") {
+    Some("decimal") -> "label=\\arabic*."
+    Some("alpha") -> "label=(\\alph*)"
+    Some("roman") -> "label=(\\roman*)"
     // default matches the web renderer's `ol.list` lower-roman markers
-    _ -> "[label=(\\roman*)]"
+    _ -> "label=(\\roman*)"
   }
+  // `start=N` continues numbering across a split list (the bibliography numbers
+  // its references 1..10 across three "Sources for Part k" sublists).
+  let start = case find_attr(attrs, "start") {
+    Some(n) -> ", start=" <> n
+    None -> ""
+  }
+  "[" <> label <> start <> "]"
 }
 
 fn statement_env(tag: String) -> Result(String, Nil) {
@@ -478,12 +485,19 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
         "Chapter" -> heading("chapter", attrs, children, ctx)
         "Section" -> heading("section", attrs, children, ctx)
         "SubSection" -> heading("subsection", attrs, children, ctx)
-        "Exercises" ->
-          "\n\n\\chapter*{Exercises}\n"
-          <> "\\addcontentsline{toc}{chapter}{Exercises}\n"
+        // standalone appendix units (outside the numbered chapter sequence):
+        // an unnumbered \chapter* that still appears in the TOC + outline.
+        "Exercises" | "Bibliography" -> {
+          let title = find_attr(attrs, "title") |> option.unwrap(tag)
+          "\n\n\\chapter*{"
+          <> emit_mixed(title)
+          <> "}\n\\addcontentsline{toc}{chapter}{"
+          <> emit_mixed(title)
+          <> "}\n"
           <> label_of(attrs)
           <> nodes_to_latex(children, ctx)
           <> "\n"
+        }
         "Proof" -> {
           let opt = case find_attr(attrs, "alt-title") {
             Some(t) ->

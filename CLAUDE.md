@@ -83,6 +83,49 @@ Useful flags:
 | `--help` | Print full usage |
 | `--esoteric` | Print advanced/esoteric CLI options |
 
+### Render to LaTeX / PDF
+
+```sh
+gleam run -- --which <course_dir> --latex
+```
+
+Emits **one self-contained `.tex` file** at `<course_dir>/latex/<course_dir>.tex`
+(e.g. `235A/latex/235A.tex`) that compiles with `pdflatex` into a PDF with a
+clickable table of contents and a PDF bookmark outline. Compile with three passes
+(TOC + cross-references need to settle):
+
+```sh
+cd <course_dir>/latex && pdflatex 235A.tex && pdflatex 235A.tex && pdflatex 235A.tex
+```
+
+This is a **separate, idiomatic-LaTeX path** from the HTML renderer, not a
+variant of it (`src/latex_pipeline.gleam` + `src/latex_renderer.gleam`, wired
+into `main.gleam` alongside `--fmt`). Design:
+
+- **`report` document class.** `Chapter` → `\chapter`, `Section` → `\section`,
+  `SubSection` → `\subsection`; `\tableofcontents` + `hyperref`/`bookmark` give
+  the clickable TOC and the outline for free. `Exercises` → `\chapter*` +
+  `\addcontentsline`.
+- **Native LaTeX numbering** (not the web's baked counters). Theorem-like tags
+  (`Definition`/`Theorem`/`Lemma`/`Corollary`/`Example`/`Exercise`) map to
+  shared-counter `amsthm` `\newtheorem` environments (`[chapter]`-scoped, so
+  `Theorem 2.1` etc. match the source); `Proof` → `proof` (auto QED). A tag's
+  `label=` becomes the theorem note `[...]`, its `handle=` becomes `\label{}`.
+- **Cross-references become native.** `>>handle` → `\ref{handle}`, an equation
+  marker `name##<<` → `\label{name}`, footnote markers `(*>>h)` are inlined as
+  `\footnote{}` (the `Footnote` block + its `hr` are dropped). Because a
+  `\label` needs a *numbered* line, a MathBlock that carries a label is forced
+  into a numbered environment (a starred env drops its star; a bare display
+  becomes `equation`/`gather`) — see `latex_renderer.mathblock_to_latex`.
+- **Math passes through verbatim** (it is already LaTeX): the emitter only
+  strips the `$$` the pipeline wraps around a display block, then emits the inner
+  environment directly or wraps bare math in `\[ ... \]`. Custom macros the
+  source still uses (`\R`, `\Z`, `\prob`, `\cal`, …) are declared in the preamble
+  built by `latex_renderer.preamble`.
+- **235A only, for now.** 235A has no figures/images; adding `figure`/`img`/
+  `figcaption` handling to the emitter is the main work needed before 235B/119B
+  (which do have figures — see the memory notes) can use `--latex`.
+
 ### Authoring rule: a LaTeX row break must never start a line
 
 **When converting `.tex` → `.wly`, never begin a line with a row break followed by

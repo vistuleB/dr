@@ -7,6 +7,7 @@ import gleam/list
 import gleam/option
 import gleam/string
 import desugaring/core as infra
+import latex_renderer
 import on
 import renderer
 import simplifile
@@ -26,6 +27,11 @@ fn local_usage_message() {
   io.println(margin <> "       of chars subtracted from line length at")
   io.println(margin <> "       each added level of indentation in the file)")
   io.println(margin <> "     • -file <name>: format only the given file")
+  io.println("")
+  io.println(margin <> "--latex")
+  io.println(margin <> "  -> (local option) render wly -> a single self-contained")
+  io.println(margin <> "     LaTeX (.tex) file under <course dir>/latex/, compilable")
+  io.println(margin <> "     with pdflatex (clickable TOC + PDF outline)")
   io.println("")
   io.println(margin <> "--local")
   io.println(margin <> "  -> include source-linking tooltips")
@@ -105,6 +111,7 @@ pub fn main() {
     case
       ds.process_command_line_arguments(args, [
         "--fmt",
+        "--latex",
         "--local",
         "--which",
         "--offline-mathjax",
@@ -159,14 +166,24 @@ pub fn main() {
     _ -> on.Stay(Nil)
   })
 
-  case dict.get(amendments.user_args, "--fmt") {
-    Ok(_) -> {
+  case
+    dict.get(amendments.user_args, "--fmt"),
+    dict.get(amendments.user_args, "--latex")
+  {
+    Ok(_), _ -> {
       io.println("")
       io.println("wly -> wly formatter")
       formatter_renderer.render(amendments, course_dir)
     }
 
-    Error(_) -> {
+    _, Ok(_) -> {
+      io.println("")
+      io.println("wly -> latex renderer")
+      latex_renderer.render(amendments, course_dir)
+      io.println("")
+    }
+
+    Error(_), Error(_) -> {
       io.println("")
       io.println("wly -> html renderer")
       renderer.render(amendments, course_dir)

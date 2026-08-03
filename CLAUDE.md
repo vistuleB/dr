@@ -98,6 +98,16 @@ clickable table of contents and a PDF bookmark outline. Compile with three passe
 cd <course_dir>/latex && pdflatex 235A.tex && pdflatex 235A.tex && pdflatex 235A.tex
 ```
 
+**The multi-pass compile is mandatory, not optional.** After pass 1 there is no
+`.aux`, so hyperref cannot resolve TOC/cross-reference targets and emits almost
+**no `/Link` annotations** (≈5, vs ≈170 once settled) — the PDF looks link-less.
+Always grab the PDF after the *last* pass, and sanity-check link count before
+trusting it (`/Subtype /Link` occurrences). Note: **ghostscript** (and anything
+built on it, e.g. ImageMagick `convert`) chokes on the TOC page with a "Page
+drawing error" once Latin Modern is in use — that is a gs rasterizer bug only;
+real viewers (Preview/Chrome/Acrobat) render the page and its blue links fine, so
+verify visuals in an actual viewer, not via gs.
+
 This is a **separate, idiomatic-LaTeX path** from the HTML renderer, not a
 variant of it (`src/latex_pipeline.gleam` + `src/latex_renderer.gleam`, wired
 into `main.gleam` alongside `--fmt`). Design:

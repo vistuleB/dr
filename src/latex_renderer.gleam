@@ -459,6 +459,10 @@ fn gather_footnotes(root: VXML, ctx: Ctx) -> Dict(String, String) {
 fn preamble(di: DocumentInfo) -> String {
   "\\documentclass[11pt]{report}\n"
   <> "\\usepackage[utf8]{inputenc}\n"
+  // Latin Modern: full Type-1 VECTOR fonts for the T1 encoding. Without it,
+  // T1 + Computer Modern falls back to Type-3 BITMAP fonts (blurry at any zoom)
+  // on TeX installs lacking cm-super.
+  <> "\\usepackage{lmodern}\n"
   <> "\\usepackage[T1]{fontenc}\n"
   <> "\\usepackage{amsmath}\n"
   <> "\\usepackage{amssymb}\n"

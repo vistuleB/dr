@@ -152,20 +152,25 @@ into `main.gleam` alongside `--fmt`). Design:
   unbreakable `$\textbf{…}$` prose phrases that would otherwise run off the right
   margin. Vector fonts come from `\usepackage{lmodern}` (before `[T1]{fontenc}`);
   without it, this TeX install falls back to blurry Type-3 bitmap Computer Modern.
-- **Figures.** `figure` → a centered, non-floating block; each `img` →
-  `\includegraphics[width=0.N\linewidth]{src}` (the width comes from the web
-  `style=max-width: N%`), images sit side by side, and the `figcaption` renders
-  as small centered text below. Figures are NOT wrapped in a `\caption`/`figure`
-  float: the source hard-numbers them ("Figure 1:", …) inside the caption text and
-  refers to them by that literal number in prose, so LaTeX auto-numbering would
-  clash. The renderer copies the course's `public/figures/` next to the emitted
-  `.tex` (via `copy_figures`) so the `figures/<name>` paths resolve and the bundle
-  is self-contained. `graphicx` handles `.png`/`.jpg`/`.jpeg`.
-- **235A and 235B work; 119B is the remaining course.** URLs are escaped for the
-  `\href` URL argument (`escape_url`: `#`→`\#`, `%`→`\%`) — a raw `#` in an href
-  inside a `\footnote` otherwise errors ("Illegal parameter number"). 119B has
-  figures too and should mostly work now; audit it (its own macros / any new tags)
-  before trusting it.
+- **Figures.** A `figure` becomes a centered, non-floating block whose panels flow
+  side by side and **wrap to a grid** when a row exceeds `\linewidth` (breakable
+  `\hspace` between panels in a `center`). Two source shapes are handled: a direct
+  `img` → `\includegraphics[width=0.N\linewidth]{src}` (235B; width from
+  `style=max-width: N%`), and a `span`(width%){ `img` + label } → a top-aligned
+  `minipage` panel with the image at full box width and its "(a)"/"(b)" label
+  below (119B's multi-panel figures). The `figcaption` renders as small centered
+  text below. Figures are NOT `\caption`/`figure` floats: the source hard-numbers
+  them ("Figure 1:", …) in the caption text and refers to them by that literal
+  number in prose, so LaTeX auto-numbering would clash. The renderer copies the
+  course's `public/figures/` next to the emitted `.tex` (`copy_figures`) so the
+  `figures/<name>` paths resolve and the bundle is self-contained. `graphicx`
+  handles `.png`/`.jpg`/`.jpeg`.
+- **All three courses work: 235A, 235B, 119B.** URLs are escaped for the `\href`
+  URL argument (`escape_url`: `#`→`\#`, `%`→`\%`) — a raw `#` in an href inside a
+  `\footnote` otherwise errors ("Illegal parameter number"). 119B's "Parts" are
+  `\chapter`s titled "Part N — …" (keeps the `[chapter]`-scoped theorem numbering
+  working); no custom macros beyond `\R` (its `\Y`/`\F`/`\a` were `\\`+letter row
+  breaks, not macros).
 
 Note: **ghostscript cannot rasterize the `\resizebox` (fit) pages or the
 Latin-Modern TOC** ("Page drawing error") — a gs bug, not a PDF defect. Verify

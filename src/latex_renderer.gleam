@@ -338,48 +338,91 @@ fn statement_env(tag: String) -> Result(String, Nil) {
 }
 
 // ---------------------------------------------------------------------------
-// Figures (`figure` > `img`* + `figcaption`)
+// Figures
+//
+// Two source shapes are supported:
+//   235B: `figure` > (`img`+ , `figcaption`)          -- images directly
+//   119B: `figure` > (`span`(width%){ `img` (a) }+ , `figcaption`)
+//                                                       -- labelled panels
+// Each image/panel becomes a fixed-width box; boxes flow side by side and wrap
+// to a grid when a row exceeds \linewidth. The caption goes below. We do NOT use
+// `\caption`/`figure` floats: the source hard-numbers figures ("Figure N:") in
+// the caption text and refers to them by that literal number in prose, so LaTeX
+// auto-numbering would clash.
 // ---------------------------------------------------------------------------
 
-// `\includegraphics` for one `img`. The web `style=max-width: N%` becomes
-// `width=0.N\linewidth`; images keep their aspect ratio. The `src` (e.g.
-// `figures/foo.png`) is emitted verbatim — the renderer copies the course's
-// `public/figures/` next to the .tex so the relative path resolves.
-fn img_to_latex(attrs: List(Attr)) -> String {
-  let src = find_attr(attrs, "src") |> option.unwrap("")
-  let assert Ok(re) = regexp.from_string("max-width:\\s*([0-9]+)")
-  let width = case find_attr(attrs, "style") {
+// Width fraction (e.g. "0.44") from a CSS-ish `style` holding `width: N%` or
+// `max-width: N%` (the `width:` substring of `max-width:` matches too).
+fn style_width_fraction(style: Option(String), default: String) -> String {
+  let assert Ok(re) = regexp.from_string("width:\\s*([0-9]+)")
+  case style {
     Some(s) ->
       case regexp.scan(re, s) {
-        // source percentages are two digits, e.g. "38" -> "0.38"
         [m, ..] ->
           case m.submatches {
+            [Some("100")] -> "1.0"
+            // source percentages are otherwise two digits, e.g. "38" -> "0.38"
             [Some(pct)] -> "0." <> pct
-            _ -> "0.8"
+            _ -> default
           }
-        [] -> "0.8"
+        [] -> default
       }
-    None -> "0.8"
+    None -> default
   }
-  "\\includegraphics[width=" <> width <> "\\linewidth]{" <> src <> "}"
 }
 
-// A `figure` renders as a centered, non-floating block: its images side by side
-// (matching the web's side-by-side layout), then the caption. The caption text
-// already carries its own "Figure N:" number (the source hard-numbers figures
-// and refers to them by that number in prose), so we do NOT use `\caption`
-// (which would add a second, differently-scoped number) — just small centered
-// text below the images.
+// `\includegraphics` for a direct `img` (235B-style), width from `max-width: N%`.
+fn img_to_latex(attrs: List(Attr)) -> String {
+  let src = find_attr(attrs, "src") |> option.unwrap("")
+  let frac = style_width_fraction(find_attr(attrs, "style"), "0.8")
+  "\\includegraphics[width=" <> frac <> "\\linewidth]{" <> src <> "}"
+}
+
+// A `span` panel (119B-style): a fixed-width box wrapping an image (shown at the
+// box's full width) and an optional label like "(a)", as a top-aligned minipage.
+fn span_panel_to_latex(
+  attrs: List(Attr),
+  children: List(VXML),
+  ctx: Ctx,
+) -> String {
+  let frac = style_width_fraction(find_attr(attrs, "style"), "0.44")
+  let parts =
+    children
+    |> list.filter_map(fn(c) {
+      case c {
+        V(_, "img", ia, _) ->
+          Ok(
+            "\\includegraphics[width=\\linewidth]{"
+            <> { find_attr(ia, "src") |> option.unwrap("") }
+            <> "}",
+          )
+        V(_, "WriterlyBlankLine", _, _) -> Error(Nil)
+        _ ->
+          case string.trim(node_to_latex(c, ctx)) {
+            "" -> Error(Nil)
+            t -> Ok(t)
+          }
+      }
+    })
+  "\\begin{minipage}[t]{"
+  <> frac
+  <> "\\linewidth}\\centering\n"
+  <> string.join(parts, "\\\\\n")
+  <> "\n\\end{minipage}"
+}
+
 fn figure_to_latex(children: List(VXML), ctx: Ctx) -> String {
-  let imgs =
+  let panels =
     children
     |> list.filter_map(fn(c) {
       case c {
         V(_, "img", attrs, _) -> Ok(img_to_latex(attrs))
+        V(_, "span", attrs, sc) -> Ok(span_panel_to_latex(attrs, sc, ctx))
         _ -> Error(Nil)
       }
     })
-    |> string.join("\\hspace{0.04\\linewidth}\n")
+    // breakable gap: a row of panels wider than \linewidth wraps to a grid
+    |> string.join("\\hspace{0.02\\linewidth}%\n")
   let caption =
     children
     |> list.find_map(fn(c) {
@@ -392,7 +435,7 @@ fn figure_to_latex(children: List(VXML), ctx: Ctx) -> String {
     Ok(text) -> "\\\\[0.6em]\n{\\small " <> string.trim(text) <> "}"
     Error(_) -> ""
   }
-  "\n\\begin{center}\n" <> imgs <> caption_latex <> "\n\\end{center}\n"
+  "\n\\begin{center}\n" <> panels <> caption_latex <> "\n\\end{center}\n"
 }
 
 // ---------------------------------------------------------------------------
@@ -459,6 +502,8 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
         "img" ->
           "\n\\begin{center}\n" <> img_to_latex(attrs) <> "\n\\end{center}\n"
         "figcaption" -> "{\\small " <> nodes_to_latex(children, ctx) <> "}"
+        // a `span` outside a figure is just an inline grouping; emit its content
+        "span" -> nodes_to_latex(children, ctx)
         "MathBlock" -> mathblock_to_latex(vxml, ctx)
         "Math" -> gather_text(vxml)
         "i" -> "\\emph{" <> nodes_to_latex(children, ctx) <> "}"

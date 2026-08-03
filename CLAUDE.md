@@ -111,12 +111,24 @@ into `main.gleam` alongside `--fmt`). Design:
   shared-counter `amsthm` `\newtheorem` environments (`[chapter]`-scoped, so
   `Theorem 2.1` etc. match the source); `Proof` → `proof` (auto QED). A tag's
   `label=` becomes the theorem note `[...]`, its `handle=` becomes `\label{}`.
-- **Cross-references become native.** `>>handle` → `\ref{handle}`, an equation
-  marker `name##<<` → `\label{name}`, footnote markers `(*>>h)` are inlined as
-  `\footnote{}` (the `Footnote` block + its `hr` are dropped). Because a
-  `\label` needs a *numbered* line, a MathBlock that carries a label is forced
-  into a numbered environment (a starred env drops its star; a bare display
-  becomes `equation`/`gather`) — see `latex_renderer.mathblock_to_latex`.
+- **Cross-references become native.** `>>handle` → `\ref{handle}`; footnote
+  markers `(*>>h)` are inlined as `\footnote{}` (the `Footnote` block + its `hr`
+  are dropped).
+- **Equation numbering is identical to the HTML renderer.** The web numbers only
+  the `name##<<`-marked equations, globally and sequentially (Writerly's
+  `::++EquationCounter`), rendered as `\tag{N}`; manual mnemonic tags (`\tag{A1}`,
+  …) are kept; everything else is unnumbered. The LaTeX path reproduces this
+  exactly: a pre-pass (`collect_eq_labels`) numbers the k-th `name##<<` marker in
+  document order as equation *k*, and each marker is emitted as
+  `\tag{N}\label{name}` (so `\ref` resolves to the same N). To prevent LaTeX's own
+  auto-numbering from adding *extra* numbers, `mathblock_to_latex` emits every
+  standalone display environment in its **starred** form — the visible numbers
+  come only from the `\tag`s. Since `\tag` is illegal in the legacy `eqnarray`,
+  a *tagged* `eqnarray[*]` is converted to `align*` with its `& REL &` columns
+  collapsed to `& REL` (`eqnarray_to_align`; safe because tagged eqnarrays here
+  never nest a `&`-using env). This equality is regression-checkable: extract
+  `\tag{\d+}` from the HTML pages in document order and from the `.tex`; the two
+  sequences must be identical (currently `1..30`).
 - **Math passes through verbatim** (it is already LaTeX): the emitter only
   strips the `$$` the pipeline wraps around a display block, then emits the inner
   environment directly or wraps bare math in `\[ ... \]`. Custom macros the

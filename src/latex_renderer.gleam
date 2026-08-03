@@ -53,7 +53,15 @@ const math_token_pattern = ">>[A-Za-z][A-Za-z0-9_:-]*|[A-Za-z][A-Za-z0-9_:-]*##<
 
 // Emit context threaded through the tree walk.
 type Ctx {
-  Ctx(footnotes: Dict(String, String), tok: Regexp, math_tok: Regexp)
+  Ctx(
+    footnotes: Dict(String, String),
+    // handle -> global equation number (matches the HTML `::++EquationCounter`)
+    eq_numbers: Dict(String, Int),
+    tok: Regexp,
+    math_tok: Regexp,
+    // matches an eqnarray relation column `&...&`, for the eqnarray->align fixup
+    amp_tok: Regexp,
+  )
 }
 
 // ---------------------------------------------------------------------------
@@ -156,16 +164,28 @@ fn transform_math(s: String, ctx: Ctx) -> String {
     [m, ..] ->
       case string.split_once(s, m.content) {
         Ok(#(before, after)) ->
-          before <> math_token_to_latex(m.content) <> transform_math(after, ctx)
+          before
+          <> math_token_to_latex(m.content, ctx)
+          <> transform_math(after, ctx)
         Error(_) -> s
       }
   }
 }
 
-fn math_token_to_latex(token: String) -> String {
+fn math_token_to_latex(token: String, ctx: Ctx) -> String {
   case string.starts_with(token, ">>") {
     True -> "\\ref{" <> string.drop_start(token, 2) <> "}"
-    False -> "\\label{" <> string.drop_end(token, 4) <> "}"
+    False -> {
+      // `name##<<`: give this equation its global sequence number as an
+      // explicit `\tag{N}` (identical to the HTML renderer's
+      // ::++EquationCounter), then `\label` it so `\ref` resolves to that N.
+      let name = string.drop_end(token, 4)
+      let tag = case dict.get(ctx.eq_numbers, name) {
+        Ok(n) -> "\\tag{" <> int.to_string(n) <> "}"
+        Error(_) -> ""
+      }
+      tag <> "\\label{" <> name <> "}"
+    }
   }
 }
 
@@ -199,26 +219,56 @@ fn is_standalone_env(inner: String) -> Bool {
   list.any(envs, fn(e) { string.starts_with(inner, "\\begin{" <> e <> "}") })
 }
 
-// A referenced equation carries a `\label` (from a `name##<<` marker). LaTeX can
-// only attach a label to a *numbered* line, but the Writerly source routinely
-// puts such equations inside a starred (unnumbered) environment or a bare `$$`
-// display, leaning on its own numbering engine. So whenever a block contains a
-// label we force it into a numbered environment: a starred env drops its star,
-// and a bare display becomes `equation` (single line) or `gather` (multi-line).
-fn ensure_numbered_env(inner: String) -> String {
-  let starred = [
-    "equation*", "align*", "alignat*", "flalign*", "gather*", "multline*",
-    "eqnarray*",
+// Match the HTML renderer's numbering exactly: an equation is numbered ONLY when
+// it carries an explicit tag -- either a manual mnemonic tag already in the
+// source (`\tag{A1}`, ...) or the global sequence number baked at a `name##<<`
+// marker (`\tag{N}`, above). Nothing else is numbered. So we emit every
+// standalone environment in its STARRED, non-auto-numbering form and let the
+// `\tag`s alone drive the visible numbers (`\tag` works in starred environments).
+fn starify_env(inner: String) -> String {
+  let unstarred = [
+    "equation", "align", "alignat", "flalign", "gather", "multline", "eqnarray",
   ]
-  case list.find(starred, fn(e) { string.starts_with(inner, "\\begin{" <> e <> "}") }) {
-    Ok(star_name) -> {
-      let base = string.drop_end(star_name, 1)
+  case
+    list.find(unstarred, fn(e) {
+      string.starts_with(inner, "\\begin{" <> e <> "}")
+    })
+  {
+    Ok(name) ->
       inner
-      |> string.replace("\\begin{" <> star_name <> "}", "\\begin{" <> base <> "}")
-      |> string.replace("\\end{" <> star_name <> "}", "\\end{" <> base <> "}")
-    }
+      |> string.replace("\\begin{" <> name <> "}", "\\begin{" <> name <> "*}")
+      |> string.replace("\\end{" <> name <> "}", "\\end{" <> name <> "*}")
     Error(_) -> inner
   }
+}
+
+// `eqnarray`/`eqnarray*` is legacy LaTeX and does NOT accept amsmath's `\tag`.
+// When such a block needs a tag, convert it to `align*` (which does): rename the
+// environment and collapse eqnarray's 3-column `& REL &` alignment down to
+// align's 2-column `& REL`. This is only applied to tagged blocks, which in this
+// corpus never nest a `&`-using environment (cases/array/matrix), so the flat
+// column collapse is safe.
+fn collapse_eqnarray_cols(s: String, amp_re: Regexp) -> String {
+  case regexp.scan(amp_re, s) {
+    [] -> s
+    [m, ..] ->
+      case string.split_once(s, m.content) {
+        Ok(#(before, after)) ->
+          before
+          <> string.drop_end(m.content, 1)
+          <> collapse_eqnarray_cols(after, amp_re)
+        Error(_) -> s
+      }
+  }
+}
+
+fn eqnarray_to_align(inner: String, amp_re: Regexp) -> String {
+  inner
+  |> string.replace("\\begin{eqnarray*}", "\\begin{align*}")
+  |> string.replace("\\begin{eqnarray}", "\\begin{align*}")
+  |> string.replace("\\end{eqnarray*}", "\\end{align*}")
+  |> string.replace("\\end{eqnarray}", "\\end{align*}")
+  |> collapse_eqnarray_cols(amp_re)
 }
 
 fn mathblock_to_latex(vxml: VXML, ctx: Ctx) -> String {
@@ -227,16 +277,22 @@ fn mathblock_to_latex(vxml: VXML, ctx: Ctx) -> String {
     |> gather_text
     |> strip_display_delims
     |> transform_math(ctx)
-  let has_label = string.contains(inner, "\\label{")
-  case is_standalone_env(inner), has_label {
-    True, True -> "\n" <> ensure_numbered_env(inner) <> "\n"
-    True, False -> "\n" <> inner <> "\n"
-    False, True ->
+  let has_tag = string.contains(inner, "\\tag{")
+  let is_eqnarray =
+    string.starts_with(inner, "\\begin{eqnarray}")
+    || string.starts_with(inner, "\\begin{eqnarray*}")
+  case is_eqnarray && has_tag, is_standalone_env(inner), has_tag {
+    // tagged eqnarray -> align* (eqnarray can't carry \tag)
+    True, _, _ -> "\n" <> eqnarray_to_align(inner, ctx.amp_tok) <> "\n"
+    // starred env: unnumbered by default, but any `\tag` inside still numbers
+    _, True, _ -> "\n" <> starify_env(inner) <> "\n"
+    // bare display carrying a tag: needs an env in which `\tag` is legal
+    _, False, True ->
       case string.contains(inner, "\\\\") {
-        True -> "\n\\begin{gather}\n" <> inner <> "\n\\end{gather}\n"
-        False -> "\n\\begin{equation}\n" <> inner <> "\n\\end{equation}\n"
+        True -> "\n\\begin{gather*}\n" <> inner <> "\n\\end{gather*}\n"
+        False -> "\n\\begin{equation*}\n" <> inner <> "\n\\end{equation*}\n"
       }
-    False, False -> "\n\\[\n" <> inner <> "\n\\]\n"
+    _, False, False -> "\n\\[\n" <> inner <> "\n\\]\n"
   }
 }
 
@@ -465,12 +521,33 @@ fn preamble(di: DocumentInfo) -> String {
   <> "\\date{" <> emit_mixed(di.date) <> "}\n"
 }
 
+// Assign each `name##<<` marker its global equation number by document order
+// (the k-th marker overall becomes equation k), mirroring how the HTML
+// renderer's ::++EquationCounter increments. The tree is walked in the same
+// left-to-right, depth-first order the emitter uses.
+fn collect_eq_labels(vxml: VXML, math_tok: Regexp) -> List(String) {
+  case vxml {
+    T(_, lines) -> {
+      let text = lines |> list.map(fn(l) { l.content }) |> string.join("\n")
+      regexp.scan(math_tok, text)
+      |> list.filter(fn(m) { string.ends_with(m.content, "##<<") })
+      |> list.map(fn(m) { string.drop_end(m.content, 4) })
+    }
+    V(_, _, _, children) -> list.flat_map(children, collect_eq_labels(_, math_tok))
+  }
+}
+
 fn emit_document(root: VXML, di: DocumentInfo) -> String {
   let assert Ok(tok) = regexp.from_string(token_pattern)
   let assert Ok(math_tok) = regexp.from_string(math_token_pattern)
-  let base_ctx = Ctx(dict.new(), tok, math_tok)
+  let assert Ok(amp_tok) = regexp.from_string("&[^&]*&")
+  let eq_numbers =
+    collect_eq_labels(root, math_tok)
+    |> list.index_map(fn(name, i) { #(name, i + 1) })
+    |> dict.from_list
+  let base_ctx = Ctx(dict.new(), eq_numbers, tok, math_tok, amp_tok)
   let footnotes = gather_footnotes(root, base_ctx)
-  let ctx = Ctx(footnotes, tok, math_tok)
+  let ctx = Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
   let body = node_to_latex(root, ctx)
   preamble(di)
   <> "\n\\begin{document}\n\\maketitle\n\\tableofcontents\n\n"

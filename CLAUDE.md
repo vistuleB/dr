@@ -144,9 +144,22 @@ into `main.gleam` alongside `--fmt`). Design:
   environment directly or wraps bare math in `\[ ... \]`. Custom macros the
   source still uses (`\R`, `\Z`, `\prob`, `\cal`, …) are declared in the preamble
   built by `latex_renderer.preamble`.
+- **Overflow control.** Wide display tables (a bare `$$…$$` display containing a
+  `\begin{array}`, e.g. the "Summary of special distributions" grid) are routed
+  through `\fitwidth` (a `\sbox`+`\ifdim`+`\resizebox` macro) so they scale down
+  to `\linewidth` only when too wide, and otherwise render at natural size. For
+  running text, `microtype` + `\emergencystretch=3em` absorb the source's long
+  unbreakable `$\textbf{…}$` prose phrases that would otherwise run off the right
+  margin. Vector fonts come from `\usepackage{lmodern}` (before `[T1]{fontenc}`);
+  without it, this TeX install falls back to blurry Type-3 bitmap Computer Modern.
 - **235A only, for now.** 235A has no figures/images; adding `figure`/`img`/
   `figcaption` handling to the emitter is the main work needed before 235B/119B
   (which do have figures — see the memory notes) can use `--latex`.
+
+Note: **ghostscript cannot rasterize the `\resizebox` (fit) pages or the
+Latin-Modern TOC** ("Page drawing error") — a gs bug, not a PDF defect. Verify
+those pages with a real renderer: the in-app browser, or macOS `sips` (Quartz) on
+a single page extracted with `gs -sDEVICE=pdfwrite -dFirstPage=N -dLastPage=N`.
 
 ### Authoring rule: a LaTeX row break must never start a line
 

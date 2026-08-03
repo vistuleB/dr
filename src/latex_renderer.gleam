@@ -292,7 +292,17 @@ fn mathblock_to_latex(vxml: VXML, ctx: Ctx) -> String {
         True -> "\n\\begin{gather*}\n" <> inner <> "\n\\end{gather*}\n"
         False -> "\n\\begin{equation*}\n" <> inner <> "\n\\end{equation*}\n"
       }
-    _, False, False -> "\n\\[\n" <> inner <> "\n\\]\n"
+    // A bare display containing an `array` can be a wide table that overflows
+    // the page (e.g. the "Summary of special distributions" grid). Route it
+    // through `\fitwidth`, which scales it down only if it exceeds \linewidth.
+    _, False, False ->
+      case string.contains(inner, "\\begin{array}") {
+        True ->
+          "\n\\begin{center}\n\\fitwidth{$\\displaystyle\n"
+          <> inner
+          <> "\n$}\n\\end{center}\n"
+        False -> "\n\\[\n" <> inner <> "\n\\]\n"
+      }
   }
 }
 
@@ -469,6 +479,9 @@ fn preamble(di: DocumentInfo) -> String {
   <> "\\usepackage{amsthm}\n"
   <> "\\usepackage{enumitem}\n"
   <> "\\usepackage[margin=1in]{geometry}\n"
+  <> "\\usepackage{graphicx}\n"
+  // microtype (char protrusion + font expansion) removes most marginal overflow
+  <> "\\usepackage{microtype}\n"
   <> "\\usepackage{hyperref}\n"
   <> "\\usepackage{bookmark}\n"
   // makes the footnote number at the bottom of the page a hyperlink back to
@@ -484,9 +497,18 @@ fn preamble(di: DocumentInfo) -> String {
   <> "  pdftitle={" <> escape_prose(di.title) <> "},\n"
   <> "  pdfauthor={" <> escape_prose(di.lecturer) <> "}\n"
   <> "}\n\n"
-  <> "\\setcounter{tocdepth}{2}\n\n"
+  <> "\\setcounter{tocdepth}{2}\n"
+  // let TeX loosen a line as a last resort instead of running text off the page
+  // (mainly the source's long unbreakable `$\\textbf{...}$` prose phrases)
+  <> "\\emergencystretch=3em\n\n"
   // stretch the footnote separator rule across the full text width
   <> "\\renewcommand{\\footnoterule}{\\kern-3pt\\hrule width \\textwidth height 0.4pt\\kern2.6pt}\n\n"
+  // shrink an over-wide box down to the text width, but leave narrower content
+  // untouched (used for wide display tables that would otherwise overflow)
+  <> "\\newsavebox{\\fitbox}\n"
+  <> "\\newcommand{\\fitwidth}[1]{%\n"
+  <> "  \\sbox\\fitbox{#1}%\n"
+  <> "  \\ifdim\\wd\\fitbox>\\linewidth\\resizebox{\\linewidth}{!}{\\usebox\\fitbox}\\else\\usebox\\fitbox\\fi}\n\n"
   <> "% custom macros carried over from the original lecture-notes preamble\n"
   <> "\\providecommand{\\cal}{\\mathcal}\n"
   <> "\\newcommand{\\R}{\\mathbb{R}}\n"

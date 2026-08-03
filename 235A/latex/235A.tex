@@ -7,6 +7,8 @@
 \usepackage{amsthm}
 \usepackage{enumitem}
 \usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{microtype}
 \usepackage{hyperref}
 \usepackage{bookmark}
 \usepackage{footnotebackref}
@@ -22,8 +24,14 @@
 }
 
 \setcounter{tocdepth}{2}
+\emergencystretch=3em
 
 \renewcommand{\footnoterule}{\kern-3pt\hrule width \textwidth height 0.4pt\kern2.6pt}
+
+\newsavebox{\fitbox}
+\newcommand{\fitwidth}[1]{%
+  \sbox\fitbox{#1}%
+  \ifdim\wd\fitbox>\linewidth\resizebox{\linewidth}{!}{\usebox\fitbox}\else\usebox\fitbox\fi}
 
 % custom macros carried over from the original lecture-notes preamble
 \providecommand{\cal}{\mathcal}
@@ -1613,14 +1621,16 @@ Almost sure convergence is a stronger notion of convergence than convergence in 
 \begin{xexercise}
 Prove Lemma \ref{lem-convergence-types}. For the counterexample showing that convergence in probability does not imply almost sure convergence, consider the following sequence of random variables defined on the space $((0,1),{\cal B}, \textrm{Lebesgue measure})$:
 
-\[
+\begin{center}
+\fitwidth{$\displaystyle
 \begin{array}{l}
 1_{(0,1)}, \\
 1_{(0,1/2)},  1_{(1/2,1)}, \\
 1_{(0,1/4)},  1_{(1/4,2/4)},  1_{(2/4,3/4)},  1_{(3/4,1)},  \\
 1_{(0,1/8)},  1_{(1/8,2/8)},  1_{(2/8,3/8)},  1_{(3/8,4/8)}, 1_{(4/8,5/8)},  1_{(5/8,6/8)},  1_{(6/8,7/8)},  1_{(7/8,1)}, \\ \ldots
 \end{array}
-\]
+$}
+\end{center}
 
 \end{xexercise}
 
@@ -2351,7 +2361,8 @@ $\textbf{Properties:}$
 
 
 
-\[
+\begin{center}
+\fitwidth{$\displaystyle
 \begin{gathered}
 \textbf{Summary: Special distributions} \\[10pt]
 \begin{array}{|l|l|lc|c|c|c|}
@@ -2377,11 +2388,13 @@ $\textbf{Properties:}$
 \hline
 \end{array}
 \end{gathered}
-\]
+$}
+\end{center}
 
 
 
-\[
+\begin{center}
+\fitwidth{$\displaystyle
 \begin{gathered}
 \textbf{Useful facts} \text{ (``}\boxplus\text{'' denotes convolution, i.e., sum of independent samples; ``}\stackrel{d}{=}\text{'' denotes equality of distributions)}\textbf{:} \\[1.3pt]
 \begin{array}{lll}
@@ -2392,7 +2405,8 @@ $\textbf{Properties:}$
 N(0,1)^2 \stackrel{d}{=} \textrm{Gamma}(1/2,1/2) \stackrel{d}{=} \chi^2_{(1)} & & \chi^2_{(n)} \stackrel{d}{=} \textrm{Gamma}(n/2,1/2)
 \end{array}
 \end{gathered}
-\]
+$}
+\end{center}
 
 
 
@@ -4690,11 +4704,13 @@ F(x) = \begin{cases}
 
 Compute the lower and upper quantile functions of $F$, defined by
 
-\[
+\begin{center}
+\fitwidth{$\displaystyle
 \begin{array}{ccc} X_*(p) &=& \sup \{ x : F(x) < p \}, \\
 X^*(p) &=& \inf \{ x : F(x) > p \},
 \end{array} \qquad\qquad (0<p<1).
-\]
+$}
+\end{center}
 
 A recommended way is to plot $F$ on paper and then figure out the quantiles by ``eyeballing''. Of course, the answer should be spelled out in precise formulas.
 \item A drunken archer shoots at a target hanging on a wall 1 unit of distance away. Since he is drunk, his arrow ends up going in a random direction at an angle chosen uniformly in $(-\pi/2,\pi/2)$ (an angle of $0$ means he will hit the target precisely) until it hits the wall. Ignoring gravity and the third dimension, compute the distribution function (and density function if it exists) of the random distance from the hitting point of the arrow to the target.

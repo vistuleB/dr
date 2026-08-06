@@ -852,6 +852,12 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
         )
         |> ds.amend_renderer_by_command_line_amendments(amendments)
 
+      // start from a clean output directory: remove any previous run's files
+      // (.tex, plus pdflatex leftovers .toc/.aux/.log/.out/.pdf, and figures/ —
+      // it gets re-copied below, so source image changes are picked up).
+      // Ignore the error when the directory does not exist yet (first run).
+      let _ = simplifile.clear_directory(output_dir)
+
       case ds.run_renderer(renderer, parameters, options) {
         Error(error) ->
           io.println("\nlatex renderer error: " <> ins(error) <> "\n")

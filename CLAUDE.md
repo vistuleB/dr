@@ -91,8 +91,12 @@ gleam run -- --which <course_dir> --latex
 
 Emits **one self-contained `.tex` file** at `<course_dir>/latex/<course_dir>.tex`
 (e.g. `235A/latex/235A.tex`) that compiles with `pdflatex` into a PDF with a
-clickable table of contents and a PDF bookmark outline. Compile with three passes
-(TOC + cross-references need to settle):
+clickable table of contents and a PDF bookmark outline. Each `--latex` run first
+**clears the whole `<course_dir>/latex/` directory** (via `simplifile.clear_directory`
+in `latex_renderer.render`) so stale pdflatex leftovers (`.toc`/`.aux`/`.log`/
+`.out`/`.pdf`) never linger; the `.tex` is regenerated and `figures/` re-copied
+(so changed source images are picked up). Compile with three passes (TOC +
+cross-references need to settle):
 
 ```sh
 cd <course_dir>/latex && pdflatex 235A.tex && pdflatex 235A.tex && pdflatex 235A.tex

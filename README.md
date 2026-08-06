@@ -21,7 +21,20 @@ The `.last-command` file is local; add it to `.gitignore` if you do not want it 
 
 On MacOS, install pdflatex with `brew install --cask basictex`
 
-Convert LaTeX to pdf with `pdflatex file.tex`
+Generate the LaTeX source for a course with `gleam run -- --which 235A --latex`
+(writes `235A/latex/235A.tex`), then convert it to a PDF with `pdflatex file.tex`.
+
+**Run `pdflatex` twice.** The Table of Contents is typeset from the `.toc` file,
+which LaTeX only *writes* during a run — so on the first run there is no `.toc`
+yet and the **Contents page comes out blank**. The second run reads the `.toc`
+written by the first and fills the Contents in. (This is standard LaTeX
+behaviour, not a bug; cross-references and the PDF outline settle the same way.)
+Running it a third time is recommended so page numbers referenced in the TOC are
+fully stable:
+
+```sh
+cd 235A/latex && pdflatex 235A.tex && pdflatex 235A.tex && pdflatex 235A.tex
+```
 
 # Add a shared asset to a course
 

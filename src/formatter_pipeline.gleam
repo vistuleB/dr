@@ -8,11 +8,13 @@ const minimum_line_wrap_length = 40
 
 const p_cannot_contain = [
   "Algorithm",
+  "Bibliography",
   "Carousel",
   "CarouselItems",
   "CarouselItem",
   "Chapter",
   "ChapterTitle",
+  "Exercises",
   "Definition",
   "Demo",
   "Example",

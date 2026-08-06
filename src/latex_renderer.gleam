@@ -707,15 +707,28 @@ fn emit_document(root: VXML, di: DocumentInfo) -> String {
   let footnotes = gather_footnotes(root, base_ctx)
   let ctx = Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
   let body = node_to_latex(root, ctx)
-  preamble(di)
-  // `\pdfbookmark[0]{Contents}{toc}` adds a top-level, unnumbered PDF outline
-  // entry for the table of contents itself (which \tableofcontents does not
-  // bookmark on its own), pointing at the TOC page.
-  <> "\n\\begin{document}\n\\maketitle\n"
-  <> "\\pdfbookmark[0]{Contents}{toc}\n"
-  <> "\\tableofcontents\n\n"
-  <> body
-  <> "\n\\end{document}\n"
+  let doc =
+    preamble(di)
+    // `\pdfbookmark[0]{Contents}{toc}` adds a top-level, unnumbered PDF outline
+    // entry for the table of contents itself (which \tableofcontents does not
+    // bookmark on its own), pointing at the TOC page.
+    <> "\n\\begin{document}\n\\maketitle\n"
+    <> "\\pdfbookmark[0]{Contents}{toc}\n"
+    <> "\\tableofcontents\n\n"
+    <> body
+    <> "\n\\end{document}\n"
+  collapse_blank_lines(doc)
+}
+
+// The per-node emitters each pad their output with blank lines, which stack up
+// into long runs of empties (a `WriterlyBlankLine` plus a block's own `\n\n`
+// prefix, etc.). Collapse any run of 3+ newlines to a single blank line — this
+// only ever removes blank lines, and one blank line is still a LaTeX paragraph
+// break, so nothing about the compiled output changes; the source just reads
+// better.
+fn collapse_blank_lines(s: String) -> String {
+  let assert Ok(re) = regexp.from_string("\n{3,}")
+  regexp.replace(re, s, "\n\n")
 }
 
 // ---------------------------------------------------------------------------

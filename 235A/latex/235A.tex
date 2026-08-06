@@ -65,47 +65,33 @@
 \pdfbookmark[0]{Contents}{toc}
 \tableofcontents
 
-
-
 \chapter{Introduction}
-
 
 \section{What is probability theory}
 In this course we'll learn about probability theory. But what exactly \emph{is} probability theory? Like some other mathematical fields (but unlike some others), it has a dual role:
-
 
 \begin{itemize}
 \item It is a $\textbf{rigorous mathematical theory}$ - with definitions, lemmas, theorems, proofs etc.
 \item It is a $\textbf{mathematical model}$ that purports to explain or model real-life phenomena.
 \end{itemize}
 
-
 We will concentrate on the rigorous mathematical aspects, but we will try not to forget the connections to the intuitive notion of real-life probability. These connections will enhance our intuition, and they make probability an extremely useful tool in all the sciences. And they make the study of probability much more \emph{fun}, too! A note of caution is in order, though: mathematical models are only as good as the assumptions they are based on. So probability can be \emph{used}, and it can be (and quite frequently is) \emph{abused}...
-
-
 
 \begin{example}
 The $\textbf{theory of differential equations}$ is another mathematical theory which has the dual role of a rigorous theory and an applied mathematical model. $\textbf{Game theory}$ is another one (for which the question of how to apply it to real-life situations is often very contentious).
 On the other hand, $\textbf{number theory}$, $\textbf{complex analysis}$ and $\textbf{algebraic topology}$ are examples of fields which are not normally used to model real-life phenomena.
 \end{example}
 
-
-
-
-
 \section{The algebra of events}
 A central notion in probability is that of the $\textbf{algebra of events}$ (we'll clarify later what the word ``algebra'' means here). We begin with an informal discussion. We imagine that probability is a function, denoted $\mathrm{P}$, that takes as its argument an ``event'' (i.e., occurrence of something in a real-life situation involving uncertainty) and returns a real number in $[0,1]$ representing how likely this event is to occur. For example, if a fair coin is tossed 10 times and we denote the results of the tosses by $X_1,X_2,\ldots,X_{10}$ (where each of $X_i$ is $0$ or $1$, signifying ``tails'' or ``heads''), then we can write statements like
-
 
 \[
 \mathrm{P}(X_i = 0) = 1/2, \qquad (1\le i\le 10),
 \]
 
-
 \[
 \mathrm{P}\left(\sum_{i=1}^{10} X_i = 4\right) = \frac{\binom{10}{4}}{2^{10}}.
 \]
-
 
 Note that if $A$ and $B$ represent events (meaning, for the purposes of the present informal discussion, objects that have a well-defined probability), then we expect that the phrases ``$A$ did not occur'', ``$A$ and $B$ both occurred'' and ``at least one of $A$ and $B$ occurred'' also represent events. We can use notation borrowed from mathematical logic and denote these new events by $\lnot A$, $A\wedge B$, and $A \vee B$, respectively.
 Thus, the set of events is not just a set -- it is a set with some extra structure, namely the ability to perform $\textbf{negation}$, $\textbf{conjunction}$ and $\textbf{disjunction}$ operations on its elements. Such a set is called an $\textbf{algebra}$ in some contexts.
@@ -120,8 +106,6 @@ But what if the coin is tossed an \emph{infinite} number of times? In other word
 
 Do such questions make sense? (And if they do, can you guess what the answers are?) Maybe it is not enough to have an \emph{informal} discussion to answer this...
 
-
-
 \begin{example}
 (a) An urn initially contains a white ball and a black ball. A ball is drawn out at random from the urn, then added back and another white ball is added to the urn. This procedure is repeated infinitely many times, so that after step $n$ the urn contains 1 black ball and $n+1$ white balls. For each $n\ge1$, let $A_n$ denote the event that at step $n$ the black ball was drawn. Now let $A_\infty$ denote the event
 
@@ -132,7 +116,6 @@ A_\infty = \textrm{``in total, the black ball was selected infinitely many times
 (i.e., the event that infinitely many of the events $A_n$ occurred).
 
 (b) While this experiment takes place, an identical copy of the experiment is taking place in the next room. The random selections in the two neighboring rooms have no connection to each other, i.e., they are ``independent''. For each $n\ge 1$, let $B_n$ be the event that at step $n$ the black ball was drawn out of the ``copy'' experiment urn. Now let $B_\infty$ denote the event
-
 
 \begin{eqnarray*}
 B_\infty &=& \textrm{``in total, the black ball was selected infinitely many times in}\\&&
@@ -151,9 +134,6 @@ C_n &=& \textrm{``at step $n$, the black ball was selected simultaneously}
 and let $C_\infty$ denote the event ``$C_n$ occurred for infinitely many values of $n$''.
 \end{example}
 
-
-
-
 \begin{thm}
 We have
 
@@ -162,9 +142,6 @@ We have
 \]
 
 \end{thm}
-
-
-
 
 \begin{proof}
 These claims are consequences of the $\textbf{Borel-Cantelli lemmas}$ which we will learn about later in the course. Here is a sketch of the proof that $P(C_\infty)=0$ (remember, this is still an ``informal discussion'', so our ``proof'' is really more of an exploration of what formal assumptions are needed to make the claim hold). For each $n$ we have
@@ -179,14 +156,12 @@ since at time $n$ each of the urns contains $n+1$ balls, only one of which is bl
 \mathrm{P}(C_n) = \mathrm{P}(A_n \wedge B_n) = \mathrm{P}(A_n) \mathrm{P}(B_n) = \frac{1}{(n+1)^2}.
 \]
 
-
 It turns out that to prove that $\mathrm{P}(C_\infty)=0$, the only relevant bit of information is that the infinite series $\sum_{n=1}^\infty \mathrm{P}(C_n)$ is a convergent series; the precise values of the probabilities are irrelevant. Indeed, we can try to do various manipulations on the definition of the event $C$, as follows:
 
 \begin{eqnarray*}
 C_\infty &=& \textrm{``infinitely many of the $C_n$'s occurred''} \\
 &=& \textrm{``for all $N\ge 1$, the event $C_n$ occurred for some $n\ge N$''.}
 \end{eqnarray*}
-
 
 For any $N\ge 1$, denote the event ``$C_n$ occurred for some $n\ge N$'' by $D_N$. Then
 
@@ -218,23 +193,11 @@ If this were a finite disjunction, we could say that the likelihood for at least
 But now recall that the infinite series of probabilities $\sum_{n=1}^\infty \mathrm{P}(C_n)$ converges. Therefore, for any $\epsilon>0$, we can find an $N$ for which the tail $\sum_{n=N}^\infty \mathrm{P}(C_n)$ of the series is less than $\epsilon$. For such an $N$, we get that $\mathrm{P}(D_N)< \epsilon$, and therefore that $\mathrm{P}(C_\infty)<\epsilon$. This is true for any $\epsilon>0$, so it follows that $\mathrm{P}(C_\infty)=0$.
 \end{proof}
 
-
-
-
-
-
-
-
-
-
 \chapter{Probability spaces}
-
 
 \section{Basic definitions}
 \label{basic-def}
 We now formalize the concepts introduced in the previous lecture. It turns out that it's easiest to deal with events as subsets of a large set called the $\textbf{probability space}$, instead of as abstract logical statements. The logical operations of negation, conjunction and disjunction are replaced by the set-theoretic operations of taking the complement, intersection or union, but the intuitive meaning attached to those operations is the same.
-
-
 
 \begin{defn}[Algebra]
 If $\Omega$ is a set, an $\textbf{algebra}$ of subsets of $\Omega$ is a collection ${\cal F}$ of subsets of $\Omega$ that satisfies the following axioms:
@@ -243,11 +206,9 @@ If $\Omega$ is a set, an $\textbf{algebra}$ of subsets of $\Omega$ is a collecti
 \emptyset \in {\cal F},  \tag{A1}\qquad\qquad\qquad
 \end{equation*}
 
-
 \begin{equation*}
  \ \ A \in {\cal F} \implies \Omega\setminus A \in {\cal F}, \tag{A2} \\
 \end{equation*}
-
 
 \begin{equation*}
 A,B \in {\cal F} \implies A\cup B \in {\cal F}.  \tag{A3}
@@ -256,12 +217,8 @@ A,B \in {\cal F} \implies A\cup B \in {\cal F}.  \tag{A3}
 A word synonymous with algebra in this context is $\textbf{field}$.
 \end{defn}
 
-
-
-
 \begin{defn}[$\sigma$-algebra]
 A  $\textbf{$\sigma$-algebra}$ (also called a $\textbf{$\sigma$-field}$) is an algebra ${\cal F}$ that satisfies the additional axiom
-
 
 \begin{equation*}
 A_1, A_2, A_3, \ldots \in \mathcal{F}
@@ -272,33 +229,21 @@ A_1, A_2, A_3, \ldots \in \mathcal{F}
 
 \end{defn}
 
-
-
-
 \begin{example}
 If $\Omega$ is any set, then $\{ \emptyset, \Omega \}$ is a $\sigma$-algebra -- in fact it is the smallest possible $\sigma$-algebra of subsets of $\Omega$. Similarly, the power set ${\cal P}(\Omega)$ of all subsets of $\Omega$ is a $\sigma$-algebra, and is (obviously) the largest $\sigma$-algebra of subsets of $\Omega$.
 \end{example}
-
-
-
 
 \begin{defn}[Measurable space]
 A $\textbf{measurable space}$ is a pair ($\Omega,{\cal F})$ where $\Omega$ is a set and ${\cal F}$ is a $\sigma$-algebra of subsets of $\Omega$.
 \end{defn}
 
-
-
-
 \begin{defn}[Probability measure]
 Given a measurable space $(\Omega, {\cal F})$, a $\textbf{probability measure}$ on $(\Omega, {\cal F})$ is a function $\mathrm{P}:{\cal F}\to[0,1]$ that satisfies the properties:
-
 
 \begin{equation*}
 \mathrm{P}(\emptyset) = 0, \quad \mathrm{P}(\Omega) = 1,
 \tag{P1}
 \end{equation*}
-
-
 
 \begin{equation*}
 A_1, A_2, \ldots \in {\cal F}\textrm{ are pairwise disjoint} \implies
@@ -308,26 +253,19 @@ A_1, A_2, \ldots \in {\cal F}\textrm{ are pairwise disjoint} \implies
 
 \end{defn}
 
-
-
-
 \begin{defn}[Probability space]
 A $\textbf{probability space}$ is a triple $(\Omega, {\cal F}, \mathrm{P})$, where $(\Omega, {\cal F})$ is a measurable space, and $\mathrm{P}$ is a probability measure on $(\Omega, {\cal F})$.
 \end{defn}
-
 
 Intuitively, we think of $\Omega$ as representing the set of possible $\textbf{outcomes}$ of a probabilistic experiment, and refer to it as the $\textbf{sample space}$. The $\sigma$-algebra ${\cal F}$ is the $\textbf{$\sigma$-algebra of events}$, namely those subsets of $\Omega$ which have a well-defined probability (as we shall see later, it is not always possible to assign well-defined probabilities to \emph{all} sets of outcomes). And $\mathrm{P}$ is the ``notion'' or ``measure'' of probability on our sample space.
 
 Probability theory can be described loosely as the study of probability spaces (this is of course a gross oversimplification...). A more general mathematical theory called $\textbf{measure theory}$ studies $\textbf{measure spaces}$, which are like probability spaces except that the measures can take values in $[0,\infty]$ instead of $[0,1]$, and the total measure of the space is not necessarily equal to $1$ (such measures are referred to as $\textbf{$\sigma$-additive nonnegative measures}$). Measure theory is an important and non-trivial theory, and studying it requires a separate concentrated effort. We shall content ourselves with citing and using some of its most basic results. For proofs and more details, refer to Chapter 1 and the measure theory appendix in [Dur2010] or to a measure theory textbook.
 
-
 \section{Properties and examples}
-
 
 \begin{lem}
 \label{probspaceproperties}
 If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space, then we have:
-
 
 \begin{enumerate}[label=(\roman*)]
 \item $\textbf{Monotonicity:}$ If $A,B \in {\cal F}$, $A\subset B$ then $\mathrm(A)\le \mathrm(B)$.
@@ -338,7 +276,6 @@ If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space, then we have:
 \mathrm{P}(\cup_{n=1}^\infty A_n) = \lim_{n\to\infty} \mathrm{P}(A_n).
 \]
 
-
 \item $\textbf{Continuity from above:}$ If $A_1,A_2,\ldots \in {\cal F}$ such that $A_1 \supset A_2 \supset A_3 \supset \ldots$, then
 
 \[
@@ -348,15 +285,9 @@ If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space, then we have:
 
 \end{lem}
 
-
-
-
 \begin{xexercise}
 Prove Lemma \ref{probspaceproperties}
 \end{xexercise}
-
-
-
 
 \begin{example}[Discrete probability spaces]
 Let $\Omega$ be a countable set and let $p:\Omega\to[0,1]$ be a function such that
@@ -379,9 +310,6 @@ If $\Omega$ is a finite set, a natural probability measure to consider is the \t
 
 \end{example}
 
-
-
-
 \begin{example}[Choosing a random number uniformly in $(0,1)$]
 The archetypical example of a ``non-elementary'' probability space (i.e., one which does not fall within the scope of the previous example) is the experiment of choosing a random number uniformly in the interval $(0,1)$. How do we know that it makes sense to speak of such an experiment? We don't, \emph{yet}. But let us imagine what constructing such an experiment might entail. We are looking for a hypothetical probability space $(\Omega, {\cal F}, \mathrm{P})$, in which the sample space $\Omega$ is simply $(0,1)$, ${\cal F}$ is some $\sigma$-algebra of subsets of $(0,1)$, and $\mathrm{P}$ is a probability measure that corresponds to our notion of a ``uniform'' choice of a random number. One plausible way to formalize this is to require that intervals of the form $(a,b) \subset (0,1)$ be considered as events, and that the probability for our ``uniform'' number to fall in such an interval should be equal to its length $b-a$. In other words, we shall require that
 
@@ -391,57 +319,39 @@ The archetypical example of a ``non-elementary'' probability space (i.e., one wh
 
 and that
 
-
 \begin{equation*} \tag{1}\label{eq:lebesgue}
 \mathrm{P}\big((a,b)\big) = b-a, \qquad (0\le a<b\le 1).
 \end{equation*}
-
 
 How do we generate a $\sigma$-algebra of subsets of $(0,1)$ that contains all the intervals? We already saw that the set of \emph{all} subsets of $(0,1)$ will work. But that is too large! If we take all subsets, we will see in an exercise later that it will be impossible to construct the probability measure $\mathrm{P}$ to satisfy our requirements. So let's try to build the \emph{smallest possible} $\sigma$-algebra. One way (which can perhaps be described as the $\textbf{bottom-up}$ approach) would be to start with the intervals, then take all countable unions of such and add them to our collection of sets, then add all countable intersections of such sets, then add all countable unions, etc. Will this work? In principle it can be made to work, but is a bit difficult and requires knowing something about $\textbf{transfinite induction}$. Fortunately there is a more elegant way (but somewhat more abstract and less intuitive) of constructing the minimal $\sigma$-algebra, that is outlined in the next exercise below, and can be thought of as the $\textbf{top-down}$ approach. The resulting $\sigma$-algebra of subsets of $(0,1)$ is called the $\textbf{Borel$\sigma$-algebra}$; its elements are called $\textbf{Borel sets}$.
 
 What about the probability measure $\mathrm{P}$? Here we will simply cite a result from measure theory that says that the measure we are looking for exists, and is unique. This is not too difficult to prove, but doing so would take us a bit too far off course.
 \end{example}
 
-
-
-
 \begin{thm}
 \label{thm-lebesgue}
 Let ${\cal B}$ be the $\sigma$-algebra of Borel sets on $(0,1)$, the minimal $\sigma$-algebra containing all the sub-intervals of $(0,1)$, proved to exist in the exercise below. There exists a unique measure $\mathrm{P}$ on the measure space satisfying (\ref{eq:lebesgue}), called $\textbf{Lebesgue measure}$ on $(0,1)$.
 \end{thm}
 
-
-
-
 \begin{xexercise}[The $\sigma$-algebra generated by a set of subsets of $\Omega$]
 (i) Let $\Omega$ be a set, and let $\{{\cal F}_i\}_{i\in I}$ be some collection of $\sigma$-algebras of subsets of $\Omega$, indexed by some index set $I$. Prove that the intersection of all the ${\cal F}_i$'s (i.e., the collection of subsets of $\Omega$ that are elements of all the ${\cal F}_i$'s) is also a $\sigma$-algebra. \\
 (ii) Let $\Omega$ be a set, and let ${\cal A}$ be a collection of subsets of $\Omega$. Prove that there exists a unique $\sigma$-algebra $\sigma({\cal A})$ of subsets of $\Omega$ that satisfies the following two properties:
 
-
 \begin{enumerate}[label=\arabic*.]
 \item ${\cal A} \subset \sigma({\cal A})$ (in words, $\sigma({\cal A})$ contains all the elements of ${\cal A}$).
-
 
 \item $\sigma({\cal A})$ is the minimal $\sigma$-algebra satisfying property 1 above, in the sense that if ${\cal F}$ is any other $\sigma$-algebra that contains all the elements of ${\cal A}$, then $\sigma({\cal A}) \subset {\cal F}$.
 \end{enumerate}
 
-
 Hint for (ii): Let $({\cal F}_i)_{i\in I}$ be the collection of all $\sigma$-algebras of subsets of $\Omega$ that contain ${\cal A}$. This is a non-empty collection, since it contains for example ${\cal P}(\Omega)$, the set of all subsets of $\Omega$. Any $\sigma$-algebra $\sigma({\cal A})$ that satisfies the two properties above is necessarily a subset of any of the ${\cal F}_i$'s, hence it is also contained in the intersection of all the ${\cal F}_i$'s, which is a $\sigma$-algebra by part (i) of the exercise.
 \end{xexercise}
-
-
-
 
 \begin{defn}
 If ${\cal A}$ is a collection of subsets of a set $\Omega$, the $\sigma$-algebra $\sigma({\cal A})$ discussed above is called $\textbf{the$\sigma$-algebra generated by${\cal A}$}$.
 \end{defn}
 
-
-
-
 \begin{example}[The space of infinite coin toss sequences]
 Another archetypical experiment in probability theory is that of a sequence of independent fair coin tosses, so let's try to model this experiment with a suitable probability space. If for convenience we represent the result of each coin as a binary value of $0$ or $1$, then the sample space $\Omega$ is simply the set of infinite sequences of $0$'s and $1$'s, namely
-
 
 \[
 \Omega = \big\{ (x_1, x_2, x_3, \ldots) : x_i \in \{0,1\}, i=1,2,\ldots \big\}
@@ -450,11 +360,9 @@ Another archetypical experiment in probability theory is that of a sequence of i
 
 What about the $\sigma$-algebra ${\cal F}$? We will take the same approach as we did in the previous example, which is to require certain natural sets to be events, and to take as our $\sigma$-algebra the $\sigma$-algebra generated by these ``elementary'' events. In this case, surely, for each $n\ge 1$, we would like the set
 
-
 \begin{equation*}
 A_n(1) := \{ \mathbf{x}=(x_1,x_2,\ldots) \in \Omega : x_n = 1 \} \tag{2}\label{eq:specialcase}
 \end{equation*}
-
 
 to be an event (in words, this represents the event ``the coin toss $x_n$ came out Heads''). Therefore we take ${\cal F}$ to be the $\sigma$-algebra generated by the collection of sets of this form.
 
@@ -472,23 +380,17 @@ Then $\mathrm{P}$ should satisfy
 
 representing the fact that the $n$-th coin toss is unbiased. But more generally, for any $n\ge 1$ and $(a_1,a_2,\ldots,a_n) \in \{0,1\}^n$, since the first $n$ coin tosses are independent, $\mathrm{P}$ should satisfy
 
-
 \begin{equation*} \tag{3}\label{eq:indcointosses}
 \mathrm{P}\big(A_1(a_1) \cap A_2(a_2) \cap \ldots \cap A_n(a_n)\big) = \frac{1}{2^n}.
 %quad (n\ge 1, \ \ (a_1,\ldots,a_n)\in\{0,1\}^n)
 \end{equation*}
 
-
 As in the example of Lebesgue measure discussed above, the fact that a probability measure $\mathrm{P}$  on $(\Omega, {\cal F})$ that satisfies (\ref{eq:indcointosses}) exists and is unique follows from some slightly non-trivial facts from measure theory, and we will take it on faith for the time being. Below we quote the relevant theorem from measure theory, which generalizes the setting discussed in this example to the more general situation of a $\textbf{product}$ of probability spaces.
 \end{example}
-
-
-
 
 \begin{thm}[Products of probability spaces]
 \label{thm-productspaces}
 Let $\big((\Omega_n, {\cal F}_n, \mathrm{P}_n)\big)_{n=1}^\infty$ be a sequence of probability spaces. Denote $\Omega = \prod_{n=1}^\infty \Omega_n$ (the cartesian product of the outcome sets), and let ${\cal F}$ be the $\sigma$-algbera of subsets of $\Omega$ generated by sets which are of the form
-
 
 \[
 \{ (x_1,x_2,\ldots) \in \Omega : x_n \in A \}
@@ -512,27 +414,16 @@ the equation
 holds.
 \end{thm}
 
-
-
-
 \begin{xexercise}
 Explain why the ``infinite sequence of coin tosses'' experiment is a special case of  a product of probability spaces, and why the existence and uniqueness of a probability measure satisfying (\ref{eq:indcointosses}) follows from Theorem \ref{thm-productspaces}.
 \end{xexercise}
 
-
 In an upcoming homework exercise we will show an alternative way of proving the existence of the probability space of infinite coin toss sequences using Lebesgue measure on $(0,1)$.
-
-
-
-
 
 \chapter{Random variables}
 
-
 \section{Random variables and their distributions}
 As we have seen, a probability space is an abstract concept that represents our intuitive notion of a probabilistic experiment. Such an experiment however can be very long (even infinite) and contain a lot of information. To make things more manageable, we consider numerical-valued functions on probability spaces, which we call \textbf{random variables}. However, not any function will do: a random variable has to relate in a nice way to the measurable space structure, so that we will be able to ask questions like ``what is the probability that this random variable takes a value less than 8'', etc. This leads us to the following definitions.
-
-
 
 \begin{defn}
 If $(\Omega_1, {\cal F}_1)$ and $(\Omega_2, {\cal F}_2)$ are two measurable spaces, a function $X:\Omega_1\to \Omega_2$ is called $\textbf{measurable}$ if for any set $E \in {\cal F}_2$, the set
@@ -544,22 +435,15 @@ X^{-1}(E) = \{ \omega \in \Omega_1 : X(\omega) \in E \}
 is in ${\cal F}_1$.
 \end{defn}
 
-
-
-
 \begin{defn}
 If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space, a real-valued function $X:\Omega \to \R$ is called a $\textbf{random variable}$ if it is a measurable function when considered as a function from the measurable space $(\Omega, {\cal F})$ to the measurable space $(\R, {\cal B})$, where ${\cal B}$ is the Borel $\sigma$-algebra on $\R$, namely the $\sigma$-algebra generated by the intervals.
 \end{defn}
-
-
-
 
 \begin{xexercise}
 \label{ex-checkrv}
 Let $(\Omega_1, {\cal F}_1)$ and $(\Omega_2, {\cal F}_2)$ be two measurable spaces such that ${\cal F}_2$ is the $\sigma$-algebra generated by a collection ${\cal A}$ of subsets of $\Omega_2$. Prove that a function $X:\Omega_1 \to \Omega_2$ is measurable
 if and only if $X^{-1}(A) \in {\cal F}_1$ for all $A \in {\cal A}$.
 \end{xexercise}
-
 
 It follows that the random variables are exactly those real-valued functions on $\Omega$ for which the question
 
@@ -577,14 +461,9 @@ What can we say about the behavior of a random variable $X$ defined on a probabi
 
 The number $\mu_X(A)$ is the probability that $X$ ``falls in $A$'' (or ``takes its value in $A$'').
 
-
-
 \begin{xexercise}
 Verify that $\mu_X$ is a probability measure on $(\R, {\cal B})$. This measure is called the \textbf{distribution} of $X$, or sometimes referred to more fancifully as the $\textbf{law}$ of $X$. In some textbooks it is denoted ${\cal L}_X$.
 \end{xexercise}
-
-
-
 
 \begin{defn}
 If $X$ and $Y$ are two random variables (possibly defined on different probability spaces), we say that $X$ and $Y$ are $\textbf{identically distributed}$ (or \textbf{equal in distribution}) if $\mu_X = \mu_Y$ (meaning that $\mu_X(A) = \mu_Y(A)$ for any Borel set $A\subset \R$). We denote this
@@ -595,10 +474,7 @@ X \stackrel{d}{=} Y.
 
 \end{defn}
 
-
 How can we check if two random variables are identically distributed? Once again, working with Borel sets can be difficult, but since the Borel sets are generated by the intervals, a simpler criterion involving just this generating family of sets exists. The following lemma is a consequence of basic facts in measure theory, which can be found in the Measure Theory appendix in [Dur2010].
-
-
 
 \begin{lem}
 Two probability measures $\mu_1, \mu_2$ on the measurable space $(\R, {\cal B})$ are equal if only if they are equal on the generating set of intervals, namely if
@@ -610,21 +486,9 @@ Two probability measures $\mu_1, \mu_2$ on the measurable space $(\R, {\cal B})$
 for all $-\infty < a<b < \infty$.
 \end{lem}
 
-
-
-
-
-
-
-
-
-
-
 \section{Distribution functions}
 \label{sec:dist-funs}
 Instead of working with distributions of random variables (which are probability measure on the measurable space $(\R, {\cal B})$ and themselves quite unwieldy objects), we will encode them in a simpler object called a $\textbf{distribution function}$ (sometimes referred to as a $\textbf{cumulative distribution function}$, or $\textbf{c.d.f.})$.
-
-
 
 \begin{defn}
 The $\textbf{cumulative distribution function}$ (or $\textbf{c.d.f.}$, or just $\textbf{distribution function}$) of a random variable $X$ defined on a probability space $(\Omega, {\cal F}, \mathrm{P})$ is the function $F_X:\R \to [0,1]$ defined by
@@ -636,14 +500,10 @@ F_X(x) = \mathrm{P}( X \le x ) = \mathrm{P}( X^{-1}((-\infty,x])) = \mathrm{P}( 
 
 \end{defn}
 
-
 Note that we have introduced here a useful notational device that will be used again many times in the following sections: if $A$ is a Borel set, we will often write $\{X \in A\}$ as shorthand for the set $\{ \omega \in \Omega : X(\omega) \in A \}$. In words, we may refer to this as ``the event that $X$ falls in $A$''. When discussing its probability, we may omit the curly braces and simply write $P(X\in A)$. Of course, one should always remember that on the formal level this is just the set-theoretic inverse image of a set by a function!
-
-
 
 \begin{thm}[Properties of distribution functions]
 If $F=F_X$ is a distribution function, then it has the following properties:
-
 
 \begin{enumerate}[label=(\roman*)]
 \item $F$ is nondecreasing.
@@ -656,36 +516,23 @@ If $F=F_X$ is a distribution function, then it has the following properties:
 
 \end{thm}
 
-
-
-
 \begin{proof}
 Exercise (recommended), or see page 9 of [Dur2010].
 \end{proof}
 
-
-
-
 \begin{defn}
 A function $F:\R\to[0,1]$ satisfying properties (i)--(iii) in the previous theorem is called a $\textbf{cumulative distribution function}$, or just $\textbf{distribution function}$.
 \end{defn}
-
-
-
 
 \begin{thm}
 \label{thm-rvexistence}
 If $F$ is a distribution function, then there exists a random variable $X$ such that $F=F_X$.
 \end{thm}
 
-
 This fact has a measure-theoretic proof similar to the proof of Theorem \ref{thm-lebesgue}, but fortunately in this case, there is a more probabilistic proof that relies only on the existence of Lebesgue measure. (This is one of many examples of probabilistic ideas turning out to be useful to prove facts in analysis and measure theory.) This involves the probabilistic concept of a $\textbf{quantile}$ (a generalization of the concepts of percentile and median that we frequently hear about in news reports).
-
-
 
 \begin{defn}
 If $X$ is a random variable on a probability space $(\Omega, {\cal F}, \mathrm{P})$ and $0<p<1$ is a number, then a real number $x$ is called a $\textbf{$p$-quantile}$ of $X$ if the inequalities
-
 
 \begin{eqnarray*}
 \mathrm{P}(X \le x) &\ge& p, \\
@@ -695,20 +542,15 @@ If $X$ is a random variable on a probability space $(\Omega, {\cal F}, \mathrm{P
 hold.
 \end{defn}
 
-
 Note that the question of whether $t$ is a $p$-quantile of $X$ can be answered just by knowing the distribution function $F_X$ of $X$: since $\mathrm{P}(X\le x)=F_X(x)$ and $\mathrm{P}(X\ge x)=1-F(x-)$, we can write the conditions above as
 
 \[
 F_X(x-) \le p \le F_X(x).
 \]
 
-
-
-
 \begin{lem}
 \label{lem-quantile}
 A $p$-quantile for $X$ always exists. Moreover, the set of $p$-quantiles of $X$ is equal to the (possibly degenerate) closed interval $[a_p, b_p]$, where
-
 
 \begin{eqnarray*}
 a_p &=& \sup \{ x : F_X(x) < p \}, \\
@@ -717,15 +559,9 @@ b_p &=& \inf \{ x : F_X(x) > p \}.
 
 \end{lem}
 
-
-
-
 \begin{xexercise}
 Prove Lemma \ref{lem-quantile}.
 \end{xexercise}
-
-
-
 
 \begin{proof}[Proof of Theorem \ref{thm-rvexistence}]
 Let $((0,1), {\cal B}, \mathrm{P})$ be the unit interval with Lebesgue measure, representing the experiment of drawing a uniform random number in $(0,1)$. We shall construct our random variable $X$ on this space. Inspired by the discussion of quantiles above, we define
@@ -755,64 +591,9 @@ To prove the claim, note that if $p \le F(x)$ then all elements of the set $\{ y
 satisfy $y\le x$, and therefore the supremum $X(p)$ of this set also satisfies $X(p) \le x$. Conversely, if $p > F(x)$, then, since $F$ is right-continuous, we have $p > F(x+\epsilon)$ for some $\epsilon>0$. It follows that $X(p)\ge x+\epsilon>x$ (since $x+\epsilon$ is in the set $\{ y : F(y)<p \}$).
 \end{proof}
 
-
 The function $X$ defined in the proof above is sometimes referred to as the (lower) quantile function of the distribution $F$. Note that if $F$ is a strictly increasing function then $X$ is simply its ordinary (set-theoretic) inverse function.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Examples}
-
 
 \begin{example}[Indicator random variables]
 If $A$ is an event in a probability space $(\Omega, {\cal F}, \mathrm{P})$, its $\textbf{indicator random variable}$ is the r.v. $\mathbf{1}_A$ defined by
@@ -821,20 +602,14 @@ If $A$ is an event in a probability space $(\Omega, {\cal F}, \mathrm{P})$, its 
 \mathbf{1}_A(\omega) = \begin{cases} 0 & \omega \notin A, \\ 1 & \omega \in A. \end{cases}
 \]
 
-
 The above discussion shows that to specify the behavior of a random variable, it is enough to specify its distribution function. Another useful concept is that of a $\textbf{density function}$. If $F=F_X$ is a distribution function such that for some nonnegative function $f:\R\to\R$ we have
-
 
 \begin{equation*} \tag{4}\label{eq:density}
 F(x) = \int_{-\infty}^x f(y)\,dy, \qquad (y\in\R),
 \end{equation*}
 
-
 then we say that $\textbf{$X$has a density function$f$}$. Note that $f$ determines $F$ but is itself only determined by $F$ up to ``small'' changes that do not affect the integral in (\ref{eq:density}) (in measure-theoretic terminology we say that $f$ is determined ``up to a set of measure $0$''). For example, changing the value$f$ in a finite number of points results in a density function that is equally valid for computing $F$.
 \end{example}
-
-
-
 
 \begin{example}[Uniform random variables]
 We say that $\textbf{$X$is a uniform random variable on$(0,1)$}$ if it has the distribution function
@@ -845,7 +620,6 @@ x & 0\le x \le 1, \\
 1 & x \ge 1.
 \end{cases}
 \]
-
 
 Such a r.v. has as its density function the function 
 \[
@@ -863,9 +637,6 @@ f(x) = \begin{cases} \frac{1}{b-a} & a\le x\le b, \\ 0 & \textrm{otherwise.}
 
 \end{example}
 
-
-
-
 \begin{example}[Standard normal distribution]
 The normal (or gaussian) distribution is given in terms of its density function
 
@@ -882,26 +653,10 @@ The cumulative distribution function is denoted by
 This integral cannot be evaluated explicitly in terms of more familiar functions, but $\Phi$ is an important special function of mathematics nonetheless.
 \end{example}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \chapter{Random vectors and independence}
-
 
 \section{Random vectors}
 A random variable is a real-valued measurable function defined on a probability space $(\Omega, {\cal F}, \mathrm{P})$ (when we talk of $\R$ as a measurable space, it will always be taken to mean with the $\sigma$-algebra of Borel sets). Similarly, we now wish to talk about \emph{vector}-valued measurable functions on a probability space, i.e., functions taking values in $\R^d$. First, we need to identify a good $\sigma$-algebra of subsets of $\R^d$. Risking some confusion, we will still call it the Borel $\sigma$-algebra and denote it by ${\cal B}$, or sometimes by ${\cal B}(\R^d)$.
-
-
 
 \begin{defn}
 \label{defi-borelrd}
@@ -924,29 +679,17 @@ are all measurable (where measurability is respect to the Borel $\sigma$-algebra
 
 \end{defn}
 
-
-
-
 \begin{xexercise}
 Check that the definitions above are indeed all equivalent.
 \end{xexercise}
-
-
-
 
 \begin{defn}
 A $\textbf{random ($d$-dimensional) vector}$ (or $\textbf{vector random variable}$) $\mathbf{X}=(X_1,X_2,\ldots,X_d)$ on a probability space $(\Omega, {\cal F}, \mathrm{P})$ is a function $\mathbf{X}:\Omega\to\R^d$ that is measurable (as a function between the measurable spaces $(\Omega, {\cal F})$ and $(\R^d, {\cal B})$.
 \end{defn}
 
-
-
-
 \begin{lem}
 $\mathbf{X}=(X_1,\ldots,X_d)$ is a random vector if and only if $X_i$ is a random variable for each $i=1,\ldots,d$.
 \end{lem}
-
-
-
 
 \begin{proof}
 If $\mathbf{X}$ is a random vector then each of its coordinates $X_i = \pi_i \circ \mathbf{X}$ is a composition of two measurable functions and therefore (check!) measurable. Conversely, if $X_1,\ldots,X_d$ are random variables then for any box $E=(a_1,b_1)\times (a_2,b_2)\times\cdots\times (a_d,b_d) \subset \R^d$ we have
@@ -958,23 +701,16 @@ If $\mathbf{X}$ is a random vector then each of its coordinates $X_i = \pi_i \ci
 Therefore by Definition \ref{defi-borelrd} and Exercise \ref{ex-checkrv}, $\mathbf{X}$ is a random vector.
 \end{proof}
 
-
-
-
 \begin{xexercise}
 
 \begin{enumerate}[label=(\roman*)]
 \item Prove that any continuous function $f:\R^m\to\R^n$ is measurable (when each of the spaces is equipped with the respective Borel $\sigma$-algebra).
-
 
 \item Prove that the composition $g\circ f$ of measurable functions $f:(\Omega_1, {\cal F}_1)\to (\Omega_2,{\cal F}_2)$ and $g:(\Omega_2, {\cal F}_2)\to (\Omega_3, {\cal F}_3)$ (where $(\Omega_i, {\cal F}_i)$ are measurable spaces for $i=1,2,3$) is a measurable function.
 \item Deduce that the sum $X_1+\ldots+X_d$ of random variables is a random variable.
 \end{enumerate}
 
 \end{xexercise}
-
-
-
 
 \begin{xexercise}
 Prove that if $X_1, X_2, \ldots$ is a sequence of random variables (all defined on the same probability space, then the functions
@@ -985,32 +721,6 @@ Prove that if $X_1, X_2, \ldots$ is a sequence of random variables (all defined 
 
 are all random variables. Note: Part of the question is to generalize the notion of random variable to a function taking values in $\overline{\mathbb{R}} = \R \cup \{-\infty, +\infty \}$, or you can solve it first with the additional assumption that all the $X_i$'s are uniformly bounded by some constant $M$.
 \end{xexercise}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \section{Multi-dimensional distribution functions}
 If $\mathbf{X}=(X_1,\ldots,X_d)$ is a $d$-dimensional random vector, we define its $\textbf{distribution}$ to be the probability measure
@@ -1024,11 +734,8 @@ similarly to the one-dimensional case. The measure $\mu_X$ is also called the $\
 
 Once again, to avoid having to work with measures, we introduce the concept of a $\textbf{$d$-dimensional distribution function}$.
 
-
-
 \begin{defn}
 The $d$-dimensional distribution function of a $d$-dimensional random vector $\mathbf{X}=(X_1,\ldots,X_d)$ (also called the joint distribution function of $X_1,\ldots,X_d$) is the function $F_{\mathbf{X}}:\R^d\to[0,1]$ defined by
-
 
 \begin{align*}
 F_{\mathbf{X}}(x_1,x_2,\ldots,x_d)
@@ -1038,13 +745,9 @@ F_{\mathbf{X}}(x_1,x_2,\ldots,x_d)
 
 \end{defn}
 
-
-
-
 \begin{thm}[Properties of distribution functions]
 \label{thm-multidim}
 If $F=F_{\mathbf X}$ is a distribution function of a $d$-dimensional random vector, then it has the following properties:
-
 
 \begin{enumerate}[label=(\roman*)]
 \item $F$ is nondecreasing in each coordinate.
@@ -1052,7 +755,6 @@ If $F=F_{\mathbf X}$ is a distribution function of a $d$-dimensional random vect
 \item $\lim_{\mathbf{x}\to(\infty,\ldots,\infty)} F(\mathbf{x}) = 1$.
 \item $F$ is right-continuous, i.e., $F(\mathbf{x}+) := \lim_{\mathbf{y}\downarrow \mathbf{x}} F(\mathbf{y}) = F(\mathbf{x}),$
 where here $\mathbf{y}\downarrow \mathbf{x}$ means that $y_i\downarrow x_i$ in each coordinate.
-
 
 \item For $1\le i\le d$ and $a<b$, denote by
 $\Delta_{a,b}^{x}$
@@ -1072,33 +774,19 @@ Then, for any real numbers $a_1 < b_1$, $a_2<b_2$, \ldots, $a_d < b_d$, we have
 
 \end{thm}
 
-
-
-
 \begin{proof}
 See Chapter 1 in [Dur2010] or Appendix A.2 in [Dur2004].
 \end{proof}
-
-
-
 
 \begin{thm}
 Any function $F$ satisfying the properties in Theorem \ref{thm-multidim} above is a distribution function of some random vector $\mathbf{X}$.
 \end{thm}
 
-
-
-
 \begin{proof}
 See Chapter 1 in [Dur2010] or Appendix A.2 in [Dur2004].
 \end{proof}
 
-
-
-
-
 \section{Independence}
-
 
 \begin{defn}
 Events $A, B \in {\cal F}$ in a probability space $(\Omega, {\cal F}, \mathrm{P})$ are called independent if
@@ -1115,9 +803,6 @@ More generally, a family ${\cal A}=(A_i)_{i\in {\cal I}}$ of events in a probabi
 
 \end{defn}
 
-
-
-
 \begin{defn}
 Random variables $X, Y$ on a probability space $(\Omega, {\cal F}, \mathrm{P})$ are called independent if
 
@@ -1127,9 +812,6 @@ Random variables $X, Y$ on a probability space $(\Omega, {\cal F}, \mathrm{P})$ 
 
 for any Borel sets $E,F \subset \R$. In other words any two events representing possible statements about the behaviors of $X$ and $Y$ are independent events.
 \end{defn}
-
-
-
 
 \begin{defn}
 If $\Omega$ is a set and $X:\Omega\to\R$ is a function, the family of subsets of $\Omega$ defined by
@@ -1141,29 +823,19 @@ If $\Omega$ is a set and $X:\Omega\to\R$ is a function, the family of subsets of
 is a $\sigma$-algebra (check!) called the $\textbf{$\sigma$-algebra generated by$X$}$. It is easy to check that it is the minimal $\sigma$-algebra with which $\Omega$ can be equipped so as to make $X$ into a random variable.
 \end{defn}
 
-
-
-
 \begin{defn}
 If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space, two $\sigma$-algebras ${\cal A}, {\cal B}\subset {\cal F}$ are called independent if any two events $A\in {\cal A}, B\in{\cal B}$ are independent events.
 \end{defn}
 
-
 It follows from the above definitions that r.v.'s $X,Y$ are independent if and only if the $\sigma$-algebras $\sigma(X), \sigma(Y)$ generated by them are independent $\sigma$-algebras.
-
-
 
 \begin{defn}
 If $(\Omega, {\cal F}, \mathrm{P})$ is a probability space$({\cal F}$ and $({\cal F}_i)_{i\in I}$ is some family of sub-$\sigma$-algebras of ${\cal F}$ (i.e., $\sigma$-algebras that are subsets of ${\cal F}$, we say that $({\cal F}_i)_{i\in I}$ is an independent family of $\sigma$-algebras if for any $i_1,i_2,\ldots i_k\in I$ and events $A_1 \in {\cal F}_{i_1}, A_2 \in {\cal F}_{i_2}, \ldots, A_k \in {\cal F}_{i_k}$, the events $A_1,\ldots,A_k$ are independent.
 \end{defn}
 
-
-
-
 \begin{defn}
 A family $(X_i)_{i\in I}$ of random variables defined on some common probability space $(\Omega, {\cal F}, \mathrm{P})$ is called an $\textbf{independent family of random variables}$ if the $\sigma$-algebras $\{ \sigma(X_i) \}_{i\in I}$ form an independent family of $\sigma$-algebras.
 \end{defn}
-
 
 Unraveling these somewhat abstract definitions, we see that $(X_i)_{i\in I}$ is an independent family of r.v.'s if and only if we have
 
@@ -1173,23 +845,15 @@ Unraveling these somewhat abstract definitions, we see that $(X_i)_{i\in I}$ is 
 
 for all indices $i_1,\ldots,i_k \in I$ and Borel sets $A_1,\ldots, A_k \in {\cal B}(\R)$.
 
-
-
 \begin{thm}
 If $({\cal F}_i)_{i\in I}$ are a family of sub-$\sigma$-algebras of the $\sigma$-algebra of events ${\cal F}$ in a probability space, and for each $i\in I$, the $\sigma$-algebra ${\cal F}_i$ is generated by a family ${\cal A}_i$ of subsets of $\Omega$, and each family ${\cal A}_i$ is closed under taking the intersection of two sets (such a family is called a $\textbf{$\pi$-system}$), then the family $({\cal F}_i)_{i\in I}$ is independent if and only if for each $i_1,\ldots,i_k\in I$, any finite sequence of events $A_1 \in {\cal A}_{i_1}, A_2\in {\cal A}_{i_2}, \ldots, A_k \in {\cal A}_{i_k}$ is independent.
 \end{thm}
-
-
-
 
 \begin{proof}
 This uses Dynkin's $\pi-\lambda$ theorem from measure theory. See [Dur2010], Theorem 2.1.3, p. 39 or [Dur2004], Theorem (4.2), p. 24.
 \end{proof}
 
-
 As a corollary, we get a convenient criterion for checking when the coordinates of a random vector are independent.
-
-
 
 \begin{lem}
 If $X_1,\ldots,X_d$ are random variables defined on a common probability space, then they are independent if and only if for all $x_1,\ldots,x_d \in \R$ we have that
@@ -1199,9 +863,6 @@ F_{X_1,\ldots,X_d}(x_1,\ldots,x_d) = F_{X_1}(x_1) F_{X_2}(x_2) \ldots F_{X_d}(x_
 \]
 
 \end{lem}
-
-
-
 
 \begin{xexercise}
 
@@ -1221,7 +882,6 @@ f(x_1,\ldots,x_d) = f_1(x_1) f_2(x_2) \ldots f_d(x_d),
 
 then $X_1,\ldots,X_d$ are independent.
 
-
 \item Show that if $X_1,\ldots,X_d$ are random variables taking values in a countable set $S$, then in order for $X_1,\ldots,X_d$ to be independent it is enough that for all $x_1,\ldots,x_d\in S$ we have
 
 \[
@@ -1231,11 +891,6 @@ then $X_1,\ldots,X_d$ are independent.
 
 \end{xexercise}
 
-
-
-
-
-
 \chapter{The Borel-Cantelli lemmas}
 Let $(\Omega, {\cal F}, \mathrm{P})$ be a probability space, and let $A_1, A_2, A_3, \ldots \in {\cal F}$ be a sequence of events. We define the following events derived from the sequence $(A_n)_n$:
 
@@ -1243,7 +898,6 @@ Let $(\Omega, {\cal F}, \mathrm{P})$ be a probability space, and let $A_1, A_2, 
 \limsup A_n &=& \bigcap_{N=1}^\infty \bigcup_{n=N}^\infty A_n, \\
 \liminf A_n &=& \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty A_n.
 \end{eqnarray*}
-
 
 What is the meaning of these events? If we think of the sequence $A_n$ as representing a sequence of (not necessarily independent) probabilistic experiments, then we can translate the first event into words as
 
@@ -1261,9 +915,6 @@ The definition of the event $\liminf A_n$ can similarly be given meaning by writ
 &  & \textrm{occurred for all $n\ge N$''} \\ &=& \textrm{``the event that all but finitely many of the $A_n$'s occurred''.}
 \end{eqnarray*}
 
-
-
-
 \begin{xexercise}
 Prove that for any $\omega \in \Omega$ we have
 
@@ -1274,9 +925,6 @@ Prove that for any $\omega \in \Omega$ we have
 
 \end{xexercise}
 
-
-
-
 \begin{thm}[Borel-Cantelli lemmas]
 
 \begin{enumerate}[label=(\roman*)]
@@ -1285,9 +933,6 @@ Prove that for any $\omega \in \Omega$ we have
 \end{enumerate}
 
 \end{thm}
-
-
-
 
 \begin{proof}
 We essentially already proved part (i) in the first lecture, but here is a more general repetition of the same argument.
@@ -1322,14 +967,8 @@ or equivalently (taking minus the logarithm) that
 But $-\log(1-x) \ge x$ for all $x>0$, so this follows from the assumption that the series of probabilities diverges.
 \end{proof}
 
-
-
-
-
 \chapter{A brief excursion into measure theory}
 Here we briefly mention some of the basic definitions and results from measure theory, and point out how we used them in the previous lectures. The relevant material is covered in Appendix A.1 in [Dur2010] (Appendix A.1 and A.2 in [Dur2004]). It is not required reading, but if you read it you are perhaps more likely to attain a good understanding of the material that \emph{is} required...
-
-
 
 \begin{defn}
 
@@ -1340,36 +979,25 @@ Here we briefly mention some of the basic definitions and results from measure t
 
 \end{defn}
 
-
 The following is a somewhat technical result that turns out to be quite useful:
-
-
 
 \begin{thm}[Dynkin's $\pi-\lambda$ theorem]
 If ${\cal P}$ is a $\pi$-system and ${\cal L}$ is a $\lambda$-system that contains ${\cal P}$ then $\sigma({\cal P}) \subset {\cal L}$.
 \end{thm}
 
-
-
-
 \begin{lem}[Uniqueness theorem]
 If the values of two probability measures $\mu_1$ and $\mu_2$ coincide on a collection ${\cal P}$ of sets, and ${\cal P}$ is a $\pi$-system (closed under finite intersection), then $\mu_1$ and $\mu_2$ coincide on the generated $\sigma$-algebra $\sigma({\cal P})$.
 \end{lem}
-
 
 The uniqueness theorem implies for example that to check if random variables $X$ and $Y$ are equal in distribution, it is enough to check that they have the same distribution functions.
 
 Both of the above results are used in the proof of the following important theorem in measure theory:
 
-
-
 \begin{thm}[Carathéodory's extension theorem]
 Let $\mu$ be an almost-probability-measure defined on an algebra ${\cal A}$ of subsets of a set $\Omega$. That is, it satisfies all the axioms of a probability measure except it is defined on an algebra and not a $\sigma$-algebra; $\sigma$-additivity is satisfied whenever the countable union of disjoint sets in the algebra is also an element of the algebra. Then $\mu$ has a unique extension to a probability measure on the $\sigma$-algebra $\sigma({\cal A})$ generated by ${\cal A}$.
 \end{thm}
 
-
 Carathéodory's extension theorem is the main tool used in measure theory for constructing measures: one always starts out by defining the measure on some relatively small family of sets and then extending to the generated $\sigma$-algebra (after verifying $\sigma$-additivity, which often requires using topological arguments, e.g., involving compactness). Applications include:
-
 
 \begin{itemize}
 \item Existence and uniqueness of Lebesgue measure in $(0,1)$, $\R$ and $\R^d$.
@@ -1378,14 +1006,9 @@ Carathéodory's extension theorem is the main tool used in measure theory for co
 \item Product measures -- this corresponds to probabilistic experiments which consist of several independent smaller experiments.
 \end{itemize}
 
-
 Note that Durrett's book also talks about measures that are not probability measures, i.e., the total measure of the space is not 1 and may even be infinite. In this setting, the theorems above can be formulated in greater generality.
 
-
-
-
 \chapter{Expected values}
-
 
 \section{Construction of the expectation operator}
 We wish to define the notion of the $\textbf{expected value}$, or $\textbf{expectation}$, of a random variable $X$, which will be denoted $\mathbf{E} X$ (or $\mathbf{E}(X)$). In measure theory this is denoted $\int X dP$ and is called the ``Lebesgue integral''. It is one of the most important concepts in all of mathematical analysis! So time invested in understanding it is time well-spent.
@@ -1394,12 +1017,9 @@ The idea is simple. For bounded random variables, we want the expectation to sat
 
 For unbounded random variables, we will also require some kind of continuity, but let's treat the case of bounded case first. It turns out that these properties determine the expectation/Lebesgue integral operator uniquely. Different textbooks may have some variation in how they construct it, but the existence and uniqueness are really the essential facts.
 
-
-
 \begin{thm}
 \label{thm-expecproperties}
 Let $(\Omega, {\cal F}, \mathrm{P})$ be a probability space. Let $B_\Omega$ denote the class of bounded random variables. There exists a unique operator $\mathbf{E}$ that takes a r.v. $X\in B_\Omega$ and returns a number in $\R$, and satisfies:
-
 
 \begin{enumerate}[label=\arabic*.]
 \item If $A\in {\cal F}$ then $\mathbf{E}(1_A) = \mathrm{P}(A)$.
@@ -1408,9 +1028,6 @@ Let $(\Omega, {\cal F}, \mathrm{P})$ be a probability space. Let $B_\Omega$ deno
 \end{enumerate}
 
 \end{thm}
-
-
-
 
 \begin{proof}[Sketch of proof]
 Call $X$ a $\textbf{simple}$ function if it is of the form $X=\sum_{i=1}^n a_i 1_{B_i}$, where $a_1,\ldots,a_n\in \R$ and $B_1,\ldots,B_n$ are disjoint events. For such r.v.'s define $\mathbf{E}(X)=\sum a_i \mathrm{P}(B_i)$. Show that the linearity and monotonicity properties hold, and so far uniqueness clearly holds since we had no choice in how to define $\mathbf{E}(X)$ for such functions if we wanted the properties above to hold. Now for a general bounded r.v. $X$ with $|X|\le M$, for any $\epsilon>0$ it is possible to approximate $X$ from below and above by simple functions $Y \le X \le Z$ such that $\mathbf{E}(Z-Y) < \epsilon$. This suggests defining
@@ -1421,7 +1038,6 @@ Call $X$ a $\textbf{simple}$ function if it is of the form $X=\sum_{i=1}^n a_i 1
 
 By approximation, the construction is shown to still satisfy the properties in the Theorem and to be unique, since $\mathbf{E}(X)$ is squeezed between $\mathbf{E}(Y)$ and $\mathbf{E}(Z)$, and these can be made arbitrarily close to each other.
 \end{proof}
-
 
 We can now extend the definition of the expectation operator to non-negative random variables. In that case we still define $\mathbf{E} X$ by eq. (\ref{eq:expec-def}). This can be thought of as a kind of ``continuity from below'' axiom that is added to the properties 1--3 above, although we shall see that it can be reformulated in several equivalent ways. Note that now $\mathbf{E} X$ may sometimes be infinite.
 
@@ -1441,11 +1057,8 @@ We say that $X$ $\textbf{has an expectation}$ if the two numbers $\mathbf{E} X_-
 
 This is a number in $\R\cup\{ -\infty,\infty\}$. If both $\mathbf{E} X_-, \mathbf{E} X_+$ are $<\infty$, or in other words if $\mathbf{E} |X|<\infty$ (since $|X|=X_+ + X_-$), we say that $X$ $\textbf{has finite expectation}$ or is $\textbf{integrable}$.
 
-
-
 \begin{thm}
 Suppose $X,Y\ge 0$ or $X,Y\le 0$ or $\mathbf{E} |X|, \mathbf{E}|Y|<\infty$. Then:
-
 
 \begin{enumerate}[label=\arabic*.]
 \item If $X$ is a simple function then the definition (\ref{eq:expec-def}) coincides with the original definition, namely $\mathbf{E}(\sum_i a_i 1_{B_i}) = \sum_i a_i \mathrm{P}(B_i)$.
@@ -1455,18 +1068,11 @@ Suppose $X,Y\ge 0$ or $X,Y\le 0$ or $\mathbf{E} |X|, \mathbf{E}|Y|<\infty$. Then
 
 \end{thm}
 
-
-
-
 \begin{proof}
 See [Dur2010], section 1.4.
 \end{proof}
 
-
 $\textbf{Remark.}$ See \href{http://en.wikipedia.org/wiki/Lebesgue_integration\#Intuitive_interpretation}{the Wikipedia article on Lebesgue integration} for a nice description of the difference in approaches between the more familiar Riemann integral and the Lebesgue integral.
-
-
-
 
 \section{Properties}
 \label{sec-expec-prop}
@@ -1487,7 +1093,6 @@ $\textbf{Remark.}$ See \href{http://en.wikipedia.org/wiki/Lebesgue_integration\#
 \[
 \mathrm{P}(X \ge t) \le \frac{\mathbf{E} X}{t}.
 \]
-
 
 \begin{proof}
 Use monotonicity twice to deduce:
@@ -1515,7 +1120,6 @@ We denote $\sigma(X) = \sqrt{\mathbf{V}(X)}$ and call this quantity the $\textbf
 \[
 \mathrm{P} ( | X-\mathbf{E} X| \ge t) \le \frac{\mathbf{V}(X)}{t^2}.
 \]
-
 
 \begin{proof}
 Apply Markov's inequality to $Y=(X-\mathbf{E} X)^2$.
@@ -1555,7 +1159,6 @@ for all $x,y\in\R$ and $\alpha\in [0,1]$. If $\varphi$ is convex then
 \varphi(\mathbf{E} X) \le \mathbf{E} (\varphi(X)).
 \]
 
-
 \begin{proof}
 See homework.
 \end{proof}
@@ -1565,20 +1168,13 @@ See homework.
 (\mathbf{E}|X|^r)^{1/r} \le (\mathbf{E} |X|^s)^{1/s}.
 \end{equation*}
 
-
 \begin{proof}
 Apply Jensen's inequality to the r.v. $|X|^r$ with the convex function $\varphi(x) = x^{s/r}$.
 \end{proof}
 \end{enumerate}
 
-
-
-
-
 \section{Convergence theorems for expectations}
 We want to study notions of continuity for the expectation operator. If $X_n\to X$ as $n\to\infty$, under what conditions do we have that $\mathbf{E}(X_n)\to \mathbf{E} X$? First we have to decide what ``$X_n\to X$'' actually \emph{means}. We define two notions of convergence of a sequence of random variables to a limit.
-
-
 
 \begin{defn}
 Let $X, X_1, X_2, \ldots$ be random variables all defined on the same probability space. We say that \textbf{$X_n$ converges in probability to $X$}, and denote $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$, if for all $\epsilon>0$ we have that
@@ -1589,9 +1185,6 @@ Let $X, X_1, X_2, \ldots$ be random variables all defined on the same probabilit
 
 \end{defn}
 
-
-
-
 \begin{defn}
 With $X,X_1,X_2,\ldots$ as before, we say that \textbf{$X_n$ converges almost surely to $X$} (or \textbf{converges to $X$ with probability 1}), and denote $X_n \xrightarrow[n\to\infty]{\textrm{a.s.}} X$, if
 
@@ -1601,23 +1194,14 @@ With $X,X_1,X_2,\ldots$ as before, we say that \textbf{$X_n$ converges almost su
 
 \end{defn}
 
-
-
-
 \begin{xexercise}
 Show that $\left\{ \omega \in \Omega : X(\omega)=\lim_{n\to\infty} X_n(\omega) \right\}$ is an event and therefore has a well-defined probability. In other words, represent it in terms of countable union, intersection and complementation operations on simple sets that are known to be events. Hint: Use the $\epsilon-\delta$ definition of a limit.
 \end{xexercise}
-
-
-
 
 \begin{lem}
 \label{lem-convergence-types}
 Almost sure convergence is a stronger notion of convergence than convergence in probability. In other words, if $X_n\xrightarrow[n\to\infty]{\textrm{a.s.}} X$ then $X_n\xrightarrow[n\to\infty]{\mathrm{P}} X$, but the converse is not true.
 \end{lem}
-
-
-
 
 \begin{xexercise}
 Prove Lemma \ref{lem-convergence-types}. For the counterexample showing that convergence in probability does not imply almost sure convergence, consider the following sequence of random variables defined on the space $((0,1),{\cal B}, \textrm{Lebesgue measure})$:
@@ -1635,32 +1219,20 @@ $}
 
 \end{xexercise}
 
-
-
-
 \begin{lem}
 \label{lem:prob-as-subseq}
 If $(X_n)_{n=1}^\infty$ is a sequence of r.v.s such that $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$ then there exists a subsequence $(X_{n_k})_{k=1}^\infty$ such that $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
 \end{lem}
 
-
-
-
 \begin{xexercise}
 Prove Lemma \ref{lem:prob-as-subseq}.
 \end{xexercise}
 
-
 We can now formulate the fundamental convergence theorems for Lebesgue integration.
-
-
 
 \begin{thm}[Bounded convergence theorem]
 If $X_n$ is a sequence of r.v.'s such that $|X_n|\le M$ for all $n$, and $X_n\to X$ in probability, then $\mathbf{E} X_n \to \mathbf{E} X$.
 \end{thm}
-
-
-
 
 \begin{proof}
 Fix $\epsilon>0$. Then
@@ -1673,17 +1245,11 @@ Fix $\epsilon>0$. Then
 Since $\epsilon$ was an arbitrary positive number, this implies that $|\mathbf{E} X_n-\mathbf{E} X|\to 0$, as claimed.
 \end{proof}
 
-
-
-
 \begin{thm}[Fatou's lemma]
 If $X_n \ge 0$ then $\liminf_{n\to\infty} \mathbf{E} X_n \ge \mathbf{E}(\liminf_{n\to\infty} X_n).$
 \end{thm}
 
-
 To see that the inequality in the lemma can fail to be an equality, let $U \sim U(0,1)$, and define $X_n = n 1_{\{U\le 1/n\}}$. Clearly $\liminf_{n\to\infty}X_n=\lim_{n\to\infty} X_n \equiv 0$, but $\mathbf{E}(X_n) = 1$ for all $n$.
-
-
 
 \begin{proof}
 Let $Y = \liminf_{n\to\infty} X_n$. Note that $Y$ can be written as
@@ -1719,9 +1285,6 @@ and this is a sequence of uniformly bounded r.v.'s, therefore by the bounded con
 We therefore get that $\liminf_{n\to\infty} \mathbf{E}(Y_n)\ge \mathbf{E}(Y\wedge M)$ for any $M>0$, which implies the result because of the following exercise.
 \end{proof}
 
-
-
-
 \begin{xexercise}
 Let $Y\ge 0$ be a random variable. Prove that
 
@@ -1731,15 +1294,9 @@ Let $Y\ge 0$ be a random variable. Prove that
 
 \end{xexercise}
 
-
-
-
 \begin{thm}[Monotone convergence theorem]
 If $0\le X_n \uparrow X$ as $n\to\infty$ then $\mathbf{E} X_n \uparrow \mathbf{E} X$.
 \end{thm}
-
-
-
 
 \begin{proof}
 
@@ -1749,26 +1306,15 @@ If $0\le X_n \uparrow X$ as $n\to\infty$ then $\mathbf{E} X_n \uparrow \mathbf{E
 
 \end{proof}
 
-
-
-
 \begin{thm}[Dominated convergence theorem]
 If $X_n\to X$ almost surely, $|X_n|\le Y$ for all $n\ge 1$ and $\mathbf{E} Y<\infty$, then $\mathbf{E} X_n\to \mathbf{E} X$.
 \end{thm}
-
-
-
 
 \begin{proof}
 Apply Fatou's lemma separately to $Y+X_n$ and to $Y-X_n$.
 \end{proof}
 
-
-
-
-
 \section{Computing expected values}
-
 
 \begin{lem}
 If $X$ is a discrete r.v., that is, takes values in some countable set $S$, then
@@ -1791,15 +1337,9 @@ is finite. It follows that for any function $g:\R\to\R$, we also have
 
 \end{lem}
 
-
-
-
 \begin{proof}
 If $S$ is finite then $X$ is a simple function, and can be written $X=\sum_{s\in S} s\,1_{\{X=s\}}$, so this follows from the definition of $\mathbf{E}(\cdot)$ for simple functions. If $S$ is infinite this follows (check!) from the convergence theorems in the previous section by considering approximations to $X$ of the form $\sum_{s\in S, |s|<M} s\, 1_{\{X=s\}}$.
 \end{proof}
-
-
-
 
 \begin{lem}
 If $X$ is a r.v. with a density function $f_X$, then
@@ -1822,9 +1362,6 @@ is finite. Similarly, for any ``reasonable'' function $g$ we have
 
 \end{lem}
 
-
-
-
 \begin{proof}
 Fix $\epsilon>0$, and approximate $X$ by a discrete r.v. $Y$, e.g.,
 
@@ -1841,12 +1378,7 @@ Then $|\mathbf{E}(X)-\mathbf{E}(Y)| \le \mathbf{E}|X-Y| \le \epsilon$. By the pr
 so the result for $\mathbf{E} X$ follows by letting $\epsilon\to 0$. For general functions $g(X)$ repeat this argument, and invoke the relevant convergence theorem to deduce that $\mathbf{E}(g(Y))\to \mathbf{E} g(Y)$ as $\epsilon\to 0$.
 \end{proof}
 
-
-
-
-
 \section{Expectation and independent random variables}
-
 
 \begin{thm}
 
@@ -1857,17 +1389,11 @@ so the result for $\mathbf{E} X$ follows by letting $\epsilon\to 0$. For general
 
 \end{thm}
 
-
-
-
 \begin{proof}[Sketch of proof]
 Part (i) follows either by approximation of $X,Y$ using simple functions, or using Fubini's theorem, which you can read about in section 1.7 of [Dur2010] (Note that Fubini's theorem in turn is proved by approximation using simple functions, so these two seemingly different approaches are really equivalent).
 
 For part (ii), the ``only if'' follows from part (i) together with the observation that if $X,Y$ are independent then so are $g(X), h(Y)$. For the ``if'' part, observe that the function $1_{(a,b)}$ is a bounded measurable function, so in particular the condition $\mathbf{E}[g(X)h(Y)]=\mathbf{E} g(X) \mathbf{E} h(Y)$ includes the information that $\mathrm{P}(X\in I, Y\in J)=\mathrm{P}(X \in I) \mathrm{P}(Y\in J)$ for any two finite intervals $I,J$, which we already know is enough to imply independence.
 \end{proof}
-
-
-
 
 \begin{thm}
 
@@ -1877,7 +1403,6 @@ For part (ii), the ``only if'' follows from part (i) together with the observati
 \end{enumerate}
 
 \end{thm}
-
 
 The fact that expectation is multiplicative for independent random variables implies an important fact about the variance of a sum of independent r.v.'s. Let $X,Y$ be independent r.v.'s with finite variance. Then we get immediately that
 
@@ -1901,8 +1426,6 @@ We then get the more general formula
 
 Repeating this computation with a sum of $n$ variables instead of just two, we get the following formula for the variance of a sum of r.v.'s.
 
-
-
 \begin{lem}
 If $X_1,\ldots,X_n$ are r.v.'s with finite variance, then
 
@@ -1912,12 +1435,8 @@ If $X_1,\ldots,X_n$ are r.v.'s with finite variance, then
 
 \end{lem}
 
-
-
-
 \begin{lem}[Properties of the covariance]
 If $X,Y$ are r.v.'s with finite variance, then:
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\textrm{Cov}(X,Y)=\textrm{Cov}(Y,X) = \mathbf{E}(XY) - \mathbf{E}(X) \mathbf{E}(Y)$.
@@ -1930,13 +1449,9 @@ If $X,Y$ are r.v.'s with finite variance, then:
 
 \end{lem}
 
-
-
-
 \begin{proof}
 Properties 1--5 are obvious. Property 6 follows by applying the Cauchy-Schwartz inequality to the r.v.'s $X-\mathbf{E} X$ and $Y-\mathbf{E} Y$.
 \end{proof}
-
 
 If $\textrm{Cov}(X,Y)=0$ we say that $X$ and $Y$ are $\textbf{uncorrelated}$, or $\textbf{orthogonal}$. This is a weaker condition than being independent, but because of the way the variance of a sum of r.v.'s behaves, it is still often useful for deriving bounds, as we shall see.
 
@@ -1953,9 +1468,6 @@ This measures the correlation in units of the standard deviation of $X$ and $Y$ 
 \]
 
 with equality on either side if and only if $X$ and $Y$ are linearly dependent.
-
-
-
 
 \section{Moments}
 For an integer $k\ge 0$, the \textbf{$k$-th moment} of a random variable $X$ is the number $\mathbf{E}(X^k)$. The \textbf{$k$-th moment around a point $c\in\R$} is the number $\mathbf{E}(X-c)^k$. If $c$ is not mentioned it is understood that the moment is around 0. The \textbf{$k$-th central moment} is the $k$-th moment around $\mathbf{E} X$ (when it exists), i.e., $\mathbf{E}(X-\mathbf{E} X)^k$. In this terminology, the variance is the second central moment.
@@ -1977,16 +1489,10 @@ So the function $t\to\mathbf{E}(X-t)^2$ is a quadratic polynomial that attains i
 
 says that ``the second moment around $t$ is equal to the second moment around the mean $\mathbf{E} X$ plus the square of the distance between $t$ and the mean''. Note that this is analogous to (and mathematically equivalent to) the Huygens-Steiner theorem (also called the Parallel Axis theorem, see Wikipedia) from mechanics, which says that ``the moment of inertia of a body with unit mass around a given axis $L$ is equal to the moment of inertia around the line parallel to $L$ passing through the center of mass of the body, plus the square of the distance between the two lines''. Indeed, the ``moment'' terminology seems to originate in this physical context.
 
-
-
-
-
 \chapter{Special distributions and their properties}
 A small number of distributions come up again and again in real life applications of probability theory and as answers to natural theoretical questions. These are the so-called $\textbf{special distributions}$. In this chapter we survey the most important of the special distributions and some of their properties. The properties are either obvious identities, restatements of known results or are left as  (strongly recommended) exercises.
 
 Below we use the following notation: if $D_1$ and $D_2$ are probability distributions, $D_1 \stackrel{d}{=} D_2$ denotes that they are equal; $D_1\boxplus D_2$ denotes the distribution of the random variable $X+Y$ where $X\sim D_1$, $Y\sim D_2$ and $X,Y$ are independent. Similarly, $\mathop{\boxplus}\limits_{k=1}^n D_k$ denotes the distribution of the random variable $\sum_{k=1}^n X_k$ where $X_1,\ldots,X_n$ are independent random variables such that $X_k \sim D_k$ for $k=1,\ldots,n$.
-
-
 
 \section{The Bernoulli distribution}
 The Bernoulli distribution models the probabilistic experiment of a single coin toss. We say that $X$ has the Bernoulli distribution with parameter $0<p<1$, and denote $X \sim \operatorname{Ber}(p)$, if $X$ satisfies
@@ -1995,18 +1501,12 @@ The Bernoulli distribution models the probabilistic experiment of a single coin 
 \mathrm{P}(X=0)=p = 1-\mathrm{P}(X=1).
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\mathbf{E} X = p$, $\mathbf{V}(X) = p(1-p)$.
 \item $\operatorname{Ber}(1/2)$ is the distribution that maximizes the variance $\mathbf{V}(X)$ subject to the constraint that $0\le X\le 1$.
 \end{enumerate}
-
-
-
-
 
 \section{The binomial distribution}
 We say that $X$ has the binomial distribution with parameters $n\ge 1$ and $0<p<1$, and denote $X\sim \operatorname{Bin}(n,p)$, if $X$ satisfies
@@ -2015,9 +1515,7 @@ We say that $X$ has the binomial distribution with parameters $n\ge 1$ and $0<p<
 \mathrm{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \qquad (0\le k\le n).
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Bin}(1,p) \stackrel{d}{=} \operatorname{Ber}(p)$.
@@ -2026,10 +1524,6 @@ $\textbf{Properties:}$
 \item If $X\sim \operatorname{Bin}(n,p)$ then $\mathbf{E} X = np$, $\mathbf{V}(X) = np(1-p)$.
 \end{enumerate}
 
-
-
-
-
 \section{The geometric distribution}
 We say that $X$ has the geometric distribution with parameter $0<p<1$, and denote $X\sim \operatorname{Geom}(p)$, if $X$ satisfies
 
@@ -2037,16 +1531,13 @@ We say that $X$ has the geometric distribution with parameter $0<p<1$, and denot
 \mathrm{P}(X=k) = p(1-p)^{k-1} \qquad (k \ge 1).
 \]
 
-
 Some authors prefer a slightly different convention whereby the geometric random variables take nonnegative values (including $0$) rather than only positive values. Thus, denote $X' \sim \operatorname{Geom_0}(p)$, and say that $X'$ has the geometric distribution starting from $0$, if it satisfies
 
 \[
 \mathrm{P}(X'=k) = p(1-p)^{k} \qquad (k \ge ).
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Geom}(p) \stackrel{d}{=} \operatorname{Geom_0}(p) + 1$.
@@ -2066,10 +1557,6 @@ That is, the distribution $\operatorname{Geom}(p)$ models the number of identica
 \item If $X'\sim \operatorname{Geom}(p)$ then $\mathbf{E} X' = \frac{1-p}{p}$, $\mathbf{V}(X') = \frac{1-p}{p^2}$.
 \end{enumerate}
 
-
-
-
-
 \section{The negative binomial distribution}
 We say that $X$ has the negative binomial distribution with parameters $m\ge1$ and $0<p<1$, and denote $X\sim \operatorname{NB}(m,p)$, if $X$ satisfies
 
@@ -2077,9 +1564,7 @@ We say that $X$ has the negative binomial distribution with parameters $m\ge1$ a
 \mathrm{P}(X=k) = \binom{k+m-1}{k} p^m (1-p)^k \qquad (k\ge 0).
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{NB}(1,p) \stackrel{d}{=} \operatorname{Geom_0}(1-p)$.
@@ -2094,10 +1579,6 @@ In words, when performing a sequence of identical experiments, each with probabi
 \item $\operatorname{NB}(m,p) = \mathop{\boxplus}\limits_{k=1}^m \operatorname{Geom_0}(1-p)$.
 \end{enumerate}
 
-
-
-
-
 \section{The Poisson distribution}
 We say that $X$ has the Poisson distribution with parameter $\lambda>0$, and denote $X\sim \operatorname{Poi}(\lambda)$, if $X$ satisfies
 
@@ -2105,9 +1586,7 @@ We say that $X$ has the Poisson distribution with parameter $\lambda>0$, and den
 \mathrm{P}(X=k) = e^{-\lambda} \frac{\lambda^k}{k!} \qquad (k\ge 0).
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Poi}(\lambda) \mathop{\boxplus} \operatorname{Poi}(\mu) = \operatorname{Poi}(\lambda+\mu)$.
@@ -2120,10 +1599,6 @@ $\textbf{Properties:}$
 (This is known as the $\textbf{law of rare events}$; see Section \ref{sec:poisson-limit} for the proof of a similar result that holds in much greater generality.)
 \item If $X \sim \operatorname{Poi}(\lambda)$ then $\mathbf{E} X = \lambda$, $\mathbf{V}(X)=\lambda$.
 \end{enumerate}
-
-
-
-
 
 \section{The uniform distribution}
 We say that $X$ has the uniform distribution in the interval $[a,b]$, and denote $X\sim U[a,b]$, if $X$ has density function
@@ -2140,17 +1615,11 @@ F_X(x) = \begin{cases} 0 & \textrm{if }x<a, \\
 1 & \textrm{if }x>b. \end{cases}.
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\mathbf{E}(X) = \frac{a+b}{2}$, $\mathbf{V}(X) = \frac{(b-a)^2}{12}$.
 \end{enumerate}
-
-
-
-
 
 \section{The normal distribution}
 \label{sec:normal-dist}
@@ -2166,9 +1635,7 @@ In particular, the standard normal distribution is the distribution $N(0,1)$, wh
 f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2} \qquad (x\in\R).
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item If $X\sim N(\mu,\sigma^2)$ then $\mathbf{E}(X)=\mu$, $\mathbf{V}(X) =\sigma^2$.
@@ -2204,10 +1671,6 @@ X,Y\sim N(0,1), & \ X,Y\textrm{ are independent } \\
 \end{align*}
 \end{enumerate}
 
-
-
-
-
 \section{The exponential distribution}
 \label{sec:exp-dist}
 We say that $X$ has the exponential distribution with parameter $\lambda$, and denote $X\sim \operatorname{Exp}(\lambda)$, if $X$ has density function
@@ -2224,9 +1687,7 @@ F_X(x) = \begin{cases} 0 & \textrm{if }x<0, \\
 \end{cases}
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\lambda$ has the role of an (inverse) $\textbf{scale parameter}$, in the sense that for $c>0$ we have that $c \operatorname{Exp}(\lambda) \stackrel{d}{=} \operatorname{Exp}(\lambda / a)$; i.e., scaling an exponential r.v. by a factor $c$ gives a new exponential r.v. where the scale parameter is divided by $c$.
@@ -2253,11 +1714,7 @@ N(\lambda) = \max\{ n\ge 0\,:\, S_n \le \lambda \},
 then $N(\lambda) \sim \operatorname{Poi}(\lambda)$.
 \end{enumerate}
 
-
 $\textbf{Note.}$ One can consider $N(\lambda)$ not just for a single value of $\lambda$ but the entire family $N(t)$, where $t>0$ is a parameter denoting time. When considered as such a family, $(N(t))_{t>0}$ is called a $\textbf{Poisson process}$.
-
-
-
 
 \section{The gamma distribution}
 To define the gamma distribution, first we define the $\textbf{Euler gamma function}$ (also called the $\textbf{generalized factorial function}$), an important special function of mathematical analysis, denoted $\Gamma(t)$, by
@@ -2266,9 +1723,7 @@ To define the gamma distribution, first we define the $\textbf{Euler gamma funct
 \Gamma(t) = \int_0^\infty e^{-x} x^{t-1}\,dt \qquad (t>0).
 \]
 
-
 $\textbf{Properties of the gamma function:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\Gamma(n)=(n-1)!$ for integer $n\ge1$.
@@ -2276,16 +1731,13 @@ $\textbf{Properties of the gamma function:}$
 \item $\Gamma(1/2)=\sqrt{\pi}$.
 \end{enumerate}
 
-
 Next, we say that $X$ has the gamma distribution with parameters $\alpha, \lambda>0$, and denote $X\sim \operatorname{Gamma}(\lambda)$, if $X$ has density function
 
 \[
 f_X(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} e^{-\lambda x} x^{\alpha-1} \qquad (x>0).
 \]
 
-
 $\textbf{Properties of the gamma distribution:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Exp}(\lambda) \stackrel{d}{=} \operatorname{Gamma}(1,\lambda)$.
@@ -2295,10 +1747,6 @@ $\textbf{Properties of the gamma distribution:}$
 \item If $X\sim \operatorname{Gamma}(\alpha,\lambda)$ then $\mathbf{E} X = \frac{\alpha}{\lambda}$, $\mathbf{V}(X) = \frac{\alpha}{\lambda^2}$.
 \end{enumerate}
 
-
-
-
-
 \section{The beta distribution}
 Define the $\textbf{Euler beta function}$ (which is closely related to the Euler gamma function) by
 
@@ -2306,15 +1754,12 @@ Define the $\textbf{Euler beta function}$ (which is closely related to the Euler
 B(a,b) = \int_0^1 u^{a-1}(1-u)^{b-1}\,du \qquad (a,b>0).
 \]
 
-
 $\textbf{Properties of the beta function:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $B(a,b) = \frac{\Gamma(a) \Gamma(b)}{\Gamma(a+b)}$.
 \item For integer $m,n\ge 1$, $B(m,n) = \frac{(m-1)! (n-1)!}{(m+n-1)!}$.
 \end{enumerate}
-
 
 We say that $X$ has the beta distribution with parameters $a,b>0$, and denote $X\sim \operatorname{Beta}(a,b)$, if $X$ has density function
 
@@ -2322,9 +1767,7 @@ We say that $X$ has the beta distribution with parameters $a,b>0$, and denote $X
 f_X(x) = \frac{1}{B(a,b)} x^{a-1} (1-x)^{b-1} \qquad (0<x<1).
 \]
 
-
 $\textbf{Properties of the beta distribution:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $U[0,1] \stackrel{d}{=} \operatorname{Beta}(1,1)$.
@@ -2334,10 +1777,6 @@ $\textbf{Properties of the beta distribution:}$
 \item If $X_1,\ldots,X_n$ are i.i.d. $U[0,1]$ random variables, and $X^{(1)} < X^{(2)} < \ldots < X^{(n)}$ are their order statistics, i.e., $X^{(k)}$ is defined as the $k$th smallest among the numbers $X_1,\ldots,X_n$, then $X^{(k)} \sim \operatorname{Beta}(k,n+1-k)$.
 \end{enumerate}
 
-
-
-
-
 \section{The Cauchy distribution}
 We say that $X$ has the Cauchy distribution, and denote $X \sim \textrm{Cauchy}$, if $X$ has the density
 
@@ -2345,9 +1784,7 @@ We say that $X$ has the Cauchy distribution, and denote $X \sim \textrm{Cauchy}$
 f_X(x) = \frac{1}{\pi} \frac{1}{1+x^2}.
 \]
 
-
 $\textbf{Properties:}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\mathbf{E} |X|=\infty$, i.e., the Cauchy distribution has no expectation.
@@ -2359,8 +1796,6 @@ $\textbf{Properties:}$
 \]
 \item If $\Theta \sim U[-\pi/2,\pi/2]$ then $X=\tan \Theta \sim \textrm{Cauchy}$.
 \end{enumerate}
-
-
 
 \begin{center}
 \fitwidth{$\displaystyle
@@ -2392,8 +1827,6 @@ $\textbf{Properties:}$
 $}
 \end{center}
 
-
-
 \begin{center}
 \fitwidth{$\displaystyle
 \begin{gathered}
@@ -2408,11 +1841,6 @@ N(0,1)^2 \stackrel{d}{=} \textrm{Gamma}(1/2,1/2) \stackrel{d}{=} \chi^2_{(1)} & 
 \end{gathered}
 $}
 \end{center}
-
-
-
-
-
 
 \chapter{Laws of large numbers}
 Let $X_1, X_2, X_3, \ldots$ be a sequence of independent and identically distributed random variables. A common abbreviation for ``independent and identically distributed'' is $\textbf{i.i.d.}$. What this can mean is that we are taking repeated independent samples from some distribution, for example when doing a poll or an experiment in quantum mechanics (when doing a poll, it might be better to have the samples not be independent -- after all, does it really make sense to call up the same person twice? But if the population is large the effect of having the samples be independent is negligible, and can make the analysis of the results a bit simpler).
@@ -2431,10 +1859,7 @@ and use it to form the $\textbf{empirical average}$,
 
 The natural question is whether we can expect the empirical average to be close to the true mean $\mu=\mathbf{E} X_1$ as $n\to\infty$, and in what sense of ``close''. A theorem or statement to that effect, making some assumptions, is called a $\textbf{law of large numbers}$. This can be generalized to a large extent to cases when the $X_n$'s are not identically distributed, or not independent, or both, etc. Thus, the ``Law of Large Numbers'' is not a single theorem in the normal sense of the word but rather a class of theorems, or even a ``principle'' or ``meta-theorem'' that you might hear a probabilist refer to in a somewhat vague, metaphorical way.
 
-
-
 \section{Weak laws of large numbers}
-
 
 \begin{thm}[Weak Law of Large Numbers (WLLN)]
 \label{thm-wlln}
@@ -2445,9 +1870,6 @@ If $\mathbf{E}|X_1|<\infty$ then
 \]
 
 \end{thm}
-
-
-
 
 \begin{proof}[Proof in the case of finite variance]
 In the most general case, proving this requires some work -- we shall deduce it from its stronger cousin, the Strong Law of Large Numbers. However, if we assume that $\sigma^2 = \mathbf{V}(X_1)<\infty$, the proof is extremely easy! It suffices to note that in this case $\mathbf{V}(S_n) = n \sigma^2$ (this is true even when the $X_n$'s are not independent but only uncorrelated), or $\mathbf{V}(S_n/n) = \sigma^2/n$.
@@ -2460,14 +1882,8 @@ From Chebyshev's inequality we then have that for any $\epsilon>0$,
 
 \end{proof}
 
-
-
-
-
 \section{Strong laws of large numbers}
 Our goal in this section will be to prove:
-
-
 
 \begin{thm}[Strong Law of Large Numbers (SLLN)]
 \label{thm-slln}
@@ -2479,10 +1895,7 @@ If $\mathbf{E}|X_1|<\infty$ then
 
 \end{thm}
 
-
 As in the case of the weak law, it turns out that this is easier to prove when making more restrictive assumptions about the distribution of $X$, and specifically about the existence of moments. So we will prove it several times, successively weakening our assumptions until we get to the most general (but least easy to prove) result.
-
-
 
 \begin{proof}[Proof in the case of a finite fourth moment]
 To prove that $S_n/n\to \mu$, we want to prove that $\mathrm{P}(|S_n/n-\mu|>\epsilon\textrm{ i.o.})=0$. Looking at the bound (\ref{eq:variancebound}), we see that if the bound $\sigma^2/n\epsilon^2$ were to form the $n$-th general term of a convergent series, then by the Borel-Cantelli lemma this would be enough to get the desired consequence. This is not the case, but if we assume that $X_1$ has a finite fourth moment, then we could do a similar trick that \emph{will} give a convergent series. In that case, using Markov's inequality we can get that
@@ -2530,9 +1943,6 @@ is $0$. This is true for all $\epsilon>0$, therefore the probability of
 
 is also $0$, since it is contained in a countable union of events of probability 0.
 \end{proof}
-
-
-
 
 \begin{proof}[Proof in the case of finite variance]
 We are slowly refining our techniques to weaken the assumptions required to prove the SLLN. The following nice proof manages to harness the Chebyshev variance bound (\ref{eq:variancebound}) after all to deduce the theorem in the case of r.v.'s with finite variance. Observe that while the series of terms on the right-hand side of (\ref{eq:variancebound}) diverges, if we restrict it to a subsequence $n_k = k^2$, it will become a \emph{convergent} series: $\sum_{k=1}^\infty \sigma^2/k^2\epsilon^2<\infty$. This implies, again by the Borel-Cantelli lemma, that
@@ -2611,12 +2021,9 @@ E_1 \cap E_2 \subset \left\{ \frac{S_n}{n} \xrightarrow[n\to\infty]{} \mu \right
 (if the conditions in both the events $E_1, E_2$ occur, then $S_n/n$ must converge to $\mu$), so this latter event also has probability 1.
 \end{proof}
 
-
 The above proof was a little involved, but is based on a few simple ideas: 1. Use Chebyshev bounds together with the Borel-Cantelli lemma. 2. Break up the event $\{S_n/n\to \mu\}$ in a clever way into events which can be managed using this technique, namely (in this case) the weaker convergence along the subsequence $n_k = k^2$, and separately the control of the fluctuations of the empirical averages in each range $[n_k,n_{k+1})$ between successive elements of the subsequence.
 
 An extra benefit of the above proof is that it doesn't use the full power of the assumption that the $X_n$'s are independent. In fact, everything is based on variance computations of sums of the $X_k$'s, so the proof works equally well for \emph{uncorrelated} random variables!
-
-
 
 \begin{thm}[SLLN for uncorrelated r.v.'s with finite variance]
 If $X_1,X_2,\ldots$ are a sequence of uncorrelated and identically distributed r.v.'s with finite variance, then
@@ -2627,10 +2034,7 @@ If $X_1,X_2,\ldots$ are a sequence of uncorrelated and identically distributed r
 
 \end{thm}
 
-
 Finally, we turn to the proof of the full SLLN for an i.i.d. sequence (Theorem \ref{thm-slln}), assuming only a finite first moment. Etemadi's 1981 proof presented in [Dur2010] is based on a similar idea of proving convergence first for a subsequence, and introduces another useful technique, that of $\textbf{truncation}$.
-
-
 
 \begin{proof}[Proof of Theorem \ref{thm-slln}]
 First, observe that it is enough to prove the theorem in the case where $X_1\ge 0$, since in the general case we may decompose each $X_n$ into its positive and negative parts, and this gives two i.i.d. sequences of nonnegative r.v.'s. The validity of the SLLN for each of the two sequences implies the result for their difference.
@@ -2658,7 +2062,6 @@ So we have shown that to prove the theorem, it is enough to prove that
 \mathrm{P}\left(\frac{T_n-\mathbf{E} T_n}{n}\to0\right) = 1.
 \]
 
-
 Now, to prove this, as before we establish a.s. convergence first along a subsequence $n_k$, this time taking $n_k = \lfloor \alpha^k \rfloor$ where $\alpha>1$. (Here, $\lfloor x\rfloor$ denotes the ``floor'' function, namely the largest integer $\le x$). This is done by again combining the Borel-Cantelli lemma with a Chebyshev variance bound, except that showing that the sum of the bounds gives a convergent series requires more work than before. We have
 
 \begin{eqnarray*}
@@ -2685,9 +2088,6 @@ Therefore
 \frac{1}{\epsilon^2(1-\alpha^{-2})} \sum_{m=1}^\infty  \frac{\mathbf{V}(Y_m)}{m^2}
 \end{align*}
 
-
-
-
 \begin{lem}
 We have
 
@@ -2696,9 +2096,6 @@ We have
 \]
 
 \end{lem}
-
-
-
 
 \begin{proof}
 Using the formula $\mathbf{E}(Z)=\int_0^\infty \mathrm{P}(Z>x)\,dx$ that's valid for any nonnegative r.v. $Z$, we have that
@@ -2715,7 +2112,6 @@ Using the formula $\mathbf{E}(Z)=\int_0^\infty \mathrm{P}(Z>x)\,dx$ that's valid
 \end{eqnarray*}
 
 \end{proof}
-
 
 It follows that the infinite sum on the left-hand side of (\ref{eq:infinitesum}) converges, and therefore by the Borel-Cantelli lemma, we have that
 
@@ -2753,25 +2149,14 @@ hold. Since $\alpha>1$ was arbitrary, the intersection of these events for $\alp
 which finishes the proof of Theorem \ref{thm-slln}.
 \end{proof}
 
-
-
-
-
-
 \chapter{Applications and further examples}
-
 
 \section{The Weierstrass approximation theorem}
 As an application of WLLN (or, rather, of Chebyshev's inequality), we prove the following theorem in analysis, which seems to have no connection to probability whatsoever.
 
-
-
 \begin{thm}[The Weierstrass approximation theorem]
 If $f:[0,1]\to\R$ is a continuous function, then $f$ can be uniformly approximated by polynomials. That is, for any $\epsilon>0$ there exists a polynomial $p$ such that $||f-p||:=\max_{x\in[0,1]}|f(x)-p(x)|<\epsilon$.
 \end{thm}
-
-
-
 
 \begin{proof}
 Let $f:[0,1]\to\R$ be a continuous function. Define the sequence of $\textbf{Bernstein polynomials of } f$ by
@@ -2815,14 +2200,8 @@ This bound converges to $0$, not just for a single $x$ but (fortunately for us) 
 It follows that $\limsup_{n\to\infty} ||B_n-f|| \le \epsilon$, and since $\epsilon$ was an arbitrary positive number the result follows.
 \end{proof}
 
-
-
-
-
 \section{Infinite expectations and triangular arrays}
 After treating the ``classical'' case of an i.i.d. sequence with finite expectations, let's turn to slightly more exotic situations. First, what happens if the expectation is infinite? For the strong law, the following result shows that we have no hope of having convergence in a meaningful sense.
-
-
 
 \begin{thm}[Converse to SLLN]
 If $X_1,X_2,\ldots,$ is an i.i.d. sequence of r.v.'s with $\mathbf{E}|X_1|=\infty$, then
@@ -2833,13 +2212,9 @@ If $X_1,X_2,\ldots,$ is an i.i.d. sequence of r.v.'s with $\mathbf{E}|X_1|=\inft
 
 \end{thm}
 
-
-
-
 \begin{proof}
 See homework.
 \end{proof}
-
 
 What about the weak law? It turns out that a weak law can still hold in certain situations with infinite expectations, although one has to consider a generalized empirical average where the sum of the first $n$ samples is divided by a quantity growing faster than $n$. Rather than develop a complete theory, we will consider the particular example of the $\textbf{St. Petersburg Lottery}$. In this example, the winning in a single round of lottery is an integer-valued random variable with the following distribution:
 
@@ -2849,8 +2224,6 @@ What about the weak law? It turns out that a weak law can still hold in certain 
 
 Let $X_1,X_2,\ldots,$ be an i.i.d. sequence with the same distribution, and let $S_n = \sum_{k=1}^n X_k$. How much should you agree to pay to be allowed to play this lottery $n$ times? (Even the seemingly simple case $n=1$ of this question  has been a subject of quite some debate by economists! See \href{http://en.wikipedia.org/wiki/St._Petersburg_paradox}{the Wikipedia article on the St. Petersburg paradox}). In other words, how big should we expect $S_n$ to be, \emph{with probability close to 1}?
 
-
-
 \begin{thm}
 
 \[
@@ -2859,10 +2232,7 @@ Let $X_1,X_2,\ldots,$ be an i.i.d. sequence with the same distribution, and let 
 
 \end{thm}
 
-
 In other words, to be allowed to pay the game $n$ times when $n$ is large (and assuming the payoff is in dollars), it may be considered reasonable to pay exactly (or even better, slightly less than) $\log_2 n$ dollars \emph{per round played}. For example, if $n=1024$ you would be paying \$10 per round.
-
-
 
 \begin{proof}
 The proof uses a truncation idea similar to the one we saw in the proof of SLLN, except that for each $n$ we will truncate the first $n$ variables at a level which is a function of $n$. Denote $b_n = n\log_2 n$, $Y_{n,k} = X_k \mathbf{1}_{\{X_k<b_n\}}$, $T_n=\sum_{k=1}^n Y_{n,k}$, and $a_n = \mathbf{E}(T_n)$. We will prove that
@@ -2918,7 +2288,6 @@ To bound the second term, use Chebyshev's inequality and the fact that $\mathbf{
 We conclude that the left-hand side of (\ref{eq:lhs}) converges to 0, as $n\to\infty$, which finishes the proof.
 \end{proof}
 
-
 Another twist on laws of large numbers comes when we replace the notion of an i.i.d. sequence by a more general notion of a $\textbf{triangular array}$. In this case, for each $n$ we have a sequence $X_{n,1},X_{n,2},\ldots,X_{n,n}$ of independent, but not necessarily identically distributed, and we denote $S_n=\sum_{k=1}^n X_{n,k}$ -- this is the sum of the samples in the $n$-th experiment. Here, for each $n$ there could be a separate experiment involving $n$ different r.v.'s, and the r.v.'s $X_{n,k}$ and $X_{m,j}$ for $n\neq m$ are not even assumed to be defined on the same probability space, let alone to be independent of each other.
 
 Again, instead of giving general conditions for a law of large numbers to hold, consider the following example of the so-called $\textbf{coupon collector's problem}$: A brand of breakfast cereals comes with a small toy chosen uniformly at random from a set of $n$ possible kinds of toys. A collector will buy more boxes of cereals until she has collected all $n$ different toys. Denote by $T_n$ the number of boxes she ends up buying. What can we say about the size of $T_n$? Fortunately, we can represent it as a sum of independent r.v.'s, by writing
@@ -2963,16 +2332,10 @@ so $(T_n-n H_n)/(n\log n)$ converges in probability to $0$, and therefore we get
 \frac{T_n}{n\log n} \xrightarrow[n\to\infty]{\mathrm{P}} 1.
 \]
 
-
 The lesson to be learned from the above examples is that some naturally-occurring problems in real life lead to more complicated situations than can be modeled with an i.i.d. sequence with finite mean; but often such problems can be analyzed anyway using the same ideas and techniques that we developed. In probability textbooks you can find a general treatment of various conditions under which a triangular array of independent random variables satisfies a (strong or weak) law of large numbers.
-
-
-
 
 \section{Random series of independent samples}
 We now look at the related topic of infinite series of independent r.v.'s. When can such a series be said to converge? A key technical result that will help us answer this question in some cases is the following beautiful inequality due to Kolmogorov.
-
-
 
 \begin{thm}[Kolmogorov's maximal inequality]
 Assume that $X_1,X_2,\ldots,X_n$ are independent r.v.'s with finite variances, and let $S_k=\sum_{j=1}^k X_j$. Then
@@ -2983,10 +2346,7 @@ Assume that $X_1,X_2,\ldots,X_n$ are independent r.v.'s with finite variances, a
 
 \end{thm}
 
-
 Before we start the proof, note that the bound on the right-hand side is the usual variance bound that follows from Chebyshev's inequality; except that the event on the left-hand side whose probability this quantity bounds is a \emph{much bigger} event than the usual deviation event $\{ |S_n-\mathbf{E}(S_n)|>t\}$ for which we know the Chebyshev bound holds!
-
-
 
 \begin{proof}
 We may assume without loss of generality that $\mathbf{E}(X_k)=0$ for all $k$. Denote
@@ -3026,18 +2386,12 @@ since on the event $A_k$ we know that $S_k^2$ is at least $t^2$ (look again at t
 which is exactly the claim that was to be proved.
 \end{proof}
 
-
 As a corollary, we get a result on convergence of random series.
-
-
 
 \begin{thm}
 \label{thm-one-series}
 Let $X_1,X_2,\ldots$ be a sequence of independent r.v.'s such that $\mathbf{E}(X_n)=0$ for all $n$, and assume that $\sum_{n=1}^\infty \mathbf{V}(X_n) < \infty$. Then the random series $\sum_{n=1}^\infty X_n$ converges almost surely.
 \end{thm}
-
-
-
 
 \begin{proof}
 Denote as usual $S_n = \sum_{k=1}^n X_k$. We have the following equality of events:
@@ -3111,15 +2465,11 @@ because of our assumption that the sum of the variances converges. Finally, this
 
 \end{proof}
 
-
 One could ask whether the sufficient condition given by the theorem above is also necessary (it is). More generally, what happens for random variables with non-zero expectations? What happens for r.v.'s with infinite expectations, or infinite variances? Kolmogorov formulated a general theorem that gives a necessary and sufficient condition for a series of independent random variables to converge almost surely.
-
-
 
 \begin{thm}[The Kolmogorov three-series theorem]
 \label{thm-three-series}
 If $X_1,X_2,\ldots$ is a sequence of independent random variables, then the random series $\sum_{n=1}^\infty X_n$ converges almost surely if and only if the following three conditions hold:
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\sum_{n=1}^\infty \mathrm{P}(|X_n|>1) < \infty$.
@@ -3127,14 +2477,10 @@ If $X_1,X_2,\ldots$ is a sequence of independent random variables, then the rand
 \item $\sum_{n=1}^\infty \mathbf{V}(X_n \mathbf{1}_{\{|X_n| \le 1\}}) < \infty$.
 \end{enumerate}
 
-
 If one of the conditions does not hold, then series $\sum X_n$ diverges almost surely.
 \end{thm}
 
-
 We postpone the proof of Theorem \ref{thm-three-series} until later; we will prove it in Section \ref{sec-k-3-series} as an application of a generalized version of the central limit theorem. Note that since the convergence of the series $\sum X_n$ is equivalent to the convergence of $\sum a X_n$ for any constant $a$, the value $1$ chosen for the truncation of $X_n$ in the theorem is arbitrary and can be replaced by any other constant.
-
-
 
 \begin{example}
 Let $(c_n)_{n=1}^\infty$ be a sequence of real numbers. Consider the $\textbf{series with random signs}$ associated with the sequence $(c_n)$, which we denote $\sum_{n=1}^\infty \pm c_n$, and which more precisely represents the series
@@ -3146,17 +2492,10 @@ Let $(c_n)_{n=1}^\infty$ be a sequence of real numbers. Consider the $\textbf{se
 where $X_1, X_2, \ldots$ is a sequence of i.i.d. r.v.'s taking the values $-1,+1$ with respective probabilities $1/2,1/2$. By Theorem \ref{thm-one-series} it follows that if $\sum_{n=1}^\infty c_n^2 < \infty$ then the series $\sum_{n=1}^\infty \pm c_n$ converges almost surely. From Theorem \ref{thm-three-series}, one can check easily that this condition is also necessary, in other words that the series with random series converges a.s. if and only if the series of squares $\sum c_n^2$ converges. Thus, for example, the $\textbf{harmonic series with random signs}$ $\sum \pm \frac{1}{n}$ converges a.s., but the analogous series of square root reciprocals $\sum_n \pm \frac{1}{\sqrt{n}}$ diverges a.s. Compare this to the series with \emph{alternating} signs $\sum_n \frac{(-1)^n}{n}$ and $\sum_n \frac{(-1)^n}{\sqrt{n}}$, both of which are known to converge! Try to develop your intuition by thinking about the reasons why the behavior for series with alternating signs and that for random signs is not the same.
 \end{example}
 
-
-
-
-
-
 \chapter{The Central Limit Theorem, Stirling’s formula and the de Moivre-Laplace theorem}
 Our goal in the next few chapters will be to formulate and prove one of the fundamental results of probability theory, known as the Central Limit Theorem. Roughly speaking, this theorem establishes the normal distribution as the universal limiting law for the distribution of sums of independent and identically distributed random variables, and therefore explains the central role that the normal distribution plays in probability theory and statistics, and why it appears in virtually all applied sciences and is applicable to the study of many real-life phenomena.
 
 We start with a motivating example that was also historically the first instance in which the phenomenon that came to be known as the Central Limit Theorem was observed. Let $X_1, X_2, \ldots$ be an i.i.d. of $\textrm{Binom}(1,p)$ random variables, and let $S_n = \sum_{k=1}^n X_k$, a r.v. with distribution $\textrm{Binom}(n,p)$.
-
-
 
 \begin{thm}[The de Moivre-Laplace theorem]
 \label{thm-demoivre-laplace}
@@ -3170,18 +2509,12 @@ For any $t\in \R$,
 
 \end{thm}
 
-
 Since this is such a concrete example, the proof will simply require us to estimate a sum of the form $\sum_{0\le k\le t} \binom{n}{k} p^k (1-p)^{n-k}$. Knowing how to estimate such sums is a useful skill in its own right. Since the binomial coefficients are involved, we also need some preparation related to Stirling's formula.
-
-
 
 \begin{lem}
 \label{lem-prestirling}
 The limit $C = \lim_{n\to\infty} \frac{n!}{\sqrt{n} (n/e)^n}$ exists.
 \end{lem}
-
-
-
 
 \begin{proof}
 
@@ -3194,10 +2527,7 @@ The limit $C = \lim_{n\to\infty} \frac{n!}{\sqrt{n} (n/e)^n}$ exists.
 where the last integral converges because $\int_1^t (\{x\}-\frac12) dx$ is bounded and $1/x$ decreases monotonically to 0 as $x\to\infty$.
 \end{proof}
 
-
 Note that an easy consequence of Lemma \ref{lem-prestirling} is that $\binom{2n}{n} = (1+o(1))2^{2n}/C\sqrt{n/2}$. We shall now use this to find the value of $C$.
-
-
 
 \begin{lem}
 \label{lem-prevlemma}
@@ -3215,22 +2545,13 @@ R_n(x) = \frac{1}{n!} \int_0^x f^{(n+1)}(t)(x-t)^n\,dt.
 
 \end{lem}
 
-
-
-
 \begin{proof}
 This follows by induction on $n$, using integration by parts.
 \end{proof}
 
-
-
-
 \begin{lem}
 $C=\sqrt{2\pi}$.
 \end{lem}
-
-
-
 
 \begin{proof}
 Apply Lemma \ref{lem-prevlemma} with $f(x) = (1+x)^{2n+1}$ to compute $R_n(1)$:
@@ -3252,19 +2573,13 @@ $(1-u^2/n)^n \to e^{-u^2}$ as $n\to\infty$, uniformly on compact intervals. To f
 (this is the probability that a $\textrm{Binom}(2n+1,1/2)$ random variable takes a value $> n$). Therefore $C=\sqrt{2\pi}$, as claimed.
 \end{proof}
 
-
-
-
 \begin{cor}[Stirling's formula]
 $\lim_{n\to\infty} \frac{n!}{\sqrt{2\pi n} (n/e)^n}=1$.
 \end{cor}
 
-
 Note that the proof is based on computing $\mathrm{P}(S_{2n+1} > n)$ in two different ways, when $S_{2n+1}\sim \textrm{Binom}(2n+1,1/2)$. This is just the special case $p=1/2, t=0$ of Theorem \ref{thm-demoivre-laplace}. In this very special case, by symmetry the probability is equal to $1/2$; on the other hand, Lemma \ref{lem-prevlemma} enables us to relate this to the asymptotic behavior of $n!$ and to (half of) the gaussian integral $\int_{-\infty}^\infty e^{-x^2}\,dx$. The evaluation of the constant $C$ in Stirling's formula is the part that is attributed to James Stirling. The form that appears in Lemma \ref{lem-prestirling} is due to Abraham de Moivre (1733).
 
 With this preparation, it is now possible to apply the same technique to prove Theorem \ref{thm-demoivre-laplace}. Instead of the function $f(x)=(1+x)^{2n+1}$, take the function $g(x)=((1-p) + p x)^n=\sum_{k=0}^n \binom{n}{k} p^k (1-p)^{n-k} x^k$, and compute the remainder $R_k(1)$ of the Taylor expansion of $g$, where $k \approx np + t \sqrt{np(1-p)}$. This should converge to $1-\Phi(t)$, and indeed, this follows without too much difficulty from Lemma \ref{lem-prevlemma}. The computation is left as an exercise. We also sketch another way of proving Theorem \ref{thm-demoivre-laplace} by directly approximating the probabilities $\binom{n}{k} p^k (1-p)^{n-k}$ by Gaussian densities.
-
-
 
 \begin{proof}[Sketch of Proof of Theorem \ref{thm-demoivre-laplace}]
 Denote $q=1-p$. For a large $n$, let $k$ be approximately equal to $np+t\sqrt{npq}$, and use Stirling's formula to estimate the probability $\mathrm{P}(S_n=k)$, as follows:
@@ -3302,32 +2617,21 @@ In other words, the individual probabilities for $S_n$ approximate a normal dens
 is approximately a Riemann sum for the integral $(2\pi)^{-1/2}\int_a^b e^{-x^2/2}\,dx = \Phi(b)-\Phi(a)$. In fact, this is true since for $a,b$ fixed and $k$ ranging between $np+a\sqrt{npq}$ and $np+b\sqrt{npq}$, the error concealed by the $o(1)$ term is uniformly small (smaller than any $\epsilon>0$, say, when $n$ is sufficiently large), since this error term originates with three applications of Stirling's approximation formula (for $n!$, for $k!$ and for $(n-k)!$) followed by the $\log$ function second-order Taylor expansion above.
 \end{proof}
 
-
 One lesson that can be learned from this proof is that doing computations for specific distributions can be \emph{messy}! So we might be better off looking for more general, and therefore more conceptual, techniques for proving convergence to the normal distribution, that require less explicit computations; fortunately such techniques exist, and will lead us to the much more general central limit theorem.
-
-
-
 
 \chapter{Convergence in distribution}
 
-
 \section{Definition}
 Since we will be talking about convergence of the distribution of random variables to the normal distribution, it makes sense to develop the general theory of convergence of distributions to a limiting distribution.
-
-
 
 \begin{defn}
 Let $(F_n)_{n=1}^\infty$ be a sequence of distribution functions. We say that $F_n$ $\textbf{converges to a limiting distribution function}$ $F$, and denote this by $F_n \implies F$, if $F_n(x)\to F(x)$ as $n\to\infty$ for any $x\in\R$ which is a continuity point of $F$. If $X, (X_n)_{n=1}^\infty$ are random variables, we say that $X_n$ $\textbf{converges in distribution to } X$ (or, interchangeably, $\textbf{converges in distribution to } F_X$) if $F_{X_n}\implies F_X$.
 \end{defn}
 
-
 This definition, which may seem unnatural at first sight, will become more reasonable after we prove the following lemma.
-
-
 
 \begin{lem}
 The following are equivalent:
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $X_n \implies X$.
@@ -3336,9 +2640,6 @@ The following are equivalent:
 \end{enumerate}
 
 \end{lem}
-
-
-
 
 \begin{proof}
 Proof that $2\implies 1$: Assume that $\mathbf{E} f(X_n) \xrightarrow[n\to\infty]{} \mathbf{E} f(X)$ for any bounded continuous function $f:\R\to\R$, and fix $x\in \R$.
@@ -3376,10 +2677,6 @@ Let $x\in(0,1)$ be such that $Y(x)=Y^*(x)$. This means that for any $y<Y(x)$ we 
 
 Similarly, take a $z>Y(x)$ which is a continuity point of $F_X$. Then $F_{X_n}(z)\to F_x(z)$ as $n\to\infty$, so also $F_{X_n}(z)>x$ for large $n$, which implies that $Y_n(x)\le z$. Again, by taking continuity points $z>Y(x)$ that are arbitrarily close to $Y(x)$ we get that $\limsup_{n\to\infty} Y_n(x) \le Y(x)$. Combining these last two results shows that $Y_n(x)\to Y(x)$ which was what we wanted.
 \end{proof}
-
-
-
-
 
 \section{Examples}
 
@@ -3423,12 +2720,7 @@ M_n-\log n \implies F
 where $F(x) = \exp\left(-e^{-x}\right)$ is called the Gumbel distribution.
 \end{enumerate}
 
-
-
-
-
 \section{Compactness and tightness}
-
 
 \begin{thm}[Helly's selection theorem]
 \label{thm-helly}
@@ -3441,10 +2733,7 @@ F_{n_k}(x)\xrightarrow[n\to\infty]{} H(x)
 holds for any $x\in\R$ which is a continuity point of $H$.
 \end{thm}
 
-
 $\textbf{Note.}$ The subsequential limit $H$ need not be a distribution function, since it may not satisfy the properties $\lim_{x\to-\infty} H(x) = 0$ or $\lim_{x\to\infty} H(x)=1$. For example, taking $F_n = F_{X_n}$, where $X_n \sim U[-n,n]$, we see that $F_n(x)\to 1/2$ for all $x\in\R$. For a more interesting example, take $G_n = (F_n + F_{Z_n})/2$ where $F_n$ are as in the previous example, and $Z_n$ is some sequence of r.v.'s that converges in distribution.
-
-
 
 \begin{proof}
 First, note that we can find a subsequence $(n_k)_{k=1}^\infty$ such that $F_{n_k}(r)$ converges to a limit $G(r)$ at least for any \emph{rational} number $r$. This is done by combining the compactness of the interval $[0,1]$ (which implies that for any specific $a\in\R$ we can always take a subsequence to make the sequence of numbers $F_n(a)$ converge to a limit) with a diagonal argument (for some enumeration $r_1, r_2, r_3, \ldots$ of the rationals, first take a subsequence to force convergence at $r_1$; then take a subsequence of that subsequence to force convergence at $r_2$, etc.; now form a subsequence whose $k$-th term is the $k$-th term of the $k$-th subsequence in this series).
@@ -3461,7 +2750,6 @@ This function is clearly nondecreasing, and is also right-continuous, since we h
 \lim_{x_n \downarrow x} H(x_n) = \inf\{ G(r) : r\in\mathbb{Q}, r>x_n\textrm{ for some }n \}
 = \inf\{ G(r) : r\in\mathbb{Q}, r>x \} = H(x).
 \]
-
 
 Finally, let $x$ be a continuity point of $H$. To show that $F_{n_k}(x)\to H(x)$, fix some $\epsilon>0$ and let $r_1,r_2,s$ be rationals such that $r_1 < r_2 < x < s$ and
 
@@ -3484,10 +2772,7 @@ H(x)-\epsilon \le \liminf_{n\to\infty} F_{n_k}(x) \le \limsup_{n\to\infty} F_{n_
 and since $\epsilon$ was arbitrary this proves the claim.
 \end{proof}
 
-
 Theorem \ref{thm-helly} can be thought of as a kind of compactness property for probability distributions, except that the subsequential limit guaranteed to exist by the theorem is not a distribution function. To ensure that we get a distribution function, it turns out that a certain property called $\textbf{tightness}$ has to hold.
-
-
 
 \begin{defn}
 A sequence $(\mu_n)_{n=1}^\infty$ of probability measures on $(\R,{\cal B})$ is called $\textbf{tight}$ if for any $\epsilon>0$ there exists an $M>0$ such that
@@ -3505,22 +2790,13 @@ A sequence of distribution functions $(F_n)_{n=1}^\infty$ is called tight if the
 A sequence of random variables is called tight if the sequence of their distribution functions is tight.
 \end{defn}
 
-
-
-
 \begin{thm}
 If $(F_n)_{n=1}^\infty$ is a tight sequence of distribution functions, then there exists a subsequence $(F_{n_k})_{k=1}^\infty$ and a distribution function $F$ such that $F_{n_k} \implies F$. In fact, any subsequential limit $H$ as guaranteed to exist in the previous theorem is a distribution function.
 \end{thm}
 
-
-
-
 \begin{xexercise}
 Prove that the converse is also true, i.e., if a sequence is not tight then it must have at least one subsequential limit $H$ (in the sense of the subsequence converging to $H$ at any continuity point of $H$) that is not a proper distribution function. In particular, it is worth noting that a sequence that converges in distribution is tight.
 \end{xexercise}
-
-
-
 
 \begin{proof}
 Let $H$ be a nondecreasing, right-continuous function that arises as a subsequential limit-in-distribution of a subsequence $F_{n_k}$, that we know exists by Theorem \ref{thm-helly}. To show that $H$ is a distribution function, fix $\epsilon>0$, and let $M>0$ be the constant guaranteed to exist in the definition of tightness. Let $x<-M$ be a continuity point of $H$. We have
@@ -3538,17 +2814,11 @@ H(x)=\lim_{k\to\infty} F_{n_k}(x) \ge \liminf_{k\to\infty} F_{n_k}(M) \ge \limin
 which shows that $\lim_{x\to\infty} H(x)=1.$
 \end{proof}
 
-
 The condition of tightness is not very restrictive, and in practical situations it is usually quite easy to verify. The following lemma gives an example that is relevant for our purposes.
-
-
 
 \begin{lem}
 If $X_1,X_2,\ldots$ are r.v.'s such that $\mathbf{E} X_n=0$ and $\mathbf{V}(X_n)<C$ for all $n$, then $(X_n)_n$ is a tight sequence.
 \end{lem}
-
-
-
 
 \begin{proof}
 Use Chebyshev's inequality:
@@ -3560,13 +2830,7 @@ Use Chebyshev's inequality:
 so, if $\epsilon>0$ is given, taking $M=\sqrt{C/\epsilon}$ ensures that the left-hand side is bounded by $\epsilon$.
 \end{proof}
 
-
-
-
-
-
 \chapter{Characteristic functions}
-
 
 \section{Definition and basic properties}
 A main tool in our proof of the central limit theorem will be that of characteristic functions. The basic idea will be to show that
@@ -3583,8 +2847,6 @@ g_t(x) = e^{itx}, \qquad (t\in\R),
 
 is ideally suited for this purpose. (Here and throughout, $i=\sqrt{-1}$).
 
-
-
 \begin{defn}
 The characteristic function of a r.v. $X$, denoted $\varphi_X$, is defined by
 
@@ -3594,11 +2856,9 @@ The characteristic function of a r.v. $X$, denoted $\varphi_X$, is defined by
 
 \end{defn}
 
-
 Note that we are taking the expectation of a \emph{complex-valued random variable} (which is a kind of two-dimensional random vector, really). However, the main properties of the expectation operator (linearity, the triangle inequality etc.) that hold for real-valued random variables also hold for complex-valued ones, so this will not pose too much of a problem.
 
 Here are some simple properties of characteristic functions. For simplicity we denote $\varphi = \varphi_X$ where there is no risk of confusion.
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\varphi(0) = \mathbf{E} e^{i\cdot 0\cdot X} = 1$.
@@ -3618,7 +2878,6 @@ Here are some simple properties of characteristic functions. For simplicity we d
 Note that this is the main reason why characteristic functions are such a useful tool for studying the distribution of a sum of independent random variables.
 \end{enumerate}
 
-
 $\textbf{A note on terminology.}$ If $X$ has a density function $f$, then the characteristic function can be computed as
 
 \[
@@ -3635,21 +2894,11 @@ So the concept of a characteristic function generalizes the Fourier transform. I
 
 (which is an example of a $\textbf{Lebesgue-Stieltjes integral}$) and call this the $\textbf{Fourier-Stieltjes transform}$ (or just the Fourier transform) of the measure $\mu$.
 
-
-
-
-
-
-
-
 \section{Examples}
 No study of characteristic functions is complete without ``dirtying your hands'' a little to compute the characteristic function for some important cases. The following exercise is highly recommended
 
-
-
 \begin{xexercise}
 Compute the characteristic functions for the following distributions.
-
 
 \begin{enumerate}[label=\arabic*.]
 \item $\textbf{Coin flips:}$ Compute $\varphi_X$ when $\mathrm{P}(X=-1)=\mathrm{P}(X=1)=1/2$ (this comes out slightly more symmetrical than the usual Bernoulli r.v. for which $\mathrm{P}(X=0)=\mathrm{P}(X=1)=1/2$).
@@ -3662,10 +2911,7 @@ Compute the characteristic functions for the following distributions.
 
 \end{xexercise}
 
-
 The normal distribution has the nice property that its characteristic function is equal, up to a constant, to its density function.
-
-
 
 \begin{lem}
 If $Z\sim N(0,1)$ then
@@ -3675,9 +2921,6 @@ If $Z\sim N(0,1)$ then
 \]
 
 \end{lem}
-
-
-
 
 \begin{proof}
 
@@ -3709,7 +2952,6 @@ since the function $x\to e^{i t x}$ is bounded and continuous. On the other hand
 
 \end{proof}
 
-
 As a consequence, let $X\sim N(0,\sigma_1^2)$ and $Y\sim N(0,\sigma_2^2)$ be independent, and let $Z=X+Y$. Then
 
 \[
@@ -3718,13 +2960,8 @@ As a consequence, let $X\sim N(0,\sigma_1^2)$ and $Y\sim N(0,\sigma_2^2)$ be ind
 
 so $\varphi_Z(t) = e^{-(\sigma_1^2+\sigma_2^2)/2}$. This is the same as $\varphi_W(t)$, where $W\sim N(0,\sigma_1^2+\sigma_2^2)$. It would be nice if we could deduce from this that $Z \sim N(0,\sigma_1^2+\sigma_2^2)$ (we already proved this fact in a homework exercise, but it's always nice to have several proofs of a result, especially an important one like this one). This naturally leads us to an important question about characteristic functions, which we consider in the next section.
 
-
-
-
 \section{The inversion formula}
 A fundamental question about characteristic functions is whether they contain all the information about a distribution, or in other words whether knowing the characteristic function determines the distribution uniquely. This question is answered (affirmatively) by the following theorem, which is a close cousin of the standard inversion formula from analysis for the Fourier transform.
-
-
 
 \begin{thm}[The inversion formula]
 \label{thm-inversion}
@@ -3736,23 +2973,14 @@ If $X$ is a r.v. with distribution $\mu_X$, then for any $a<b$ we have
 
 \end{thm}
 
-
-
-
 \begin{cor}
 \label{cor:charfun-uniqueness}
 If $X,Y$ are r.v.s such that $\varphi_X(t)\equiv \varphi_Y(t)$ for all $t\in\R$ then $X \stackrel{d}{=} Y$.
 \end{cor}
 
-
-
-
 \begin{xexercise}
 Explain why Corollary \ref{cor:charfun-uniqueness} follows from the inversion formula.
 \end{xexercise}
-
-
-
 
 \begin{proof}[Proof of Theorem \ref{thm-inversion}]
 Throughout the proof, denote $\varphi(t)=\varphi_X(t)$ and $\mu=\mu_X$. For convenience, we use the notation of Lebesgue-Stieltjes integration with respect to the measure $\mu$, remembering that this really means taking the expectation of some function of the r.v. $X$. Denote
@@ -3800,9 +3028,6 @@ I_T \xrightarrow[T\to\infty]{} C \mathbf{E}(1_{a<X<b}) + (C/2) \mathbf{E}(\mathb
 This is just what we claimed, minus the fact that $C=2\pi$. This fact is a well-known integral evaluation from complex analysis. We can also deduce it in a self-contained manner, by applying what we proved to a specific measure $\mu$ and specific values of $a$ and $b$ for which we can evaluate the limit in (\ref{eq:inversionproof}) directly. This is not entirely easy to do, but one possibility, involving an additional limiting argument, is outlined in the next exercise; see also Exercise 1.7.5 on p. 35 in [Dur2010], (Exercise 6.6, p. 470 in Appendix A.6 of [Dur2004]) for a different approach to finding the value of $C$.
 \end{proof}
 
-
-
-
 \begin{xexercise}
 ($\textbf{Recommended for aspiring analysts}$...) For each $\sigma>0$, let $X_\sigma$ be a r.v. with distribution $N(0,\sigma^2)$ and therefore with density $f_X(x)=(\sqrt{2\pi}\sigma)^{-1} e^{-x^2/2\sigma^2}$ and characteristic function $\varphi_X(t) = e^{-\sigma^2 t^2/2}$. For fixed $\sigma$, apply Theorem \ref{thm-inversion} in its weak form given by (\ref{eq:almostinversion}) (that is, without the knowledge of the value of $C$), with parameters $X=X_\sigma$, $a=-1$ and $b=1$,  to deduce the identity
 
@@ -3813,10 +3038,7 @@ This is just what we claimed, minus the fact that $C=2\pi$. This fact is a well-
 Now multiply both sides by $\sigma$ and take the limit as $\sigma\to\infty$. For the left-hand side this should give in the limit (why?) the value $(2C)/\sqrt{2\pi}$. For the right-hand side this should give $2\sqrt{2\pi}$. Justify these claims and compare the two numbers to deduce that $C=2\pi$.
 \end{xexercise}
 
-
 The following theorem shows that the inversion formula can be written as a simpler connection between the characteristic function and the density function of a random variable, in the case when the characteristic function is integrable.
-
-
 
 \begin{thm}
 If $\int_{-\infty}^\infty |\varphi_X(t)|\,dt < \infty$, then $X$ has a bounded and continuous density function $f_X$, and the density and characteristic function are related by
@@ -3828,26 +3050,17 @@ f_X(x) &=& \frac{1}{2\pi} \int_{-\infty}^\infty \varphi_X(t) e^{-itx}\,dt.
 
 \end{thm}
 
-
 In the lingo of Fourier analysis, this is known as the $\textbf{inversion formula for Fourier transforms}$.
-
-
 
 \begin{proof}
 This is a straightforward corollary of Theorem \ref{thm-inversion}. See p. 95 in either [Dur2010] or [Dur2004].
 \end{proof}
 
-
-
-
-
 \section{The continuity theorem}
-
 
 \begin{thm}
 \label{thm-continuity}
 Let $(X_n)_{n=1}^\infty$ be r.v.'s. Then:
-
 
 \begin{enumerate}[label=(\roman*)]
 \item If $X_n \implies X$ for some r.v. $X$, then $\varphi_{X_n}(t)\to \varphi_X(t)$ for all $t\in\R$.
@@ -3855,9 +3068,6 @@ Let $(X_n)_{n=1}^\infty$ be r.v.'s. Then:
 \end{enumerate}
 
 \end{thm}
-
-
-
 
 \begin{proof}
 Part (i) follows immediately from the fact that convergence in distribution implies that $\mathbf{E} g(X_n)\to \mathbf{E} g(X)$ for any bounded continuous function. It remains to prove the less trivial claim in part (ii). Assume that $\varphi_{X_n}(t)\to \varphi(t)$ for all $t\in\R$ and that $\varphi$ is continuous at $0$. First, we show that the sequence $(X_n)_{n=1}^\infty$ is tight. Fixing an $M>0$, we can bound the probability $\mathrm{P}(|X_n|>M)$, as follows:
@@ -3898,10 +3108,6 @@ $\delta^{-1} \int_{-\delta}^\delta (1-\varphi(t))\,dt < \epsilon$, where $\epsil
 Finally, to finish the proof, let $(n_k)_{k=1}^\infty$ be a subsequence (guaranteed to exist by tightness) such that $X_{n_k}\implies Y$ for some r.v. $Y$. Then $\varphi_{X_{n_k}}(t)\to \varphi_Y(t)=\varphi(t)$ as $k\to\infty$ for all $t\in\R$, so $\varphi\equiv\varphi_Y$. This determines the distribution of $Y$, which means that the limit in distribution is the same no matter what convergent in distribution subsequence of the sequence $(X_n)_n$ we take. But this implies that $X_n\implies Y$ (why? The reader is invited to verify this last claim; it is best to use the definition of convergence in distribution in terms of expectations of bounded continuous functions).
 \end{proof}
 
-
-
-
-
 \section{Moments}
 The final step in our lengthy preparation for the proof of the central limit theorem will be to tie the behavior of the characteristic function $\varphi_X(t)$ near $t=0$ to the moments of $X$. Note that, computing formally without regards to rigor, we can write
 
@@ -3912,15 +3118,10 @@ The final step in our lengthy preparation for the proof of the central limit the
 
 So it appears that the moments of $X$ appear as (roughly) the coefficients in the Taylor expansion of $\varphi_X$ around $t=0$. However, for CLT we don't want to assume anything beyond the existence of the second moment, so a (slightly) more delicate estimate is required.
 
-
-
 \begin{lem}
 \label{lem-taylor-estimate}
 $\left|e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!}\right| \le \min\left(\frac{|x|^{n+1}}{(n+1)!},\frac{2|x|^n}{n!}\right).$
 \end{lem}
-
-
-
 
 \begin{proof}
 Start with the identity
@@ -3953,7 +3154,6 @@ So, since $|e^{is}-1|\le 2$, we get that
 Combining (\ref{eq:firstbound}) and (\ref{eq:secondbound}) gives the claim.
 \end{proof}
 
-
 Now let $X$ be a r.v. with $\mathbf{E}|X|^n < \infty$. Letting $x=tX$ in Lemma \ref{lem-taylor-estimate}, taking expectations and using the triangle inequality, we get that
 
 \begin{align*}
@@ -3964,8 +3164,6 @@ Now let $X$ be a r.v. with $\mathbf{E}|X|^n < \infty$. Letting $x=tX$ in Lemma \
 
 Note that in this minimum of two terms, when $t$ is very small the first term gives a better bound, but when taking expectations we need the second term to ensure that the expectation is finite if $X$ is only assumed to have a finite $n$-th moment.
 
-
-
 \begin{thm}
 \label{thm-charfun-secondmoment}
 If $X$ is a r.v. with mean $\mu=\mathbf{E} X$ and $\mathbf{V}(X)<\infty$ then
@@ -3975,9 +3173,6 @@ If $X$ is a r.v. with mean $\mu=\mathbf{E} X$ and $\mathbf{V}(X)<\infty$ then
 \]
 
 \end{thm}
-
-
-
 
 \begin{proof}
 By (\ref{eq:taylor-expec}) above, we have
@@ -3990,18 +3185,10 @@ X^2 \right) \right].
 As $t\to 0$, the right-hand side converges to 0 by the dominated convergence theorem.
 \end{proof}
 
-
-
-
-
-
 \chapter{Central limit theorems}
-
 
 \section{The case of i.i.d. r.v.’s}
 We are now ready to prove:
-
-
 
 \begin{thm}[The central limit theorem]
 Let $X_1, X_2, \ldots$ be an i.i.d. sequence of r.v.'s with finite variance. Denote $\mu = \mathbf{E} X_1$, $\sigma = \sigma(X_1)$ and $S_n = \sum_{k=0}^n X_k$. Then as $n\to\infty$ we have the convergence in distribution
@@ -4011,9 +3198,6 @@ Let $X_1, X_2, \ldots$ be an i.i.d. sequence of r.v.'s with finite variance. Den
 \]
 
 \end{thm}
-
-
-
 
 \begin{proof}
 For convenience, denote $\hat{X}_k = (X_k - \mu)/\sigma$ and $\hat{S}_n = \sum_{k=0}^n \hat{X}_k$.
@@ -4039,24 +3223,16 @@ as $u\to0$. It follows that
 for any $t\in\R$. Using the continuity theorem (Theorem \ref{thm-continuity}) and our previous computations, it follows that $\hat{S}_n \implies N(0,1)$, as claimed.
 \end{proof}
 
-
-
-
-
 \section{Generalizations}
 The CLT can be generalized in many ways. None of the assumptions (independence, identical distributions, even finite variance) are entirely necessary. A central paradigm of probability theory is that any random quantity that arises as a sum of many small contributions that are either independent or not too strongly dependent, will converge to the normal distribution in some asymptotic limit. Thousands of examples exist, but there is no single all-encompassing theorem that includes all of them as a special case. Rather, probabilists have a toolbox of tricks and techniques that they try to apply in order to prove normal convergence in any given situation. characteristic functions are among the more useful techniques. Another important technique, the so-called $\textbf{moment method}$, involves the direct use of moments: If we can show that $\mathbf{E}(W_n^k)\to \mathbf{E}(Z^k)$, where $(W_n)_{n=1}^\infty$ is the (normalized) sequence being studied, and $Z\sim N(0,1)$, then by Theorem 3.3.12 in [Dur2010] (p. 105) or Theorem (3.12) in [Dur2004] (p. 109), that implies that $W_n\implies N(0,1)$.
 
 We now discuss several examples of interesting generalizations of CLT.
 
-
-
 \subsection{Triangular arrays}
-
 
 \begin{thm}[Lindeberg-Feller CLT for triangular arrays]
 \label{thm-lindeberg-feller}
 Let $(X_{n,k})_{1\le k\le n<\infty}$ be a triangular array of r.v.'s. Denote $S_n = \sum_{k=1}^n X_{n,k}$ (the sum of the $n$-th row). Assume that:
-
 
 \begin{enumerate}[label=\arabic*.]
 \item For each $n$, the r.v.'s $(X_{n,k})_{k=1}^n$ are independent.
@@ -4065,19 +3241,12 @@ Let $(X_{n,k})_{1\le k\le n<\infty}$ be a triangular array of r.v.'s. Denote $S_
 \item For all $\epsilon>0$, ${\displaystyle \lim_{n\to\infty}} \sum_{k=1}^n \mathbf{E}\left( X_{n,k}^2 \mathbf{1}_{\{|X_{n,k}|>\epsilon\}}\right)=0$.
 \end{enumerate}
 
-
 Then $S_n \implies N(0,\sigma^2)$ as $n\to\infty$.
 \end{thm}
-
-
-
 
 \begin{proof}
 See [Dur2010], p. 110--111 or [Dur2004], p. 115--116. The proof uses the characteristic function technique and is a straightforward extension of the proof for the i.i.d. case.
 \end{proof}
-
-
-
 
 \begin{example}
 (Record times and cycles in permutations). Let $X_1, X_2, \ldots$ be i.i.d. $U(0,1)$ r.v.'s. Let $A_n$ be the event that $\{X_n = \max(X_1,\ldots,X_n)\}$ (in this case, we say that $n$ is a $\textbf{record time}$). Let $S_n = \sum_{k=1}^n \mathbf{1}_{A_k}$ be the number of record times up to time $n$. We saw in a homework exercise that the $A_k$'s are independent events and $\mathrm{P}(A_k) = 1/k$. This implies that $\mathbf{E}(S_n) = \sum_{k=1}^n \frac{1}{k} = H_n$ (the $n$-th $\textbf{harmonic number}$) and $\mathbf{V}(S_n) = \sum_{k=1}^n \frac{k-1}{k^2}$. Note that both $\mathbf{E}(S_n)$ and $\mathbf{V}(S_n)$ are approximately equal to $\log n$, with an error term that is $O(1)$. Now taking $X_{n,k} = (\mathbf{1}_{A_k}-k^{-1})/\sqrt{\mathbf{V}(S_n)}$ in Theorem \ref{thm-lindeberg-feller}, it is easy to check that the assumptions of the theorem hold. It follows that
@@ -4092,16 +3261,10 @@ Equivalently, because of the asymptotic behavior of $\mathbf{E}(S_n)$ and $\math
 \frac{S_n-\log n}{\sqrt{\log n}} \implies N(0,1).
 \]
 
-
 $\textbf{Note:}$ $S_n$ describes the distribution of another interesting statistic on random permutations. It is not too difficult to show by induction (using an amusing construction often referred to as the $\textbf{Chinese restaurant process}$) that if $\sigma \in S_n$ is a uniformly random permutation on $n$ elements, then the number of cycles in $\sigma$ is a random variable which is equal in distribution to $S_n$.
 \end{example}
 
-
-
-
-
 \subsection{Erdös-Kac theorem}
-
 
 \begin{thm}[Erdös-Kac theorem (1940)]
 Let $g(m)$ denote the number of prime divisors of an integer $k$ (for example, $g(28)=2)$. For each $n\ge 1$, let $X_n$ be a uniformly random integer chosen in $\{1,2,\ldots,n\}$, and let $Y_n=g(X_n)$ be the number of prime divisors of $X_n$. Then we have
@@ -4118,13 +3281,9 @@ In other words, for any $x\in\R$ we have
 
 \end{thm}
 
-
-
-
 \begin{proof}
 See [Dur2010], p. 114--117 or [Dur2004], p. 119--124. The proof uses the moment method.
 \end{proof}
-
 
 Note that $Y_n$ can be written in the form $\sum_{p\le n} \mathbf{1}_{\{p | X_n\}}$, namely the sum over all primes $p\le n$ of the indicator of the event that $X_n$ is divisible by $p$. The probability that $X_n$ is divisible by $p$ is roughly $1/p$, at least if $p$ is significantly smaller than $n$. Therefore we can expect $Y_n$  to be on the average around
 
@@ -4133,9 +3292,6 @@ Note that $Y_n$ can be written in the form $\sum_{p\le n} \mathbf{1}_{\{p | X_n\
 \]
 
 a sum that is known (thanks to Euler) to behave roughly like $\log\log n$. The Erdös-Kac theorem is intuitively related to the observation that these indicators $\mathbf{1}_{\{p | X_n\}}$ for different $p$'s are also close to being independent (a fact which follows from the Chinese remainder theorem). Of course, they are only approximately independent, and making these observations precise is the challenge to proving the theorem. In fact, many famous open problems in number theory (even the Riemann Hypothesis, widely considered to be the most important open problem in mathematics) can be formulated in terms of a statement about approximate independence (in some loose sense) of some arithmetic sequence relating to the prime numbers.
-
-
-
 
 \subsection{The Euclidean algorithm}
 As a final example from number theory, consider the following problem: For some $n\ge 1$, choose $X_n$ and $Y_n$ independently and uniformly at random in $\{1,2,\ldots,n\}$, and compute their greatest common divisor (g.c.d.) using the Euclidean algorithm. Let $N_n$ be the number of division (with remainder) steps that were required. For example, if $X = 58$ and $Y=24$ then the application of the Euclidean algorithm would result in the sequence of steps
@@ -4146,8 +3302,6 @@ As a final example from number theory, consider the following problem: For some 
 
 so 4 division operations were required (and the g.c.d. is 2).
 
-
-
 \begin{thm}[CLT for the number of steps in the Euclidean algorithm; D. Hensley (1992)]
 There exists a constant $\sigma_\infty$ (which has a very complicated definition) such that
 
@@ -4157,26 +3311,17 @@ There exists a constant $\sigma_\infty$ (which has a very complicated definition
 
 \end{thm}
 
-
 Hensley's theorem was in recent years significantly generalized and the techniques extended by Brigitte Vallée, a French mathematician. The fact that the average value of $N_n$ is approximately $(12\log 2/\pi^2)\log n$ was previously known from work of Heilbronn and Dixon in 1969--1970, using ideas dating back to Gauss, who discovered the probability distribution now called the ``Gauss measure''. This is the probability distribution on $(0,1)$ with density $\frac{1}{\log 2(1+x)}$, which Gauss found (but did not prove!) describes the limiting distribution of the ratio of a pair of independent $U(0,1)$ random variables after many iterations of the division-with-remainder step in the Euclidean algorithm.
-
-
-
-
-
 
 \chapter{Random number generation}
 An important problem in applied probability theory is to produce one or more random variables distributed according to some specified distribution, starting from a source of random information whose distribution is fixed. This is referred to as $\textbf{random number generation}$ and is also known as $\textbf{statistical simulation}$ or $\textbf{sampling}$. In this chapter we survey several interesting methods for random number generation
 
 Note that we assume that our source of randomness provides us with truly random information as the input for the computation. In the absence of such random information, the problem of producing information that \emph{appears} to be random using a deterministic computation applied to a non-random input, is a very different problem, known as $\textbf{pseudorandom number generation}$, which we will not discuss (although it is also very interesting!).
 
-
-
 \section{Unbiasing a source of randomness: simulating an unbiased coin using biased coin tosses}
 Assume that your source of randomness produces a sequence $X_1, X_2, \ldots$ of Bernoulli random variables with some bias $0<p<1$. Such random bits are much more practical for use in applications if they are unbiased, that is, if $p=1/2$. Can we use the $p$-biased coin tosses to produce an \emph{unbiased} coin toss? Yes: the famous mathematician John von Neumann suggested the following simple method in 1951.
 
 $\textbf{Simulation Method 1.}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item Sample a pair $X,Y$ of the $p$-biased coin tosses.
@@ -4185,27 +3330,17 @@ $\textbf{Simulation Method 1.}$
 \item If $(X,Y)=(0,0)$ or $(X,Y)=(1,1)$, go back to step 1.
 \end{enumerate}
 
-
-
-
 \begin{xexercise}
 Show that the method works; that is, that with probability $1$ the method eventually outputs a random variable $Z \sim \operatorname{Ber}(1/2)$.
 \end{xexercise}
-
 
 An interesting and useful feature of Von Neumann's method is that it does not even require knowing the bias $p$ of the source; that is, it is a ``universal unbiasing method.''
 
 What about the efficiency of the method? It seems interesting to ask how many samples of the biased sequence we will need to produce our unbiased random bit. This number is random, and unbounded --- we may have to wait an arbitrarily long time for the simulation to finish --- so perhaps it makes more sense to ask about the \emph{mean} number of samples required.
 
-
-
 \begin{xexercise}
 Show that on average the method requires $\frac{1}{p(1-p)}$ samples of the sequence $(X_n)_{n=1}^\infty$. (In particular, when $p$ is very close to $0$ or $1$ the average wait becomes very long.)
 \end{xexercise}
-
-
-
-
 
 \section{Simulating a biased coin using unbiased coin tosses}
 Let us now consider the reverse problem of simulating a biased coin toss with bias $p$ when our source of randomness produces independent \emph{unbiased} bits $X_1,X_2,\ldots \sim \operatorname{Ber}(1/2)$. Of course, here we assume that the value $p$ of the desired bias is known, otherwise the question makes no sense. It turns out that in this case too there is a simple method, and moreover the method works extremely well even if $p$ is a very complicated number such as $1/\sqrt{2}$ or $\pi-3$.
@@ -4214,37 +3349,25 @@ The method is based on the easy-to-prove observation that the random variable $U
 
 $\textbf{Simulation Method 2.}$ Let $p=(0.\alpha_1 \alpha_2 \alpha_3 \ldots )_2$ be the binary expansion of $p$, that is, $\alpha_n\in \{0,1\}$ and $p=\sum_{n=1}^\infty \alpha_n/2^{n}$.
 
-
 \begin{enumerate}[label=\arabic*.]
 \item Sample the random bits $X_1,X_2,\ldots$ one at a time until the first time $m\ge1$ such that $X_m \neq \alpha_m$.
 \item If $(X_m,\alpha_m)=(0,1)$, output ``$1$''.
 \item If $(X_m,\alpha_m)=(1,0)$, output ``$0$''.
 \end{enumerate}
 
-
-
-
 \begin{xexercise}
 Prove that the output is $1$ if $U< p$; $0$ if $U>p$; and the algorithm never terminates in the event (which has probability 0) that $U=p$.
 \end{xexercise}
 
-
-
-
 \begin{xexercise}
 Show that the number $N$ of bits which had to be sampled to obtain an answer satisfies $\mathbf{E} N = 2$. What is the distribution of $N$?
 \end{xexercise}
-
-
-
-
 
 \section{Simulating an arbitrary discrete distribution using unbiased coin tosses}
 We can generalize Simulation Method 2 described above to get a method for simulating an arbitrary discrete random variable taking values $\alpha_1,\ldots,\alpha_k$ with respective probabilities $p_1,\ldots,p_k$, using a sequence of independent unbiased coin tosses $X_1,X_2,\ldots \sim \operatorname{Ber}(1/2)$. Let $U=\sum_{n=1}^\infty X_n/2^n$ as before, and for $m\ge 1$ let $U_m = \sum_{k=1}^m X_k/2^k$ be the partial sums of the binary expansion of $U$.
 
 $\textbf{Simulation Method 3.}$
 Denote $c_0 = 0, c_j = p_1+\ldots+p_j$. Note that the intervals $(c_0,c_1), (c_1,c_2),\ldots, (c_{k-1},c_k)$ form a partition of the interval $(0,1)$ into subintervals of lengths $p_1,\ldots,p_k$. To produce a sample from the discrete distribution with atoms of size $p_j$ at $\alpha_j$ for $j=1,\ldots,k$:
-
 
 \begin{enumerate}[label=\arabic*.]
 \item Sample $X_1,X_2,\ldots$ one at a time until the first time $m$ for which there is a $j$ such that the condition
@@ -4257,17 +3380,11 @@ holds. Note that this condition can be checked by comparing the binary string $(
 \item Output $\alpha_j$.
 \end{enumerate}
 
-
-
-
 \begin{xexercise}
 Show that the condition $c_{j-1} < U_m < U_m+\frac{1}{2^m} < c_j$ is equivalent to $c_{j-1} < U < c_j$, and that therefore for each $1\le j\le k$ the output $\alpha_j$ is obtained with probability $p_j$.
 \end{xexercise}
 
-
 The average number of samples from $X_1,X_2,\ldots$ required for the simulation looks like a highly nontrivial function of the probabilities $p_1,\ldots,p_k$. Amazingly, to a good approximation it is equal to the $\textbf{entropy}$ of the distribution $p_1,\ldots,p_k$, a well-known function from information theory that is known to measure the information content of a random variable. The precise result to that effect is as follows.
-
-
 
 \begin{thm}
 The $\textbf{entropy}$ of the discrete probability distribution $p_1,\ldots,p_k$ is defined by $H(p_1,\ldots,p_j) = -\sum_{j=1}^k p_j \log_2 p_j$. The number of samples $N$ required in the simulation satisfies
@@ -4278,11 +3395,7 @@ H(p_1,\ldots,p_k) \le \mathbf{E} N \le H(p_1,\ldots,p_k) + 4.
 
 \end{thm}
 
-
 For the proof, see my paper \emph{Sharp entropy bounds for discrete statistical simulation (Stat. Prob. Lett. 42 (1999), 219--227)}, or section 5.11 of the book \emph{Elements of Information Theory, 2nd Ed.} by T. M. Cover and J. A. Thomas, where a similar result is proved for a different simulation method for which $\mathbf{E} N$ can be bounded from above by the slightly better bound $H(p_1,\ldots,p_k)+2$.
-
-
-
 
 \section{Simulating a general r.v. using a uniform r.v.}
 Theorem \ref{thm-rvexistence} from Section \ref{sec:dist-funs}, which we proved earlier for its theoretical importance, can be interpreted about a statement about how to simulate a random variable with a specified distribution $F$ using a $U[0,1]$ random variable.
@@ -4295,23 +3408,14 @@ g(p) = \sup \{ x\in\R\,:\, F(x) < p \} \qquad (0<p<1).
 
 (this is the lower quantile function associated with $F$; see Section \ref{sec:dist-funs}).
 
-
-
 \begin{xexercise}
 Explain why the above method works and its connection to Theorem \ref{thm-rvexistence}.
 \end{xexercise}
-
-
-
-
 
 \section{Simulating an exponential r.v.}
 As an illustration of Simulation Method 4 described above, in the case where $F$ is the $\operatorname{Exp}(\lambda)$ distribution, the function $g$ is easily computed to be $g(p)=-\frac{1}{\lambda} \log(1-p)$, so taking $X=-\frac{1}{\lambda} \log (1-U)$ produces an $\operatorname{Exp}(\lambda)$ r.v. We can simplify this slightly by noting that if $U\sim U[0,1]$ then also $1-U \sim U[0,1]$, so one can use the simpler function $g(1-p)=-\frac{1}{\lambda}\log p$.
 
 $\textbf{Simulation Method 5.}$ Given a random variable $U\sim U[0,1]$, the random variable $X = -\frac{1}{\lambda}\log U$ has distribution $\operatorname{Exp}(\lambda)$.
-
-
-
 
 \section{Simulating a normal r.v.}
 Although Simulation Method 4 is very general, in many practical cases it is hard or annoying to compute the associated quantile function $g(p)$ (which in the case of an absolutely continuous distribution amounts to inverting the c.d.f.). The normal distribution is an example where there exists a more practical method that is based instead on the polar decomposition of a standard bivariate normal vector (Section \ref{sec:normal-dist}).
@@ -4327,41 +3431,26 @@ Y &= R \sin \Theta.
 
 Then $\Theta \sim U[0,2\pi]$, $R^2 \sim \operatorname{Exp}(1/2)$, and $R$ and $\Theta$ are independent. Therefore $X,Y$ are independent and have the standard normal distribution $N(0,1)$.
 
-
-
-
 \section{Simulating a Poisson r.v.}
 Given a sequence $U_1,U_2,\ldots$ of i.i.d. $U[0,1]$ random variables, the following method simulates a $\operatorname{Poi}(\lambda)$ r.v.
 
 $\textbf{Simulation Method 7.}$
-
 
 \begin{enumerate}[label=\arabic*.]
 \item Sample the $U_k$'s one at a time until the first time $m$ when $M_m =\prod_{k=1}^m U_k$ satisfies $M_m \le e^{-\lambda}$.
 \item Output $m-1$.
 \end{enumerate}
 
-
-
-
 \begin{xexercise}
 Explain why the output $Z$ of this algorithm has distribution $\operatorname{Poi}(\lambda)$, using the connection between the Poisson distribution and the cumulative sums of i.i.d. exponential random variables (see Section \ref{sec:exp-dist}).
 \end{xexercise}
 
-
 Note that the number of samples this method requires is equal to one plus the random variable $Z$ being simulated. In particular, the mean number of samples required is $\mathbf{E} Z = \lambda+1$.
-
-
-
-
 
 \chapter{Additional topics}
 
-
 \section{The Kolmogorov 0-1 law}
 In this section we prove a well-known and easy result due to Kolmogorov, the Kolmogorov $0$-$1$ law. This will be useful in the next section.
-
-
 
 \begin{thm}[Kolmogorov $0$-$1$ law]
 Let $X_1,X_2,\ldots$ be a sequence of independent random variables in some probability space $(\Omega, \mathcal{F}, \mathrm{P})$. An event $A\in \mathcal{F}$ is called a $\textbf{tail event}$ if
@@ -4372,9 +3461,6 @@ A \in \sigma(X_n, X_{n+1}, \ldots)
 
 for all $n$. That is, one can tell whether $A$ occurred or not by looking at the sequence $X_1,X_2,\ldots$, and the occurrence of $A$ is unaffected by changing a finite number of $X_k$'s. (Note that the set of tail events is a $\sigma$-algebra, called the $\textbf{tail } \sigma\textbf{-algebra}$ of the sequence, and denoted $\mathcal{T}$; formally, $\mathcal{T}=\cap_{n\ge 1}\sigma(X_n,X_{n+1},\ldots)$). Then for any tail event $A$ we have that $\mathrm{P}(A) = 0$ or $\mathrm{P}(A)=1$.
 \end{thm}
-
-
-
 
 \begin{proof}
 It will be enough to prove the somewhat strange statement that the tail event $A$ is independent of itself, since in that case we'll have
@@ -4387,22 +3473,13 @@ which would imply the claim, since the only solutions to the equation $x^2=x$ ar
 The fact that a tail event is independent of itself is a consequence of the following two claims: 1. If $A \in \sigma(X_1,\ldots,X_n)$ and $B\in \sigma(X_{n+1},X_{n+2},\ldots)$ then $A$ and $B$ are independent. This follows by observing that $\cup_{k\ge1} \sigma(X_{n+1},X_{n+2},\ldots,X_{n+k})$ is a $\pi$-system generating $\sigma(X_{n+1},X_{n+2},\ldots)$, and for $B$ in the $\pi$-system the claim is trivial. 2. If $A\in\sigma(X_1,X_2,\ldots)$ and $B\in\mathcal{T}$ then $A$ and $B$ are independent. The fact that is true when $A\in \sigma(X_1,\ldots,X_n)$ for some $n$ follows from claim 1. But $\cup_{n\ge 1} \sigma(X_1,\ldots,X_n)$ is a $\pi$-system generating $\sigma(X_1,X_2,\ldots)$, so the same is true also for $A$ in the generated $\sigma$-algebra.
 \end{proof}
 
-
-
-
 \begin{example}
 The events $\{ \displaystyle \lim_{n\to\infty} X_n\textrm{ exist} \}$ and $\{ \sum_{n=1}^\infty X_n \textrm{ converges} \}$ are tail events.
 \end{example}
 
-
-
-
-
 \section{The Kolmogorov three-series theorem}
 \label{sec-k-3-series}
 As a further application of the Lindeberg-Feller central limit theorem, we prove the Kolmogorov three-series theorem (Theorem \ref{thm-three-series}).
-
-
 
 \begin{proof}[Proof of Theorem \ref{thm-three-series}]
 Denote $Y_n = X_n \mathbf{1}_{\{|X_n|\le 1\}}$. Assume that the eponymous three series
@@ -4444,10 +3521,6 @@ and note that on the event $\{\sum_n X_n \textrm{ converges} \}$ (in which case 
 Finally, having shown that (\ref{eq:k-third-series}) converges, we conclude from Theorem \ref{thm-one-series} that the series $\sum_n \left(Y_n-\mathbf{E}(Y_n)\right)$ converges almost surely. We already saw that on the event where $\{ \sum_n X_n \textrm{ converges}\}$, which we assumed has positive probability, also $\sum_n Y_n$ converges, and therefore the series $\sum_n \mathbf{E}(Y_n) = \sum \big(Y_n - (Y_n-\mathbf{E}(Y_n))\big)$ also converges.
 \end{proof}
 
-
-
-
-
 \section{The Poisson limit law}
 \label{sec:poisson-limit}
 The Poisson distribution is the one-parameter family of distributions $\operatorname{Poisson}(\lambda), \lambda>0$, where $X\sim \operatorname{Poisson}(\lambda)$ is a discrete random variable satisfying
@@ -4463,9 +3536,7 @@ This distribution arises naturally as measuring the number of successful coin to
 S_n \implies \operatorname{Poisson}(\lambda).
 \end{equation*}
 
-
 As in the case of the Central Limit Theorem, it turns out that the i.i.d. condition can be significantly weakened, so in fact the Poisson distribution arises almost universally as the limit law for counting numbers of ``rare events,'', i.e., sums of indicator functions of many independent or weakly correlated events each of which has a small chance of success, in the asymptotic regime in which the expected number of successes converges to a constant. For this reason, the Poisson distribution is considered an excellent model for many real-life phenomena, e.g.:
-
 
 \begin{itemize}
 \item The number of typographical errors in a web page or book chapter.
@@ -4475,26 +3546,18 @@ As in the case of the Central Limit Theorem, it turns out that the i.i.d. condit
 \item Etc. (try to think of more examples from science or your daily life...)
 \end{itemize}
 
-
 Our goal is to prove the following generalization of (\ref{eq:law-small-numbers-iid}), analogous to the Lindeberg-Feller extension of the Central Limit Theorem. The technique used in the proof is also similar and uses characteristic functions.
-
-
 
 \begin{thm}
 Let $(X_{n,m})_{1\le m\le n}$ be a triangular array of random variables such that for each $n\ge1$, the random variables $X_{n,1},\ldots,X_{n,n}$ are independent, and each $X_{n,m}$ satisfies $\mathrm{P}(X_{n,m}=1)=p_{n,m}, \mathrm{P}(X_{n,m}=0)=1-p_{n,m}$. Denote $S_n=\sum_{m=1}^n X_m$. Assume that the biases $(p_{n,m})_{n,m}$ satisfy the following conditions:
-
 
 \begin{enumerate}[label=(\roman*)]
 \item $\mathbf{E} S_n = \sum_{m=1}^n p_{n,m} \to \lambda\in(0,\infty)$ as $n\to\infty$.
 \item $\max_{1\le m\le n} p_{n,m} \to 0$ as $n\to\infty$.
 \end{enumerate}
 
-
 Then $S_n \implies \operatorname{Poisson}(\lambda)$.
 \end{thm}
-
-
-
 
 \begin{proof}
 Let $\varphi_{n,m}(t)=\varphi_{X_{n,m}}(t)=\mathbf{E}(\exp(it X_{n,m})) = (1-p_{n,m})+p_{n,m}e^{it}$ denote the characteristic function of $X_{n,m}$. The ch. f. of $S_n$ is then
@@ -4529,9 +3592,6 @@ We therefore get using the exercise below that
 This is exactly what was needed to finish the proof.
 \end{proof}
 
-
-
-
 \begin{xexercise}
 
 \begin{enumerate}[label=(\roman*)]
@@ -4549,11 +3609,6 @@ This is exactly what was needed to finish the proof.
 
 \end{xexercise}
 
-
-
-
-
-
 \chapter*{Exercises}
 \addcontentsline{toc}{chapter}{Exercises}
 
@@ -4570,7 +3625,6 @@ Prove the $\textbf{total probability formula:}$ if $A,B_1,B_2,\ldots,B_k \in {\c
 \tag{21}\label{eq:totalprob}
 \mathrm{P}(A) = \sum_{i=1}^k \mathrm{P}(B_i) \mathrm{P}(A | B_i).
 \end{equation*}
-
 
 (b) An urn initially contains one white ball and one black ball. At each step of the experiment, a ball is drawn at random from the urn, then put back and another ball of the same color is added. Prove that the number of white balls that are in the urn after $N$ steps is a uniform random number in $\{1,2,\ldots,N+1\}$. That is, the event that the number of white balls after step $N$ is equal to $k$ has probability $1/(N+1)$ for each $1\le k\le N+1$.
 (Note: The idea is to use (\ref{eq:totalprob}), but there is no need to be too formal about constructing the relevant probability space --- you can assume an intuitive notion of probabilities.)
@@ -4607,7 +3661,6 @@ We say that a pre-probability measure satisfies the $\textbf{continuity}$ proper
 (A_n)_{n=1}^\infty  \subset {\cal F}, \ \ A_n \subset A_{n+1}\ \forall n \implies \mathrm{P}(\cup_{n=1}^\infty A_n) = \lim_{n\to\infty} \mathrm{P}(A_n),
 \end{equation*}
 
-
 \begin{equation*}
 \tag{26}\label{eq:cont2}
 (A_n)_{n=1}^\infty  \subset {\cal F}, \ \ A_n \supset A_{n+1}\ \forall n \implies \mathrm{P}(\cap_{n=1}^\infty A_n) = \lim_{n\to\infty} \mathrm{P}(A_n).
@@ -4630,12 +3683,10 @@ The prisoners cannot coordinate their actions, but they are all rational, know c
 
 (b) Let $\Omega$ be a set, and let ${\cal A}$ be a collection of subsets of $\Omega$. Prove that there exists a unique $\sigma$-algebra $\sigma({\cal A})$ of subsets of $\Omega$ that satisfies the following two properties:
 
-
 \begin{enumerate}[label=(\roman*)]
 \item ${\cal A} \subset \sigma({\cal A})$ (in words, $\sigma({\cal A})$ contains all the elements of ${\cal A}$).
 \item $\sigma({\cal A})$ is the minimal $\sigma$-algebra satisfying property 1 above, in the sense that if ${\cal F}$ is any other $\sigma$-algebra that contains all the elements of ${\cal A}$, then $\sigma({\cal A}) \subset {\cal F}$.
 \end{enumerate}
-
 
 The $\sigma$-algebra $\sigma({\cal A})$ is called the $\textbf{$\sigma$-algebra generated by } {\cal A}$.
 
@@ -4652,7 +3703,6 @@ and let $g:[a,b]\to\R$ be a monotone (strictly) increasing and differentiable fu
 \[
 f_Y(x) = \begin{cases} \frac{f_X(g^{-1}(x))}{g'(g^{-1}(x))} & x\in (g(a),g(b)), \\ 0 & \textrm{otherwise.} \end{cases}
 \]
-
 
 (b) If $\lambda>0$, we say that a random variable has the exponential distribution with parameter $\lambda$ if
 
@@ -4689,7 +3739,6 @@ s_d &=& \sum_{1\le k_1 < \ldots< k_d \le n} \mathrm{P}(A_{k_1} \cap A_{k_2} \cap
 & \vdots &\\
 s_n &=& \mathrm{P}(A_1 \cap A_2 \cap \ldots \cap A_n).
 \end{eqnarray*}
-
 
 (b) $N$ letters addressed to different people are inserted at random into $N$ envelopes that are labelled with the names and addresses of the $N$ recipients, such that all $N!$ possible matchings between the letters and envelopes are equally likely. What is the probability of the event that no letter will arrive at its intended destination? Compute this probability for any $N$, and in the limit when $N\to\infty$.
 \item Let $F$ be the distribution function
@@ -4756,7 +3805,6 @@ Find a good explicit description for this set (``the set of all $x$'s such that 
 \mathrm{P}(B_n(a_1,\ldots,a_n)) = \frac{1}{2^n}.
 \]
 
-
 (c) Define a function $f:(0,1) \to \{0,1\}^{\mathbb{N}}$ by
 
 \[
@@ -4768,7 +3816,6 @@ Prove that $f$ is a measurable function when the space $\{0,1\}^{\mathbb{N}}$ is
 \[
 A_n(1) = \{ (x_1,x_2,\ldots) \in \{0,1\}^{\mathbb{N}} : x_n = 1 \}.
 \]
-
 
 (d) Prove that the push-forward of Lebesgue measure under $f$ is the probability measure corresponding to the random experiment of an infinite sequence of fair coin tosses.
 \item Let $X$ be an exponential r.v. with parameter $\lambda$, i.e., $F_X(x)=(1-e^{-\lambda x}) 1_{[0,\infty)}(x)$. Define random variables
@@ -4817,7 +3864,6 @@ f_{X+Y}(t) = \int_{-\infty}^\infty f_X(x)f_Y(t-x)\,dx.
 
 Use this formula to compute the distribution of $X+Y$ when $X$ and $Y$ are independent r.v.'s with the following (pairs of) distributions:
 
-
 \begin{enumerate}[label=\arabic*.]
 \item $X \sim U[0,1],\ Y \sim U[0,2]$.
 \item $X \sim \textrm{Exp}(1),\ Y \sim \textrm{Exp}(1)$.
@@ -4834,7 +3880,6 @@ Use this formula to compute the distribution of $X+Y$ when $X$ and $Y$ are indep
 \[
 1_{\liminf A_n} = \liminf_n 1_{A_n}.
 \]
-
 
 (b) Let $U$ be a uniform random variable in $(0,1)$. For each $n\ge 1$ define an event $A_n$ by
 
@@ -4909,7 +3954,6 @@ Compute $\mathbf{E}(R_n)$ and $\mathbf{V}(R_n)$. Deduce that if $(m_n)_{n=1}^\in
 \]
 \item Compute $\mathbf{E}(X)$ and $\mathbf{V}(X)$ when $X$ is a random variable having each of the following distributions:
 
-
 \begin{enumerate}[label=\arabic*.]
 \item $X \sim \textrm{Binomial}(n,p)$.
 \item $X \sim \textrm{Poisson}(\lambda)$, i.e., $\mathrm{P}(X=k)=e^{-\lambda} \frac{\lambda^k}{k!}, \ \ (k=0,1,2,\ldots)$.
@@ -4943,14 +3987,12 @@ As a bonus, try to find a direct combinatorial proof for this identity. An amusi
 \mathbf{E}(X)=\int_0^\infty \mathrm{P}(X\ge x)\,dx.
 \]
 
-
 (b) Prove that if $X_1, X_2, \ldots,$ is a sequence of independent and identically distributed (``i.i.d.'') r.v.'s, then
 
 \[
 \mathrm{P}(|X_n|\ge n\textrm{ i.o.})=\begin{cases} 0 & \textrm{if }\mathbf{E}|X_1|<\infty, \\
 1 & \textrm{if }\mathbf{E}|X_1|=\infty. \end{cases}
 \]
-
 
 (c) Deduce the following converse to the Strong Law of Large Numbers in the case of undefined expectations:
 If $X_1,X_2,\ldots$ are i.i.d. and $\mathbf{E} X_1$ is undefined (meaning that $\mathbf{E} {X_1}_+ = \mathbf{E} {X_1}_- = \infty$) then
@@ -5004,7 +4046,6 @@ Show that the special value $\Gamma(1/2)=\sqrt{\pi}$ of the gamma function is eq
 \]
 \item Compute $\mathbf{E} X^n$ when $n\ge 0$ is an integer and $X$ has each of the following distributions:
 
-
 \begin{enumerate}[label=(\alph*)]
 \item $X\sim U(a,b)$
 \item $X\sim \textrm{Exp}(\lambda)$
@@ -5057,12 +4098,10 @@ For any $\epsilon>0$, if $n$ is sufficiently large, the set $\{0,1\}^n$ of possi
 
 such that the following statements hold:
 
-
 \begin{enumerate}[label=\arabic*.]
 \item $\mathrm{P}(\mathbf{T}_n \in B_n) < \epsilon$
 \item $2^{n(H(p)-\epsilon)} \le |A_n| \le 2^{n(H(p)+\epsilon)}$.
 \end{enumerate}
-
 
 $\textbf{Notes:}$ The texts in $B_n$ can be thought of as the ``exceptional sequences'' -- they are the Martian texts of length $n$ that are rarely observed. The texts in $A_n$ are called ``typical sequences''. Because of the two-sided bounds the theorem gives on the number of typical sequences, it follows that we can encode them in a computer file of size approximately $n H(p)$ bits, provided we prepare in advance a ``code'' that translates the typical sequences to computer files of the appropriate size (this can be done algorithmically, for example by making a list of all the typical sequences sorted in lexicographic order, and matching them to successive binary strings of length $(H(p)+\epsilon)n$).
 
@@ -5094,7 +4133,6 @@ $\textbf{Hint.}$ Assume without loss of generality that $\mathbf{E} X=0$. For an
 \frac{S_n}{n^{1/2+\epsilon}} \xrightarrow[n\to\infty]{\textrm{a.s.}} 0.
 \]
 
-
 $\textbf{Notes.}$ When $X_1$ is a ``random sign'', i.e., a random variable that takes the values $-1,+1$ with respective probabilities $1/2,1/2$, the sequence of cumulative sums $(S_n)_{n=1}^\infty$ is often called a $\textbf{(symmetric) random walk on } \mathbb{Z}$, since it represents the trajectory of a walker starting from 0 and taking a sequence of independent jumps in a random (positive or negative) direction. An interesting question concerns the rate at which the random walk can drift away from its starting point. By the SLLN, it follows that almost surely, $S_n = o(n)$, so the distance of the random walk from the origin almost surely has sub-linear growth. By the exercise above, the stronger result $S_n = o(n^{1/2+\epsilon})$ also holds for all $\epsilon$. This is close to optimal, since by the Central Limit Theorem which we will discuss soon, one cannot hope to show that $S_n = o(n^{1/2})$. In fact, the ``true'' rate of growth is given by the following famous theorem, whose proof is a (somewhat complicated) elaboration on the techniques we have discussed.
 
 $\textbf{Theorem (The Law of the Iterated Logarithm; A. Y. Khinchin, 1924).}$
@@ -5108,7 +4146,6 @@ Therefore, by symmetry, also
 \[
 \mathrm{P}\left(\liminf_{n\to\infty} \frac{S_n}{\sqrt{2n \log\log n}} = -1\right) = 1.
 \]
-
 
 It follows in particular that, almost surely, the random walk will cross the origin infinitely many times.
 \item Prove that if $F$ and $(F_n)_{n=1}^\infty$ are distribution functions, $F$ is continuous, and for any $t\in \R$ we have $F_n(t)\to F(t)$ as $n\to\infty$, then the convergence is uniform in $t$.
@@ -5236,7 +4273,6 @@ $\textbf{Hint.}$ Use the law of large numbers.
 $\textbf{Hint.}$ Do it first for $n=2$ and $n=3$, and generalize using ideas from multivariate calculus. For $n=3$, you should find that $X_{3,1} \sim U[-1,1]$, a geometric fact which was known to Archimedes.
 \item Compute the characteristic functions for the following distributions.
 
-
 \begin{enumerate}[label=(\alph*)]
 \item $\textbf{Poisson distribution:}$ $X\sim \textrm{Poisson}(\lambda)$.
 \item $\textbf{Geometric distribution:}$ $X\sim \textrm{Geom}(p)$ (assume a geometric that starts at 1).
@@ -5256,7 +4292,6 @@ converges a.s. Prove that
 \varphi_X(t) = \prod_{n=1}^\infty \varphi_{Z_n}(t), \qquad (t\in \R).
 \]
 
-
 $\textbf{(b)}$ Let $X$ be a uniform r.v. in $(0,1)$, and let $Y_1, Y_2, \ldots$ be the (random) bits in its binary expansion, i.e. each $Y_n$ is either 0 or 1, and the equation
 
 \begin{equation*}
@@ -5273,7 +4308,6 @@ $\textbf{(c)}$ Compute the characteristic function $\varphi_Z$ of $Z=2X-1$ (whic
 \tag{30}\label{eq:infproduct}
 \frac{\sin(t)}{t} = \prod_{n=1}^\infty \cos\left(\frac{t}{2^n} \right), \qquad (t\in \R).
 \end{equation*}
-
 
 $\textbf{(d)}$ Substitute $t=\pi/2$ in (\ref{eq:infproduct}) to get the identity
 
@@ -5295,6 +4329,5 @@ f_X(x) &=& \frac{1}{2\pi} \int_{-\infty}^\infty \varphi_X(t) e^{-itx}\,dt
 Deduce from this that if $X,Y$ are independent Cauchy r.v.'s then any weighted average $\lambda X+(1-\lambda)Y$, where $0\le \lambda\le 1$, is also a Cauchy r.v. (As a special case, it follows by induction that if
 $X_1,\ldots,X_n$ are i.i.d. Cauchy r.v.'s, then their average $(X_1+\ldots+X_n)/n$ is also a Cauchy r.v., which was a claim we made without proof earlier in the course.)
 \end{enumerate}
-
 
 \end{document}

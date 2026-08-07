@@ -86,23 +86,23 @@ Useful flags:
 ### Render to LaTeX / PDF
 
 ```sh
-gleam run -- --which <course_dir> --latex             # one monolithic main.tex
-gleam run -- --which <course_dir> --latex-chapter     # main.tex + one file per chapter
-gleam run -- --which <course_dir> --latex-section     #   ...chapters that \input sections
-gleam run -- --which <course_dir> --latex-subsection  #   ...sections that \input subsections
+gleam run -- --which <course_dir> --latex-monolithic   # one monolithic main.tex
+gleam run -- --which <course_dir> --latex-chapters     # main.tex + one file per chapter
+gleam run -- --which <course_dir> --latex-sections     #   ...chapters that \input sections
+gleam run -- --which <course_dir> --latex-subsections  #   ...sections that \input subsections
 ```
 
 **Modularity (`Granularity` in `latex_renderer`).** The output root is **always
-`main.tex`** (the compile target). `--latex` makes it one self-contained file.
+`main.tex`** (the compile target). `--latex-monolithic` makes it one self-contained file.
 The three modular flags make it `main.tex` (preamble + title + TOC + `\input`s) +
 a **hierarchical `chapters/` tree** built by `hier_document`/`hier_unit`/
 `hier_children`:
 
 ```
---latex-chapter     chapters/01.tex … 16.tex           (chapters are files)
---latex-section     chapters/01/01.tex + chapters/01/sections/1.tex …
+--latex-chapters     chapters/01.tex … 16.tex           (chapters are files)
+--latex-sections     chapters/01/01.tex + chapters/01/sections/1.tex …
                     (a sectionless chapter stays a file, e.g. chapters/05.tex)
---latex-subsection  … chapters/01/sections/07/07.tex
+--latex-subsections  … chapters/01/sections/07/07.tex
                        + chapters/01/sections/07/subsections/1.tex …
 ```
 

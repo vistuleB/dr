@@ -838,15 +838,15 @@ fn emit_document(root: VXML, di: DocumentInfo) -> String {
 // ---------------------------------------------------------------------------
 // Modular output
 //
-// `--latex` writes a single self-contained `main.tex`. The three modular flags
+// `--latex-monolithic` writes a single self-contained `main.tex`. The three modular flags
 // write a `main.tex` (preamble + title + TOC + `\input{…}` lines) plus a
 // `chapters/` tree. The layout is HIERARCHICAL, and a unit becomes a FOLDER only
 // when it actually holds split children (never an empty subfolder):
 //
-//   --latex-chapter     chapters/01.tex … chapters/16.tex   (chapters are files)
-//   --latex-section     chapters/01/01.tex + chapters/01/sections/01.tex …
+//   --latex-chapters     chapters/01.tex … chapters/16.tex   (chapters are files)
+//   --latex-sections     chapters/01/01.tex + chapters/01/sections/01.tex …
 //                       (a sectionless chapter stays a file chapters/05.tex)
-//   --latex-subsection  … chapters/01/sections/07/07.tex
+//   --latex-subsections  … chapters/01/sections/07/07.tex
 //                          + chapters/01/sections/07/subsections/1.tex …
 //
 // A numbered folder `NN/` always contains its own `NN.tex` root file. Names in a

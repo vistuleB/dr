@@ -28,12 +28,12 @@ fn local_usage_message() {
   io.println(margin <> "       each added level of indentation in the file)")
   io.println(margin <> "     • -file <name>: format only the given file")
   io.println("")
-  io.println(margin <> "--latex")
+  io.println(margin <> "--latex-monolithic")
   io.println(margin <> "  -> (local option) render wly -> a single self-contained")
   io.println(margin <> "     LaTeX file <course dir>/latex/main.tex, compilable")
   io.println(margin <> "     with pdflatex (clickable TOC + PDF outline)")
   io.println("")
-  io.println(margin <> "--latex-chapter / --latex-section / --latex-subsection")
+  io.println(margin <> "--latex-chapters / --latex-sections / --latex-subsections")
   io.println(margin <> "  -> modular LaTeX: a main.tex (title + TOC) that \\inputs")
   io.println(margin <> "     one file per chapter (and, at finer granularities, per")
   io.println(margin <> "     section / subsection) + one per standalone unit; compile")
@@ -62,17 +62,17 @@ fn local_usage_message() {
 }
 
 // Which LaTeX-output flag (if any) was passed, and at what modularity.
-// `--latex` is the monolithic single-file mode. Finer flags win over coarser
+// `--latex-monolithic` is the monolithic single-file mode. Finer flags win over coarser
 // ones if several are given.
 fn latex_granularity(
   user_args: dict.Dict(String, List(String)),
 ) -> option.Option(latex_renderer.Granularity) {
   let has = fn(flag) { dict.has_key(user_args, flag) }
   case
-    has("--latex-subsection"),
-    has("--latex-section"),
-    has("--latex-chapter"),
-    has("--latex")
+    has("--latex-subsections"),
+    has("--latex-sections"),
+    has("--latex-chapters"),
+    has("--latex-monolithic")
   {
     True, _, _, _ -> option.Some(latex_renderer.BySubSection)
     _, True, _, _ -> option.Some(latex_renderer.BySection)
@@ -138,10 +138,10 @@ pub fn main() {
     case
       ds.process_command_line_arguments(args, [
         "--fmt",
-        "--latex",
-        "--latex-chapter",
-        "--latex-section",
-        "--latex-subsection",
+        "--latex-monolithic",
+        "--latex-chapters",
+        "--latex-sections",
+        "--latex-subsections",
         "--local",
         "--which",
         "--offline-mathjax",

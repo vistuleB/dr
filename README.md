@@ -21,26 +21,68 @@ The `.last-command` file is local; add it to `.gitignore` if you do not want it 
 
 On MacOS, install pdflatex with `brew install --cask basictex`
 
-Generate the LaTeX source for a course with `gleam run -- --which 235A --latex`
+Generate the LaTeX source for a course with `gleam run -- --which 235A --latex-monolithic`
 (writes `235A/latex/main.tex`), then convert it to a PDF with `pdflatex main.tex`.
 
-You can also split the source into multiple files, depending on how you want to
-modularise. The output root is **always `main.tex`** (the file you compile):
+## LaTeX output flags
 
-- `--latex` — one long `main.tex`, nothing else.
-- `--latex-chapter` — `main.tex` + `chapters/01.tex … 16.tex` (one file per chapter).
-- `--latex-section` — chapters become folders that `\input` one file per section,
-  e.g. `chapters/01/01.tex` + `chapters/01/sections/1.tex …`.
-- `--latex-subsection` — sections in turn become folders holding one file per
-  subsection, e.g. `chapters/01/sections/07/subsections/1.tex`.
+One flag per run selects how finely the source is split across files. Every flag
+requires `--which <course>` and writes into `<course>/latex/`. The output root is
+**always `main.tex`** (preamble + title + clickable TOC) — that is the file you
+compile, whatever the granularity. There is **no bare `--latex`**; use one of:
 
-A numbered folder `NN/` always contains its own `NN.tex`; a unit only becomes a
-folder when it actually has sub-parts to split out (never an empty folder), and
-numbers are zero-padded (`01`) only in a directory holding 10+ items, else plain
-(`1`). Standalone units (Exercises, Bibliography) get their own file
-(`chapters/exercises.tex`, `chapters/bibliography.tex`), except in the monolithic
-case where they stay inline. Whatever the layout, **compile `main.tex`** (the
-per-chapter files have no preamble of their own).
+| Flag | Output |
+|---|---|
+| `--latex-monolithic` | one self-contained `main.tex`, nothing else |
+| `--latex-chapters` | `main.tex` + one file per chapter under `chapters/` |
+| `--latex-sections` | chapters that have sections become folders that `\input` one file per section |
+| `--latex-subsections` | sections that have subsections become folders that `\input` one file per subsection |
+
+If several are given, the **finest wins**. Each run first **clears the whole
+`<course>/latex/` directory** (so stale `.tex` and pdflatex leftovers never
+linger), then regenerates `main.tex` (+ the `chapters/` tree) and re-copies
+`figures/`.
+
+**Example** — `gleam run -- --which 235A --latex-subsections` (abridged tree):
+
+```
+235A/latex/
+├── main.tex                              # compile THIS
+└── chapters/
+    ├── 01/
+    │   ├── 01.tex                        # a folder NN/ always holds its own NN.tex
+    │   └── sections/
+    │       ├── 1.tex                     # 2 sections → unpadded 1.tex, 2.tex
+    │       └── 2.tex
+    ├── 05.tex                            # sectionless chapter stays a plain file
+    ├── 08/
+    │   ├── 08.tex
+    │   └── sections/
+    │       └── 01.tex … 11.tex           # 10+ sections → zero-padded 01.tex
+    ├── 14/
+    │   ├── 14.tex
+    │   └── sections/
+    │       ├── 1.tex                     # leaf section (no subsections) → a file
+    │       └── 2/                        # section WITH subsections → a folder
+    │           ├── 2.tex
+    │           └── subsections/
+    │               └── 1.tex … 3.tex
+    └── exercises.tex                     # standalone units → their own leaf file
+```
+
+Layout rules:
+
+- A numbered folder `NN/` always contains its own `NN.tex` root file.
+- A unit becomes a **folder only when it actually has sub-parts to split out** —
+  a childless chapter/section stays a plain `.tex` file (never an empty folder).
+- Names in a directory start at `1` and are **zero-padded to `01`/`02`/… only
+  when that directory holds 10 or more items**, else plain (`1`, `2`, …).
+- Standalone units (235A's Exercises, 119B's Bibliography) get their own leaf
+  file (`chapters/exercises.tex`, `chapters/bibliography.tex`) in document order
+  — except under `--latex-monolithic`, where they stay inline in `main.tex`.
+
+Only `main.tex` has a preamble, so **always compile `main.tex`** — the per-chapter
+files are `\input` fragments and will not compile on their own.
 
 **Run `pdflatex` three times.** The Table of Contents is typeset from the `.toc`
 file, which LaTeX only *writes* during a run, so the passes converge like this:

@@ -36,17 +36,29 @@ Standalone units (e.g. Exercises, Bibliography) get their own file too, except i
 the monolithic case. For the modular flags, **compile `main.tex`** (not the
 per-chapter files, which have no preamble of their own).
 
-**Run `pdflatex` twice.** The Table of Contents is typeset from the `.toc` file,
-which LaTeX only *writes* during a run — so on the first run there is no `.toc`
-yet and the **Contents page comes out blank**. The second run reads the `.toc`
-written by the first and fills the Contents in. (This is standard LaTeX
-behaviour, not a bug; cross-references and the PDF outline settle the same way.)
-Running it a third time is recommended so page numbers referenced in the TOC are
-fully stable:
+**Run `pdflatex` three times.** The Table of Contents is typeset from the `.toc`
+file, which LaTeX only *writes* during a run, so the passes converge like this:
+
+1. **Pass 1** — no `.toc` exists yet, so the Contents page is **blank**. LaTeX
+   writes a `.toc`, but with page numbers computed *without* the (still-absent)
+   Contents pages.
+2. **Pass 2** — the Contents now appears, which pushes the whole document down by
+   the Contents' own length (~2 pages), but the page numbers it *shows* are the
+   stale ones from pass 1 — so **every TOC page number is off by ~2**. LaTeX
+   prints `Rerun to get cross-references right`.
+3. **Pass 3** — the page numbers settle and the warning disappears.
+
+This is standard LaTeX behaviour, not a bug — a document with a TOC needs the
+extra pass whenever the TOC changes the pagination. Rule of thumb: **rerun until
+the `Rerun to get …` warning stops** (three times here). The PDF outline and any
+cross-references settle the same way.
 
 ```sh
 cd 235A/latex && pdflatex 235A.tex && pdflatex 235A.tex && pdflatex 235A.tex
 ```
+
+`latexmk -pdf 235A.tex` does the reruns for you automatically (install it with
+`tlmgr install latexmk` if it isn't already available).
 
 # Add a shared asset to a course
 

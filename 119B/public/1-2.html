@@ -44,7 +44,8 @@
     Hamiltonian systems
   </h1>
   <p>
-    Recall that the general form of a planar differential equation (i.e., a system of two first-order ODEs) is
+    Recall that the general form of a planar differential
+    equation (i.e., a system of two first-order ODEs) is
   </p>
   <div
     id="_1_h.a.i_"
@@ -60,9 +61,13 @@
     $$
   </div>
   <p>
-    where, in keeping with a tradition in the theory of ODEs, $\dot{f}$ denotes the derivative of a quantity $f$ with respect to the time variable $t$. The system is called a
+    where, in keeping with a tradition in the theory of
+    ODEs, $\dot{f}$ denotes the derivative of a quantity
+    $f$ with respect to the time variable $t$. The system
+    is called a
     <i>Hamiltonian system</i>
-    if there is a function
+    if there is a
+    function
   </p>
   <div class="math-block">
     $$
@@ -72,7 +77,8 @@
   <p>
     (called the
     <i>Hamiltonian</i>
-    associated with the system) such that the functions $F$ and $G$ satisfy
+    associated with the system)
+    such that the functions $F$ and $G$ satisfy
   </p>
   <div class="math-block">
     $$
@@ -97,7 +103,8 @@
   </div>
   <p>
     The variable $p$ is sometimes called a
-    <i>generalized coordinate</i>, and the variable $q$ is called the
+    <i>generalized
+      coordinate</i>, and the variable $q$ is called the
     <i>generalized momentum</i>
     associated to $p$.
   </p>
@@ -107,7 +114,9 @@
       href="./1-2.html#_1_h.a.i_"
       class=""
     >(1)</a>
-    is Hamiltonian? Assuming that $F$ and $G$ are continuously differentiable, it is not difficult to see that a necessary condition is that
+    is Hamiltonian? Assuming that $F$
+    and $G$ are continuously differentiable, it is not
+    difficult to see that a necessary condition is that
   </p>
   <div
     id="_3_h.a.i_"
@@ -122,7 +131,12 @@
     $$
   </div>
   <p>
-    (or $\frac{\partial F}{\partial p} +\frac{\partial G}{\partial q}=0$) since both sides of the equation are equal to $-\frac{\partial^2 H}{\partial p \partial q}$. Equivalently, this condition can be written as
+    (or
+    $\frac{\partial F}{\partial p} +\frac{\partial
+    G}{\partial q}=0$)
+    since both sides of the equation are equal to
+    $-\frac{\partial^2 H}{\partial p \partial q}$.
+    Equivalently, this condition can be written as
   </p>
   <div class="math-block">
     $$
@@ -130,7 +144,13 @@
     $$
   </div>
   <p>
-    where $\mathbf{V}$ denotes the planar vector field $\mathbf{V}= (F,G)$ (we interpret the first coordinate of $\mathbf{V}$ as the "$p$-coordinate" and the second coordinate as the "$q$-coordinate"), and $\operatorname{div} \mathbf{V}$ denotes the divergence of $\mathbf{V}$. In physics, a vector field with this property is called
+    where $\mathbf{V}$ denotes the planar vector field
+    $\mathbf{V}= (F,G)$ (we interpret the first
+    coordinate of $\mathbf{V}$ as the "$p$-coordinate"
+    and the second coordinate as the "$q$-coordinate"),
+    and $\operatorname{div} \mathbf{V}$ denotes the
+    divergence of $\mathbf{V}$. In physics, a vector
+    field with this property is called
     <i>divergence-free</i>
     or
     <i>solenoidal</i>. Yet another way to write
@@ -148,7 +168,13 @@
     $$
   </div>
   <p>
-    where $\mathbf{W}$ is the vector field $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the (2-dimensional version of the) curl operator, defined by $\operatorname{curl}(A,B) = \frac{\partial A}{\partial q}-\frac{\partial B}{\partial p}$. A vector field with this property is called
+    where $\mathbf{W}$ is the vector field
+    $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the
+    (2-dimensional version of the) curl operator, defined
+    by
+    $\operatorname{curl}(A,B) = \frac{\partial
+    A}{\partial q}-\frac{\partial B}{\partial p}$.
+    A vector field with this property is called
     <i>curl-free</i>
     or
     <i>irrotational</i>.
@@ -168,20 +194,34 @@
         href="./1-2.html#_1_h.a.i_"
         class=""
       >(1)</a>
-      is defined on a simply connected domain, the condition
+      is defined on a
+      simply connected domain, the condition
       <a
         href="./1-2.html#_3_h.a.i_"
         class=""
       >(3)</a>
-      is both necessary and sufficient for the system to be Hamiltonian.
+      is both necessary and
+      sufficient for the system to be Hamiltonian.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>This is a slight reformulation of a familiar fact from vector calculus, that says that in a simply connected domain, a vector field $\mathbf{W}=(A,B)$ is curl-free if and only if it is
-      <i>conservative</i>. A conservative vector field is one for which the line integral of the field between two points is independent of the contour connecting them, or equivalently, such that the line integral on any
+      <span class="proof">Proof</span>This is a slight reformulation of a familiar fact
+      from vector calculus, that says that in a simply
+      connected domain, a vector field $\mathbf{W}=(A,B)$
+      is curl-free if and only if it is
+      <i>conservative</i>. A
+      conservative vector field is one for which the line
+      integral of the field between two points is
+      independent of the contour connecting them, or
+      equivalently, such that the line integral on any
       <i>closed</i>
-      contour vanishes. Such a vector field can always be represented as $\mathbf{W} = \nabla H$ (the gradient of $H$) for some scalar function $H$; one simply defines $H(p,q)$ as the line integral (which for a conservative field is independent of the path of integration)
+      contour vanishes. Such a vector field can
+      always be represented as $\mathbf{W} = \nabla H$ (the
+      gradient of $H$) for some scalar function $H$; one
+      simply defines $H(p,q)$ as the line integral (which
+      for a conservative field is independent of the path of
+      integration)
     </p>
     <div class="math-block">
       $$
@@ -189,7 +229,15 @@
       $$
     </div>
     <p>
-      between some fixed but arbitrary initial point $(p_0,q_0)$ and the point $(p,q)$. The fact that $\mathbf{W}=\nabla H$ is immediate from the fundamental theorem of calculus. In our case, $\mathbf{W}=(G,-F)$ so the equation $\mathbf{W}=\nabla H$ gives exactly the pair of equations $F=-\frac{\partial H}{\partial q}$, $G=\frac{\partial H}{\partial p}$, with $H$ serving as the desired Hamiltonian.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      between some fixed but arbitrary initial point
+      $(p_0,q_0)$ and the point $(p,q)$. The fact that
+      $\mathbf{W}=\nabla H$ is immediate from the
+      fundamental theorem of calculus. In our case,
+      $\mathbf{W}=(G,-F)$ so the equation
+      $\mathbf{W}=\nabla H$ gives exactly the pair of
+      equations $F=-\frac{\partial H}{\partial q}$,
+      $G=\frac{\partial H}{\partial p}$, with $H$ serving
+      as the desired Hamiltonian.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
 </body>

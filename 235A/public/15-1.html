@@ -44,9 +44,15 @@
     Unbiasing a source of randomness: simulating an unbiased coin using biased coin tosses
   </h1>
   <p>
-    Assume that your source of randomness produces a sequence $X_1, X_2, \ldots$ of Bernoulli random variables with some bias $0&lt;p&lt;1$. Such random bits are much more practical for use in applications if they are unbiased, that is, if $p=1/2$. Can we use the $p$-biased coin tosses to produce an
+    Assume that your source of randomness produces a
+    sequence $X_1, X_2, \ldots$ of Bernoulli random
+    variables with some bias $0&lt;p&lt;1$. Such random bits
+    are much more practical for use in applications if
+    they are unbiased, that is, if $p=1/2$. Can we use
+    the $p$-biased coin tosses to produce an
     <i>unbiased</i>
-    coin toss? Yes: the famous mathematician John von Neumann suggested the following simple method in 1951.
+    coin toss? Yes: the famous mathematician John von
+    Neumann suggested the following simple method in 1951.
   </p>
   <p>
     $\textbf{Simulation Method 1.}$
@@ -83,16 +89,28 @@
       
     </h3>
     <p>
-      Show that the method works; that is, that with probability $1$ the method eventually outputs a random variable $Z \sim \operatorname{Ber}(1/2)$.
+      Show that the method works; that is, that with
+      probability $1$ the method eventually outputs a
+      random variable $Z \sim \operatorname{Ber}(1/2)$.
     </p>
   </div>
   <p>
-    An interesting and useful feature of Von Neumann's method is that it does not even require knowing the bias $p$ of the source; that is, it is a "universal unbiasing method."
+    An interesting and useful feature of Von Neumann's
+    method is that it does not even require knowing the
+    bias $p$ of the source; that is, it is a "universal
+    unbiasing method."
   </p>
   <p>
-    What about the efficiency of the method? It seems interesting to ask how many samples of the biased sequence we will need to produce our unbiased random bit. This number is random, and unbounded --- we may have to wait an arbitrarily long time for the simulation to finish --- so perhaps it makes more sense to ask about the
+    What about the efficiency of the method? It seems
+    interesting to ask how many samples of the biased
+    sequence we will need to produce our unbiased random
+    bit. This number is random, and unbounded --- we may
+    have to wait an arbitrarily long time for the
+    simulation to finish --- so perhaps it makes more
+    sense to ask about the
     <i>mean</i>
-    number of samples required.
+    number of samples
+    required.
   </p>
   <div class="statement exercise">
     <h3>
@@ -101,7 +119,11 @@
       
     </h3>
     <p>
-      Show that on average the method requires $\frac{1}{p(1-p)}$ samples of the sequence $(X_n)_{n=1}^\infty$. (In particular, when $p$ is very close to $0$ or $1$ the average wait becomes very long.)
+      Show that on average the method requires
+      $\frac{1}{p(1-p)}$ samples of the sequence
+      $(X_n)_{n=1}^\infty$. (In particular, when $p$ is
+      very close to $0$ or $1$ the average wait becomes
+      very long.)
     </p>
   </div>
 </body>

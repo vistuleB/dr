@@ -49,7 +49,14 @@
   >
     <li>
       <p>
-        If $X$ is measurable with respect to $\mathcal{G}$ (i.e., $\sigma(X) \subset \mathcal{G}$) then $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = X$. The intuition is that if the information given to us (encoded by the $\sigma$-algebra $\mathcal{G}$) is enough to tell the value of $X$ (see the exercise below), then our best guess for the average value of $X$ is $X$ itself.
+        If $X$ is measurable with respect to $\mathcal{G}$
+        (i.e., $\sigma(X) \subset \mathcal{G}$) then
+        $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = X$. The
+        intuition is that if the information given to us
+        (encoded by the $\sigma$-algebra $\mathcal{G}$) is
+        enough to tell the value of $X$ (see the exercise
+        below), then our best guess for the average value of
+        $X$ is $X$ itself.
       </p>
       <div class="statement exercise">
         <h3>
@@ -58,24 +65,44 @@
           
         </h3>
         <p>
-          Let $X$ and $Y$ be random variables defined on the same probability space $(\Omega, \mathcal{F}, \mathrm{P})$. Show that $\sigma(X) \subset \sigma(Y)$ (in this case we say that
-          <b>$X$ is measurable with respect to $Y$</b>) if and only if there exists a Borel-measurable function $h:\R\to\R$ such that $X=h(Y)$ a.s.
+          Let $X$ and $Y$ be random variables defined on the
+          same probability space
+          $(\Omega, \mathcal{F}, \mathrm{P})$. Show that
+          $\sigma(X) \subset \sigma(Y)$ (in this case we say
+          that
+          <b>$X$ is measurable with respect to $Y$</b>) if and
+          only if there exists a Borel-measurable function
+          $h:\R\to\R$ such that $X=h(Y)$ a.s.
         </p>
       </div>
     </li>
     <li>
       <p>
-        In particular, if $\mathcal{G}=\mathcal{F}$ is the original $\sigma$-algebra of the probability space $(\Omega, \mathcal{F}, \mathrm{P})$, then $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = X$.
+        In particular, if $\mathcal{G}=\mathcal{F}$ is the
+        original $\sigma$-algebra of the probability space
+        $(\Omega, \mathcal{F}, \mathrm{P})$, then
+        $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = X$.
       </p>
     </li>
     <li>
       <p>
-        At the opposite extreme, if $\mathcal{G}= \{ \emptyset, \Omega \}$, then $\mathbf{E}\left(X\,|\,\mathcal{G}\right) = \mathbf{E}(X)$, the usual expectation of $X$. Intuitively, the minimal $\sigma$-algebra $\{\emptyset, \Omega\}$ represents zero information.
+        At the opposite extreme, if
+        $\mathcal{G}= \{ \emptyset, \Omega \}$, then
+        $\mathbf{E}\left(X\,|\,\mathcal{G}\right) =
+        \mathbf{E}(X)$,
+        the usual expectation of $X$. Intuitively, the
+        minimal $\sigma$-algebra $\{\emptyset, \Omega\}$
+        represents zero information.
       </p>
     </li>
     <li>
       <p>
-        More generally, if $X$ is independent of $\mathcal{G}$ then $\mathbf{E}\left(X\,|\,\mathcal{G}\right)=\mathbf{E}(X)$, since $\mathbf{E}(X)$ is a $\mathcal{G}$-measurable random variable and for any $E\in\mathcal{G}$, since $X$ is independent of $\mathbf{1}_E$,
+        More generally, if $X$ is independent of $\mathcal{G}$
+        then
+        $\mathbf{E}\left(X\,|\,\mathcal{G}\right)=\mathbf{E}(X)$,
+        since $\mathbf{E}(X)$ is a $\mathcal{G}$-measurable
+        random variable and for any $E\in\mathcal{G}$, since
+        $X$ is independent of $\mathbf{1}_E$,
       </p>
       <div class="math-block">
         $$
@@ -85,27 +112,38 @@
     </li>
     <li>
       <p>
-        Conditional expectation is a linear operator: $\mathbf{E}\left(aX+bY\,|\,\mathcal{G}\right) = a \mathbf{E}\left(X\,|\,\mathcal{G}\right) + b \mathbf{E}\left(Y\,|\,\mathcal{G}\right).$
+        Conditional expectation is a linear operator:
+        $\mathbf{E}\left(aX+bY\,|\,\mathcal{G}\right) = a
+        \mathbf{E}\left(X\,|\,\mathcal{G}\right) + b
+        \mathbf{E}\left(Y\,|\,\mathcal{G}\right).$
       </p>
       <div>
         <p>
-          <span class="proof">Proof</span>The random variable $Z=a \mathbf{E}\left(X\,|\,\mathcal{G}\right) + b \mathbf{E}\left(Y\,|\,\mathcal{G}\right)$ is $\mathcal{G}$-measurable and for any $E\in\mathcal{G}$ we have
+          <span class="proof">Proof</span>The random variable
+          $Z=a \mathbf{E}\left(X\,|\,\mathcal{G}\right) + b
+          \mathbf{E}\left(Y\,|\,\mathcal{G}\right)$
+          is $\mathcal{G}$-measurable and for any
+          $E\in\mathcal{G}$ we have
         </p>
         <div class="math-block">
           $$
-          \begin{align*} \mathbf{E}(Z\mathbf{1}_E) &amp;= a\mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{G}\right)\mathbf{1}_E)+b\mathbf{E}(\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\mathbf{1}_E) =
+          \begin{align*}
+          \mathbf{E}(Z\mathbf{1}_E) &amp;= a\mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{G}\right)\mathbf{1}_E)+b\mathbf{E}(\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\mathbf{1}_E) =
           a \mathbf{E}(X\mathbf{1}_E)+b\mathbf{E}(Y\mathbf{1}_E) \\&amp;=\mathbf{E}((aX+bY)\mathbf{1}_E),
           \end{align*}
           $$
         </div>
         <p>
-          so $Z$ satisfies the requirements that qualify it to be the conditional expectation of $aX+bY$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+          so $Z$ satisfies the requirements that qualify it to
+          be the conditional expectation of $aX+bY$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
         </p>
       </div>
     </li>
     <li>
       <p>
-        Monotonicity: If $X\le Y$ then $\mathbf{E}\left(X\,|\,\mathcal{G}\right)\le\mathbf{E}\left(Y\,|\,\mathcal{G}\right)$ a.s.
+        Monotonicity: If $X\le Y$ then
+        $\mathbf{E}\left(X\,|\,\mathcal{G}\right)\le\mathbf{E}\left(Y\,|\,\mathcal{G}\right)$
+        a.s.
       </p>
       <div>
         <p>
@@ -118,17 +156,36 @@
           $$
         </div>
         <p>
-          Taking $E=\{\mathbf{E}\left(X\,|\,\mathcal{G}\right)-\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\ge \epsilon\}$ for some arbitrary $\epsilon&gt;0$, we get that $E$ must have probability $0$. Since this is true for any $\epsilon&gt;0$, the result follows.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+          Taking
+          $E=\{\mathbf{E}\left(X\,|\,\mathcal{G}\right)-\mathbf{E}\left(Y\,|\,\mathcal{G}\right)\ge
+          \epsilon\}$
+          for some arbitrary $\epsilon&gt;0$, we get that $E$ must
+          have probability $0$. Since this is true for any
+          $\epsilon&gt;0$, the result follows.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
         </p>
       </div>
     </li>
     <li>
       <p>
-        Conditional form of the monotone convergence theorem: If $X_n\ge 0$ and $X_n \uparrow X$ a.s.\ as $n\to\infty$, where $\mathbf{E}(X)&lt;\infty$, then $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\nearrow \mathbf{E}\left(X\,|\,\mathcal{G}\right)$ a.s.\ as $n\to\infty$.
+        Conditional form of the monotone convergence theorem:
+        If $X_n\ge 0$ and $X_n \uparrow X$ a.s.\ as
+        $n\to\infty$, where $\mathbf{E}(X)&lt;\infty$, then
+        $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\nearrow
+        \mathbf{E}\left(X\,|\,\mathcal{G}\right)$
+        a.s.\ as $n\to\infty$.
       </p>
       <div>
         <p>
-          <span class="proof">Proof</span>By the monotonicity proved above, the conditional expectations $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)$ are increasing to an a.s.\ limiting r.v.\ $Z$, which is $\mathcal{G}$-measurable. Note that $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\le \mathbf{E}\left(X\,|\,\mathcal{G}\right)$, which is an integrable upper bound, so we can apply the dominated convergence theorem and deduce that for every $E\in \mathcal{G}$,
+          <span class="proof">Proof</span>By the monotonicity proved above, the conditional
+          expectations
+          $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)$ are
+          increasing to an a.s.\ limiting r.v.\ $Z$, which is
+          $\mathcal{G}$-measurable. Note that
+          $\mathbf{E}\left(X_n\,|\,\mathcal{G}\right)\le
+          \mathbf{E}\left(X\,|\,\mathcal{G}\right)$,
+          which is an integrable upper bound, so we can apply
+          the dominated convergence theorem and deduce that for
+          every $E\in \mathcal{G}$,
         </p>
         <div class="math-block">
           $$
@@ -138,17 +195,26 @@
           $$
         </div>
         <p>
-          Thus $Z$, qualifies as the conditional expectation of $X$ given $\mathcal{G}$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+          Thus $Z$, qualifies as the conditional expectation of
+          $X$ given $\mathcal{G}$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
         </p>
       </div>
     </li>
     <li>
       <p>
-        Conditional form of Jensen's inequality: If $\varphi:\R\to\R$ is a convex function and $\mathbf{E}|X|, \mathbf{E}|\varphi(X)|&lt;\infty$ then $\varphi(\mathbf{E}\left(X\,|\,\mathcal{G}\right)) \le \mathbf{E}\left(\varphi(X)\,|\,\mathcal{G}\right).$
+        Conditional form of Jensen's inequality: If
+        $\varphi:\R\to\R$ is a convex function and
+        $\mathbf{E}|X|, \mathbf{E}|\varphi(X)|&lt;\infty$ then
+        $\varphi(\mathbf{E}\left(X\,|\,\mathcal{G}\right))
+        \le
+        \mathbf{E}\left(\varphi(X)\,|\,\mathcal{G}\right).$
       </p>
       <div>
         <p>
-          <span class="proof">Proof</span>The proof is similar to the non-conditional case, with a small twist: we observe that $\varphi(x)$ is a supremum of a countable number of linear functions, namely
+          <span class="proof">Proof</span>The proof is similar to the non-conditional case,
+          with a small twist: we observe that $\varphi(x)$ is a
+          supremum of a countable number of linear functions,
+          namely
         </p>
         <div class="math-block">
           $$
@@ -156,28 +222,47 @@
           $$
         </div>
         <p>
-          then continue as in the original proof. The restriction to a countable number of linear functions is necessary since all statements pertaining to conditional expectations are almost sure statements, which means that there is an exceptional $0$-probability set being discarded, and we can only allow a countable number of these.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+          then continue as in the original proof. The
+          restriction to a countable number of linear functions
+          is necessary since all statements pertaining to
+          conditional expectations are almost sure statements,
+          which means that there is an exceptional
+          $0$-probability set being discarded, and we can only
+          allow a countable number of these.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
         </p>
       </div>
     </li>
     <li>
       <p>
-        For $p\ge 1$, $\mathbf{E}\left( \left|\mathbf{E}\left(X\,|\,\mathcal{G}\right)\right|^p \right) \le \mathbf{E}|X|^p$ (i.e., the conditional expectation operator is a contraction in $L_p(\Omega,\mathcal{G},\mathrm{P})$.)
+        For $p\ge 1$,
+        $\mathbf{E}\left(
+        \left|\mathbf{E}\left(X\,|\,\mathcal{G}\right)\right|^p
+        \right) \le \mathbf{E}|X|^p$
+        (i.e., the conditional expectation operator is a
+        contraction in $L_p(\Omega,\mathcal{G},\mathrm{P})$.)
       </p>
       <div>
         <p>
-          <span class="proof">Proof</span>By Jensen's inequality, $|\mathbf{E}\left(X\,|\,\mathcal{G}\right)|^p \le \mathbf{E}\left(|X|^p\,|\,\mathcal{G}\right)$. Now take expectations and use the fact that:<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+          <span class="proof">Proof</span>By Jensen's inequality,
+          $|\mathbf{E}\left(X\,|\,\mathcal{G}\right)|^p \le
+          \mathbf{E}\left(|X|^p\,|\,\mathcal{G}\right)$.
+          Now take expectations and use the fact that:<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
         </p>
       </div>
     </li>
     <li>
       <p>
-        $\mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{G}\right)) = \mathbf{E}(X)$. This is a special case of:
+        $\mathbf{E}(\mathbf{E}\left(X\,|\,\mathcal{G}\right))
+        = \mathbf{E}(X)$.
+        This is a special case of:
       </p>
     </li>
     <li>
       <p>
-        If $\mathcal{G}_1\subseteq \mathcal{G}_2 \subseteq \mathcal{F}$ are sub-$\sigma$-algebras then we have
+        If
+        $\mathcal{G}_1\subseteq \mathcal{G}_2 \subseteq
+        \mathcal{F}$
+        are sub-$\sigma$-algebras then we have
       </p>
       <div class="math-block">
         $$
@@ -201,7 +286,9 @@
     </li>
     <li>
       <p>
-        If $X$ is $\mathcal{G}$-measurable, then for any random variable $Y$, if $\mathbf{E}|Y|, \mathbf{E}|XY|&lt;\infty$ then
+        If $X$ is $\mathcal{G}$-measurable, then for any
+        random variable $Y$, if
+        $\mathbf{E}|Y|, \mathbf{E}|XY|&lt;\infty$ then
       </p>
       <div class="math-block">
         $$
@@ -209,11 +296,19 @@
         $$
       </div>
       <p>
-        The idea here is that if $X$ is measurable with respect to $\mathcal{G}$ then it appears like a constant from the point of view of conditional expectations given the information contained in $\mathcal{G}$ and can therefore be "pulled outside" of the expectation.
+        The idea here is that if $X$ is measurable with
+        respect to $\mathcal{G}$ then it appears like a
+        constant from the point of view of conditional
+        expectations given the information contained in
+        $\mathcal{G}$ and can therefore be "pulled outside"
+        of the expectation.
       </p>
       <div>
         <p>
-          <span class="proof">Proof</span>The random variable $Z=X\mathbf{E}\left(Y\,|\,\mathcal{G}\right)$ is $\mathcal{G}$-measurable, so we need to check that for any $E\in \mathcal{G}$,
+          <span class="proof">Proof</span>The random variable
+          $Z=X\mathbf{E}\left(Y\,|\,\mathcal{G}\right)$ is
+          $\mathcal{G}$-measurable, so we need to check that
+          for any $E\in \mathcal{G}$,
         </p>
         <div
           id="_13_h.a.i_"
@@ -226,7 +321,8 @@
           $$
         </div>
         <p>
-          First, if $X=\mathbf{1}_B$ for some $B\in\mathcal{G}$ then
+          First, if $X=\mathbf{1}_B$ for some $B\in\mathcal{G}$
+          then
         </p>
         <div class="math-block">
           $$
@@ -235,22 +331,33 @@
           $$
         </div>
         <p>
-          so the claim is true. By linearity it follows that if $X$ is a "simple" random variable (a linear combination of finitely many indicator variables, i.e., a random variable taking finitely many values) then
+          so the claim is true. By linearity it follows that if
+          $X$ is a "simple" random variable (a linear
+          combination of finitely many indicator variables,
+          i.e., a random variable taking finitely many values)
+          then
           <a
             href="./2-4.html#_13_h.a.i_"
             class=""
           >(7)</a>
-          still holds. Now, assume that $X,Y\ge 0$, then we can take a sequence $(X_n)_{n=1}^\infty$ of simple random variables that are $\mathcal{G}$-measurable and such that $X_n\uparrow X$. By the monotone converegence theorem, it follows that
+          still holds. Now, assume
+          that $X,Y\ge 0$, then we can take a sequence
+          $(X_n)_{n=1}^\infty$ of simple random variables that
+          are $\mathcal{G}$-measurable and such that
+          $X_n\uparrow X$. By the monotone converegence
+          theorem, it follows that
           <a
             href="./2-4.html#_13_h.a.i_"
             class=""
           >(7)</a>
-          holds also in this case. Finally, for general $X,Y$ one proves
+          holds also in this case. Finally, for general $X,Y$
+          one proves
           <a
             href="./2-4.html#_13_h.a.i_"
             class=""
           >(7)</a>
-          by splitting $X$ and $Y$ into their positive and negative parts.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+          by splitting $X$
+          and $Y$ into their positive and negative parts.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
         </p>
       </div>
     </li>

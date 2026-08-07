@@ -44,8 +44,20 @@
     $L_p$ spaces and modes of convergence
   </h1>
   <p>
-    In this section we summarize some facts about the $L_p$ spaces (which are function spaces that play a central role in many parts of mathematical analysis and in particular in probability theory) and the different modes of convergence for random variables. Previously we discussed the notions of $\textbf{convergence in probability}$, $\textbf{almost sure convergence}$ and $\textbf{convergence in distribution}$. Other useful senses in which random variables may be said to converge to a limit are $\textbf{uniform convergence}$ (equivalent to
-    <b>convergence in the space $L_\infty$</b>) and
+    In this section we summarize some facts about the
+    $L_p$ spaces (which are function spaces that play a
+    central role in many parts of mathematical analysis
+    and in particular in probability theory) and the
+    different modes of convergence for random variables.
+    Previously we discussed the notions of
+    $\textbf{convergence in probability}$,
+    $\textbf{almost sure convergence}$ and
+    $\textbf{convergence in distribution}$. Other useful
+    senses in which random variables may be said to
+    converge to a limit are $\textbf{uniform convergence}$
+    (equivalent to
+    <b>convergence in the space $L_\infty$</b>)
+    and
     <b>convergence in the $L_p$ space</b>.
   </p>
   <div class="statement definition">
@@ -55,7 +67,12 @@
       
     </h3>
     <p>
-      Let $(\Omega, \mathcal{F}, \mathrm{P})$ be a probability space. For $1\le p&lt;\infty$, we associate with our probability space a function space $L_p(\Omega, \mathcal{F}, \mathrm{P})$ (often denoted as $L_p(\Omega)$ or simply $L_p$ when the context is clear), defined by
+      Let $(\Omega, \mathcal{F}, \mathrm{P})$ be a
+      probability space. For $1\le p&lt;\infty$, we associate
+      with our probability space a function space
+      $L_p(\Omega, \mathcal{F}, \mathrm{P})$ (often denoted
+      as $L_p(\Omega)$ or simply $L_p$ when the context is
+      clear), defined by
     </p>
     <div class="math-block">
       $$
@@ -63,7 +80,8 @@
       $$
     </div>
     <p>
-      Elements of $L_p$ are considered only up to almost sure equivalence
+      Elements of $L_p$ are considered only up to almost
+      sure equivalence
       <sup id="_20_h.a.i_">
         <a
           href="./3-5.html#_21_h.a.i_"
@@ -71,7 +89,8 @@
         >(1)</a>
         
       </sup>
-      . The $p$-norm of a random variable $X\in L_p$ is defined by
+      . The $p$-norm of a
+      random variable $X\in L_p$ is defined by
     </p>
     <div class="math-block">
       $$
@@ -79,7 +98,9 @@
       $$
     </div>
     <p>
-      For $p=\infty$ one may also define the space $L_\infty$ with an associated $\infty$-norm $\lVert\cdot\rVert_\infty$ by
+      For $p=\infty$ one may also define the space
+      $L_\infty$ with an associated $\infty$-norm
+      $\lVert\cdot\rVert_\infty$ by
     </p>
     <div class="math-block">
       $$
@@ -89,11 +110,18 @@
     <p>
       where
       <b>essentially bounded</b>
-      means that after modifying $X$ on a set of $\mathrm{P}$-measure $0$ one gets a bounded function. The $\infty$-norm $\lVert X\rVert_\infty$ is defined as the infimum of all numbers $M$ which are essential bounds of $X$ (i.e., all $M$ such that $\mathrm{P}(|X|\le M)=1$).
+      means that after
+      modifying $X$ on a set of $\mathrm{P}$-measure $0$
+      one gets a bounded function. The $\infty$-norm
+      $\lVert X\rVert_\infty$ is defined as the infimum of
+      all numbers $M$ which are essential bounds of $X$
+      (i.e., all $M$ such that $\mathrm{P}(|X|\le M)=1$).
     </p>
   </div>
   <p>
-    The space $L_p$ equipped with the norm $\lVert \cdot \rVert_p$ becomes a metric space. A fundamental fact from analysis is:
+    The space $L_p$ equipped with the norm
+    $\lVert \cdot \rVert_p$ becomes a metric space. A
+    fundamental fact from analysis is:
   </p>
   <div class="statement theorem">
     <h3>
@@ -102,11 +130,17 @@
       
     </h3>
     <p>
-      For $1\le p\le \infty$, $L_p$ is a complete metric space. That is, every Cauchy sequence in $L_p$ is convergent.
+      For $1\le p\le \infty$, $L_p$ is a complete metric
+      space. That is, every Cauchy sequence in $L_p$ is
+      convergent.
     </p>
   </div>
   <p>
-    Since $L_p$ is actually a normed space, the theorem above means it is a Banach space (a complete normed vector space). For $p=2$ it is also a Hilbert space (a complete inner product space), since it may be equipped with the inner product
+    Since $L_p$ is actually a normed space, the theorem
+    above means it is a Banach space (a complete normed
+    vector space). For $p=2$ it is also a Hilbert space
+    (a complete inner product space), since it may be
+    equipped with the inner product
   </p>
   <div class="math-block">
     $$
@@ -114,7 +148,12 @@
     $$
   </div>
   <p>
-    The elements of $L_2$ are referred to as $\textbf{square-integrable random variables}$ (equivalently, random variables with finite variance). Note that the Cauchy-Schwartz inequality guarantees that $\langle X,Y\rangle$ is defined and finite when $X,Y\in L_2$.
+    The elements of $L_2$ are referred to as
+    $\textbf{square-integrable random variables}$
+    (equivalently, random variables with finite variance).
+    Note that the Cauchy-Schwartz inequality guarantees
+    that $\langle X,Y\rangle$ is defined and finite when
+    $X,Y\in L_2$.
   </p>
   <div class="statement definition">
     <h3>
@@ -123,7 +162,9 @@
       
     </h3>
     <p>
-      The modes of convergence of a sequence of random variables $(X_n)_{n=1}^\infty$ to a limiting random variable $X$ are defined as follows:
+      The modes of convergence of a sequence of random
+      variables $(X_n)_{n=1}^\infty$ to a limiting random
+      variable $X$ are defined as follows:
     </p>
     <ol
       class="list"
@@ -132,43 +173,69 @@
       <li>
         <p>
           <b>Convergence in probability:</b>
-          $X_n \to X$ in probability if for any $\epsilon&gt;0$, we have $\lim_{n\to\infty} \mathrm{P}(|X_n-X|&gt;\epsilon)\to 0$ as $n\to\infty$.
+          $X_n \to X$ in
+          probability if for any $\epsilon&gt;0$, we have
+          $\lim_{n\to\infty} \mathrm{P}(|X_n-X|&gt;\epsilon)\to 0$
+          as $n\to\infty$.
         </p>
       </li>
       <li>
         <p>
           <b>Almost sure convergence:</b>
-          $X_n\to X$ almost surely if $\mathrm{P}(X_n\to X\ \textrm{ as }n\to\infty) = 1$.
+          $X_n\to X$ almost surely
+          if
+          $\mathrm{P}(X_n\to X\ \textrm{ as }n\to\infty) = 1$.
         </p>
       </li>
       <li>
         <p>
           <b>Convergence in $L_p$, $1\le p&lt;\infty$:</b>
-          $X_n\to X$ in $L_p$ if $\mathbf{E}|X_n-X|^p \to 0$ as $n\to\infty$. For $p=1$ this is also called
+          $X_n\to X$
+          in $L_p$ if $\mathbf{E}|X_n-X|^p \to 0$ as
+          $n\to\infty$. For $p=1$ this is also called
           <b>convergence in the mean</b>.
         </p>
       </li>
       <li>
         <p>
           <b>Convergence in $L_\infty$:</b>
-          $X_n\to X$ in $L_\infty$ in $L_\infty$ if $\lVert X_n-X\rVert_\infty\to 0$ as $n\to\infty$.
+          $X_n\to X$ in $L_\infty$
+          in $L_\infty$ if $\lVert X_n-X\rVert_\infty\to 0$ as
+          $n\to\infty$.
         </p>
       </li>
       <li>
         <p>
           <b>Convergence in distribution:</b>
-          $X_n\to X$ in distribution if $\mathbf{E} g(X_n)\to \mathbf{E} g(X)$ for any bounded continuous function $g:\R\to\R$.
+          $X_n\to X$ in
+          distribution if $\mathbf{E} g(X_n)\to \mathbf{E} g(X)$
+          for any bounded continuous function $g:\R\to\R$.
         </p>
       </li>
     </ol>
   </div>
   <p>
-    It should be noted that the concept of convergence in distribution is qualitatively different from the other modes of convergence, in that it does not require the random variables $X, X_1, X_2, \ldots$ to be defined on the same probability space. The convergence in this case is of the
+    It should be noted that the concept of convergence in
+    distribution is qualitatively different from the other
+    modes of convergence, in that it does not require the
+    random variables $X, X_1, X_2, \ldots$ to be defined
+    on the same probability space. The convergence in this
+    case is of the
     <i>probabilities</i>
-    and other statistical measures of the distributions of the random variables (i.e., expectations of functions applied to $X_n$, moments, characteristic functions, etc.), not of the values of the random variables themselves in some experiment in which they are sampled.
+    and other statistical
+    measures of the distributions of the random variables
+    (i.e., expectations of functions applied to $X_n$,
+    moments, characteristic functions, etc.), not of the
+    values of the random variables themselves in some
+    experiment in which they are sampled.
   </p>
   <p>
-    The proof of the following theorem is left to the reader as an exercise in scholarly research (meaning, for each of the claims either try to prove it by yourself, or track down the proofs in a textbook --- you will probably learn other useful things while searching!)
+    The proof of the following theorem is left to the
+    reader as an exercise in scholarly research (meaning,
+    for each of the claims either try to prove it by
+    yourself, or track down the proofs in a textbook ---
+    you will probably learn other useful things while
+    searching!)
   </p>
   <div class="statement theorem">
     <h3>
@@ -177,7 +244,8 @@
       
     </h3>
     <p>
-      The following relationships exist between the different modes of convergence:
+      The following relationships exist between the
+      different modes of convergence:
     </p>
     <ol
       class="list"
@@ -185,47 +253,68 @@
     >
       <li>
         <p>
-          If $X_n\to X$ almost surely then $X_n\to X$ in probability. The converse is not true.
+          If $X_n\to X$ almost surely then $X_n\to X$ in
+          probability. The converse is not true.
         </p>
       </li>
       <li>
         <p>
-          If $X_n\to X$ in probability then $X_n \to X$ in distribution. The converse is not true, even in the case when $(X_n)_{n=1}^\infty$ and $X$ are all defined on the same probability space.
+          If $X_n\to X$ in probability then $X_n \to X$ in
+          distribution. The converse is not true, even in the
+          case when $(X_n)_{n=1}^\infty$ and $X$ are all
+          defined on the same probability space.
         </p>
       </li>
       <li>
         <p>
-          If $X_n\to X$ in distribution then there exists a sequence $(Y_n)_{n=1}^\infty$ and a random variable $Y$, all defined on the same probability space, such that $Y_n \stackrel{\textrm{D}}{=} X_n$ for all $n$, $Y\stackrel{\textrm{D}}{=} X$, and $Y_n\to Y$ almost surely.
+          If $X_n\to X$ in distribution then there exists a
+          sequence $(Y_n)_{n=1}^\infty$ and a random variable
+          $Y$, all defined on the same probability space, such
+          that $Y_n \stackrel{\textrm{D}}{=} X_n$ for all $n$,
+          $Y\stackrel{\textrm{D}}{=} X$, and $Y_n\to Y$ almost
+          surely.
         </p>
       </li>
       <li>
         <p>
-          If $X_n\to X$ almost surely and the convergence is dominated (in the sense of the dominated convergence theorem), then $X_n\to X$ in $L_1$.
+          If $X_n\to X$ almost surely and the convergence is
+          dominated (in the sense of the dominated convergence
+          theorem), then $X_n\to X$ in $L_1$.
         </p>
       </li>
       <li>
         <p>
-          If $X_n\to X$ in probability then there exists a subsequence $(X_{n_k})_{k=1}^\infty$ such that $X_{n_k}\to X$ almost surely.
+          If $X_n\to X$ in probability then there exists a
+          subsequence $(X_{n_k})_{k=1}^\infty$ such that
+          $X_{n_k}\to X$ almost surely.
         </p>
       </li>
       <li>
         <p>
-          If $X_n\to X$ in $L_p$ for some $1\le p \le\infty$ then there exists a subsequence $(X_{n_k})_{k=1}^\infty$ such that $X_{n_k}\to X$ almost surely.
+          If $X_n\to X$ in $L_p$ for some $1\le p \le\infty$
+          then there exists a subsequence
+          $(X_{n_k})_{k=1}^\infty$ such that $X_{n_k}\to X$
+          almost surely.
         </p>
       </li>
       <li>
         <p>
-          If $X_n\to X$ in $L_p$ for some $1\le p\le\infty$ then $X_n\to X$ in $L_q$ for any $1\le q\le p$.
+          If $X_n\to X$ in $L_p$ for some $1\le p\le\infty$
+          then $X_n\to X$ in $L_q$ for any $1\le q\le p$.
         </p>
       </li>
       <li>
         <p>
-          If $X_n \to X$ in $L_\infty$ then $X_n\to X$ almost surely.
+          If $X_n \to X$ in $L_\infty$ then $X_n\to X$ almost
+          surely.
         </p>
       </li>
       <li>
         <p>
-          If $X_n\to X$ in probability, then $X_n\to X$ in $L_1$ if and only if $(X_n)_{n=1}^\infty$ is uniformly integrable (see the next section for the definition of uniform integrability).
+          If $X_n\to X$ in probability, then $X_n\to X$ in $L_1$
+          if and only if $(X_n)_{n=1}^\infty$ is uniformly
+          integrable (see the next section for the definition of
+          uniform integrability).
         </p>
       </li>
     </ol>
@@ -237,7 +326,11 @@
   >
     <p>
       <a href="#_20_h.a.i_">(1)</a>
-      That is, formally, the elements of $L_p$ are not random variables but equivalence classes of random variables modulo almost sure equivalence, but in practice no one bothers to say things in this formal language.
+      That is, formally, the elements of $L_p$ are not
+      random variables but equivalence classes of random
+      variables modulo almost sure equivalence, but in
+      practice no one bothers to say things in this formal
+      language.
     </p>
   </div>
 </body>

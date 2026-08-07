@@ -44,7 +44,18 @@
     Conditional expectation as the least mean square error estimator
   </h1>
   <p>
-    In this section we show that the conditional expectation is actually the solution to a very natural estimation problem. Let $X$ be a random variable with finite variance. Assume that we wish to give the best possible estimate for the value of $X$, but only have access to the information encoded by the $\sigma$-algebra $\mathcal{G}$ (i.e., for each event $E\in\mathcal{G}$ we know if $E$ occurred or did not occur). Our estimate will therefore be some random variable $Y$ which is $\mathcal{G}$-measurable. A natural measure for the quality of the estimate is the $\textbf{mean square error}$
+    In this section we show that the conditional
+    expectation is actually the solution to a very natural
+    estimation problem. Let $X$ be a random variable with
+    finite variance. Assume that we wish to give the best
+    possible estimate for the value of $X$, but only have
+    access to the information encoded by the
+    $\sigma$-algebra $\mathcal{G}$ (i.e., for each event
+    $E\in\mathcal{G}$ we know if $E$ occurred or did not
+    occur). Our estimate will therefore be some random
+    variable $Y$ which is $\mathcal{G}$-measurable. A
+    natural measure for the quality of the estimate is the
+    $\textbf{mean square error}$
   </p>
   <div class="math-block">
     $$
@@ -52,7 +63,10 @@
     $$
   </div>
   <p>
-    The problem of finding the $Y$ that minimizes this error is very natural and of great practical importance. Its solution is given in the following theorem.
+    The problem of finding the $Y$ that minimizes this
+    error is very natural and of great practical
+    importance. Its solution is given in the following
+    theorem.
   </p>
   <div class="statement theorem">
     <h3>
@@ -61,12 +75,21 @@
       
     </h3>
     <p>
-      If $\mathbf{E}(X^2)&lt;\infty$, then $\mathbf{E}\left(X\,|\,\mathcal{G}\right)$ is the unique (up to a.s.\ equivalence) random variable $Y$ that minimizes the mean square error $\operatorname{MSE}_X(Y)$ among all $\mathcal{G}$-measurable random variables.
+      If $\mathbf{E}(X^2)&lt;\infty$, then
+      $\mathbf{E}\left(X\,|\,\mathcal{G}\right)$ is the
+      unique (up to a.s.\ equivalence) random variable $Y$
+      that minimizes the mean square error
+      $\operatorname{MSE}_X(Y)$ among all
+      $\mathcal{G}$-measurable random variables.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Denote $Z=\mathbf{E}\left(X\,|\,\mathcal{G}\right)$. If $Y$ is a $\mathcal{G}$-measurable random variable with $\mathbf{E} Y^2&lt;\infty$ (if $Y$ does not have finite variance then clearly the MSE will be infinite), then
+      <span class="proof">Proof</span>Denote $Z=\mathbf{E}\left(X\,|\,\mathcal{G}\right)$.
+      If $Y$ is a $\mathcal{G}$-measurable random variable
+      with $\mathbf{E} Y^2&lt;\infty$ (if $Y$ does not have
+      finite variance then clearly the MSE will be
+      infinite), then
     </p>
     <div class="math-block">
       $$
@@ -78,7 +101,9 @@
       $$
     </div>
     <p>
-      Denote $W=Y-Z$. This is a $\mathcal{G}$-measurable random variable, so by one of the properties proved in the previous section,
+      Denote $W=Y-Z$. This is a $\mathcal{G}$-measurable
+      random variable, so by one of the properties proved in
+      the previous section,
     </p>
     <div class="math-block">
       $$
@@ -87,7 +112,12 @@
       $$
     </div>
     <p>
-      (note that $\mathbf{E}|WX|\le (\mathbf{E} W^2 \mathbf{E} X^2)^{1/2}&lt;\infty$ by the Cauchy-Schwartz inequality) and therefore $\mathbf{E}[(X-Z)(Y-Z)] = \mathbf{E}[(X-Z)W]=0$. We get that
+      (note that
+      $\mathbf{E}|WX|\le (\mathbf{E} W^2 \mathbf{E}
+      X^2)^{1/2}&lt;\infty$
+      by the Cauchy-Schwartz inequality) and therefore
+      $\mathbf{E}[(X-Z)(Y-Z)] = \mathbf{E}[(X-Z)W]=0$. We
+      get that
     </p>
     <div class="math-block">
       $$
@@ -95,16 +125,47 @@
       $$
     </div>
     <p>
-      which is clearly minimized when (and only when) $Y=Z$ a.s.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      which is clearly minimized when (and only when) $Y=Z$
+      a.s.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    The above result has an interesting geometric interpretation. The expression $\mathbf{E}(X-Y)^2$ is the square of the $L_2$-distance between $X$ and $Y$ in the Hilbert space $L_2(\Omega, \mathcal{F},\mathrm{P})$. The theorem says that the conditional expectation operator $\mathbf{E}\left(\cdot\,|\,\mathcal{G}\right)$ takes a random variable $X$ and returns the closest point to $X$ in the linear subspace $L_2(\Omega, \mathcal{G},\mathrm{P})\subset L_2(\Omega, \mathcal{F},\mathrm{P})$ consisting of square-integrable $\mathcal{G}$-measurable random variables. By elementary properties of Hilbert spaces, this is equivalent to the statement that $\mathbf{E}\left(\cdot\,|\,\mathcal{G}\right)$ is the orthogonal projection operator onto the subspace $L_2(\Omega, \mathcal{G},\mathrm{P})$.
+    The above result has an interesting geometric
+    interpretation. The expression $\mathbf{E}(X-Y)^2$ is
+    the square of the $L_2$-distance between $X$ and $Y$
+    in the Hilbert space
+    $L_2(\Omega, \mathcal{F},\mathrm{P})$. The theorem
+    says that the conditional expectation operator
+    $\mathbf{E}\left(\cdot\,|\,\mathcal{G}\right)$ takes
+    a random variable $X$ and returns the closest point
+    to $X$ in the linear subspace
+    $L_2(\Omega, \mathcal{G},\mathrm{P})\subset
+    L_2(\Omega, \mathcal{F},\mathrm{P})$
+    consisting of square-integrable
+    $\mathcal{G}$-measurable random variables. By
+    elementary properties of Hilbert spaces, this is
+    equivalent to the statement that
+    $\mathbf{E}\left(\cdot\,|\,\mathcal{G}\right)$ is the
+    orthogonal projection operator onto the subspace
+    $L_2(\Omega, \mathcal{G},\mathrm{P})$.
   </p>
   <p>
-    One way in which this geometric interpretation is useful is that it suggests an alternative approach to defining conditional expectations that does not rely on the Radon-Nikodym Theorem: first construct the conditional expectation operator $\mathbf{E}\left(\cdot\,|\,\mathcal{G}\right)$ for square-integrable random variables by defining it as an orthogonal projection operator; then extend the definition to the space $L_1(\Omega,\mathcal{F},\mathrm{P})$ of integrable random variables by approximating such variables by square-integrable ones. The book
-    <i>Probability With Martingales</i>
-    by David Williams is one textbook where such an approach is developed.
+    One way in which this geometric interpretation is
+    useful is that it suggests an alternative approach to
+    defining conditional expectations that does not rely
+    on the Radon-Nikodym Theorem: first construct the
+    conditional expectation operator
+    $\mathbf{E}\left(\cdot\,|\,\mathcal{G}\right)$ for
+    square-integrable random variables by defining it as
+    an orthogonal projection operator; then extend the
+    definition to the space
+    $L_1(\Omega,\mathcal{F},\mathrm{P})$ of integrable
+    random variables by approximating such variables by
+    square-integrable ones. The book
+    <i>Probability With
+      Martingales</i>
+    by David Williams is one textbook where
+    such an approach is developed.
   </p>
 </body>
 </html>

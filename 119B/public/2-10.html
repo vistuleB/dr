@@ -44,7 +44,14 @@
     The doubling map and normal numbers
   </h1>
   <p>
-    Our first application of the ergodic theorem is related to the doubling map $D(x)=2x\textrm{ mod }1$, which as we have seen preserves Lebesgue measure on $(0,1)$. We will use without proof the fact that this map is ergodic. The reason this is interesting is because the orbits $D^n(x)$ of a number $x$ encode information about the binary expansion of $x$. More precisely, write
+    Our first application of the ergodic theorem is
+    related to the doubling map $D(x)=2x\textrm{ mod }1$,
+    which as we have seen preserves Lebesgue measure on
+    $(0,1)$. We will use without proof the fact that this
+    map is ergodic. The reason this is interesting is
+    because the orbits $D^n(x)$ of a number $x$ encode
+    information about the binary expansion of $x$. More
+    precisely, write
   </p>
   <div class="math-block">
     $$
@@ -54,7 +61,12 @@
     $$
   </div>
   <p>
-    where $a_n(x) \in \{0,1\}$ is the $n$th digit in the binary expansion of $x$ (in the case of a dyadic number $m/2^N$ for which there is a small amount of ambiguity, choose the expansion which terminates with an infinite succession of $0$'s). Applying the doubling map gives
+    where $a_n(x) \in \{0,1\}$ is the $n$th digit in the
+    binary expansion of $x$ (in the case of a dyadic
+    number $m/2^N$ for which there is a small amount of
+    ambiguity, choose the expansion which terminates with
+    an infinite succession of $0$'s). Applying the
+    doubling map gives
   </p>
   <div class="math-block">
     $$
@@ -64,7 +76,14 @@
     $$
   </div>
   <p>
-    from which we conclude that $a_n(D(x)) = a_{n+1}(x)$ -- in terms of the binary expansion, the doubling map has the effect of "chopping off" the leading digit in the expansion. Successive applications of $D$ will chop off additional digits. By tracking the frequency of visits of $D(x)$ to a specific set such as $(0,1/2) = \{ u\in(0,1)\,:\, a_1(u)=0 \}$, we can prove the following result:
+    from which we conclude that $a_n(D(x)) = a_{n+1}(x)$
+    -- in terms of the binary expansion, the doubling map
+    has the effect of "chopping off" the leading digit
+    in the expansion. Successive applications of $D$ will
+    chop off additional digits. By tracking the frequency
+    of visits of $D(x)$ to a specific set such as
+    $(0,1/2) = \{ u\in(0,1)\,:\, a_1(u)=0 \}$, we can
+    prove the following result:
   </p>
   <div class="statement theorem">
     <h3>
@@ -73,7 +92,8 @@
       
     </h3>
     <p>
-      All numbers $x\in(0,1)$ except those lying in some measure-0 set have the property:
+      All numbers $x\in(0,1)$ except those lying in some
+      measure-0 set have the property:
     </p>
     <div
       id="_44_h.a.i_"
@@ -88,7 +108,8 @@
       $$
     </div>
     <p>
-      and, more generally, for any $b_1,\ldots,b_m\in\{0,1\}$, we have
+      and, more generally, for any
+      $b_1,\ldots,b_m\in\{0,1\}$, we have
     </p>
     <div
       id="_45_h.a.i_"
@@ -110,12 +131,19 @@
         href="./2-10.html#_44_h.a.i_"
         class=""
       >(35)</a>
-      is what we denoted earlier by $\mu_x^{(n)}((0,1/2))$ (with respect to the doubling map), so by the ergodic theorem, it converges to $P((0,1/2))=1/2$. Similarly, the left-hand side of
+      is what we denoted earlier by $\mu_x^{(n)}((0,1/2))$
+      (with respect to the doubling map), so by the ergodic
+      theorem, it converges to $P((0,1/2))=1/2$. Similarly,
+      the left-hand side of
       <a
         href="./2-10.html#_45_h.a.i_"
         class=""
       >(36)</a>
-      converges to the Lebesgue measure of the interval $[\sum_{j=1}^m b_j 2^{-j},\sum_{j=1}^m b_j 2^{-j}+2^{-m})$, which is $1/2^m$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      converges to the
+      Lebesgue measure of the interval
+      $[\sum_{j=1}^m b_j 2^{-j},\sum_{j=1}^m b_j
+      2^{-j}+2^{-m})$,
+      which is $1/2^m$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
@@ -126,7 +154,20 @@
       href="./2-10.html#_45_h.a.i_"
       class=""
     >(36)</a>
-    --- that is, if its binary expansion contains the digits 0 in 1 in the right asymptotic frequency of $1/2$, and similarly contains each of the types of successive pairs "$00$", "$01$", "$10$" and "$11$" with asymptotic frequency $1/4$, each triple of digits with frequency $1/8$, etc. In other words, the binary expansion of a number that is normal to base $2$ is hard to distinguish (at least based on statistics) from the output of an ideal random number generator. We proved above that "almost every" $x\in (0,1)$ (all $x$ except for those in some measure-$0$ set) is normal to base $2$. This can be generalized to arbitrary bases.
+    --- that
+    is, if its binary expansion contains the digits 0 in 1
+    in the right asymptotic frequency of $1/2$, and
+    similarly contains each of the types of successive
+    pairs "$00$", "$01$", "$10$" and "$11$" with
+    asymptotic frequency $1/4$, each triple of digits
+    with frequency $1/8$, etc. In other words, the binary
+    expansion of a number that is normal to base $2$ is
+    hard to distinguish (at least based on statistics)
+    from the output of an ideal random number generator.
+    We proved above that "almost every" $x\in (0,1)$
+    (all $x$ except for those in some measure-$0$ set) is
+    normal to base $2$. This can be generalized to
+    arbitrary bases.
   </p>
   <div
     label="Normal numbers to base $10$"
@@ -138,7 +179,13 @@
       
     </h3>
     <p>
-      Define the notion of a number $x\in(0,1)$ that is normal to base $10$. Define an interval map $E:(0,1)\to(0,1)$ that is related to the decimal expansion of a number in the same way that $D$ is related to the binary expansion, and use it to prove that almost every number $x\in(0,1)$ is normal to base $10$.
+      Define the notion of a number $x\in(0,1)$ that is
+      normal to base $10$. Define an interval map
+      $E:(0,1)\to(0,1)$ that is related to the decimal
+      expansion of a number in the same way that $D$ is
+      related to the binary expansion, and use it to prove
+      that almost every number $x\in(0,1)$ is normal to
+      base $10$.
     </p>
   </div>
 </body>

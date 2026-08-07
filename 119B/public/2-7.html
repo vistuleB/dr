@@ -44,12 +44,36 @@
     Measures and measure preserving maps
   </h1>
   <p>
-    Our study of maps so far has shown that even very simple maps such as the logistic map or the $3x+1$ map can lead to extremely complicated behavior of the associated dynamical system. Is there any hope of understanding such complicated systems in some meaningful sense? Yes, there is. A key insight is that one should focus on questions of a statistical nature: instead of trying to predict in detail where the orbit of a particular initial point $x_0$ will go (which is hopeless for a chaotic system), instead we will try to make predictions about statistical behavior of orbits, i.e., how often they visit each part of the state space. The mathematical object that encodes such a set of statistics is called a
-    <i>probability measure</i>, and as we will see, a natural condition for a measure to encode the correct information about a map is that the map is
+    Our study of maps so far has shown that even very
+    simple maps such as the logistic map or the $3x+1$
+    map can lead to extremely complicated behavior of the
+    associated dynamical system. Is there any hope of
+    understanding such complicated systems in some
+    meaningful sense? Yes, there is. A key insight is that
+    one should focus on questions of a statistical nature:
+    instead of trying to predict in detail where the orbit
+    of a particular initial point $x_0$ will go (which is
+    hopeless for a chaotic system), instead we will try to
+    make predictions about statistical behavior of orbits,
+    i.e., how often they visit each part of the state
+    space. The mathematical object that encodes such a set
+    of statistics is called a
+    <i>probability measure</i>, and
+    as we will see, a natural condition for a measure to
+    encode the correct information about a map is that the
+    map is
     <i>measure preserving</i>.
   </p>
   <p>
-    Let $\Omega$ be a set. The theory of probability measures can be developed in much greater generality, but for our purposes we will assume that $\Omega$ is a connected open (or closed) subset of $\mathbb{R}$ or of $\mathbb{R}^d$. Thus, on $\Omega$ there is a natural "measure" $d\mathbf{x}$ of $d$-dimensional volume familiar from multivariate calculus. The probability measures that we will consider take the form
+    Let $\Omega$ be a set. The theory of probability
+    measures can be developed in much greater generality,
+    but for our purposes we will assume that $\Omega$ is
+    a connected open (or closed) subset of $\mathbb{R}$
+    or of $\mathbb{R}^d$. Thus, on $\Omega$ there is a
+    natural "measure" $d\mathbf{x}$ of $d$-dimensional
+    volume familiar from multivariate calculus. The
+    probability measures that we will consider take the
+    form
   </p>
   <div class="math-block">
     $$
@@ -57,7 +81,11 @@
     $$
   </div>
   <p>
-    where $f$ is a nonnegative function such that $\int_{\Omega} f(\mathbf{x})\,d\mathbf{x} = 1$. Formally, the measure $P$ is considered to be a function $A\mapsto P(A)$ that takes a subset $A\subset \Omega$ and returns a number
+    where $f$ is a nonnegative function such that
+    $\int_{\Omega} f(\mathbf{x})\,d\mathbf{x} = 1$.
+    Formally, the measure $P$ is considered to be a
+    function $A\mapsto P(A)$ that takes a subset
+    $A\subset \Omega$ and returns a number
   </p>
   <div class="math-block">
     $$
@@ -66,15 +94,29 @@
   </div>
   <p>
     Both the function $f$, called the
-    <i>probability density function</i>
-    associated with $P$, and the set $A$ are assumed to be sufficiently well-behaved that $P(A)$ is defined. (You can learn about the precise technical definitions, which we will not discuss here, in an advanced class on real analysis, measure theory or probability theory). A set $A$ for which $P(A)$ is defined is called a
-    <i>measurable set</i>. It is an annoying fact of life that not all sets are measurable, but in practice all sets that you are ever likely to encounter will be measurable, so we will not worry about that.
+    <i>probability
+      density function</i>
+    associated with $P$, and the set $A$
+    are assumed to be sufficiently well-behaved that
+    $P(A)$ is defined. (You can learn about the precise
+    technical definitions, which we will not discuss here,
+    in an advanced class on real analysis, measure theory
+    or probability theory). A set $A$ for which $P(A)$ is
+    defined is called a
+    <i>measurable set</i>. It is an
+    annoying fact of life that not all sets are
+    measurable, but in practice all sets that you are ever
+    likely to encounter will be measurable, so we will not
+    worry about that.
   </p>
   <p>
-    Now, if $T:\Omega\to \Omega$ is a map and $P$ is a probability measure on $\Omega$, we say that $T$
+    Now, if $T:\Omega\to \Omega$ is a map and $P$ is a
+    probability measure on $\Omega$, we say that $T$
     <i>preserves the measure $P$</i>
     (or
-    <i>is measure preserving for $P$</i>) if for any measurable set $A$ the following identity holds:
+    <i>is measure
+      preserving for $P$</i>) if for any measurable set $A$
+    the following identity holds:
   </p>
   <div class="math-block">
     $$
@@ -90,8 +132,21 @@
     $$
   </div>
   <p>
-    For interval maps, it is sufficient to prove this when $A$ is an interval. The intuitive meaning of the definition is that if the measure $P$ represents the statistical distribution of a random element $x$ in $\Omega$ (corresponding to the state of the dynamical system at some time $n$), then $T(x)$, which corresponds to the state at time $n+1$, will have the same statistical distribution. In other words, the probabilistic behavior is stationary with respect to the time dynamics. A dynamical system $(\Omega, T)$ together with a probability measure $P$ that is preserved by $T$ is called a
-    <i>measure preserving system</i>. If $T$ preserves the measure $P$, we say that $P$ is an
+    For interval maps, it is sufficient to prove this
+    when $A$ is an interval. The intuitive meaning of the
+    definition is that if the measure $P$ represents the
+    statistical distribution of a random element $x$ in
+    $\Omega$ (corresponding to the state of the dynamical
+    system at some time $n$), then $T(x)$, which
+    corresponds to the state at time $n+1$, will have the
+    same statistical distribution. In other words, the
+    probabilistic behavior is stationary with respect to
+    the time dynamics. A dynamical system $(\Omega, T)$
+    together with a probability measure $P$ that is
+    preserved by $T$ is called a
+    <i>measure preserving
+      system</i>. If $T$ preserves the measure $P$, we say
+    that $P$ is an
     <i>invariant measure</i>
     for $T$.
   </p>
@@ -105,15 +160,31 @@
       
     </h3>
     <p>
-      <span class="label">Circle rotation map</span>The circle rotation map $R_\alpha$ preserves the standard length measure on $[0,1)$ (which in analysis is called
+      <span class="label">Circle rotation map</span>The circle rotation map $R_\alpha$ preserves the
+      standard length measure on $[0,1)$ (which in analysis
+      is called
       <i>Lebesgue measure</i>
       --- pronounced like
-      <i>le-baig</i>), i.e., the measure with density $f(x)\equiv 1$.
+      <i>le-baig</i>), i.e., the measure with density
+      $f(x)\equiv 1$.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>This fact is obvious if you think of the intuitive meaning of the circle rotation map, but for illustration purposes here is a formal proof. If $A$ is a subset of $[\alpha,1)$ then $R_\alpha^{-1}(A) = A-\alpha$, so clearly the length measure is preserved. Similarly, if $A \subset [0,\alpha)$ then $R_\alpha^{-1}(A) = A+1-\alpha$ and again the length measure is preserved. For a general $A\subset[0,1)$, write $A$ as a disjoint union $A=A'\sqcup A"$ where $A'\subset[0,\alpha)$, $A"\subset[\alpha,1)$, then $R_\alpha^{-1}(A) = R_\alpha^{-1}(A')\sqcup R_\alpha^{-1}(A")$ has the same Lebesgue measure as $A$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span>This fact is obvious if you think of the intuitive
+      meaning of the circle rotation map, but for
+      illustration purposes here is a formal proof. If $A$
+      is a subset of $[\alpha,1)$ then
+      $R_\alpha^{-1}(A) = A-\alpha$, so clearly the length
+      measure is preserved. Similarly, if
+      $A \subset [0,\alpha)$ then
+      $R_\alpha^{-1}(A) = A+1-\alpha$ and again the length
+      measure is preserved. For a general $A\subset[0,1)$,
+      write $A$ as a disjoint union $A=A'\sqcup A"$ where
+      $A'\subset[0,\alpha)$, $A"\subset[\alpha,1)$, then
+      $R_\alpha^{-1}(A) = R_\alpha^{-1}(A')\sqcup
+      R_\alpha^{-1}(A")$
+      has the same Lebesgue measure as $A$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div
@@ -156,7 +227,9 @@
       
     </h3>
     <p>
-      Show that the tent map $\Lambda_2$ (the special case $a=2$ of the family of tent maps $\Lambda_a$) preserves Lebesgue measure.
+      Show that the tent map $\Lambda_2$ (the special case
+      $a=2$ of the family of tent maps $\Lambda_a$)
+      preserves Lebesgue measure.
     </p>
   </div>
   <div
@@ -169,7 +242,8 @@
       
     </h3>
     <p>
-      <span class="label">Logistic map $L_4$</span>For $r=4$, the logistic map $L_r=L_4$ preserves the measure
+      <span class="label">Logistic map $L_4$</span>For $r=4$, the logistic map $L_r=L_4$ preserves the
+      measure
     </p>
     <div class="math-block">
       $$
@@ -179,7 +253,8 @@
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Denote $f(x)=\frac{1}{\pi \sqrt{x(1-x)}}$. If $A \subset [0,1]$ is an interval, then
+      <span class="proof">Proof</span>Denote $f(x)=\frac{1}{\pi \sqrt{x(1-x)}}$. If
+      $A \subset [0,1]$ is an interval, then
     </p>
     <div class="math-block">
       $$
@@ -192,7 +267,12 @@
       $$
     </div>
     <p>
-      where we define $\lambda_1(y)=\tfrac12(1-\sqrt{1-y}), \lambda_2(z)=\tfrac12(1+\sqrt{1-z})$ (the functions $x=\lambda_{1,2}(w)$ are the two solutions of the equation $L_4(w)=x$), and we make the substitutions
+      where we define
+      $\lambda_1(y)=\tfrac12(1-\sqrt{1-y}),
+      \lambda_2(z)=\tfrac12(1+\sqrt{1-z})$
+      (the functions $x=\lambda_{1,2}(w)$ are the two
+      solutions of the equation $L_4(w)=x$), and we make
+      the substitutions
     </p>
     <div class="math-block">
       $$
@@ -202,10 +282,15 @@
       $$
     </div>
     <p>
-      Note that $L_4$ is decreasing on $[1/2,1]$, which explains why we needed to insert a minus sign in front of the $L_4'(\lambda_2(z))$ term in the second integral.
+      Note that $L_4$ is decreasing on $[1/2,1]$, which
+      explains why we needed to insert a minus sign in front
+      of the $L_4'(\lambda_2(z))$ term in the second
+      integral.
     </p>
     <p>
-      Now, since we are trying to prove that the expression above is equal to $P(A)=\int_A f(x)\,dx$, it will be enough to show that the following identity holds:
+      Now, since we are trying to prove that the expression
+      above is equal to $P(A)=\int_A f(x)\,dx$, it will be
+      enough to show that the following identity holds:
     </p>
     <div class="math-block">
       $$
@@ -215,7 +300,10 @@
       $$
     </div>
     <p>
-      (the absolute value signs make the sum on the right more symmetric, though of course the first one is unnecessary). This identity is strange but easy to verify: noting the simple relations
+      (the absolute value signs make the sum on the right
+      more symmetric, though of course the first one is
+      unnecessary). This identity is strange but easy to
+      verify: noting the simple relations
     </p>
     <div class="math-block">
       $$
@@ -244,7 +332,9 @@
     </p>
   </div>
   <p>
-    The idea used in the proof above can be generalized to give a criterion for checking whether a map is measure-preserving.
+    The idea used in the proof above can be generalized
+    to give a criterion for checking whether a map is
+    measure-preserving.
   </p>
   <div
     class="statement lemma"
@@ -256,7 +346,14 @@
       
     </h3>
     <p>
-      Let $T:I\to I$ be an interval map that is piecewise smooth and monotonic, i.e., the interval $I$ can be decomposed into a union of finitely many subintervals on each of which $T$ is smooth and monotonic (in fact, the claim is true even if this is true for a subdivision into countably many subintervals). Then $T$ preserves the measure $P(dx)=f(x)dx$ if and only if the density $f(x)$ satisfies the equation
+      Let $T:I\to I$ be an interval map that is piecewise
+      smooth and monotonic, i.e., the interval $I$ can be
+      decomposed into a union of finitely many subintervals
+      on each of which $T$ is smooth and monotonic (in
+      fact, the claim is true even if this is true for a
+      subdivision into countably many subintervals). Then
+      $T$ preserves the measure $P(dx)=f(x)dx$ if and only
+      if the density $f(x)$ satisfies the equation
     </p>
     <div class="math-block">
       $$
@@ -266,7 +363,8 @@
       $$
     </div>
     <p>
-      for all but countably many points $x\in I$, where the sum ranges over all pre-images of $x$.
+      for all but countably many points $x\in I$, where the
+      sum ranges over all pre-images of $x$.
     </p>
   </div>
   <div class="statement exercise">
@@ -293,7 +391,8 @@
       
     </h3>
     <p>
-      <span class="label">Gauss map</span>The Gauss map $G(x)$ preserves the measure $\gamma$ on $(0,1)$ (called
+      <span class="label">Gauss map</span>The Gauss map $G(x)$ preserves the measure $\gamma$
+      on $(0,1)$ (called
       <i>Gauss measure</i>), defined by
     </p>
     <div class="math-block">
@@ -327,7 +426,8 @@
       
     </h3>
     <p>
-      The additive Gauss map $g:[0,1]\to[0,1]$ is defined by
+      The additive Gauss map $g:[0,1]\to[0,1]$ is defined
+      by
     </p>
     <div class="math-block">
       $$
@@ -339,7 +439,8 @@
       $$
     </div>
     <p>
-      (see Figure (11a)). Show that $g$ preserves the measure
+      (see Figure (11a)). Show that $g$ preserves the
+      measure
     </p>
     <div class="math-block">
       $$
@@ -347,7 +448,10 @@
       $$
     </div>
     <p>
-      (Note: this measure is not a probability measure, since the integral of the density is infinite. However, the concept of measure-preservation makes sense for such measures, and
+      (Note: this measure is not a probability measure,
+      since the integral of the density is infinite.
+      However, the concept of measure-preservation makes
+      sense for such measures, and
       <a
         href="./2-7.html#_43_h.a.i_"
         class=""
@@ -403,7 +507,9 @@
       $$
     </div>
     <p>
-      arises in the study of Pythagorean triples. (Figure 11(b) explains why it is denoted by $N$.) Show that it preserves the measure
+      arises in the study of Pythagorean triples. (Figure
+      11(b) explains why it is denoted by $N$.) Show that
+      it preserves the measure
     </p>
     <div class="math-block">
       $$
@@ -414,7 +520,11 @@
     </div>
   </div>
   <p>
-    Although much of our discussion has been focused on interval maps, the concept of measure preserving systems appears in many different contexts (including some rather exotic ones), as the next few examples illustrate.
+    Although much of our discussion has been focused on
+    interval maps, the concept of measure preserving
+    systems appears in many different contexts (including
+    some rather exotic ones), as the next few examples
+    illustrate.
   </p>
   <figure>
     <span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
@@ -425,7 +535,8 @@
         style="max-width: 100%; display: block; margin: 0 auto"
       >(b)</span>
     <figcaption>
-      Figure 11: (a) The additive Gauss map; (b) The Pythagorean triples map.
+      Figure 11: (a) The additive Gauss map; (b) The
+      Pythagorean triples map.
     </figcaption>
   </figure>
   <div
@@ -438,7 +549,14 @@
       
     </h3>
     <p>
-      <span class="label">Hamiltonian flow</span>By Liouville's theorem, the phase flow of a Hamiltonian system preserves area measure in $\mathbb{R}^2$ (also called the two-dimensional Lebesgue measure). This is a continuous-time dynamical system, but the notion of measure preserving dynamics makes sense for such systems as well. In particular, if the system is discretized by fixing a time step $\tau$, we get a map preserving Lebesgue measure.
+      <span class="label">Hamiltonian flow</span>By Liouville's theorem, the phase flow of a
+      Hamiltonian system preserves area measure in
+      $\mathbb{R}^2$ (also called the two-dimensional
+      Lebesgue measure). This is a continuous-time dynamical
+      system, but the notion of measure preserving dynamics
+      makes sense for such systems as well. In particular,
+      if the system is discretized by fixing a time step
+      $\tau$, we get a map preserving Lebesgue measure.
     </p>
   </div>
   <div
@@ -451,7 +569,22 @@
       
     </h3>
     <p>
-      <span class="label">Geodesic flow</span>The geodesic flow is a continuous-time dynamical system on a curved surface. Its phase space is the set of points $(x,v)$ where $x$ is a point on the surface and $v$ is a tangent vector to the surface based at $x$ (representing the direction and speed in which a person standing at $x$ will start walking). The flow $\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$ and maps it to a new pair $(x',v')=\varphi(x,v)$ representing where the person will be, and which direction they will be pointing at, $t$ time units later. It can be shown that the geodesic flow preserves the natural volume measure associated with the phase space (roughly speaking, the measure is product of the surface area measure of the surface in the component $x$, and a standard area measure in the $v$ component).
+      <span class="label">Geodesic flow</span>The geodesic flow is a continuous-time dynamical
+      system on a curved surface. Its phase space is the set
+      of points $(x,v)$ where $x$ is a point on the surface
+      and $v$ is a tangent vector to the surface based at
+      $x$ (representing the direction and speed in which a
+      person standing at $x$ will start walking). The flow
+      $\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$
+      and maps it to a new pair $(x',v')=\varphi(x,v)$
+      representing where the person will be, and which
+      direction they will be pointing at, $t$ time units
+      later. It can be shown that the geodesic flow
+      preserves the natural volume measure associated with
+      the phase space (roughly speaking, the measure is
+      product of the surface area measure of the surface in
+      the component $x$, and a standard area measure in the
+      $v$ component).
     </p>
   </div>
   <div
@@ -464,7 +597,13 @@
       
     </h3>
     <p>
-      <span class="label">Billiard map</span>Billiard maps can be thought of as a limiting case of certain Hamiltonian systems (think of a limit in which the reflecting wall is actually a strongly repelling potential well that becomes steeper and steeper), so they too have an invariant measure. In certain natural coordinates $\phi, \theta, \ell$, the formula for the invariant measure becomes
+      <span class="label">Billiard map</span>Billiard maps can be thought of as a limiting case of
+      certain Hamiltonian systems (think of a limit in which
+      the reflecting wall is actually a strongly repelling
+      potential well that becomes steeper and steeper), so
+      they too have an invariant measure. In certain natural
+      coordinates $\phi, \theta, \ell$, the formula for the
+      invariant measure becomes
     </p>
     <div class="math-block">
       $$
@@ -474,8 +613,10 @@
       $$
     </div>
     <p>
-      (For the meaning of these quantities, see the interesting article
-      <i>What is the ergodic theorem?</i>, G. D. Birkhoff,
+      (For the meaning of these quantities, see the
+      interesting article
+      <i>What is the ergodic theorem?</i>, G.
+      D. Birkhoff,
       <i>American Math. Monthly</i>, April 1942.)
     </p>
   </div>
@@ -489,12 +630,17 @@
       
     </h3>
     <p>
-      <span class="label">$3x+1$ map</span>One of the many (ultimately unsuccessful) attempts at solving the famous $3x+1$ problem mentioned in
+      <span class="label">$3x+1$ map</span>One of the many (ultimately unsuccessful) attempts at
+      solving the famous $3x+1$ problem mentioned in
       <a
         href="./2-1.html#_36_h.a.i_"
         class=""
       >Section 2.1</a>
-      was based on the observation that since the formula of the $3x+1$ map $T(x)$ depends on the parity of $x$, the range of definition of $T$ can be expanded to include numbers of the form
+      was based on the
+      observation that since the formula of the $3x+1$ map
+      $T(x)$ depends on the parity of $x$, the range of
+      definition of $T$ can be expanded to include numbers
+      of the form
     </p>
     <div class="math-block">
       $$
@@ -504,11 +650,17 @@
       $$
     </div>
     <p>
-      Such exotic numbers, which have an infinite binary expansion to the
+      Such exotic numbers, which have an infinite binary
+      expansion to the
       <i>left</i>
-      of the "binary point", are called
+      of the "binary point", are
+      called
       <i>$2$-adic integers</i>
-      and have fascinating properties. In particular, there is a natural measure associated with them that is analogous to Lebesgue measure on $\mathbb{R}$. It can be shown that the extended $3x+1$ map preserves this measure.
+      and have fascinating
+      properties. In particular, there is a natural measure
+      associated with them that is analogous to Lebesgue
+      measure on $\mathbb{R}$. It can be shown that the
+      extended $3x+1$ map preserves this measure.
     </p>
   </div>
 </body>

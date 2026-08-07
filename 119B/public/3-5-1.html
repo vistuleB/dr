@@ -44,7 +44,11 @@
     A first attempt
   </h1>
   <p>
-    An obvious idea to try is to switch the electromagnet on when $x&lt;0$ and off when $x&gt;0$. That is, we try the control rule $u=-\operatorname{sgn}(x)$ (where $\operatorname{sgn}(x)=x/|x|$ is the signum function), leading to the equation of motion
+    An obvious idea to try is to switch the electromagnet
+    on when $x&lt;0$ and off when $x&gt;0$. That is, we try the
+    control rule $u=-\operatorname{sgn}(x)$ (where
+    $\operatorname{sgn}(x)=x/|x|$ is the signum
+    function), leading to the equation of motion
   </p>
   <div
     id="_55_h.a.i_"
@@ -59,7 +63,8 @@
     $$
   </div>
   <p>
-    This can be represented in the usual way as a planar system of first-order ODEs, namely
+    This can be represented in the usual way as a planar
+    system of first-order ODEs, namely
   </p>
   <div class="math-block">
     $$
@@ -69,7 +74,11 @@
     $$
   </div>
   <p>
-    It is not hard to see how to draw the phase portrait for this system. First, imagine that there is no electromagnet, which leads to the simpler system (describing simply the motion of a particle under a uniform gravitational force)
+    It is not hard to see how to draw the phase portrait
+    for this system. First, imagine that there is no
+    electromagnet, which leads to the simpler system
+    (describing simply the motion of a particle under a
+    uniform gravitational force)
   </p>
   <div
     id="_56_h.a.i_"
@@ -94,7 +103,9 @@
     $$
   </div>
   <p>
-    where $x_0$ is the initial position and $y_0$ is the initial velocity. We then have that $y=y_0-t$, and therefore
+    where $x_0$ is the initial position and $y_0$ is the
+    initial velocity. We then have that $y=y_0-t$, and
+    therefore
   </p>
   <div class="math-block">
     $$
@@ -104,7 +115,10 @@
     $$
   </div>
   <p>
-    in other words, the solution curves of the system have the form $x=a-\tfrac12 y^2$ where $a$ is some arbitrary parameter. This leads to the phase portrait shown in Figure 14.
+    in other words, the solution curves of the system
+    have the form $x=a-\tfrac12 y^2$ where $a$ is some
+    arbitrary parameter. This leads to the phase portrait
+    shown in Figure 14.
   </p>
   <figure>
     <img
@@ -112,7 +126,8 @@
       style="max-width: 55%"
     >
     <figcaption>
-      Figure 14: The phase portrait for a particle falling under the influence of gravity.
+      Figure 14: The phase portrait for a particle falling
+      under the influence of gravity.
     </figcaption>
   </figure>
   <p>
@@ -121,11 +136,30 @@
       href="./3-5-1.html#_55_h.a.i_"
       class=""
     >(43)</a>
-    consists of modifying the equation vector field by reflecting the flow curves for negative $x$ so that they mirror the lines for positive $x$. This leads to the phase portrait in Figure 15. We see that the system indeed has a rest point at $(x,y)=(0,0)$. However, the rest point is a center, i.e., it is only neutrally stable (this is to be expected, since in fact this is an autonomous Hamiltonian system arising from a potential energy $U(x)=|x|$, and we know energy is conserved in such systems, leading to periodic oscillatory motions). So, a particle moving according to these equations of motion will indeed levitate, but will do so in a way that oscillates around the reference point $x=0$, and only under the unrealistic assumption that the physical system is indeed described to perfect precision by the equations
+    consists of
+    modifying the equation vector field by reflecting the
+    flow curves for negative $x$ so that they mirror the
+    lines for positive $x$. This leads to the phase
+    portrait in Figure 15. We see that the system indeed
+    has a rest point at $(x,y)=(0,0)$. However, the rest
+    point is a center, i.e., it is only neutrally stable
+    (this is to be expected, since in fact this is an
+    autonomous Hamiltonian system arising from a potential
+    energy $U(x)=|x|$, and we know energy is conserved in
+    such systems, leading to periodic oscillatory
+    motions). So, a particle moving according to these
+    equations of motion will indeed levitate, but will do
+    so in a way that oscillates around the reference point
+    $x=0$, and only under the unrealistic assumption that
+    the physical system is indeed described to perfect
+    precision by the equations
     <a
       href="./3-5-1.html#_55_h.a.i_"
       class=""
-    >(43)</a>. In practice, due to the finite speed of response of the switching control, any physical implementation of this control rule will be unstable.
+    >(43)</a>. In
+    practice, due to the finite speed of response of the
+    switching control, any physical implementation of this
+    control rule will be unstable.
   </p>
   <figure>
     <img
@@ -133,7 +167,11 @@
       style="max-width: 55%"
     >
     <figcaption>
-      Figure 15: The phase portrait for the equation of motion of a magnetically levitated object, using the "naive" approach. The rest point is only neutrally stable, and in practice this approach does not result in stable levitation.
+      Figure 15: The phase portrait for the equation of
+      motion of a magnetically levitated object, using the
+      "naive" approach. The rest point is only neutrally
+      stable, and in practice this approach does not result
+      in stable levitation.
     </figcaption>
   </figure>
 </body>

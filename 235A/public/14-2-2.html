@@ -53,7 +53,11 @@
       
     </h3>
     <p>
-      <span class="label">Erdös-Kac theorem (1940)</span>Let $g(m)$ denote the number of prime divisors of an integer $k$ (for example, $g(28)=2)$. For each $n\ge 1$, let $X_n$ be a uniformly random integer chosen in $\{1,2,\ldots,n\}$, and let $Y_n=g(X_n)$ be the number of prime divisors of $X_n$. Then we have
+      <span class="label">Erdös-Kac theorem (1940)</span>Let $g(m)$ denote the number of prime divisors of an
+      integer $k$ (for example, $g(28)=2)$. For each
+      $n\ge 1$, let $X_n$ be a uniformly random integer
+      chosen in $\{1,2,\ldots,n\}$, and let $Y_n=g(X_n)$ be
+      the number of prime divisors of $X_n$. Then we have
     </p>
     <div class="math-block">
       $$
@@ -71,11 +75,19 @@
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>See [Dur2010], p. 114--117 or [Dur2004], p. 119--124. The proof uses the moment method.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span>See [Dur2010], p. 114--117 or [Dur2004], p. 119--124.
+      The proof uses the moment method.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    Note that $Y_n$ can be written in the form $\sum_{p\le n} \mathbf{1}_{\{p | X_n\}}$, namely the sum over all primes $p\le n$ of the indicator of the event that $X_n$ is divisible by $p$. The probability that $X_n$ is divisible by $p$ is roughly $1/p$, at least if $p$ is significantly smaller than $n$. Therefore we can expect $Y_n$  to be on the average around
+    Note that $Y_n$ can be written in the form
+    $\sum_{p\le n} \mathbf{1}_{\{p | X_n\}}$, namely the
+    sum over all primes $p\le n$ of the indicator of the
+    event that $X_n$ is divisible by $p$. The probability
+    that $X_n$ is divisible by $p$ is roughly $1/p$, at
+    least if $p$ is significantly smaller than $n$.
+    Therefore we can expect $Y_n$  to be on the average
+    around
   </p>
   <div class="math-block">
     $$
@@ -83,7 +95,21 @@
     $$
   </div>
   <p>
-    a sum that is known (thanks to Euler) to behave roughly like $\log\log n$. The Erdös-Kac theorem is intuitively related to the observation that these indicators $\mathbf{1}_{\{p | X_n\}}$ for different $p$'s are also close to being independent (a fact which follows from the Chinese remainder theorem). Of course, they are only approximately independent, and making these observations precise is the challenge to proving the theorem. In fact, many famous open problems in number theory (even the Riemann Hypothesis, widely considered to be the most important open problem in mathematics) can be formulated in terms of a statement about approximate independence (in some loose sense) of some arithmetic sequence relating to the prime numbers.
+    a sum that is known (thanks to Euler) to behave
+    roughly like $\log\log n$. The Erdös-Kac theorem is
+    intuitively related to the observation that these
+    indicators $\mathbf{1}_{\{p | X_n\}}$ for different
+    $p$'s are also close to being independent (a fact
+    which follows from the Chinese remainder theorem). Of
+    course, they are only approximately independent, and
+    making these observations precise is the challenge to
+    proving the theorem. In fact, many famous open
+    problems in number theory (even the Riemann
+    Hypothesis, widely considered to be the most important
+    open problem in mathematics) can be formulated in
+    terms of a statement about approximate independence
+    (in some loose sense) of some arithmetic sequence
+    relating to the prime numbers.
   </p>
 </body>
 </html>

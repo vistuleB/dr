@@ -44,8 +44,14 @@
     Convergence theorems for expectations
   </h1>
   <p>
-    We want to study notions of continuity for the expectation operator. If $X_n\to X$ as $n\to\infty$, under what conditions do we have that $\mathbf{E}(X_n)\to \mathbf{E} X$? First we have to decide what "$X_n\to X$" actually
-    <i>means</i>. We define two notions of convergence of a sequence of random variables to a limit.
+    We want to study notions of continuity for the
+    expectation operator. If $X_n\to X$ as $n\to\infty$,
+    under what conditions do we have that
+    $\mathbf{E}(X_n)\to \mathbf{E} X$? First we have to
+    decide what "$X_n\to X$" actually
+    <i>means</i>. We
+    define two notions of convergence of a sequence of
+    random variables to a limit.
   </p>
   <div class="statement definition">
     <h3>
@@ -54,8 +60,11 @@
       
     </h3>
     <p>
-      Let $X, X_1, X_2, \ldots$ be random variables all defined on the same probability space. We say that
-      <b>$X_n$ converges in probability to $X$</b>, and denote $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$, if for all $\epsilon&gt;0$ we have that
+      Let $X, X_1, X_2, \ldots$ be random variables all
+      defined on the same probability space. We say that
+      <b>$X_n$ converges in probability to $X$</b>, and denote
+      $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$, if for
+      all $\epsilon&gt;0$ we have that
     </p>
     <div class="math-block">
       $$
@@ -71,9 +80,12 @@
     </h3>
     <p>
       With $X,X_1,X_2,\ldots$ as before, we say that
-      <b>$X_n$ converges almost surely to $X$</b>
+      <b>$X_n$
+        converges almost surely to $X$</b>
       (or
-      <b>converges to $X$ with probability 1</b>), and denote $X_n \xrightarrow[n\to\infty]{\textrm{a.s.}} X$, if
+      <b>converges to $X$
+        with probability 1</b>), and denote
+      $X_n \xrightarrow[n\to\infty]{\textrm{a.s.}} X$, if
     </p>
     <div class="math-block">
       $$
@@ -88,7 +100,15 @@
       
     </h3>
     <p>
-      Show that $\left\{ \omega \in \Omega : X(\omega)=\lim_{n\to\infty} X_n(\omega) \right\}$ is an event and therefore has a well-defined probability. In other words, represent it in terms of countable union, intersection and complementation operations on simple sets that are known to be events. Hint: Use the $\epsilon-\delta$ definition of a limit.
+      Show that
+      $\left\{ \omega \in \Omega :
+      X(\omega)=\lim_{n\to\infty} X_n(\omega) \right\}$
+      is an event and therefore has a well-defined
+      probability. In other words, represent it in terms of
+      countable union, intersection and complementation
+      operations on simple sets that are known to be events.
+      Hint: Use the $\epsilon-\delta$ definition of a
+      limit.
     </p>
   </div>
   <div
@@ -101,7 +121,12 @@
       
     </h3>
     <p>
-      Almost sure convergence is a stronger notion of convergence than convergence in probability. In other words, if $X_n\xrightarrow[n\to\infty]{\textrm{a.s.}} X$ then $X_n\xrightarrow[n\to\infty]{\mathrm{P}} X$, but the converse is not true.
+      Almost sure convergence is a stronger notion of
+      convergence than convergence in probability. In other
+      words, if
+      $X_n\xrightarrow[n\to\infty]{\textrm{a.s.}} X$ then
+      $X_n\xrightarrow[n\to\infty]{\mathrm{P}} X$, but the
+      converse is not true.
     </p>
   </div>
   <div class="statement exercise">
@@ -115,7 +140,11 @@
       <a
         href="./7-3.html#_19_h.a.i_"
         class=""
-      >Lemma 7.6</a>. For the counterexample showing that convergence in probability does not imply almost sure convergence, consider the following sequence of random variables defined on the space $((0,1),{\cal B}, \textrm{Lebesgue measure})$:
+      >Lemma 7.6</a>. For the
+      counterexample showing that convergence in probability
+      does not imply almost sure convergence, consider the
+      following sequence of random variables defined on the
+      space $((0,1),{\cal B}, \textrm{Lebesgue measure})$:
     </p>
     <div class="math-block">
       $$
@@ -138,7 +167,11 @@
       
     </h3>
     <p>
-      If $(X_n)_{n=1}^\infty$ is a sequence of r.v.s such that $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$ then there exists a subsequence $(X_{n_k})_{k=1}^\infty$ such that $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
+      If $(X_n)_{n=1}^\infty$ is a sequence of r.v.s such
+      that $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$
+      then there exists a subsequence
+      $(X_{n_k})_{k=1}^\infty$ such that
+      $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
     </p>
   </div>
   <div class="statement exercise">
@@ -156,7 +189,8 @@
     </p>
   </div>
   <p>
-    We can now formulate the fundamental convergence theorems for Lebesgue integration.
+    We can now formulate the fundamental convergence
+    theorems for Lebesgue integration.
   </p>
   <div
     label="Bounded convergence theorem"
@@ -168,7 +202,9 @@
       
     </h3>
     <p>
-      <span class="label">Bounded convergence theorem</span>If $X_n$ is a sequence of r.v.'s such that $|X_n|\le M$ for all $n$, and $X_n\to X$ in probability, then $\mathbf{E} X_n \to \mathbf{E} X$.
+      <span class="label">Bounded convergence theorem</span>If $X_n$ is a sequence of r.v.'s such that
+      $|X_n|\le M$ for all $n$, and $X_n\to X$ in
+      probability, then $\mathbf{E} X_n \to \mathbf{E} X$.
     </p>
   </div>
   <div>
@@ -184,7 +220,9 @@
       $$
     </div>
     <p>
-      Since $\epsilon$ was an arbitrary positive number, this implies that $|\mathbf{E} X_n-\mathbf{E} X|\to 0$, as claimed.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      Since $\epsilon$ was an arbitrary positive number,
+      this implies that
+      $|\mathbf{E} X_n-\mathbf{E} X|\to 0$, as claimed.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div
@@ -197,15 +235,23 @@
       
     </h3>
     <p>
-      <span class="label">Fatou's lemma</span>If $X_n \ge 0$ then $\liminf_{n\to\infty} \mathbf{E} X_n \ge \mathbf{E}(\liminf_{n\to\infty} X_n).$
+      <span class="label">Fatou's lemma</span>If $X_n \ge 0$ then
+      $\liminf_{n\to\infty} \mathbf{E} X_n \ge
+      \mathbf{E}(\liminf_{n\to\infty} X_n).$
     </p>
   </div>
   <p>
-    To see that the inequality in the lemma can fail to be an equality, let $U \sim U(0,1)$, and define $X_n = n 1_{\{U\le 1/n\}}$. Clearly $\liminf_{n\to\infty}X_n=\lim_{n\to\infty} X_n \equiv 0$, but $\mathbf{E}(X_n) = 1$ for all $n$.
+    To see that the inequality in the lemma can fail to
+    be an equality, let $U \sim U(0,1)$, and define
+    $X_n = n 1_{\{U\le 1/n\}}$. Clearly
+    $\liminf_{n\to\infty}X_n=\lim_{n\to\infty} X_n \equiv
+    0$,
+    but $\mathbf{E}(X_n) = 1$ for all $n$.
   </p>
   <div>
     <p>
-      <span class="proof">Proof</span>Let $Y = \liminf_{n\to\infty} X_n$. Note that $Y$ can be written as
+      <span class="proof">Proof</span>Let $Y = \liminf_{n\to\infty} X_n$. Note that $Y$ can
+      be written as
     </p>
     <div class="math-block">
       $$
@@ -213,7 +259,9 @@
       $$
     </div>
     <p>
-      (this is a general fact about the lim inf of a sequence of real numbers), or $Y = \sup_n Y_n$, where we denote
+      (this is a general fact about the lim inf of a
+      sequence of real numbers), or $Y = \sup_n Y_n$, where
+      we denote
     </p>
     <div class="math-block">
       $$
@@ -221,7 +269,12 @@
       $$
     </div>
     <p>
-      We have $Y_n \le X_n$, and as $n\to\infty$, $Y_n \to Y$ (in fact $Y_n \uparrow Y$) almost surely. Therefore $\mathbf{E} Y_n \le \mathbf{E} X_n$, so $\liminf_{n\to\infty} \mathbf{E} Y_n \le \liminf_{n\to\infty} \mathbf{E} X_n$, and therefore it is enough to show that
+      We have $Y_n \le X_n$, and as $n\to\infty$,
+      $Y_n \to Y$ (in fact $Y_n \uparrow Y$) almost surely.
+      Therefore $\mathbf{E} Y_n \le \mathbf{E} X_n$, so
+      $\liminf_{n\to\infty} \mathbf{E} Y_n \le
+      \liminf_{n\to\infty} \mathbf{E} X_n$,
+      and therefore it is enough to show that
     </p>
     <div class="math-block">
       $$
@@ -237,7 +290,9 @@
       $$
     </div>
     <p>
-      and this is a sequence of uniformly bounded r.v.'s, therefore by the bounded convergence theorem we get that
+      and this is a sequence of uniformly bounded r.v.'s,
+      therefore by the bounded convergence theorem we get
+      that
     </p>
     <div class="math-block">
       $$
@@ -245,7 +300,11 @@
       $$
     </div>
     <p>
-      We therefore get that $\liminf_{n\to\infty} \mathbf{E}(Y_n)\ge \mathbf{E}(Y\wedge M)$ for any $M&gt;0$, which implies the result because of the following exercise.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      We therefore get that
+      $\liminf_{n\to\infty} \mathbf{E}(Y_n)\ge
+      \mathbf{E}(Y\wedge M)$
+      for any $M&gt;0$, which implies the result because of
+      the following exercise.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div class="statement exercise">
@@ -273,7 +332,8 @@
       
     </h3>
     <p>
-      <span class="label">Monotone convergence theorem</span>If $0\le X_n \uparrow X$ as $n\to\infty$ then $\mathbf{E} X_n \uparrow \mathbf{E} X$.
+      <span class="label">Monotone convergence theorem</span>If $0\le X_n \uparrow X$ as $n\to\infty$ then
+      $\mathbf{E} X_n \uparrow \mathbf{E} X$.
     </p>
   </div>
   <div>
@@ -299,12 +359,15 @@
       
     </h3>
     <p>
-      <span class="label">Dominated convergence theorem</span>If $X_n\to X$ almost surely, $|X_n|\le Y$ for all $n\ge 1$ and $\mathbf{E} Y&lt;\infty$, then $\mathbf{E} X_n\to \mathbf{E} X$.
+      <span class="label">Dominated convergence theorem</span>If $X_n\to X$ almost surely, $|X_n|\le Y$ for all
+      $n\ge 1$ and $\mathbf{E} Y&lt;\infty$, then
+      $\mathbf{E} X_n\to \mathbf{E} X$.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Apply Fatou's lemma separately to $Y+X_n$ and to $Y-X_n$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span>Apply Fatou's lemma separately to $Y+X_n$ and to
+      $Y-X_n$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
 </body>

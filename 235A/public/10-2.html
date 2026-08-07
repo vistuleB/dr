@@ -44,7 +44,12 @@
     Infinite expectations and triangular arrays
   </h1>
   <p>
-    After treating the "classical" case of an i.i.d. sequence with finite expectations, let's turn to slightly more exotic situations. First, what happens if the expectation is infinite? For the strong law, the following result shows that we have no hope of having convergence in a meaningful sense.
+    After treating the "classical" case of an i.i.d.
+    sequence with finite expectations, let's turn to
+    slightly more exotic situations. First, what happens
+    if the expectation is infinite? For the strong law,
+    the following result shows that we have no hope of
+    having convergence in a meaningful sense.
   </p>
   <div
     label="Converse to SLLN"
@@ -56,7 +61,8 @@
       
     </h3>
     <p>
-      <span class="label">Converse to SLLN</span>If $X_1,X_2,\ldots,$ is an i.i.d. sequence of r.v.'s with $\mathbf{E}|X_1|=\infty$, then
+      <span class="label">Converse to SLLN</span>If $X_1,X_2,\ldots,$ is an i.i.d. sequence of r.v.'s
+      with $\mathbf{E}|X_1|=\infty$, then
     </p>
     <div class="math-block">
       $$
@@ -70,7 +76,17 @@
     </p>
   </div>
   <p>
-    What about the weak law? It turns out that a weak law can still hold in certain situations with infinite expectations, although one has to consider a generalized empirical average where the sum of the first $n$ samples is divided by a quantity growing faster than $n$. Rather than develop a complete theory, we will consider the particular example of the $\textbf{St. Petersburg Lottery}$. In this example, the winning in a single round of lottery is an integer-valued random variable with the following distribution:
+    What about the weak law? It turns out that a weak law
+    can still hold in certain situations with infinite
+    expectations, although one has to consider a
+    generalized empirical average where the sum of the
+    first $n$ samples is divided by a quantity growing
+    faster than $n$. Rather than develop a complete
+    theory, we will consider the particular example of the
+    $\textbf{St. Petersburg Lottery}$. In this example,
+    the winning in a single round of lottery is an
+    integer-valued random variable with the following
+    distribution:
   </p>
   <div class="math-block">
     $$
@@ -78,8 +94,16 @@
     $$
   </div>
   <p>
-    Let $X_1,X_2,\ldots,$ be an i.i.d. sequence with the same distribution, and let $S_n = \sum_{k=1}^n X_k$. How much should you agree to pay to be allowed to play this lottery $n$ times? (Even the seemingly simple case $n=1$ of this question  has been a subject of quite some debate by economists! See
-    <a href="http://en.wikipedia.org/wiki/St._Petersburg_paradox">the Wikipedia article on the St. Petersburg paradox</a>). In other words, how big should we expect $S_n$ to be,
+    Let $X_1,X_2,\ldots,$ be an i.i.d. sequence with the
+    same distribution, and let $S_n = \sum_{k=1}^n X_k$.
+    How much should you agree to pay to be allowed to play
+    this lottery $n$ times? (Even the seemingly simple
+    case $n=1$ of this question  has been a subject of
+    quite some debate by economists! See
+    <a href="http://en.wikipedia.org/wiki/St._Petersburg_paradox">the Wikipedia
+      article on the St. Petersburg
+      paradox</a>).
+    In other words, how big should we expect $S_n$ to be,
     <i>with probability close to 1</i>?
   </p>
   <div class="statement theorem">
@@ -95,12 +119,23 @@
     </div>
   </div>
   <p>
-    In other words, to be allowed to pay the game $n$ times when $n$ is large (and assuming the payoff is in dollars), it may be considered reasonable to pay exactly (or even better, slightly less than) $\log_2 n$ dollars
-    <i>per round played</i>. For example, if $n=1024$ you would be paying \$10 per round.
+    In other words, to be allowed to pay the game $n$
+    times when $n$ is large (and assuming the payoff is
+    in dollars), it may be considered reasonable to pay
+    exactly (or even better, slightly less than)
+    $\log_2 n$ dollars
+    <i>per round played</i>. For example,
+    if $n=1024$ you would be paying \$10 per round.
   </p>
   <div>
     <p>
-      <span class="proof">Proof</span>The proof uses a truncation idea similar to the one we saw in the proof of SLLN, except that for each $n$ we will truncate the first $n$ variables at a level which is a function of $n$. Denote $b_n = n\log_2 n$, $Y_{n,k} = X_k \mathbf{1}_{\{X_k&lt;b_n\}}$, $T_n=\sum_{k=1}^n Y_{n,k}$, and $a_n = \mathbf{E}(T_n)$. We will prove that
+      <span class="proof">Proof</span>The proof uses a truncation idea similar to the one
+      we saw in the proof of SLLN, except that for each $n$
+      we will truncate the first $n$ variables at a level
+      which is a function of $n$. Denote $b_n = n\log_2 n$,
+      $Y_{n,k} = X_k \mathbf{1}_{\{X_k&lt;b_n\}}$,
+      $T_n=\sum_{k=1}^n Y_{n,k}$, and
+      $a_n = \mathbf{E}(T_n)$. We will prove that
     </p>
     <div
       id="_28_h.a.i_"
@@ -114,7 +149,8 @@
       $$
     </div>
     <p>
-      First we check that this is enough, by estimating $a_n$:
+      First we check that this is enough, by estimating
+      $a_n$:
     </p>
     <div class="math-block">
       $$
@@ -126,8 +162,10 @@
       $$
     </div>
     <p>
-      where $m_n$ is the largest integer such that $2^{m_n} \le b_n$, or in other words
-      $m_n = \lfloor \log_2 n + \log_2 \log_2 n \rfloor$, which gives
+      where $m_n$ is the largest integer such that
+      $2^{m_n} \le b_n$, or in other words
+      $m_n = \lfloor \log_2 n + \log_2 \log_2 n \rfloor$,
+      which gives
     </p>
     <div class="math-block">
       $$
@@ -135,8 +173,8 @@
       $$
     </div>
     <p>
-      so $a_n$ indeed behaves like $n\log_2 n$ up to first-order asymptotics.
-      Now to prove
+      so $a_n$ indeed behaves like $n\log_2 n$ up to
+      first-order asymptotics. Now to prove
       <a
         href="./10-2.html#_28_h.a.i_"
         class=""
@@ -164,7 +202,10 @@
       $$
     </div>
     <p>
-      To bound the second term, use Chebyshev's inequality and the fact that $\mathbf{V}(Y_{n,k})\le \mathbf{E}(Y_{n,k}^2)$ to write
+      To bound the second term, use Chebyshev's inequality
+      and the fact that
+      $\mathbf{V}(Y_{n,k})\le \mathbf{E}(Y_{n,k}^2)$ to
+      write
     </p>
     <div class="math-block">
       $$
@@ -185,14 +226,38 @@
         href="./10-2.html#_29_h.a.i_"
         class=""
       >(11)</a>
-      converges to 0, as $n\to\infty$, which finishes the proof.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      converges to 0, as $n\to\infty$, which finishes the
+      proof.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    Another twist on laws of large numbers comes when we replace the notion of an i.i.d. sequence by a more general notion of a $\textbf{triangular array}$. In this case, for each $n$ we have a sequence $X_{n,1},X_{n,2},\ldots,X_{n,n}$ of independent, but not necessarily identically distributed, and we denote $S_n=\sum_{k=1}^n X_{n,k}$ -- this is the sum of the samples in the $n$-th experiment. Here, for each $n$ there could be a separate experiment involving $n$ different r.v.'s, and the r.v.'s $X_{n,k}$ and $X_{m,j}$ for $n\neq m$ are not even assumed to be defined on the same probability space, let alone to be independent of each other.
+    Another twist on laws of large numbers comes when we
+    replace the notion of an i.i.d. sequence by a more
+    general notion of a $\textbf{triangular array}$. In
+    this case, for each $n$ we have a sequence
+    $X_{n,1},X_{n,2},\ldots,X_{n,n}$ of independent, but
+    not necessarily identically distributed, and we denote
+    $S_n=\sum_{k=1}^n X_{n,k}$ -- this is the sum of the
+    samples in the $n$-th experiment. Here, for each $n$
+    there could be a separate experiment involving $n$
+    different r.v.'s, and the r.v.'s $X_{n,k}$ and
+    $X_{m,j}$ for $n\neq m$ are not even assumed to be
+    defined on the same probability space, let alone to be
+    independent of each other.
   </p>
   <p>
-    Again, instead of giving general conditions for a law of large numbers to hold, consider the following example of the so-called $\textbf{coupon collector's problem}$: A brand of breakfast cereals comes with a small toy chosen uniformly at random from a set of $n$ possible kinds of toys. A collector will buy more boxes of cereals until she has collected all $n$ different toys. Denote by $T_n$ the number of boxes she ends up buying. What can we say about the size of $T_n$? Fortunately, we can represent it as a sum of independent r.v.'s, by writing
+    Again, instead of giving general conditions for a law
+    of large numbers to hold, consider the following
+    example of the so-called
+    $\textbf{coupon collector's problem}$: A brand of
+    breakfast cereals comes with a small toy chosen
+    uniformly at random from a set of $n$ possible kinds
+    of toys. A collector will buy more boxes of cereals
+    until she has collected all $n$ different toys.
+    Denote by $T_n$ the number of boxes she ends up
+    buying. What can we say about the size of $T_n$?
+    Fortunately, we can represent it as a sum of
+    independent r.v.'s, by writing
   </p>
   <div class="math-block">
     $$
@@ -214,7 +279,9 @@
     $$
   </div>
   <p>
-    Clearly these r.v.'s are independent. Furthermore, $X_{n,k}$ is a geometric r.v. with parameter $p_{n,k} = (n-k+1)/n$. This gives us that
+    Clearly these r.v.'s are independent. Furthermore,
+    $X_{n,k}$ is a geometric r.v. with parameter
+    $p_{n,k} = (n-k+1)/n$. This gives us that
   </p>
   <div class="math-block">
     $$
@@ -223,7 +290,8 @@
   </div>
   <p>
     where $H_n = \sum_{k=1}^n 1/k$ is the
-    <i>$n$-th harmonic number</i>, and
+    <i>$n$-th
+      harmonic number</i>, and
   </p>
   <div class="math-block">
     $$
@@ -232,7 +300,11 @@
     $$
   </div>
   <p>
-    (in this example, we only need a bound for $\mathbf{V}(T_n)$, but it is possible also to get more precise asymptotics for this quantity). It follows using Chebyshev's inequality that for each $\epsilon&gt;0$,
+    (in this example, we only need a bound for
+    $\mathbf{V}(T_n)$, but it is possible also to get
+    more precise asymptotics for this quantity). It
+    follows using Chebyshev's inequality that for each
+    $\epsilon&gt;0$,
   </p>
   <div class="math-block">
     $$
@@ -241,7 +313,8 @@
     $$
   </div>
   <p>
-    so $(T_n-n H_n)/(n\log n)$ converges in probability to $0$, and therefore we get that
+    so $(T_n-n H_n)/(n\log n)$ converges in probability
+    to $0$, and therefore we get that
   </p>
   <div class="math-block">
     $$
@@ -249,7 +322,16 @@
     $$
   </div>
   <p>
-    The lesson to be learned from the above examples is that some naturally-occurring problems in real life lead to more complicated situations than can be modeled with an i.i.d. sequence with finite mean; but often such problems can be analyzed anyway using the same ideas and techniques that we developed. In probability textbooks you can find a general treatment of various conditions under which a triangular array of independent random variables satisfies a (strong or weak) law of large numbers.
+    The lesson to be learned from the above examples is
+    that some naturally-occurring problems in real life
+    lead to more complicated situations than can be
+    modeled with an i.i.d. sequence with finite mean; but
+    often such problems can be analyzed anyway using the
+    same ideas and techniques that we developed. In
+    probability textbooks you can find a general treatment
+    of various conditions under which a triangular array
+    of independent random variables satisfies a (strong or
+    weak) law of large numbers.
   </p>
 </body>
 </html>

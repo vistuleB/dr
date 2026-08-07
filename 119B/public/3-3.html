@@ -44,13 +44,34 @@
     An inverted pendulum with a vertically oscillating base
   </h1>
   <p>
-    The simple pendulum has two rest points: it can be "hanging down" or "standing up". A pendulum in the "standing up" position is called an
-    <i>inverted pendulum</i>. Since this rest point is asymptotically unstable, one rarely observes pendulums in this position! However, from the point of view of control theory, the inverted pendulum is much more interesting than the pendulum in its stable state. It turns out that the pendulum can be stabilized around the inverted rest point, using both open-loop and closed-loop control schemes. The Segway personal transportation device is a practical invention built precisely around this idea.
+    The simple pendulum has two rest points: it can be
+    "hanging down" or "standing up". A pendulum in the
+    "standing up" position is called an
+    <i>inverted
+      pendulum</i>. Since this rest point is asymptotically
+    unstable, one rarely observes pendulums in this
+    position! However, from the point of view of control
+    theory, the inverted pendulum is much more interesting
+    than the pendulum in its stable state. It turns out
+    that the pendulum can be stabilized around the
+    inverted rest point, using both open-loop and
+    closed-loop control schemes. The Segway personal
+    transportation device is a practical invention built
+    precisely around this idea.
   </p>
   <p>
-    As our first example in control theory, we will show how the inverted pendulum can be stabilized in an open-loop control scheme whereby the base of the pendulum is made to oscillate along the vertical direction. This dynamical system is known as
+    As our first example in control theory, we will show
+    how the inverted pendulum can be stabilized in an
+    open-loop control scheme whereby the base of the
+    pendulum is made to oscillate along the vertical
+    direction. This dynamical system is known as
     <i>Kapitza's pendulum</i>
-    (see Figure 12). The amplitude and frequency of the oscillation need to be adjusted to suitable values to achieve stability, but in practice the effect is quite easy to achieve, and entertaining video demonstrations of this surprising and unintuitive result can be found online.
+    (see Figure 12). The amplitude
+    and frequency of the oscillation need to be adjusted
+    to suitable values to achieve stability, but in
+    practice the effect is quite easy to achieve, and
+    entertaining video demonstrations of this surprising
+    and unintuitive result can be found online.
   </p>
   <figure>
     <img
@@ -62,8 +83,20 @@
     </figcaption>
   </figure>
   <p>
-    Let $\ell$ denote the length of the rod of the pendulum. We assume the base is moving along the vertical axis as a function $u(t)$ of time (which plays the role of the "control function" in this problem), and denote by $x$ the angle the pendulum forms with the
-    <i>upward-pointing vertical</i>, so that $x=0$ (rather than $x=\pi$ with the more commonly used angular coordinate) represents the unstable equilibrium point of the inverted pendulum. The position of the swinging mass is $\mathbf{r}=(\ell\sin x, \ell \cos x + u(t))$. We can now write the kinetic energy, potential energy and the Lagrangian, as follows:
+    Let $\ell$ denote the length of the rod of the
+    pendulum. We assume the base is moving along the
+    vertical axis as a function $u(t)$ of time (which
+    plays the role of the "control function" in this
+    problem), and denote by $x$ the angle the pendulum
+    forms with the
+    <i>upward-pointing vertical</i>, so that
+    $x=0$ (rather than $x=\pi$ with the more commonly
+    used angular coordinate) represents the unstable
+    equilibrium point of the inverted pendulum. The
+    position of the swinging mass is
+    $\mathbf{r}=(\ell\sin x, \ell \cos x + u(t))$. We can
+    now write the kinetic energy, potential energy and the
+    Lagrangian, as follows:
   </p>
   <div class="math-block">
     $$
@@ -91,7 +124,8 @@
     $$
   </div>
   <p>
-    and the Euler-Lagrange equation for this Lagrangian is
+    and the Euler-Lagrange equation for this Lagrangian
+    is
   </p>
   <div class="math-block">
     $$
@@ -101,7 +135,14 @@
     $$
   </div>
   <p>
-    That is, the effect of the vertical driving acceleration $\ddot{u}(t)$ applied to the base point is to make the effective gravity felt by the pendulum change as a function of time. We shall now make some assumptions to simplify the analysis. First, we shall study the behavior in the vicinity of the rest point, so we can replace the equation with its linearized version
+    That is, the effect of the vertical driving
+    acceleration $\ddot{u}(t)$ applied to the base point
+    is to make the effective gravity felt by the pendulum
+    change as a function of time. We shall now make some
+    assumptions to simplify the analysis. First, we shall
+    study the behavior in the vicinity of the rest point,
+    so we can replace the equation with its linearized
+    version
   </p>
   <div class="math-block">
     $$
@@ -111,7 +152,19 @@
     $$
   </div>
   <p>
-    Next, we assume that $u(t)$ is a periodic function with period $2T$ and frequency $f = 1/2T$, and furthermore, we assume that its second derivative $\ddot{u}(t)$ takes only two values $\pm a$, changing its sign exactly every half-period $T$, so that the graph of $u$ over each half-period is a parabolic arc rather than the sinusoidal arc typically used for periodic motions (this can even be a realistic assumption depending on the way the driving mechanism operates in practice, but the main reason for assuming it is that it results in a simpler mathematical analysis); see Figure 13. With this assumption, the equation becomes
+    Next, we assume that $u(t)$ is a periodic function
+    with period $2T$ and frequency $f = 1/2T$, and
+    furthermore, we assume that its second derivative
+    $\ddot{u}(t)$ takes only two values $\pm a$, changing
+    its sign exactly every half-period $T$, so that the
+    graph of $u$ over each half-period is a parabolic arc
+    rather than the sinusoidal arc typically used for
+    periodic motions (this can even be a realistic
+    assumption depending on the way the driving mechanism
+    operates in practice, but the main reason for assuming
+    it is that it results in a simpler mathematical
+    analysis); see Figure 13. With this assumption, the
+    equation becomes
   </p>
   <div class="math-block">
     $$
@@ -121,7 +174,9 @@
     $$
   </div>
   <p>
-    with the notation $\omega=\sqrt{g/\ell}$, $A=\sqrt{a/\ell}$, and where "$\pm$" denotes the square wave function
+    with the notation $\omega=\sqrt{g/\ell}$,
+    $A=\sqrt{a/\ell}$, and where "$\pm$" denotes the
+    square wave function
   </p>
   <div class="math-block">
     $$
@@ -133,7 +188,11 @@
     $$
   </div>
   <p>
-    We assume that $A&gt;\omega$, i.e., the "artificial gravity" induced by the vibrations dominates the gravity of the more usual type. It can be easily checked that the amplitude $d$ of the oscillation is given by
+    We assume that $A&gt;\omega$, i.e., the "artificial
+    gravity" induced by the vibrations dominates the
+    gravity of the more usual type. It can be easily
+    checked that the amplitude $d$ of the oscillation is
+    given by
   </p>
   <div class="math-block">
     $$
@@ -148,11 +207,17 @@
       style="max-width: 70%"
     >
     <figcaption>
-      Figure 13: In our analysis, the driving function $u(t)$ for the height of the oscillating base is assumed to be periodic with period $2T$, and each half-period is a parabolic arc with second derivative $\pm a$ and amplitude $d$.
+      Figure 13: In our analysis, the driving function
+      $u(t)$ for the height of the oscillating base is
+      assumed to be periodic with period $2T$, and each
+      half-period is a parabolic arc with second derivative
+      $\pm a$ and amplitude $d$.
     </figcaption>
   </figure>
   <p>
-    As a final notational step before we start the analysis, we do the usual trick of representing a second-order system as a planar first-order system:
+    As a final notational step before we start the
+    analysis, we do the usual trick of representing a
+    second-order system as a planar first-order system:
   </p>
   <div class="math-block">
     $$
@@ -163,7 +228,8 @@
     $$
   </div>
   <p>
-    Note that this is a linear, but time-dependent, system, so we can represent it in vector notation as
+    Note that this is a linear, but time-dependent,
+    system, so we can represent it in vector notation as
   </p>
   <div
     id="_49_h.a.i_"
@@ -178,10 +244,20 @@
     $$
   </div>
   <p>
-    where $\mathbf{x}=(x,y)^\top$ and $B_t = \left( \begin{array}{cc} 0&amp;1 \\ \omega^2\pm A^2 &amp; 0 \end{array}\right)$.
+    where $\mathbf{x}=(x,y)^\top$ and
+    $B_t = \left( \begin{array}{cc} 0&amp;1 \\ \omega^2\pm
+    A^2 &amp; 0 \end{array}\right)$.
   </p>
   <p>
-    We are now in a position to study when (as a function of the parameters $a, T, \ell, g$) we can expect the system to be stable at $x=0$. The idea is to reduce the problem to understanding the stability of an autonomous discrete-time dynamical system which we can explicitly compute. For real numbers $t_0&lt;t_1$, define a map $\psi_{t_0,t_1}:\R^2\to\R^2$, analogous to the phase flow map $\varphi_t$ we studied for autonomous systems, as follows:
+    We are now in a position to study when (as a function
+    of the parameters $a, T, \ell, g$) we can expect the
+    system to be stable at $x=0$. The idea is to reduce
+    the problem to understanding the stability of an
+    autonomous discrete-time dynamical system which we can
+    explicitly compute. For real numbers $t_0&lt;t_1$,
+    define a map $\psi_{t_0,t_1}:\R^2\to\R^2$, analogous
+    to the phase flow map $\varphi_t$ we studied for
+    autonomous systems, as follows:
   </p>
   <div class="math-block">
     $$
@@ -191,12 +267,21 @@
     $$
   </div>
   <p>
-    That is, $\psi_{t_0,t_1}$ evolves a point forward in time from time $t_0$ to time $t_1$. (In the case of an autonomous system, we could write this as $\varphi_{t_1-t_0}(\mathbf{x}_0)$ since it would depend only on the duration of the evolution rather than the specific starting and ending times.) The evolution maps $\psi_{t_0,t_1}$ have several important properties. First, they are linear, since the system
+    That is, $\psi_{t_0,t_1}$ evolves a point forward in
+    time from time $t_0$ to time $t_1$. (In the case of
+    an autonomous system, we could write this as
+    $\varphi_{t_1-t_0}(\mathbf{x}_0)$ since it would
+    depend only on the duration of the evolution rather
+    than the specific starting and ending times.) The
+    evolution maps $\psi_{t_0,t_1}$ have several
+    important properties. First, they are linear, since
+    the system
     <a
       href="./3-3.html#_49_h.a.i_"
       class=""
     >(39)</a>
-    is linear. Second, they satisfy the composition property
+    is linear. Second,
+    they satisfy the composition property
   </p>
   <div class="math-block">
     $$
@@ -221,12 +306,17 @@
     $$
   </div>
   <p>
-    since evolving a solution from time $t_0$ to $t_2$ can be done by evolving it up to time $t_1$ and then evolving the resulting point from $t_1$ to $t_2$. Third, because the matrix function $t\mapsto B_t$ in the equation
+    since evolving a solution from time $t_0$ to $t_2$
+    can be done by evolving it up to time $t_1$ and then
+    evolving the resulting point from $t_1$ to $t_2$.
+    Third, because the matrix function $t\mapsto B_t$ in
+    the equation
     <a
       href="./3-3.html#_49_h.a.i_"
       class=""
     >(39)</a>
-    is periodic with period $2T$, we have
+    is periodic with
+    period $2T$, we have
   </p>
   <div class="math-block">
     $$
@@ -240,7 +330,13 @@
     <a
       href="./3-3.html#_50_h.a.i_"
       class=""
-    >(40)</a>, we can now express the solution $\mathbf{x}(t)$ with an initial condition $\mathbf{x}(0)=\mathbf{x}_0$ at time $0$ as the result of a sequence of evolution steps along small time intervals of length $T$. More precisely, if $n$ is an integer such that $2nT \le t &lt; 2(n+1)T$, then we have
+    >(40)</a>,
+    we can now express the solution $\mathbf{x}(t)$ with
+    an initial condition $\mathbf{x}(0)=\mathbf{x}_0$ at
+    time $0$ as the result of a sequence of evolution
+    steps along small time intervals of length $T$. More
+    precisely, if $n$ is an integer such that
+    $2nT \le t &lt; 2(n+1)T$, then we have
   </p>
   <div
     id="_51_h.a.i_"
@@ -276,8 +372,12 @@
     $$
   </div>
   <p>
-    The analysis will now revolve around an explicit computation of the $2\times 2$ matrices associated with the linear maps $S_\pm$ and their composition $P$, the
-    <i>period evolution map</i>. A key observation is the following:
+    The analysis will now revolve around an explicit
+    computation of the $2\times 2$ matrices associated
+    with the linear maps $S_\pm$ and their composition
+    $P$, the
+    <i>period evolution map</i>. A key observation is
+    the following:
   </p>
   <div class="statement lemma">
     <h3>
@@ -291,12 +391,18 @@
         href="./3-3.html#_49_h.a.i_"
         class=""
       >(39)</a>
-      has a stable rest point at $\mathbf{x}=\mathbf{0}$.
+      has a stable rest point at
+      $\mathbf{x}=\mathbf{0}$.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>$P$ is a $2\times 2$ matrix of real numbers with determinant $\det(P)=\det(S_-)\det(S_+)=1$ (this fact also follows from Liouville's theorem). Its eigenvalues $\lambda_1, \lambda_2$ are the roots of a quadratic polynomial with real coefficients, and satisfy
+      <span class="proof">Proof</span>$P$ is a $2\times 2$ matrix of real numbers with
+      determinant $\det(P)=\det(S_-)\det(S_+)=1$ (this fact
+      also follows from Liouville's theorem). Its
+      eigenvalues $\lambda_1, \lambda_2$ are the roots of a
+      quadratic polynomial with real coefficients, and
+      satisfy
     </p>
     <div class="math-block">
       $$
@@ -307,7 +413,8 @@
       $$
     </div>
     <p>
-      If both eigenvalues are real then the fact that $\lambda_2=1/\lambda_1$ implies that
+      If both eigenvalues are real then the fact that
+      $\lambda_2=1/\lambda_1$ implies that
     </p>
     <div class="math-block">
       $$
@@ -317,7 +424,14 @@
       $$
     </div>
     <p>
-      in contradiction to the assumption that $|\operatorname{tr}(P)|&lt;2$. The only other possibility is that $\lambda_1$ and $\lambda_2$ are conjugate complex numbers, which must lie on the unit circle, since $\lambda_1\lambda_2 = \lambda_1 \overline{\lambda_1}= |\lambda_1|^2 = 1$. This implies that for some constant $C&gt;0$, we have
+      in contradiction to the assumption that
+      $|\operatorname{tr}(P)|&lt;2$. The only other
+      possibility is that $\lambda_1$ and $\lambda_2$ are
+      conjugate complex numbers, which must lie on the unit
+      circle, since
+      $\lambda_1\lambda_2 = \lambda_1 \overline{\lambda_1}=
+      |\lambda_1|^2 = 1$.
+      This implies that for some constant $C&gt;0$, we have
     </p>
     <div class="math-block">
       $$
@@ -327,12 +441,27 @@
       $$
     </div>
     <p>
-      for all $n\ge1$ and $\mathbf{x}\in \R^2$, since $\lambda_1=e^{i\theta}$ for some real $\theta$, and from linear algebra we know that by representing such a matrix in an appropriate basis one can bring it to the form of a rotation matrix $\left(\begin{array}{cc} \cos \theta &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta\end{array} \right)$. In other words, this shows that the
+      for all $n\ge1$ and $\mathbf{x}\in \R^2$, since
+      $\lambda_1=e^{i\theta}$ for some real $\theta$, and
+      from linear algebra we know that by representing such
+      a matrix in an appropriate basis one can bring it to
+      the form of a rotation matrix
+      $\left(\begin{array}{cc} \cos \theta &amp; -\sin\theta \\
+      \sin\theta &amp; \cos\theta\end{array} \right)$.
+      In other words, this shows that the
       <i>discrete-time</i>
-      dynamical system defined by the matrix $P$ has a (neutrally) stable rest point at $\mathbf{x}=\mathbf{0}$.
+      dynamical system defined by the matrix $P$ has a
+      (neutrally) stable rest point at
+      $\mathbf{x}=\mathbf{0}$.
     </p>
     <p>
-      Finally, observe that the family of matrices $(\psi_{0,s})_{0\le s\le 2T}$ is the image of a compact interval $[0,2T]$ under a continuous map $s\mapsto \psi_{0,s}$, and therefore this set of matrices is compact, and hence bounded in norm, in the space of $2\times 2$ matrices. Therefore there is some constant $D&gt;0$ such that
+      Finally, observe that the family of matrices
+      $(\psi_{0,s})_{0\le s\le 2T}$ is the image of a
+      compact interval $[0,2T]$ under a continuous map
+      $s\mapsto \psi_{0,s}$, and therefore this set of
+      matrices is compact, and hence bounded in norm, in the
+      space of $2\times 2$ matrices. Therefore there is
+      some constant $D&gt;0$ such that
     </p>
     <div class="math-block">
       $$
@@ -342,11 +471,13 @@
       $$
     </div>
     <p>
-      for any $\mathbf{y}\in\R^2$. Combining this with the previous comment and with
+      for any $\mathbf{y}\in\R^2$. Combining this with the
+      previous comment and with
       <a
         href="./3-3.html#_51_h.a.i_"
         class=""
-      >(41)</a>, we get that
+      >(41)</a>,
+      we get that
     </p>
     <div class="math-block">
       $$
@@ -356,7 +487,9 @@
       $$
     </div>
     <p>
-      for all $t\ge 0$, which shows that $\mathbf{x}=\mathbf{0}$ is a neutrally stable rest point of the system
+      for all $t\ge 0$, which shows that
+      $\mathbf{x}=\mathbf{0}$ is a neutrally stable rest
+      point of the system
       <a
         href="./3-3.html#_49_h.a.i_"
         class=""
@@ -364,12 +497,16 @@
     </p>
   </div>
   <p>
-    To compute $S_-$ and $S_+$, observe that they are both obtained by evolution of the system along time intervals for which the matrix $B_t$ is constant; for such intervals the system
+    To compute $S_-$ and $S_+$, observe that they are
+    both obtained by evolution of the system along time
+    intervals for which the matrix $B_t$ is constant; for
+    such intervals the system
     <a
       href="./3-3.html#_49_h.a.i_"
       class=""
     >(39)</a>
-    behaves like an autonomous system, and can be solved explicitly using matrix exponentials.
+    behaves like an autonomous system, and can be solved
+    explicitly using matrix exponentials.
   </p>
   <div class="statement lemma">
     <h3>
@@ -403,7 +540,9 @@
       $$
     </div>
     <p>
-      where $k=\sqrt{A^2+\omega^2}=\sqrt{(a+g)/\ell}, j=\sqrt{A^2-\omega^2}=\sqrt{(a-g)/\ell}$.
+      where
+      $k=\sqrt{A^2+\omega^2}=\sqrt{(a+g)/\ell},
+      j=\sqrt{A^2-\omega^2}=\sqrt{(a-g)/\ell}$.
     </p>
   </div>
   <div>
@@ -421,7 +560,12 @@
       $$
     </div>
     <p>
-      where we denote $M_+ = \left(\begin{array}{cc} 0 &amp; T \\ k^2T &amp; 0 \end{array}\right)$, $M_- = \left(\begin{array}{cc} 0 &amp; T \\ -j^2 T &amp; 0 \end{array}\right)$. Note that $M_\pm$ satisfy
+      where we denote
+      $M_+ = \left(\begin{array}{cc} 0 &amp; T \\ k^2T &amp; 0
+      \end{array}\right)$,
+      $M_- = \left(\begin{array}{cc} 0 &amp; T \\ -j^2 T &amp; 0
+      \end{array}\right)$.
+      Note that $M_\pm$ satisfy
     </p>
     <div class="math-block">
       $$
@@ -432,11 +576,17 @@
       $$
     </div>
     <p>
-      As a result, it is easy to evaluate the matrix exponentials $\exp(M_\pm)$ by directly summing the power series $\sum_{n=0}^\infty \frac{1}{n!}M_{\pm}^n$ (since the even powers are scalar multiples of $I$ and the odd powers are scalar multiples of $M_\pm$) to obtain the expressions in
+      As a result, it is easy to evaluate the matrix
+      exponentials $\exp(M_\pm)$ by directly summing the
+      power series $\sum_{n=0}^\infty \frac{1}{n!}M_{\pm}^n$
+      (since the even powers are scalar multiples of $I$
+      and the odd powers are scalar multiples of $M_\pm$)
+      to obtain the expressions in
       <a
         href="./3-3.html#_52_h.a.i_"
         class=""
-      >(42)</a>. The computation is left as an exercise.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      >(42)</a>.
+      The computation is left as an exercise.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div class="statement exercise">
@@ -446,7 +596,8 @@
       
     </h3>
     <p>
-      Perform the power series summation outlined above to verify the formulas
+      Perform the power series summation outlined above to
+      verify the formulas
       <a
         href="./3-3.html#_52_h.a.i_"
         class=""
@@ -454,7 +605,13 @@
     </p>
   </div>
   <p>
-    The final step consists of studying $\operatorname{tr}(P)=\operatorname{tr}(S_- S_+)$ to show that for an appropriate choice of parameters, stability can be achieved. Denote $\sigma = \sigma(a, g, \ell, T) = \operatorname{tr}(P)$. By the formulas
+    The final step consists of studying
+    $\operatorname{tr}(P)=\operatorname{tr}(S_- S_+)$ to
+    show that for an appropriate choice of parameters,
+    stability can be achieved. Denote
+    $\sigma = \sigma(a, g, \ell, T) =
+    \operatorname{tr}(P)$.
+    By the formulas
     <a
       href="./3-3.html#_52_h.a.i_"
       class=""
@@ -488,12 +645,20 @@
       
     </h3>
     <p>
-      There are values of the parameters $a, g, \ell, T$ for which Kapitza's pendulum is stable.
+      There are values of the parameters $a, g, \ell, T$
+      for which Kapitza's pendulum is stable.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Using the metric system of units, take $g=9.8\,\frac{\textrm{m}}{\textrm{sec}^2}$ (the Earth's gravitational constant), $\ell = 20\, \textrm{cm}$, $d=1\,\textrm{cm}$, $f=40\,\textrm{sec}^{-1}$. With these values we have $T=\frac{1}{80}\,\textrm{sec}$, $a=512\,\frac{\textrm{m}}{\textrm{sec}^2}$. For these parameters the computer returns the value
+      <span class="proof">Proof</span>Using the metric system of units, take
+      $g=9.8\,\frac{\textrm{m}}{\textrm{sec}^2}$ (the
+      Earth's gravitational constant),
+      $\ell = 20\, \textrm{cm}$, $d=1\,\textrm{cm}$,
+      $f=40\,\textrm{sec}^{-1}$. With these values we have
+      $T=\frac{1}{80}\,\textrm{sec}$,
+      $a=512\,\frac{\textrm{m}}{\textrm{sec}^2}$. For these
+      parameters the computer returns the value
     </p>
     <div class="math-block">
       $$
@@ -503,11 +668,18 @@
       $$
     </div>
     <p>
-      so in particular $|\sigma|&lt;2$ and the pendulum is stable.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      so in particular $|\sigma|&lt;2$ and the pendulum is
+      stable.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    It is possible to get a better understanding of the subset of the parameter space for which the motion is stable, at least for oscillations with small amplitude and high frequency, that explains why the "lucky" numbers above work to produce a stable value $|\sigma|&lt;2$. This can be done by introducing two dimensionless parameters $w,z$, defined by
+    It is possible to get a better understanding of the
+    subset of the parameter space for which the motion is
+    stable, at least for oscillations with small amplitude
+    and high frequency, that explains why the "lucky"
+    numbers above work to produce a stable value
+    $|\sigma|&lt;2$. This can be done by introducing two
+    dimensionless parameters $w,z$, defined by
   </p>
   <div class="math-block">
     $$
@@ -518,7 +690,9 @@
     $$
   </div>
   <p>
-    and to consider a limit in which both variables $w,z$ tend simultaneously to $0$ (with the variable $T$ changing accordingly).
+    and to consider a limit in which both variables $w,z$
+    tend simultaneously to $0$ (with the variable $T$
+    changing accordingly).
   </p>
   <div
     label="Asymptotic stability regime of Kapitza's pendulum"
@@ -530,7 +704,16 @@
       
     </h3>
     <p>
-      Represent $\sigma$ as a function of the variables $w, z$, then expand $\sigma$ in a Taylor series in $w,z$, including all terms up to and including order $4$ (i.e., all monomials of the form $w^i z^j$ for $0\le i+j\le 4$). From this approximation, deduce that if $w,z\to 0$ in such a way that $w&lt;cz$ where $c$ is a constant satisfying $0&lt;c&lt;\sqrt{2/3}$, then for small enough values of $w,z$ the stable regime $|\sigma|&lt;2$ is entered, i.e., the motion becomes stable.
+      Represent $\sigma$ as a function of the variables
+      $w, z$, then expand $\sigma$ in a Taylor series in
+      $w,z$, including all terms up to and including order
+      $4$ (i.e., all monomials of the form $w^i z^j$ for
+      $0\le i+j\le 4$). From this approximation, deduce
+      that if $w,z\to 0$ in such a way that $w&lt;cz$ where $c$
+      is a constant satisfying $0&lt;c&lt;\sqrt{2/3}$, then for
+      small enough values of $w,z$ the stable regime
+      $|\sigma|&lt;2$ is entered, i.e., the motion becomes
+      stable.
     </p>
   </div>
 </body>

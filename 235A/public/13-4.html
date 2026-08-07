@@ -58,19 +58,33 @@
     <ol class="list">
       <li>
         <p>
-          If $X_n \implies X$ for some r.v. $X$, then $\varphi_{X_n}(t)\to \varphi_X(t)$ for all $t\in\R$.
+          If $X_n \implies X$ for some r.v. $X$, then
+          $\varphi_{X_n}(t)\to \varphi_X(t)$ for all $t\in\R$.
         </p>
       </li>
       <li>
         <p>
-          If the limit $\varphi(t) = \lim_{n\to\infty} \varphi_{X_n}(t)$ exists for all $t\in\R$, and $\varphi$ is continuous at 0, then $\varphi\equiv \varphi_X$ for some r.v. $X$, and $X_n \implies X$.
+          If the limit
+          $\varphi(t) = \lim_{n\to\infty} \varphi_{X_n}(t)$
+          exists for all $t\in\R$, and $\varphi$ is continuous
+          at 0, then $\varphi\equiv \varphi_X$ for some r.v.
+          $X$, and $X_n \implies X$.
         </p>
       </li>
     </ol>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Part (i) follows immediately from the fact that convergence in distribution implies that $\mathbf{E} g(X_n)\to \mathbf{E} g(X)$ for any bounded continuous function. It remains to prove the less trivial claim in part (ii). Assume that $\varphi_{X_n}(t)\to \varphi(t)$ for all $t\in\R$ and that $\varphi$ is continuous at $0$. First, we show that the sequence $(X_n)_{n=1}^\infty$ is tight. Fixing an $M&gt;0$, we can bound the probability $\mathrm{P}(|X_n|&gt;M)$, as follows:
+      <span class="proof">Proof</span>Part (i) follows immediately from the fact that
+      convergence in distribution implies that
+      $\mathbf{E} g(X_n)\to \mathbf{E} g(X)$ for any
+      bounded continuous function. It remains to prove the
+      less trivial claim in part (ii). Assume that
+      $\varphi_{X_n}(t)\to \varphi(t)$ for all $t\in\R$ and
+      that $\varphi$ is continuous at $0$. First, we show
+      that the sequence $(X_n)_{n=1}^\infty$ is tight.
+      Fixing an $M&gt;0$, we can bound the probability
+      $\mathrm{P}(|X_n|&gt;M)$, as follows:
     </p>
     <div class="math-block">
       $$
@@ -82,7 +96,10 @@
       $$
     </div>
     <p>
-      But this last expression can be related to the behavior of the characteristic function near $0$. Denote $\delta=2/M$. Reverting again to the Lebesgue-Stieltjes integral notation, we have
+      But this last expression can be related to the
+      behavior of the characteristic function near $0$.
+      Denote $\delta=2/M$. Reverting again to the
+      Lebesgue-Stieltjes integral notation, we have
     </p>
     <div class="math-block">
       $$
@@ -95,7 +112,8 @@
       $$
     </div>
     <p>
-      Now use Fubini's theorem to get that this bound can be written as
+      Now use Fubini's theorem to get that this bound can
+      be written as
     </p>
     <div class="math-block">
       $$
@@ -105,8 +123,8 @@
       $$
     </div>
     <p>
-      (the convergence follows from the bounded convergence theorem).
-      So we have shown that
+      (the convergence follows from the bounded convergence
+      theorem). So we have shown that
     </p>
     <div class="math-block">
       $$
@@ -114,11 +132,29 @@
       $$
     </div>
     <p>
-      But, because of the assumption that $\varphi(t)\to \varphi(0)=1$ as $t\to 0$, it follows that if $\delta$ is sufficiently small then
-      $\delta^{-1} \int_{-\delta}^\delta (1-\varphi(t))\,dt &lt; \epsilon$, where $\epsilon&gt;0$ is arbitrary; so this establishes the tightness claim.
+      But, because of the assumption that
+      $\varphi(t)\to \varphi(0)=1$ as $t\to 0$, it follows
+      that if $\delta$ is sufficiently small then
+      $\delta^{-1} \int_{-\delta}^\delta (1-\varphi(t))\,dt
+      &lt; \epsilon$,
+      where $\epsilon&gt;0$ is arbitrary; so this establishes
+      the tightness claim.
     </p>
     <p>
-      Finally, to finish the proof, let $(n_k)_{k=1}^\infty$ be a subsequence (guaranteed to exist by tightness) such that $X_{n_k}\implies Y$ for some r.v. $Y$. Then $\varphi_{X_{n_k}}(t)\to \varphi_Y(t)=\varphi(t)$ as $k\to\infty$ for all $t\in\R$, so $\varphi\equiv\varphi_Y$. This determines the distribution of $Y$, which means that the limit in distribution is the same no matter what convergent in distribution subsequence of the sequence $(X_n)_n$ we take. But this implies that $X_n\implies Y$ (why? The reader is invited to verify this last claim; it is best to use the definition of convergence in distribution in terms of expectations of bounded continuous functions).<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      Finally, to finish the proof, let $(n_k)_{k=1}^\infty$
+      be a subsequence (guaranteed to exist by tightness)
+      such that $X_{n_k}\implies Y$ for some r.v. $Y$. Then
+      $\varphi_{X_{n_k}}(t)\to \varphi_Y(t)=\varphi(t)$ as
+      $k\to\infty$ for all $t\in\R$, so
+      $\varphi\equiv\varphi_Y$. This determines the
+      distribution of $Y$, which means that the limit in
+      distribution is the same no matter what convergent in
+      distribution subsequence of the sequence $(X_n)_n$ we
+      take. But this implies that $X_n\implies Y$ (why? The
+      reader is invited to verify this last claim; it is
+      best to use the definition of convergence in
+      distribution in terms of expectations of bounded
+      continuous functions).<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
 </body>

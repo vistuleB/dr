@@ -46,7 +46,12 @@
   <p>
     We will now prove
     <i>the</i>
-    fundamental result of ergodic theory, known alternately as  $\textbf{Birkhoff's pointwise ergodic theorem}$; $\textbf{Birkhoff's ergodic theorem}$; the $\textbf{pointwise ergodic theorem}$; or just the $\textbf{ergodic theorem}$
+    fundamental result of ergodic
+    theory, known alternately as
+    $\textbf{Birkhoff's pointwise ergodic theorem}$;
+    $\textbf{Birkhoff's ergodic theorem}$; the
+    $\textbf{pointwise ergodic theorem}$; or just the
+    $\textbf{ergodic theorem}$
     <sup id="_52_h.a.i_">
       <a
         href="./7-2.html#_56_h.a.i_"
@@ -66,7 +71,11 @@
       
     </h3>
     <p>
-      <span class="label">Birkhoff's ergodic theorem</span>Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. Let $\mathcal{I}$ denote as usual the $\sigma$-algebra of $T$-invariant sets. For any random variable $X \in L_1(\Omega, \mathcal{F}, \mathrm{P})$, we have
+      <span class="label">Birkhoff's ergodic theorem</span>Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a
+      measure preserving system. Let $\mathcal{I}$ denote
+      as usual the $\sigma$-algebra of $T$-invariant sets.
+      For any random variable
+      $X \in L_1(\Omega, \mathcal{F}, \mathrm{P})$, we have
     </p>
     <div
       id="_53_h.a.i_"
@@ -93,7 +102,8 @@
     </div>
   </div>
   <p>
-    For the proof, we start by proving a lemma, known as the $\textbf{maximal ergodic inequality}$.
+    For the proof, we start by proving a lemma, known as
+    the $\textbf{maximal ergodic inequality}$.
   </p>
   <div
     class="statement lemma"
@@ -105,7 +115,10 @@
       
     </h3>
     <p>
-      With the same notation as above, denote also $S_0=0$, $S_n  = \sum_{k=0}^{n-1} X\circ T^k$, and let $M_n=\max\{ S_k \,:\,0\le k\le n\}$. For each $n\ge1$ we have
+      With the same notation as above, denote also $S_0=0$,
+      $S_n  = \sum_{k=0}^{n-1} X\circ T^k$, and let
+      $M_n=\max\{ S_k \,:\,0\le k\le n\}$. For each $n\ge1$
+      we have
     </p>
     <div class="math-block">
       $$
@@ -123,7 +136,8 @@
       $$
     </div>
     <p>
-      or equivalently $X \ge S_{k+1} - M_n\circ T$. Since this is true for each $0\le k\le n$, we get that
+      or equivalently $X \ge S_{k+1} - M_n\circ T$. Since
+      this is true for each $0\le k\le n$, we get that
     </p>
     <div class="math-block">
       $$
@@ -131,7 +145,8 @@
       $$
     </div>
     <p>
-      and therefore, noting that on the event $\{M_n&gt;0\}$, we have $M_n=\max(S_1,\ldots,S_n)$, we get that
+      and therefore, noting that on the event $\{M_n&gt;0\}$,
+      we have $M_n=\max(S_1,\ldots,S_n)$, we get that
     </p>
     <div class="math-block">
       $$
@@ -158,10 +173,29 @@
   </div>
   <div alt-title="Proof of the ergodic theorem">
     <p>
-      <span class="proof">Proof of the ergodic theorem</span>$\mathbf{E}\left(X\,|\,\mathcal{I}\right)$ is an invariant random variable, so by replacing $X$ with $X-\mathbf{E}\left(X\,|\,\mathcal{I}\right)$, we can assume without loss of generality that $\mathbf{E}\left(X\,|\,\mathcal{I}\right)=0$; in this case, we need to prove that $S_n/n\to 0$ almost surely (where $S_n=\sum_{k=0}^{n-1} X\circ T^k$ as in the lemma above). Denote $\overline{X} = \limsup_{n\to\infty} S_n/n$. $\overline{X}$ is an invariant random variable, taking values in $\R\cup\{\pm\infty\}$. Fix $\epsilon&gt;0$, and consider the invariant event $A= \{ \overline{X} &gt; \epsilon \}$. We claim that $\mathrm{P}(A)=0$. Once we prove this, since $\epsilon$ is arbitrary it will follow that $\overline{X}\le 0$ almost surely. By applying the same result to $-X$ instead of $X$ the reverse inequality that almost surely $\liminf S_n/n\ge 0$ will also follow, and the theorem will be proved.
+      <span class="proof">Proof of the ergodic theorem</span>$\mathbf{E}\left(X\,|\,\mathcal{I}\right)$ is an
+      invariant random variable, so by replacing $X$ with
+      $X-\mathbf{E}\left(X\,|\,\mathcal{I}\right)$, we can
+      assume without loss of generality that
+      $\mathbf{E}\left(X\,|\,\mathcal{I}\right)=0$; in this
+      case, we need to prove that $S_n/n\to 0$ almost
+      surely (where $S_n=\sum_{k=0}^{n-1} X\circ T^k$ as in
+      the lemma above). Denote
+      $\overline{X} = \limsup_{n\to\infty} S_n/n$.
+      $\overline{X}$ is an invariant random variable,
+      taking values in $\R\cup\{\pm\infty\}$. Fix
+      $\epsilon&gt;0$, and consider the invariant event
+      $A= \{ \overline{X} &gt; \epsilon \}$. We claim that
+      $\mathrm{P}(A)=0$. Once we prove this, since
+      $\epsilon$ is arbitrary it will follow that
+      $\overline{X}\le 0$ almost surely. By applying the
+      same result to $-X$ instead of $X$ the reverse
+      inequality that almost surely $\liminf S_n/n\ge 0$
+      will also follow, and the theorem will be proved.
     </p>
     <p>
-      To prove the claim, define a new random variable $X^* = (X-\epsilon)\mathbf{1}_{A}$. Applying
+      To prove the claim, define a new random variable
+      $X^* = (X-\epsilon)\mathbf{1}_{A}$. Applying
       <a
         href="./7-2.html#_55_h.a.i_"
         class=""
@@ -182,7 +216,11 @@
       $$
     </div>
     <p>
-      (since $A$ is an invariant event). Note that the events $\{M_n^* &gt; 0\}$ are increasing, so $X^* \mathbf{1}_{\{ M_n^*&gt;0\}} \to X^* \mathbf{1}_B$ almost surely as $n\to\infty$, where the event $B$ is defined by
+      (since $A$ is an invariant event). Note that the
+      events $\{M_n^* &gt; 0\}$ are increasing, so
+      $X^* \mathbf{1}_{\{ M_n^*&gt;0\}} \to X^* \mathbf{1}_B$
+      almost surely as $n\to\infty$, where the event $B$ is
+      defined by
     </p>
     <div class="math-block">
       $$
@@ -192,7 +230,9 @@
       $$
     </div>
     <p>
-      Furthermore, the convergence is dominated, since $\mathbf{E}|X^*| \le \mathbf{E}|X|+\epsilon&lt;\infty$, so the dominated convergence theorem implies that
+      Furthermore, the convergence is dominated, since
+      $\mathbf{E}|X^*| \le \mathbf{E}|X|+\epsilon&lt;\infty$,
+      so the dominated convergence theorem implies that
     </p>
     <div class="math-block">
       $$
@@ -234,9 +274,21 @@
   >
     <p>
       <a href="#_52_h.a.i_">(1)</a>
-      Incidentally, I've always found it strange that ergodic theory --- unlike other areas of math --- seems to be the only theory named after an adjective (as opposed to a noun, as in
-      <i>the theory of numbers</i>, or as in the non-existent name
-      <i>the theory of ergodicity</i>, which would perhaps have been a better name for ergodic theory). Similarly, the ergodic theorem is, as far as I know, the only theorem in math to be named after an adjective. (And what does the name mean, anyway? That the theorem has no nontrivial invariant sets...?) If you think of any counterexamples to this observation, please let me know!
+      Incidentally, I've always found it strange that
+      ergodic theory --- unlike other areas of math ---
+      seems to be the only theory named after an adjective
+      (as opposed to a noun, as in
+      <i>the theory of numbers</i>,
+      or as in the non-existent name
+      <i>the theory of
+        ergodicity</i>, which would perhaps have been a better
+      name for ergodic theory). Similarly, the ergodic
+      theorem is, as far as I know, the only theorem in math
+      to be named after an adjective. (And what does the
+      name mean, anyway? That the theorem has no nontrivial
+      invariant sets...?) If you think of any
+      counterexamples to this observation, please let me
+      know!
     </p>
   </div>
 </body>

@@ -44,7 +44,10 @@
     Examples
   </h1>
   <p>
-    No study of characteristic functions is complete without "dirtying your hands" a little to compute the characteristic function for some important cases. The following exercise is highly recommended
+    No study of characteristic functions is complete
+    without "dirtying your hands" a little to compute
+    the characteristic function for some important cases.
+    The following exercise is highly recommended
   </p>
   <div class="statement exercise">
     <h3>
@@ -53,7 +56,8 @@
       
     </h3>
     <p>
-      Compute the characteristic functions for the following distributions.
+      Compute the characteristic functions for the
+      following distributions.
     </p>
     <ol
       class="list"
@@ -61,38 +65,61 @@
     >
       <li>
         <p>
-          $\textbf{Coin flips:}$ Compute $\varphi_X$ when $\mathrm{P}(X=-1)=\mathrm{P}(X=1)=1/2$ (this comes out slightly more symmetrical than the usual Bernoulli r.v. for which $\mathrm{P}(X=0)=\mathrm{P}(X=1)=1/2$).
+          $\textbf{Coin flips:}$ Compute $\varphi_X$ when
+          $\mathrm{P}(X=-1)=\mathrm{P}(X=1)=1/2$ (this comes
+          out slightly more symmetrical than the usual Bernoulli
+          r.v. for which $\mathrm{P}(X=0)=\mathrm{P}(X=1)=1/2$).
         </p>
       </li>
       <li>
         <p>
-          $\textbf{Symmetric random walk:}$ Compute $\varphi_{S_n}$ where $S_n=\sum_{k=1}^n X_k$ is the sum of $n$ i.i.d. copies of the coin flip distribution above.
+          $\textbf{Symmetric random walk:}$ Compute
+          $\varphi_{S_n}$ where $S_n=\sum_{k=1}^n X_k$ is the
+          sum of $n$ i.i.d. copies of the coin flip
+          distribution above.
         </p>
       </li>
       <li>
         <p>
-          $\textbf{Poisson distribution:}$ $X\sim \textrm{Poisson}(\lambda)$.
+          $\textbf{Poisson distribution:}$
+          $X\sim \textrm{Poisson}(\lambda)$.
         </p>
       </li>
       <li>
         <p>
-          $\textbf{Uniform distribution:}$ $X \sim U[a,b]$, and in particular $X\sim [-1,1]$ which is especially symmetric and useful in applications.
+          $\textbf{Uniform distribution:}$ $X \sim U[a,b]$, and
+          in particular $X\sim [-1,1]$ which is especially
+          symmetric and useful in applications.
         </p>
       </li>
       <li>
         <p>
-          $\textbf{Exponential distribution:}$ $X\sim \textrm{Exp}(\lambda)$.
+          $\textbf{Exponential distribution:}$
+          $X\sim \textrm{Exp}(\lambda)$.
         </p>
       </li>
       <li>
         <p>
-          $\textbf{Symmetrized exponential:}$ A r.v. $Z$ with density function $f_Z(x) = e^{-|x|}$. Note that this is the distribution of the exponential distribution after being "symmetrized" in either of two ways: (i) We showed that if $X,Y\sim \textrm{Exp}(1)$ are independent then $X-Y$ has density $e^{-|x|}$; (ii) alternatively, it is the distribution of an "exponential variable with random sign", namely $\varepsilon\cdot X$ where $X\sim \textrm{Exp}(1)$ and $\varepsilon$ is a random sign (same as the coin flip distribution mentioned above) that is independent of $X$.
+          $\textbf{Symmetrized exponential:}$ A r.v. $Z$ with
+          density function $f_Z(x) = e^{-|x|}$. Note that this
+          is the distribution of the exponential distribution
+          after being "symmetrized" in either of two ways: (i)
+          We showed that if $X,Y\sim \textrm{Exp}(1)$ are
+          independent then $X-Y$ has density $e^{-|x|}$; (ii)
+          alternatively, it is the distribution of an
+          "exponential variable with random sign", namely
+          $\varepsilon\cdot X$ where $X\sim \textrm{Exp}(1)$
+          and $\varepsilon$ is a random sign (same as the coin
+          flip distribution mentioned above) that is independent
+          of $X$.
         </p>
       </li>
     </ol>
   </div>
   <p>
-    The normal distribution has the nice property that its characteristic function is equal, up to a constant, to its density function.
+    The normal distribution has the nice property that
+    its characteristic function is equal, up to a
+    constant, to its density function.
   </p>
   <div class="statement lemma">
     <h3>
@@ -122,10 +149,20 @@
       $$
     </div>
     <p>
-      As Durrett suggests in his "physics proof" (p. 92 in [Dur2010], 91 in [Dur2004]), the expression in parentheses is $1$, since it is the integral of a normal density with mean $it$ and variance $1$. This is a nonsensical argument, of course ($it$ being an imaginary number), but the claim is true, easy  and is proved in any complex analysis course using contour integration.
+      As Durrett suggests in his "physics proof" (p. 92
+      in [Dur2010], 91 in [Dur2004]), the expression in
+      parentheses is $1$, since it is the integral of a
+      normal density with mean $it$ and variance $1$. This
+      is a nonsensical argument, of course ($it$ being an
+      imaginary number), but the claim is true, easy  and is
+      proved in any complex analysis course using contour
+      integration.
     </p>
     <p>
-      Alternatively, let $S_n=\sum_{k=1}^n X_k$ where $X_1,X_2,\ldots$ are i.i.d. coin flips with $\mathrm{P}(X_k)=-1=\mathrm{P}(X_k)=1=1/2$. We know from the de Moivre-Laplace theorem
+      Alternatively, let $S_n=\sum_{k=1}^n X_k$ where
+      $X_1,X_2,\ldots$ are i.i.d. coin flips with
+      $\mathrm{P}(X_k)=-1=\mathrm{P}(X_k)=1=1/2$. We know
+      from the de Moivre-Laplace theorem
       <a
         href="./11-0.html#_32_h.a.i_"
         class=""
@@ -147,7 +184,10 @@
       $$
     </div>
     <p>
-      since the function $x\to e^{i t x}$ is bounded and continuous. On the other hand, from the exercise above it is easy to compute that $\varphi_{S_n}(t) = \cos^n(t)$, which implies that
+      since the function $x\to e^{i t x}$ is bounded and
+      continuous. On the other hand, from the exercise above
+      it is easy to compute that
+      $\varphi_{S_n}(t) = \cos^n(t)$, which implies that
     </p>
     <div class="math-block">
       $$
@@ -159,7 +199,9 @@
     </p>
   </div>
   <p>
-    As a consequence, let $X\sim N(0,\sigma_1^2)$ and $Y\sim N(0,\sigma_2^2)$ be independent, and let $Z=X+Y$. Then
+    As a consequence, let $X\sim N(0,\sigma_1^2)$ and
+    $Y\sim N(0,\sigma_2^2)$ be independent, and let
+    $Z=X+Y$. Then
   </p>
   <div class="math-block">
     $$
@@ -167,7 +209,17 @@
     $$
   </div>
   <p>
-    so $\varphi_Z(t) = e^{-(\sigma_1^2+\sigma_2^2)/2}$. This is the same as $\varphi_W(t)$, where $W\sim N(0,\sigma_1^2+\sigma_2^2)$. It would be nice if we could deduce from this that $Z \sim N(0,\sigma_1^2+\sigma_2^2)$ (we already proved this fact in a homework exercise, but it's always nice to have several proofs of a result, especially an important one like this one). This naturally leads us to an important question about characteristic functions, which we consider in the next section.
+    so $\varphi_Z(t) = e^{-(\sigma_1^2+\sigma_2^2)/2}$.
+    This is the same as $\varphi_W(t)$, where
+    $W\sim N(0,\sigma_1^2+\sigma_2^2)$. It would be nice
+    if we could deduce from this that
+    $Z \sim N(0,\sigma_1^2+\sigma_2^2)$ (we already
+    proved this fact in a homework exercise, but it's
+    always nice to have several proofs of a result,
+    especially an important one like this one). This
+    naturally leads us to an important question about
+    characteristic functions, which we consider in the
+    next section.
   </p>
 </body>
 </html>

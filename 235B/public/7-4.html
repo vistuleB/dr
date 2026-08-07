@@ -44,7 +44,11 @@
     Consequences of the ergodic theorem
   </h1>
   <p>
-    In probability theory and many related fields, the ergodic theorem is an essential tool that is used frequently in concrete situations. Here are some of its consequences with regards to some of the examples we discussed before.
+    In probability theory and many related fields, the
+    ergodic theorem is an essential tool that is used
+    frequently in concrete situations. Here are some of
+    its consequences with regards to some of the examples
+    we discussed before.
   </p>
   <ol
     class="list"
@@ -52,13 +56,42 @@
   >
     <li>
       <p>
-        $\textbf{The strong law of large numbers.}$ If $X_1,X_2,\ldots$ are i.i.d. with $\mathbf{E}|X_1|&lt;\infty$, then if we think of the variables as being defined on the canonical product space $\R^\N$ (i.e., $X_n=\pi_n(\omega)$ is the $n$th coordinate function), then we have $X_n = X_1\circ S^{n-1}$, where $S:\R^\N\to\R^\N$ is the shift map. Thus, the ergodic average $\frac{1}{n} \sum_{k=0}^{n-1} X_1\circ S^k$ is the same as the familiar empirical average $\frac{1}{n} S_n = \frac{1}{n} \sum_{k=1}^n X_k$ for an i.i.d., sum, and Birkhoff's ergodic theorem implies the strong law of large numbers. (In fact, one can think of the ergodic theorem as a powerful and far-reaching generalization of the SLLN).
+        $\textbf{The strong law of large numbers.}$ If
+        $X_1,X_2,\ldots$ are i.i.d. with
+        $\mathbf{E}|X_1|&lt;\infty$, then if we think of the
+        variables as being defined on the canonical product
+        space $\R^\N$ (i.e., $X_n=\pi_n(\omega)$ is the $n$th
+        coordinate function), then we have
+        $X_n = X_1\circ S^{n-1}$, where $S:\R^\N\to\R^\N$ is
+        the shift map. Thus, the ergodic average
+        $\frac{1}{n} \sum_{k=0}^{n-1} X_1\circ S^k$ is the
+        same as the familiar empirical average
+        $\frac{1}{n} S_n = \frac{1}{n} \sum_{k=1}^n X_k$ for
+        an i.i.d., sum, and Birkhoff's ergodic theorem implies
+        the strong law of large numbers. (In fact, one can
+        think of the ergodic theorem as a powerful and
+        far-reaching generalization of the SLLN).
       </p>
     </li>
     <li>
       <p>
-        <b>Equidistribution of the fractional part of $n\alpha$.</b>
-        A classical question in number theory concerns the statistical properties of the fractional part of the integer multiples of a number $\alpha$, i.e., the sequence $\{n \alpha \}$ (sometimes written as $n\alpha \textrm{ mod }1$), where $\{z\}=z-\lfloor z\rfloor$ denotes the fractional part of a real number $z$. If $\alpha$ is a rational number, it is easy to see that this sequence is periodic, and its range is the finite set of numbers $\left\{ \frac{k}{q}\,:\, k=0,1,\ldots,q-1 \right\}$ (where $q$ is the denominator in the representation of $\alpha$ as a reduced fraction $p/q$), so the question is trivial. In the case of irrational $\alpha$ something nice (though not too surprising, in hindsight) happens:
+        <b>Equidistribution of the fractional part of
+          $n\alpha$.</b>
+        A classical question in number theory
+        concerns the statistical properties of the fractional
+        part of the integer multiples of a number $\alpha$,
+        i.e., the sequence $\{n \alpha \}$ (sometimes written
+        as $n\alpha \textrm{ mod }1$), where
+        $\{z\}=z-\lfloor z\rfloor$ denotes the fractional
+        part of a real number $z$. If $\alpha$ is a rational
+        number, it is easy to see that this sequence is
+        periodic, and its range is the finite set of numbers
+        $\left\{ \frac{k}{q}\,:\, k=0,1,\ldots,q-1 \right\}$
+        (where $q$ is the denominator in the representation
+        of $\alpha$ as a reduced fraction $p/q$), so the
+        question is trivial. In the case of irrational
+        $\alpha$ something nice (though not too surprising,
+        in hindsight) happens:
       </p>
       <div
         label="Equidistribution theorem"
@@ -71,7 +104,8 @@
           
         </h3>
         <p>
-          <span class="label">Equidistribution theorem</span>If $\alpha\in \R\setminus\mathbb{Q}$ then the sequence $( \{ n\alpha \} )_{n=1}^\infty$ is
+          <span class="label">Equidistribution theorem</span>If $\alpha\in \R\setminus\mathbb{Q}$ then the
+          sequence $( \{ n\alpha \} )_{n=1}^\infty$ is
           <b>equidistributed in $[0,1]$</b>
           
           <sup id="_58_h.a.i_">
@@ -81,7 +115,8 @@
             >(1)</a>
             
           </sup>
-          . More precisely, for any $0&lt;a&lt;b&lt;1$ we have
+          .
+          More precisely, for any $0&lt;a&lt;b&lt;1$ we have
         </p>
         <div class="math-block">
           $$
@@ -90,7 +125,12 @@
         </div>
       </div>
       <p>
-        To prove this, note that $\{ n\alpha \}$ is simply $R_\alpha(0)$, where $R_\alpha$ is the circle rotation map discussed in previous sections. Since we proved that $R_\alpha$ is ergodic when $\alpha$ is irrational, the ergodic theorem implies that for almost every $x\in[0,1]$
+        To prove this, note that $\{ n\alpha \}$ is simply
+        $R_\alpha(0)$, where $R_\alpha$ is the circle
+        rotation map discussed in previous sections. Since we
+        proved that $R_\alpha$ is ergodic when $\alpha$ is
+        irrational, the ergodic theorem implies that for
+        almost every $x\in[0,1]$
       </p>
       <div class="math-block">
         $$
@@ -100,9 +140,21 @@
         $$
       </div>
       <p>
-        as $n\to\infty$. This would appear to be a weaker result, since it doesn't guarantee that the convergence occurs for the specific initial point $x=0$. However, in the particular example of the irrational circle rotation map (and the particular observable of the form $\mathbf{1}_{(a,b)}$) a slightly unusual thing happens, which is that the ergodic theorem turns out to be true not just for almost every initial point $x$ but for
+        as $n\to\infty$. This would appear to be a weaker
+        result, since it doesn't guarantee that the
+        convergence occurs for the specific initial point
+        $x=0$. However, in the particular example of the
+        irrational circle rotation map (and the particular
+        observable of the form $\mathbf{1}_{(a,b)}$) a
+        slightly unusual thing happens, which is that the
+        ergodic theorem turns out to be true not just for
+        almost every initial point $x$ but for
         <i>all</i>
-        $x$; in fact, it is easy to see that convergence for one value of $x$ is equivalent to convergence for any other value of $x$ (and in particular $x=0$). This is left to the reader as an exercise.
+        $x$; in
+        fact, it is easy to see that convergence for one value
+        of $x$ is equivalent to convergence for any other
+        value of $x$ (and in particular $x=0$). This is left
+        to the reader as an exercise.
       </p>
       <p>
         $\textbf{Note.}$
@@ -110,12 +162,45 @@
           href="./7-4.html#_59_h.a.i_"
           class=""
         >Theorem 7.7</a>
-        was proved in 1909 and 1910 independently by Weyl, Sierpinski and Bohl. In 1916 Weyl showed that the sequence $\{ n^2 \alpha \}$ is equidistributed, and more generally that $\{ p(n) \}$ is equidistributed if $p(x)$ is a polynomial with at least one irrational coefficient. Vinogradov proved in 1935 that if $\alpha$ is irrational then the sequence $\{ p_n \alpha \}$ is equidistributed, where $p_n$ is the $n$th prime number. Jean Bourgain (winner of a 1994 Fields Medal) proved similar statements in the more general setting of the pointwise ergodic theorem (i.e., the ergodic averages of the form $\frac{1}{n}\sum_{k=1}^n X\circ T^{k^2}$ and $\frac{1}{n}\sum_{k=1}^n X\circ T^{p_k}$ in a measure preserving system converge almost surely, under mild integrability conditions).
+        was
+        proved in 1909 and 1910 independently by Weyl,
+        Sierpinski and Bohl. In 1916 Weyl showed that the
+        sequence $\{ n^2 \alpha \}$ is equidistributed, and
+        more generally that $\{ p(n) \}$ is equidistributed
+        if $p(x)$ is a polynomial with at least one
+        irrational coefficient. Vinogradov proved in 1935 that
+        if $\alpha$ is irrational then the sequence
+        $\{ p_n \alpha \}$ is equidistributed, where $p_n$ is
+        the $n$th prime number. Jean Bourgain (winner of a
+        1994 Fields Medal) proved similar statements in the
+        more general setting of the pointwise ergodic theorem
+        (i.e., the ergodic averages of the form
+        $\frac{1}{n}\sum_{k=1}^n X\circ T^{k^2}$ and
+        $\frac{1}{n}\sum_{k=1}^n X\circ T^{p_k}$ in a measure
+        preserving system converge almost surely, under mild
+        integrability conditions).
       </p>
     </li>
     <li>
       <p>
-        $\textbf{Benford's law.}$ A beautiful variant of the circle rotation example above involves multiplication instead of addition (but one then has the luxury of multiplying by nice numbers such as rational numbers or integers, instead of adding irrational numbers). Consider for example the distribution of the first digit in the decimal expansion of the sequence of powers of $2$, $(2^n)_{n=1}^\infty$. Should we expect all digits to appear equally frequently? No, a quick empirical test shows that small digits appear with higher frequency than large digits. To see why, note that this is related to the dynamical system $T:x\mapsto 2x \textrm{ mod } (10^k)_{k=1}^\infty$ on the interval $[1,10)$ (i.e., multiplication by $2$ in the quotient group of all positive numbers with the multiplication operator quotiented by the cyclic group generated by the number $10$). For example, starting from $1$ and iterating the map we get the sequence
+        $\textbf{Benford's law.}$ A beautiful variant of the
+        circle rotation example above involves multiplication
+        instead of addition (but one then has the luxury of
+        multiplying by nice numbers such as rational numbers
+        or integers, instead of adding irrational numbers).
+        Consider for example the distribution of the first
+        digit in the decimal expansion of the sequence of
+        powers of $2$, $(2^n)_{n=1}^\infty$. Should we expect
+        all digits to appear equally frequently? No, a quick
+        empirical test shows that small digits appear with
+        higher frequency than large digits. To see why, note
+        that this is related to the dynamical system
+        $T:x\mapsto 2x \textrm{ mod } (10^k)_{k=1}^\infty$ on
+        the interval $[1,10)$ (i.e., multiplication by $2$ in
+        the quotient group of all positive numbers with the
+        multiplication operator quotiented by the cyclic group
+        generated by the number $10$). For example, starting
+        from $1$ and iterating the map we get the sequence
       </p>
       <div class="math-block">
         $$
@@ -123,7 +208,8 @@
         $$
       </div>
       <p>
-        It is easy to check that this map has the invariant measure
+        It is easy to check that this map has the invariant
+        measure
       </p>
       <div class="math-block">
         $$
@@ -131,7 +217,18 @@
         $$
       </div>
       <p>
-        In fact, this is a thinly disguised version of the circle rotation map $R_\alpha$ with $\alpha=\log_{10} 2$; the two maps are conjugate by the mapping $C(x) = \log_{10} x$ (i.e., $C$ maps $[1,10)$ bijectively to $[0,1)$ and the relation $T = C^{-1} \circ R_\alpha\circ C$ holds), and furthermore the measure $\mu$ defined above is the pull-back of Lebesgue measure on $[0,1)$ with respect to the conjugation map $C$, which is why an experienced ergodicist will know immediately that $\mu$ is an invariant measure for $T$.
+        In fact, this is a thinly disguised version of the
+        circle rotation map $R_\alpha$ with
+        $\alpha=\log_{10} 2$; the two maps are conjugate by
+        the mapping $C(x) = \log_{10} x$ (i.e., $C$ maps
+        $[1,10)$ bijectively to $[0,1)$ and the relation
+        $T = C^{-1} \circ R_\alpha\circ C$ holds), and
+        furthermore the measure $\mu$ defined above is the
+        pull-back of Lebesgue measure on $[0,1)$ with respect
+        to the conjugation map $C$, which is why an
+        experienced ergodicist will know immediately that
+        $\mu$ is an invariant measure for
+        $T$.
         <sup id="_60_h.a.i_">
           <a
             href="./7-4.html#_65_h.a.i_"
@@ -141,7 +238,11 @@
         </sup>
       </p>
       <p>
-        With this setup, we can answer the question posed at the beginning of the example. For each $1\le d\le 9$, the fraction of the first $n$ powers of $2$ whose decimal expansions start with a given digit $d$ is given by
+        With this setup, we can answer the question posed at
+        the beginning of the example. For each $1\le d\le 9$,
+        the fraction of the first $n$ powers of $2$ whose
+        decimal expansions start with a given digit $d$ is
+        given by
       </p>
       <div class="math-block">
         $$
@@ -153,11 +254,18 @@
         $$
       </div>
       <p>
-        where the convergence follows by the equidistribution theorem
+        where the convergence follows by the equidistribution
+        theorem
         <a
           href="./7-4.html#_59_h.a.i_"
           class=""
-        >(Theorem 7.7)</a>, the above comments and the exercise below. This probability distribution on the numbers $1,\ldots,9$ is known as $\textbf{Benford's law}$. Note that the most common digit $1$ appears more than $30\%$ of the time, and the least frequent digit $9$ only appears only $4.6\%$ of the time.
+        >(Theorem 7.7)</a>, the above
+        comments and the exercise below. This probability
+        distribution on the numbers $1,\ldots,9$ is known as
+        $\textbf{Benford's law}$. Note that the most common
+        digit $1$ appears more than $30\%$ of the time, and
+        the least frequent digit $9$ only appears only $4.6\%$
+        of the time.
       </p>
       <div class="math-block">
         $$
@@ -177,7 +285,8 @@
         $$
       </div>
       <p>
-        <i>Table: The (approximate) digit frequencies in Benford's law.</i>
+        <i>Table: The (approximate) digit frequencies in
+          Benford's law.</i>
       </p>
       <div class="statement exercise">
         <h3>
@@ -186,13 +295,33 @@
           
         </h3>
         <p>
-          Let $n&lt;m$ be positive integers. Prove that if $m$ is not an integer power of $n$ then $\log_m n$ is an irrational number.
+          Let $n&lt;m$ be positive integers. Prove that if $m$ is
+          not an integer power of $n$ then $\log_m n$ is an
+          irrational number.
         </p>
       </div>
     </li>
     <li>
       <p>
-        $\textbf{Continued fractions.}$ The fact that the continued fraction map on $(0,1)$ (together with the Gauss invariant measure) is ergodic has important consequences regarding the distribution of quotients in the continued fraction expansion of a number chosen uniformly at random in $(0,1)$. In contrast to the much more trivial case of the digits in a decimal (or base-$b$) expansion, which are simply i.i.d.\ random numbers chosen from $0,\ldots,9$, the asymptotic distribution of successive continued fraction quotients is that they are identically distributed, but not quite independent. To see this, note that the marginal distribution of a single quotient can be computed using ergodic averages, as follows. For each $q\ge 1$, the set of numbers $x$ whose first quotient $N(x)=\lfloor 1/x \rfloor$ is equal to $q$ is exactly the interval $\left(\frac{1}{q+1},\frac{1}{q}\right]$. Thus, for a given number $x$ we can recover the proportion of the first $n$ quotients equal to $q$ as
+        $\textbf{Continued fractions.}$ The fact that the
+        continued fraction map on $(0,1)$ (together with the
+        Gauss invariant measure) is ergodic has important
+        consequences regarding the distribution of quotients
+        in the continued fraction expansion of a number chosen
+        uniformly at random in $(0,1)$. In contrast to the
+        much more trivial case of the digits in a decimal (or
+        base-$b$) expansion, which are simply i.i.d.\ random
+        numbers chosen from $0,\ldots,9$, the asymptotic
+        distribution of successive continued fraction
+        quotients is that they are identically distributed,
+        but not quite independent. To see this, note that the
+        marginal distribution of a single quotient can be
+        computed using ergodic averages, as follows. For each
+        $q\ge 1$, the set of numbers $x$ whose first quotient
+        $N(x)=\lfloor 1/x \rfloor$ is equal to $q$ is exactly
+        the interval $\left(\frac{1}{q+1},\frac{1}{q}\right]$.
+        Thus, for a given number $x$ we can recover the
+        proportion of the first $n$ quotients equal to $q$ as
       </p>
       <div class="math-block">
         $$
@@ -215,13 +344,32 @@
         $$
       </div>
       <p>
-        for a set of $x$'s that has measure $1$ with respect to Gauss measure $\gamma$ (and hence, also almost surely with respect to Lebesgue measure, since $\gamma$ and Lebesgue are mutually absolutely continuous with respect to each other). Thus, the formula on the right-hand side of
+        for a set of $x$'s that has measure $1$ with respect
+        to Gauss measure $\gamma$ (and hence, also almost
+        surely with respect to Lebesgue measure, since
+        $\gamma$ and Lebesgue are mutually absolutely
+        continuous with respect to each other). Thus, the
+        formula on the right-hand side of
         <a
           href="./7-4.html#_61_h.a.i_"
           class=""
         >(21)</a>
-        (which is oddly reminiscent of Benford's law, though they are not related) represents the limiting distribution of the first quotient of a random number. For example, the frequency of occurrence of the quotient $1$ is $\log_2(4/3) \approx 41.5\%$ --- more than $40\%$ of the quotient are equal to $1$\,! Note that this is an asymptotic result that pertains to the statistics of many quotients of a given number $x$, and not to the
-        <i>first quotient of $x$</i>: if $x$ is chosen uniformly in $[0,1]$, because Lebesgue measure is not invariant under the Gauss map $G$, the first quotient of $x$ has a different distribution (clearly, the probability that the first quotient is $q$ is exactly $1/q-1/(q+1)$, the length of the interval $(1/(q+1),1/q]$).
+        (which is oddly reminiscent of
+        Benford's law, though they are not related) represents
+        the limiting distribution of the first quotient of a
+        random number. For example, the frequency of
+        occurrence of the quotient $1$ is
+        $\log_2(4/3) \approx 41.5\%$ --- more than $40\%$ of
+        the quotient are equal to $1$\,! Note that this is an
+        asymptotic result that pertains to the statistics of
+        many quotients of a given number $x$, and not to the
+        <i>first quotient of $x$</i>: if $x$ is chosen uniformly
+        in $[0,1]$, because Lebesgue measure is not invariant
+        under the Gauss map $G$, the first quotient of $x$
+        has a different distribution (clearly, the probability
+        that the first quotient is $q$ is exactly
+        $1/q-1/(q+1)$, the length of the interval
+        $(1/(q+1),1/q]$).
       </p>
       <div class="statement exercise">
         <h3>
@@ -230,13 +378,32 @@
           
         </h3>
         <p>
-          Compute the asymptotic probability that a pair of successive quotients of a randomly chosen $x$ in $[0,1]$ is equal to $(1,1)$ and compare this to the square of the frequency of $1$'s, to see why successive quotients are not independent of each other. Are two successive $1$'s positively or negatively correlated?
+          Compute the asymptotic probability that a pair of
+          successive quotients of a randomly chosen $x$ in
+          $[0,1]$ is equal to $(1,1)$ and compare this to the
+          square of the frequency of $1$'s, to see why
+          successive quotients are not independent of each
+          other. Are two successive $1$'s positively or
+          negatively correlated?
         </p>
       </div>
       <p>
-        What other quantities of interest can one compute for the continued fraction expansion of random numbers? One can try computing the expected value of a quotient, but that turns out not to be very interesting --- the average $\frac{1}{\log 2} \int_0^1 N(x) \frac{dx}{1+x}$ is infinite. The Russian probabilist Khinchin (known for his Law of Iterated Logarithm, a beautiful result on random walks and Brownian motion) derived an interesting limiting law for the
+        What other quantities of interest can one compute for
+        the continued fraction expansion of random numbers?
+        One can try computing the expected value of a
+        quotient, but that turns out not to be very
+        interesting --- the average
+        $\frac{1}{\log 2} \int_0^1 N(x) \frac{dx}{1+x}$ is
+        infinite. The Russian probabilist Khinchin (known for
+        his Law of Iterated Logarithm, a beautiful result on
+        random walks and Brownian motion) derived an
+        interesting limiting law for the
         <i>geometric</i>
-        average of the quotients. He proved that for almost every $x\in[0,1]$, the geometric average $(q_1\ldots q_n)^{1/n}$ of the first $n$ quotients of $x$ converges to the constant
+        average
+        of the quotients. He proved that for almost every
+        $x\in[0,1]$, the geometric average
+        $(q_1\ldots q_n)^{1/n}$ of the first $n$ quotients of
+        $x$ converges to the constant
       </p>
       <div class="math-block">
         $$
@@ -257,7 +424,10 @@
         </p>
       </div>
       <p>
-        We mention one additional and very beautiful limiting result on continued fraction expansions. If $x\in (0,1)$ has an infinite continued fraction expansion
+        We mention one additional and very beautiful limiting
+        result on continued fraction expansions. If
+        $x\in (0,1)$ has an infinite continued fraction
+        expansion
       </p>
       <div class="math-block">
         $$
@@ -265,7 +435,9 @@
         $$
       </div>
       <p>
-        where $n_1,n_2,\ldots$ are the quotients in the expansion, it is interesting to consider the truncated expansion
+        where $n_1,n_2,\ldots$ are the quotients in the
+        expansion, it is interesting to consider the truncated
+        expansion
       </p>
       <div class="math-block">
         $$
@@ -273,9 +445,15 @@
         $$
       </div>
       <p>
-        which are rational numbers that become better and better approximations to $x$. In fact, one reason why continued fraction expansions are so important in number theory is that it can be shown that the
+        which are rational numbers that become better and
+        better approximations to $x$. In fact, one reason why
+        continued fraction expansions are so important in
+        number theory is that it can be shown that the
         <i>best</i>
-        rational approximation to $x$ with denominator bounded by some bound $N$ will always be the last truncated continued fraction $P_k/Q_k$ for which $Q_k\le N$, and furthermore, the inequalities
+        rational approximation to $x$ with denominator
+        bounded by some bound $N$ will always be the last
+        truncated continued fraction $P_k/Q_k$ for which
+        $Q_k\le N$, and furthermore, the inequalities
       </p>
       <div
         id="_62_h.a.i_"
@@ -288,9 +466,14 @@
         $$
       </div>
       <p>
-        hold. How fast should we expect this sequence of rational approximations to converge? The answer is given in the following theorem. For the proof (which is surprisingly not difficult), see Section~1.4 in the book
+        hold. How fast should we expect this sequence of
+        rational approximations to converge? The answer is
+        given in the following theorem. For the proof (which
+        is surprisingly not difficult), see Section~1.4 in the
+        book
         <i>Ergodic Theory and Information</i>
-        by P.\ Billingsley.
+        by P.\
+        Billingsley.
       </p>
       <div class="statement theorem">
         <h3>
@@ -316,8 +499,15 @@
           $$
         </div>
         <p>
-          where $\Delta_k(x) = \{ y\in (0,1) : n_j(y)=n_j(x) \textrm{ for }1\le j\le k\}$ (this interval is sometimes called the
-          <b>$k$th fundamental interval of $x$</b>), and $\operatorname{Leb}(\cdot)$ denotes Lebesgue measure (it is easy to see that the same statement is true if Gauss measure is used instead).
+          where
+          $\Delta_k(x) = \{ y\in (0,1) : n_j(y)=n_j(x) \textrm{
+          for }1\le j\le k\}$
+          (this interval is sometimes called the
+          <b>$k$th
+            fundamental interval of $x$</b>), and
+          $\operatorname{Leb}(\cdot)$ denotes Lebesgue measure
+          (it is easy to see that the same statement is true if
+          Gauss measure is used instead).
         </p>
       </div>
       <p>
@@ -340,7 +530,11 @@
         <a
           href="./7-4.html#_62_h.a.i_"
           class=""
-        >(22)</a>. The interesting constant $\frac{\pi^2}{6\log 2}$ is sometimes referred to as the $\textbf{entropy constant of the continued fraction map}$.
+        >(22)</a>. The interesting constant
+        $\frac{\pi^2}{6\log 2}$ is sometimes referred to as
+        the
+        $\textbf{entropy constant of the continued fraction
+        map}$.
       </p>
     </li>
   </ol>
@@ -351,11 +545,18 @@
   >
     <p>
       <a href="#_58_h.a.i_">(1)</a>
-      This is the terminology used in number theory --- see for example Section ? in the book
-      <i>An Introduction to the Theory of Numbers</i>, by Hardy and Wright, and the Wikipedia article
-      <a href="http://en.wikipedia.org/wiki/Equidistributed_sequence">http://en.wikipedia.org/wiki/Equidistributed_sequence</a>. Note that in probability theory the word
+      This is the terminology used in number theory --- see
+      for example Section ? in the book
+      <i>An Introduction to
+        the Theory of Numbers</i>, by Hardy and Wright, and the
+      Wikipedia article
+      <a href="http://en.wikipedia.org/wiki/Equidistributed_sequence">http://en.wikipedia.org/wiki/Equidistributed_sequence</a>.
+      Note that in probability theory the word
       <i>equidistributed</i>
-      means equal in distribution rather than uniformly distributed, so one should take care when using this term for the number theoretic meaning when talking to a probabilist.
+      means equal in distribution rather
+      than uniformly distributed, so one should take care
+      when using this term for the number theoretic meaning
+      when talking to a probabilist.
     </p>
   </div>
   <div
@@ -364,7 +565,13 @@
   >
     <p>
       <a href="#_60_h.a.i_">(2)</a>
-      We are skirting an important concept in ergodic theory here --- in fact, the map $C$ is an example of an $\textbf{isomorphism}$ between two measure preserving systems. Isomorphisms play a central role in ergodic theory, and there's a lot more to say about them, but we will not go further into the subject due to lack of time.
+      We are skirting an important concept in ergodic
+      theory here --- in fact, the map $C$ is an example of
+      an $\textbf{isomorphism}$ between two measure
+      preserving systems. Isomorphisms play a central role
+      in ergodic theory, and there's a lot more to say about
+      them, but we will not go further into the subject due
+      to lack of time.
     </p>
   </div>
 </body>

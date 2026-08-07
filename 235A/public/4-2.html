@@ -44,7 +44,9 @@
     Multi-dimensional distribution functions
   </h1>
   <p>
-    If $\mathbf{X}=(X_1,\ldots,X_d)$ is a $d$-dimensional random vector, we define its $\textbf{distribution}$ to be the probability measure
+    If $\mathbf{X}=(X_1,\ldots,X_d)$ is a $d$-dimensional
+    random vector, we define its $\textbf{distribution}$
+    to be the probability measure
   </p>
   <div class="math-block">
     $$
@@ -53,10 +55,16 @@
     $$
   </div>
   <p>
-    similarly to the one-dimensional case. The measure $\mu_X$ is also called the $\textbf{joint distribution}$ (or $\textbf{joint law}$) of the random variables $X_1,\ldots,X_d$.
+    similarly to the one-dimensional case. The measure
+    $\mu_X$ is also called the
+    $\textbf{joint distribution}$ (or
+    $\textbf{joint law}$) of the random variables
+    $X_1,\ldots,X_d$.
   </p>
   <p>
-    Once again, to avoid having to work with measures, we introduce the concept of a $\textbf{$d$-dimensional distribution function}$.
+    Once again, to avoid having to work with measures, we
+    introduce the concept of a $\textbf{$d
+    $-dimensional distribution function}$.
   </p>
   <div class="statement definition">
     <h3>
@@ -65,7 +73,11 @@
       
     </h3>
     <p>
-      The $d$-dimensional distribution function of a $d$-dimensional random vector $\mathbf{X}=(X_1,\ldots,X_d)$ (also called the joint distribution function of $X_1,\ldots,X_d$) is the function $F_{\mathbf{X}}:\R^d\to[0,1]$ defined by
+      The $d$-dimensional distribution function of a
+      $d$-dimensional random vector
+      $\mathbf{X}=(X_1,\ldots,X_d)$ (also called the joint
+      distribution function of $X_1,\ldots,X_d$) is the
+      function $F_{\mathbf{X}}:\R^d\to[0,1]$ defined by
     </p>
     <div class="math-block">
       $$
@@ -88,7 +100,9 @@
       
     </h3>
     <p>
-      <span class="label">Properties of distribution functions</span>If $F=F_{\mathbf X}$ is a distribution function of a $d$-dimensional random vector, then it has the following properties:
+      <span class="label">Properties of distribution functions</span>If $F=F_{\mathbf X}$ is a distribution function of a
+      $d$-dimensional random vector, then it has the
+      following properties:
     </p>
     <ol class="list">
       <li>
@@ -98,26 +112,33 @@
       </li>
       <li>
         <p>
-          For any $1\le i\le d$, $\lim_{x_i\to-\infty} F(\mathbf{x}) = 0$.
+          For any $1\le i\le d$,
+          $\lim_{x_i\to-\infty} F(\mathbf{x}) = 0$.
         </p>
       </li>
       <li>
         <p>
-          $\lim_{\mathbf{x}\to(\infty,\ldots,\infty)} F(\mathbf{x}) = 1$.
+          $\lim_{\mathbf{x}\to(\infty,\ldots,\infty)}
+          F(\mathbf{x}) = 1$.
         </p>
       </li>
       <li>
         <p>
-          $F$ is right-continuous, i.e., $F(\mathbf{x}+) := \lim_{\mathbf{y}\downarrow \mathbf{x}} F(\mathbf{y}) = F(\mathbf{x}),$
-          where here $\mathbf{y}\downarrow \mathbf{x}$ means that $y_i\downarrow x_i$ in each coordinate.
+          $F$ is right-continuous, i.e.,
+          $F(\mathbf{x}+) := \lim_{\mathbf{y}\downarrow
+          \mathbf{x}} F(\mathbf{y}) = F(\mathbf{x}),$
+          where here $\mathbf{y}\downarrow \mathbf{x}$ means
+          that $y_i\downarrow x_i$ in each coordinate.
         </p>
       </li>
       <li>
         <p>
           For $1\le i\le d$ and $a&lt;b$, denote by
-          $\Delta_{a,b}^{x}$
-          the
-          <i>differencing operator in the variable $x$</i>, which takes a function $f$ of the real variable $x$ (and possibly also dependent on other variables) and returns the value
+          $\Delta_{a,b}^{x}$ the
+          <i>differencing operator in the
+            variable $x$</i>, which takes a function $f$ of the real
+          variable $x$ (and possibly also dependent on other
+          variables) and returns the value
         </p>
         <div class="math-block">
           $$
@@ -125,7 +146,8 @@
           $$
         </div>
         <p>
-          Then, for any real numbers $a_1 &lt; b_1$, $a_2&lt;b_2$, \ldots, $a_d &lt; b_d$, we have
+          Then, for any real numbers $a_1 &lt; b_1$, $a_2&lt;b_2$,
+          \ldots, $a_d &lt; b_d$, we have
         </p>
         <div class="math-block">
           $$
@@ -138,7 +160,8 @@
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>See Chapter 1 in [Dur2010] or Appendix A.2 in [Dur2004].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span>See Chapter 1 in [Dur2010] or Appendix A.2 in
+      [Dur2004].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div class="statement theorem">
@@ -153,12 +176,14 @@
         href="./4-2.html#_14_h.a.i_"
         class=""
       >Theorem 4.8</a>
-      above is a distribution function of some random vector $\mathbf{X}$.
+      above is a distribution function of
+      some random vector $\mathbf{X}$.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>See Chapter 1 in [Dur2010] or Appendix A.2 in [Dur2004].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span>See Chapter 1 in [Dur2010] or Appendix A.2 in
+      [Dur2004].<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
 </body>

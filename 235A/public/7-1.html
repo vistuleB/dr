@@ -44,13 +44,36 @@
     Construction of the expectation operator
   </h1>
   <p>
-    We wish to define the notion of the $\textbf{expected value}$, or $\textbf{expectation}$, of a random variable $X$, which will be denoted $\mathbf{E} X$ (or $\mathbf{E}(X)$). In measure theory this is denoted $\int X dP$ and is called the "Lebesgue integral". It is one of the most important concepts in all of mathematical analysis! So time invested in understanding it is time well-spent.
+    We wish to define the notion of the
+    $\textbf{expected value}$, or $\textbf{expectation}$,
+    of a random variable $X$, which will be denoted
+    $\mathbf{E} X$ (or $\mathbf{E}(X)$). In measure
+    theory this is denoted $\int X dP$ and is called the
+    "Lebesgue integral". It is one of the most important
+    concepts in all of mathematical analysis! So time
+    invested in understanding it is time well-spent.
   </p>
   <p>
-    The idea is simple. For bounded random variables, we want the expectation to satisfy three properties: First, the expectation of an indicator variable $1_A$, where $A$ is an event, should be equal to $\mathrm{P}(A)$. Second, the expectation operator should be linear i.e., should satisfy $\mathbf{E}(aX+bY)=a\mathbf{E} X+b\mathbf{E} Y$ for real numbers $a,b$ and r.v.'s $X,Y$. Third, it should be monotone, i.e., if $X\le Y$ (meaning $X(\omega)\le Y(\omega)$ for all $\omega\in \Omega$) then $\mathbf{E} X\le \mathbf{E} Y$.
+    The idea is simple. For bounded random variables, we
+    want the expectation to satisfy three properties:
+    First, the expectation of an indicator variable $1_A$,
+    where $A$ is an event, should be equal to
+    $\mathrm{P}(A)$. Second, the expectation operator
+    should be linear i.e., should satisfy
+    $\mathbf{E}(aX+bY)=a\mathbf{E} X+b\mathbf{E} Y$ for
+    real numbers $a,b$ and r.v.'s $X,Y$. Third, it should
+    be monotone, i.e., if $X\le Y$ (meaning
+    $X(\omega)\le Y(\omega)$ for all $\omega\in \Omega$)
+    then $\mathbf{E} X\le \mathbf{E} Y$.
   </p>
   <p>
-    For unbounded random variables, we will also require some kind of continuity, but let's treat the case of bounded case first. It turns out that these properties determine the expectation/Lebesgue integral operator uniquely. Different textbooks may have some variation in how they construct it, but the existence and uniqueness are really the essential facts.
+    For unbounded random variables, we will also require
+    some kind of continuity, but let's treat the case of
+    bounded case first. It turns out that these properties
+    determine the expectation/Lebesgue integral operator
+    uniquely. Different textbooks may have some variation
+    in how they construct it, but the existence and
+    uniqueness are really the essential facts.
   </p>
   <div
     class="statement theorem"
@@ -62,7 +85,11 @@
       
     </h3>
     <p>
-      Let $(\Omega, {\cal F}, \mathrm{P})$ be a probability space. Let $B_\Omega$ denote the class of bounded random variables. There exists a unique operator $\mathbf{E}$ that takes a r.v. $X\in B_\Omega$ and returns a number in $\R$, and satisfies:
+      Let $(\Omega, {\cal F}, \mathrm{P})$ be a probability
+      space. Let $B_\Omega$ denote the class of bounded
+      random variables. There exists a unique operator
+      $\mathbf{E}$ that takes a r.v. $X\in B_\Omega$ and
+      returns a number in $\R$, and satisfies:
     </p>
     <ol
       class="list"
@@ -70,24 +97,40 @@
     >
       <li>
         <p>
-          If $A\in {\cal F}$ then $\mathbf{E}(1_A) = \mathrm{P}(A)$.
+          If $A\in {\cal F}$ then
+          $\mathbf{E}(1_A) = \mathrm{P}(A)$.
         </p>
       </li>
       <li>
         <p>
-          If $X,Y\in B_\Omega$, $a,b\in\R$ then $\mathbf{E}(aX+bY) = a\mathbf{E}(X)+b\mathbf{E}(Y)$.
+          If $X,Y\in B_\Omega$, $a,b\in\R$ then
+          $\mathbf{E}(aX+bY) = a\mathbf{E}(X)+b\mathbf{E}(Y)$.
         </p>
       </li>
       <li>
         <p>
-          If $X,Y\in B_\Omega$ and $X\ge Y$ then $\mathbf{E}(X)\ge \mathbf{E}(Y)$.
+          If $X,Y\in B_\Omega$ and $X\ge Y$ then
+          $\mathbf{E}(X)\ge \mathbf{E}(Y)$.
         </p>
       </li>
     </ol>
   </div>
   <div alt-title="Sketch of proof">
     <p>
-      <span class="proof">Sketch of proof</span>Call $X$ a $\textbf{simple}$ function if it is of the form $X=\sum_{i=1}^n a_i 1_{B_i}$, where $a_1,\ldots,a_n\in \R$ and $B_1,\ldots,B_n$ are disjoint events. For such r.v.'s define $\mathbf{E}(X)=\sum a_i \mathrm{P}(B_i)$. Show that the linearity and monotonicity properties hold, and so far uniqueness clearly holds since we had no choice in how to define $\mathbf{E}(X)$ for such functions if we wanted the properties above to hold. Now for a general bounded r.v. $X$ with $|X|\le M$, for any $\epsilon&gt;0$ it is possible to approximate $X$ from below and above by simple functions $Y \le X \le Z$ such that $\mathbf{E}(Z-Y) &lt; \epsilon$. This suggests defining
+      <span class="proof">Sketch of proof</span>Call $X$ a $\textbf{simple}$ function if it is of the
+      form $X=\sum_{i=1}^n a_i 1_{B_i}$, where
+      $a_1,\ldots,a_n\in \R$ and $B_1,\ldots,B_n$ are
+      disjoint events. For such r.v.'s define
+      $\mathbf{E}(X)=\sum a_i \mathrm{P}(B_i)$. Show that
+      the linearity and monotonicity properties hold, and so
+      far uniqueness clearly holds since we had no choice in
+      how to define $\mathbf{E}(X)$ for such functions if
+      we wanted the properties above to hold. Now for a
+      general bounded r.v. $X$ with $|X|\le M$, for any
+      $\epsilon&gt;0$ it is possible to approximate $X$ from
+      below and above by simple functions $Y \le X \le Z$
+      such that $\mathbf{E}(Z-Y) &lt; \epsilon$. This suggests
+      defining
     </p>
     <div
       id="_16_h.a.i_"
@@ -100,18 +143,30 @@
       $$
     </div>
     <p>
-      By approximation, the construction is shown to still satisfy the properties in the Theorem and to be unique, since $\mathbf{E}(X)$ is squeezed between $\mathbf{E}(Y)$ and $\mathbf{E}(Z)$, and these can be made arbitrarily close to each other.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      By approximation, the construction is shown to still
+      satisfy the properties in the Theorem and to be
+      unique, since $\mathbf{E}(X)$ is squeezed between
+      $\mathbf{E}(Y)$ and $\mathbf{E}(Z)$, and these can be
+      made arbitrarily close to each other.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    We can now extend the definition of the expectation operator to non-negative random variables. In that case we still define $\mathbf{E} X$ by eq.
+    We can now extend the definition of the expectation
+    operator to non-negative random variables. In that
+    case we still define $\mathbf{E} X$ by eq.
     <a
       href="./7-1.html#_16_h.a.i_"
       class=""
-    >(5)</a>. This can be thought of as a kind of "continuity from below" axiom that is added to the properties 1--3 above, although we shall see that it can be reformulated in several equivalent ways. Note that now $\mathbf{E} X$ may sometimes be infinite.
+    >(5)</a>. This can be thought of as a kind of
+    "continuity from below" axiom that is added to the
+    properties 1--3 above, although we shall see that it
+    can be reformulated in several equivalent ways. Note
+    that now $\mathbf{E} X$ may sometimes be infinite.
   </p>
   <p>
-    Finally, for a general random variable $X$, we decompose $X$ as a difference of two non-negative r.v.'s by writing
+    Finally, for a general random variable $X$, we
+    decompose $X$ as a difference of two non-negative
+    r.v.'s by writing
   </p>
   <div class="math-block">
     $$
@@ -119,10 +174,14 @@
     $$
   </div>
   <p>
-    where $X_+ = \max(X,0)$ is called the $\textbf{positive part of } X$ and $X_-=\max(-X,0)$ is called the $\textbf{negative part of } X$.
+    where $X_+ = \max(X,0)$ is called the
+    $\textbf{positive part of } X$ and $X_-=\max(-X,0)$
+    is called the $\textbf{negative part of } X$.
   </p>
   <p>
-    We say that $X$ $\textbf{has an expectation}$ if the two numbers $\mathbf{E} X_-, \mathbf{E} X_+$ are not both $\infty$. In this case we define
+    We say that $X$ $\textbf{has an expectation}$ if the
+    two numbers $\mathbf{E} X_-, \mathbf{E} X_+$ are not
+    both $\infty$. In this case we define
   </p>
   <div class="math-block">
     $$
@@ -130,7 +189,12 @@
     $$
   </div>
   <p>
-    This is a number in $\R\cup\{ -\infty,\infty\}$. If both $\mathbf{E} X_-, \mathbf{E} X_+$ are $&lt;\infty$, or in other words if $\mathbf{E} |X|&lt;\infty$ (since $|X|=X_+ + X_-$), we say that $X$ $\textbf{has finite expectation}$ or is $\textbf{integrable}$.
+    This is a number in $\R\cup\{ -\infty,\infty\}$. If
+    both $\mathbf{E} X_-, \mathbf{E} X_+$ are $&lt;\infty$,
+    or in other words if $\mathbf{E} |X|&lt;\infty$ (since
+    $|X|=X_+ + X_-$), we say that $X$
+    $\textbf{has finite expectation}$ or is
+    $\textbf{integrable}$.
   </p>
   <div class="statement theorem">
     <h3>
@@ -139,7 +203,8 @@
       
     </h3>
     <p>
-      Suppose $X,Y\ge 0$ or $X,Y\le 0$ or $\mathbf{E} |X|, \mathbf{E}|Y|&lt;\infty$. Then:
+      Suppose $X,Y\ge 0$ or $X,Y\le 0$ or
+      $\mathbf{E} |X|, \mathbf{E}|Y|&lt;\infty$. Then:
     </p>
     <ol
       class="list"
@@ -152,12 +217,19 @@
             href="./7-1.html#_16_h.a.i_"
             class=""
           >(5)</a>
-          coincides with the original definition, namely $\mathbf{E}(\sum_i a_i 1_{B_i}) = \sum_i a_i \mathrm{P}(B_i)$.
+          coincides with the original
+          definition, namely
+          $\mathbf{E}(\sum_i a_i 1_{B_i}) = \sum_i a_i
+          \mathrm{P}(B_i)$.
         </p>
       </li>
       <li>
         <p>
-          $\mathbf{E}(aX+bY+c)=a\mathbf{E} X + b\mathbf{E} Y+c$ for any real numbers $a,b,c$, where in the case where $\mathbf{E}(X)=\mathbf{E}(Y) = \pm \infty$, we require $a,b$ to have the same sign in order for the right-hand side of this identity to be well-defined.
+          $\mathbf{E}(aX+bY+c)=a\mathbf{E} X + b\mathbf{E} Y+c$
+          for any real numbers $a,b,c$, where in the case where
+          $\mathbf{E}(X)=\mathbf{E}(Y) = \pm \infty$, we
+          require $a,b$ to have the same sign in order for the
+          right-hand side of this identity to be well-defined.
         </p>
       </li>
       <li>
@@ -174,8 +246,12 @@
   </div>
   <p>
     $\textbf{Remark.}$ See
-    <a href="http://en.wikipedia.org/wiki/Lebesgue_integration#Intuitive_interpretation">the Wikipedia article on Lebesgue integration</a>
-    for a nice description of the difference in approaches between the more familiar Riemann integral and the Lebesgue integral.
+    <a href="http://en.wikipedia.org/wiki/Lebesgue_integration#Intuitive_interpretation">the Wikipedia article on
+      Lebesgue
+      integration</a>
+    for a nice description of the difference in approaches
+    between the more familiar Riemann integral and the
+    Lebesgue integral.
   </p>
 </body>
 </html>

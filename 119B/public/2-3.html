@@ -46,8 +46,18 @@
   <p>
     A discrete-time system is called
     <i>one-dimensional</i>
-    if it has either $\mathbb{R}$ or a sub-interval of $\mathbb{R}$ as its state space. There are many interesting examples of such systems, and it will be especially convenient to focus on maps defined on an interval, usually taken to be the unit interval $[0,1]$ (or in some cases the open interval $(0,1)$). Such a map is called an
-    <i>interval map</i>. The logistic map is one especially interesting example of an interval map. Here are some additional maps that we will consider later.
+    if
+    it has either $\mathbb{R}$ or a sub-interval of
+    $\mathbb{R}$ as its state space. There are many
+    interesting examples of such systems, and it will be
+    especially convenient to focus on maps defined on an
+    interval, usually taken to be the unit interval
+    $[0,1]$ (or in some cases the open interval $(0,1)$).
+    Such a map is called an
+    <i>interval map</i>. The logistic
+    map is one especially interesting example of an
+    interval map. Here are some additional maps that we
+    will consider later.
   </p>
   <div
     label="Doubling map"
@@ -71,7 +81,12 @@
       $$
     </div>
     <p>
-      (see Figure 10). As we will see later, it is closely related to binary expansions of real numbers in $(0,1)$. In particular, trying to understand the statistical properties of binary expansions of random numbers leads naturally to questions about properties of the doubling map --- see
+      (see Figure 10). As we will see later, it is closely
+      related to binary expansions of real numbers in
+      $(0,1)$. In particular, trying to understand the
+      statistical properties of binary expansions of random
+      numbers leads naturally to questions about properties
+      of the doubling map --- see
       <a
         href="./2-10.html#_46_h.a.i_"
         class=""
@@ -89,7 +104,8 @@
       
     </h3>
     <p>
-      <span class="label">Circle rotation map</span>For $0&lt;\alpha&lt;1$, the circle rotation map $R_\alpha:[0,1)\to[0,1)$ is defined by
+      <span class="label">Circle rotation map</span>For $0&lt;\alpha&lt;1$, the circle rotation map
+      $R_\alpha:[0,1)\to[0,1)$ is defined by
     </p>
     <div class="math-block">
       $$
@@ -103,7 +119,11 @@
       $$
     </div>
     <p>
-      The reason for the name of this map is that if one considers the interval $[0,1]$ as a topological circle by identifying the two ends, the map corresponds to a rotation of the circle by the angle $2\pi \alpha$.
+      The reason for the name of this map is that if one
+      considers the interval $[0,1]$ as a topological
+      circle by identifying the two ends, the map
+      corresponds to a rotation of the circle by the angle
+      $2\pi \alpha$.
     </p>
   </div>
   <div
@@ -116,7 +136,8 @@
       
     </h3>
     <p>
-      <span class="label">Tent map</span>The tent maps are another one-parameter family of maps $\Lambda_a$, $0&lt;a\le 2$, defined by
+      <span class="label">Tent map</span>The tent maps are another one-parameter family of
+      maps $\Lambda_a$, $0&lt;a\le 2$, defined by
     </p>
     <div class="math-block">
       $$
@@ -141,7 +162,14 @@
       
     </h3>
     <p>
-      <span class="label">Gauss map</span>Denote by $\{ x \}=x-\lfloor x\rfloor$ the fractional part of a real number $x$ (where $\lfloor x\rfloor = \max\{ n\in\mathbb{Z}\,:\,n\le x\}$ is the integer part of $x$). The Gauss map $G:(0,1)\to[0,1)$, which is related to so-called continued fraction expansions of real numbers, is defined by
+      <span class="label">Gauss map</span>Denote by $\{ x \}=x-\lfloor x\rfloor$ the fractional
+      part of a real number $x$ (where
+      $\lfloor x\rfloor = \max\{ n\in\mathbb{Z}\,:\,n\le
+      x\}$
+      is the integer part of $x$). The Gauss map
+      $G:(0,1)\to[0,1)$, which is related to so-called
+      continued fraction expansions of real numbers, is
+      defined by
     </p>
     <div class="math-block">
       $$
@@ -151,7 +179,8 @@
       $$
     </div>
     <p>
-      i.e., $G(x)=1/x-n$ for $1/(n+1)&lt;x&lt;1/n$, ($n=1,2,\ldots$).
+      i.e., $G(x)=1/x-n$ for $1/(n+1)&lt;x&lt;1/n$,
+      ($n=1,2,\ldots$).
     </p>
   </div>
   <div
@@ -169,12 +198,20 @@
     >
       <li>
         <p>
-          Show (or read in a number theory textbook how to show) that the numbers $x\in [0,1]$ for which the sequence of iterates $G^n(x)$ eventually reaches $0$ (and is therefore undefined for larger values of $n$) are precisely the rational numbers.
+          Show (or read in a number theory textbook how to
+          show) that the numbers $x\in [0,1]$ for which the
+          sequence of iterates $G^n(x)$ eventually reaches $0$
+          (and is therefore undefined for larger values of $n$)
+          are precisely the rational numbers.
         </p>
       </li>
       <li>
         <p>
-          Show that the eventually periodic points of $G$ (numbers $x$ for which for some $n$, $G^n(x)$ belongs to an $m$-cycle, see the definition below) are the quadratic irrationals, i.e., the irrational numbers which are solutions of quadratic equations.
+          Show that the eventually periodic points of $G$
+          (numbers $x$ for which for some $n$, $G^n(x)$ belongs
+          to an $m$-cycle, see the definition below) are the
+          quadratic irrationals, i.e., the irrational numbers
+          which are solutions of quadratic equations.
         </p>
       </li>
       <li>
@@ -199,7 +236,9 @@
         style="max-width: 100%; display: block; margin: 0 auto"
       >(d)</span>
     <figcaption>
-      Figure 10: (a) The doubling map; (b) The circle rotation map $R_\alpha$ for $\alpha=0.3$; (c) the tent map $\Lambda_2$; (d) The Gauss map.
+      Figure 10: (a) The doubling map; (b) The circle
+      rotation map $R_\alpha$ for $\alpha=0.3$; (c) the
+      tent map $\Lambda_2$; (d) The Gauss map.
     </figcaption>
   </figure>
 </body>

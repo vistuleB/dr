@@ -44,7 +44,12 @@
     Moments
   </h1>
   <p>
-    The final step in our lengthy preparation for the proof of the central limit theorem will be to tie the behavior of the characteristic function $\varphi_X(t)$ near $t=0$ to the moments of $X$. Note that, computing formally without regards to rigor, we can write
+    The final step in our lengthy preparation for the
+    proof of the central limit theorem will be to tie the
+    behavior of the characteristic function $\varphi_X(t)$
+    near $t=0$ to the moments of $X$. Note that,
+    computing formally without regards to rigor, we can
+    write
   </p>
   <div class="math-block">
     $$
@@ -53,7 +58,12 @@
     $$
   </div>
   <p>
-    So it appears that the moments of $X$ appear as (roughly) the coefficients in the Taylor expansion of $\varphi_X$ around $t=0$. However, for CLT we don't want to assume anything beyond the existence of the second moment, so a (slightly) more delicate estimate is required.
+    So it appears that the moments of $X$ appear as
+    (roughly) the coefficients in the Taylor expansion of
+    $\varphi_X$ around $t=0$. However, for CLT we don't
+    want to assume anything beyond the existence of the
+    second moment, so a (slightly) more delicate estimate
+    is required.
   </p>
   <div
     class="statement lemma"
@@ -65,7 +75,9 @@
       
     </h3>
     <p>
-      $\left|e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!}\right| \le \min\left(\frac{|x|^{n+1}}{(n+1)!},\frac{2|x|^n}{n!}\right).$
+      $\left|e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!}\right|
+      \le
+      \min\left(\frac{|x|^{n+1}}{(n+1)!},\frac{2|x|^n}{n!}\right).$
     </p>
   </div>
   <div>
@@ -83,8 +95,10 @@
         href="./11-0.html#_34_h.a.i_"
         class=""
       >Lemma 11.3</a>
-      that we used in the proof of Stirling's formula.
-      Taking the absolute value and using the fact that $|e^{is}|=1$ gives
+      that we used
+      in the proof of Stirling's formula. Taking the
+      absolute value and using the fact that $|e^{is}|=1$
+      gives
     </p>
     <div
       id="_44_h.a.i_"
@@ -98,7 +112,8 @@
       $$
     </div>
     <p>
-      To get a bound that is better-behaved for large $x$, note that
+      To get a bound that is better-behaved for large $x$,
+      note that
     </p>
     <div class="math-block">
       $$
@@ -136,11 +151,14 @@
     </p>
   </div>
   <p>
-    Now let $X$ be a r.v. with $\mathbf{E}|X|^n &lt; \infty$. Letting $x=tX$ in
+    Now let $X$ be a r.v. with $\mathbf{E}|X|^n &lt; \infty$.
+    Letting $x=tX$ in
     <a
       href="./13-5.html#_43_h.a.i_"
       class=""
-    >Lemma 13.10</a>, taking expectations and using the triangle inequality, we get that
+    >Lemma 13.10</a>, taking
+    expectations and using the triangle inequality, we get
+    that
   </p>
   <div
     id="_46_h.a.i_"
@@ -155,7 +173,11 @@
     $$
   </div>
   <p>
-    Note that in this minimum of two terms, when $t$ is very small the first term gives a better bound, but when taking expectations we need the second term to ensure that the expectation is finite if $X$ is only assumed to have a finite $n$-th moment.
+    Note that in this minimum of two terms, when $t$ is
+    very small the first term gives a better bound, but
+    when taking expectations we need the second term to
+    ensure that the expectation is finite if $X$ is only
+    assumed to have a finite $n$-th moment.
   </p>
   <div
     class="statement theorem"
@@ -167,7 +189,8 @@
       
     </h3>
     <p>
-      If $X$ is a r.v. with mean $\mu=\mathbf{E} X$ and $\mathbf{V}(X)&lt;\infty$ then
+      If $X$ is a r.v. with mean $\mu=\mathbf{E} X$ and
+      $\mathbf{V}(X)&lt;\infty$ then
     </p>
     <div class="math-block">
       $$
@@ -191,7 +214,8 @@
       $$
     </div>
     <p>
-      As $t\to 0$, the right-hand side converges to 0 by the dominated convergence theorem.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      As $t\to 0$, the right-hand side converges to 0 by
+      the dominated convergence theorem.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
 </body>

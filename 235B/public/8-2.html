@@ -44,15 +44,46 @@
     The noiseless coding theorem
   </h1>
   <p>
-    Our first interpretation of the entropy function will be in terms of the problem of $\textbf{noiseless coding}$. Recall that the information source emits symbols in the finite alphabet $A=\{\alpha_1,\ldots,\alpha_d\}$. To transmit the symbol over a digital communication channel or store it on a computer storage system (which is the same as transmission, except we're transmitting it to ourselves in the future rather than to a different physical location), we need to encode the symbols as binary bits. We assume that the storage system or communication system are $\textbf{noiseless}$, i.e., no corruption of our data is expected to occur.
+    Our first interpretation of the entropy function will
+    be in terms of the problem of
+    $\textbf{noiseless coding}$. Recall that the
+    information source emits symbols in the finite
+    alphabet $A=\{\alpha_1,\ldots,\alpha_d\}$. To
+    transmit the symbol over a digital communication
+    channel or store it on a computer storage system
+    (which is the same as transmission, except we're
+    transmitting it to ourselves in the future rather than
+    to a different physical location), we need to encode
+    the symbols as binary bits. We assume that the storage
+    system or communication system are
+    $\textbf{noiseless}$, i.e., no corruption of our data
+    is expected to occur.
   </p>
   <p>
-    What is a good way to encode the symbols as binary bits? A naive approach would be to allocate $d$ distinct binary strings, one for each of the symbols. Since the strings need to be distinct so that the transmission can be decoded on the other end, obviously it is necessary (and sufficient) for the strings to be of length $\lceil \log_2 d\rceil$. Thus, in terms of efficiency, this method uses the channel approximately $\log_2 d$ times for every symbol encoded.
+    What is a good way to encode the symbols as binary
+    bits? A naive approach would be to allocate $d$
+    distinct binary strings, one for each of the symbols.
+    Since the strings need to be distinct so that the
+    transmission can be decoded on the other end,
+    obviously it is necessary (and sufficient) for the
+    strings to be of length $\lceil \log_2 d\rceil$.
+    Thus, in terms of efficiency, this method uses the
+    channel approximately $\log_2 d$ times for every
+    symbol encoded.
   </p>
   <p>
-    But perhaps we can do better? For example, it is possible that some of the symbols occur more frequently than others. A more sophisticated approach would be to assign binary strings of
+    But perhaps we can do better? For example, it is
+    possible that some of the symbols occur more
+    frequently than others. A more sophisticated approach
+    would be to assign binary strings of
     <i>different</i>
-    lengths to the different symbols, assigning the shorter strings to more frequently occurring symbols. One must be careful however to make sure that the transmission, which may consist of the concatenation of several of the strings used to encode a succession of source symbols, can be faithfully recovered. This leads to the idea of $\textbf{codes}$.
+    lengths to the different symbols, assigning the
+    shorter strings to more frequently occurring symbols.
+    One must be careful however to make sure that the
+    transmission, which may consist of the concatenation
+    of several of the strings used to encode a succession
+    of source symbols, can be faithfully recovered. This
+    leads to the idea of $\textbf{codes}$.
   </p>
   <div class="statement definition">
     <h3>
@@ -61,16 +92,52 @@
       
     </h3>
     <p>
-      Let $\{0,1\}^*=\cup_{n=1}^\infty \{0,1\}^n$ be the set of all finite binary sequences (which we will call $\textbf{words}$ or $\textbf{strings}$). A $\textbf{code}$ for the alphabet $A=\{ \alpha_1,\ldots,\alpha_d\}$ is a collection $(w_k)_{k=1}^d$ of words in $\{0,1\}^*$. We say the code is $\textbf{uniquely decodable}$ if any word formed as a concatenation $w_{j_1}w_{j_2}\ldots w_{j_m}$ of words in the code can be decoded in a unique way, i.e., it is not equal to any other concatenation of words from the same code. We say that the code is a $\textbf{prefix code}$ if no word $w_i$ in the code is a prefix of another word $w_j$.
+      Let $\{0,1\}^*=\cup_{n=1}^\infty \{0,1\}^n$ be the
+      set of all finite binary sequences (which we will call
+      $\textbf{words}$ or $\textbf{strings}$). A
+      $\textbf{code}$ for the alphabet
+      $A=\{ \alpha_1,\ldots,\alpha_d\}$ is a collection
+      $(w_k)_{k=1}^d$ of words in $\{0,1\}^*$. We say the
+      code is $\textbf{uniquely decodable}$ if any word
+      formed as a concatenation
+      $w_{j_1}w_{j_2}\ldots w_{j_m}$ of words in the code
+      can be decoded in a unique way, i.e., it is not equal
+      to any other concatenation of words from the same
+      code. We say that the code is a $\textbf{prefix code}$
+      if no word $w_i$ in the code is a prefix of another
+      word $w_j$.
     </p>
   </div>
   <p>
-    It is obvious that any prefix code is uniquely decodable, since, when reading a concatenation of words, we know immediately when a word terminates and the next word begins. Not all uniquely decodable codes are prefix codes, however (the code $0, 01, 011$ is an example). It is however true that uniquely decodable codes that are not prefix codes are in some sense pointless and for all practical purposes they may be ignored --- see Exercise
+    It is obvious that any prefix code is uniquely
+    decodable, since, when reading a concatenation of
+    words, we know immediately when a word terminates and
+    the next word begins. Not all uniquely decodable codes
+    are prefix codes, however (the code $0, 01, 011$ is
+    an example). It is however true that uniquely
+    decodable codes that are not prefix codes are in some
+    sense pointless and for all practical purposes they
+    may be ignored --- see Exercise
     <a href="./8-2.html#_71_h.a.i_">8.9</a>
-    at the end of this section to understand why. Prefix codes, on the other hand, are extremely useful in both theory and applications, and used by people (e.g., punctuation marks in language, the telephone directory), computers (innumerable examples) and even nature (the genetic code encodes amino acids used as building blocks of proteins as triplets of nucleotides in DNA).
+    at the end of this section
+    to understand why. Prefix codes, on the other hand,
+    are extremely useful in both theory and applications,
+    and used by people (e.g., punctuation marks in
+    language, the telephone directory), computers
+    (innumerable examples) and even nature (the genetic
+    code encodes amino acids used as building blocks of
+    proteins as triplets of nucleotides in DNA).
   </p>
   <p>
-    For a word $w\in \{0,1\}^*$, denote its length by $\ell(w)$. Given a code $w_1,\ldots,w_d$ associated with an information source that emits a random symbol $\alpha_1,\ldots,\alpha_d$ with respective probabilities $p_1,\ldots,p_d$, denote by $L$ the (random) word length, i.e., $L=\ell(w_k)$ with probability $p_k$ for $k=1,\ldots,d$. A crucial quantity that we are interested in is the $\textbf{expected word length}$
+    For a word $w\in \{0,1\}^*$, denote its length by
+    $\ell(w)$. Given a code $w_1,\ldots,w_d$ associated
+    with an information source that emits a random symbol
+    $\alpha_1,\ldots,\alpha_d$ with respective
+    probabilities $p_1,\ldots,p_d$, denote by $L$ the
+    (random) word length, i.e., $L=\ell(w_k)$ with
+    probability $p_k$ for $k=1,\ldots,d$. A crucial
+    quantity that we are interested in is the
+    $\textbf{expected word length}$
   </p>
   <div class="math-block">
     $$
@@ -78,7 +145,12 @@
     $$
   </div>
   <p>
-    By the law of large numbers, this quantity says how many bits we will need to transmit over the channel for every source symbol coded when encoding very long strings of source symbols. How small can we make $L$? The following famous result answers this fundamental question.
+    By the law of large numbers, this quantity says how
+    many bits we will need to transmit over the channel
+    for every source symbol coded when encoding very long
+    strings of source symbols. How small can we make $L$?
+    The following famous result answers this fundamental
+    question.
   </p>
   <div
     label="Noiseless coding theorem"
@@ -98,7 +170,9 @@
     >
       <li>
         <p>
-          If $(w_1,\ldots,w_d) \in \{0,1\}^*$ is a prefix code for the source, then the expected word length satisfies
+          If $(w_1,\ldots,w_d) \in \{0,1\}^*$ is a prefix code
+          for the source, then the expected word length
+          satisfies
         </p>
         <div class="math-block">
           $$
@@ -108,7 +182,8 @@
       </li>
       <li>
         <p>
-          A prefix code $(w_1,\ldots,w_d) \in \{0,1\}^*$ may be found for which the expected word length satisfies
+          A prefix code $(w_1,\ldots,w_d) \in \{0,1\}^*$ may be
+          found for which the expected word length satisfies
         </p>
         <div class="math-block">
           $$
@@ -139,19 +214,25 @@
     >
       <li>
         <p>
-          If $w_1,\ldots,w_d$ is a prefix code then $\sum_{k=1}^d 2^{-\ell(w_k)} \le 1$.
+          If $w_1,\ldots,w_d$ is a prefix code then
+          $\sum_{k=1}^d 2^{-\ell(w_k)} \le 1$.
         </p>
       </li>
       <li>
         <p>
-          Conversely, if $\ell_1,\ldots,\ell_d$ are positive integers satisfying $\sum_{k=1}^d 2^{-\ell_k} \le 1$, then there exists a prefix code $w_1,\ldots,w_k$ with $\ell(w_k)=\ell_k$.
+          Conversely, if $\ell_1,\ldots,\ell_d$ are positive
+          integers satisfying $\sum_{k=1}^d 2^{-\ell_k} \le 1$,
+          then there exists a prefix code $w_1,\ldots,w_k$ with
+          $\ell(w_k)=\ell_k$.
         </p>
       </li>
     </ol>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>For the first claim, for each word $w_k=a_1\ldots a_{\ell(w_k)}$ define a real number $x_k$ by
+      <span class="proof">Proof</span>For the first claim, for each word
+      $w_k=a_1\ldots a_{\ell(w_k)}$ define a real number
+      $x_k$ by
     </p>
     <div class="math-block">
       $$
@@ -159,15 +240,46 @@
       $$
     </div>
     <p>
-      and consider the interval $I_k = (x_k,x_k+2^{-\ell(w_k)})$ (a sub-interval of $(0,1)$). The fact that the code is a prefix code is equivalent to the statement that the intervals $I_k$, $k=1,\ldots,d$ are disjoint. It follows that $\sum_k |I_k| = \sum_k 2^{-\ell(w_k)} \le 1$.
+      and consider the interval
+      $I_k = (x_k,x_k+2^{-\ell(w_k)})$ (a sub-interval of
+      $(0,1)$). The fact that the code is a prefix code is
+      equivalent to the statement that the intervals $I_k$,
+      $k=1,\ldots,d$ are disjoint. It follows that
+      $\sum_k |I_k| = \sum_k 2^{-\ell(w_k)} \le 1$.
     </p>
     <p>
-      For the other direction, starting with the lengths $\ell_1,\ldots,\ell_d$, first assume without loss of generality that $\ell_1\le \ell_2\le \ldots \le \ell_k$ (if not, relabel the indices). It is clear that we can inductively construct disjoint dyadic intervals $I_1,\ldots,I_k \subset (0,1)$ such that each $I_k$ is of the form $(x_k,x_k+2^{-\ell_k})$ where $x_k$ has a binary expansion of length $\ell_k$ (take $x_1=0$ and let each $x_k$ for $k\ge 2$ be the rightmost endpoint of $I_{k-1}$; the construction will work because of the assumption that $\sum_{k=1}^d 2^{-\ell_k} \le 1$, so the intervals never leave $(0,1)$, and the assumption that the lengths are increasing, which implies that the length of the binary expansion of $x_k$ is at most $\ell_{k-1}$). The code words $w_1,\ldots,w_k$ are then taken as the respective binary expansions of $x_1,\ldots,x_d$, where for each $x_k$, if the binary expansion is shorter than $\ell_k$ (as in the case of $x_1=0$), it is brought to the right length by padding it with zeros.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      For the other direction, starting with the lengths
+      $\ell_1,\ldots,\ell_d$, first assume without loss of
+      generality that
+      $\ell_1\le \ell_2\le \ldots \le \ell_k$ (if not,
+      relabel the indices). It is clear that we can
+      inductively construct disjoint dyadic intervals
+      $I_1,\ldots,I_k \subset (0,1)$ such that each $I_k$
+      is of the form $(x_k,x_k+2^{-\ell_k})$ where $x_k$
+      has a binary expansion of length $\ell_k$ (take
+      $x_1=0$ and let each $x_k$ for $k\ge 2$ be the
+      rightmost endpoint of $I_{k-1}$; the construction
+      will work because of the assumption that
+      $\sum_{k=1}^d 2^{-\ell_k} \le 1$, so the intervals
+      never leave $(0,1)$, and the assumption that the
+      lengths are increasing, which implies that the length
+      of the binary expansion of $x_k$ is at most
+      $\ell_{k-1}$). The code words $w_1,\ldots,w_k$ are
+      then taken as the respective binary expansions of
+      $x_1,\ldots,x_d$, where for each $x_k$, if the binary
+      expansion is shorter than $\ell_k$ (as in the case of
+      $x_1=0$), it is brought to the right length by
+      padding it with zeros.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div alt-title="Proof of the noiseless coding theorem">
     <p>
-      <span class="proof">Proof of the noiseless coding theorem</span>For the first part of the theorem, observe that since $\sum_{k=1}^d 2^{-\ell(w_k)}\le 1$ by Kraft's inequality, we can apply Gibbs's inequality to the two vectors $(p_1,\ldots,p_k)$ and $(2^{-\ell(w_1)}, \ldots, 2^{-\ell(w_d)})$, to get that
+      <span class="proof">Proof of the noiseless coding theorem</span>For the first part of the theorem, observe that since
+      $\sum_{k=1}^d 2^{-\ell(w_k)}\le 1$ by Kraft's
+      inequality, we can apply Gibbs's inequality to the two
+      vectors $(p_1,\ldots,p_k)$ and
+      $(2^{-\ell(w_1)}, \ldots, 2^{-\ell(w_d)})$, to get
+      that
     </p>
     <div class="math-block">
       $$
@@ -175,7 +287,13 @@
       $$
     </div>
     <p>
-      For the second part, for each $1\le k\le d$ let $\ell_k = \lceil -\log_2 p_k\rceil$, so that the inequality $2^{-\ell_k} \le p_k &lt; 2^{-\ell_k+1}$ holds. Then $\sum_k 2^{-\ell_k} \le \sum_k p_k = 1$, so by Kraft's inequality we can find a prefix code $w_1,\ldots,w_k$ with word lengths $\ell_1,\ldots,\ell_k$. For this code, we have
+      For the second part, for each $1\le k\le d$ let
+      $\ell_k = \lceil -\log_2 p_k\rceil$, so that the
+      inequality $2^{-\ell_k} \le p_k &lt; 2^{-\ell_k+1}$
+      holds. Then $\sum_k 2^{-\ell_k} \le \sum_k p_k = 1$,
+      so by Kraft's inequality we can find a prefix code
+      $w_1,\ldots,w_k$ with word lengths
+      $\ell_1,\ldots,\ell_k$. For this code, we have
     </p>
     <div class="math-block">
       $$
@@ -188,7 +306,23 @@
     </p>
   </div>
   <p>
-    While the noiseless coding theorem clearly indicates that the entropy $H=H(p_1,\ldots,p_d)$ is an interesting number, one might argue that the true minimal expected coding word length, which (by the theorem) lies somewhere in the interval $[H,H+1]$ (but which in practice may be hard to compute), is a more meaningful measure of the information content of a random symbol sampled from the distribution $p_1,\ldots,p_d$. For example, for a binary source information source with distribution $(p,1-p)$ the "optimal expected word length" is exactly $1$ bit per source symbol. However, in an asymptotic sense the entropy really is the more meaningful number; the trick is to cluster the source symbols into groups of fixed length and encode these longer strings, as the following reformulated version of the noiseless coding theorem explains.
+    While the noiseless coding theorem clearly indicates
+    that the entropy $H=H(p_1,\ldots,p_d)$ is an
+    interesting number, one might argue that the true
+    minimal expected coding word length, which (by the
+    theorem) lies somewhere in the interval $[H,H+1]$
+    (but which in practice may be hard to compute), is a
+    more meaningful measure of the information content of
+    a random symbol sampled from the distribution
+    $p_1,\ldots,p_d$. For example, for a binary source
+    information source with distribution $(p,1-p)$ the
+    "optimal expected word length" is exactly $1$ bit
+    per source symbol. However, in an asymptotic sense the
+    entropy really is the more meaningful number; the
+    trick is to cluster the source symbols into groups of
+    fixed length and encode these longer strings, as the
+    following reformulated version of the noiseless coding
+    theorem explains.
   </p>
   <div
     label="Noiseless coding theorem, version 2"
@@ -200,7 +334,8 @@
       
     </h3>
     <p>
-      <span class="label">Noiseless coding theorem, version 2</span>Let $\mathbf{p}=(p_1,\ldots,p_d)$ be a probability vector. Then:
+      <span class="label">Noiseless coding theorem, version 2</span>Let $\mathbf{p}=(p_1,\ldots,p_d)$ be a probability
+      vector. Then:
     </p>
     <ol
       class="list"
@@ -208,21 +343,35 @@
     >
       <li>
         <p>
-          Any prefix code for a source with distribution $\mathbf{p}$ has expected word length $\ge H(\mathbf{p})$.
+          Any prefix code for a source with distribution
+          $\mathbf{p}$ has expected word length
+          $\ge H(\mathbf{p})$.
         </p>
       </li>
       <li>
         <p>
-          For any $\epsilon&gt;0$, we can find an integer $N$ large enough and a prefix code for a source with distribution $\mathbf{p}^{\otimes N}=\mathbf{p}\otimes\ldots\otimes\mathbf{p}$ (the distribution of a vector of $N$ independent samples from $\mathbf{p}$) which has expected word length $\le N(H(\mathbf{p})+\epsilon)$; that is, the expected word length
+          For any $\epsilon&gt;0$, we can find an integer $N$
+          large enough and a prefix code for a source with
+          distribution
+          $\mathbf{p}^{\otimes
+          N}=\mathbf{p}\otimes\ldots\otimes\mathbf{p}$
+          (the distribution of a vector of $N$ independent
+          samples from $\mathbf{p}$) which has expected word
+          length $\le N(H(\mathbf{p})+\epsilon)$; that is, the
+          expected word length
           <i>per symbol coded</i>
-          is at most $H(\mathbf{p})+\epsilon$.
+          is at most
+          $H(\mathbf{p})+\epsilon$.
         </p>
       </li>
     </ol>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>For part 2, take $N=1/\epsilon$ and apply the first version of the noiseless coding theorem to the distribution $\mathbf{p}^{\otimes N}$, making use of property 4 in
+      <span class="proof">Proof</span>For part 2, take $N=1/\epsilon$ and apply the first
+      version of the noiseless coding theorem to the
+      distribution $\mathbf{p}^{\otimes N}$, making use of
+      property 4 in
       <a
         href="./8-1.html#_68_h.a.i_"
         class=""
@@ -230,7 +379,14 @@
     </p>
   </div>
   <p>
-    To summarize, this last formulation of the noiseless coding theorem gives a meaning to the entropy function as measuring precisely the difficulty of (noiselessly) coding the source, in an asymptotic sense: first, any code will require sending at least $H(p)$ binary bits over the communication channel; conversely, one can approach this lower bound asymptotically by coding for multiple symbols simultaneously.
+    To summarize, this last formulation of the noiseless
+    coding theorem gives a meaning to the entropy function
+    as measuring precisely the difficulty of (noiselessly)
+    coding the source, in an asymptotic sense: first, any
+    code will require sending at least $H(p)$ binary bits
+    over the communication channel; conversely, one can
+    approach this lower bound asymptotically by coding for
+    multiple symbols simultaneously.
   </p>
   <div
     class="statement exercise"
@@ -242,7 +398,8 @@
       
     </h3>
     <p>
-      Prove that any uniquely decodable code can be replaced by a prefix code with the same word lengths.
+      Prove that any uniquely decodable code can be
+      replaced by a prefix code with the same word lengths.
     </p>
   </div>
 </body>

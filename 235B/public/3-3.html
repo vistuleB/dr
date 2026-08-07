@@ -44,7 +44,12 @@
     The upcrossing inequality
   </h1>
   <p>
-    An essential step on the way to the martingale convergence theorem is an inequality bounding the expected number of times a submartingale may cross between two values $a&lt;b$. Let $(X_n)_{n\ge 0}$ be a submartingale, and fix $a&lt;b$. We define an increasing sequence of stopping times
+    An essential step on the way to the martingale
+    convergence theorem is an inequality bounding the
+    expected number of times a submartingale may cross
+    between two values $a&lt;b$. Let $(X_n)_{n\ge 0}$ be a
+    submartingale, and fix $a&lt;b$. We define an increasing
+    sequence of stopping times
   </p>
   <div class="math-block">
     $$
@@ -63,7 +68,8 @@
     $$
   </div>
   <p>
-    for each $k\ge 1$. It is easy to check that the sequence
+    for each $k\ge 1$. It is easy to check that the
+    sequence
   </p>
   <div class="math-block">
     $$
@@ -73,7 +79,10 @@
     $$
   </div>
   <p>
-    is a predictable sequence; it corresponds to the strategy of buying an investment unit as soon as the price dips below $a$ and selling the next time it goes above $b$. Let
+    is a predictable sequence; it corresponds to the
+    strategy of buying an investment unit as soon as the
+    price dips below $a$ and selling the next time it
+    goes above $b$. Let
   </p>
   <div class="math-block">
     $$
@@ -81,7 +90,11 @@
     $$
   </div>
   <p>
-    We refer to $U_n$ as the number of $\textbf{upcrossings}$ the sequence $(X_n)_n$ completed up to time $n$ (where an upcrossing represents a cycle of going from a value below $a$ to a value above $b$).
+    We refer to $U_n$ as the number of
+    $\textbf{upcrossings}$ the sequence $(X_n)_n$
+    completed up to time $n$ (where an upcrossing
+    represents a cycle of going from a value below $a$ to
+    a value above $b$).
   </p>
   <div class="statement theorem">
     <h3>
@@ -101,7 +114,12 @@
   <div>
     <p>
       <span class="proof">Proof</span>Define $Y_m = a+(X_m-a)_+$. By Corollary
-      <a href="./3-1.html#_14_h.a.i_">3.13</a>, $(Y_m)_m$ is a submartingale. Note that $Y_m\le a$ if and only if $X_m\le a$ and $Y_m\ge b$ if and only if $X_m\ge b$, so the upcrossing number associated with the sequence $(Y_m)_m$ is $U_n$, the same as for $(X_m)_m$. Furthermore, we have the inequality
+      <a href="./3-1.html#_14_h.a.i_">3.13</a>, $(Y_m)_m$ is a submartingale.
+      Note that $Y_m\le a$ if and only if $X_m\le a$ and
+      $Y_m\ge b$ if and only if $X_m\ge b$, so the
+      upcrossing number associated with the sequence
+      $(Y_m)_m$ is $U_n$, the same as for $(X_m)_m$.
+      Furthermore, we have the inequality
     </p>
     <div class="math-block">
       $$
@@ -109,11 +127,19 @@
       $$
     </div>
     <p>
-      since $(H\bullet Y)$ would represent the profit made on using the investment strategy $H$ to invest in the sequence $Y_m$; each of the $U_n$ upcrossings gives a profit of $b-a$, and there is possibly a last incomplete stretch of investment when $Y_m$ dips to $a$ (unlike $X_m$, $Y_m$ never goes strictly below $a$) but has not yet increased above $b$, which gives additional nonnegative profit. Finally, by
+      since $(H\bullet Y)$ would represent the profit made
+      on using the investment strategy $H$ to invest in the
+      sequence $Y_m$; each of the $U_n$ upcrossings gives a
+      profit of $b-a$, and there is possibly a last
+      incomplete stretch of investment when $Y_m$ dips to
+      $a$ (unlike $X_m$, $Y_m$ never goes strictly below
+      $a$) but has not yet increased above $b$, which gives
+      additional nonnegative profit. Finally, by
       <a
         href="./3-2.html#_16_h.a.i_"
         class=""
-      >Theorem 3.14</a>, $\mathbf{E}((1-H)\bullet Y)_n\ge 0$, so we have
+      >Theorem 3.14</a>,
+      $\mathbf{E}((1-H)\bullet Y)_n\ge 0$, so we have
     </p>
     <div class="math-block">
       $$

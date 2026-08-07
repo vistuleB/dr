@@ -44,11 +44,37 @@
     A motivating example for martingales
   </h1>
   <p>
-    A $\textbf{martingale}$ is a mathematical model for a sequence of fair gambles which has found many applications in both theoretical and applied probability. (In particular, martingales play an important role in the mathematics of investing and other areas of mathematical finance --- so knowing about them can actually make you money!) One of the most important facts about martingales is that under fairly mild assumptions they converge (almost surely, or in $L_1$ or according to some other notion of convergence). This is made precise in a family of important results known as
-    <i>martingale convergence theorems</i>. Our goal in the next few chapters will be to develop the basic theory of martingales and its applications and prove some of the martingale convergence theorems.
+    A $\textbf{martingale}$ is a mathematical model for a
+    sequence of fair gambles which has found many
+    applications in both theoretical and applied
+    probability. (In particular, martingales play an
+    important role in the mathematics of investing and
+    other areas of mathematical finance --- so knowing
+    about them can actually make you money!) One of the
+    most important facts about martingales is that under
+    fairly mild assumptions they converge (almost surely,
+    or in $L_1$ or according to some other notion of
+    convergence). This is made precise in a family of
+    important results known as
+    <i>martingale convergence
+      theorems</i>. Our goal in the next few chapters will be
+    to develop the basic theory of martingales and its
+    applications and prove some of the martingale
+    convergence theorems.
   </p>
   <p>
-    We start our study of martingales with a motivating example: a famous experiment known as $\textbf{Pólya's urn experiment}$. In this model, an urn originally contains $a$ white balls and $b$ black balls. The experimenter samples a uniformly random ball from the urn, examines its color, then puts the ball back and adds another ball of the same color; this is repeated to infinity. Let $X_n$ denote the number of white balls in the urn after the $n$th step. Clearly $X_0 = a$ and the distribution of $X_{n+1}$ can be expressed most naturally by conditioning on $X_n$, namely
+    We start our study of martingales with a motivating
+    example: a famous experiment known as
+    $\textbf{Pólya's urn experiment}$. In this model, an
+    urn originally contains $a$ white balls and $b$ black
+    balls. The experimenter samples a uniformly random
+    ball from the urn, examines its color, then puts the
+    ball back and adds another ball of the same color;
+    this is repeated to infinity. Let $X_n$ denote the
+    number of white balls in the urn after the $n$th
+    step. Clearly $X_0 = a$ and the distribution of
+    $X_{n+1}$ can be expressed most naturally by
+    conditioning on $X_n$, namely
   </p>
   <div
     id="_1_h.a.i_"
@@ -65,7 +91,22 @@
     $$
   </div>
   <p>
-    It turns out that it is not too difficult to find an unconditional formula for the probability distribution of $X_n$. Let $I_n$ be the indicator random variable of the event that in the $n$th sampling step a white ball was drawn. First, an amusing observation is that the probability of observing a particular sequence of white/black samples in the first $n$ sampling steps is only dependent on the number of white and black balls. That is, for any sequence $(x_1,x_2,\ldots,x_n)\in \{0,1\}^n$ the probability $\mathrm{P}(I_1 = x_1, \ldots, I_n = x_n)$ only depends on $k=\sum_{j=1}^n x_j$. To see this, note that if at a given stage $t$ of the experiment the urn contained $A$ white and $B$ black balls, the probability to draw "white then black" in the next two steps would be
+    It turns out that it is not too difficult to find an
+    unconditional formula for the probability distribution
+    of $X_n$. Let $I_n$ be the indicator random variable
+    of the event that in the $n$th sampling step a white
+    ball was drawn. First, an amusing observation is that
+    the probability of observing a particular sequence of
+    white/black samples in the first $n$ sampling steps
+    is only dependent on the number of white and black
+    balls. That is, for any sequence
+    $(x_1,x_2,\ldots,x_n)\in \{0,1\}^n$ the probability
+    $\mathrm{P}(I_1 = x_1, \ldots, I_n = x_n)$ only
+    depends on $k=\sum_{j=1}^n x_j$. To see this, note
+    that if at a given stage $t$ of the experiment the
+    urn contained $A$ white and $B$ black balls, the
+    probability to draw "white then black" in the next
+    two steps would be
   </p>
   <div class="math-block">
     $$
@@ -73,7 +114,8 @@
     $$
   </div>
   <p>
-    which is clearly equal to the probability of drawing "black then white," given by
+    which is clearly equal to the probability of drawing
+    "black then white," given by
   </p>
   <div class="math-block">
     $$
@@ -81,7 +123,9 @@
     $$
   </div>
   <p>
-    Thus, permuting the 1's and 0's in the sequence $(x_1,\ldots,x_n)$ has no effect on the probability
+    Thus, permuting the 1's and 0's in the sequence
+    $(x_1,\ldots,x_n)$ has no effect on the
+    probability
     <sup id="_2_h.a.i_">
       <a
         href="./1-0.html#_6_h.a.i_"
@@ -89,7 +133,8 @@
       >(1)</a>
       
     </sup>
-    . It follows that for any such $(x_1,\ldots,x_n)$ with $\sum x_j=k$ we have
+    . It follows that for
+    any such $(x_1,\ldots,x_n)$ with $\sum x_j=k$ we have
   </p>
   <div
     id="_3_h.a.i_"
@@ -105,7 +150,8 @@
     $$
   </div>
   <p>
-    Therefore the probability of having $p$ white balls after $n$ steps is
+    Therefore the probability of having $p$ white balls
+    after $n$ steps is
   </p>
   <div class="math-block">
     $$
@@ -119,7 +165,9 @@
     $$
   </div>
   <p>
-    for $a \le p \le n+a$. This formula is so explicit that it is easy to analyze the distribution of $X_n$ and show for example the convergence in distribution
+    for $a \le p \le n+a$. This formula is so explicit
+    that it is easy to analyze the distribution of $X_n$
+    and show for example the convergence in distribution
   </p>
   <div
     id="_4_h.a.i_"
@@ -134,7 +182,8 @@
   <p>
     That is, the
     <i>proportion</i>
-    of white balls in the urn converges to a limiting beta distribution.
+    of white balls in the urn
+    converges to a limiting beta distribution.
   </p>
   <div class="statement exercise">
     <h3>
@@ -151,9 +200,14 @@
     </p>
   </div>
   <p>
-    What about stronger notions of convergence such as convergence in probability or almost sure convergence? This seems like a harder question that requires understanding more about the
+    What about stronger notions of convergence such as
+    convergence in probability or almost sure convergence?
+    This seems like a harder question that requires
+    understanding more about the
     <i>joint</i>
-    distribution of different $X_n$'s. It turns out that we also have almost sure convergence, that is, the limit
+    distribution of
+    different $X_n$'s. It turns out that we also have
+    almost sure convergence, that is, the limit
   </p>
   <div
     id="_5_h.a.i_"
@@ -166,7 +220,10 @@
     $$
   </div>
   <p>
-    exists almost surely, and that the main relevant fact that guarantees that this convergence takes place is that the proportions $M_n = X_n/(n+a+b)$ form a martingale! To see what this means, note that
+    exists almost surely, and that the main relevant fact
+    that guarantees that this convergence takes place is
+    that the proportions $M_n = X_n/(n+a+b)$ form a
+    martingale! To see what this means, note that
     <a
       href="./1-0.html#_1_h.a.i_"
       class=""
@@ -183,8 +240,13 @@
     $$
   </div>
   <p>
-    Thus, the value of $M_{n+1}$ can be either greater or smaller than the value of $M_n$, but the amounts by which it increases or decreases, weighted by the respective probabilities of each of these events, balance out, so that
-    <i>on average</i>, the value stays the same:
+    Thus, the value of $M_{n+1}$ can be either greater or
+    smaller than the value of $M_n$, but the amounts by
+    which it increases or decreases, weighted by the
+    respective probabilities of each of these events,
+    balance out, so that
+    <i>on average</i>, the value stays the
+    same:
   </p>
   <div class="math-block">
     $$
@@ -193,12 +255,17 @@
     $$
   </div>
   <p>
-    The martingale property, which will immediately imply the a.s.\ convergence
+    The martingale property, which will immediately imply
+    the a.s.\ convergence
     <a
       href="./1-0.html#_5_h.a.i_"
       class=""
     >(4)</a>
-    through the use of one of the martingale convergence theorems, is a generalization of this statement for arbitrary sequences $(M_n)_{n=1}^\infty$. It is written in the more abstract form:
+    through the
+    use of one of the martingale convergence theorems, is
+    a generalization of this statement for arbitrary
+    sequences $(M_n)_{n=1}^\infty$. It is written in the
+    more abstract form:
   </p>
   <div class="math-block">
     $$
@@ -206,8 +273,13 @@
     $$
   </div>
   <p>
-    In this equation, the quantity on the left represents a new kind of random variable that we still haven't discussed, a
-    <i>conditional expectation</i>. So, before developing the theory of martingales we need a good understanding of conditional expectations. This is the subject of the next chapter.
+    In this equation, the quantity on the left represents
+    a new kind of random variable that we still haven't
+    discussed, a
+    <i>conditional expectation</i>. So, before
+    developing the theory of martingales we need a good
+    understanding of conditional expectations. This is the
+    subject of the next chapter.
   </p>
   <hr>
   <div
@@ -216,7 +288,11 @@
   >
     <p>
       <a href="#_2_h.a.i_">(1)</a>
-      A sequence of r.v.'s with this property is called $\textbf{exchangeable}$. There is an important result about such sequences (that we will not talk about here) called $\textbf{De-Finetti's theorem}$, which you might want to read about.
+      A sequence of r.v.'s with this property is called
+      $\textbf{exchangeable}$. There is an important result
+      about such sequences (that we will not talk about
+      here) called $\textbf{De-Finetti's theorem}$, which
+      you might want to read about.
     </p>
   </div>
 </body>

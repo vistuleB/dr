@@ -52,22 +52,43 @@
     <ol class="list">
       <li>
         <p>
-          If $X,Y$ are independent r.v.'s then $\mathbf{E}(X Y) = \mathbf{E} X \mathbf{E} Y$.
+          If $X,Y$ are independent r.v.'s then
+          $\mathbf{E}(X Y) = \mathbf{E} X \mathbf{E} Y$.
         </p>
       </li>
       <li>
         <p>
-          $X,Y$ are independent if and only if $\mathbf{E}[g(X)h(Y)] = \mathbf{E} g(X) \mathbf{E} h(Y)$ for all bounded measurable functions $g,h:\R\to\R$.
+          $X,Y$ are independent if and only if
+          $\mathbf{E}[g(X)h(Y)] = \mathbf{E} g(X) \mathbf{E}
+          h(Y)$
+          for all bounded measurable functions $g,h:\R\to\R$.
         </p>
       </li>
     </ol>
   </div>
   <div alt-title="Sketch of proof">
     <p>
-      <span class="proof">Sketch of proof</span>Part (i) follows either by approximation of $X,Y$ using simple functions, or using Fubini's theorem, which you can read about in section 1.7 of [Dur2010] (Note that Fubini's theorem in turn is proved by approximation using simple functions, so these two seemingly different approaches are really equivalent).
+      <span class="proof">Sketch of proof</span>Part (i) follows either by approximation of $X,Y$
+      using simple functions, or using Fubini's theorem,
+      which you can read about in section 1.7 of [Dur2010]
+      (Note that Fubini's theorem in turn is proved by
+      approximation using simple functions, so these two
+      seemingly different approaches are really equivalent).
     </p>
     <p>
-      For part (ii), the "only if" follows from part (i) together with the observation that if $X,Y$ are independent then so are $g(X), h(Y)$. For the "if" part, observe that the function $1_{(a,b)}$ is a bounded measurable function, so in particular the condition $\mathbf{E}[g(X)h(Y)]=\mathbf{E} g(X) \mathbf{E} h(Y)$ includes the information that $\mathrm{P}(X\in I, Y\in J)=\mathrm{P}(X \in I) \mathrm{P}(Y\in J)$ for any two finite intervals $I,J$, which we already know is enough to imply independence.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      For part (ii), the "only if" follows from part (i)
+      together with the observation that if $X,Y$ are
+      independent then so are $g(X), h(Y)$. For the "if"
+      part, observe that the function $1_{(a,b)}$ is a
+      bounded measurable function, so in particular the
+      condition
+      $\mathbf{E}[g(X)h(Y)]=\mathbf{E} g(X) \mathbf{E}
+      h(Y)$
+      includes the information that
+      $\mathrm{P}(X\in I, Y\in J)=\mathrm{P}(X \in I)
+      \mathrm{P}(Y\in J)$
+      for any two finite intervals $I,J$, which we already
+      know is enough to imply independence.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div class="statement theorem">
@@ -79,18 +100,28 @@
     <ol class="list">
       <li>
         <p>
-          If $X_1,X_2,\ldots,X_n$ are independent r.v.'s then $\mathbf{E}(X_1 \ldots X_n) = \prod_{k=1}^n \mathbf{E} X_k$.
+          If $X_1,X_2,\ldots,X_n$ are independent r.v.'s then
+          $\mathbf{E}(X_1 \ldots X_n) = \prod_{k=1}^n
+          \mathbf{E} X_k$.
         </p>
       </li>
       <li>
         <p>
-          $X_1,\ldots,X_n$ are independent if and only if $\mathbf{E}\left(\prod_{k=1}^n g_k(X_k)\right) = \prod_{k=1}^n \mathbf{E} g_k(X_k)$ for all bounded measurable functions $g_1,\ldots,g_n:\R\to\R$.
+          $X_1,\ldots,X_n$ are independent if and only if
+          $\mathbf{E}\left(\prod_{k=1}^n g_k(X_k)\right) =
+          \prod_{k=1}^n \mathbf{E} g_k(X_k)$
+          for all bounded measurable functions
+          $g_1,\ldots,g_n:\R\to\R$.
         </p>
       </li>
     </ol>
   </div>
   <p>
-    The fact that expectation is multiplicative for independent random variables implies an important fact about the variance of a sum of independent r.v.'s. Let $X,Y$ be independent r.v.'s with finite variance. Then we get immediately that
+    The fact that expectation is multiplicative for
+    independent random variables implies an important fact
+    about the variance of a sum of independent r.v.'s. Let
+    $X,Y$ be independent r.v.'s with finite variance.
+    Then we get immediately that
   </p>
   <div class="math-block">
     $$
@@ -102,7 +133,9 @@
     $$
   </div>
   <p>
-    More generally, if $X,Y$ are not necessarily independent, then we can define the covariance of $X$ and $Y$ by
+    More generally, if $X,Y$ are not necessarily
+    independent, then we can define the covariance of $X$
+    and $Y$ by
   </p>
   <div class="math-block">
     $$
@@ -118,7 +151,9 @@
     $$
   </div>
   <p>
-    Repeating this computation with a sum of $n$ variables instead of just two, we get the following formula for the variance of a sum of r.v.'s.
+    Repeating this computation with a sum of $n$
+    variables instead of just two, we get the following
+    formula for the variance of a sum of r.v.'s.
   </p>
   <div class="statement lemma">
     <h3>
@@ -127,7 +162,8 @@
       
     </h3>
     <p>
-      If $X_1,\ldots,X_n$ are r.v.'s with finite variance, then
+      If $X_1,\ldots,X_n$ are r.v.'s with finite variance,
+      then
     </p>
     <div class="math-block">
       $$
@@ -153,7 +189,8 @@
     >
       <li>
         <p>
-          $\textrm{Cov}(X,Y)=\textrm{Cov}(Y,X) = \mathbf{E}(XY) - \mathbf{E}(X) \mathbf{E}(Y)$.
+          $\textrm{Cov}(X,Y)=\textrm{Cov}(Y,X) = \mathbf{E}(XY)
+          - \mathbf{E}(X) \mathbf{E}(Y)$.
         </p>
       </li>
       <li>
@@ -163,12 +200,14 @@
       </li>
       <li>
         <p>
-          $\textrm{Cov}(aX_1+bX_2,Y) = a\textrm{Cov}(X_1,Y)+b\textrm{Cov}(X_2,Y)$
+          $\textrm{Cov}(aX_1+bX_2,Y) =
+          a\textrm{Cov}(X_1,Y)+b\textrm{Cov}(X_2,Y)$
         </p>
       </li>
       <li>
         <p>
-          $\textrm{Cov}(X,aY_1+bY_2) = a\textrm{Cov}(X,Y_1)+b\textrm{Cov}(X,Y_2)$
+          $\textrm{Cov}(X,aY_1+bY_2) =
+          a\textrm{Cov}(X,Y_1)+b\textrm{Cov}(X,Y_2)$
         </p>
       </li>
       <li>
@@ -178,18 +217,27 @@
       </li>
       <li>
         <p>
-          $|\textrm{Cov}(X,Y)| \le \sigma(X) \sigma(Y)$, with equality if and only if $X$ and $Y$ are linearly dependent.
+          $|\textrm{Cov}(X,Y)| \le \sigma(X) \sigma(Y)$, with
+          equality if and only if $X$ and $Y$ are linearly
+          dependent.
         </p>
       </li>
     </ol>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Properties 1--5 are obvious. Property 6 follows by applying the Cauchy-Schwartz inequality to the r.v.'s $X-\mathbf{E} X$ and $Y-\mathbf{E} Y$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span>Properties 1--5 are obvious. Property 6 follows by
+      applying the Cauchy-Schwartz inequality to the r.v.'s
+      $X-\mathbf{E} X$ and $Y-\mathbf{E} Y$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    If $\textrm{Cov}(X,Y)=0$ we say that $X$ and $Y$ are $\textbf{uncorrelated}$, or $\textbf{orthogonal}$. This is a weaker condition than being independent, but because of the way the variance of a sum of r.v.'s behaves, it is still often useful for deriving bounds, as we shall see.
+    If $\textrm{Cov}(X,Y)=0$ we say that $X$ and $Y$ are
+    $\textbf{uncorrelated}$, or $\textbf{orthogonal}$.
+    This is a weaker condition than being independent, but
+    because of the way the variance of a sum of r.v.'s
+    behaves, it is still often useful for deriving bounds,
+    as we shall see.
   </p>
   <p>
     Define the
@@ -202,7 +250,10 @@
     $$
   </div>
   <p>
-    This measures the correlation in units of the standard deviation of $X$ and $Y$ so does not depend on the choice of scale. From property 6 in the above lemma, we get that
+    This measures the correlation in units of the
+    standard deviation of $X$ and $Y$ so does not depend
+    on the choice of scale. From property 6 in the above
+    lemma, we get that
   </p>
   <div class="math-block">
     $$
@@ -210,7 +261,8 @@
     $$
   </div>
   <p>
-    with equality on either side if and only if $X$ and $Y$ are linearly dependent.
+    with equality on either side if and only if $X$ and
+    $Y$ are linearly dependent.
   </p>
 </body>
 </html>

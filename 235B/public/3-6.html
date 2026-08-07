@@ -44,7 +44,11 @@
     Martingale convergence in $L_p$
   </h1>
   <p>
-    In certain applications a martingale may not be bounded but can still be shown to converge based on boundedness in $L_p$ and similar conditions. The following results give such conditions. Proofs can be found in [Dur2010], sections 5.4--5.5.
+    In certain applications a martingale may not be
+    bounded but can still be shown to converge based on
+    boundedness in $L_p$ and similar conditions. The
+    following results give such conditions. Proofs can be
+    found in [Dur2010], sections 5.4--5.5.
   </p>
   <div
     label="Martingale convergence theorem in $L_p$, $p>1$"
@@ -56,11 +60,20 @@
       
     </h3>
     <p>
-      <span class="label">Martingale convergence theorem in $L_p$, $p&gt;1$</span>Let $1&lt;p\le \infty$. If $(X_n)_{n=1}^\infty$ is a martingale and $\sup_n \mathbf{E} |X_n|^p&lt;\infty$, then $X_n$ converges to a limit $X$ almost surely and in $L_p$.
+      <span class="label">Martingale convergence theorem in $L_p$, $p&gt;1$</span>Let $1&lt;p\le \infty$. If $(X_n)_{n=1}^\infty$ is a
+      martingale and $\sup_n \mathbf{E} |X_n|^p&lt;\infty$,
+      then $X_n$ converges to a limit $X$ almost surely and
+      in $L_p$.
     </p>
   </div>
   <p>
-    Note that the above theorem is only valid for $p&gt;1$. For $p=1$ it is not enough to require that the martingale be bounded in $L_1$. A stronger condition is needed, that of uniform integrability. A family of random variables $(X_i)_{i\in I}$ is called $\textbf{uniformly integrable}$ if for any $\epsilon&gt;0$ there exists an $M&gt;0$ such that
+    Note that the above theorem is only valid for $p&gt;1$.
+    For $p=1$ it is not enough to require that the
+    martingale be bounded in $L_1$. A stronger condition
+    is needed, that of uniform integrability. A family of
+    random variables $(X_i)_{i\in I}$ is called
+    $\textbf{uniformly integrable}$ if for any
+    $\epsilon&gt;0$ there exists an $M&gt;0$ such that
   </p>
   <div class="math-block">
     $$
@@ -68,7 +81,9 @@
     $$
   </div>
   <p>
-    It is easy to see that a uniformly integrable family is bounded in $L_1$. Some examples of uniformly integrable families are:
+    It is easy to see that a uniformly integrable family
+    is bounded in $L_1$. Some examples of uniformly
+    integrable families are:
   </p>
   <ol
     class="list"
@@ -76,17 +91,27 @@
   >
     <li>
       <p>
-        A family of random variables that are all dominated by a single integrable r.v.\ $Y$, i.e., $|X_i|\le Y$ for all $i\in I$. (Obvious.)
+        A family of random variables that are all dominated
+        by a single integrable r.v.\ $Y$, i.e., $|X_i|\le Y$
+        for all $i\in I$. (Obvious.)
       </p>
     </li>
     <li>
       <p>
-        The family of conditional expectations $\mathbf{E}\left(X\,|\,\mathcal{G}\right)$ where $X$ is an integrable r.v.\ and $\mathcal{G}$ ranges over all sub-$\sigma$-fields of $\mathcal{F}$. (See Theorem 5.5.1 in [Dur2010].)
+        The family of conditional expectations
+        $\mathbf{E}\left(X\,|\,\mathcal{G}\right)$ where $X$
+        is an integrable r.v.\ and $\mathcal{G}$ ranges over
+        all sub-$\sigma$-fields of $\mathcal{F}$. (See
+        Theorem 5.5.1 in [Dur2010].)
       </p>
     </li>
     <li>
       <p>
-        Let $1&lt; p\le \infty$. Any bounded family of random variables in $L_p$ (i.e., a family $(X_i)_{i\in I}$ such that for some constant $C&gt;0$, $\lVert X_i \rVert_p\le C$ for all $i\in I$) is uniformly integrable.
+        Let $1&lt; p\le \infty$. Any bounded family of random
+        variables in $L_p$ (i.e., a family $(X_i)_{i\in I}$
+        such that for some constant $C&gt;0$,
+        $\lVert X_i \rVert_p\le C$ for all $i\in I$) is
+        uniformly integrable.
       </p>
       <div class="statement exercise">
         <h3>
@@ -95,7 +120,8 @@
           
         </h3>
         <p>
-          Prove this statement, and give a counterexample that explains why the claim is not true for $p=1$.
+          Prove this statement, and give a counterexample that
+          explains why the claim is not true for $p=1$.
         </p>
       </div>
     </li>
@@ -110,7 +136,8 @@
       
     </h3>
     <p>
-      <span class="label">Martingale convergence theorem in $L_1$</span>Let $(X_n)_{n=1}^\infty$ be a submartingale. The following conditions are equivalent:
+      <span class="label">Martingale convergence theorem in $L_1$</span>Let $(X_n)_{n=1}^\infty$ be a submartingale. The
+      following conditions are equivalent:
     </p>
     <ol
       class="list"
@@ -133,7 +160,13 @@
       </li>
     </ol>
     <p>
-      If $(X_n)_{n=1}^\infty$ is a martingale and not just a submartingale, then the above conditions are also equivalent to the existence of an integrable random variable $X$ such that $X_n = \mathbf{E}\left(X\,|\,\mathcal{G}_n\right)$ for all $n$ (i.e., the martingale is an instance of the "revealing information" family of examples).
+      If $(X_n)_{n=1}^\infty$ is a martingale and not just
+      a submartingale, then the above conditions are also
+      equivalent to the existence of an integrable random
+      variable $X$ such that
+      $X_n = \mathbf{E}\left(X\,|\,\mathcal{G}_n\right)$
+      for all $n$ (i.e., the martingale is an instance of
+      the "revealing information" family of examples).
     </p>
   </div>
   <div class="statement exercise">
@@ -143,7 +176,11 @@
       
     </h3>
     <p>
-      Prove directly from the definitions that if $(X_n)_{n=1}^\infty$ is a martingale with respect to a filtration $(\mathcal{G}_n)_{n=1}^\infty$ and $X_n\to X$ in $L_1$, then $X_n = \mathbf{E}\left(X\,|\,\mathcal{G}_n\right)$.
+      Prove directly from the definitions that if
+      $(X_n)_{n=1}^\infty$ is a martingale with respect to
+      a filtration $(\mathcal{G}_n)_{n=1}^\infty$ and
+      $X_n\to X$ in $L_1$, then
+      $X_n = \mathbf{E}\left(X\,|\,\mathcal{G}_n\right)$.
     </p>
   </div>
   <p>
@@ -160,7 +197,9 @@
       
     </h3>
     <p>
-      <span class="label">Lévy's martingale convergence theorem</span>If $(\mathcal{G}_n)_{n=1}^\infty$ is an increasing family of sub-$\sigma$-algebras of $\mathcal{F}$, and $X\in L_1(\Omega)$ is a random variable, then
+      <span class="label">Lévy's martingale convergence theorem</span>If $(\mathcal{G}_n)_{n=1}^\infty$ is an increasing
+      family of sub-$\sigma$-algebras of $\mathcal{F}$, and
+      $X\in L_1(\Omega)$ is a random variable, then
     </p>
     <div class="math-block">
       $$
@@ -168,7 +207,12 @@
       $$
     </div>
     <p>
-      where $\mathcal{G}_\infty = \vee_{n=1}^\infty \mathcal{G}_n = \sigma\left(\cup_{n=1}^\infty \mathcal{G}_n\right)$ is the $\sigma$-algebra generated by the $\mathcal{G}_n$'s. Similarly, for any event $A\in \mathcal{F}$ we have
+      where
+      $\mathcal{G}_\infty = \vee_{n=1}^\infty \mathcal{G}_n
+      = \sigma\left(\cup_{n=1}^\infty \mathcal{G}_n\right)$
+      is the $\sigma$-algebra generated by the
+      $\mathcal{G}_n$'s. Similarly, for any event
+      $A\in \mathcal{F}$ we have
     </p>
     <div class="math-block">
       $$
@@ -176,7 +220,8 @@
       $$
     </div>
     <p>
-      In particular, if $A \in \mathcal{G}_\infty$ then we have
+      In particular, if $A \in \mathcal{G}_\infty$ then we
+      have
     </p>
     <div
       id="_22_h.a.i_"
@@ -189,7 +234,8 @@
       $$
     </div>
     <p>
-      (This last fact is sometimes called $\textbf{Lévy's 0-1 law}$.)
+      (This last fact is sometimes called
+      $\textbf{Lévy's 0-1 law}$.)
     </p>
   </div>
   <div class="statement exercise">
@@ -204,7 +250,9 @@
         href="./3-6.html#_22_h.a.i_"
         class=""
       >(8)</a>
-      to give a new proof of Kolmogorov's 0-1 law, which we learned about in the previous quarter.
+      to give a new proof of
+      Kolmogorov's 0-1 law, which we learned about in the
+      previous quarter.
     </p>
   </div>
 </body>

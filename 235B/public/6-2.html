@@ -44,7 +44,10 @@
     Stationary sequences
   </h1>
   <p>
-    Let $(X_n)_{n=1}^\infty$ be a sequence of random variables. The sequence is called $\textbf{stationary}$ if for any $n,m\ge 1$, we have the equality in distribution
+    Let $(X_n)_{n=1}^\infty$ be a sequence of random
+    variables. The sequence is called
+    $\textbf{stationary}$ if for any $n,m\ge 1$, we have
+    the equality in distribution
   </p>
   <div
     id="_34_h.a.i_"
@@ -57,10 +60,28 @@
     $$
   </div>
   <p>
-    Note that in particular this implies that the variables $X_1,X_2,\ldots$ are identically distributed. Stationarity is a stronger property that also ensures that any pair of successive variables $(X_n,X_{n+1})$ is equal in distribution to the first pair $(X_1,X_2)$, any triple $(X_n,X_{n+1},X_{n+2})$ is equal in distribution to the first triple $(X_1,X_2,X_3)$, etc.; that is, any probabilistic question about a block of adjacent variables does not depend on the "origin" of the block. An i.i.d.\ sequence is a trivial example of a stationary sequence.
+    Note that in particular this implies that the
+    variables $X_1,X_2,\ldots$ are identically
+    distributed. Stationarity is a stronger property that
+    also ensures that any pair of successive variables
+    $(X_n,X_{n+1})$ is equal in distribution to the first
+    pair $(X_1,X_2)$, any triple $(X_n,X_{n+1},X_{n+2})$
+    is equal in distribution to the first triple
+    $(X_1,X_2,X_3)$, etc.; that is, any probabilistic
+    question about a block of adjacent variables does not
+    depend on the "origin" of the block. An i.i.d.\
+    sequence is a trivial example of a stationary
+    sequence.
   </p>
   <p>
-    A stationary sequence gives rise in a natural way to a measure preserving system known as the $\textbf{shift dynamics}$. To define it, first note that although the variables may be defined on a generic probability space $(\Omega, \mathcal{F},\mathrm{P})$, there is no real loss of generality in assuming that the probability space is the $\textbf{canonical product space}$
+    A stationary sequence gives rise in a natural way to
+    a measure preserving system known as the
+    $\textbf{shift dynamics}$. To define it, first note
+    that although the variables may be defined on a
+    generic probability space
+    $(\Omega, \mathcal{F},\mathrm{P})$, there is no real
+    loss of generality in assuming that the probability
+    space is the $\textbf{canonical product space}$
   </p>
   <div class="math-block">
     $$
@@ -68,7 +89,10 @@
     $$
   </div>
   <p>
-    (sometimes denoted by $\R^\infty$) together with the product $\sigma$-algebra $\mathcal{B}=\mathcal{B}(R^\N)$, and the probability measure $\mu$ defined by
+    (sometimes denoted by $\R^\infty$) together with the
+    product $\sigma$-algebra
+    $\mathcal{B}=\mathcal{B}(R^\N)$, and the probability
+    measure $\mu$ defined by
   </p>
   <div class="math-block">
     $$
@@ -76,7 +100,10 @@
     $$
   </div>
   <p>
-    (i.e., the distribution measure of the infinite-dimensional vector $(X_1,X_2,\ldots)$). In this representation, the random variables are simply the $\textbf{coordinate functions}$
+    (i.e., the distribution measure of the
+    infinite-dimensional vector $(X_1,X_2,\ldots)$). In
+    this representation, the random variables are simply
+    the $\textbf{coordinate functions}$
   </p>
   <div class="math-block">
     $$
@@ -87,7 +114,8 @@
     where $\omega=(\omega_1, \omega_2, \ldots) \in \R^\N$.
   </p>
   <p>
-    On the space $(\R^\N,\mathcal{B}, \mu)$ we define the $\textbf{shift map}$ $S:\R^\N\to\R^\N$ by
+    On the space $(\R^\N,\mathcal{B}, \mu)$ we define the
+    $\textbf{shift map}$ $S:\R^\N\to\R^\N$ by
   </p>
   <div class="math-block">
     $$
@@ -104,7 +132,10 @@
       
     </h3>
     <p>
-      The shift map $S$ is a measure preserving map of the probability space $(\R^\N,\mathcal{B},\mu)$ if and only if the sequence $(X_n)_{n=1}^\infty$ is stationary.
+      The shift map $S$ is a measure preserving map of the
+      probability space $(\R^\N,\mathcal{B},\mu)$ if and
+      only if the sequence $(X_n)_{n=1}^\infty$ is
+      stationary.
     </p>
   </div>
   <div class="statement exercise">
@@ -128,16 +159,31 @@
       
     </h3>
     <p>
-      If $(X_n)_{n=1}^\infty$ the measure preserving system $(\R^\N,\mathcal{B},\mu,S)$ described above is called the $\textbf{one-sided shift map}$ (or sometimes just $\textbf{shift map}$) associated to $(X_n)_{n=1}^\infty$.
+      If $(X_n)_{n=1}^\infty$ the measure preserving system
+      $(\R^\N,\mathcal{B},\mu,S)$ described above is called
+      the $\textbf{one-sided shift map}$ (or sometimes just
+      $\textbf{shift map}$) associated to
+      $(X_n)_{n=1}^\infty$.
     </p>
   </div>
   <p>
-    What about a two-sided shift map? One can consider a two-sided infinite sequence $(X_n)_{n=-\infty}^\infty$, and say that it is stationary if the equation
+    What about a two-sided shift map? One can consider a
+    two-sided infinite sequence
+    $(X_n)_{n=-\infty}^\infty$, and say that it is
+    stationary if the equation
     <a
       href="./6-2.html#_34_h.a.i_"
       class=""
     >(14)</a>
-    holds for any $m\ge1$ and $n\in\Z$. One may associate with such a stationary sequence the $\textbf{two-sided shift dynamics}$, which is the measure preserving system $(\R^\Z,\mathcal{B}(\R^\Z), \mu, S)$, where as before $\mu$ is the distribution measure of the sequence $(X_n)_{n\in\Z}$, and $S$ is the two-sided shift, given by
+    holds
+    for any $m\ge1$ and $n\in\Z$. One may associate with
+    such a stationary sequence the
+    $\textbf{two-sided shift dynamics}$, which is the
+    measure preserving system
+    $(\R^\Z,\mathcal{B}(\R^\Z), \mu, S)$, where as before
+    $\mu$ is the distribution measure of the sequence
+    $(X_n)_{n\in\Z}$, and $S$ is the two-sided shift,
+    given by
   </p>
   <div class="math-block">
     $$
@@ -150,10 +196,18 @@
       href="./6-2.html#_35_h.a.i_"
       class=""
     >Lemma 6.3</a>
-    remains true when replacing the one-sided concepts of stationary sequence and shift dynamics with their two-sided analogues.
+    remains true when replacing the
+    one-sided concepts of stationary sequence and shift
+    dynamics with their two-sided analogues.
   </p>
   <p>
-    From the definitions it may appear that the notion of a two-sided stationary sequence is more general than that of a one-sided shift, since half of the elements of a two-sided stationary sequence $(X_n)_{n\in\Z}$ can be removed to give a one-sided stationary sequence $(X_n)_{n\ge 1}$. However, in fact this is not the case, as the next result shows.
+    From the definitions it may appear that the notion of
+    a two-sided stationary sequence is more general than
+    that of a one-sided shift, since half of the elements
+    of a two-sided stationary sequence $(X_n)_{n\in\Z}$
+    can be removed to give a one-sided stationary sequence
+    $(X_n)_{n\ge 1}$. However, in fact this is not the
+    case, as the next result shows.
   </p>
   <div class="statement lemma">
     <h3>
@@ -162,23 +216,47 @@
       
     </h3>
     <p>
-      Given a one-sided stationary sequence $(X_n)_{n\ge 1}$, there exists a two-sided stationary sequence $(Y_n)_{n\in\Z}$ defined on some probability space such that $(Y_n)_{n\ge1} \stackrel{\mathcal{D}}{=} (X_n)_{n\ge1}$.
+      Given a one-sided stationary sequence
+      $(X_n)_{n\ge 1}$, there exists a two-sided stationary
+      sequence $(Y_n)_{n\in\Z}$ defined on some probability
+      space such that
+      $(Y_n)_{n\ge1} \stackrel{\mathcal{D}}{=}
+      (X_n)_{n\ge1}$.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>This is a simple example of an application of the Kolmogorov extension theorem, a useful result from measure theory that enables one to construct measures on infinite product spaces with prescribed finite-dimensional marginals (see [Dur2010], section A.3). Here, the stationarity condition
+      <span class="proof">Proof</span>This is a simple example of an application of the
+      Kolmogorov extension theorem, a useful result from
+      measure theory that enables one to construct measures
+      on infinite product spaces with prescribed
+      finite-dimensional marginals (see [Dur2010], section
+      A.3). Here, the stationarity condition
       <a
         href="./6-2.html#_34_h.a.i_"
         class=""
       >(14)</a>
-      determines the joint $m$-dimensional distribution of any block $(Y_n,\ldots,Y_{n+m-1})$ of $m$ successive random variables in the sequence, where $m\ge1$ and $n\in\Z$. These distributions satisfy the consistency condition in the Kolmogorov extension theorem, and therefore are indeed the $m$-dimensional marginals of some infinite sequence $(Y_n)_{n\in\Z}$ defined on a single probability space.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      determines the joint
+      $m$-dimensional distribution of any block
+      $(Y_n,\ldots,Y_{n+m-1})$ of $m$ successive random
+      variables in the sequence, where $m\ge1$ and $n\in\Z$.
+      These distributions satisfy the consistency condition
+      in the Kolmogorov extension theorem, and therefore are
+      indeed the $m$-dimensional marginals of some infinite
+      sequence $(Y_n)_{n\in\Z}$ defined on a single
+      probability space.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    We saw that we can associate with any stationary sequence a measure preserving system. Going in the opposite direction, if we start with a measure preserving system $(\Omega, \mathcal{F}, \mathrm{P}, T)$, any random variable $X:\Omega\to\R$ (what we called an
+    We saw that we can associate with any stationary
+    sequence a measure preserving system. Going in the
+    opposite direction, if we start with a measure
+    preserving system
+    $(\Omega, \mathcal{F}, \mathrm{P}, T)$, any random
+    variable $X:\Omega\to\R$ (what we called an
     <i>observable</i>
-    in the previous chapter) can be transformed by $T$ to a new variable
+    in the previous chapter) can be
+    transformed by $T$ to a new variable
   </p>
   <div class="math-block">
     $$
@@ -186,7 +264,11 @@
     $$
   </div>
   <p>
-    The measure preserving property implies that $X\circ T$ is equal in distribution to $X$. By starting with $X$ and repeatedly iterating the transformation $T$ we get a sequence $(X_n)_{n=1}^\infty$ given by
+    The measure preserving property implies that
+    $X\circ T$ is equal in distribution to $X$. By
+    starting with $X$ and repeatedly iterating the
+    transformation $T$ we get a sequence
+    $(X_n)_{n=1}^\infty$ given by
   </p>
   <div class="math-block">
     $$
@@ -221,7 +303,13 @@
     </p>
   </div>
   <p>
-    The conclusion from the above discussion is that the study of stationary sequences is roughly equivalent to the study of measure preserving systems with a distinguished observable, and indeed much of ergodic theory could be developed using just the language of stationary sequences, although this would come at great cost to the elegance and beauty of the theory.
+    The conclusion from the above discussion is that the
+    study of stationary sequences is roughly equivalent to
+    the study of measure preserving systems with a
+    distinguished observable, and indeed much of ergodic
+    theory could be developed using just the language of
+    stationary sequences, although this would come at
+    great cost to the elegance and beauty of the theory.
   </p>
 </body>
 </html>

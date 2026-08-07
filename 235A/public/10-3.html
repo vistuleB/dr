@@ -44,7 +44,11 @@
     Random series of independent samples
   </h1>
   <p>
-    We now look at the related topic of infinite series of independent r.v.'s. When can such a series be said to converge? A key technical result that will help us answer this question in some cases is the following beautiful inequality due to Kolmogorov.
+    We now look at the related topic of infinite series
+    of independent r.v.'s. When can such a series be said
+    to converge? A key technical result that will help us
+    answer this question in some cases is the following
+    beautiful inequality due to Kolmogorov.
   </p>
   <div
     label="Kolmogorov's maximal inequality"
@@ -56,7 +60,9 @@
       
     </h3>
     <p>
-      <span class="label">Kolmogorov's maximal inequality</span>Assume that $X_1,X_2,\ldots,X_n$ are independent r.v.'s with finite variances, and let $S_k=\sum_{j=1}^k X_j$. Then
+      <span class="label">Kolmogorov's maximal inequality</span>Assume that $X_1,X_2,\ldots,X_n$ are independent
+      r.v.'s with finite variances, and let
+      $S_k=\sum_{j=1}^k X_j$. Then
     </p>
     <div class="math-block">
       $$
@@ -65,13 +71,20 @@
     </div>
   </div>
   <p>
-    Before we start the proof, note that the bound on the right-hand side is the usual variance bound that follows from Chebyshev's inequality; except that the event on the left-hand side whose probability this quantity bounds is a
+    Before we start the proof, note that the bound on the
+    right-hand side is the usual variance bound that
+    follows from Chebyshev's inequality; except that the
+    event on the left-hand side whose probability this
+    quantity bounds is a
     <i>much bigger</i>
-    event than the usual deviation event $\{ |S_n-\mathbf{E}(S_n)|&gt;t\}$ for which we know the Chebyshev bound holds!
+    event than the
+    usual deviation event $\{ |S_n-\mathbf{E}(S_n)|&gt;t\}$
+    for which we know the Chebyshev bound holds!
   </p>
   <div>
     <p>
-      <span class="proof">Proof</span>We may assume without loss of generality that $\mathbf{E}(X_k)=0$ for all $k$. Denote
+      <span class="proof">Proof</span>We may assume without loss of generality that
+      $\mathbf{E}(X_k)=0$ for all $k$. Denote
     </p>
     <div class="math-block">
       $$
@@ -87,7 +100,14 @@
       $$
     </div>
     <p>
-      In words, $A_k$ is the event that the sequence of cumulative sums $(S_j)_{j=1}^n$ exceeded $t$ in absolute value for the first time at time $k$. Note that these events are disjoint and their union is the event $A$ whose probability we are trying to bound. As a consequence, we can lower-bound the variance $\mathbf{V}(S_n)=\mathbf{E}(S_n^2)$ of $S_n$, as follows:
+      In words, $A_k$ is the event that the sequence of
+      cumulative sums $(S_j)_{j=1}^n$ exceeded $t$ in
+      absolute value for the first time at time $k$. Note
+      that these events are disjoint and their union is the
+      event $A$ whose probability we are trying to bound.
+      As a consequence, we can lower-bound the variance
+      $\mathbf{V}(S_n)=\mathbf{E}(S_n^2)$ of $S_n$, as
+      follows:
     </p>
     <div class="math-block">
       $$
@@ -101,7 +121,18 @@
       $$
     </div>
     <p>
-      In this last expression, the terms $\mathbf{E} \left[(S_k 1_{A_k}) (S_n-S-k) \right]$ are equal to $0$, since $S_k 1_{A_k}$ is a random variable that depends only on $X_1,\ldots,X_k$ and hence independent of $S_n-S_k$, which depends only on the values of $X_{k+1},\ldots,X_n$, which causes the expectation of their product to be equal to the product of the expectations, which is 0. Furthermore, the middle terms $\mathbf{E}\left[ (S_n-S_k)^2 1_{A_k} \right]$ are all nonnegative, and each of the first terms $\mathbf{E} (S_k^2 1_{A_k})$ satisfies
+      In this last expression, the terms
+      $\mathbf{E} \left[(S_k 1_{A_k}) (S_n-S-k) \right]$
+      are equal to $0$, since $S_k 1_{A_k}$ is a random
+      variable that depends only on $X_1,\ldots,X_k$ and
+      hence independent of $S_n-S_k$, which depends only on
+      the values of $X_{k+1},\ldots,X_n$, which causes the
+      expectation of their product to be equal to the
+      product of the expectations, which is 0. Furthermore,
+      the middle terms
+      $\mathbf{E}\left[ (S_n-S_k)^2 1_{A_k} \right]$ are
+      all nonnegative, and each of the first terms
+      $\mathbf{E} (S_k^2 1_{A_k})$ satisfies
     </p>
     <div class="math-block">
       $$
@@ -109,7 +140,9 @@
       $$
     </div>
     <p>
-      since on the event $A_k$ we know that $S_k^2$ is at least $t^2$ (look again at the definition of $A_k$). Combining these observations, we get that
+      since on the event $A_k$ we know that $S_k^2$ is at
+      least $t^2$ (look again at the definition of $A_k$).
+      Combining these observations, we get that
     </p>
     <div class="math-block">
       $$
@@ -121,7 +154,8 @@
     </p>
   </div>
   <p>
-    As a corollary, we get a result on convergence of random series.
+    As a corollary, we get a result on convergence of
+    random series.
   </p>
   <div
     class="statement theorem"
@@ -133,12 +167,18 @@
       
     </h3>
     <p>
-      Let $X_1,X_2,\ldots$ be a sequence of independent r.v.'s such that $\mathbf{E}(X_n)=0$ for all $n$, and assume that $\sum_{n=1}^\infty \mathbf{V}(X_n) &lt; \infty$. Then the random series $\sum_{n=1}^\infty X_n$ converges almost surely.
+      Let $X_1,X_2,\ldots$ be a sequence of independent
+      r.v.'s such that $\mathbf{E}(X_n)=0$ for all $n$, and
+      assume that
+      $\sum_{n=1}^\infty \mathbf{V}(X_n) &lt; \infty$. Then
+      the random series $\sum_{n=1}^\infty X_n$ converges
+      almost surely.
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Denote as usual $S_n = \sum_{k=1}^n X_k$. We have the following equality of events:
+      <span class="proof">Proof</span>Denote as usual $S_n = \sum_{k=1}^n X_k$. We have the
+      following equality of events:
     </p>
     <div class="math-block">
       $$
@@ -159,7 +199,8 @@
       $$
     </div>
     <p>
-      Or, put differently, we can look at the complement of this event and represent it as
+      Or, put differently, we can look at the complement of
+      this event and represent it as
     </p>
     <div class="math-block">
       $$
@@ -183,7 +224,13 @@
       $$
     </div>
     <p>
-      This form is exactly suitable for an application of the Kolmogorov's maximal inequality, except that here we have an infinite sequence of partial sums instead of a finite maximum. However, by the "continuity from below" property of probability measures, we see that it does not matter. More precisely, for any $\epsilon&gt;0$ and $N\ge 1$, we have
+      This form is exactly suitable for an application of
+      the Kolmogorov's maximal inequality, except that here
+      we have an infinite sequence of partial sums instead
+      of a finite maximum. However, by the "continuity from
+      below" property of probability measures, we see that
+      it does not matter. More precisely, for any
+      $\epsilon&gt;0$ and $N\ge 1$, we have
     </p>
     <div class="math-block">
       $$
@@ -217,7 +264,12 @@
       $$
     </div>
     <p>
-      because of our assumption that the sum of the variances converges. Finally, this is true for all $\epsilon&gt;0$, so by the usual trick of replacing an uncountably-infinite intersection by a countable one (provided that the particular form of the event in question warrants this!), we get the claim that
+      because of our assumption that the sum of the
+      variances converges. Finally, this is true for all
+      $\epsilon&gt;0$, so by the usual trick of replacing an
+      uncountably-infinite intersection by a countable one
+      (provided that the particular form of the event in
+      question warrants this!), we get the claim that
     </p>
     <div class="math-block">
       $$
@@ -229,7 +281,15 @@
     </p>
   </div>
   <p>
-    One could ask whether the sufficient condition given by the theorem above is also necessary (it is). More generally, what happens for random variables with non-zero expectations? What happens for r.v.'s with infinite expectations, or infinite variances? Kolmogorov formulated a general theorem that gives a necessary and sufficient condition for a series of independent random variables to converge almost surely.
+    One could ask whether the sufficient condition given
+    by the theorem above is also necessary (it is). More
+    generally, what happens for random variables with
+    non-zero expectations? What happens for r.v.'s with
+    infinite expectations, or infinite variances?
+    Kolmogorov formulated a general theorem that gives a
+    necessary and sufficient condition for a series of
+    independent random variables to converge almost
+    surely.
   </p>
   <div
     label="The Kolmogorov three-series theorem"
@@ -242,7 +302,10 @@
       
     </h3>
     <p>
-      <span class="label">The Kolmogorov three-series theorem</span>If $X_1,X_2,\ldots$ is a sequence of independent random variables, then the random series $\sum_{n=1}^\infty X_n$ converges almost surely if and only if the following three conditions hold:
+      <span class="label">The Kolmogorov three-series theorem</span>If $X_1,X_2,\ldots$ is a sequence of independent
+      random variables, then the random series
+      $\sum_{n=1}^\infty X_n$ converges almost surely if
+      and only if the following three conditions hold:
     </p>
     <ol
       class="list"
@@ -255,17 +318,22 @@
       </li>
       <li>
         <p>
-          The series $\sum_{n=1}^\infty \mathbf{E}(X_n \mathbf{1}_{\{|X_n|\le 1\}})$ converges.
+          The series
+          $\sum_{n=1}^\infty \mathbf{E}(X_n
+          \mathbf{1}_{\{|X_n|\le 1\}})$
+          converges.
         </p>
       </li>
       <li>
         <p>
-          $\sum_{n=1}^\infty \mathbf{V}(X_n \mathbf{1}_{\{|X_n| \le 1\}}) &lt; \infty$.
+          $\sum_{n=1}^\infty \mathbf{V}(X_n \mathbf{1}_{\{|X_n|
+          \le 1\}}) &lt; \infty$.
         </p>
       </li>
     </ol>
     <p>
-      If one of the conditions does not hold, then series $\sum X_n$ diverges almost surely.
+      If one of the conditions does not hold, then series
+      $\sum X_n$ diverges almost surely.
     </p>
   </div>
   <p>
@@ -279,7 +347,13 @@
       href="./16-2.html#_50_h.a.i_"
       class=""
     >Section 16.2</a>
-    as an application of a generalized version of the central limit theorem. Note that since the convergence of the series $\sum X_n$ is equivalent to the convergence of $\sum a X_n$ for any constant $a$, the value $1$ chosen for the truncation of $X_n$ in the theorem is arbitrary and can be replaced by any other constant.
+    as an application of a generalized
+    version of the central limit theorem. Note that since
+    the convergence of the series $\sum X_n$ is
+    equivalent to the convergence of $\sum a X_n$ for any
+    constant $a$, the value $1$ chosen for the truncation
+    of $X_n$ in the theorem is arbitrary and can be
+    replaced by any other constant.
   </p>
   <div class="statement example">
     <h3>
@@ -288,7 +362,12 @@
       
     </h3>
     <p>
-      Let $(c_n)_{n=1}^\infty$ be a sequence of real numbers. Consider the $\textbf{series with random signs}$ associated with the sequence $(c_n)$, which we denote $\sum_{n=1}^\infty \pm c_n$, and which more precisely represents the series
+      Let $(c_n)_{n=1}^\infty$ be a sequence of real
+      numbers. Consider the
+      $\textbf{series with random signs}$ associated with
+      the sequence $(c_n)$, which we denote
+      $\sum_{n=1}^\infty \pm c_n$, and which more precisely
+      represents the series
     </p>
     <div class="math-block">
       $$
@@ -296,18 +375,37 @@
       $$
     </div>
     <p>
-      where $X_1, X_2, \ldots$ is a sequence of i.i.d. r.v.'s taking the values $-1,+1$ with respective probabilities $1/2,1/2$. By
+      where $X_1, X_2, \ldots$ is a sequence of i.i.d.
+      r.v.'s taking the values $-1,+1$ with respective
+      probabilities $1/2,1/2$. By
       <a
         href="./10-3.html#_30_h.a.i_"
         class=""
       >Theorem 10.5</a>
-      it follows that if $\sum_{n=1}^\infty c_n^2 &lt; \infty$ then the series $\sum_{n=1}^\infty \pm c_n$ converges almost surely. From
+      it follows that if $\sum_{n=1}^\infty c_n^2 &lt; \infty$
+      then the series $\sum_{n=1}^\infty \pm c_n$ converges
+      almost surely. From
       <a
         href="./10-3.html#_31_h.a.i_"
         class=""
-      >Theorem 10.6</a>, one can check easily that this condition is also necessary, in other words that the series with random series converges a.s. if and only if the series of squares $\sum c_n^2$ converges. Thus, for example, the $\textbf{harmonic series with random signs}$ $\sum \pm \frac{1}{n}$ converges a.s., but the analogous series of square root reciprocals $\sum_n \pm \frac{1}{\sqrt{n}}$ diverges a.s. Compare this to the series with
+      >Theorem 10.6</a>, one
+      can check easily that this condition is also
+      necessary, in other words that the series with random
+      series converges a.s. if and only if the series of
+      squares $\sum c_n^2$ converges. Thus, for example,
+      the $\textbf{harmonic series with random signs}$
+      $\sum \pm \frac{1}{n}$ converges a.s., but the
+      analogous series of square root reciprocals
+      $\sum_n \pm \frac{1}{\sqrt{n}}$ diverges a.s. Compare
+      this to the series with
       <i>alternating</i>
-      signs $\sum_n \frac{(-1)^n}{n}$ and $\sum_n \frac{(-1)^n}{\sqrt{n}}$, both of which are known to converge! Try to develop your intuition by thinking about the reasons why the behavior for series with alternating signs and that for random signs is not the same.
+      signs
+      $\sum_n \frac{(-1)^n}{n}$ and
+      $\sum_n \frac{(-1)^n}{\sqrt{n}}$, both of which are
+      known to converge! Try to develop your intuition by
+      thinking about the reasons why the behavior for series
+      with alternating signs and that for random signs is
+      not the same.
     </p>
   </div>
 </body>

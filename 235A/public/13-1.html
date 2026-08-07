@@ -44,7 +44,9 @@
     Definition and basic properties
   </h1>
   <p>
-    A main tool in our proof of the central limit theorem will be that of characteristic functions. The basic idea will be to show that
+    A main tool in our proof of the central limit theorem
+    will be that of characteristic functions. The basic
+    idea will be to show that
   </p>
   <div class="math-block">
     $$
@@ -52,7 +54,8 @@
     $$
   </div>
   <p>
-    for a sufficiently large family of functions $g$. It turns out that the family of functions of the form
+    for a sufficiently large family of functions $g$. It
+    turns out that the family of functions of the form
   </p>
   <div class="math-block">
     $$
@@ -60,7 +63,8 @@
     $$
   </div>
   <p>
-    is ideally suited for this purpose. (Here and throughout, $i=\sqrt{-1}$).
+    is ideally suited for this purpose. (Here and
+    throughout, $i=\sqrt{-1}$).
   </p>
   <div class="statement definition">
     <h3>
@@ -69,7 +73,8 @@
       
     </h3>
     <p>
-      The characteristic function of a r.v. $X$, denoted $\varphi_X$, is defined by
+      The characteristic function of a r.v. $X$, denoted
+      $\varphi_X$, is defined by
     </p>
     <div class="math-block">
       $$
@@ -80,10 +85,19 @@
   <p>
     Note that we are taking the expectation of a
     <i>complex-valued random variable</i>
-    (which is a kind of two-dimensional random vector, really). However, the main properties of the expectation operator (linearity, the triangle inequality etc.) that hold for real-valued random variables also hold for complex-valued ones, so this will not pose too much of a problem.
+    (which is a kind of
+    two-dimensional random vector, really). However, the
+    main properties of the expectation operator
+    (linearity, the triangle inequality etc.) that hold
+    for real-valued random variables also hold for
+    complex-valued ones, so this will not pose too much of
+    a problem.
   </p>
   <p>
-    Here are some simple properties of characteristic functions. For simplicity we denote $\varphi = \varphi_X$ where there is no risk of confusion.
+    Here are some simple properties of characteristic
+    functions. For simplicity we denote
+    $\varphi = \varphi_X$ where there is no risk of
+    confusion.
   </p>
   <ol
     class="list"
@@ -96,28 +110,45 @@
     </li>
     <li>
       <p>
-        $\varphi(-t) = \mathbf{E} e^{-i t X} = \mathbf{E} \left(\overline{e^{it X}}\right) = \overline{\varphi(t)}$ (where $\overline{z}$ denotes the complex conjugate of a complex number $z$).
+        $\varphi(-t) = \mathbf{E} e^{-i t X} = \mathbf{E}
+        \left(\overline{e^{it X}}\right) =
+        \overline{\varphi(t)}$
+        (where $\overline{z}$ denotes the complex conjugate
+        of a complex number $z$).
       </p>
     </li>
     <li>
       <p>
-        $|\varphi(t)| \le \mathbf{E}\left|e^{i t X}\right| = 1$ by the triangle inequality.
+        $|\varphi(t)| \le \mathbf{E}\left|e^{i t X}\right| =
+        1$
+        by the triangle inequality.
       </p>
     </li>
     <li>
       <p>
-        $|\varphi(t)-\varphi(s)| \le \mathbf{E} \left| e^{i t X} - e^{isX}\right|
-        = \mathbf{E} \left|e^{i s X} \left(e^{i(t-s)X}-1\right)\right| = \mathbf{E} \left| e^{i(t-s)X}-1\right|$. Note also that $\mathbf{E} \left|e^{i u X}-1\right|\to 0$ as $u \downarrow 0$ by the bounded convergence theorem. It follows that $\varphi$ is a uniformly continuous function on $\R$.
+        $|\varphi(t)-\varphi(s)| \le \mathbf{E} \left| e^{i t
+        X} - e^{isX}\right| = \mathbf{E} \left|e^{i s X}
+        \left(e^{i(t-s)X}-1\right)\right| = \mathbf{E} \left|
+        e^{i(t-s)X}-1\right|$.
+        Note also that
+        $\mathbf{E} \left|e^{i u X}-1\right|\to 0$ as
+        $u \downarrow 0$ by the bounded convergence theorem.
+        It follows that $\varphi$ is a uniformly continuous
+        function on $\R$.
       </p>
     </li>
     <li>
       <p>
-        $\varphi_{a X}(t) = \mathbf{E} e^{i a t X} = \varphi_X(a t)$,\ \ $(a\in\R)$.
+        $\varphi_{a X}(t) = \mathbf{E} e^{i a t X} =
+        \varphi_X(a t)$,\
+        \ $(a\in\R)$.
       </p>
     </li>
     <li>
       <p>
-        $\varphi_{X+b}(t) = \mathbf{E} e^{i t (X+b)} = e^{i b t} \varphi_X(t)$,\ \ $(b\in\R)$.
+        $\varphi_{X+b}(t) = \mathbf{E} e^{i t (X+b)} = e^{i b
+        t} \varphi_X(t)$,\
+        \ $(b\in\R)$.
       </p>
     </li>
     <li>
@@ -131,12 +162,16 @@
         $$
       </div>
       <p>
-        Note that this is the main reason why characteristic functions are such a useful tool for studying the distribution of a sum of independent random variables.
+        Note that this is the main reason why characteristic
+        functions are such a useful tool for studying the
+        distribution of a sum of independent random variables.
       </p>
     </li>
   </ol>
   <p>
-    $\textbf{A note on terminology.}$ If $X$ has a density function $f$, then the characteristic function can be computed as
+    $\textbf{A note on terminology.}$ If $X$ has a
+    density function $f$, then the characteristic
+    function can be computed as
   </p>
   <div class="math-block">
     $$
@@ -144,7 +179,9 @@
     $$
   </div>
   <p>
-    In all other branches of mathematics, this would be called the $\textbf{Fourier transform}$
+    In all other branches of mathematics, this would be
+    called the
+    $\textbf{Fourier transform}$
     <sup id="_36_h.a.i_">
       <a
         href="./13-1.html#_37_h.a.i_"
@@ -155,7 +192,9 @@
     of $f$.
   </p>
   <p>
-    So the concept of a characteristic function generalizes the Fourier transform. If $\mu$ is the distribution measure of $X$, some authors write
+    So the concept of a characteristic function
+    generalizes the Fourier transform. If $\mu$ is the
+    distribution measure of $X$, some authors write
   </p>
   <div class="math-block">
     $$
@@ -163,7 +202,10 @@
     $$
   </div>
   <p>
-    (which is an example of a $\textbf{Lebesgue-Stieltjes integral}$) and call this the $\textbf{Fourier-Stieltjes transform}$ (or just the Fourier transform) of the measure $\mu$.
+    (which is an example of a
+    $\textbf{Lebesgue-Stieltjes integral}$) and call this
+    the $\textbf{Fourier-Stieltjes transform}$ (or just
+    the Fourier transform) of the measure $\mu$.
   </p>
   <hr>
   <div
@@ -172,7 +214,10 @@
   >
     <p>
       <a href="#_36_h.a.i_">(1)</a>
-      Well, more or less -- it is really the inverse Fourier transform; but it will be the Fourier transform if we replace $t$ by $-t$, so that is almost the same thing.
+      Well, more or less -- it is really the inverse
+      Fourier transform; but it will be the Fourier
+      transform if we replace $t$ by $-t$, so that is
+      almost the same thing.
     </p>
   </div>
 </body>

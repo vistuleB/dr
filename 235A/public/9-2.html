@@ -66,17 +66,33 @@
     </div>
   </div>
   <p>
-    As in the case of the weak law, it turns out that this is easier to prove when making more restrictive assumptions about the distribution of $X$, and specifically about the existence of moments. So we will prove it several times, successively weakening our assumptions until we get to the most general (but least easy to prove) result.
+    As in the case of the weak law, it turns out that
+    this is easier to prove when making more restrictive
+    assumptions about the distribution of $X$, and
+    specifically about the existence of moments. So we
+    will prove it several times, successively weakening
+    our assumptions until we get to the most general (but
+    least easy to prove) result.
   </p>
   <div alt-title="Proof in the case of a finite fourth moment">
     <p>
-      <span class="proof">Proof in the case of a finite fourth moment</span>To prove that $S_n/n\to \mu$, we want to prove that $\mathrm{P}(|S_n/n-\mu|&gt;\epsilon\textrm{ i.o.})=0$. Looking at the bound
+      <span class="proof">Proof in the case of a finite fourth moment</span>To prove that $S_n/n\to \mu$, we want to prove that
+      $\mathrm{P}(|S_n/n-\mu|&gt;\epsilon\textrm{ i.o.})=0$.
+      Looking at the bound
       <a
         href="./9-1.html#_24_h.a.i_"
         class=""
-      >(7)</a>, we see that if the bound $\sigma^2/n\epsilon^2$ were to form the $n$-th general term of a convergent series, then by the Borel-Cantelli lemma this would be enough to get the desired consequence. This is not the case, but if we assume that $X_1$ has a finite fourth moment, then we could do a similar trick that
+      >(7)</a>, we see that
+      if the bound $\sigma^2/n\epsilon^2$ were to form the
+      $n$-th general term of a convergent series, then by
+      the Borel-Cantelli lemma this would be enough to get
+      the desired consequence. This is not the case, but if
+      we assume that $X_1$ has a finite fourth moment, then
+      we could do a similar trick that
       <i>will</i>
-      give a convergent series. In that case, using Markov's inequality we can get that
+      give a
+      convergent series. In that case, using Markov's
+      inequality we can get that
     </p>
     <div
       id="_26_h.a.i_"
@@ -91,7 +107,9 @@
       $$
     </div>
     <p>
-      Denote $\hat{X_k}=X_k-\mu$, and $T_n = S_n-n\mu= \sum_{k=1}^n \hat{X_k}$. To bound $\mathbf{E}(T_n^4)$, note that we can write
+      Denote $\hat{X_k}=X_k-\mu$, and
+      $T_n = S_n-n\mu= \sum_{k=1}^n \hat{X_k}$. To bound
+      $\mathbf{E}(T_n^4)$, note that we can write
     </p>
     <div class="math-block">
       $$
@@ -104,8 +122,12 @@
       $$
     </div>
     <p>
-      (where $\binom{4}{2,1,1}=4!/2!1!1!$, $\binom{4}{1,1,1,1}=4!/1!1!1!1!$ are multinomial coefficients).
-      Now take the expectations on both sides, and use the fact that $\mathbf{E}(\hat{X_k}) = 0$ and that the $\hat{X_k}$'s are independent, to get
+      (where $\binom{4}{2,1,1}=4!/2!1!1!$,
+      $\binom{4}{1,1,1,1}=4!/1!1!1!1!$ are multinomial
+      coefficients). Now take the expectations on both
+      sides, and use the fact that
+      $\mathbf{E}(\hat{X_k}) = 0$ and that the $\hat{X_k}$'s
+      are independent, to get
     </p>
     <div class="math-block">
       $$
@@ -113,7 +135,12 @@
       $$
     </div>
     <p>
-      where we denote $m_2 = \mathbf{E}(\hat{X}_k^2) = \mathbf{V}(X_k)$, $m_4=\mathbf{E}(\hat{X}_k^4)&lt;\infty$. This gives us the bound we wanted! In fact, all that matters is that $\mathbf{E}(T_n^4)\le C n^2$ for some constant $C&gt;0$. Combining this with
+      where we denote
+      $m_2 = \mathbf{E}(\hat{X}_k^2) = \mathbf{V}(X_k)$,
+      $m_4=\mathbf{E}(\hat{X}_k^4)&lt;\infty$. This gives us
+      the bound we wanted! In fact, all that matters is that
+      $\mathbf{E}(T_n^4)\le C n^2$ for some constant $C&gt;0$.
+      Combining this with
       <a
         href="./9-2.html#_26_h.a.i_"
         class=""
@@ -125,8 +152,11 @@
       $$
     </div>
     <p>
-      In particular, we have that $\sum_{n=1}^\infty \mathrm{P}(|S_n/n-\mu|&gt;\epsilon) &lt;\infty$, so by the Borel-Cantelli lemma,
-      the probability of the event
+      In particular, we have that
+      $\sum_{n=1}^\infty \mathrm{P}(|S_n/n-\mu|&gt;\epsilon)
+      &lt;\infty$,
+      so by the Borel-Cantelli lemma, the probability of the
+      event
     </p>
     <div class="math-block">
       $$
@@ -134,7 +164,8 @@
       $$
     </div>
     <p>
-      is $0$. This is true for all $\epsilon&gt;0$, therefore the probability of
+      is $0$. This is true for all $\epsilon&gt;0$, therefore
+      the probability of
     </p>
     <div class="math-block">
       $$
@@ -142,24 +173,35 @@
       $$
     </div>
     <p>
-      is also $0$, since it is contained in a countable union of events of probability 0.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      is also $0$, since it is contained in a countable
+      union of events of probability 0.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div alt-title="Proof in the case of finite variance">
     <p>
-      <span class="proof">Proof in the case of finite variance</span>We are slowly refining our techniques to weaken the assumptions required to prove the SLLN. The following nice proof manages to harness the Chebyshev variance bound
+      <span class="proof">Proof in the case of finite variance</span>We are slowly refining our techniques to weaken the
+      assumptions required to prove the SLLN. The following
+      nice proof manages to harness the Chebyshev variance
+      bound
       <a
         href="./9-1.html#_24_h.a.i_"
         class=""
       >(7)</a>
-      after all to deduce the theorem in the case of r.v.'s with finite variance. Observe that while the series of terms on the right-hand side of
+      after all to deduce the
+      theorem in the case of r.v.'s with finite variance.
+      Observe that while the series of terms on the
+      right-hand side of
       <a
         href="./9-1.html#_24_h.a.i_"
         class=""
       >(7)</a>
-      diverges, if we restrict it to a subsequence $n_k = k^2$, it will become a
+      diverges, if
+      we restrict it to a subsequence $n_k = k^2$, it will
+      become a
       <i>convergent</i>
-      series: $\sum_{k=1}^\infty \sigma^2/k^2\epsilon^2&lt;\infty$. This implies, again by the Borel-Cantelli lemma, that
+      series:
+      $\sum_{k=1}^\infty \sigma^2/k^2\epsilon^2&lt;\infty$.
+      This implies, again by the Borel-Cantelli lemma, that
     </p>
     <div class="math-block">
       $$
@@ -167,7 +209,9 @@
       $$
     </div>
     <p>
-      for all $\epsilon&gt;0$ (the "i.o." here refers to the "running index" $k$, not $n$). This implies as before that
+      for all $\epsilon&gt;0$ (the "i.o." here refers to the
+      "running index" $k$, not $n$). This implies as
+      before that
     </p>
     <div class="math-block">
       $$
@@ -175,7 +219,21 @@
       $$
     </div>
     <p>
-      So, while we have not shown almost sure convergence of the empirical averages to the true mean for all values of $n$, at least we have done so for the subsequence $n_k=k^2$. But this subsequence is relatively dense. In particular, if we show that in between elements of the subsequence $n_k=k^2$, the empirical average cannot fluctuate too wildly, then the theorem would follow. This will again follow from a combination of variance-based (i.e., Chebyshev) bounds and the Borel-Cantelli lemma. Fix some $k$, and take an integer $n$ satisfying $n_k\le n &lt; n_{k+1}$. How likely is the $n$-th empirical average to deviate significantly from the $n_k$-th empirical average? Using the notation $T_n=S_n-n\mu$ as before, we have
+      So, while we have not shown almost sure convergence
+      of the empirical averages to the true mean for all
+      values of $n$, at least we have done so for the
+      subsequence $n_k=k^2$. But this subsequence is
+      relatively dense. In particular, if we show that in
+      between elements of the subsequence $n_k=k^2$, the
+      empirical average cannot fluctuate too wildly, then
+      the theorem would follow. This will again follow from
+      a combination of variance-based (i.e., Chebyshev)
+      bounds and the Borel-Cantelli lemma. Fix some $k$,
+      and take an integer $n$ satisfying
+      $n_k\le n &lt; n_{k+1}$. How likely is the $n$-th
+      empirical average to deviate significantly from the
+      $n_k$-th empirical average? Using the notation
+      $T_n=S_n-n\mu$ as before, we have
     </p>
     <div class="math-block">
       $$
@@ -196,9 +254,16 @@
       where we have denoted $\sigma^2=\mathbf{V}(X_1)$.
     </p>
     <p>
-      The estimate that we obtained is valid for a single $n$. We are actually interested in the
+      The estimate that we obtained is valid for a single
+      $n$. We are actually interested in the
       <i>maximal</i>
-      fluctuation of the empirical averages $S_n/n$ from $S_{n_k}/n_k$, when $n$ ranges in the interval $[n_k,n_{k+1})$. By a simple subadditivity argument, usually referred to as a $\textbf{union bound}$ (i.e., bounding the probability of a union of events by the sum of the probabilities, which is the most naive bound you can imagine), we get easily that
+      fluctuation of the empirical averages $S_n/n$ from
+      $S_{n_k}/n_k$, when $n$ ranges in the interval
+      $[n_k,n_{k+1})$. By a simple subadditivity argument,
+      usually referred to as a $\textbf{union bound}$
+      (i.e., bounding the probability of a union of events
+      by the sum of the probabilities, which is the most
+      naive bound you can imagine), we get easily that
     </p>
     <div class="math-block">
       $$
@@ -213,7 +278,8 @@
       $$
     </div>
     <p>
-      Once again, we have obtained as our bound the general term of a convergent series! Denoting
+      Once again, we have obtained as our bound the general
+      term of a convergent series! Denoting
     </p>
     <div class="math-block">
       $$
@@ -222,7 +288,14 @@
       $$
     </div>
     <p>
-      by the Borel-Cantelli lemma this implies that for any $\epsilon&gt;0$, $\mathrm{P}(A_{k,\epsilon}\textrm{ i.o.})=0$ (with the "i.o." qualifier again referring to the running index $k$). What about the chance that this will happen for some $\epsilon&gt;0$? After all, there are so many $\epsilon$'s out there... But no, we also get that
+      by the Borel-Cantelli lemma this implies that for any
+      $\epsilon&gt;0$,
+      $\mathrm{P}(A_{k,\epsilon}\textrm{ i.o.})=0$ (with
+      the "i.o." qualifier again referring to the running
+      index $k$). What about the chance that this will
+      happen for some $\epsilon&gt;0$? After all, there are so
+      many $\epsilon$'s out there... But no, we also get
+      that
     </p>
     <div class="math-block">
       $$
@@ -231,10 +304,13 @@
       $$
     </div>
     <p>
-      by subadditivity for countable unions and the fact that $A_{k,\epsilon} \subset A_{k,\epsilon'}$ if $\epsilon&gt;\epsilon'$.
+      by subadditivity for countable unions and the fact
+      that $A_{k,\epsilon} \subset A_{k,\epsilon'}$ if
+      $\epsilon&gt;\epsilon'$.
     </p>
     <p>
-      Finally, combining our two main results, namely that the two events
+      Finally, combining our two main results, namely that
+      the two events
     </p>
     <div class="math-block">
       $$
@@ -250,7 +326,9 @@
       $$
     </div>
     <p>
-      both have probability 1, we get that their intersection $E_1\cap E_2$ also has probability 1. But we have the event inclusion
+      both have probability 1, we get that their
+      intersection $E_1\cap E_2$ also has probability 1.
+      But we have the event inclusion
     </p>
     <div class="math-block">
       $$
@@ -258,16 +336,32 @@
       $$
     </div>
     <p>
-      (if the conditions in both the events $E_1, E_2$ occur, then $S_n/n$ must converge to $\mu$), so this latter event also has probability 1.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      (if the conditions in both the events $E_1, E_2$
+      occur, then $S_n/n$ must converge to $\mu$), so this
+      latter event also has probability 1.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    The above proof was a little involved, but is based on a few simple ideas: 1. Use Chebyshev bounds together with the Borel-Cantelli lemma. 2. Break up the event $\{S_n/n\to \mu\}$ in a clever way into events which can be managed using this technique, namely (in this case) the weaker convergence along the subsequence $n_k = k^2$, and separately the control of the fluctuations of the empirical averages in each range $[n_k,n_{k+1})$ between successive elements of the subsequence.
+    The above proof was a little involved, but is based
+    on a few simple ideas: 1. Use Chebyshev bounds
+    together with the Borel-Cantelli lemma. 2. Break up
+    the event $\{S_n/n\to \mu\}$ in a clever way into
+    events which can be managed using this technique,
+    namely (in this case) the weaker convergence along the
+    subsequence $n_k = k^2$, and separately the control
+    of the fluctuations of the empirical averages in each
+    range $[n_k,n_{k+1})$ between successive elements of
+    the subsequence.
   </p>
   <p>
-    An extra benefit of the above proof is that it doesn't use the full power of the assumption that the $X_n$'s are independent. In fact, everything is based on variance computations of sums of the $X_k$'s, so the proof works equally well for
+    An extra benefit of the above proof is that it
+    doesn't use the full power of the assumption that the
+    $X_n$'s are independent. In fact, everything is based
+    on variance computations of sums of the $X_k$'s, so
+    the proof works equally well for
     <i>uncorrelated</i>
-    random variables!
+    random
+    variables!
   </p>
   <div
     label="SLLN for uncorrelated r.v.'s with finite variance"
@@ -279,7 +373,9 @@
       
     </h3>
     <p>
-      <span class="label">SLLN for uncorrelated r.v.'s with finite variance</span>If $X_1,X_2,\ldots$ are a sequence of uncorrelated and identically distributed r.v.'s with finite variance, then
+      <span class="label">SLLN for uncorrelated r.v.'s with finite variance</span>If $X_1,X_2,\ldots$ are a sequence of uncorrelated
+      and identically distributed r.v.'s with finite
+      variance, then
     </p>
     <div class="math-block">
       $$
@@ -288,11 +384,17 @@
     </div>
   </div>
   <p>
-    Finally, we turn to the proof of the full SLLN for an i.i.d. sequence
+    Finally, we turn to the proof of the full SLLN for an
+    i.i.d. sequence
     <a
       href="./9-2.html#_25_h.a.i_"
       class=""
-    >(Theorem 9.2)</a>, assuming only a finite first moment. Etemadi's 1981 proof presented in [Dur2010] is based on a similar idea of proving convergence first for a subsequence, and introduces another useful technique, that of $\textbf{truncation}$.
+    >(Theorem 9.2)</a>, assuming only a
+    finite first moment. Etemadi's 1981 proof presented in
+    [Dur2010] is based on a similar idea of proving
+    convergence first for a subsequence, and introduces
+    another useful technique, that of
+    $\textbf{truncation}$.
   </p>
   <div alt-title="Proof of Theorem >>thm-slln">
     <p>
@@ -301,13 +403,26 @@
           href="./9-2.html#_25_h.a.i_"
           class=""
         >Theorem 9.2</a>
-        </span>First, observe that it is enough to prove the theorem in the case where $X_1\ge 0$, since in the general case we may decompose each $X_n$ into its positive and negative parts, and this gives two i.i.d. sequences of nonnegative r.v.'s. The validity of the SLLN for each of the two sequences implies the result for their difference.
+        </span>First, observe that it is enough to prove the theorem
+      in the case where $X_1\ge 0$, since in the general
+      case we may decompose each $X_n$ into its positive
+      and negative parts, and this gives two i.i.d.
+      sequences of nonnegative r.v.'s. The validity of the
+      SLLN for each of the two sequences implies the result
+      for their difference.
     </p>
     <p>
-      Second, for each $n\ge 1$ let $Y_n = X_n \mathbf{1}_{\{X_n\le n\}}$ ("$X_n$ truncated at $n$"), and denote $T_n=Y_1+Y_2+\ldots +Y_n$.
-      Since $\mathbf{E} X_1&lt;\infty$, by a homework exercise we know that
-      $\sum_{n=1}^\infty \mathrm{P}(X_n&gt; n)&lt;\infty$,
-      which by the Borel-Cantelli lemma implies that $\mathrm{P}(X_n&gt;n\textrm{ i.o.}) = \mathrm{P}(X_n\neq Y_n\textrm{ i.o.}) = 0$. It follows that the event
+      Second, for each $n\ge 1$ let
+      $Y_n = X_n \mathbf{1}_{\{X_n\le n\}}$ ("$X_n$
+      truncated at $n$"), and denote
+      $T_n=Y_1+Y_2+\ldots +Y_n$. Since
+      $\mathbf{E} X_1&lt;\infty$, by a homework exercise we
+      know that
+      $\sum_{n=1}^\infty \mathrm{P}(X_n&gt; n)&lt;\infty$, which
+      by the Borel-Cantelli lemma implies that
+      $\mathrm{P}(X_n&gt;n\textrm{ i.o.}) = \mathrm{P}(X_n\neq
+      Y_n\textrm{ i.o.}) = 0$.
+      It follows that the event
     </p>
     <div class="math-block">
       $$
@@ -315,7 +430,8 @@
       $$
     </div>
     <p>
-      has probability 0, and therefore the even smaller event
+      has probability 0, and therefore the even smaller
+      event
     </p>
     <div class="math-block">
       $$
@@ -324,8 +440,15 @@
       $$
     </div>
     <p>
-      has probability 0 (the equivalence between these last two events follows from the observation that $\mathbf{E}(Y_n)\uparrow \mu$ by the monotone/dominated convergence theorems, and therefore also $\mathbf{E}(T_n)/n\to\mu$ as $n\to\infty$ since $(n^{-1} \mathbf{E}(T_n))_{n=1}^\infty$ is the sequence of arithmetic averages of the $\mathbf{E}(Y_n)$'s).
-      So we have shown that to prove the theorem, it is enough to prove that
+      has probability 0 (the equivalence between these last
+      two events follows from the observation that
+      $\mathbf{E}(Y_n)\uparrow \mu$ by the
+      monotone/dominated convergence theorems, and therefore
+      also $\mathbf{E}(T_n)/n\to\mu$ as $n\to\infty$ since
+      $(n^{-1} \mathbf{E}(T_n))_{n=1}^\infty$ is the
+      sequence of arithmetic averages of the
+      $\mathbf{E}(Y_n)$'s). So we have shown that to prove
+      the theorem, it is enough to prove that
     </p>
     <div class="math-block">
       $$
@@ -333,7 +456,16 @@
       $$
     </div>
     <p>
-      Now, to prove this, as before we establish a.s. convergence first along a subsequence $n_k$, this time taking $n_k = \lfloor \alpha^k \rfloor$ where $\alpha&gt;1$. (Here, $\lfloor x\rfloor$ denotes the "floor" function, namely the largest integer $\le x$). This is done by again combining the Borel-Cantelli lemma with a Chebyshev variance bound, except that showing that the sum of the bounds gives a convergent series requires more work than before. We have
+      Now, to prove this, as before we establish a.s.
+      convergence first along a subsequence $n_k$, this
+      time taking $n_k = \lfloor \alpha^k \rfloor$ where
+      $\alpha&gt;1$. (Here, $\lfloor x\rfloor$ denotes the
+      "floor" function, namely the largest integer
+      $\le x$). This is done by again combining the
+      Borel-Cantelli lemma with a Chebyshev variance bound,
+      except that showing that the sum of the bounds gives a
+      convergent series requires more work than before. We
+      have
     </p>
     <div class="math-block">
       $$
@@ -386,7 +518,10 @@
     </div>
     <div>
       <p>
-        <span class="proof">Proof</span>Using the formula $\mathbf{E}(Z)=\int_0^\infty \mathrm{P}(Z&gt;x)\,dx$ that's valid for any nonnegative r.v. $Z$, we have that
+        <span class="proof">Proof</span>Using the formula
+        $\mathbf{E}(Z)=\int_0^\infty \mathrm{P}(Z&gt;x)\,dx$
+        that's valid for any nonnegative r.v. $Z$, we have
+        that
       </p>
       <div class="math-block">
         $$
@@ -407,12 +542,14 @@
       </p>
     </div>
     <p>
-      It follows that the infinite sum on the left-hand side of
+      It follows that the infinite sum on the left-hand
+      side of
       <a
         href="./9-2.html#_27_h.a.i_"
         class=""
       >(9)</a>
-      converges, and therefore by the Borel-Cantelli lemma, we have that
+      converges, and therefore by
+      the Borel-Cantelli lemma, we have that
     </p>
     <div class="math-block">
       $$
@@ -421,7 +558,8 @@
       $$
     </div>
     <p>
-      Since this is true for all $\epsilon&gt;0$, using the standard trick we get that
+      Since this is true for all $\epsilon&gt;0$, using the
+      standard trick we get that
     </p>
     <div class="math-block">
       $$
@@ -430,7 +568,10 @@
       $$
     </div>
     <p>
-      The last step is now to show that convergence along this subsequence forces $(T_n-\mathbf{E} T_n)/n$ to behave well between successive $n_k$'s. Observe that if $n_k \le n &lt; n_{k+1}$ then
+      The last step is now to show that convergence along
+      this subsequence forces $(T_n-\mathbf{E} T_n)/n$ to
+      behave well between successive $n_k$'s. Observe that
+      if $n_k \le n &lt; n_{k+1}$ then
     </p>
     <div class="math-block">
       $$
@@ -438,7 +579,8 @@
       $$
     </div>
     <p>
-      Since $n_k=\lfloor \alpha^k\rfloor$, in the limit this gives that almost surely the bounds
+      Since $n_k=\lfloor \alpha^k\rfloor$, in the limit
+      this gives that almost surely the bounds
     </p>
     <div class="math-block">
       $$
@@ -447,7 +589,9 @@
       $$
     </div>
     <p>
-      hold. Since $\alpha&gt;1$ was arbitrary, the intersection of these events for $\alpha=1+1/d$, $d=1,2,\ldots$, implies that
+      hold. Since $\alpha&gt;1$ was arbitrary, the
+      intersection of these events for $\alpha=1+1/d$,
+      $d=1,2,\ldots$, implies that
     </p>
     <div class="math-block">
       $$

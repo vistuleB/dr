@@ -46,14 +46,27 @@
   <p>
     For an integer $k\ge 0$, the
     <b>$k$-th moment</b>
-    of a random variable $X$ is the number $\mathbf{E}(X^k)$. The
+    of a
+    random variable $X$ is the number $\mathbf{E}(X^k)$.
+    The
     <b>$k$-th moment around a point $c\in\R$</b>
-    is the number $\mathbf{E}(X-c)^k$. If $c$ is not mentioned it is understood that the moment is around 0. The
+    is the
+    number $\mathbf{E}(X-c)^k$. If $c$ is not mentioned
+    it is understood that the moment is around 0. The
     <b>$k$-th central moment</b>
-    is the $k$-th moment around $\mathbf{E} X$ (when it exists), i.e., $\mathbf{E}(X-\mathbf{E} X)^k$. In this terminology, the variance is the second central moment.
+    is the $k$-th moment around
+    $\mathbf{E} X$ (when it exists), i.e.,
+    $\mathbf{E}(X-\mathbf{E} X)^k$. In this terminology,
+    the variance is the second central moment.
   </p>
   <p>
-    The sequence of moments (usually around 0, or around $\mathbf{E} X$) often contains important information about the behavior of $X$ and is an important computational and theoretical tool. Important special distributions often turn out to have interesting sequences of moments. Also note that by the monotonicity of the $L_p$ norms (inequality
+    The sequence of moments (usually around 0, or around
+    $\mathbf{E} X$) often contains important information
+    about the behavior of $X$ and is an important
+    computational and theoretical tool. Important special
+    distributions often turn out to have interesting
+    sequences of moments. Also note that by the
+    monotonicity of the $L_p$ norms (inequality
     <a
       href="./7-2.html#_17_h.a.i_"
       class=""
@@ -62,10 +75,16 @@
     <a
       href="./7-2.html#_18_h.a.i_"
       class=""
-    >Section 7.2</a>), the set of values $r\ge 0$ such that $\mathbf{E}(X^r)$ exists (one can also talk about $r$-th moments for non-integer $r$, but that is much less commonly discussed) is an interval containing $0$.
+    >Section 7.2</a>), the
+    set of values $r\ge 0$ such that $\mathbf{E}(X^r)$
+    exists (one can also talk about $r$-th moments for
+    non-integer $r$, but that is much less commonly
+    discussed) is an interval containing $0$.
   </p>
   <p>
-    A nice characterization of the variance is that it is the minimal second moment. To compute the second moment around a point $t$, we can write
+    A nice characterization of the variance is that it is
+    the minimal second moment. To compute the second
+    moment around a point $t$, we can write
   </p>
   <div class="math-block">
     $$
@@ -76,7 +95,10 @@
     $$
   </div>
   <p>
-    So the function $t\to\mathbf{E}(X-t)^2$ is a quadratic polynomial that attains its minimum at $t=\mathbf{E} X$, and the value of the minimum is $\mathbf{V}(X)$. In words, the identity
+    So the function $t\to\mathbf{E}(X-t)^2$ is a
+    quadratic polynomial that attains its minimum at
+    $t=\mathbf{E} X$, and the value of the minimum is
+    $\mathbf{V}(X)$. In words, the identity
   </p>
   <div class="math-block">
     $$
@@ -84,7 +106,20 @@
     $$
   </div>
   <p>
-    says that "the second moment around $t$ is equal to the second moment around the mean $\mathbf{E} X$ plus the square of the distance between $t$ and the mean". Note that this is analogous to (and mathematically equivalent to) the Huygens-Steiner theorem (also called the Parallel Axis theorem, see Wikipedia) from mechanics, which says that "the moment of inertia of a body with unit mass around a given axis $L$ is equal to the moment of inertia around the line parallel to $L$ passing through the center of mass of the body, plus the square of the distance between the two lines". Indeed, the "moment" terminology seems to originate in this physical context.
+    says that "the second moment around $t$ is equal to
+    the second moment around the mean $\mathbf{E} X$ plus
+    the square of the distance between $t$ and the
+    mean". Note that this is analogous to (and
+    mathematically equivalent to) the Huygens-Steiner
+    theorem (also called the Parallel Axis theorem, see
+    Wikipedia) from mechanics, which says that "the
+    moment of inertia of a body with unit mass around a
+    given axis $L$ is equal to the moment of inertia
+    around the line parallel to $L$ passing through the
+    center of mass of the body, plus the square of the
+    distance between the two lines". Indeed, the
+    "moment" terminology seems to originate in this
+    physical context.
   </p>
 </body>
 </html>

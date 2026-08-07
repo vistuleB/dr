@@ -44,7 +44,11 @@
     Von Neumann's $L_2$ ergodic theorem
   </h1>
   <p>
-    Our first ergodic theorem is von Neumann's ergodic theorem, which in fact is a result in operator theory that has a nice interpretation for our problem of the convergence of ergodic averages in a measure preserving system.
+    Our first ergodic theorem is von Neumann's ergodic
+    theorem, which in fact is a result in operator theory
+    that has a nice interpretation for our problem of the
+    convergence of ergodic averages in a measure
+    preserving system.
   </p>
   <div
     label="Von Neumann's ergodic theorem"
@@ -57,7 +61,11 @@
       
     </h3>
     <p>
-      <span class="label">Von Neumann's ergodic theorem</span>Let $H$ be a Hilbert space, and let $U$ be a unitary operator on $H$. Let $P$ be the orthogonal projection operator onto the subspace $\operatorname{Ker}(U-I)$ (the subspace of $H$ consisting of $U$-invariant vectors). For any vector $v\in H$ we have
+      <span class="label">Von Neumann's ergodic theorem</span>Let $H$ be a Hilbert space, and let $U$ be a unitary
+      operator on $H$. Let $P$ be the orthogonal projection
+      operator onto the subspace $\operatorname{Ker}(U-I)$
+      (the subspace of $H$ consisting of $U$-invariant
+      vectors). For any vector $v\in H$ we have
     </p>
     <div
       id="_50_h.a.i_"
@@ -70,7 +78,9 @@
       $$
     </div>
     <p>
-      (Equivalently, the sequence of operators $\frac{1}{n}\sum_{k=0}^{n-1} U^k$ converges to $P$ in the strong operator topology.)
+      (Equivalently, the sequence of operators
+      $\frac{1}{n}\sum_{k=0}^{n-1} U^k$ converges to $P$ in
+      the strong operator topology.)
     </p>
   </div>
   <div>
@@ -91,7 +101,9 @@
         href="./7-1.html#_50_h.a.i_"
         class=""
       >(17)</a>
-      holds trivially for $v\in V$. For a different reason, we also show that it holds for $v\in V'$: if $v=Uw-w$ then we have
+      holds trivially for
+      $v\in V$. For a different reason, we also show that
+      it holds for $v\in V'$: if $v=Uw-w$ then we have
     </p>
     <div class="math-block">
       $$
@@ -99,7 +111,9 @@
       $$
     </div>
     <p>
-      On the other hand, one can verify that $v\in V^\perp$, and therefore $Pv=0$, by observing that if $z\in V$ then
+      On the other hand, one can verify that $v\in V^\perp$,
+      and therefore $Pv=0$, by observing that if $z\in V$
+      then
     </p>
     <div class="math-block">
       $$
@@ -116,7 +130,12 @@
         href="./7-1.html#_50_h.a.i_"
         class=""
       >(17)</a>
-      holds for $v\in V+V'$. Next, we claim that it also holds for $v\in \overline{V+V'}$, the norm closure of $V+V'$. Indeed, if $v\in \overline{V+V'}$ then for an arbitrary $\epsilon&gt;0$ we can take $w\in V+V'$ such that $\lVert v-w\rVert &lt; \epsilon$ and conclude that
+      holds for $v\in V+V'$. Next, we
+      claim that it also holds for $v\in \overline{V+V'}$,
+      the norm closure of $V+V'$. Indeed, if
+      $v\in \overline{V+V'}$ then for an arbitrary
+      $\epsilon&gt;0$ we can take $w\in V+V'$ such that
+      $\lVert v-w\rVert &lt; \epsilon$ and conclude that
     </p>
     <div class="math-block">
       $$
@@ -133,16 +152,23 @@
       $$
     </div>
     <p>
-      This implies that $\limsup_{n\to\infty} \left\lVert \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)v \right\rVert &lt; \epsilon$, and since $\epsilon$ was an arbitrary positive number we get
+      This implies that
+      $\limsup_{n\to\infty} \left\lVert
+      \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)v
+      \right\rVert &lt; \epsilon$,
+      and since $\epsilon$ was an arbitrary positive number
+      we get
       <a
         href="./7-1.html#_50_h.a.i_"
         class=""
       >(17)</a>.
     </p>
     <p>
-      Finally, we claim that $H=\overline{V+V'}$. Since $\overline{V+V'}$ is a
+      Finally, we claim that $H=\overline{V+V'}$. Since
+      $\overline{V+V'}$ is a
       <i>closed</i>
-      subspace of $H$, we have
+      subspace of $H$, we
+      have
     </p>
     <div class="math-block">
       $$
@@ -150,7 +176,14 @@
       $$
     </div>
     <p>
-      (in general, the orthogonal complement of the orthogonal complement of a subspace $W$ of a Hilbert space is equal to $\overline{W}$). So, it suffices to show that $\left(\overline{V+V'}\right)^\perp=\{0\}$, i.e., that the only vector orthogonal to all of $\overline{V+V'}$ is the zero vector. Assume $w$ is such a vector. Then $w \perp Uw-w$. But note that we have the identity
+      (in general, the orthogonal complement of the
+      orthogonal complement of a subspace $W$ of a Hilbert
+      space is equal to $\overline{W}$). So, it suffices to
+      show that $\left(\overline{V+V'}\right)^\perp=\{0\}$,
+      i.e., that the only vector orthogonal to all of
+      $\overline{V+V'}$ is the zero vector. Assume $w$ is
+      such a vector. Then $w \perp Uw-w$. But note that we
+      have the identity
     </p>
     <div class="math-block">
       $$
@@ -162,11 +195,17 @@
       $$
     </div>
     <p>
-      which means that $Uw-w = 0$, i.e., $w\in V$. Since $w\in \left(\overline{V+V'}\right)^\perp$ we get that $w$ is orthogonal to itself and therefore $w=0$, as claimed.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      which means that $Uw-w = 0$, i.e., $w\in V$. Since
+      $w\in \left(\overline{V+V'}\right)^\perp$ we get that
+      $w$ is orthogonal to itself and therefore $w=0$, as
+      claimed.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. We associate with $T$ an operator $U_T$ on the Hilbert space $L_2(\Omega)$, defined  by
+    Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a
+    measure preserving system. We associate with $T$ an
+    operator $U_T$ on the Hilbert space $L_2(\Omega)$,
+    defined  by
   </p>
   <div class="math-block">
     $$
@@ -174,7 +213,8 @@
     $$
   </div>
   <p>
-    The fact that $T$ is measure preserving implies that $U_T$ is unitary:
+    The fact that $T$ is measure preserving implies that
+    $U_T$ is unitary:
   </p>
   <div class="math-block">
     $$
@@ -184,12 +224,24 @@
     $$
   </div>
   <p>
-    Note also that the subspace $\operatorname{Ker}(U-I)$ consists exactly of the invariant (square-integrable) random variables, or equivalently those random variables which are measurable with respect to the $\sigma$-algebra $\mathcal{I}$ of invariant events. Recalling the discussion of conditional expectations in Chapter 2, we also see that the orthogonal projection operator $P$ is exactly the conditional expectation operator $\mathbf{E}\left(\cdot\,|\,\mathcal{I}\right)$ with respect to the $\sigma$-algebra of invariant events! Thus,
+    Note also that the subspace $\operatorname{Ker}(U-I)$
+    consists exactly of the invariant (square-integrable)
+    random variables, or equivalently those random
+    variables which are measurable with respect to the
+    $\sigma$-algebra $\mathcal{I}$ of invariant events.
+    Recalling the discussion of conditional expectations
+    in Chapter 2, we also see that the orthogonal
+    projection operator $P$ is exactly the conditional
+    expectation operator
+    $\mathbf{E}\left(\cdot\,|\,\mathcal{I}\right)$ with
+    respect to the $\sigma$-algebra of invariant events!
+    Thus,
     <a
       href="./7-1.html#_51_h.a.i_"
       class=""
     >Theorem 7.1</a>
-    applied to this setting gives the following result.
+    applied to this setting
+    gives the following result.
   </p>
   <div
     label="The $L_2$ ergodic theorem"
@@ -201,7 +253,9 @@
       
     </h3>
     <p>
-      <span class="label">The $L_2$ ergodic theorem</span>Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. For any random variable $X\in L_2(\Omega, \mathcal{F}, \mathrm{P})$, we have
+      <span class="label">The $L_2$ ergodic theorem</span>Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a
+      measure preserving system. For any random variable
+      $X\in L_2(\Omega, \mathcal{F}, \mathrm{P})$, we have
     </p>
     <div class="math-block">
       $$

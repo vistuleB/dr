@@ -44,7 +44,9 @@
     The calculus of variations
   </h1>
   <p>
-    Let us consider the problem of minimizing the action in slightly greater generality. In many areas of mathematics we encounter expressions of the form
+    Let us consider the problem of minimizing the action
+    in slightly greater generality. In many areas of
+    mathematics we encounter expressions of the form
   </p>
   <div
     id="_16_h.a.i_"
@@ -59,22 +61,50 @@
     $$
   </div>
   <p>
-    which take a (sufficiently smooth) function $q(t)$ defined on an interval $[t_0,t_1]$ and return a real number. The form of the integrand $L(\dot{q},q,t)$ depends on the problem, and may have nothing to do with Lagrangian mechanics (indeed, in many problems with a geometric flavor, $t$ represents a space variable instead of a time variable, and is therefore often denoted by $x$; in this case, we write $q'$ instead of $\dot{q}$ for the derivative of $q$). Usually the function $q$ is assumed to take specific values at the ends of the interval, i.e., $q(t_0)=q_0$ and $q(t_1)=q_1$.
+    which take a (sufficiently smooth) function $q(t)$
+    defined on an interval $[t_0,t_1]$ and return a real
+    number. The form of the integrand $L(\dot{q},q,t)$
+    depends on the problem, and may have nothing to do
+    with Lagrangian mechanics (indeed, in many problems
+    with a geometric flavor, $t$ represents a space
+    variable instead of a time variable, and is therefore
+    often denoted by $x$; in this case, we write $q'$
+    instead of $\dot{q}$ for the derivative of $q$).
+    Usually the function $q$ is assumed to take specific
+    values at the ends of the interval, i.e., $q(t_0)=q_0$
+    and $q(t_1)=q_1$.
   </p>
   <p>
     Such a mapping $q\mapsto \Phi(q)$ is called a
     <i>functional</i>
-    --- note that a functional is just like an ordinary function from calculus, except that it takes as its argument an entire function instead of only one or several real-valued arguments (that is why we call such functions
-    <i>functionals</i>, to avoid an obvious source of confusion). In many cases it is desirable to find which function $q$ results in the least and/or the greatest value $\Phi(q)$. Such a minimization or maximization problem is known as a
+    --- note that a functional is just like
+    an ordinary function from calculus, except that it
+    takes as its argument an entire function instead of
+    only one or several real-valued arguments (that is why
+    we call such functions
+    <i>functionals</i>, to avoid an
+    obvious source of confusion). In many cases it is
+    desirable to find which function $q$ results in the
+    least and/or the greatest value $\Phi(q)$. Such a
+    minimization or maximization problem is known as a
     <i>variational problem</i>
-    (the reason for the name is explained below), and the area of mathematics that deals with such problems is called the
-    <i>variational calculus</i>, or
-    <i>calculus of variations</i>. In more advanced variational problems the form of the functional
+    (the reason for the name is
+    explained below), and the area of mathematics that
+    deals with such problems is called the
+    <i>variational
+      calculus</i>, or
+    <i>calculus of variations</i>. In more
+    advanced variational problems the form of the
+    functional
     <a
       href="./1-10.html#_16_h.a.i_"
       class=""
     >(14)</a>
-    can be more general and depend for example on a vector-valued function $\mathbf{q}(t)$, or on higher-order derivatives of $q$, or on a function $q(x_1,\ldots,x_k)$ of several variables
+    can be more general and
+    depend for example on a vector-valued function
+    $\mathbf{q}(t)$, or on higher-order derivatives of
+    $q$, or on a function $q(x_1,\ldots,x_k)$ of several
+    variables
   </p>
   <p>
     Here are some examples of variational problems.
@@ -85,30 +115,49 @@
   >
     <li>
       <p>
-        What is the shortest curve in the plane connecting two points? We all know it is a straight line, but how can we prove it? (And how do we find the answer to the same question on some complicated surface?)
+        What is the shortest curve in the plane connecting
+        two points? We all know it is a straight line, but how
+        can we prove it? (And how do we find the answer to the
+        same question on some complicated surface?)
       </p>
     </li>
     <li>
       <p>
-        What is the curve of given length in the plane bounding the largest area? (It is a circle --- this fact, which is not trivial to prove, is known as the
+        What is the curve of given length in the plane
+        bounding the largest area? (It is a circle --- this
+        fact, which is not trivial to prove, is known as the
         <i>isoperimetric inequality</i>.)
       </p>
     </li>
     <li>
       <p>
-        What is the curve connecting a point $\mathbf{A}$ in the plane with another lower point $\mathbf{B}$ such that a ball rolling downhill without friction along the curve from $\mathbf{A}$ to $\mathbf{B}$ under the influence of gravity will reach $\mathbf{B}$ in the minimal possible time? This problem is known as the
-        <i>brachistochrone problem</i>, and stimulated the development of the calculus of variations in the 18th century.
+        What is the curve connecting a point $\mathbf{A}$ in
+        the plane with another lower point $\mathbf{B}$ such
+        that a ball rolling downhill without friction along
+        the curve from $\mathbf{A}$ to $\mathbf{B}$ under the
+        influence of gravity will reach $\mathbf{B}$ in the
+        minimal possible time? This problem is known as the
+        <i>brachistochrone problem</i>, and stimulated the
+        development of the calculus of variations in the 18th
+        century.
       </p>
     </li>
     <li>
       <p>
-        What is the curve in the phase space of a Lagrangian system that minimizes the action?
+        What is the curve in the phase space of a Lagrangian
+        system that minimizes the action?
       </p>
     </li>
   </ol>
   <p>
-    The basic idea involved in solving variational problems is as follows: if $q$ is an extremum (minimum or maximum) point of the functional $\Phi$, then it is also a
-    <i>local extremum</i>. That means that for any (sufficiently smooth) function $h:[t_0,t_1]\to \R$ satisfying $h(t_0)=h(t_1)=0$, the function
+    The basic idea involved in solving variational
+    problems is as follows: if $q$ is an extremum
+    (minimum or maximum) point of the functional $\Phi$,
+    then it is also a
+    <i>local extremum</i>. That means that
+    for any (sufficiently smooth) function
+    $h:[t_0,t_1]\to \R$ satisfying $h(t_0)=h(t_1)=0$, the
+    function
   </p>
   <div class="math-block">
     $$
@@ -116,7 +165,10 @@
     $$
   </div>
   <p>
-    (an ordinary function of a single real variable $s$) has a local extremum at $s=0$. From ordinary calculus, we know that the derivative of $\phi_{q,h}$ at $0$ must be $0$:
+    (an ordinary function of a single real variable $s$)
+    has a local extremum at $s=0$. From ordinary
+    calculus, we know that the derivative of $\phi_{q,h}$
+    at $0$ must be $0$:
   </p>
   <div class="math-block">
     $$
@@ -124,7 +176,8 @@
     $$
   </div>
   <p>
-    To evaluate this derivative, differentiate under the integral sign and integrate by parts, to get
+    To evaluate this derivative, differentiate under the
+    integral sign and integrate by parts, to get
   </p>
   <div class="math-block">
     $$
@@ -158,13 +211,30 @@
   </div>
   <p>
     and call this quantity the
-    <i>variation of the functional</i>
-    $\Phi$ at $q$, evaluated at $h$ (also sometimes called the
-    <i>first variation of $\Phi$</i>, since there is also a second variation, third variation etc., which we will not discuss; this is where the name
+    <i>variation of the
+      functional</i>
+    $\Phi$ at $q$, evaluated at $h$ (also
+    sometimes called the
+    <i>first variation of $\Phi$</i>,
+    since there is also a second variation, third
+    variation etc., which we will not discuss; this is
+    where the name
     <i>calculus of variations</i>
-    comes from). It is analogous to a directional derivative $\frac{\partial f}{\partial \mathbf{u}} = \nabla f \cdot \mathbf{u}$ of a function of several variables in calculus, in that it measures the instantaneous rate of change of $\Phi$ if we start from the "point" $q$ and head off in a "direction" corresponding to the small perturbation $s\cdot h$. We say that the function $q$ is a
+    comes from).
+    It is analogous to a directional derivative
+    $\frac{\partial f}{\partial \mathbf{u}} = \nabla f
+    \cdot \mathbf{u}$
+    of a function of several variables in calculus, in
+    that it measures the instantaneous rate of change of
+    $\Phi$ if we start from the "point" $q$ and head
+    off in a "direction" corresponding to the small
+    perturbation $s\cdot h$. We say that the function $q$
+    is a
     <i>stationary point</i>
-    of $\Phi$ if $\delta\Phi_q(h) = 0$ for any (sufficiently smooth) function $h$ satisfying $h(t_0)=h(t_1)=0$. With the computation above, we have proved:
+    of $\Phi$ if
+    $\delta\Phi_q(h) = 0$ for any (sufficiently smooth)
+    function $h$ satisfying $h(t_0)=h(t_1)=0$. With the
+    computation above, we have proved:
   </p>
   <div class="statement lemma">
     <h3>
@@ -173,11 +243,15 @@
       
     </h3>
     <p>
-      If $q$ is an extremum (minimum or maximum) of the functional $\Phi$, then it is a stationary point.
+      If $q$ is an extremum (minimum or maximum) of the
+      functional $\Phi$, then it is a stationary point.
     </p>
   </div>
   <p>
-    Finally, note that the formula for the variation $\delta \Phi_q(h)$ involves a quantity that is suspiciously reminiscent of the Euler-Langrange equation. Indeed, we can now easily prove:
+    Finally, note that the formula for the variation
+    $\delta \Phi_q(h)$ involves a quantity that is
+    suspiciously reminiscent of the Euler-Langrange
+    equation. Indeed, we can now easily prove:
   </p>
   <div class="statement theorem">
     <h3>
@@ -186,7 +260,8 @@
       
     </h3>
     <p>
-      The function $q$ is a stationary point of $\Phi$ if and only if it satisfies the Euler-Lagrange equation
+      The function $q$ is a stationary point of $\Phi$ if
+      and only if it satisfies the Euler-Lagrange equation
     </p>
     <div class="math-block">
       $$
@@ -198,18 +273,24 @@
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>It is easy to see that the integral on the right-hand side of
+      <span class="proof">Proof</span>It is easy to see that the integral on the right-hand
+      side of
       <a
         href="./1-10.html#_17_h.a.i_"
         class=""
       >(15)</a>
       is $0$
       <i>for every</i>
-      $h$ satisfying $h(t_0)=h(t_1)=0$ if and only if the quantity in parentheses in the integrand vanishes for all $t$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      $h$
+      satisfying $h(t_0)=h(t_1)=0$ if and only if the
+      quantity in parentheses in the integrand vanishes for
+      all $t$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    Reformulating this result in the language of Lagrangian systems gives the correct version of the principle of least action.
+    Reformulating this result in the language of
+    Lagrangian systems gives the correct version of the
+    principle of least action.
   </p>
   <div
     label="Principle of stationary action"
@@ -221,7 +302,10 @@
       
     </h3>
     <p>
-      <span class="label">Principle of stationary action</span>Given a mechanical system defined by a Lagrangian $L$, the trajectory of the system between two times $t_1&lt;t_2$ satisfying $q(t_0)=q_0$ and $q(t_1)=q_1$ is a stationary point of the action functional
+      <span class="label">Principle of stationary action</span>Given a mechanical system defined by a Lagrangian $L$,
+      the trajectory of the system between two times
+      $t_1&lt;t_2$ satisfying $q(t_0)=q_0$ and $q(t_1)=q_1$ is
+      a stationary point of the action functional
     </p>
     <div class="math-block">
       $$
@@ -232,12 +316,21 @@
     </div>
   </div>
   <p>
-    The stationary point which solves the Euler-Lagrange equation will usually be a minimum point for simple systems, but in general does not have to be. There is a method for determining whether a given stationary point is a minimum, maximum, or saddle point, which involves computing the
+    The stationary point which solves the Euler-Lagrange
+    equation will usually be a minimum point for simple
+    systems, but in general does not have to be. There is
+    a method for determining whether a given stationary
+    point is a minimum, maximum, or saddle point, which
+    involves computing the
     <i>second variation</i>
-    of the functional (analogous to the Hessian matrix of second derivatives of a function of several variables), but we will not discuss it here.
+    of the
+    functional (analogous to the Hessian matrix of second
+    derivatives of a function of several variables), but
+    we will not discuss it here.
   </p>
   <p>
-    Let us see how the theory works in a few examples to solve some interesting variational problems.
+    Let us see how the theory works in a few examples to
+    solve some interesting variational problems.
   </p>
   <div
     label="Plane geodesics"
@@ -249,8 +342,15 @@
       
     </h3>
     <p>
-      <span class="label">Plane geodesics</span>Consider the problem of determining the shortest line between two points $(x_1,y_1)$ and $(x_2,y_2)$, where we assume for concreteness that $x_1&lt;x_2$ (The shortest line between two points on a general surface or curved space is known as a
-      <i>geodesic</i>.) As is well-known from the arc length formula $ds^2=dx^2+dy^2$ from calculus, the length of a curve $y=q(x)$ is given by
+      <span class="label">Plane geodesics</span>Consider the problem of determining the shortest line
+      between two points $(x_1,y_1)$ and $(x_2,y_2)$, where
+      we assume for concreteness that $x_1&lt;x_2$ (The
+      shortest line between two points on a general surface
+      or curved space is known as a
+      <i>geodesic</i>.) As is
+      well-known from the arc length formula
+      $ds^2=dx^2+dy^2$ from calculus, the length of a curve
+      $y=q(x)$ is given by
     </p>
     <div class="math-block">
       $$
@@ -271,7 +371,8 @@
       $$
     </div>
     <p>
-      To find the minimizing curve, we write the Euler-Lagrange equation:
+      To find the minimizing curve, we write the
+      Euler-Lagrange equation:
     </p>
     <div class="math-block">
       $$
@@ -291,7 +392,9 @@
       $$
     </div>
     <p>
-      which is equivalent to $q'(x)=\textrm{const}$, i.e., we have recovered the equation for a straight line $y=ax+b$.
+      which is equivalent to $q'(x)=\textrm{const}$, i.e.,
+      we have recovered the equation for a straight line
+      $y=ax+b$.
     </p>
   </div>
   <div
@@ -304,9 +407,19 @@
       
     </h3>
     <p>
-      <span class="label">Brachistochrone problem</span>In this problem, we try to find the curve connecting the points $\mathbf{A}$ and $\mathbf{B}$ in the plane, for which a ball rolling downhill without friction from $\mathbf{A}$ to $\mathbf{B}$, with an initial velocity of $0$, will take the shortest time to arrive. We choose a coordinate system such that the $x$-axis is the
+      <span class="label">Brachistochrone problem</span>In this problem, we try to find the curve connecting
+      the points $\mathbf{A}$ and $\mathbf{B}$ in the
+      plane, for which a ball rolling downhill without
+      friction from $\mathbf{A}$ to $\mathbf{B}$, with an
+      initial velocity of $0$, will take the shortest time
+      to arrive. We choose a coordinate system such that the
+      $x$-axis is the
       <i>vertical</i>
-      axis and points downward for positive $x$, and such that $\mathbf{A}=(0,0)$, $\mathbf{B}=(x_b,y_b)$ with $x_b,y_b&gt;0$. If the curve is given by $y=q(x)$, the time is given by the integral along the curve
+      axis and points downward
+      for positive $x$, and such that $\mathbf{A}=(0,0)$,
+      $\mathbf{B}=(x_b,y_b)$ with $x_b,y_b&gt;0$. If the curve
+      is given by $y=q(x)$, the time is given by the
+      integral along the curve
     </p>
     <div class="math-block">
       $$
@@ -316,7 +429,13 @@
       $$
     </div>
     <p>
-      where $ds$ is the arc length element and $v$ is the velocity of the ball at each point. More explicitly, we have $ds = \sqrt{1+q'(x)^2}\,dx$, and $v=\sqrt{2g x}$, where $g$ is the gravitational constant (this follows from conservation of energy, which gives the relation $\tfrac12 m v^2 = mgx$). So, the functional we are trying to minimize is
+      where $ds$ is the arc length element and $v$ is the
+      velocity of the ball at each point. More explicitly,
+      we have $ds = \sqrt{1+q'(x)^2}\,dx$, and
+      $v=\sqrt{2g x}$, where $g$ is the gravitational
+      constant (this follows from conservation of energy,
+      which gives the relation $\tfrac12 m v^2 = mgx$). So,
+      the functional we are trying to minimize is
     </p>
     <div class="math-block">
       $$
@@ -356,7 +475,8 @@
       $$
     </div>
     <p>
-      where $\alpha$ is a constant. This can be rewritten as
+      where $\alpha$ is a constant. This can be rewritten
+      as
     </p>
     <div class="math-block">
       $$
@@ -364,7 +484,9 @@
       $$
     </div>
     <p>
-      where $\lambda=(2\alpha^2 g)^{-1}$, and then solved by solving for $q'$ and integrating, giving the expression
+      where $\lambda=(2\alpha^2 g)^{-1}$, and then solved
+      by solving for $q'$ and integrating, giving the
+      expression
     </p>
     <div
       id="_18_h.a.i_"
@@ -379,7 +501,8 @@
       $$
     </div>
     <p>
-      Setting $a=\lambda/2$ and using the trigonometric substitution
+      Setting $a=\lambda/2$ and using the trigonometric
+      substitution
     </p>
     <div class="math-block">
       $$
@@ -389,7 +512,8 @@
       $$
     </div>
     <p>
-      we obtain a convenient parametric representation for the curve, namely
+      we obtain a convenient parametric representation for
+      the curve, namely
     </p>
     <div class="math-block">
       $$
@@ -403,13 +527,24 @@
     <p>
       These are the equations for a
       <i>cycloid</i>
-      (or, rather, an
-      <i>inverted cycloid</i>, as the cycloid is usually drawn with its "flat" side up): as can be seen easily from the parametric equations, it describes the trajectory of a point on a wheel that rolls along the $y$-axis (the parameter $\theta$ represents the angle by which the wheel has rolled forward; see Figure 2). The scaling constant $a$ can now be chosen to fit the condition that $q(x_b)=y_b$, i.e., the curve must pass through the point $\mathbf{B}$. It may also be verified using
+      (or, rather,
+      an
+      <i>inverted cycloid</i>, as the cycloid is usually drawn
+      with its "flat" side up): as can be seen easily from
+      the parametric equations, it describes the trajectory
+      of a point on a wheel that rolls along the $y$-axis
+      (the parameter $\theta$ represents the angle by which
+      the wheel has rolled forward; see Figure 2). The
+      scaling constant $a$ can now be chosen to fit the
+      condition that $q(x_b)=y_b$, i.e., the curve must
+      pass through the point $\mathbf{B}$. It may also be
+      verified using
       <a
         href="./1-10.html#_18_h.a.i_"
         class=""
       >(16)</a>
-      that the nonparametric equation for the cycloid is
+      that the
+      nonparametric equation for the cycloid is
     </p>
     <div class="math-block">
       $$
@@ -434,15 +569,30 @@
     >
       <li>
         <p>
-          Find a formula for the time it takes a ball rolling down a brachistochrone curve to get to the lowest point on the curve.
+          Find a formula for the time it takes a ball rolling
+          down a brachistochrone curve to get to the lowest
+          point on the curve.
         </p>
       </li>
       <li>
         <p>
           Show that the inverted cycloid is also a
-          <i>tautochrone curve</i>, i.e., it has the property that a ball placed on the curve and allowed to roll downhill and then up repeatedly would undergo an oscillatory motion whose period is independent of the ball's initial position along the curve. (This fact was discovered by Christiaan Huygens, the famous 17th century Dutch mathematician and astronomer. Huygens, who invented the pendulum clock, was aware that the period of a pendulum
+          <i>tautochrone
+            curve</i>, i.e., it has the property that a ball placed
+          on the curve and allowed to roll downhill and then up
+          repeatedly would undergo an oscillatory motion whose
+          period is independent of the ball's initial position
+          along the curve. (This fact was discovered by
+          Christiaan Huygens, the famous 17th century Dutch
+          mathematician and astronomer. Huygens, who invented
+          the pendulum clock, was aware that the period of a
+          pendulum
           <i>does</i>
-          depend on its amplitude of oscillation --- a fact which limits its accuracy for timekeeping applications --- and tried unsuccessfully to design a more accurate modified pendulum clock based on the tautochrone curve.)
+          depend on its amplitude of oscillation
+          --- a fact which limits its accuracy for timekeeping
+          applications --- and tried unsuccessfully to design a
+          more accurate modified pendulum clock based on the
+          tautochrone curve.)
         </p>
       </li>
     </ol>
@@ -453,7 +603,9 @@
       style="max-width: 90%"
     >
     <figcaption>
-      Figure 2: The brachistochrone curve (cycloid) as the trajectory of a point on the boundary of a circle rolling on a line.
+      Figure 2: The brachistochrone curve (cycloid) as the
+      trajectory of a point on the boundary of a circle
+      rolling on a line.
     </figcaption>
   </figure>
   <div
@@ -467,7 +619,10 @@
     </h3>
     <p>
       <span class="label">Geodesics in the hyperbolic plane</span>The hyperbolic plane is a well-known example of a
-      <i>non-Euclidean geometry</i>, i.e., a geometry in which Euclid's parallel postulate fails to hold. A concrete realization of the hyperbolic plane consists of the set
+      <i>non-Euclidean geometry</i>, i.e., a geometry in which
+      Euclid's parallel postulate fails to hold. A concrete
+      realization of the hyperbolic plane consists of the
+      set
     </p>
     <div class="math-block">
       $$
@@ -479,7 +634,9 @@
     <p>
       (known as the
       <i>upper half plane</i>
-      in complex analysis), together with a modified formula for the arc length of a line segment, namely
+      in complex
+      analysis), together with a modified formula for the
+      arc length of a line segment, namely
     </p>
     <div class="math-block">
       $$
@@ -489,10 +646,22 @@
       $$
     </div>
     <p>
-      which replaces the usual formula $ds = \sqrt{dx^2+dy^2}$ for the ordinary Euclidean arc length. In other words, in the hyperbolic plane, the higher you go, the more "flat" in the vertical direction your hyperbolic length measurement becomes, in the sense that you need to traverse $y$ units of ordinary Euclidean distance for each unit of hyperbolic arc length.
+      which replaces the usual formula
+      $ds = \sqrt{dx^2+dy^2}$ for the ordinary Euclidean
+      arc length. In other words, in the hyperbolic plane,
+      the higher you go, the more "flat" in the vertical
+      direction your hyperbolic length measurement becomes,
+      in the sense that you need to traverse $y$ units of
+      ordinary Euclidean distance for each unit of
+      hyperbolic arc length.
     </p>
     <p>
-      (The hyperbolic plane can also be realized inside a unit disk, resulting in a geometry in which objects seem to shrink --- to our Euclidean eyes --- as they approach the boundary of the disk. This geometry was famously portrayed by the Dutch artist M. C. Escher in a beautiful series of wood engravings; see Figure 3.)
+      (The hyperbolic plane can also be realized inside a
+      unit disk, resulting in a geometry in which objects
+      seem to shrink --- to our Euclidean eyes --- as they
+      approach the boundary of the disk. This geometry was
+      famously portrayed by the Dutch artist M. C. Escher in
+      a beautiful series of wood engravings; see Figure 3.)
     </p>
     <figure>
       <img
@@ -506,7 +675,12 @@
       </figcaption>
     </figure>
     <p>
-      Let us use the methods of the calculus of variations to find the hyperbolic geodesics, which are the "straight lines" (actually shortest paths) between two points $(x_1,y_1), (x_2,y_2)$ in the hyperbolic plane. Imitating the setup of the plane geodesics example, we are trying to minimize the functional
+      Let us use the methods of the calculus of variations
+      to find the hyperbolic geodesics, which are the
+      "straight lines" (actually shortest paths) between
+      two points $(x_1,y_1), (x_2,y_2)$ in the hyperbolic
+      plane. Imitating the setup of the plane geodesics
+      example, we are trying to minimize the functional
     </p>
     <div class="math-block">
       $$
@@ -538,7 +712,8 @@
       $$
     </div>
     <p>
-      After a short computation, this reduces to the equation
+      After a short computation, this reduces to the
+      equation
     </p>
     <div class="math-block">
       $$
@@ -579,7 +754,16 @@
       $$
     </div>
     <p>
-      where $D=a^2-b^2, C=2b$. The equation $y=q(x)$ is the equation for a semicircular arc that crosses the $y$-axis perpendicularly --- these semicircular arcs are the geodesics in the hyperbolic plane. In addition, in the case when $x_1=x_2$, it is easy to verify that the geodesic connecting $(x_1,y_1)$ to $(x_2,y_2)$ will be a vertical straight line. (In the "unit disk" version of the hyperbolic plane, the geodesics are circular arcs that intersect the boundary of the disk perpendicularly.)
+      where $D=a^2-b^2, C=2b$. The equation $y=q(x)$ is the
+      equation for a semicircular arc that crosses the
+      $y$-axis perpendicularly --- these semicircular arcs
+      are the geodesics in the hyperbolic plane. In
+      addition, in the case when $x_1=x_2$, it is easy to
+      verify that the geodesic connecting $(x_1,y_1)$ to
+      $(x_2,y_2)$ will be a vertical straight line. (In the
+      "unit disk" version of the hyperbolic plane, the
+      geodesics are circular arcs that intersect the
+      boundary of the disk perpendicularly.)
     </p>
   </div>
   <div class="statement exercise">
@@ -589,7 +773,10 @@
       
     </h3>
     <p>
-      Find a formula for the length (as measured using the hyperbolic metric!) of a hyperbolic geodesic arc between the points $(x_1,y_1), (x_2,y_2)\in \mathbb{H}$.
+      Find a formula for the length (as measured using the
+      hyperbolic metric!) of a hyperbolic geodesic arc
+      between the points
+      $(x_1,y_1), (x_2,y_2)\in \mathbb{H}$.
     </p>
   </div>
   <div
@@ -604,12 +791,28 @@
     <p>
       <span class="label">Isoperimetric inequality</span>The
       <i>isoperimetric problem</i>
-      was the classical problem, discussed already by the ancient Greeks, of finding the simple closed curve in the plane with perimeter $L$ that bounds the largest area (in modern times the problem has been considerably generalized to higher dimensions, curved spaces etc.). The answer is that the so-called
+      was the classical
+      problem, discussed already by the ancient Greeks, of
+      finding the simple closed curve in the plane with
+      perimeter $L$ that bounds the largest area (in modern
+      times the problem has been considerably generalized to
+      higher dimensions, curved spaces etc.). The answer is
+      that the so-called
       <i>isoperimetric curve</i>
-      is a circle, and can be derived using the calculus of variations. A slight complication is that the problem involves minimizing a functional (the area bounded by the curve) subject to a constraint (representing the fixed perimeter); this difficulty can be addressed easily using the standard idea of Lagrange multipliers from "ordinary" calculus (note the repeated occurrence of the mathematician Joseph Louis Lagrange's name --- it is no coincidence, of course).
+      is a circle,
+      and can be derived using the calculus of variations. A
+      slight complication is that the problem involves
+      minimizing a functional (the area bounded by the
+      curve) subject to a constraint (representing the fixed
+      perimeter); this difficulty can be addressed easily
+      using the standard idea of Lagrange multipliers from
+      "ordinary" calculus (note the repeated occurrence of
+      the mathematician Joseph Louis Lagrange's name --- it
+      is no coincidence, of course).
     </p>
     <p>
-      We model the isoperimetric problem as the problem of minimizing the area functional
+      We model the isoperimetric problem as the problem of
+      minimizing the area functional
     </p>
     <div class="math-block">
       $$
@@ -619,7 +822,9 @@
       $$
     </div>
     <p>
-      among all curves $q(x)$ taking nonnegative values on $[x_0,x_1]$, and satisfying $q(x_0)=q(x_1)=0$ as well as the arc length constraint
+      among all curves $q(x)$ taking nonnegative values on
+      $[x_0,x_1]$, and satisfying $q(x_0)=q(x_1)=0$ as well
+      as the arc length constraint
     </p>
     <div class="math-block">
       $$
@@ -629,10 +834,20 @@
       $$
     </div>
     <p>
-      Such a curve $q(x)$ represents the "upper part" of the closed curve that lies above the $x$-axis, and meets it at the points $x=x_0, x=x_1$. The solution should be a semicircle meeting the $x$-axis perpendicularly at those points; once this fact is derived, one can derive the claim about circles being the solution to the isoperimetric problem without too much effort, after making reasonable assumptions about the form of the solution.
+      Such a curve $q(x)$ represents the "upper part" of
+      the closed curve that lies above the $x$-axis, and
+      meets it at the points $x=x_0, x=x_1$. The solution
+      should be a semicircle meeting the $x$-axis
+      perpendicularly at those points; once this fact is
+      derived, one can derive the claim about circles being
+      the solution to the isoperimetric problem without too
+      much effort, after making reasonable assumptions about
+      the form of the solution.
     </p>
     <p>
-      Since this is an optimization problem under constraints, the technique of Lagrange multipliers requires us to solve the modified
+      Since this is an optimization problem under
+      constraints, the technique of Lagrange multipliers
+      requires us to solve the modified
       <i>non-constrained</i>
       problem of optimizing the functional
     </p>
@@ -645,11 +860,28 @@
       $$
     </div>
     <p>
-      where $L_\lambda$ is a new Lagrangian that is obtained by taking the "original" Lagrangian $L=q$ and adding a constant multiple of the constraint function $\sqrt{1+q'^2}$. The price of replacing the constrained problem by an unconstrained one is the introduction of an additional parameter, $\lambda$, known as the
-      <i>Lagrange multiplier</i>. After solving the unconstrained problem in terms of the parameter $\lambda$, the requirement for the constraint to be satisfied gives an equation for $\lambda$. (A proof that this technique works is beyond the scope of this course, but the geometric intuition is very similar to the case of Lagrange multipliers in ordinary calculus.)
+      where $L_\lambda$ is a new Lagrangian that is
+      obtained by taking the "original" Lagrangian $L=q$
+      and adding a constant multiple of the constraint
+      function $\sqrt{1+q'^2}$. The price of replacing the
+      constrained problem by an unconstrained one is the
+      introduction of an additional parameter, $\lambda$,
+      known as the
+      <i>Lagrange multiplier</i>. After solving the
+      unconstrained problem in terms of the parameter
+      $\lambda$, the requirement for the constraint to be
+      satisfied gives an equation for $\lambda$. (A proof
+      that this technique works is beyond the scope of this
+      course, but the geometric intuition is very similar to
+      the case of Lagrange multipliers in ordinary
+      calculus.)
     </p>
     <p>
-      To see how this idea works in practice, we write the Euler-Lagrange equation $\frac{d}{dx}\left(\frac{\partial L_\lambda}{\partial q'}\right) = \frac{\partial L_\lambda}{\partial q}$ for the unconstrained optimization problem. This gives
+      To see how this idea works in practice, we write the
+      Euler-Lagrange equation
+      $\frac{d}{dx}\left(\frac{\partial L_\lambda}{\partial
+      q'}\right) = \frac{\partial L_\lambda}{\partial q}$
+      for the unconstrained optimization problem. This gives
     </p>
     <div class="math-block">
       $$
@@ -669,7 +901,9 @@
       $$
     </div>
     <p>
-      where $A,B$ are constants related to the values of $\lambda$ and an integration constant. Solving for $q'$ and then integrating, we get
+      where $A,B$ are constants related to the values of
+      $\lambda$ and an integration constant. Solving for
+      $q'$ and then integrating, we get
     </p>
     <div class="math-block">
       $$
@@ -680,7 +914,12 @@
       $$
     </div>
     <p>
-      where $C,D,E$ are constants. If we now impose the constraints that $q$ is nonnegative, $q(x_0)=q(x_1)=0$, and assume that the arc length $\ell$ is exactly $\frac{\pi}{2}(x_1-x_0)$, we find that the solution to our optimization problem must have the form
+      where $C,D,E$ are constants. If we now impose the
+      constraints that $q$ is nonnegative,
+      $q(x_0)=q(x_1)=0$, and assume that the arc length
+      $\ell$ is exactly $\frac{\pi}{2}(x_1-x_0)$, we find
+      that the solution to our optimization problem must
+      have the form
     </p>
     <div class="math-block">
       $$
@@ -690,7 +929,8 @@
       $$
     </div>
     <p>
-      which is indeed a semicircular arc that meets the $x$-axis perpendicularly at $x_0,x_1$.
+      which is indeed a semicircular arc that meets the
+      $x$-axis perpendicularly at $x_0,x_1$.
     </p>
   </div>
   <div
@@ -703,9 +943,12 @@
       
     </h3>
     <p>
-      The surface obtained by taking a curve $y=q(x)$ on some interval $[x_1,x_2]$ and rotating it around the $x$-axis is called the
+      The surface obtained by taking a curve $y=q(x)$ on
+      some interval $[x_1,x_2]$ and rotating it around the
+      $x$-axis is called the
       <i>surface of revolution</i>
-      of the curve. Its surface area is known to be
+      of the
+      curve. Its surface area is known to be
     </p>
     <div class="math-block">
       $$
@@ -715,7 +958,12 @@
       $$
     </div>
     <p>
-      For given values of $x_1&lt;x_2$ and boundary values $q(x_1)=y_1, q(x_2)=y_2$, find the nonnegative curve that minimizes $S$. The surface of revolution of this famous curve can be physically realized as the shape of a soap film between two circular metal rings (see Figure 4).
+      For given values of $x_1&lt;x_2$ and boundary values
+      $q(x_1)=y_1, q(x_2)=y_2$, find the nonnegative curve
+      that minimizes $S$. The surface of revolution of this
+      famous curve can be physically realized as the shape
+      of a soap film between two circular metal rings (see
+      Figure 4).
     </p>
   </div>
   <figure>
@@ -724,7 +972,8 @@
       style="max-width: 55%"
     >
     <figcaption>
-      Figure 4: The catenoid, a minimal surface of revolution.
+      Figure 4: The catenoid, a minimal surface of
+      revolution.
     </figcaption>
   </figure>
   <div
@@ -737,7 +986,13 @@
       
     </h3>
     <p>
-      A rope of length $L$ and uniform linear density $\rho$ hangs between two points $\mathbf{A}=(x_1,y_1)$, $\mathbf{B}=(x_2,y_2)$, where $x_1&lt;x_2$, and clearly we have to assume that $(x_2-x_1)^2+(y_2-y_1)^2 \le L^2$. Its shape is determined by the requirement that the potential energy
+      A rope of length $L$ and uniform linear density $\rho$
+      hangs between two points $\mathbf{A}=(x_1,y_1)$,
+      $\mathbf{B}=(x_2,y_2)$, where $x_1&lt;x_2$, and clearly
+      we have to assume that
+      $(x_2-x_1)^2+(y_2-y_1)^2 \le L^2$. Its shape is
+      determined by the requirement that the potential
+      energy
     </p>
     <div class="math-block">
       $$
@@ -745,7 +1000,8 @@
       $$
     </div>
     <p>
-      is minimized. Find the general equation for the shape.
+      is minimized. Find the general equation for the
+      shape.
     </p>
   </div>
   <div
@@ -758,7 +1014,13 @@
       
     </h3>
     <p>
-      <span class="label">The elastic rod</span>A thin elastic rod of length $L$ is made to bend as it is clamped horizontally between the two points $(0,0)$ and $(A,0)$ (where $A&lt;L$). Its shape can be determined from the condition that the elastic energy is minimized. The energy is proportional to an integral along the curve of the square of its curvature:
+      <span class="label">The elastic rod</span>A thin elastic rod of length $L$ is made to bend as
+      it is clamped horizontally between the two points
+      $(0,0)$ and $(A,0)$ (where $A&lt;L$). Its shape can be
+      determined from the condition that the elastic energy
+      is minimized. The energy is proportional to an
+      integral along the curve of the square of its
+      curvature:
     </p>
     <div class="math-block">
       $$
@@ -766,11 +1028,22 @@
       $$
     </div>
     <p>
-      where $J$ is a constant characteristic of the material and geometric cross section of the rod, and $ds$ denotes arc length. The curvature $\kappa(s)$ at a point along the curve is the reciprocal of the
-      <i>radius of curvature</i>, defined as the radius of a circle that can be brought to touch the curve tangentially in such a way that both the first and second derivatives of the curve and circle coincide.
+      where $J$ is a constant characteristic of the
+      material and geometric cross section of the rod, and
+      $ds$ denotes arc length. The curvature $\kappa(s)$ at
+      a point along the curve is the reciprocal of the
+      <i>radius of curvature</i>, defined as the radius of a
+      circle that can be brought to touch the curve
+      tangentially in such a way that both the first and
+      second derivatives of the curve and circle coincide.
     </p>
     <p>
-      Let the shape of the rod be described by the functions $(x(s), y(s))$ of the arc length parameter $s$, which varies from $0$ to $L$. Let $\theta=\theta(s)$ be the angle between the positive $x$-axis and the tangent to the curve at the point $(x(s),y(s))$; i.e., we have the relations
+      Let the shape of the rod be described by the
+      functions $(x(s), y(s))$ of the arc length parameter
+      $s$, which varies from $0$ to $L$. Let
+      $\theta=\theta(s)$ be the angle between the positive
+      $x$-axis and the tangent to the curve at the point
+      $(x(s),y(s))$; i.e., we have the relations
     </p>
     <div class="math-block">
       $$
@@ -780,7 +1053,14 @@
       $$
     </div>
     <p>
-      From elementary geometry it is known that $\kappa(s) = |\frac{d\theta}{ds}|$, i.e., the curvature is the absolute rate of change of the angle of the tangent with arc length [it is also the magnitude of the acceleration vector $(x"(s),y"(s))$]. So, in terms of the angle-arc-length functional representation $\theta(s)$ of the curve, the energy functional can be written as
+      From elementary geometry it is known that
+      $\kappa(s) = |\frac{d\theta}{ds}|$, i.e., the
+      curvature is the absolute rate of change of the angle
+      of the tangent with arc length [it is also the
+      magnitude of the acceleration vector
+      $(x"(s),y"(s))$]. So, in terms of the
+      angle-arc-length functional representation $\theta(s)$
+      of the curve, the energy functional can be written as
     </p>
     <div class="math-block">
       $$
@@ -790,7 +1070,8 @@
       $$
     </div>
     <p>
-      To derive an ODE for this minimization problem, note that the boundary conditions
+      To derive an ODE for this minimization problem, note
+      that the boundary conditions
     </p>
     <div class="math-block">
       $$
@@ -811,7 +1092,12 @@
       $$
     </div>
     <p>
-      In addition, we have the condition $\theta(0)=\theta(L)=0$. We therefore need to introduce two Lagrange multipliers $\lambda_1, \lambda_2$, and solve the unconstrained optimization problem for the modified energy functional
+      In addition, we have the condition
+      $\theta(0)=\theta(L)=0$. We therefore need to
+      introduce two Lagrange multipliers
+      $\lambda_1, \lambda_2$, and solve the unconstrained
+      optimization problem for the modified energy
+      functional
     </p>
     <div class="math-block">
       $$
@@ -836,23 +1122,34 @@
       $$
     </div>
     <p>
-      Note that this equation is somewhat similar to the pendulum equation
+      Note that this equation is somewhat similar to the
+      pendulum equation
       <a
         href="./1-5.html#_13_h.a.i_"
         class=""
-      >(12)</a>, and indeed can be brought to the form of
+      >(12)</a>, and indeed can be
+      brought to the form of
       <a
         href="./1-5.html#_13_h.a.i_"
         class=""
       >(12)</a>
-      by replacing the function $\theta(s)$ by a shifted version of it $\varphi(s)=\theta(s)+\alpha$, for a suitable $\alpha$. The curves solving
+      by replacing
+      the function $\theta(s)$ by a shifted version of it
+      $\varphi(s)=\theta(s)+\alpha$, for a suitable
+      $\alpha$. The curves solving
       <a
         href="./1-10.html#_19_h.a.i_"
         class=""
       >(17)</a>
-      are known as
+      are
+      known as
       <i>elastica</i>
-      curves, and this useful coincidence between the elastica equation and the theory of the pendulum is the starting point for a beautiful analysis of the possible shapes that can be assumed by an elastic rod. We will not go into the details of this analysis here.
+      curves, and this useful
+      coincidence between the elastica equation and the
+      theory of the pendulum is the starting point for a
+      beautiful analysis of the possible shapes that can be
+      assumed by an elastic rod. We will not go into the
+      details of this analysis here.
     </p>
   </div>
   <div
@@ -865,7 +1162,9 @@
       
     </h3>
     <p>
-      The air resistance experienced by a bullet, whose shape is the solid of revolution of a curve $y=q(x)$, moving through the air is
+      The air resistance experienced by a bullet, whose
+      shape is the solid of revolution of a curve $y=q(x)$,
+      moving through the air is
     </p>
     <div class="math-block">
       $$
@@ -875,7 +1174,11 @@
       $$
     </div>
     <p>
-      where $\rho$ is the density of the material, $v$ is the velocity of motion and $L$ is the length of the body of the bullet. Find the optimal shape $q(x)$ that results in the smallest resistance, subject to the conditions $q(0)=0, q(L)=R$.
+      where $\rho$ is the density of the material, $v$ is
+      the velocity of motion and $L$ is the length of the
+      body of the bullet. Find the optimal shape $q(x)$
+      that results in the smallest resistance, subject to
+      the conditions $q(0)=0, q(L)=R$.
     </p>
   </div>
 </body>

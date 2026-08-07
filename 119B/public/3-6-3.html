@@ -44,12 +44,18 @@
     Generalization to arbitrary dimension
   </h1>
   <p>
-    By repeating the above analysis in a careful manner for the general LQP problem in arbitrary dimension discussed at the beginning of this section, one can derive the solution for that general case. For the LQP problem with a finite horizon, the gain matrix $K(T)$ from
+    By repeating the above analysis in a careful manner
+    for the general LQP problem in arbitrary dimension
+    discussed at the beginning of this section, one can
+    derive the solution for that general case. For the LQP
+    problem with a finite horizon, the gain matrix $K(T)$
+    from
     <a
       href="./3-6.html#_59_h.a.i_"
       class=""
     >(47)</a>
-    is expressed as a matrix product
+    is expressed as a matrix
+    product
   </p>
   <div class="math-block">
     $$
@@ -59,7 +65,9 @@
     $$
   </div>
   <p>
-    where $V(T)$ is a matrix related to the optimal cost function $J_*(\mathbf{w},T)$ (defined analogously to $I_*(w,T)$) by
+    where $V(T)$ is a matrix related to the optimal cost
+    function $J_*(\mathbf{w},T)$ (defined analogously to
+    $I_*(w,T)$) by
   </p>
   <div class="math-block">
     $$
@@ -69,7 +77,8 @@
     $$
   </div>
   <p>
-    Furthermore, $V$ satisfies the matrix differential equation (also referred to as the Ricatti equation)
+    Furthermore, $V$ satisfies the matrix differential
+    equation (also referred to as the Ricatti equation)
   </p>
   <div class="math-block">
     $$
@@ -79,8 +88,11 @@
     $$
   </div>
   <p>
-    with boundary condition $V(0) = 0$ (the zero matrix). For an infinite time horizon, we again look for stationary solutions, which leads to the
-    <i>algebraic Ricatti equation</i>
+    with boundary condition $V(0) = 0$ (the zero matrix).
+    For an infinite time horizon, we again look for
+    stationary solutions, which leads to the
+    <i>algebraic
+      Ricatti equation</i>
   </p>
   <div class="math-block">
     $$
@@ -90,7 +102,9 @@
     $$
   </div>
   <p>
-    which is a system of quadratic equations in the entries of $V$. The (constant) gain matrix $K$ is again given by
+    which is a system of quadratic equations in the
+    entries of $V$. The (constant) gain matrix $K$ is
+    again given by
   </p>
   <div class="math-block">
     $$
@@ -100,7 +114,14 @@
     $$
   </div>
   <p>
-    While these equations may seem intimidating at first sight, they are easy to solve numerically on a computer. Symbolic math software applications such as $\texttt{Mathematica}$ even contain specialized packages for control theory that make the process of deriving optimal LQP control rules highly automated and quite simple in practice, as the next example demonstrates.
+    While these equations may seem intimidating at first
+    sight, they are easy to solve numerically on a
+    computer. Symbolic math software applications such as
+    $\texttt{Mathematica}$ even contain specialized
+    packages for control theory that make the process of
+    deriving optimal LQP control rules highly automated
+    and quite simple in practice, as the next example
+    demonstrates.
   </p>
   <div
     label="The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$"
@@ -112,7 +133,13 @@
       
     </h3>
     <p>
-      <span class="label">The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$</span>The controlled inverted pendulum with cart is a dynamical system with 2 degrees of freedom $\theta=\theta(t)$ (representing the angle of the pendulum relative to the positive $x$-axis) and $x=x(t)$ (representing the displacement of the cart along the $x$-axis), satisfying the equations of motion
+      <span class="label">The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$</span>The controlled inverted pendulum with cart is a
+      dynamical system with 2 degrees of freedom
+      $\theta=\theta(t)$ (representing the angle of the
+      pendulum relative to the positive $x$-axis) and
+      $x=x(t)$ (representing the displacement of the cart
+      along the $x$-axis), satisfying the equations of
+      motion
       <sup id="_64_h.a.i_">
         <a
           href="./3-6-3.html#_65_h.a.i_"
@@ -130,7 +157,9 @@
       $$
     </div>
     <p>
-      where $u$ is the control variable representing a control force being applied to the cart --- see Figure 19.
+      where $u$ is the control variable representing a
+      control force being applied to the cart --- see Figure
+      19.
     </p>
     <figure>
       <img
@@ -142,7 +171,14 @@
       </figcaption>
     </figure>
     <p>
-      The system can be thought of in the usual way as a system of 4 coupled first-order ODEs in the variables $\theta, \dot{\theta}, x, \dot{x}$. The goal of the control problem is to bring the system to a stable equilibrium at $(x,\dot{x},\theta,\dot{\theta}) = (0,0,\pi/2,0)$. In $\texttt{Mathematica}$, we type the following commands:
+      The system can be thought of in the usual way as a
+      system of 4 coupled first-order ODEs in the variables
+      $\theta, \dot{\theta}, x, \dot{x}$. The goal of the
+      control problem is to bring the system to a stable
+      equilibrium at
+      $(x,\dot{x},\theta,\dot{\theta}) = (0,0,\pi/2,0)$. In
+      $\texttt{Mathematica}$, we type the following
+      commands:
     </p>
     <div class="math-block">
       $$
@@ -164,11 +200,17 @@
       $$
     </div>
     <p>
-      The second command causes $\texttt{Mathematica}$ to linearize the equations of motion around the desired rest point. The output is an augmented matrix of the form $\left( A\,|\,B\right)$ where $A, B$ are the two matrices in the resulting linearized equation
+      The second command causes $\texttt{Mathematica}$ to
+      linearize the equations of motion around the desired
+      rest point. The output is an augmented matrix of the
+      form $\left( A\,|\,B\right)$ where $A, B$ are the two
+      matrices in the resulting linearized equation
       <a
         href="./3-6.html#_57_h.a.i_"
         class=""
-      >(45)</a>. This brings the problem to the familiar setup of LQP optimal control which we discussed above. We now type:
+      >(45)</a>. This brings the problem to the
+      familiar setup of LQP optimal control which we
+      discussed above. We now type:
     </p>
     <div class="math-block">
       $$
@@ -184,12 +226,16 @@
       $$
     </div>
     <p>
-      This asks $\texttt{Mathematica}$ to compute the gain matrix $K$ (in this case a vector with 4 coordinates) associated with the cost functional
+      This asks $\texttt{Mathematica}$ to compute the gain
+      matrix $K$ (in this case a vector with 4 coordinates)
+      associated with the cost functional
       <a
         href="./3-6.html#_58_h.a.i_"
         class=""
       >(46)</a>
-      (in the case $t_2=\infty$ of an infinite time horizon), where the quadratic forms $P, Q$ are defined by
+      (in the case $t_2=\infty$ of an
+      infinite time horizon), where the quadratic forms
+      $P, Q$ are defined by
     </p>
     <div class="math-block">
       $$
@@ -203,7 +249,10 @@
       $$
     </div>
     <p>
-      Using the gain matrix computed by $\texttt{Mathematica}$, we see that the solution to the optimal control problem we defined is given by the feedback rule
+      Using the gain matrix computed by
+      $\texttt{Mathematica}$, we see that the solution to
+      the optimal control problem we defined is given by the
+      feedback rule
     </p>
     <div class="math-block">
       $$
@@ -220,7 +269,10 @@
   >
     <p>
       <a href="#_64_h.a.i_">(1)</a>
-      This example is based on a blog post written by Andrew Moylan on the website of Wolfram Research (maker of the $\texttt{Mathematica}$ software); see the link:
+      This example is based on a blog post written by
+      Andrew Moylan on the website of Wolfram Research
+      (maker of the $\texttt{Mathematica}$ software); see
+      the link:
       <a href="http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/">http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/</a>
     </p>
   </div>

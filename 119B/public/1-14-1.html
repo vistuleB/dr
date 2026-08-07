@@ -44,7 +44,11 @@
     Analytic solution using elliptic integrals
   </h1>
   <p>
-    We derive the solution under the assumption that $\theta(0) = 0$, $\dot{\theta}(0)&gt;0$. Let $\lambda=g/\ell$, so the equation becomes $\ddot{\theta}+\lambda \sin \theta=0$. Conservation of energy gives the equation
+    We derive the solution under the assumption that
+    $\theta(0) = 0$, $\dot{\theta}(0)&gt;0$. Let
+    $\lambda=g/\ell$, so the equation becomes
+    $\ddot{\theta}+\lambda \sin \theta=0$. Conservation
+    of energy gives the equation
   </p>
   <div
     id="_25_h.a.i_"
@@ -59,7 +63,12 @@
     $$
   </div>
   <p>
-    (to verify this, differentiate both sides). For reasons which will become clear soon, denote the integration constant on the right by $\lambda(2k^2-1)$, where $k\ge0$ and use the relation $\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$. This brings
+    (to verify this, differentiate both sides). For
+    reasons which will become clear soon, denote the
+    integration constant on the right by
+    $\lambda(2k^2-1)$, where $k\ge0$ and use the relation
+    $\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$. This
+    brings
     <a
       href="./1-14-1.html#_25_h.a.i_"
       class=""
@@ -79,7 +88,11 @@
     $$
   </div>
   <p>
-    Note that this already makes it easy to plot the phase portrait (in the $\theta$-$\dot{\theta}$ plane, or wrapped around a cylinder, since adding multiples of $2\pi$ to $\theta$ does not change the physical state of the system); see Figure 5.
+    Note that this already makes it easy to plot the
+    phase portrait (in the $\theta$-$\dot{\theta}$ plane,
+    or wrapped around a cylinder, since adding multiples
+    of $2\pi$ to $\theta$ does not change the physical
+    state of the system); see Figure 5.
   </p>
   <figure>
     <img
@@ -90,15 +103,22 @@
       style="max-width: 30%"
     >
     <figcaption>
-      Figure 5: The phase portrait of the simple pendulum: in the planar representation, the constant energy curves are given by the equation $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$ for different values of $k$.
+      Figure 5: The phase portrait of the simple pendulum:
+      in the planar representation, the constant energy
+      curves are given by the equation
+      $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$
+      for different values of $k$.
     </figcaption>
   </figure>
   <p>
-    The relation between the parameter $k$ and the initial angular velocity $\dot{\theta}(0)$ is found by setting $t=0$ in
+    The relation between the parameter $k$ and the
+    initial angular velocity $\dot{\theta}(0)$ is found
+    by setting $t=0$ in
     <a
       href="./1-14-1.html#_26_h.a.i_"
       class=""
-    >(22)</a>, giving
+    >(22)</a>,
+    giving
   </p>
   <div class="math-block">
     $$
@@ -108,17 +128,28 @@
     $$
   </div>
   <p>
-    It is also easy to see from the energy conservation equation
+    It is also easy to see from the energy conservation
+    equation
     <a
       href="./1-14-1.html#_26_h.a.i_"
       class=""
     >(22)</a>
-    that the periodic solutions (which are the solutions for which $\theta$ remains bounded) correspond to $0&lt;k&lt;1$, and that in that case we have $k=\sin (\theta_{\textrm{max}}/2)$ where $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is the maximal angle that the pendulum will reach (or approach asymptotically, in the case $\theta_{\textrm{max}}=\pi$). The equation
+    that the
+    periodic solutions (which are the solutions for which
+    $\theta$ remains bounded) correspond to $0&lt;k&lt;1$, and
+    that in that case we have
+    $k=\sin (\theta_{\textrm{max}}/2)$ where
+    $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is
+    the maximal angle that the pendulum will reach (or
+    approach asymptotically, in the case
+    $\theta_{\textrm{max}}=\pi$). The equation
     <a
       href="./1-14-1.html#_26_h.a.i_"
       class=""
     >(22)</a>
-    is a first-order ODE, and is in a form suitable for separation of variables; e.g., we can write
+    is a first-order ODE, and
+    is in a form suitable for separation of variables;
+    e.g., we can write
   </p>
   <div class="math-block">
     $$
@@ -143,7 +174,9 @@
     $$
   </div>
   <p>
-    From this point on, assume that $k&lt;1$. Making the substitution $ku = \sin(\theta/2)$ in the integral on the left, we get the equivalent form
+    From this point on, assume that $k&lt;1$. Making the
+    substitution $ku = \sin(\theta/2)$ in the integral on
+    the left, we get the equivalent form
   </p>
   <div class="math-block">
     $$
@@ -153,8 +186,11 @@
     $$
   </div>
   <p>
-    The integral on the left is related to a special function known as $\operatorname{sn}(u,k)$ (one of a family of special functions called the
-    <i>Jacobi elliptic functions</i>), by
+    The integral on the left is related to a special
+    function known as $\operatorname{sn}(u,k)$ (one of a
+    family of special functions called the
+    <i>Jacobi
+      elliptic functions</i>), by
   </p>
   <div class="math-block">
     $$
@@ -164,7 +200,10 @@
     $$
   </div>
   <p>
-    (meaning the inverse function of $\operatorname{sn}(u,k)$ as a function of $u$; the variable $k$ is thought of as a parameter, sometimes called the
+    (meaning the inverse function of
+    $\operatorname{sn}(u,k)$ as a function of $u$; the
+    variable $k$ is thought of as a parameter, sometimes
+    called the
     <i>elliptic modulus</i>). It follows that
   </p>
   <div class="math-block">
@@ -190,7 +229,8 @@
     $$
   </div>
   <p>
-    We have thus obtained our analytic solution, given by the rather intimidating formula
+    We have thus obtained our analytic solution, given by
+    the rather intimidating formula
   </p>
   <div class="math-block">
     $$

@@ -44,7 +44,8 @@
     General conditional expectations
   </h1>
   <p>
-    The above discussion brings us to the following important definition.
+    The above discussion brings us to the following
+    important definition.
   </p>
   <div class="statement definition">
     <h3>
@@ -53,13 +54,38 @@
       
     </h3>
     <p>
-      Let $X$ be a random variable on $(\Omega, \mathcal{F}, \mathrm{P})$ with $\mathbf{E}|X|&lt;\infty$, and let $\mathcal{G}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. If a random variable $Z$ satisfies properties (i) and (ii) above, we say that $Z$ is the
-      <b>conditional expectation of $X$ given $\mathcal{G}$</b>, and denote $Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$. If $Y$ is another random variable on $(\Omega, \mathcal{F}, \mathrm{P})$, then taking $\mathcal{G}=\sigma(Y)$ we may denote $Z = \mathbf{E}\left(X\,|\,Y\right) = \mathbf{E}\left(X\,|\,\sigma(Y)\right)$, and refer to $Z$ as the
-      <b>conditional expectation of $X$ given $Y$</b>.
+      Let $X$ be a random variable on
+      $(\Omega, \mathcal{F}, \mathrm{P})$ with
+      $\mathbf{E}|X|&lt;\infty$, and let $\mathcal{G}$ be a
+      sub-$\sigma$-algebra of $\mathcal{F}$. If a random
+      variable $Z$ satisfies properties (i) and (ii) above,
+      we say that $Z$ is the
+      <b>conditional expectation of $X$
+        given $\mathcal{G}$</b>, and denote
+      $Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$. If $Y$
+      is another random variable on
+      $(\Omega, \mathcal{F}, \mathrm{P})$, then taking
+      $\mathcal{G}=\sigma(Y)$ we may denote
+      $Z = \mathbf{E}\left(X\,|\,Y\right) =
+      \mathbf{E}\left(X\,|\,\sigma(Y)\right)$,
+      and refer to $Z$ as the
+      <b>conditional expectation of
+        $X$ given $Y$</b>.
     </p>
   </div>
   <p>
-    The use of the notation $Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$ contains the implicit assumption that the conditional expectation is unique. This is true with the convention that random variables are defined only up to almost sure equivalence. That is, if $Z=Z'$ a.s.\ we consider $Z$ and $Z'$ to be the same random variable (in particular, any event involving $Z$ will have the same probability as the corresponding event involving $Z'$). In fact, we will prove the following result which also answers the key questions regarding existence and integrability.
+    The use of the notation
+    $Z = \mathbf{E}\left(X\,|\,\mathcal{G}\right)$
+    contains the implicit assumption that the conditional
+    expectation is unique. This is true with the
+    convention that random variables are defined only up
+    to almost sure equivalence. That is, if $Z=Z'$ a.s.\
+    we consider $Z$ and $Z'$ to be the same random
+    variable (in particular, any event involving $Z$ will
+    have the same probability as the corresponding event
+    involving $Z'$). In fact, we will prove the following
+    result which also answers the key questions regarding
+    existence and integrability.
   </p>
   <div
     class="statement theorem"
@@ -71,12 +97,15 @@
       
     </h3>
     <p>
-      The conditional expectation exists, is an integrable random variable, and is unique up to almost sure equivalence.
+      The conditional expectation exists, is an integrable
+      random variable, and is unique up to almost sure
+      equivalence.
     </p>
   </div>
   <div alt-title="Proof of integrability">
     <p>
-      <span class="proof">Proof of integrability</span>Let $A = \{ Z&gt;0 \}$. By (i), $A, A^c \in \mathcal{G}$. Therefore by (ii), we have
+      <span class="proof">Proof of integrability</span>Let $A = \{ Z&gt;0 \}$. By (i), $A, A^c \in \mathcal{G}$.
+      Therefore by (ii), we have
     </p>
     <div class="math-block">
       $$
@@ -100,7 +129,8 @@
   </div>
   <div alt-title="Proof of uniqueness">
     <p>
-      <span class="proof">Proof of uniqueness</span>Assume that $Z$ and $Z'$ both satisfy properties (i), (ii). It follows that
+      <span class="proof">Proof of uniqueness</span>Assume that $Z$ and $Z'$ both satisfy properties (i),
+      (ii). It follows that
     </p>
     <div class="math-block">
       $$
@@ -108,7 +138,8 @@
       $$
     </div>
     <p>
-      For some $\epsilon&gt;0$, take $A = \{ Z-Z' \ge \epsilon \}$ to get that
+      For some $\epsilon&gt;0$, take
+      $A = \{ Z-Z' \ge \epsilon \}$ to get that
     </p>
     <div class="math-block">
       $$
@@ -116,11 +147,19 @@
       $$
     </div>
     <p>
-      so $\mathrm{P}(A) = 0$. Since $\epsilon$ was an arbitrary positive number, this implies that $Z\le Z'$ a.s. Reversing the roles of $Z$ and $Z'$ gives that also $Z'\le Z$ a.s., so $Z=Z'$ a.s., which proves the uniqueness claim.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      so $\mathrm{P}(A) = 0$. Since $\epsilon$ was an
+      arbitrary positive number, this implies that $Z\le Z'$
+      a.s. Reversing the roles of $Z$ and $Z'$ gives that
+      also $Z'\le Z$ a.s., so $Z=Z'$ a.s., which proves the
+      uniqueness claim.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    The most tricky part in defining conditional expectations is proving that they exist. The usual proof involves an application of an important result from measure theory, the Radon-Nikodym theorem, which we review in the next section.
+    The most tricky part in defining conditional
+    expectations is proving that they exist. The usual
+    proof involves an application of an important result
+    from measure theory, the Radon-Nikodym theorem, which
+    we review in the next section.
   </p>
 </body>
 </html>

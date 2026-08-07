@@ -44,9 +44,28 @@
     The asymptotic equipartition property
   </h1>
   <p>
-    A related way of thinking about entropy is in terms of data compression: given a string of source symbols of length $n$ (which could itself be a binary string in the case of a $2$-symbol alphabet), how much can we compress it, i.e., what is the typical length of a binary string we'll need to represent it? The noiseless coding theorem says that on the average we'll need around $n H(p_1,\ldots,p_d)$ bits; however, the theorem doesn't address the question of how many bits we'll need
+    A related way of thinking about entropy is in terms
+    of data compression: given a string of source symbols
+    of length $n$ (which could itself be a binary string
+    in the case of a $2$-symbol alphabet), how much can
+    we compress it, i.e., what is the typical length of a
+    binary string we'll need to represent it? The
+    noiseless coding theorem says that on the average
+    we'll need around $n H(p_1,\ldots,p_d)$ bits;
+    however, the theorem doesn't address the question of
+    how many bits we'll need
     <i>typically</i>
-    (that is, with probability close to $1$)? Of course, these questions are in general not equivalent: for example, it may seem conceivable that the reason the average number of bits is around $nH(p_1,\ldots,p_d)$ is that around half the time we need a much smaller number of bits, and the other half of the time we need approximately twice as many. The following result, known as the $\textbf{asymptotic equipartition property}$, demonstrates that in fact in this case the typical behavior is the same as the average one.
+    (that is, with
+    probability close to $1$)? Of course, these questions
+    are in general not equivalent: for example, it may
+    seem conceivable that the reason the average number of
+    bits is around $nH(p_1,\ldots,p_d)$ is that around
+    half the time we need a much smaller number of bits,
+    and the other half of the time we need approximately
+    twice as many. The following result, known as the
+    $\textbf{asymptotic equipartition property}$,
+    demonstrates that in fact in this case the typical
+    behavior is the same as the average one.
   </p>
   <div
     label="Asymptotic equipartition property for an i.i.d. source"
@@ -58,7 +77,13 @@
       
     </h3>
     <p>
-      <span class="label">Asymptotic equipartition property for an i.i.d. source</span>Let $X_1,X_2,\ldots$ be an i.i.d.\ information source over the alphabet $A=\{\alpha_1,\ldots,\alpha_d\}$, distributed according to the probability vector $\mathbf{p}=(p_1,\ldots,p_d)$ as before. Fix $\epsilon&gt;0$. There exists a large enough integer $N$ such that the sequences $A^N$ can be partitioned into a disjoint union of sequences of two types, namely,
+      <span class="label">Asymptotic equipartition property for an i.i.d. source</span>Let $X_1,X_2,\ldots$ be an i.i.d.\ information source
+      over the alphabet $A=\{\alpha_1,\ldots,\alpha_d\}$,
+      distributed according to the probability vector
+      $\mathbf{p}=(p_1,\ldots,p_d)$ as before. Fix
+      $\epsilon&gt;0$. There exists a large enough integer $N$
+      such that the sequences $A^N$ can be partitioned into
+      a disjoint union of sequences of two types, namely,
     </p>
     <div class="math-block">
       $$
@@ -66,7 +91,10 @@
       $$
     </div>
     <p>
-      where the sequences in $T$ and $E$ are called the $\textbf{typical}$ and $\textbf{exceptional}$ sequences, respectively, such that the following properties hold:
+      where the sequences in $T$ and $E$ are called the
+      $\textbf{typical}$ and $\textbf{exceptional}$
+      sequences, respectively, such that the following
+      properties hold:
     </p>
     <ol
       class="list"
@@ -74,12 +102,15 @@
     >
       <li>
         <p>
-          $\mathrm{P}((X_1,\ldots,X_N) \in E) &lt; \epsilon,$ (i.e., the exceptional sequences are indeed exceptional).
+          $\mathrm{P}((X_1,\ldots,X_N) \in E) &lt; \epsilon,$
+          (i.e., the exceptional sequences are indeed
+          exceptional).
         </p>
       </li>
       <li>
         <p>
-          The probability of observing each typical sequence $(x_1,\ldots,x_N)\in T$ satisfies
+          The probability of observing each typical sequence
+          $(x_1,\ldots,x_N)\in T$ satisfies
         </p>
         <div
           id="_72_h.a.i_"
@@ -96,7 +127,8 @@
       </li>
       <li>
         <p>
-          Consequently, assuming $\epsilon&lt;1/2$, the number of typical sequences satisfies
+          Consequently, assuming $\epsilon&lt;1/2$, the number of
+          typical sequences satisfies
         </p>
         <div
           id="_73_h.a.i_"
@@ -113,7 +145,8 @@
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Define a sequence $Z_1, Z_2, \ldots$ of i.i.d.\ random variables by
+      <span class="proof">Proof</span>Define a sequence $Z_1, Z_2, \ldots$ of i.i.d.\
+      random variables by
     </p>
     <div class="math-block">
       $$
@@ -121,7 +154,8 @@
       $$
     </div>
     <p>
-      and denote $S_n = \sum_{j=1}^n Z_j$. By the weak law of large numbers we have that
+      and denote $S_n = \sum_{j=1}^n Z_j$. By the weak law
+      of large numbers we have that
     </p>
     <div class="math-block">
       $$
@@ -142,7 +176,10 @@
       $$
     </div>
     <p>
-      Call the event on the left-hand side $B$. This is an event that depends on the r.v.'s $X_1,\ldots,X_N$, so it can be represented as a disjoint union of events of the form
+      Call the event on the left-hand side $B$. This is an
+      event that depends on the r.v.'s $X_1,\ldots,X_N$, so
+      it can be represented as a disjoint union of events of
+      the form
     </p>
     <div class="math-block">
       $$
@@ -150,14 +187,22 @@
       $$
     </div>
     <p>
-      for some set $T\subset A^N$ of sequences. This will be our set of typical sequences; the exceptional sequences are defined as the complementary set $E = A^N\setminus T$.
+      for some set $T\subset A^N$ of sequences. This will
+      be our set of typical sequences; the exceptional
+      sequences are defined as the complementary set
+      $E = A^N\setminus T$.
     </p>
     <p>
-      We now claim that $T$ and $E$ satisfy the properties in the theorem. Property 1 holds automatically by
+      We now claim that $T$ and $E$ satisfy the properties
+      in the theorem. Property 1 holds automatically by
       <a
         href="./8-3.html#_74_h.a.i_"
         class=""
-      >(28)</a>. For property 2, observe that if $(x_1,\ldots,x_N)=(\alpha_{j_1},\ldots,\alpha_{j_N})\in T$ then by the definition of the event $B$ we have
+      >(28)</a>. For property 2, observe that
+      if
+      $(x_1,\ldots,x_N)=(\alpha_{j_1},\ldots,\alpha_{j_N})\in
+      T$
+      then by the definition of the event $B$ we have
     </p>
     <div class="math-block">
       $$
@@ -176,13 +221,19 @@
       $$
     </div>
     <p>
-      But $\prod_{n=1}^N p_{j_n}$ is exactly $\mathrm{P}((X_1,\ldots,X_N)=(x_1,\ldots,x_N))$, so we get
+      But $\prod_{n=1}^N p_{j_n}$ is exactly
+      $\mathrm{P}((X_1,\ldots,X_N)=(x_1,\ldots,x_N))$, so
+      we get
       <a
         href="./8-3.html#_72_h.a.i_"
         class=""
-      >(26)</a>. On the other hand, the total probability of observing
+      >(26)</a>. On the other hand, the
+      total probability of observing
       <i>any</i>
-      typical sequence is $\mathrm{P}(B)$, which is bounded between $1-\epsilon$ and $1$ (hence, between $1/2$ and $1$, if we assume $\epsilon&lt;1/2$). This implies
+      typical sequence
+      is $\mathrm{P}(B)$, which is bounded between
+      $1-\epsilon$ and $1$ (hence, between $1/2$ and $1$,
+      if we assume $\epsilon&lt;1/2$). This implies
       <a
         href="./8-3.html#_73_h.a.i_"
         class=""
@@ -190,7 +241,15 @@
     </p>
   </div>
   <p>
-    The implication of the theorem is that since the number of typical sequences is around $2^{n(H(\mathbf{p})\pm \epsilon)}$, we can encode them using a binary string of length $\approx nH(\mathbf{p})$. How easy this is to do in practice is a different question (some very practical techniques exist that are not difficult to implement --- for example, two well-known methods are known as Huffman coding and Lempel-Ziv coding).
+    The implication of the theorem is that since the
+    number of typical sequences is around
+    $2^{n(H(\mathbf{p})\pm \epsilon)}$, we can encode
+    them using a binary string of length
+    $\approx nH(\mathbf{p})$. How easy this is to do in
+    practice is a different question (some very practical
+    techniques exist that are not difficult to implement
+    --- for example, two well-known methods are known as
+    Huffman coding and Lempel-Ziv coding).
   </p>
   <div class="statement exercise">
     <h3>
@@ -199,7 +258,9 @@
       
     </h3>
     <p>
-      Use the asymptotic equipartition property to give an alternate proof of the reformulated version of the noiseless coding theorem.
+      Use the asymptotic equipartition property to give an
+      alternate proof of the reformulated version of the
+      noiseless coding theorem.
     </p>
   </div>
 </body>

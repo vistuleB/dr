@@ -1,26 +1,56 @@
 |> Section
     title=Simulating a biased coin using unbiased coin tosses
 
-    Let us now consider the reverse problem of simulating a biased coin toss with bias $p$ when our source of randomness produces independent _unbiased_ bits $X_1,X_2,\ldots \sim \operatorname{Ber}(1/2)$. Of course, here we assume that the value $p$ of the desired bias is known, otherwise the question makes no sense. It turns out that in this case too there is a simple method, and moreover the method works extremely well even if $p$ is a very complicated number such as $1/\sqrt{2}$ or $\pi-3$.
+    Let us now consider the reverse problem of simulating
+    a biased coin toss with bias $p$ when our source of
+    randomness produces independent _unbiased_ bits
+    $X_1,X_2,\ldots \sim \operatorname{Ber}(1/2)$. Of
+    course, here we assume that the value $p$ of the
+    desired bias is known, otherwise the question makes no
+    sense. It turns out that in this case too there is a
+    simple method, and moreover the method works extremely
+    well even if $p$ is a very complicated number such as
+    $1/\sqrt{2}$ or $\pi-3$.
 
-    The method is based on the easy-to-prove observation that the random variable $U=\sum_{n=1}^\infty \frac{X_n}{2^n}$ has distribution $U[0,1]$. Then the indicator random variable $Z = 1_{\{U\le p\}}$ is a $\operatorname{Ber}(p)$ random variable. It only remains to note that $Z$ can be computed efficiently by uncovering the random bits $X_1,X_2,\ldots$ one at a time and stopping the computation as soon as it becomes apparent whether the event $\{U\le p\}$ occurred or its complement $\{U>p\}$. The way this question is settled is described as follows.
+    The method is based on the easy-to-prove observation
+    that the random variable
+    $U=\sum_{n=1}^\infty \frac{X_n}{2^n}$ has
+    distribution $U[0,1]$. Then the indicator random
+    variable $Z = 1_{\{U\le p\}}$ is a
+    $\operatorname{Ber}(p)$ random variable. It only
+    remains to note that $Z$ can be computed efficiently
+    by uncovering the random bits $X_1,X_2,\ldots$ one at
+    a time and stopping the computation as soon as it
+    becomes apparent whether the event $\{U\le p\}$
+    occurred or its complement $\{U>p\}$. The way this
+    question is settled is described as follows.
 
-    $\textbf{Simulation Method 2.}$ Let $p=(0.\alpha_1 \alpha_2 \alpha_3 \ldots )_2$ be the binary expansion of $p$, that is, $\alpha_n\in \{0,1\}$ and $p=\sum_{n=1}^\infty \alpha_n/2^{n}$.
+    $\textbf{Simulation Method 2.}$ Let
+    $p=(0.\alpha_1 \alpha_2 \alpha_3 \ldots )_2$ be the
+    binary expansion of $p$, that is,
+    $\alpha_n\in \{0,1\}$ and
+    $p=\sum_{n=1}^\infty \alpha_n/2^{n}$.
 
     |> ol
         class=list
         data-list-style=decimal
         |> li
-            Sample the random bits $X_1,X_2,\ldots$ one at a time until the first time $m\ge1$ such that $X_m \neq \alpha_m$.
+            Sample the random bits $X_1,X_2,\ldots$ one at a time
+            until the first time $m\ge1$ such that
+            $X_m \neq \alpha_m$.
+
         |> li
             If $(X_m,\alpha_m)=(0,1)$, output ``$1$''.
+
         |> li
             If $(X_m,\alpha_m)=(1,0)$, output ``$0$''.
 
     |> Exercise
-
-        Prove that the output is $1$ if $U< p$; $0$ if $U>p$; and the algorithm never terminates in the event (which has probability 0) that $U=p$.
+        Prove that the output is $1$ if $U< p$; $0$ if $U>p$;
+        and the algorithm never terminates in the event (which
+        has probability 0) that $U=p$.
 
     |> Exercise
-
-        Show that the number $N$ of bits which had to be sampled to obtain an answer satisfies $\mathbf{E} N = 2$. What is the distribution of $N$?
+        Show that the number $N$ of bits which had to be
+        sampled to obtain an answer satisfies
+        $\mathbf{E} N = 2$. What is the distribution of $N$?

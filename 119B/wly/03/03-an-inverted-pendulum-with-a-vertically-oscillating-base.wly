@@ -1,22 +1,53 @@
 |> Section
     title=An inverted pendulum with a vertically oscillating base
 
-    The simple pendulum has two rest points: it can be ``hanging down'' or ``standing up''. A pendulum in the ``standing up'' position is called an _inverted pendulum_. Since this rest point is asymptotically unstable, one rarely observes pendulums in this position! However, from the point of view of control theory, the inverted pendulum is much more interesting than the pendulum in its stable state. It turns out that the pendulum can be stabilized around the inverted rest point, using both open-loop and closed-loop control schemes. The Segway personal transportation device is a practical invention built precisely around this idea.
+    The simple pendulum has two rest points: it can be
+    ``hanging down'' or ``standing up''. A pendulum in the
+    ``standing up'' position is called an _inverted
+    pendulum_. Since this rest point is asymptotically
+    unstable, one rarely observes pendulums in this
+    position! However, from the point of view of control
+    theory, the inverted pendulum is much more interesting
+    than the pendulum in its stable state. It turns out
+    that the pendulum can be stabilized around the
+    inverted rest point, using both open-loop and
+    closed-loop control schemes. The Segway personal
+    transportation device is a practical invention built
+    precisely around this idea.
 
-    As our first example in control theory, we will show how the inverted pendulum can be stabilized in an open-loop control scheme whereby the base of the pendulum is made to oscillate along the vertical direction. This dynamical system is known as _Kapitza's pendulum_ (see Figure 12). The amplitude and frequency of the oscillation need to be adjusted to suitable values to achieve stability, but in practice the effect is quite easy to achieve, and entertaining video demonstrations of this surprising and unintuitive result can be found online.
+    As our first example in control theory, we will show
+    how the inverted pendulum can be stabilized in an
+    open-loop control scheme whereby the base of the
+    pendulum is made to oscillate along the vertical
+    direction. This dynamical system is known as
+    _Kapitza's pendulum_ (see Figure 12). The amplitude
+    and frequency of the oscillation need to be adjusted
+    to suitable values to achieve stability, but in
+    practice the effect is quite easy to achieve, and
+    entertaining video demonstrations of this surprising
+    and unintuitive result can be found online.
 
     |> figure
-
         |> img
             src=figures/kapitza.png
             style=max-width: 32%
-
         |> figcaption
             Figure 12: Kapitza's pendulum (source: Wikipedia).
 
-    Let $\ell$ denote the length of the rod of the pendulum. We assume the base is moving along the vertical axis as a function $u(t)$ of time (which plays the role of the ``control function'' in this problem), and denote by $x$ the angle the pendulum forms with the _upward-pointing vertical_, so that $x=0$ (rather than $x=\pi$ with the more commonly used angular coordinate) represents the unstable equilibrium point of the inverted pendulum. The position of the swinging mass is $\mathbf{r}=(\ell\sin x, \ell \cos x + u(t))$. We can now write the kinetic energy, potential energy and the Lagrangian, as follows:
+    Let $\ell$ denote the length of the rod of the
+    pendulum. We assume the base is moving along the
+    vertical axis as a function $u(t)$ of time (which
+    plays the role of the ``control function'' in this
+    problem), and denote by $x$ the angle the pendulum
+    forms with the _upward-pointing vertical_, so that
+    $x=0$ (rather than $x=\pi$ with the more commonly
+    used angular coordinate) represents the unstable
+    equilibrium point of the inverted pendulum. The
+    position of the swinging mass is
+    $\mathbf{r}=(\ell\sin x, \ell \cos x + u(t))$. We can
+    now write the kinetic energy, potential energy and the
+    Lagrangian, as follows:
 
-    $$
     \begin{align*}
     K &= \tfrac12 |\dot{\mathbf{r}}|^2 = \tfrac12\left( \ell^2 \dot{x}^2\cos^2 x + \ell^2 \dot{x}^2 \sin^2 x - 2 \ell \dot{u} \dot{x} \sin x + \dot{u}^2\right) \\
     &= \tfrac12 \ell^2 \dot{x}^2 + \tfrac12 \dot{u}^2 - \ell \dot{u} \dot{x} \sin x, \\
@@ -24,11 +55,9 @@
     L &= \tfrac12 \ell^2 \dot{x}^2 + \tfrac12 \dot{u}^2 - \ell \dot{u} \dot{x} \sin x
     -g\ell \cos x - g u.
     \end{align*}
-    $$
 
     Therefore we have
 
-    $$
     \begin{align*}
     \frac{\partial L}{\partial x} &= -\ell \dot{u}\dot{x}\cos x + gl\sin x,
     \\
@@ -36,69 +65,87 @@
     \\
     \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) &= \ell^2 \ddot{x} - \ell \ddot{u}\sin x - \ell \dot{u}\dot{x} \cos x,
     \end{align*}
-    $$
 
-    and the Euler-Lagrange equation for this Lagrangian is
+    and the Euler-Lagrange equation for this Lagrangian
+    is
 
-    $$
     \begin{align*}
     \ddot{x} =\frac{g+\ddot{u}}{\ell} \sin x.
     \end{align*}
-    $$
 
-    That is, the effect of the vertical driving acceleration $\ddot{u}(t)$ applied to the base point is to make the effective gravity felt by the pendulum change as a function of time. We shall now make some assumptions to simplify the analysis. First, we shall study the behavior in the vicinity of the rest point, so we can replace the equation with its linearized version
+    That is, the effect of the vertical driving
+    acceleration $\ddot{u}(t)$ applied to the base point
+    is to make the effective gravity felt by the pendulum
+    change as a function of time. We shall now make some
+    assumptions to simplify the analysis. First, we shall
+    study the behavior in the vicinity of the rest point,
+    so we can replace the equation with its linearized
+    version
 
-    $$
     \begin{align*}
     \ddot{x} = \frac{g+\ddot{u}}{\ell} x.
     \end{align*}
-    $$
 
-    Next, we assume that $u(t)$ is a periodic function with period $2T$ and frequency $f = 1/2T$, and furthermore, we assume that its second derivative $\ddot{u}(t)$ takes only two values $\pm a$, changing its sign exactly every half-period $T$, so that the graph of $u$ over each half-period is a parabolic arc rather than the sinusoidal arc typically used for periodic motions (this can even be a realistic assumption depending on the way the driving mechanism operates in practice, but the main reason for assuming it is that it results in a simpler mathematical analysis); see Figure 13. With this assumption, the equation becomes
+    Next, we assume that $u(t)$ is a periodic function
+    with period $2T$ and frequency $f = 1/2T$, and
+    furthermore, we assume that its second derivative
+    $\ddot{u}(t)$ takes only two values $\pm a$, changing
+    its sign exactly every half-period $T$, so that the
+    graph of $u$ over each half-period is a parabolic arc
+    rather than the sinusoidal arc typically used for
+    periodic motions (this can even be a realistic
+    assumption depending on the way the driving mechanism
+    operates in practice, but the main reason for assuming
+    it is that it results in a simpler mathematical
+    analysis); see Figure 13. With this assumption, the
+    equation becomes
 
-    $$
     \begin{align*}
     \ddot{x} = (\omega^2 \pm A^2) x,
     \end{align*}
-    $$
 
-    with the notation $\omega=\sqrt{g/\ell}$, $A=\sqrt{a/\ell}$, and where ``$\pm$'' denotes the square wave function
+    with the notation $\omega=\sqrt{g/\ell}$,
+    $A=\sqrt{a/\ell}$, and where ``$\pm$'' denotes the
+    square wave function
 
-    $$
     \begin{align*}
     \pm = \begin{cases} +1 & \textrm{if }\sin(2\pi f t)>0, \\ -1 &
     \textrm{if }\sin(2\pi f t)<0.
     \end{cases}
     \end{align*}
-    $$
 
-    We assume that $A>\omega$, i.e., the ``artificial gravity'' induced by the vibrations dominates the gravity of the more usual type. It can be easily checked that the amplitude $d$ of the oscillation is given by
+    We assume that $A>\omega$, i.e., the ``artificial
+    gravity'' induced by the vibrations dominates the
+    gravity of the more usual type. It can be easily
+    checked that the amplitude $d$ of the oscillation is
+    given by
 
-    $$
     \begin{align*}
     d = \frac{T^2 a}{8}.
     \end{align*}
-    $$
 
     |> figure
-
         |> img
             src=figures/drivingforce.png
             style=max-width: 70%
-
         |> figcaption
-            Figure 13: In our analysis, the driving function $u(t)$ for the height of the oscillating base is assumed to be periodic with period $2T$, and each half-period is a parabolic arc with second derivative $\pm a$ and amplitude $d$.
+            Figure 13: In our analysis, the driving function
+            $u(t)$ for the height of the oscillating base is
+            assumed to be periodic with period $2T$, and each
+            half-period is a parabolic arc with second derivative
+            $\pm a$ and amplitude $d$.
 
-    As a final notational step before we start the analysis, we do the usual trick of representing a second-order system as a planar first-order system:
+    As a final notational step before we start the
+    analysis, we do the usual trick of representing a
+    second-order system as a planar first-order system:
 
-    $$
     \begin{align*}
     \dot{x} &= y, \\
     \dot{y} &= (\omega^2 \pm A^2) x.
     \end{align*}
-    $$
 
-    Note that this is a linear, but time-dependent, system, so we can represent it in vector notation as
+    Note that this is a linear, but time-dependent,
+    system, so we can represent it in vector notation as
 
     $$
     \begin{equation} eq:kapitza-matrix##<<
@@ -108,23 +155,38 @@
     \end{equation}
     $$
 
-    where $\mathbf{x}=(x,y)^\top$ and $B_t = \left( \begin{array}{cc} 0&1 \\ \omega^2\pm A^2 & 0 \end{array}\right)$.
+    where $\mathbf{x}=(x,y)^\top$ and
+    $B_t = \left( \begin{array}{cc} 0&1 \\ \omega^2\pm
+    A^2 & 0 \end{array}\right)$.
 
-    We are now in a position to study when (as a function of the parameters $a, T, \ell, g$) we can expect the system to be stable at $x=0$. The idea is to reduce the problem to understanding the stability of an autonomous discrete-time dynamical system which we can explicitly compute. For real numbers $t_0<t_1$, define a map $\psi_{t_0,t_1}:\R^2\to\R^2$, analogous to the phase flow map $\varphi_t$ we studied for autonomous systems, as follows:
+    We are now in a position to study when (as a function
+    of the parameters $a, T, \ell, g$) we can expect the
+    system to be stable at $x=0$. The idea is to reduce
+    the problem to understanding the stability of an
+    autonomous discrete-time dynamical system which we can
+    explicitly compute. For real numbers $t_0<t_1$,
+    define a map $\psi_{t_0,t_1}:\R^2\to\R^2$, analogous
+    to the phase flow map $\varphi_t$ we studied for
+    autonomous systems, as follows:
 
-    $$
     \begin{align*}
     \psi_{t_0,t_1}(\mathbf{x}_0) = &\ \mathbf{x}(t_1)\textrm{ where $\mathbf{x}(t)_{t\ge t_1}$ is the solution of the system (>>eq:kapitza-matrix)}\\ & \textrm{with initial condition $\mathbf{x}(t_0)=\mathbf{x}_0$}.
     \end{align*}
-    $$
 
-    That is, $\psi_{t_0,t_1}$ evolves a point forward in time from time $t_0$ to time $t_1$. (In the case of an autonomous system, we could write this as $\varphi_{t_1-t_0}(\mathbf{x}_0)$ since it would depend only on the duration of the evolution rather than the specific starting and ending times.) The evolution maps $\psi_{t_0,t_1}$ have several important properties. First, they are linear, since the system (>>eq:kapitza-matrix) is linear. Second, they satisfy the composition property
+    That is, $\psi_{t_0,t_1}$ evolves a point forward in
+    time from time $t_0$ to time $t_1$. (In the case of
+    an autonomous system, we could write this as
+    $\varphi_{t_1-t_0}(\mathbf{x}_0)$ since it would
+    depend only on the duration of the evolution rather
+    than the specific starting and ending times.) The
+    evolution maps $\psi_{t_0,t_1}$ have several
+    important properties. First, they are linear, since
+    the system (>>eq:kapitza-matrix) is linear. Second,
+    they satisfy the composition property
 
-    $$
     \begin{align*}
     \psi_{t_0,t_2}(\mathbf{x}_0) = \psi_{t_1,t_2}( \psi_{t_0,t_1}(\mathbf{x}_0)) \ \ (t_0<t_1<t_2),
     \end{align*}
-    $$
 
     or equivalently
 
@@ -136,15 +198,24 @@
     \end{equation}
     $$
 
-    since evolving a solution from time $t_0$ to $t_2$ can be done by evolving it up to time $t_1$ and then evolving the resulting point from $t_1$ to $t_2$. Third, because the matrix function $t\mapsto B_t$ in the equation (>>eq:kapitza-matrix) is periodic with period $2T$, we have
+    since evolving a solution from time $t_0$ to $t_2$
+    can be done by evolving it up to time $t_1$ and then
+    evolving the resulting point from $t_1$ to $t_2$.
+    Third, because the matrix function $t\mapsto B_t$ in
+    the equation (>>eq:kapitza-matrix) is periodic with
+    period $2T$, we have
 
-    $$
     \begin{align*}
     \psi_{t_0+2T,t_1+2T}(\mathbf{x}_0) = \psi_{t_0,t_1}(\mathbf{x}_0).
     \end{align*}
-    $$
 
-    By the composition property (>>eq:composition-prop), we can now express the solution $\mathbf{x}(t)$ with an initial condition $\mathbf{x}(0)=\mathbf{x}_0$ at time $0$ as the result of a sequence of evolution steps along small time intervals of length $T$. More precisely, if $n$ is an integer such that $2nT \le t < 2(n+1)T$, then we have
+    By the composition property (>>eq:composition-prop),
+    we can now express the solution $\mathbf{x}(t)$ with
+    an initial condition $\mathbf{x}(0)=\mathbf{x}_0$ at
+    time $0$ as the result of a sequence of evolution
+    steps along small time intervals of length $T$. More
+    precisely, if $n$ is an integer such that
+    $2nT \le t < 2(n+1)T$, then we have
 
     $$
     \begin{equation} eq:kapitza-phase-flow##<<
@@ -167,69 +238,98 @@
 
     where we denote
 
-    $$
     \begin{align*}
     S_+ = \psi_{0,T}, \ \ \ S_- = \psi_{T,2T}, \ \ \ P= S_- \circ S_+ = \psi_{0,2T}.
     \end{align*}
-    $$
 
-    The analysis will now revolve around an explicit computation of the $2\times 2$ matrices associated with the linear maps $S_\pm$ and their composition $P$, the _period evolution map_. A key observation is the following:
+    The analysis will now revolve around an explicit
+    computation of the $2\times 2$ matrices associated
+    with the linear maps $S_\pm$ and their composition
+    $P$, the _period evolution map_. A key observation is
+    the following:
 
     |> Lemma
-
-        If $|\operatorname{tr}(P)|<2$ then the system (>>eq:kapitza-matrix) has a stable rest point at $\mathbf{x}=\mathbf{0}$.
+        If $|\operatorname{tr}(P)|<2$ then the system
+        (>>eq:kapitza-matrix) has a stable rest point at
+        $\mathbf{x}=\mathbf{0}$.
 
     |> Proof
+        $P$ is a $2\times 2$ matrix of real numbers with
+        determinant $\det(P)=\det(S_-)\det(S_+)=1$ (this fact
+        also follows from Liouville's theorem). Its
+        eigenvalues $\lambda_1, \lambda_2$ are the roots of a
+        quadratic polynomial with real coefficients, and
+        satisfy
 
-        $P$ is a $2\times 2$ matrix of real numbers with determinant $\det(P)=\det(S_-)\det(S_+)=1$ (this fact also follows from Liouville's theorem). Its eigenvalues $\lambda_1, \lambda_2$ are the roots of a quadratic polynomial with real coefficients, and satisfy
-
-        $$
         \begin{align*}
         \lambda_1 \lambda_2 &= \det(P)=1, \\
         \lambda_1 + \lambda_2 &= \operatorname{tr}(P).
         \end{align*}
-        $$
 
-        If both eigenvalues are real then the fact that $\lambda_2=1/\lambda_1$ implies that
+        If both eigenvalues are real then the fact that
+        $\lambda_2=1/\lambda_1$ implies that
 
-        $$
         \begin{align*}
         |\lambda_1 + \lambda_2| = \left|\lambda_1 + \frac{1}{\lambda_1}\right| \ge 2,
         \end{align*}
-        $$
 
-        in contradiction to the assumption that $|\operatorname{tr}(P)|<2$. The only other possibility is that $\lambda_1$ and $\lambda_2$ are conjugate complex numbers, which must lie on the unit circle, since $\lambda_1\lambda_2 = \lambda_1 \overline{\lambda_1}= |\lambda_1|^2 = 1$. This implies that for some constant $C>0$, we have
+        in contradiction to the assumption that
+        $|\operatorname{tr}(P)|<2$. The only other
+        possibility is that $\lambda_1$ and $\lambda_2$ are
+        conjugate complex numbers, which must lie on the unit
+        circle, since
+        $\lambda_1\lambda_2 = \lambda_1 \overline{\lambda_1}=
+        |\lambda_1|^2 = 1$.
+        This implies that for some constant $C>0$, we have
 
-        $$
         \begin{align*}
         |P^n \mathbf{x}| \le C |\mathbf{x}|
         \end{align*}
-        $$
 
-        for all $n\ge1$ and $\mathbf{x}\in \R^2$, since $\lambda_1=e^{i\theta}$ for some real $\theta$, and from linear algebra we know that by representing such a matrix in an appropriate basis one can bring it to the form of a rotation matrix $\left(\begin{array}{cc} \cos \theta & -\sin\theta \\ \sin\theta & \cos\theta\end{array} \right)$. In other words, this shows that the _discrete-time_ dynamical system defined by the matrix $P$ has a (neutrally) stable rest point at $\mathbf{x}=\mathbf{0}$.
+        for all $n\ge1$ and $\mathbf{x}\in \R^2$, since
+        $\lambda_1=e^{i\theta}$ for some real $\theta$, and
+        from linear algebra we know that by representing such
+        a matrix in an appropriate basis one can bring it to
+        the form of a rotation matrix
+        $\left(\begin{array}{cc} \cos \theta & -\sin\theta \\
+        \sin\theta & \cos\theta\end{array} \right)$.
+        In other words, this shows that the _discrete-time_
+        dynamical system defined by the matrix $P$ has a
+        (neutrally) stable rest point at
+        $\mathbf{x}=\mathbf{0}$.
 
-        Finally, observe that the family of matrices $(\psi_{0,s})_{0\le s\le 2T}$ is the image of a compact interval $[0,2T]$ under a continuous map $s\mapsto \psi_{0,s}$, and therefore this set of matrices is compact, and hence bounded in norm, in the space of $2\times 2$ matrices. Therefore there is some constant $D>0$ such that
+        Finally, observe that the family of matrices
+        $(\psi_{0,s})_{0\le s\le 2T}$ is the image of a
+        compact interval $[0,2T]$ under a continuous map
+        $s\mapsto \psi_{0,s}$, and therefore this set of
+        matrices is compact, and hence bounded in norm, in the
+        space of $2\times 2$ matrices. Therefore there is
+        some constant $D>0$ such that
 
-        $$
         \begin{align*}
         \max_{0\le s\le 2T} |\psi_{0,s}(\mathbf{y}) | \le D |\mathbf{y}|
         \end{align*}
-        $$
 
-        for any $\mathbf{y}\in\R^2$. Combining this with the previous comment and with (>>eq:kapitza-phase-flow), we get that
+        for any $\mathbf{y}\in\R^2$. Combining this with the
+        previous comment and with (>>eq:kapitza-phase-flow),
+        we get that
 
-        $$
         \begin{align*}
         |\psi_{0,t} (\mathbf{x_0})| \le CD |\mathbf{x_0}|
         \end{align*}
-        $$
 
-        for all $t\ge 0$, which shows that $\mathbf{x}=\mathbf{0}$ is a neutrally stable rest point of the system (>>eq:kapitza-matrix).
+        for all $t\ge 0$, which shows that
+        $\mathbf{x}=\mathbf{0}$ is a neutrally stable rest
+        point of the system (>>eq:kapitza-matrix).
 
-    To compute $S_-$ and $S_+$, observe that they are both obtained by evolution of the system along time intervals for which the matrix $B_t$ is constant; for such intervals the system (>>eq:kapitza-matrix) behaves like an autonomous system, and can be solved explicitly using matrix exponentials.
+    To compute $S_-$ and $S_+$, observe that they are
+    both obtained by evolution of the system along time
+    intervals for which the matrix $B_t$ is constant; for
+    such intervals the system (>>eq:kapitza-matrix)
+    behaves like an autonomous system, and can be solved
+    explicitly using matrix exponentials.
 
     |> Lemma
-
         The matrices $S_\pm$ are given by
 
         $$
@@ -250,39 +350,52 @@
         \end{equation}
         $$
 
-        where $k=\sqrt{A^2+\omega^2}=\sqrt{(a+g)/\ell}, j=\sqrt{A^2-\omega^2}=\sqrt{(a-g)/\ell}$.
+        where
+        $k=\sqrt{A^2+\omega^2}=\sqrt{(a+g)/\ell},
+        j=\sqrt{A^2-\omega^2}=\sqrt{(a-g)/\ell}$.
 
     |> Proof
-
         By the comment above, we have
 
-        $$
         \begin{align*}
         S_+ &= \exp\left(T \left(\begin{array}{cc} 0 & 1 \\ k^2 & 0
         \end{array} \right) \right) = \exp(M_+), \\
         S_- &= \exp\left(T \left(\begin{array}{cc} 0 & 1 \\ -j^2 & 0
         \end{array} \right) \right) = \exp(M_-),
         \end{align*}
-        $$
 
-        where we denote $M_+ = \left(\begin{array}{cc} 0 & T \\ k^2T & 0 \end{array}\right)$, $M_- = \left(\begin{array}{cc} 0 & T \\ -j^2 T & 0 \end{array}\right)$. Note that $M_\pm$ satisfy
+        where we denote
+        $M_+ = \left(\begin{array}{cc} 0 & T \\ k^2T & 0
+        \end{array}\right)$,
+        $M_- = \left(\begin{array}{cc} 0 & T \\ -j^2 T & 0
+        \end{array}\right)$.
+        Note that $M_\pm$ satisfy
 
-        $$
         \begin{align*}
         M_+^2 = k^2 T^2 I, \ \ \
         M_-^2 = -j^2 T^2 I.
         \end{align*}
-        $$
 
-        As a result, it is easy to evaluate the matrix exponentials $\exp(M_\pm)$ by directly summing the power series $\sum_{n=0}^\infty \frac{1}{n!}M_{\pm}^n$ (since the even powers are scalar multiples of $I$ and the odd powers are scalar multiples of $M_\pm$) to obtain the expressions in (>>eq:kapitza-mat-exp). The computation is left as an exercise.
+        As a result, it is easy to evaluate the matrix
+        exponentials $\exp(M_\pm)$ by directly summing the
+        power series $\sum_{n=0}^\infty \frac{1}{n!}M_{\pm}^n$
+        (since the even powers are scalar multiples of $I$
+        and the odd powers are scalar multiples of $M_\pm$)
+        to obtain the expressions in (>>eq:kapitza-mat-exp).
+        The computation is left as an exercise.
 
     |> Exercise
+        Perform the power series summation outlined above to
+        verify the formulas (>>eq:kapitza-mat-exp).
 
-        Perform the power series summation outlined above to verify the formulas (>>eq:kapitza-mat-exp).
+    The final step consists of studying
+    $\operatorname{tr}(P)=\operatorname{tr}(S_- S_+)$ to
+    show that for an appropriate choice of parameters,
+    stability can be achieved. Denote
+    $\sigma = \sigma(a, g, \ell, T) =
+    \operatorname{tr}(P)$.
+    By the formulas (>>eq:kapitza-mat-exp), we have
 
-    The final step consists of studying $\operatorname{tr}(P)=\operatorname{tr}(S_- S_+)$ to show that for an appropriate choice of parameters, stability can be achieved. Denote $\sigma = \sigma(a, g, \ell, T) = \operatorname{tr}(P)$. By the formulas (>>eq:kapitza-mat-exp), we have
-
-    $$
     \begin{align*}
     \sigma &=
     2\cos\left(jT\right)\cosh\left(kT\right)
@@ -297,38 +410,56 @@
     \sin\left(T\sqrt{\frac{a-g}{\ell}}\right)
     \sinh\left(T\sqrt{\frac{a+g}{\ell}}\right).
     \end{align*}
-    $$
 
     We can now prove:
 
     |> Theorem
-
-        There are values of the parameters $a, g, \ell, T$ for which Kapitza's pendulum is stable.
+        There are values of the parameters $a, g, \ell, T$
+        for which Kapitza's pendulum is stable.
 
     |> Proof
+        Using the metric system of units, take
+        $g=9.8\,\frac{\textrm{m}}{\textrm{sec}^2}$ (the
+        Earth's gravitational constant),
+        $\ell = 20\, \textrm{cm}$, $d=1\,\textrm{cm}$,
+        $f=40\,\textrm{sec}^{-1}$. With these values we have
+        $T=\frac{1}{80}\,\textrm{sec}$,
+        $a=512\,\frac{\textrm{m}}{\textrm{sec}^2}$. For these
+        parameters the computer returns the value
 
-        Using the metric system of units, take $g=9.8\,\frac{\textrm{m}}{\textrm{sec}^2}$ (the Earth's gravitational constant), $\ell = 20\, \textrm{cm}$, $d=1\,\textrm{cm}$, $f=40\,\textrm{sec}^{-1}$. With these values we have $T=\frac{1}{80}\,\textrm{sec}$, $a=512\,\frac{\textrm{m}}{\textrm{sec}^2}$. For these parameters the computer returns the value
-
-        $$
         \begin{align*}
         \sigma(a, g, \ell, T) = 1.97728\ldots,
         \end{align*}
-        $$
 
-        so in particular $|\sigma|<2$ and the pendulum is stable.
+        so in particular $|\sigma|<2$ and the pendulum is
+        stable.
 
-    It is possible to get a better understanding of the subset of the parameter space for which the motion is stable, at least for oscillations with small amplitude and high frequency, that explains why the ``lucky'' numbers above work to produce a stable value $|\sigma|<2$. This can be done by introducing two dimensionless parameters $w,z$, defined by
+    It is possible to get a better understanding of the
+    subset of the parameter space for which the motion is
+    stable, at least for oscillations with small amplitude
+    and high frequency, that explains why the ``lucky''
+    numbers above work to produce a stable value
+    $|\sigma|<2$. This can be done by introducing two
+    dimensionless parameters $w,z$, defined by
 
-    $$
     \begin{align*}
     w^2 &= \frac{g}{a}\ \ \  \textrm{(the ratio of ``natural'' to ``artificial'' gravity)}, \\
     z^2 &= \frac{d}{\ell}\ \ \  \textrm{(the ratio of the oscillation amplitude to the pendulum length)},
     \end{align*}
-    $$
 
-    and to consider a limit in which both variables $w,z$ tend simultaneously to $0$ (with the variable $T$ changing accordingly).
+    and to consider a limit in which both variables $w,z$
+    tend simultaneously to $0$ (with the variable $T$
+    changing accordingly).
 
     |> Exercise
         label=Asymptotic stability regime of Kapitza's pendulum
-
-        Represent $\sigma$ as a function of the variables $w, z$, then expand $\sigma$ in a Taylor series in $w,z$, including all terms up to and including order $4$ (i.e., all monomials of the form $w^i z^j$ for $0\le i+j\le 4$). From this approximation, deduce that if $w,z\to 0$ in such a way that $w<cz$ where $c$ is a constant satisfying $0<c<\sqrt{2/3}$, then for small enough values of $w,z$ the stable regime $|\sigma|<2$ is entered, i.e., the motion becomes stable.
+        Represent $\sigma$ as a function of the variables
+        $w, z$, then expand $\sigma$ in a Taylor series in
+        $w,z$, including all terms up to and including order
+        $4$ (i.e., all monomials of the form $w^i z^j$ for
+        $0\le i+j\le 4$). From this approximation, deduce
+        that if $w,z\to 0$ in such a way that $w<cz$ where $c$
+        is a constant satisfying $0<c<\sqrt{2/3}$, then for
+        small enough values of $w,z$ the stable regime
+        $|\sigma|<2$ is entered, i.e., the motion becomes
+        stable.

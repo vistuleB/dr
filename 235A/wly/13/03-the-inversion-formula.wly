@@ -1,13 +1,21 @@
 |> Section
     title=The inversion formula
 
-    A fundamental question about characteristic functions is whether they contain all the information about a distribution, or in other words whether knowing the characteristic function determines the distribution uniquely. This question is answered (affirmatively) by the following theorem, which is a close cousin of the standard inversion formula from analysis for the Fourier transform.
+    A fundamental question about characteristic functions
+    is whether they contain all the information about a
+    distribution, or in other words whether knowing the
+    characteristic function determines the distribution
+    uniquely. This question is answered (affirmatively) by
+    the following theorem, which is a close cousin of the
+    standard inversion formula from analysis for the
+    Fourier transform.
 
     |> Theorem
         label=The inversion formula
         handle=thm-inversion
+        If $X$ is a r.v. with distribution $\mu_X$, then for
+        any $a<b$ we have
 
-        If $X$ is a r.v. with distribution $\mu_X$, then for any $a<b$ we have
         $$
         \begin{eqnarray*} \lim_{T\to\infty} \frac{1}{2\pi} \int_{-T}^T \frac{e^{-iat}-e^{-ibt}}{it}\varphi_X(t)\,dt &=& \mu_X((a,b)) + \frac12
         \mu_X(\{a,b\}) \\ &=& \mathrm{P}(a<X<b) + \frac12 \mathrm{P}(X=a)+\frac12 \mathrm{P}(X=b).
@@ -16,17 +24,23 @@
 
     |> Corollary
         handle=cor:charfun-uniqueness
-
-        If $X,Y$ are r.v.s such that $\varphi_X(t)\equiv \varphi_Y(t)$ for all $t\in\R$ then $X \stackrel{d}{=} Y$.
+        If $X,Y$ are r.v.s such that
+        $\varphi_X(t)\equiv \varphi_Y(t)$ for all $t\in\R$
+        then $X \stackrel{d}{=} Y$.
 
     |> Exercise
-
-        Explain why Corollary >>cor:charfun-uniqueness follows from the inversion formula.
+        Explain why Corollary >>cor:charfun-uniqueness
+        follows from the inversion formula.
 
     |> Proof
         alt-title=Proof of Theorem >>thm-inversion
+        Throughout the proof, denote $\varphi(t)=\varphi_X(t)$
+        and $\mu=\mu_X$. For convenience, we use the notation
+        of Lebesgue-Stieltjes integration with respect to the
+        measure $\mu$, remembering that this really means
+        taking the expectation of some function of the r.v.
+        $X$. Denote
 
-        Throughout the proof, denote $\varphi(t)=\varphi_X(t)$ and $\mu=\mu_X$. For convenience, we use the notation of Lebesgue-Stieltjes integration with respect to the measure $\mu$, remembering that this really means taking the expectation of some function of the r.v. $X$. Denote
         $$
         \begin{eqnarray*}
         eq:inversionproof##<<
@@ -34,7 +48,15 @@
         = \int_{-T}^T \int_{-\infty}^\infty \frac{e^{-i a t}-e^{-i b t}}{it} e^{itx}d\mu(x)\,dt.
         \end{eqnarray*}
         $$
-        Since $\frac{e^{-i a t}-e^{-i b t}}{it} = \int_a^b e^{-i t y}\,dy$ is a bounded function of $t$ (it is bounded in absolute value by $b-a$), it follows by Fubini's theorem that we can change the order of integration, so
+
+        Since
+        $\frac{e^{-i a t}-e^{-i b t}}{it} = \int_a^b e^{-i t
+        y}\,dy$
+        is a bounded function of $t$ (it is bounded in
+        absolute value by $b-a$), it follows by Fubini's
+        theorem that we can change the order of integration,
+        so
+
         $$
         \begin{eqnarray*}
         I_T&=& \int_{-\infty}^\infty \int_{-T}^T \frac{e^{-i a t}-e^{-i b t}}{it} e^{itx} dt\,d\mu(x) \\
@@ -43,37 +65,103 @@
         &=& \int_{-\infty}^\infty \left( R(x-a,T)-R(x-b,T) \right) d\mu(x),
         \end{eqnarray*}
         $$
-        where we denote $ R(\theta, T) = \int_{-T}^T \sin(\theta t)/t\,dt$. Note that in the notation of expectations this can be written as
-        $ I_T = \mathbf{E}\left( R(X-a,T)-R(X-b,T)\ \right)$.
-        This can be simplified somewhat; in fact, observe also that
-        $$R(\theta,T)= 2\textrm{sgn}(\theta) \int_0^{|\theta|T} \frac{\sin x}{x}\,dx = 2 \textrm{sgn}(\theta) S(|\theta| T), $$
-        where we denote $S(x) = \int_0^x \frac{\sin(u)}{u}\,du$ and $\textrm{sgn}(\theta)$ is $1$ if $\theta>0$, $-1$ if $\theta<0$ and $0$ if $\theta=0$. By a standard convergence test for integrals, the improper integral $\int_0^\infty \frac{\sin u}{u}\,du = \lim_{x\to\infty}S(x)$ converges; denote its value by $C/4$. Thus, we have shown that $R(\theta,T)\to \frac12\textrm{sgn}(\theta) C$ as $T\to \infty$, hence that
-        $$ R(x-a,T)-R(x-b,T) \xrightarrow[T\to\infty]{} \begin{cases}
+
+        where we denote
+        $R(\theta, T) = \int_{-T}^T \sin(\theta t)/t\,dt$.
+        Note that in the notation of expectations this can be
+        written as
+        $I_T = \mathbf{E}\left( R(X-a,T)-R(X-b,T)\ \right)$.
+        This can be simplified somewhat; in fact, observe also
+        that
+
+        $$
+        R(\theta,T)= 2\textrm{sgn}(\theta) \int_0^{|\theta|T} \frac{\sin x}{x}\,dx = 2 \textrm{sgn}(\theta) S(|\theta| T),
+        $$
+
+        where we denote
+        $S(x) = \int_0^x \frac{\sin(u)}{u}\,du$ and
+        $\textrm{sgn}(\theta)$ is $1$ if $\theta>0$, $-1$ if
+        $\theta<0$ and $0$ if $\theta=0$. By a standard
+        convergence test for integrals, the improper integral
+        $\int_0^\infty \frac{\sin u}{u}\,du =
+        \lim_{x\to\infty}S(x)$
+        converges; denote its value by $C/4$. Thus, we have
+        shown that
+        $R(\theta,T)\to \frac12\textrm{sgn}(\theta) C$ as
+        $T\to \infty$, hence that
+
+        $$
+        R(x-a,T)-R(x-b,T) \xrightarrow[T\to\infty]{} \begin{cases}
         C & a<x<b, \\
         C/2 & x=a\textrm{ or }x=b, \\
         0 & x<a\textrm{ or }x>b.
         \end{cases}
         $$
-        Furthermore, the function $R(x-a,T)-R(x-b,T)$ is bounded in absolute value by $2\sup_{x\ge 0} S(x)$. It follows that we can apply the bounded convergence theorem in (>>eq:inversionproof) to get that
+
+        Furthermore, the function $R(x-a,T)-R(x-b,T)$ is
+        bounded in absolute value by $2\sup_{x\ge 0} S(x)$.
+        It follows that we can apply the bounded convergence
+        theorem in (>>eq:inversionproof) to get that
+
         $$
         \begin{eqnarray*}
         eq:almostinversion##<<
         I_T \xrightarrow[T\to\infty]{} C \mathbf{E}(1_{a<X<b}) + (C/2) \mathbf{E}(\mathbf{1}_{\{X=a\}} + \mathbf{1}_{\{X=b\}}) = C \mu((a,b)) + (C/2)\mu(\{a,b\}).
         \end{eqnarray*}
         $$
-        This is just what we claimed, minus the fact that $C=2\pi$. This fact is a well-known integral evaluation from complex analysis. We can also deduce it in a self-contained manner, by applying what we proved to a specific measure $\mu$ and specific values of $a$ and $b$ for which we can evaluate the limit in (>>eq:inversionproof) directly. This is not entirely easy to do, but one possibility, involving an additional limiting argument, is outlined in the next exercise; see also Exercise 1.7.5 on p. 35 in [Dur2010], (Exercise 6.6, p. 470 in Appendix A.6 of [Dur2004]) for a different approach to finding the value of $C$.
+
+        This is just what we claimed, minus the fact that
+        $C=2\pi$. This fact is a well-known integral
+        evaluation from complex analysis. We can also deduce
+        it in a self-contained manner, by applying what we
+        proved to a specific measure $\mu$ and specific
+        values of $a$ and $b$ for which we can evaluate the
+        limit in (>>eq:inversionproof) directly. This is not
+        entirely easy to do, but one possibility, involving an
+        additional limiting argument, is outlined in the next
+        exercise; see also Exercise 1.7.5 on p. 35 in
+        [Dur2010], (Exercise 6.6, p. 470 in Appendix A.6 of
+        [Dur2004]) for a different approach to finding the
+        value of $C$.
 
     |> Exercise
+        ($\textbf{Recommended for aspiring analysts}$...) For
+        each $\sigma>0$, let $X_\sigma$ be a r.v. with
+        distribution $N(0,\sigma^2)$ and therefore with
+        density
+        $f_X(x)=(\sqrt{2\pi}\sigma)^{-1} e^{-x^2/2\sigma^2}$
+        and characteristic function
+        $\varphi_X(t) = e^{-\sigma^2 t^2/2}$. For fixed
+        $\sigma$, apply Theorem >>thm-inversion in its weak
+        form given by (>>eq:almostinversion) (that is, without
+        the knowledge of the value of $C$), with parameters
+        $X=X_\sigma$, $a=-1$ and $b=1$,  to deduce the
+        identity
 
-        ($\textbf{Recommended for aspiring analysts}$...) For each $\sigma>0$, let $X_\sigma$ be a r.v. with distribution $N(0,\sigma^2)$ and therefore with density $f_X(x)=(\sqrt{2\pi}\sigma)^{-1} e^{-x^2/2\sigma^2}$ and characteristic function $\varphi_X(t) = e^{-\sigma^2 t^2/2}$. For fixed $\sigma$, apply Theorem >>thm-inversion in its weak form given by (>>eq:almostinversion) (that is, without the knowledge of the value of $C$), with parameters $X=X_\sigma$, $a=-1$ and $b=1$,  to deduce the identity
-        $$ \frac{C}{\sqrt{2\pi}\sigma} \int_{-1}^1 e^{-x^2/2\sigma^2}\,dx = \int_{-\infty}^\infty \frac{2\sin t}{t} e^{-\sigma^2 t^2/2}\,dt. $$
-        Now multiply both sides by $\sigma$ and take the limit as $\sigma\to\infty$. For the left-hand side this should give in the limit (why?) the value $(2C)/\sqrt{2\pi}$. For the right-hand side this should give $2\sqrt{2\pi}$. Justify these claims and compare the two numbers to deduce that $C=2\pi$.
+        $$
+        \frac{C}{\sqrt{2\pi}\sigma} \int_{-1}^1 e^{-x^2/2\sigma^2}\,dx = \int_{-\infty}^\infty \frac{2\sin t}{t} e^{-\sigma^2 t^2/2}\,dt.
+        $$
 
-    The following theorem shows that the inversion formula can be written as a simpler connection between the characteristic function and the density function of a random variable, in the case when the characteristic function is integrable.
+        Now multiply both sides by $\sigma$ and take the
+        limit as $\sigma\to\infty$. For the left-hand side
+        this should give in the limit (why?) the value
+        $(2C)/\sqrt{2\pi}$. For the right-hand side this
+        should give $2\sqrt{2\pi}$. Justify these claims and
+        compare the two numbers to deduce that $C=2\pi$.
+
+    The following theorem shows that the inversion
+    formula can be written as a simpler connection between
+    the characteristic function and the density function
+    of a random variable, in the case when the
+    characteristic function is integrable.
 
     |> Theorem
+        If
+        $\int_{-\infty}^\infty |\varphi_X(t)|\,dt < \infty$,
+        then $X$ has a bounded and continuous density
+        function $f_X$, and the density and characteristic
+        function are related by
 
-        If $\int_{-\infty}^\infty |\varphi_X(t)|\,dt < \infty$, then $X$ has a bounded and continuous density function $f_X$, and the density and characteristic function are related by
         $$
         \begin{eqnarray*}
         \varphi_X(t) &=& \int_{-\infty}^\infty f_X(x) e^{itx}\,dx,  \\
@@ -81,8 +169,11 @@
         \end{eqnarray*}
         $$
 
-    In the lingo of Fourier analysis, this is known as the $\textbf{inversion formula for Fourier transforms}$.
+    In the lingo of Fourier analysis, this is known as
+    the
+    $\textbf{inversion formula for Fourier transforms}$.
 
     |> Proof
-
-        This is a straightforward corollary of Theorem >>thm-inversion. See p. 95 in either [Dur2010] or [Dur2004].
+        This is a straightforward corollary of Theorem
+        >>thm-inversion. See p. 95 in either [Dur2010] or
+        [Dur2004].

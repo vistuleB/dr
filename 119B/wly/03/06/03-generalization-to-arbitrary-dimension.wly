@@ -1,74 +1,94 @@
 |> SubSection
     title=Generalization to arbitrary dimension
 
-    By repeating the above analysis in a careful manner for the general LQP problem in arbitrary dimension discussed at the beginning of this section, one can derive the solution for that general case. For the LQP problem with a finite horizon, the gain matrix $K(T)$ from (>>eq:lqp-gain-mat) is expressed as a matrix product
+    By repeating the above analysis in a careful manner
+    for the general LQP problem in arbitrary dimension
+    discussed at the beginning of this section, one can
+    derive the solution for that general case. For the LQP
+    problem with a finite horizon, the gain matrix $K(T)$
+    from (>>eq:lqp-gain-mat) is expressed as a matrix
+    product
 
-    $$
     \begin{align*}
     K(T) = Q^{-1}B^\top V(T),
     \end{align*}
-    $$
 
-    where $V(T)$ is a matrix related to the optimal cost function $J_*(\mathbf{w},T)$ (defined analogously to $I_*(w,T)$) by
+    where $V(T)$ is a matrix related to the optimal cost
+    function $J_*(\mathbf{w},T)$ (defined analogously to
+    $I_*(w,T)$) by
 
-    $$
     \begin{align*}
     J_*(\mathbf{w},T) = \mathbf{w}^\top V(T)\mathbf{w}.
     \end{align*}
-    $$
 
-    Furthermore, $V$ satisfies the matrix differential equation (also referred to as the Ricatti equation)
+    Furthermore, $V$ satisfies the matrix differential
+    equation (also referred to as the Ricatti equation)
 
-    $$
     \begin{align*}
     \frac{dV}{dt} = P + A^\top V(T) + V(T) A - V(T) B Q^{-1} B^\top V(T)
     \end{align*}
-    $$
 
-    with boundary condition $V(0) = 0$ (the zero matrix). For an infinite time horizon, we again look for stationary solutions, which leads to the _algebraic Ricatti equation_
+    with boundary condition $V(0) = 0$ (the zero matrix).
+    For an infinite time horizon, we again look for
+    stationary solutions, which leads to the _algebraic
+    Ricatti equation_
 
-    $$
     \begin{align*}
     P + A^\top V + V A - V B Q^{-1} B^\top V = 0,
     \end{align*}
-    $$
 
-    which is a system of quadratic equations in the entries of $V$. The (constant) gain matrix $K$ is again given by
+    which is a system of quadratic equations in the
+    entries of $V$. The (constant) gain matrix $K$ is
+    again given by
 
-    $$
     \begin{align*}
     K = Q^{-1}B^\top V.
     \end{align*}
-    $$
 
-    While these equations may seem intimidating at first sight, they are easy to solve numerically on a computer. Symbolic math software applications such as $\texttt{Mathematica}$ even contain specialized packages for control theory that make the process of deriving optimal LQP control rules highly automated and quite simple in practice, as the next example demonstrates.
+    While these equations may seem intimidating at first
+    sight, they are easy to solve numerically on a
+    computer. Symbolic math software applications such as
+    $\texttt{Mathematica}$ even contain specialized
+    packages for control theory that make the process of
+    deriving optimal LQP control rules highly automated
+    and quite simple in practice, as the next example
+    demonstrates.
 
     |> Example
         label=The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$
+        The controlled inverted pendulum with cart is a
+        dynamical system with 2 degrees of freedom
+        $\theta=\theta(t)$ (representing the angle of the
+        pendulum relative to the positive $x$-axis) and
+        $x=x(t)$ (representing the displacement of the cart
+        along the $x$-axis), satisfying the equations of
+        motion(*>>fn-mathematica-pendulum)
 
-        The controlled inverted pendulum with cart is a dynamical system with 2 degrees of freedom $\theta=\theta(t)$ (representing the angle of the pendulum relative to the positive $x$-axis) and $x=x(t)$ (representing the displacement of the cart along the $x$-axis), satisfying the equations of motion(*>>fn-mathematica-pendulum)
-
-        $$
         \begin{align*}
         4\ddot{x} &=  \ddot{\theta}\sin \theta + \dot{\theta}^2 \cos \theta + 2 u, \\
         0 &= \ddot{\theta}+2\cos \theta - 2\ddot{x} \sin\theta,
         \end{align*}
-        $$
 
-        where $u$ is the control variable representing a control force being applied to the cart --- see Figure 19.
+        where $u$ is the control variable representing a
+        control force being applied to the cart --- see Figure
+        19.
 
         |> figure
-
             |> img
                 src=figures/invertedpendulum-cart.png
                 style=max-width: 48%
-
             |> figcaption
                 Figure 19: The inverted pendulum and cart.
 
-        The system can be thought of in the usual way as a system of 4 coupled first-order ODEs in the variables $\theta, \dot{\theta}, x, \dot{x}$. The goal of the control problem is to bring the system to a stable equilibrium at $(x,\dot{x},\theta,\dot{\theta}) = (0,0,\pi/2,0)$. In $\texttt{Mathematica}$, we type the following commands:
+        The system can be thought of in the usual way as a
+        system of 4 coupled first-order ODEs in the variables
+        $\theta, \dot{\theta}, x, \dot{x}$. The goal of the
+        control problem is to bring the system to a stable
+        equilibrium at
+        $(x,\dot{x},\theta,\dot{\theta}) = (0,0,\pi/2,0)$. In
+        $\texttt{Mathematica}$, we type the following
+        commands:
 
-        $$
         \begin{align*}
         \scriptsize{\text{In[1]=}}\quad & \text{eqns}=\left\{2 u[t]+\text{Cos}[\theta [t]] \theta '[t]^2+\text{Sin}[\theta [t]] \theta ''[t]==4 x''[t], \right.\\ & \qquad\qquad \qquad  \qquad \left. 2 \text{Cos}[\theta [t]]-2 \text{Sin}[\theta [t]] x''[t]+\theta ''[t]==0\right\};
         \\
@@ -84,11 +104,16 @@
         \end{array}
         \right)_{}^{\mathcal{S}}
         \end{align*}
-        $$
 
-        The second command causes $\texttt{Mathematica}$ to linearize the equations of motion around the desired rest point. The output is an augmented matrix of the form $\left( A\,|\,B\right)$ where $A, B$ are the two matrices in the resulting linearized equation (>>eq:lqp-linear). This brings the problem to the familiar setup of LQP optimal control which we discussed above. We now type:
+        The second command causes $\texttt{Mathematica}$ to
+        linearize the equations of motion around the desired
+        rest point. The output is an augmented matrix of the
+        form $\left( A\,|\,B\right)$ where $A, B$ are the two
+        matrices in the resulting linearized equation
+        (>>eq:lqp-linear). This brings the problem to the
+        familiar setup of LQP optimal control which we
+        discussed above. We now type:
 
-        $$
         \begin{align*}
         \scriptsize{\text{In[3]=}}\quad &
         \text{gains}=\text{LQRegulatorGains}[\text{N}[\text{model}], \\
@@ -98,11 +123,14 @@
         \scriptsize{\text{Out[3]=}}\quad &
         \{-1.,-5.97415,14.8452,13.7966\}
         \end{align*}
-        $$
 
-        This asks $\texttt{Mathematica}$ to compute the gain matrix $K$ (in this case a vector with 4 coordinates) associated with the cost functional (>>eq:lqp-quadratic) (in the case $t_2=\infty$ of an infinite time horizon), where the quadratic forms $P, Q$ are defined by
+        This asks $\texttt{Mathematica}$ to compute the gain
+        matrix $K$ (in this case a vector with 4 coordinates)
+        associated with the cost functional
+        (>>eq:lqp-quadratic) (in the case $t_2=\infty$ of an
+        infinite time horizon), where the quadratic forms
+        $P, Q$ are defined by
 
-        $$
         \begin{align*}
         P = \left(\begin{array}{cccc}
         1&0&0&0\\0&10&0&0\\0&0&100&0\\0&0&0&1000
@@ -110,19 +138,20 @@
         \qquad
         Q = (1).
         \end{align*}
-        $$
 
-        Using the gain matrix computed by $\texttt{Mathematica}$, we see that the solution to the optimal control problem we defined is given by the feedback rule
+        Using the gain matrix computed by
+        $\texttt{Mathematica}$, we see that the solution to
+        the optimal control problem we defined is given by the
+        feedback rule
 
-        $$
         \begin{align*}
         u = - x -5.97415\, \dot{x} + 14.8452\, \theta + 13.7966\, \dot{\theta}.
         \end{align*}
-        $$
-
     |> hr
-
     |> Footnote
         handle=fn-mathematica-pendulum
-
-        This example is based on a blog post written by Andrew Moylan on the website of Wolfram Research (maker of the $\texttt{Mathematica}$ software); see the link: [http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/](http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/)
+        This example is based on a blog post written by
+        Andrew Moylan on the website of Wolfram Research
+        (maker of the $\texttt{Mathematica}$ software); see
+        the link:
+        [http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/](http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/)

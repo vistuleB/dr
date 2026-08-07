@@ -1,48 +1,81 @@
 |> Section
     title=The upcrossing inequality
 
-    An essential step on the way to the martingale convergence theorem is an inequality bounding the expected number of times a submartingale may cross between two values $a<b$. Let $(X_n)_{n\ge 0}$ be a submartingale, and fix $a<b$. We define an increasing sequence of stopping times
+    An essential step on the way to the martingale
+    convergence theorem is an inequality bounding the
+    expected number of times a submartingale may cross
+    between two values $a<b$. Let $(X_n)_{n\ge 0}$ be a
+    submartingale, and fix $a<b$. We define an increasing
+    sequence of stopping times
 
-    $$ N_0 < N_1 < N_2 < \ldots $$
+    $$
+    N_0 < N_1 < N_2 < \ldots
+    $$
 
     recursively by setting $N_0=-1$, and
 
-    $$
     \begin{align*}
     N_{2k-1} &= \inf \{ m > N_{2k-2}\,:\,X_m\le a\}, \\
     N_{2k} &= \inf \{ m > N_{2k-1}\,:\,X_m\ge b\},
     \end{align*}
+
+    for each $k\ge 1$. It is easy to check that the
+    sequence
+
     $$
-
-    for each $k\ge 1$. It is easy to check that the sequence
-
-    $$ H_m = \begin{cases} 1 &\textrm{ if }N_{2k-1}<m\le N_{2k}\textrm{ for some }k, \\
+    H_m = \begin{cases} 1 &\textrm{ if }N_{2k-1}<m\le N_{2k}\textrm{ for some }k, \\
     0 & \textrm{otherwise},
     \end{cases}
     $$
 
-    is a predictable sequence; it corresponds to the strategy of buying an investment unit as soon as the price dips below $a$ and selling the next time it goes above $b$. Let
+    is a predictable sequence; it corresponds to the
+    strategy of buying an investment unit as soon as the
+    price dips below $a$ and selling the next time it
+    goes above $b$. Let
 
-    $$ U_n = U_n(a,b) = \sup \{ k\ge 0\,:\,N_{2k}\le n\}. $$
+    $$
+    U_n = U_n(a,b) = \sup \{ k\ge 0\,:\,N_{2k}\le n\}.
+    $$
 
-    We refer to $U_n$ as the number of $\textbf{upcrossings}$ the sequence $(X_n)_n$ completed up to time $n$ (where an upcrossing represents a cycle of going from a value below $a$ to a value above $b$).
+    We refer to $U_n$ as the number of
+    $\textbf{upcrossings}$ the sequence $(X_n)_n$
+    completed up to time $n$ (where an upcrossing
+    represents a cycle of going from a value below $a$ to
+    a value above $b$).
 
     |> Theorem
         We have
 
-        $$ \mathbf{E} U_n \le \frac{1}{b-a}\left( \mathbf{E}(X_n-a)_+ - \mathbf{E}(X_0-a)_+ \right). $$
+        $$
+        \mathbf{E} U_n \le \frac{1}{b-a}\left( \mathbf{E}(X_n-a)_+ - \mathbf{E}(X_0-a)_+ \right).
+        $$
 
     |> Proof
-        Define $Y_m = a+(X_m-a)_+$. By Corollary >>cor-positive-part, $(Y_m)_m$ is a submartingale. Note that $Y_m\le a$ if and only if $X_m\le a$ and $Y_m\ge b$ if and only if $X_m\ge b$, so the upcrossing number associated with the sequence $(Y_m)_m$ is $U_n$, the same as for $(X_m)_m$. Furthermore, we have the inequality
-
-        $$ (b-a)U_n \le (H\bullet Y)_n, $$
-
-        since $(H\bullet Y)$ would represent the profit made on using the investment strategy $H$ to invest in the sequence $Y_m$; each of the $U_n$ upcrossings gives a profit of $b-a$, and there is possibly a last incomplete stretch of investment when $Y_m$ dips to $a$ (unlike $X_m$, $Y_m$ never goes strictly below $a$) but has not yet increased above $b$, which gives additional nonnegative profit. Finally, by Theorem >>thm-marting-transform, $\mathbf{E}((1-H)\bullet Y)_n\ge 0$, so we have
+        Define $Y_m = a+(X_m-a)_+$. By Corollary
+        >>cor-positive-part, $(Y_m)_m$ is a submartingale.
+        Note that $Y_m\le a$ if and only if $X_m\le a$ and
+        $Y_m\ge b$ if and only if $X_m\ge b$, so the
+        upcrossing number associated with the sequence
+        $(Y_m)_m$ is $U_n$, the same as for $(X_m)_m$.
+        Furthermore, we have the inequality
 
         $$
+        (b-a)U_n \le (H\bullet Y)_n,
+        $$
+
+        since $(H\bullet Y)$ would represent the profit made
+        on using the investment strategy $H$ to invest in the
+        sequence $Y_m$; each of the $U_n$ upcrossings gives a
+        profit of $b-a$, and there is possibly a last
+        incomplete stretch of investment when $Y_m$ dips to
+        $a$ (unlike $X_m$, $Y_m$ never goes strictly below
+        $a$) but has not yet increased above $b$, which gives
+        additional nonnegative profit. Finally, by Theorem
+        >>thm-marting-transform,
+        $\mathbf{E}((1-H)\bullet Y)_n\ge 0$, so we have
+
         \begin{align*}
         \mathbf{E}(H\bullet Y)_n &\le \mathbf{E}(H\bullet Y)_n + \mathbf{E}((1-H)\bullet Y)_n = \mathbf{E}(1\bullet Y)_n \\ &= \mathbf{E}(Y_n-Y_0) = \mathbf{E}(X_n-a)_+ - \mathbf{E}(X_0-a)_+.
         \end{align*}
-        $$
 
         Combining the two inequalities gives the result.

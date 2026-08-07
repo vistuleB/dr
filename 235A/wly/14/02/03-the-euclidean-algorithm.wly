@@ -1,14 +1,44 @@
 |> SubSection
     title=The Euclidean algorithm
 
-    As a final example from number theory, consider the following problem: For some $n\ge 1$, choose $X_n$ and $Y_n$ independently and uniformly at random in $\{1,2,\ldots,n\}$, and compute their greatest common divisor (g.c.d.) using the Euclidean algorithm. Let $N_n$ be the number of division (with remainder) steps that were required. For example, if $X = 58$ and $Y=24$ then the application of the Euclidean algorithm would result in the sequence of steps
-    $$ (58,24) \to (24,10) \to (10,4) \to (4,2) \to (2,0), $$
-    so 4 division operations were required (and the g.c.d. is 2).
+    As a final example from number theory, consider the
+    following problem: For some $n\ge 1$, choose $X_n$
+    and $Y_n$ independently and uniformly at random in
+    $\{1,2,\ldots,n\}$, and compute their greatest common
+    divisor (g.c.d.) using the Euclidean algorithm. Let
+    $N_n$ be the number of division (with remainder)
+    steps that were required. For example, if $X = 58$
+    and $Y=24$ then the application of the Euclidean
+    algorithm would result in the sequence of steps
+
+    $$
+    (58,24) \to (24,10) \to (10,4) \to (4,2) \to (2,0),
+    $$
+
+    so 4 division operations were required (and the
+    g.c.d. is 2).
 
     |> Theorem
         label=CLT for the number of steps in the Euclidean algorithm; D. Hensley (1992)
+        There exists a constant $\sigma_\infty$ (which has a
+        very complicated definition) such that
 
-        There exists a constant $\sigma_\infty$ (which has a very complicated definition) such that
-        $$ \frac{N_n - \frac{12 \log 2}{\pi^2} \log n}{\sigma_\infty \sqrt{\log n}} \implies N(0,1). $$
+        $$
+        \frac{N_n - \frac{12 \log 2}{\pi^2} \log n}{\sigma_\infty \sqrt{\log n}} \implies N(0,1).
+        $$
 
-    Hensley's theorem was in recent years significantly generalized and the techniques extended by Brigitte Vallée, a French mathematician. The fact that the average value of $N_n$ is approximately $(12\log 2/\pi^2)\log n$ was previously known from work of Heilbronn and Dixon in 1969--1970, using ideas dating back to Gauss, who discovered the probability distribution now called the ``Gauss measure''. This is the probability distribution on $(0,1)$ with density $\frac{1}{\log 2(1+x)}$, which Gauss found (but did not prove!) describes the limiting distribution of the ratio of a pair of independent $U(0,1)$ random variables after many iterations of the division-with-remainder step in the Euclidean algorithm.
+    Hensley's theorem was in recent years significantly
+    generalized and the techniques extended by Brigitte
+    Vallée, a French mathematician. The fact that the
+    average value of $N_n$ is approximately
+    $(12\log 2/\pi^2)\log n$ was previously known from
+    work of Heilbronn and Dixon in 1969--1970, using ideas
+    dating back to Gauss, who discovered the probability
+    distribution now called the ``Gauss measure''. This is
+    the probability distribution on $(0,1)$ with density
+    $\frac{1}{\log 2(1+x)}$, which Gauss found (but did
+    not prove!) describes the limiting distribution of the
+    ratio of a pair of independent $U(0,1)$ random
+    variables after many iterations of the
+    division-with-remainder step in the Euclidean
+    algorithm.

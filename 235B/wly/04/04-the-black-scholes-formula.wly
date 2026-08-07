@@ -1,42 +1,170 @@
 |> Section
     title=The Black-Scholes formula
 
-    In the financial markets, an $\textbf{option}$ is a contract giving its holder the right to buy or sell an asset from the issuer of the option for a specified price at some future date.(*>>fn-blackscholes-source) Options are useful financial instruments that allow market participants to calibrate the amount of risk they want to be exposed to; effectively, risk-averse players can use options to insure themselves against unexpected events, paying a premium to other investors willing to bear the risk (either because they have a higher tolerance for risk or because their perception of the amount of risk is different). In theory, this makes the financial markets more efficient and helps the economy.
+    In the financial markets, an $\textbf{option}$ is a
+    contract giving its holder the right to buy or sell an
+    asset from the issuer of the option for a specified
+    price at some future date.(*>>fn-blackscholes-source)
+    Options are useful financial instruments that allow
+    market participants to calibrate the amount of risk
+    they want to be exposed to; effectively, risk-averse
+    players can use options to insure themselves against
+    unexpected events, paying a premium to other investors
+    willing to bear the risk (either because they have a
+    higher tolerance for risk or because their perception
+    of the amount of risk is different). In theory, this
+    makes the financial markets more efficient and helps
+    the economy.
 
-    Options have been used in one form or another since ancient times. However, a good quantitative model allowing the computation of the monetary value of an option was not known until two economists, Fischer Black and Myron Scholes, proposed such a model in 1973 using the mathematics of Brownian motion. Their formula for the valuation of options, known as the $\textbf{Black-Scholes formula}$, was the basis for awarding the 1997 Nobel prize in economics to Scholes and Robert Merton, another economist who played a part in the development of the Black-Scholes model (Black died in 1995 so the prize could not be awarded to him).
+    Options have been used in one form or another since
+    ancient times. However, a good quantitative model
+    allowing the computation of the monetary value of an
+    option was not known until two economists, Fischer
+    Black and Myron Scholes, proposed such a model in 1973
+    using the mathematics of Brownian motion. Their
+    formula for the valuation of options, known as the
+    $\textbf{Black-Scholes formula}$, was the basis for
+    awarding the 1997 Nobel prize in economics to Scholes
+    and Robert Merton, another economist who played a part
+    in the development of the Black-Scholes model (Black
+    died in 1995 so the prize could not be awarded to
+    him).
 
-    We will discuss here a simplified variant of the Black-Scholes option pricing model in which time progresses in discrete steps, so that we do not need to know about continuous-time processes such as Brownian motion. Assume that in our simplified economy, an investor has the option of investing her money in one of two ways. The first way is to lend the money; technically, she does this by buying $\textbf{risk-free bonds}$ (issued by a reliable entity such as the U.S. government), which are loan contracts guaranteeing a fixed interest rate of $r$. Thus, $V$ units of currency invested in bonds at time $0$ will be worth $(1+r)^n V$ after $n$ time units. (Of course, this is the result of _compounded interest_: in this formula we are assuming that after each time unit our investor takes the interest payment from the last time unit and reinvests it by buying more bonds.)
+    We will discuss here a simplified variant of the
+    Black-Scholes option pricing model in which time
+    progresses in discrete steps, so that we do not need
+    to know about continuous-time processes such as
+    Brownian motion. Assume that in our simplified
+    economy, an investor has the option of investing her
+    money in one of two ways. The first way is to lend the
+    money; technically, she does this by buying
+    $\textbf{risk-free bonds}$ (issued by a reliable
+    entity such as the U.S. government), which are loan
+    contracts guaranteeing a fixed interest rate of $r$.
+    Thus, $V$ units of currency invested in bonds at time
+    $0$ will be worth $(1+r)^n V$ after $n$ time units.
+    (Of course, this is the result of _compounded
+    interest_: in this formula we are assuming that after
+    each time unit our investor takes the interest payment
+    from the last time unit and reinvests it by buying
+    more bonds.)
 
-    The second type of investment opportunity is to buy $\textbf{stocks}$. These are assumed to be risky investments whose value fluctuates randomly. We make the assumption that the price of stocks is a multiplicative random walk with an initial (possibly random) value $S_0$ such that
-
-    $$ S_n = (1+R_n) S_{n-1} \qquad (n\ge1), $$
-
-    where $R_n$ represents the ``random rate of interest'' in the $n$th time period. We further assume that $R_1,R_2,\ldots$ are an i.i.d.\ sequence of random variables satisfying
-
-    $$ \mathrm{P}(R_n = a) = 1-p, \ \ \mathrm{P}(R_n = b) = p, $$
-
-    where $a,b$ are two values in $(-1,\infty)$ satisfying $a<r<b$, and $p$ is taken to be $p=\frac{r-a}{b-a}$. This choice of $p$ ensures that $\mathbf{E}(R_1) = r$, so that on average the random interest rate is equal to the risk-free interest rate. (Any other choice of $p$ would cause an investor to always prefer one of the two asset classes to the other, making the model essentially uninteresting.)
-
-    Our investor starts with an amount $x$ of money and invests it over time, allocating the available funds to either stocks or bonds as she wishes. Formally, let $\mathcal{G}_n = \sigma(S_0,R_1,\ldots,R_n)$. Denote $B_0=1, B_n=(1+r)^n$ (in analogy with the multiplicative random walk $S_n$, this is the value of an investment account concentrated in bonds and started from an initial investment of 1 unit of currency). An $\textbf{investment strategy}$ is a pair $(A_n, V_n)_{n=0}^N$ of processes (where $N$ may be finite, or infinite) which are predictable with respect to the filtration $(\mathcal{G}_n)_n$, and such that the following relations are satisfied:
+    The second type of investment opportunity is to buy
+    $\textbf{stocks}$. These are assumed to be risky
+    investments whose value fluctuates randomly. We make
+    the assumption that the price of stocks is a
+    multiplicative random walk with an initial (possibly
+    random) value $S_0$ such that
 
     $$
+    S_n = (1+R_n) S_{n-1} \qquad (n\ge1),
+    $$
+
+    where $R_n$ represents the ``random rate of
+    interest'' in the $n$th time period. We further
+    assume that $R_1,R_2,\ldots$ are an i.i.d.\ sequence
+    of random variables satisfying
+
+    $$
+    \mathrm{P}(R_n = a) = 1-p, \ \ \mathrm{P}(R_n = b) = p,
+    $$
+
+    where $a,b$ are two values in $(-1,\infty)$
+    satisfying $a<r<b$, and $p$ is taken to be
+    $p=\frac{r-a}{b-a}$. This choice of $p$ ensures that
+    $\mathbf{E}(R_1) = r$, so that on average the random
+    interest rate is equal to the risk-free interest rate.
+    (Any other choice of $p$ would cause an investor to
+    always prefer one of the two asset classes to the
+    other, making the model essentially uninteresting.)
+
+    Our investor starts with an amount $x$ of money and
+    invests it over time, allocating the available funds
+    to either stocks or bonds as she wishes. Formally, let
+    $\mathcal{G}_n = \sigma(S_0,R_1,\ldots,R_n)$. Denote
+    $B_0=1, B_n=(1+r)^n$ (in analogy with the
+    multiplicative random walk $S_n$, this is the value
+    of an investment account concentrated in bonds and
+    started from an initial investment of 1 unit of
+    currency). An $\textbf{investment strategy}$ is a
+    pair $(A_n, V_n)_{n=0}^N$ of processes (where $N$ may
+    be finite, or infinite) which are predictable with
+    respect to the filtration $(\mathcal{G}_n)_n$, and
+    such that the following relations are satisfied:
+
     \begin{align*}
     x &= eq:investment-strategy-initial##<< A_0 S_0 + V_0 B_0, \\
     A_n S_n + V_n B_n &= eq:investment-strategy-rebalance##<< A_{n+1} S_n + V_{n+1} B_n, \qquad (1\le n< N).
     \end{align*}
+
+    Here, $A_n$ denotes the number of stock investment
+    units held between time $n$ and $n+1$, and $V_n$
+    denotes the number of bond investment units held
+    between time $n$ and $n+1$. Denote
+    $X_n = A_n S_n + V_n B_n$. This represents the value
+    of the investment account at time $n$. The relation
+    (>>eq:investment-strategy-initial) means that the
+    initial value $X_0$ of the investment account is $x$
+    units of currency, and
+    (>>eq:investment-strategy-rebalance) represents the
+    fact that immediately after time $n$ the investor
+    rebalances the investment portfolio, changing the
+    mixture of bonds and stocks but keeping the same
+    amount invested. In a slight simplification of real
+    life, the model assumes that the act of rebalancing
+    the portfolio does not involve paying a fee to a
+    brokerage or account management company, an assumption
+    technically referred to as
+    $\textbf{zero transaction costs}$.
+
+    In our model, we now add a third type of investment
+    opportunity. A $\textbf{European option}$ is a
+    contract that gives an investor the right (but not the
+    obligation) to buy $1$ unit of stocks at some fixed
+    time $N$ for a price of $K$ units of currency. The
+    act of taking advantage of this right is referred to
+    as $\textbf{exercising}$ the
+    option(*>>fn-american-option). The time $N$ is called
+    the $\textbf{expiration time}$, and $K$ is called the
+    $\textbf{strike price}$. The question we wish to
+    address is: what is the ``fair value''
+    $v_\textrm{fair}$ such that an investor would
+    consider paying an amount $v_\textrm{fair}$ (or
+    better yet, slightly less than $v_\textrm{fair}$) for
+    such an option offered to him at time $0$? Note that
+    at time $N$ the option is worth $S_N-K$ if $S_n\ge K$,
+    or $0$ otherwise (i.e., if the market price of stocks
+    at time $N$ is below the strike price at expiration
+    time, the option gives a pointless right to buy stocks
+    at a higher price than the one for which they are
+    being offered for sale on the free market. This is a
+    right which no rational investor would want to
+    exercise; in this case the option is said to have
+    $\textbf{expired worthless}$). In other words, the
+    value of the option at its expiration time is exactly
+    the (random) amount $(S_N-K)_+$, the positive part of
+    the random variable $S_N-K$. An investor considering
+    an investment in options at time $0$ would be
+    reasonable to consider the expected value of this
+    quantity,
+
+    $$
+    \mathbf{E}(S_N-K)_+,
     $$
 
-    Here, $A_n$ denotes the number of stock investment units held between time $n$ and $n+1$, and $V_n$ denotes the number of bond investment units held between time $n$ and $n+1$. Denote $X_n = A_n S_n + V_n B_n$. This represents the value of the investment account at time $n$. The relation (>>eq:investment-strategy-initial) means that the initial value $X_0$ of the investment account is $x$ units of currency, and (>>eq:investment-strategy-rebalance) represents the fact that immediately after time $n$ the investor rebalances the investment portfolio, changing the mixture of bonds and stocks but keeping the same amount invested. In a slight simplification of real life, the model assumes that the act of rebalancing the portfolio does not involve paying a fee to a brokerage or account management company, an assumption technically referred to as $\textbf{zero transaction costs}$.
+    as her expected return after $N$ time units of
+    investment. Comparing this to the return on investing
+    the same amount $v_\textrm{fair}$ in risk-free bonds,
+    which is equal to
 
-    In our model, we now add a third type of investment opportunity. A $\textbf{European option}$ is a contract that gives an investor the right (but not the obligation) to buy $1$ unit of stocks at some fixed time $N$ for a price of $K$ units of currency. The act of taking advantage of this right is referred to as $\textbf{exercising}$ the option(*>>fn-american-option). The time $N$ is called the $\textbf{expiration time}$, and $K$ is called the $\textbf{strike price}$. The question we wish to address is: what is the ``fair value'' $v_\textrm{fair}$ such that an investor would consider paying an amount $v_\textrm{fair}$ (or better yet, slightly less than $v_\textrm{fair}$) for such an option offered to him at time $0$? Note that at time $N$ the option is worth $S_N-K$ if $S_n\ge K$, or $0$ otherwise (i.e., if the market price of stocks at time $N$ is below the strike price at expiration time, the option gives a pointless right to buy stocks at a higher price than the one for which they are being offered for sale on the free market. This is a right which no rational investor would want to exercise; in this case the option is said to have $\textbf{expired worthless}$). In other words, the value of the option at its expiration time is exactly the (random) amount $(S_N-K)_+$, the positive part of the random variable $S_N-K$. An investor considering an investment in options at time $0$ would be reasonable to consider the expected value of this quantity,
+    $$
+    (1+r)^N v_\textrm{fair},
+    $$
 
-    $$ \mathbf{E}(S_N-K)_+, $$
-
-    as her expected return after $N$ time units of investment. Comparing this to the return on investing the same amount $v_\textrm{fair}$ in risk-free bonds, which is equal to
-
-    $$ (1+r)^N v_\textrm{fair}, $$
-
-    the investor may conclude that $v_\textrm{fair}$ is exactly the value that equalizes both quantities (thus making her indifferent to the choice of which type of investment to make), namely
+    the investor may conclude that $v_\textrm{fair}$ is
+    exactly the value that equalizes both quantities (thus
+    making her indifferent to the choice of which type of
+    investment to make), namely
 
     $$
     \begin{equation} eq:discrete-black-scholes##<<
@@ -44,21 +172,63 @@
     \end{equation}
     $$
 
-    In finance, it is typical to think of this type of expression as the quantity $\mathbf{E}(S_N-K)_+$ ``discounted'' $N$ units of time into the future. The idea is that the promise of future money is worth less than actual money in the present. The ``rate of discounting,'' which is the factor by which it becomes worth less and less with every time unit it recedes further into the future, is exactly the risk-free interest rate $1+r$. (Think of a situation in which someone offers you a choice between $\$100$ today or $\$150$ in a month's time. Which would you prefer? What would be your criterion for deciding if the number $150$ were replaced with any other number higher than $100$?)
+    In finance, it is typical to think of this type of
+    expression as the quantity $\mathbf{E}(S_N-K)_+$
+    ``discounted'' $N$ units of time into the future. The
+    idea is that the promise of future money is worth less
+    than actual money in the present. The ``rate of
+    discounting,'' which is the factor by which it becomes
+    worth less and less with every time unit it recedes
+    further into the future, is exactly the risk-free
+    interest rate $1+r$. (Think of a situation in which
+    someone offers you a choice between \(\$100\) today
+    or \(\$150\) in a month's time. Which would you
+    prefer? What would be your criterion for deciding if
+    the number $150$ were replaced with any other number
+    higher than $100$?)
 
-    Equation (>>eq:discrete-black-scholes) is our discrete version of the Black-Scholes formula, but the reasoning that lead us to it is a bit shaky, and can be strengthened in the following way. Assume that a market for options hasn't developed yet, so none are being offered for sale. An investor may come up with a clever way of replicating the outcome of investing in an option using a particular way of managing a portfolio of stocks and bonds. Formally, a *hedging strategy with initial value $x$* is a pair of processes $(A_n,V_n)_{n=0}^N$ which is an investment strategy in the sense defined above, with an initial value $x$ as in (>>eq:investment-strategy-initial), and such that in addition we have the properties
+    Equation (>>eq:discrete-black-scholes) is our
+    discrete version of the Black-Scholes formula, but the
+    reasoning that lead us to it is a bit shaky, and can
+    be strengthened in the following way. Assume that a
+    market for options hasn't developed yet, so none are
+    being offered for sale. An investor may come up with a
+    clever way of replicating the outcome of investing in
+    an option using a particular way of managing a
+    portfolio of stocks and bonds. Formally, a *hedging
+    strategy with initial value $x$* is a pair of
+    processes $(A_n,V_n)_{n=0}^N$ which is an investment
+    strategy in the sense defined above, with an initial
+    value $x$ as in (>>eq:investment-strategy-initial),
+    and such that in addition we have the properties
 
-    $$
     \begin{align*}
     X_n &\ge 0,  \qquad \qquad \qquad (0\le n\le N), \\
     X_N &= (S_N-K)_+,
     \end{align*}
-    $$
 
-    (where as before $X_n = A_n S_n + V_n B_n$ denotes the value of the portfolio at time $n$). Note that a hedging strategy behaves for all intents and purposes like an option with strike price $K$ and expiration time $N$; any investor who possesses such a strategy could issue actual options with these parameters and sell them to other investors, charging slightly more than $x$ units of currency, investing $x$ of them in the hedging scheme (which precisely offsets the options he sold) and making an instant and risk-free profit. (Note that the condition $X_n\ge0$ is required to ensure that the manager of the hedging strategy will not have to inject new cash at any point in time to keep the investment going; she will never be ``underwater.'') Thus, we have a rather convincing argument that any value of $x$ for which one is able to find such a hedging strategy is, _by definition_, the fair value of the option.
+    (where as before $X_n = A_n S_n + V_n B_n$ denotes
+    the value of the portfolio at time $n$). Note that a
+    hedging strategy behaves for all intents and purposes
+    like an option with strike price $K$ and expiration
+    time $N$; any investor who possesses such a strategy
+    could issue actual options with these parameters and
+    sell them to other investors, charging slightly more
+    than $x$ units of currency, investing $x$ of them in
+    the hedging scheme (which precisely offsets the
+    options he sold) and making an instant and risk-free
+    profit. (Note that the condition $X_n\ge0$ is
+    required to ensure that the manager of the hedging
+    strategy will not have to inject new cash at any point
+    in time to keep the investment going; she will never
+    be ``underwater.'') Thus, we have a rather convincing
+    argument that any value of $x$ for which one is able
+    to find such a hedging strategy is, _by definition_,
+    the fair value of the option.
 
     |> Theorem
-        A hedging strategy with initial value $x$ exists if and only if
+        A hedging strategy with initial value $x$ exists if
+        and only if
 
         $$
         \begin{equation} eq:hedging-strategy-condition##<<
@@ -69,16 +239,19 @@
         and in this case it is unique.
 
     |> Proof
-        Assume that there is a hedging strategy with initial value $x$. Let $Y_n = (1+r)^{-n} X_n$ (the discounted value of $X_n$ at time $0$). The proof will depend on showing that $(Y_n)_n$ is a martingale. To see this, note that from (>>eq:investment-strategy-rebalance) we have that
+        Assume that there is a hedging strategy with initial
+        value $x$. Let $Y_n = (1+r)^{-n} X_n$ (the discounted
+        value of $X_n$ at time $0$). The proof will depend on
+        showing that $(Y_n)_n$ is a martingale. To see this,
+        note that from (>>eq:investment-strategy-rebalance) we
+        have that
 
-        $$
         \begin{align*}
         X_n - X_{n-1} &= (A_n S_n + V_n B_n) - (A_n S_{n-1} + V_n B_{n-1})
         = A_n (S_n-S_{n-1}) + V_n (B_n-B_{n-1}) \\
         &= A_n R_n S_{n-1} + r V_n B_{n-1} = A_n S_{n-1}(R_n-r) + r(A_n S_{n-1} + V_n B_{n-1}) \\
         &= A_n S_{n-1} (R_n-r) + r X_{n-1}.
         \end{align*}
-        $$
 
         It follows that
 
@@ -88,41 +261,72 @@
 
         Thus, $Y_n$ can be expressed as
 
-        $$
         \begin{align*}
         Y_n &= Y_0 + \sum_{k=1}^n (Y_k-Y_{k-1}) =
         x + \sum_{k=1}^n (1+r)^{-k}A_k S_{k-1} (R_k-r) \\
         &= x + \sum_{k=1}^n F_k (Z_k-Z_{k-1}),
         \end{align*}
+
+        where $F_n = (1+r)^{-n} A_n S_{n-1}$ and
+        $Z_n = \sum_{k=1}^n (R_k-r)$. In other words, we have
+        shown that $Y_n$ can be represented as
+
+        $$
+        Y_n = x + (F\bullet Z)_n.
         $$
 
-        where $F_n = (1+r)^{-n} A_n S_{n-1}$ and $Z_n = \sum_{k=1}^n (R_k-r)$. In other words, we have shown that $Y_n$ can be represented as
-
-        $$ Y_n = x + (F\bullet Z)_n. $$
-
-        Here, the sequence $(F_n)_n$ is predictable with respect to the filtration $(\mathcal{G}_n)_n$, and $Z_n$ is a martingale, so this is a genuine martingale transform, and $(Y_n)_n$ is a martingale, as claimed above. In particular we get (using the definition of a hedging strategy) that
+        Here, the sequence $(F_n)_n$ is predictable with
+        respect to the filtration $(\mathcal{G}_n)_n$, and
+        $Z_n$ is a martingale, so this is a genuine
+        martingale transform, and $(Y_n)_n$ is a martingale,
+        as claimed above. In particular we get (using the
+        definition of a hedging strategy) that
 
         $$
         x = Y_0 = \mathbf{E}(Y_0) = \mathbf{E}(Y_N) = (1+r)^{-N} \mathbf{E}(X_N) = (1+r)^{-N} \mathbf{E}(S_N-K)_+,
         $$
 
-        proving (>>eq:hedging-strategy-condition). This completes the ``only if'' part of the proof.
+        proving (>>eq:hedging-strategy-condition). This
+        completes the ``only if'' part of the proof.
 
-        Conversely, assume that $x=(1+r)^{-N} \mathbf{E}(S_N-K)_+$. We need to construct a hedging strategy with this initial value, and show that it is uniquely determined. Inspired by the insights gained by the computation above, we define a martingale
+        Conversely, assume that
+        $x=(1+r)^{-N} \mathbf{E}(S_N-K)_+$. We need to
+        construct a hedging strategy with this initial value,
+        and show that it is uniquely determined. Inspired by
+        the insights gained by the computation above, we
+        define a martingale
 
-        $$ Y_n = \mathbf{E}\left((1+r)^{-N}(S_N-K)_+\,|\,\mathcal{G}_n\right), \qquad (0\le n\le N) $$
+        $$
+        Y_n = \mathbf{E}\left((1+r)^{-N}(S_N-K)_+\,|\,\mathcal{G}_n\right), \qquad (0\le n\le N)
+        $$
 
-        so that $Y_0 = x$ and $Y_N = (1+r)^{-N} (S_N-K)_+$, and look for a predictable sequence $(F_n)_n$ such that $Y_n = x + (F\bullet Z)_n$. The fact that a unique such process exists is the result of a simple computation which can be distilled into the following lemma.
+        so that $Y_0 = x$ and $Y_N = (1+r)^{-N} (S_N-K)_+$,
+        and look for a predictable sequence $(F_n)_n$ such
+        that $Y_n = x + (F\bullet Z)_n$. The fact that a
+        unique such process exists is the result of a simple
+        computation which can be distilled into the following
+        lemma.
 
         |> Lemma
             handle=lem-easy-martingale-rep
-
-            If $(M_n)_{n=0}^N$ is a martingale w.r.t.\ the filtration $(\mathcal{G}_n)_n$ satisfying $M_0 = 0$, then there is a unique predictable process $(F_n)_{n=1}^N$ such that $M = F\bullet Z$, with $Z_n=\sum_{k=1}^n (R_k-r)$ as above.
+            If $(M_n)_{n=0}^N$ is a martingale w.r.t.\ the
+            filtration $(\mathcal{G}_n)_n$ satisfying $M_0 = 0$,
+            then there is a unique predictable process
+            $(F_n)_{n=1}^N$ such that $M = F\bullet Z$, with
+            $Z_n=\sum_{k=1}^n (R_k-r)$ as above.
 
         |> Exercise
             Prove Lemma >>lem-easy-martingale-rep.
 
-        Working our way backwards, we now define $X_n = (1+r)^n Y_n$, $A_n = (1+r)^n F_n/S_{n-1}$ and $V_n = (X_{n-1}-A_n S_{n-1})/B_{n-1}$. Then $X_n\ge 0$, $(A_n)_n$ and $(V_n)_n$ are predictable sequences, and the above computations can be read in reverse to show that (>>eq:investment-strategy-rebalance) is satisfied, i.e., the sequences $(A_n, V_n)_n$ represent a valid hedging strategy.
+        Working our way backwards, we now define
+        $X_n = (1+r)^n Y_n$, $A_n = (1+r)^n F_n/S_{n-1}$ and
+        $V_n = (X_{n-1}-A_n S_{n-1})/B_{n-1}$. Then
+        $X_n\ge 0$, $(A_n)_n$ and $(V_n)_n$ are predictable
+        sequences, and the above computations can be read in
+        reverse to show that
+        (>>eq:investment-strategy-rebalance) is satisfied,
+        i.e., the sequences $(A_n, V_n)_n$ represent a valid
+        hedging strategy.
 
     $\textbf{Notes.}$
 
@@ -130,18 +334,36 @@
         class=list
         data-list-style=decimal
         |> li
-            In the proof above, one can check that the processes $A_n, V_n$ are nonnegative. This means that, although we didn't require it as part of the definition of hedging strategies, in practice hedging will never involve investing negative amounts of money (which would correspond to ``shorting'' stocks or issuing bonds).
+            In the proof above, one can check that the processes
+            $A_n, V_n$ are nonnegative. This means that, although
+            we didn't require it as part of the definition of
+            hedging strategies, in practice hedging will never
+            involve investing negative amounts of money (which
+            would correspond to ``shorting'' stocks or issuing
+            bonds).
+
         |> li
-            The formula (>>eq:discrete-black-scholes) is written in a form that is not very explicit, as it requires computing a messy average for a multiplicative random walk. In the ``real'' Black-Scholes formula, where the stock price $(S_n)_n$ process is modeled by a $\textbf{geometric Brownian motion}$ (the continuous-time analogue of a multiplicative random walk), one can evaluate the corresponding expectation to obtain a much more explicit formula. The Black-Scholes model has also been adapted to American-style options and other variants. As usual, if you want to learn more about this subject, Wikipedia will make you wish you didn't.
-
+            The formula (>>eq:discrete-black-scholes) is written
+            in a form that is not very explicit, as it requires
+            computing a messy average for a multiplicative random
+            walk. In the ``real'' Black-Scholes formula, where the
+            stock price $(S_n)_n$ process is modeled by a
+            $\textbf{geometric Brownian motion}$ (the
+            continuous-time analogue of a multiplicative random
+            walk), one can evaluate the corresponding expectation
+            to obtain a much more explicit formula. The
+            Black-Scholes model has also been adapted to
+            American-style options and other variants. As usual,
+            if you want to learn more about this subject,
+            Wikipedia will make you wish you didn't.
     |> hr
-
     |> Footnote
         handle=fn-blackscholes-source
-
-        This section is based on sections 15.1--15.2 in the book _Probability with Martingales_ by David Williams.
+        This section is based on sections 15.1--15.2 in the
+        book _Probability with Martingales_ by David Williams.
 
     |> Footnote
         handle=fn-american-option
-
-        A common variant is the $\textbf{American option}$, in which the right to exercise the option exists at any time up to and including time $N$.
+        A common variant is the $\textbf{American option}$,
+        in which the right to exercise the option exists at
+        any time up to and including time $N$.

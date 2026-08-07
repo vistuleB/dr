@@ -1,108 +1,270 @@
 |> Section
     title=Ergodicity
 
-    Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a measure preserving system. An event $A\in\mathcal{F}$ is called *$T$-invariant* (or *invariant under $T$*, or just $\textbf{invariant}$ if the context is clear) if
+    Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a
+    measure preserving system. An event $A\in\mathcal{F}$
+    is called *$T$-invariant* (or *invariant under $T$*,
+    or just $\textbf{invariant}$ if the context is clear)
+    if
 
-    $$ T^{-1}(A) = A \ \ \textrm{a.s.}, $$
+    $$
+    T^{-1}(A) = A \ \ \textrm{a.s.},
+    $$
 
-    with the convention that two events $A,B$ are considered equal almost surely if their symmetric difference has probability $0$. That is, $A$ is invariant if
+    with the convention that two events $A,B$ are
+    considered equal almost surely if their symmetric
+    difference has probability $0$. That is, $A$ is
+    invariant if
 
-    $$ \mathrm{P}(A\triangle T^{-1}(A)) = 0, $$
+    $$
+    \mathrm{P}(A\triangle T^{-1}(A)) = 0,
+    $$
 
-    (where $A\triangle B = (A\setminus B)\cup (B\setminus A)$ denotes the symmetric difference of two sets). We denote by $\mathcal{I}$ the collection of a.s.\ invariant events.
+    (where
+    $A\triangle B = (A\setminus B)\cup (B\setminus A)$
+    denotes the symmetric difference of two sets). We
+    denote by $\mathcal{I}$ the collection of a.s.\
+    invariant events.
 
     |> Lemma
         handle=lem-invariant-sigmaalg
-
         $\mathcal{I}$ is a $\sigma$-algebra.
 
     |> Exercise
         Prove Lemma >>lem-invariant-sigmaalg.
 
     |> Definition
-        The measure preserving system $(\Omega, \mathcal{F}, \mathrm{P}, T)$ is called $\textbf{ergodic}$ if for any invariant event $A$, $\mathrm{P}(A)=0$ or $\mathrm{P}(A)=1$.
+        The measure preserving system
+        $(\Omega, \mathcal{F}, \mathrm{P}, T)$ is called
+        $\textbf{ergodic}$ if for any invariant event $A$,
+        $\mathrm{P}(A)=0$ or $\mathrm{P}(A)=1$.
 
-    A sub-$\sigma$-algebra of $\mathcal{F}$ all of whose events have probability 0 or 1 is called $\textbf{trivial}$. (We already saw an example: the $\sigma$-algebra of tail events of an i.i.d.\ sequence of random variables is trivial, according to the Kolmogorov 0-1 law.) So, another way of saying that a measure preserving system is ergodic is that its $\sigma$-algebra $\mathcal{I}$ of invariant events is trivial.
+    A sub-$\sigma$-algebra of $\mathcal{F}$ all of whose
+    events have probability 0 or 1 is called
+    $\textbf{trivial}$. (We already saw an example: the
+    $\sigma$-algebra of tail events of an i.i.d.\
+    sequence of random variables is trivial, according to
+    the Kolmogorov 0-1 law.) So, another way of saying
+    that a measure preserving system is ergodic is that
+    its $\sigma$-algebra $\mathcal{I}$ of invariant
+    events is trivial.
 
-    There is an equivalent way to characterize ergodicity in terms of invariant random variables rather than events, given in the following exercise.
+    There is an equivalent way to characterize ergodicity
+    in terms of invariant random variables rather than
+    events, given in the following exercise.
 
     |> Exercise
-        If $(\Omega, \mathcal{F}, \mathrm{P}, T)$ is a measure preserving system, a random variable $X:\Omega\to\R$ is called $\textbf{invariant}$ if $X\circ T \equiv X$ almost surely. Prove that a random variable is invariant if and only if it is measurable with respect to $\mathcal{I}$, and that a system is ergodic if and only the only invariant random variables are almost surely constant.
+        If $(\Omega, \mathcal{F}, \mathrm{P}, T)$ is a
+        measure preserving system, a random variable
+        $X:\Omega\to\R$ is called $\textbf{invariant}$ if
+        $X\circ T \equiv X$ almost surely. Prove that a
+        random variable is invariant if and only if it is
+        measurable with respect to $\mathcal{I}$, and that a
+        system is ergodic if and only the only invariant
+        random variables are almost surely constant.
 
     |> Exercise
-        Show that a measure preserving system $(\Omega, \mathcal{F}, \mathrm{P}, T)$ is ergodic if and only if the probability measure $\mathrm{P}$ _cannot_ be represented in the form
+        Show that a measure preserving system
+        $(\Omega, \mathcal{F}, \mathrm{P}, T)$ is ergodic if
+        and only if the probability measure $\mathrm{P}$
+        _cannot_ be represented in the form
 
-        $$ \mathrm{P} = \alpha Q_1 + (1-\alpha)Q_2, $$
+        $$
+        \mathrm{P} = \alpha Q_1 + (1-\alpha)Q_2,
+        $$
 
-        where $0<\alpha<1$ and $Q_1, Q_2$ are two distinct $T$-invariant probability measures on the measurable space $(\Omega, \mathcal{F})$. (In words, this means that an ergodic system cannot be decomposed into a nontrivial convex combination of two simpler systems.)
+        where $0<\alpha<1$ and $Q_1, Q_2$ are two distinct
+        $T$-invariant probability measures on the measurable
+        space $(\Omega, \mathcal{F})$. (In words, this means
+        that an ergodic system cannot be decomposed into a
+        nontrivial convex combination of two simpler systems.)
 
-    To get a feel for this new concept, let us examine which of the measure preserving systems discussed in the previous section are ergodic.
+    To get a feel for this new concept, let us examine
+    which of the measure preserving systems discussed in
+    the previous section are ergodic.
 
     |> ol
         class=list
         data-list-style=decimal
         |> li
-            $\textbf{i.i.d. sequence.}$ Let $A$ be an invariant event in the i.i.d.\ shift. $A$ is in the product $\sigma$-algebra, in other words, it is measurable with respect to $\sigma(X_1,X_2,\ldots)$, where $X_1,X_2,\ldots$ denote the coordinate functions of the product space. Then
+            $\textbf{i.i.d. sequence.}$ Let $A$ be an invariant
+            event in the i.i.d.\ shift. $A$ is in the product
+            $\sigma$-algebra, in other words, it is measurable
+            with respect to $\sigma(X_1,X_2,\ldots)$, where
+            $X_1,X_2,\ldots$ denote the coordinate functions of
+            the product space. Then
 
-            $$ S^{-1}(A) = \{ \omega\in \R^\N \, : \, (\omega_2,\omega_3,\ldots) \in A \} $$
+            $$
+            S^{-1}(A) = \{ \omega\in \R^\N \, : \, (\omega_2,\omega_3,\ldots) \in A \}
+            $$
 
-            is measurable with respect to $\sigma(X_2,X_3,\ldots)$, and similarly, for any $n\ge 1$,
+            is measurable with respect to
+            $\sigma(X_2,X_3,\ldots)$, and similarly, for any
+            $n\ge 1$,
 
-            $$ S^{-n}(A) = \{ \omega\in \R^\N \, : \, (\omega_{n+1},\omega_{n+2},\ldots) \in A \} $$
+            $$
+            S^{-n}(A) = \{ \omega\in \R^\N \, : \, (\omega_{n+1},\omega_{n+2},\ldots) \in A \}
+            $$
 
-            is in $\sigma(X_{n+1},X_{n+2},\ldots)$. It follows that
+            is in $\sigma(X_{n+1},X_{n+2},\ldots)$. It follows
+            that
 
-            $$ A'=\bigcap_{N=1}^\infty \bigcup_{n=N}^\infty S^{-n}(A) = \{ S^{-n}(A) \textrm{ i.o.} \} $$
+            $$
+            A'=\bigcap_{N=1}^\infty \bigcup_{n=N}^\infty S^{-n}(A) = \{ S^{-n}(A) \textrm{ i.o.} \}
+            $$
 
-            is a tail event, and hence has probability $0$ or $1$ by the Kolmogorov 0-1 law. But we assumed that $A$ was invariant, which implies that $A=S^{-n}(A)$ almost surely for all $n\ge 1$, and therefore also $A=A'$ almost surely. It follows that $A$ is also a 0-1 event(*>>fn-invariant-tail). We have proved:
+            is a tail event, and hence has probability $0$ or $1$
+            by the Kolmogorov 0-1 law. But we assumed that $A$
+            was invariant, which implies that $A=S^{-n}(A)$
+            almost surely for all $n\ge 1$, and therefore also
+            $A=A'$ almost surely. It follows that $A$ is also a
+            0-1 event(*>>fn-invariant-tail). We have proved:
 
             |> Lemma
                 handle=lem-iid-ergodic
-
                 Any i.i.d.\ shift map is ergodic.
+
         |> li
-            $\textbf{A shift-equivariant function of an ergodic stationary sequence.}$(*>>fn-factor-map) Let $(X_n)_n$ be a stationary sequence whose associated shift system is ergodic (such a sequence is called simply a $\textbf{stationary ergodic sequence}$), and let $Y_n$ be defined as in (>>eq:shift-equivariant).
+            $\textbf{A shift-equivariant function of an ergodic
+            stationary sequence.}$(*>>fn-factor-map)
+            Let $(X_n)_n$ be a stationary sequence whose
+            associated shift system is ergodic (such a sequence is
+            called simply a
+            $\textbf{stationary ergodic sequence}$), and let $Y_n$
+            be defined as in (>>eq:shift-equivariant).
 
             |> Lemma
                 The stationary sequence $(Y_n)_n$ is also ergodic.
 
             |> Proof
-                Let $A$ be an invariant event for the $(Y_n)$ sequence. We can think of $A$ as ``living'' in the original product space $\R^\N$ associated with the shift map for the sequence $(X_n)_n$. (Formally, the sequence $(Y_n)_n$ is an infinite-dimensional random vector, i.e., it maps the $\R^\N$ ``of'' the $(X_n)_n$ sequence into a ``different copy'' of $\R^\N$; by pulling back the event $A$ with respect to this mapping we get a ``copy'' of $A$ in the original product space.) The fact that $A$ is invariant under shifting the $Y_n$'s means it is also invariant under the original shift of the $X_n$'s, hence is a 0-1 event by the assumption that the $(X_n)_n$ sequence is ergodic.
+                Let $A$ be an invariant event for the $(Y_n)$
+                sequence. We can think of $A$ as ``living'' in the
+                original product space $\R^\N$ associated with the
+                shift map for the sequence $(X_n)_n$. (Formally, the
+                sequence $(Y_n)_n$ is an infinite-dimensional random
+                vector, i.e., it maps the $\R^\N$ ``of'' the $(X_n)_n$
+                sequence into a ``different copy'' of $\R^\N$; by
+                pulling back the event $A$ with respect to this
+                mapping we get a ``copy'' of $A$ in the original
+                product space.) The fact that $A$ is invariant under
+                shifting the $Y_n$'s means it is also invariant under
+                the original shift of the $X_n$'s, hence is a 0-1
+                event by the assumption that the $(X_n)_n$ sequence
+                is ergodic.
+
         |> li
-            $\textbf{Stationary finite-state Markov chains.}$ A Markov chain is called $\textbf{irreducible}$ if any state can be reached in a sequence of steps from any other state. It is not hard to prove (see [Dur2010, Example~7.1.7, p.~281]) that a stationary finite-state Markov chain is ergodic if and only if it is irreducible.
+            $\textbf{Stationary finite-state Markov chains.}$ A
+            Markov chain is called $\textbf{irreducible}$ if any
+            state can be reached in a sequence of steps from any
+            other state. It is not hard to prove (see [Dur2010,
+            Example~7.1.7, p.~281]) that a stationary finite-state
+            Markov chain is ergodic if and only if it is
+            irreducible.
+
         |> li
-            $\textbf{Tossing a randomly chosen coin.}$ In this experiment we have
+            $\textbf{Tossing a randomly chosen coin.}$ In this
+            experiment we have
 
-            $$ U = \lim_{n\to\infty} \frac{1}{n}\sum_{k=1}^n X_k $$
+            $$
+            U = \lim_{n\to\infty} \frac{1}{n}\sum_{k=1}^n X_k
+            $$
 
-            by the strong law of large numbers (conditioned on the value of $U$). So, the random coin bias $U$ is an invariant random variable, and thus the sequence $(X_n)_n$ is ergodic if and only if $U$ is a.s.\ constant (equivalently, if and only if the sequence is i.i.d.).
+            by the strong law of large numbers (conditioned on
+            the value of $U$). So, the random coin bias $U$ is an
+            invariant random variable, and thus the sequence
+            $(X_n)_n$ is ergodic if and only if $U$ is a.s.\
+            constant (equivalently, if and only if the sequence is
+            i.i.d.).
 
-            We should note that this process is in some sense an archetypical example of a non-ergodic process, in the sense that non-ergodicity is precisely the behavior in which the experiment chooses ``at the dawn of time'' some random data or information (represented by the $\sigma$-algebra of invariant events), and then performs a stationary ergodic sequence of experiments that depends on this initial data. In other words, a general stationary sequence can always be represented as a mixture, or a kind of weighted average, of stationary ergodic sequences, where the weights in the mixture correspond to the probability distribution of the initial data. (The precise formulation of this statement leads to the concept of the $\textbf{ergodic decomposition}$ of a measure preserving system, which we will not discuss in detail since it requires some slightly advanced notions from functional analysis.)
+            We should note that this process is in some sense an
+            archetypical example of a non-ergodic process, in the
+            sense that non-ergodicity is precisely the behavior in
+            which the experiment chooses ``at the dawn of time''
+            some random data or information (represented by the
+            $\sigma$-algebra of invariant events), and then
+            performs a stationary ergodic sequence of experiments
+            that depends on this initial data. In other words, a
+            general stationary sequence can always be represented
+            as a mixture, or a kind of weighted average, of
+            stationary ergodic sequences, where the weights in the
+            mixture correspond to the probability distribution of
+            the initial data. (The precise formulation of this
+            statement leads to the concept of the
+            $\textbf{ergodic decomposition}$ of a measure
+            preserving system, which we will not discuss in detail
+            since it requires some slightly advanced notions from
+            functional analysis.)
 
             |> Exercise
-                Show that the $\sigma$-algebra $\mathcal{I}$ of invariant subsets for this process coincides with the $\sigma$-algebra $\sigma(U)$ generated by the random coin bias $U$. That means that, not only is $U$ an invariant random variable, but any other invariant random variable can be computed once the value of $U$ is known.
+                Show that the $\sigma$-algebra $\mathcal{I}$ of
+                invariant subsets for this process coincides with the
+                $\sigma$-algebra $\sigma(U)$ generated by the random
+                coin bias $U$. That means that, not only is $U$ an
+                invariant random variable, but any other invariant
+                random variable can be computed once the value of $U$
+                is known.
+
         |> li
-            $\textbf{Pólya's urn.}$ The limiting fraction $Y$ of white balls in the urn (see (>>eq:polya-as-conv)) is an invariant random variable. By (>>eq:polya-beta-dist), it is non-constant, which shows that the shift associated  with the stationary sequence of indicators $(I_n)_n$ in Pólya's urn experiment is not ergodic.
+            $\textbf{Pólya's urn.}$ The limiting fraction $Y$ of
+            white balls in the urn (see (>>eq:polya-as-conv)) is
+            an invariant random variable. By
+            (>>eq:polya-beta-dist), it is non-constant, which
+            shows that the shift associated  with the stationary
+            sequence of indicators $(I_n)_n$ in Pólya's urn
+            experiment is not ergodic.
 
-            It is an amusing and rather counter-intuitive fact that the Pólya urn experiment is actually a special case of the ``tossing a randomly chosen coin'' family of examples discussed above. In fact, the ``random coin bias'' $U$ is equal to the limiting fraction $Y$ of white balls in the urn. To see this, note that by a short computation (>>eq:polyaurn-formula) can be massaged into the form
+            It is an amusing and rather counter-intuitive fact
+            that the Pólya urn experiment is actually a special
+            case of the ``tossing a randomly chosen coin'' family
+            of examples discussed above. In fact, the ``random
+            coin bias'' $U$ is equal to the limiting fraction $Y$
+            of white balls in the urn. To see this, note that by a
+            short computation (>>eq:polyaurn-formula) can be
+            massaged into the form
 
-            $$ \mathrm{P}(I_1=x_1, \ldots, I_n=x_n) = \frac{B(a+k, b+n-k)}{B(a,b)}, $$
+            $$
+            \mathrm{P}(I_1=x_1, \ldots, I_n=x_n) = \frac{B(a+k, b+n-k)}{B(a,b)},
+            $$
 
-            where $B(u,v)=\int_0^1 x^{u-1}(1-x)^{v-1}\,dx$ denotes the Euler beta function, and $k=\sum_{j=1}^n x_j$ (check!). We can further recognize the quantity on the right hand side as an expectation, namely
+            where $B(u,v)=\int_0^1 x^{u-1}(1-x)^{v-1}\,dx$
+            denotes the Euler beta function, and
+            $k=\sum_{j=1}^n x_j$ (check!). We can further
+            recognize the quantity on the right hand side as an
+            expectation, namely
 
-            $$ \frac{B(a+k, b+n-k)}{B(a,b)}= \frac{1}{B(a,b)}\int_0^1 x^{a-1}(1-x)^{b-1} x^k(1-x)^{n-k}\,dx = \mathbf{E}(U^k(1-U)^{n-k}), $$
+            $$
+            \frac{B(a+k, b+n-k)}{B(a,b)}= \frac{1}{B(a,b)}\int_0^1 x^{a-1}(1-x)^{b-1} x^k(1-x)^{n-k}\,dx = \mathbf{E}(U^k(1-U)^{n-k}),
+            $$
 
-            where $U\sim \operatorname{Beta}(a,b)$. Thus, we have the amazing fact that, in effect, Pólya's urn behaves as if at the beginning of time, it _chooses_ the random limiting fraction $Y$ of white balls (without telling the experimenter!), and subsequently tosses an i.i.d.\ sequence of coin tosses with bias $Y$ to choose the successive colors of the balls that get added to the urn. Furthermore, by the exercise above, the $\sigma$-algebra of invariant subsets is the one generated by $Y$, so intuitively one can say that this random variable measures the precise extent of non-ergodicity in the process, i.e., the decomposition of the process into its ergodic components.
+            where $U\sim \operatorname{Beta}(a,b)$. Thus, we have
+            the amazing fact that, in effect, Pólya's urn behaves
+            as if at the beginning of time, it _chooses_ the
+            random limiting fraction $Y$ of white balls (without
+            telling the experimenter!), and subsequently tosses an
+            i.i.d.\ sequence of coin tosses with bias $Y$ to
+            choose the successive colors of the balls that get
+            added to the urn. Furthermore, by the exercise above,
+            the $\sigma$-algebra of invariant subsets is the one
+            generated by $Y$, so intuitively one can say that
+            this random variable measures the precise extent of
+            non-ergodicity in the process, i.e., the decomposition
+            of the process into its ergodic components.
+
         |> li
-            $\textbf{Rotation of the circle.}$ The following result has a natural number theoretic interpretation, which we'll discuss later after proving the Birkhoff pointwise ergodic theorem.
+            $\textbf{Rotation of the circle.}$ The following
+            result has a natural number theoretic interpretation,
+            which we'll discuss later after proving the Birkhoff
+            pointwise ergodic theorem.
 
             |> Theorem
-                The circle rotation map $R_\alpha$ is ergodic if and only if $\alpha$ is irrational.
+                The circle rotation map $R_\alpha$ is ergodic if and
+                only if $\alpha$ is irrational.
 
             |> Proof
                 If $\alpha=p/q$ is rational, the set
 
-                $$ E = \left[0, \tfrac{1}{2q}\right]
+                $$
+                E = \left[0, \tfrac{1}{2q}\right]
                 \cup \left[\tfrac{1}{q}, \tfrac{3}{2q}\right]
                 \cup \left[\tfrac{2}{q}, \tfrac{5}{2q}\right]
                 \cup \left[\tfrac{3}{q}, \tfrac{7}{2q}\right]
@@ -110,13 +272,24 @@
                 \cup \left[\tfrac{q-1}{q}, \tfrac{2q-1}{2q}\right]
                 $$
 
-                is an example of a nontrivial invariant set. Conversely, assume that $\alpha$ is irrational. Let $A \subset [0,1]$ be an invariant event. The indicator variable $\mathbf{1}_A$ is a bounded measurable function, hence an element of $L_2[0,1]$, and can therefore be expanded in the Fourier basis
-
-                $$ \mathbf{1}_A(x) = \sum_{n=-\infty}^\infty c_n e^{2\pi inx}. $$
-
-                (The equation represents an equality in $L_2$, i.e., it is true for almost every $x\in [0,1]$.) The coefficients $c_n$ in the expansion are given by $c_n = \frac{1}{2\pi} \int_0^1 \mathbf{1}_A(x) e^{-2\pi i n x}\,dx$. Then we have
+                is an example of a nontrivial invariant set.
+                Conversely, assume that $\alpha$ is irrational. Let
+                $A \subset [0,1]$ be an invariant event. The
+                indicator variable $\mathbf{1}_A$ is a bounded
+                measurable function, hence an element of $L_2[0,1]$,
+                and can therefore be expanded in the Fourier basis
 
                 $$
+                \mathbf{1}_A(x) = \sum_{n=-\infty}^\infty c_n e^{2\pi inx}.
+                $$
+
+                (The equation represents an equality in $L_2$, i.e.,
+                it is true for almost every $x\in [0,1]$.) The
+                coefficients $c_n$ in the expansion are given by
+                $c_n = \frac{1}{2\pi} \int_0^1 \mathbf{1}_A(x)
+                e^{-2\pi i n x}\,dx$.
+                Then we have
+
                 \begin{align*}
                 \mathbf{1}_{R_\alpha^{-1}(A)}(x) &= (\mathbf{1}_A\circ R_\alpha)(x) = \mathbf{1}_A(R_\alpha(x))
                 = \sum_{n=-\infty}^\infty c_n e^{2\pi i n R_\alpha(x)}
@@ -125,37 +298,112 @@
                 = \sum_{n=-\infty}^\infty c_n e^{2\pi i n (x+\alpha)}
                 = \sum_{n=-\infty}^\infty d_n  e^{2\pi i n x},
                 \end{align*}
-                $$
 
-                where we denote $d_n = c_n e^{2\pi in\alpha}$. Since $A$ is invariant, i.e., $\mathbf{1}_{R_\alpha^{-1}(A)}=\mathbf{1}_A$ a.s., we get that $c_n=d_n$ for all $n\in\Z$. But $\alpha$ is irrational, so $e^{2\pi in\alpha}\neq 1$ if $n\neq 0$. It follows that $c_n=0$ for all $n\neq 0$, which leaves only the constant Fourier coefficient, i.e., $ \mathbf{1}_A \equiv c_0$ a.s., which proves that $A$ is a trivial event.
-        |> li
-            *The $2x\textrm{ mod }1$ map.* As we discussed earlier, this system is equivalent to the $(\tfrac12,\tfrac12)$ Bernoulli shift, so by Lemma >>lem-iid-ergodic above, the doubling map is ergodic.
-        |> li
-            $\textbf{The continued fraction map.}$ The Gauss map is ergodic, a fact which has important consequences (which we will discuss in the next chapter) for understanding the distribution of continued fraction quotients of a typical real number. There are many proofs of this result. See for example the book _Ergodic Theory and Information_ by P.\ Billingsley, and the paper by Bowen cited in example 13 below.
-        |> li
-            *The $3x+1$ map.* K.\ R.\ Matthews and A.\ M.\ Watts studied the extension $\tilde{T}$ of the $3x+1$ map to the $2$-adic integers in a 1983 paper, and in particular proved that $\tilde{T}$ is ergodic (see the survey by Lagarias mentioned in Section 6.3).
-        |> li
-            $\textbf{Billiards.}$ In Chapter 5 we described some example of billiard systems which are known to be ergodic, and some which aren't (for relatively trivial reasons). In general it is extremely difficult to prove that a given billiard system is ergodic, but, similarly to the example of Markov chains described above, there is a kind of philosophical principle (that applies to billiard and other types of dynamical systems) that says that unless a system is non-ergodic for a relatively obvious or trivial reason (e.g., because there is some obvious quantity that is conserved such as the energy of a mechanical system), one would expect the system to be ergodic, even though in practice one may have no idea how to prove it in a given situation. As with any philosophical principle, one should take care in deciding how to apply it(*>>fn-phil-principle).
-        |> li
-            $\textbf{Hamiltonian flow.}$ The situation is similar to that of billiard systems: most systems are assumed to be ergodic unless there are obvious reasons why they are not, but as far as I know this cannot be proved in virtually any example which has any real-world relevance.
-        |> li
-            $\textbf{Geodesic flow.}$ Some geodesic flows are not ergodic (e.g., the sphere), and others are (for example, hyperbolic space). The main property required to have ergodicity is negative curvature, but I am not familiar with the specific details. It is also interesting to note that there is a beautiful theory linking the continued fraction map and other dynamical systems with a number-theoretic flavor to geodesic flows on compact hyperbolic surfaces (in the case of the continued fraction map, it can be related to the geodesic flow on the $\textbf{modular surface}$ $\mathbb{H}/PSL(2,\mathbb{Z})$, the quotient of the hyperbolic plane by the modular group).
-        |> li
-            $\textbf{The logistic map.}$ This map is ergodic, a fact that follows as a consequence of a much more general result proved in the paper _Invariant measures for Markov maps of the interval_, by R.\ Bowen (_Commun. Math. Phys._ 69 (1979), 1--17).
+                where we denote $d_n = c_n e^{2\pi in\alpha}$. Since
+                $A$ is invariant, i.e.,
+                $\mathbf{1}_{R_\alpha^{-1}(A)}=\mathbf{1}_A$ a.s., we
+                get that $c_n=d_n$ for all $n\in\Z$. But $\alpha$ is
+                irrational, so $e^{2\pi in\alpha}\neq 1$ if $n\neq 0$.
+                It follows that $c_n=0$ for all $n\neq 0$, which
+                leaves only the constant Fourier coefficient, i.e.,
+                $\mathbf{1}_A \equiv c_0$ a.s., which proves that $A$
+                is a trivial event.
 
+        |> li
+            *The $2x\textrm{ mod }1$ map.* As we discussed
+            earlier, this system is equivalent to the
+            $(\tfrac12,\tfrac12)$ Bernoulli shift, so by Lemma
+            >>lem-iid-ergodic above, the doubling map is ergodic.
+
+        |> li
+            $\textbf{The continued fraction map.}$ The Gauss map
+            is ergodic, a fact which has important consequences
+            (which we will discuss in the next chapter) for
+            understanding the distribution of continued fraction
+            quotients of a typical real number. There are many
+            proofs of this result. See for example the book
+            _Ergodic Theory and Information_ by P.\ Billingsley,
+            and the paper by Bowen cited in example 13 below.
+
+        |> li
+            *The $3x+1$ map.* K.\ R.\ Matthews and A.\ M.\ Watts
+            studied the extension $\tilde{T}$ of the $3x+1$ map
+            to the $2$-adic integers in a 1983 paper, and in
+            particular proved that $\tilde{T}$ is ergodic (see
+            the survey by Lagarias mentioned in Section 6.3).
+
+        |> li
+            $\textbf{Billiards.}$ In Chapter 5 we described some
+            example of billiard systems which are known to be
+            ergodic, and some which aren't (for relatively trivial
+            reasons). In general it is extremely difficult to
+            prove that a given billiard system is ergodic, but,
+            similarly to the example of Markov chains described
+            above, there is a kind of philosophical principle
+            (that applies to billiard and other types of dynamical
+            systems) that says that unless a system is non-ergodic
+            for a relatively obvious or trivial reason (e.g.,
+            because there is some obvious quantity that is
+            conserved such as the energy of a mechanical system),
+            one would expect the system to be ergodic, even though
+            in practice one may have no idea how to prove it in a
+            given situation. As with any philosophical principle,
+            one should take care in deciding how to apply
+            it(*>>fn-phil-principle).
+
+        |> li
+            $\textbf{Hamiltonian flow.}$ The situation is similar
+            to that of billiard systems: most systems are assumed
+            to be ergodic unless there are obvious reasons why
+            they are not, but as far as I know this cannot be
+            proved in virtually any example which has any
+            real-world relevance.
+
+        |> li
+            $\textbf{Geodesic flow.}$ Some geodesic flows are not
+            ergodic (e.g., the sphere), and others are (for
+            example, hyperbolic space). The main property required
+            to have ergodicity is negative curvature, but I am not
+            familiar with the specific details. It is also
+            interesting to note that there is a beautiful theory
+            linking the continued fraction map and other dynamical
+            systems with a number-theoretic flavor to geodesic
+            flows on compact hyperbolic surfaces (in the case of
+            the continued fraction map, it can be related to the
+            geodesic flow on the $\textbf{modular surface}$
+            $\mathbb{H}/PSL(2,\mathbb{Z})$, the quotient of the
+            hyperbolic plane by the modular group).
+
+        |> li
+            $\textbf{The logistic map.}$ This map is ergodic, a
+            fact that follows as a consequence of a much more
+            general result proved in the paper _Invariant measures
+            for Markov maps of the interval_, by R.\ Bowen
+            (_Commun. Math. Phys._ 69 (1979), 1--17).
     |> hr
-
     |> Footnote
         handle=fn-invariant-tail
-
-        The above argument shows that $\mathcal{I}\subseteq\mathcal{T}$ (the $\sigma$-algebra of invariant subsets is contained in the tail $\sigma$-algebra), as long as we identify sets which are a.s.\ equal.
+        The above argument shows that
+        $\mathcal{I}\subseteq\mathcal{T}$ (the
+        $\sigma$-algebra of invariant subsets is contained in
+        the tail $\sigma$-algebra), as long as we identify
+        sets which are a.s.\ equal.
 
     |> Footnote
         handle=fn-factor-map
-
-        In more abstract treatments of ergodic theory, this example would be called a $\textbf{factor map}$ or $\textbf{homomorphism}$. An important family of problems in ergodic theory is concerned with identifying when one measure preserving system can be obtained as a homomorphism of another (usually simpler) measure preserving system, and especially when one can find an _invertible_ homomorphism, also known as an $\textbf{isomorphism}$, between the two systems.
+        In more abstract treatments of ergodic theory, this
+        example would be called a $\textbf{factor map}$ or
+        $\textbf{homomorphism}$. An important family of
+        problems in ergodic theory is concerned with
+        identifying when one measure preserving system can be
+        obtained as a homomorphism of another (usually
+        simpler) measure preserving system, and especially
+        when one can find an _invertible_ homomorphism, also
+        known as an $\textbf{isomorphism}$, between the two
+        systems.
 
     |> Footnote
         handle=fn-phil-principle
-
-        Note: a _philosophical principle_ is what mathematicians invent when they can't say anything rigorous.
+        Note: a _philosophical principle_ is what
+        mathematicians invent when they can't say anything
+        rigorous.

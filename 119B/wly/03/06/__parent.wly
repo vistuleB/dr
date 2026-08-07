@@ -1,7 +1,8 @@
 |> Section
     title=Linear Quadratic Performance control
 
-    In this section we consider control problems which take the general form
+    In this section we consider control problems which
+    take the general form
 
     $$
     \begin{equation} eq:lqp-linear##<<
@@ -11,7 +12,16 @@
     \end{equation}
     $$
 
-    where the state $\mathbf{x}$ of the dynamical system is an $n$-dimensional vector, the control variable $\mathbf{u}$ is an $m$-dimensional vector, and $A, B$ are linear operators (i.e., $A$ is an $n\times n$ matrix and $B$ is an $n\times m$ matrix). The goal of the control will be to bring the dynamical variable $\mathbf{x}$ to the origin. Moreover, we associate with any proposed solution a _cost functional_ that measures how effective it is. The cost functional will take the form
+    where the state $\mathbf{x}$ of the dynamical system
+    is an $n$-dimensional vector, the control variable
+    $\mathbf{u}$ is an $m$-dimensional vector, and $A, B$
+    are linear operators (i.e., $A$ is an $n\times n$
+    matrix and $B$ is an $n\times m$ matrix). The goal of
+    the control will be to bring the dynamical variable
+    $\mathbf{x}$ to the origin. Moreover, we associate
+    with any proposed solution a _cost functional_ that
+    measures how effective it is. The cost functional will
+    take the form
 
     $$
     \begin{equation} eq:lqp-quadratic##<<
@@ -22,7 +32,21 @@
     \end{equation}
     $$
 
-    where $-\infty<t_1<t_2\le \infty$, $P$ is an $n\times n$ positive-definite matrix and $Q$ is an $m\times m$ positive-definite matrix. The idea is that we want to incentivize the controller to bring $\mathbf{x}$ to the origin as fast as possible by ``pushing'' on it as hard as possible; at the same time, in a typical situation the ``pushing'' also incurs a price since it uses resources such as electricity, fuel, etc. The problem of optimal control is to find the feedback-based solution $\mathbf{u}=\mathbf{u}(\mathbf{x})$ that minimizes the overall cost functional, which finds a balance between the cost of resources and the desire to achieve good performance. It turns out that the solution has the form
+    where $-\infty<t_1<t_2\le \infty$, $P$ is an
+    $n\times n$ positive-definite matrix and $Q$ is an
+    $m\times m$ positive-definite matrix. The idea is
+    that we want to incentivize the controller to bring
+    $\mathbf{x}$ to the origin as fast as possible by
+    ``pushing'' on it as hard as possible; at the same
+    time, in a typical situation the ``pushing'' also
+    incurs a price since it uses resources such as
+    electricity, fuel, etc. The problem of optimal control
+    is to find the feedback-based solution
+    $\mathbf{u}=\mathbf{u}(\mathbf{x})$ that minimizes
+    the overall cost functional, which finds a balance
+    between the cost of resources and the desire to
+    achieve good performance. It turns out that the
+    solution has the form
 
     $$
     \begin{equation} eq:lqp-gain-mat##<<
@@ -32,6 +56,25 @@
     \end{equation}
     $$
 
-    where $K$ is a time-dependent linear operator which we will identify. Usually $K$ is expressed in the form $K(t_2-t)$, i.e., as a function of the ``time-to-go'' variable $T=t_2-t$. The most interesting case is that of an infinite time horizon: $t_2=\infty$; in this case we look for a stationary solution in which $K$ is a constant matrix, called the _gain matrix_.
+    where $K$ is a time-dependent linear operator which
+    we will identify. Usually $K$ is expressed in the
+    form $K(t_2-t)$, i.e., as a function of the
+    ``time-to-go'' variable $T=t_2-t$. The most
+    interesting case is that of an infinite time horizon:
+    $t_2=\infty$; in this case we look for a stationary
+    solution in which $K$ is a constant matrix, called
+    the _gain matrix_.
 
-    Note that the mapping that takes a pair $(\mathbf{u},\mathbf{a})$ where $\mathbf{u}$ is the control function and $\mathbf{a}$ is the initial condition $\mathbf{x}(t_1)=\mathbf{a}$ to the solution of (>>eq:lqp-linear) is linear, and the cost functional (>>eq:lqp-quadratic) is a quadratic expression in $\mathbf{x}$ and $\mathbf{u}$. Thus this type of problem is referred to as Linear Quadratic Performance (LQP) control. The main advantage of LQP control problems is that they have an explicit solution in terms of an ordinary differential equation, the Ricatti equation, which furthermore is easy to solve numerically.
+    Note that the mapping that takes a pair
+    $(\mathbf{u},\mathbf{a})$ where $\mathbf{u}$ is the
+    control function and $\mathbf{a}$ is the initial
+    condition $\mathbf{x}(t_1)=\mathbf{a}$ to the
+    solution of (>>eq:lqp-linear) is linear, and the cost
+    functional (>>eq:lqp-quadratic) is a quadratic
+    expression in $\mathbf{x}$ and $\mathbf{u}$. Thus
+    this type of problem is referred to as Linear
+    Quadratic Performance (LQP) control. The main
+    advantage of LQP control problems is that they have an
+    explicit solution in terms of an ordinary differential
+    equation, the Ricatti equation, which furthermore is
+    easy to solve numerically.

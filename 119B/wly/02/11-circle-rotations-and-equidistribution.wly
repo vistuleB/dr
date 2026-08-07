@@ -1,17 +1,23 @@
 |> Section
     title=Circle rotations and equidistribution on $(0,1)$
 
-    Our next application of the ergodic theorem will be to the circle rotation map $R_\alpha(x)=x+\alpha\textrm{ mod }1$. Note that $R_\alpha^n(x)=x+n\alpha\textrm{ mod }1 = \left\{ x+n\alpha \right\}$ (where $\left\{u\right\}=u-\lfloor u \rfloor $ denotes the fractional part of a real number $u$).
+    Our next application of the ergodic theorem will be
+    to the circle rotation map
+    $R_\alpha(x)=x+\alpha\textrm{ mod }1$. Note that
+    $R_\alpha^n(x)=x+n\alpha\textrm{ mod }1 = \left\{
+    x+n\alpha \right\}$
+    (where $\left\{u\right\}=u-\lfloor u \rfloor$ denotes
+    the fractional part of a real number $u$).
 
     |> Theorem
-
-        The map $R_\alpha$ is ergodic if and only if $\alpha$ is irrational.
+        The map $R_\alpha$ is ergodic if and only if $\alpha$
+        is irrational.
 
     |> Proof
-
         If $\alpha=p/q$ is rational, the set
 
-        $$ E = \left[0, \tfrac{1}{2q}\right]
+        $$
+        E = \left[0, \tfrac{1}{2q}\right]
         \cup \left[\tfrac{1}{q}, \tfrac{3}{2q}\right]
         \cup \left[\tfrac{2}{q}, \tfrac{5}{2q}\right]
         \cup \left[\tfrac{3}{q}, \tfrac{7}{2q}\right]
@@ -19,17 +25,31 @@
         \cup \left[\tfrac{q-1}{q}, \tfrac{2q-1}{2q}\right]
         $$
 
-        is an example of a nontrivial invariant set. The other direction (that if $\alpha$ is irrational then the map is ergodic) can be proved using Fourier series. Here is a sketch of the proof. The idea is to check the ergodic theorem by taking some well-behaved function $g:[0,1)\to\mathbb{R}$ and looking at sums of the form
+        is an example of a nontrivial invariant set. The
+        other direction (that if $\alpha$ is irrational then
+        the map is ergodic) can be proved using Fourier
+        series. Here is a sketch of the proof. The idea is to
+        check the ergodic theorem by taking some well-behaved
+        function $g:[0,1)\to\mathbb{R}$ and looking at sums
+        of the form
 
-        $$
         \begin{align*}
         \mu_x^{(n)}(g) = \frac{1}{n} \sum_{k=0}^{n-1} g(R_\alpha^k(x))
         \end{align*}
-        $$
 
-        (such sums are called _ergodic averages_, since they represent an averaging of the values of $g$ over orbits of $x$). It can be shown that if the averages converge to the ``ideal average'' $\int_0^1 g(x)\,dx$ (the average of $g$ with respect to the invariant measure, which in this case is simply Lebesgue measure) for a sufficiently large family of functions $g$, then the map is ergodic. It turns out that for the circle rotation map, this is particularly simple to check when $g_m(x)=e^{2\pi i m x}$ is a complex exponential, $m\in\mathbb{Z}$. For $m=0$ the claim is trivial, and for $m\neq 0$ we have
+        (such sums are called _ergodic averages_, since they
+        represent an averaging of the values of $g$ over
+        orbits of $x$). It can be shown that if the averages
+        converge to the ``ideal average'' $\int_0^1 g(x)\,dx$
+        (the average of $g$ with respect to the invariant
+        measure, which in this case is simply Lebesgue
+        measure) for a sufficiently large family of functions
+        $g$, then the map is ergodic. It turns out that for
+        the circle rotation map, this is particularly simple
+        to check when $g_m(x)=e^{2\pi i m x}$ is a complex
+        exponential, $m\in\mathbb{Z}$. For $m=0$ the claim is
+        trivial, and for $m\neq 0$ we have
 
-        $$
         \begin{align*}
         \mu_x^{(n)}(g_m) &=
         \frac{1}{n} \sum_{k=0}^{n-1} g_m(R_\alpha^k(x)) =
@@ -42,14 +62,16 @@
         &=
         \frac{1}{n} e^{2\pi i m x} \frac{1-e^{2\pi i n m \alpha}}{1-e^{2\pi i m \alpha}} \xrightarrow[n\to\infty]{}0=\int_0^1 e^{2\pi i m x}\,dx = \int_0^1 g_m(x)\,dx.
         \end{align*}
-        $$
 
-    Applying the ergodic theorem, we get (see the exercise below the proof) the following famous result in number theory, proved in 1909 and 1910 independently by Weyl, Sierpinski and Bohl.
+    Applying the ergodic theorem, we get (see the
+    exercise below the proof) the following famous result
+    in number theory, proved in 1909 and 1910
+    independently by Weyl, Sierpinski and Bohl.
 
     |> Theorem
         label=Equidistribution theorem
-
-        If $\alpha\in(0,1)$ is irrational then for any $0\le a<b\le 1$
+        If $\alpha\in(0,1)$ is irrational then for any
+        $0\le a<b\le 1$
 
         $$
         \begin{equation} eq:equidistribution1##<<
@@ -60,7 +82,6 @@
         $$
 
     |> Exercise
-
         The ergodic theorem only guarantees the result that
 
         $$
@@ -71,4 +92,9 @@
         \end{equation}
         $$
 
-        holds for all $x\in [0,1)$ except on a measure-0 set. Explain why in the case of the rotation map $R_\alpha$, the truth of this claim is independent of the initial point $x$, and therefore (>>eq:equidistribution1) follows from (>>eq:equidistribution2).
+        holds for all $x\in [0,1)$ except on a measure-0 set.
+        Explain why in the case of the rotation map
+        $R_\alpha$, the truth of this claim is independent of
+        the initial point $x$, and therefore
+        (>>eq:equidistribution1) follows from
+        (>>eq:equidistribution2).

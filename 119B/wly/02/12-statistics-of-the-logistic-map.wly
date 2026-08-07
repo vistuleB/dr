@@ -1,38 +1,47 @@
 |> Section
     title=Statistics of the logistic map $L_4$
 
-    As a final example of the application of the ergodic theorem, we justify our earlier claim that the logistic map $L_4$ can be understood statistically even though its orbits are chaotic. We rely on another unproved fact from ergodic theory, which is that $L_4$ is ergodic.
+    As a final example of the application of the ergodic
+    theorem, we justify our earlier claim that the
+    logistic map $L_4$ can be understood statistically
+    even though its orbits are chaotic. We rely on another
+    unproved fact from ergodic theory, which is that $L_4$
+    is ergodic.
 
     |> Theorem
+        For all $0\le a<b\le 1$ and for all $x\in[0,1]$
+        except on a set of measure $0$, we have
 
-        For all $0\le a<b\le 1$ and for all $x\in[0,1]$ except on a set of measure $0$, we have
-
-        $$
         \begin{align*}
         \frac{1}{n}\# &\left\{ 0\le k\le n-1\,:\, L_4^k(x) \in (a,b) \right\} \\
         & \xrightarrow[n\to\infty]{} \frac{1}{\pi} \int_a^b \frac{du}{\sqrt{u(1-u)}}
         = \frac{2}{\pi}\arcsin(\sqrt{b})-\arcsin(\sqrt{a}).
         \end{align*}
-        $$
 
     |> Exercise
-
         |> ol
             class=list
             data-list-style=decimal
-
             |> li
-                Prove that the logistic map $L_4$ is related to the tent map $\Lambda_2$ by
-
-                $$ \Lambda_2(x) = (h\circ L_4 \circ h^{-1})(x), $$
-
-                where $h(x) = \frac{2}{\pi}\arcsin(\sqrt{x})$. (Two interval maps that are related to each other via a relation of the type $T_1=h\circ T_2 h^{-1}$, where $h:I\to I$ is invertible, are called _conjugate maps_, and share many similar properties.)
-
-            |> li
-                Use this to prove that the tent map satisfies a similar statistical distribution result, namely that for all $x\in[0,1]$ except on a set of measure 0, we have
+                Prove that the logistic map $L_4$ is related to the
+                tent map $\Lambda_2$ by
 
                 $$
+                \Lambda_2(x) = (h\circ L_4 \circ h^{-1})(x),
+                $$
+
+                where $h(x) = \frac{2}{\pi}\arcsin(\sqrt{x})$. (Two
+                interval maps that are related to each other via a
+                relation of the type $T_1=h\circ T_2 h^{-1}$, where
+                $h:I\to I$ is invertible, are called _conjugate
+                maps_, and share many similar properties.)
+
+            |> li
+                Use this to prove that the tent map satisfies a
+                similar statistical distribution result, namely that
+                for all $x\in[0,1]$ except on a set of measure 0, we
+                have
+
                 \begin{align*}
                 \frac{1}{n}\#\left\{ 0\le k\le n-1\,:\, \Lambda_2^k(x) \in (a,b) \right\} \xrightarrow[n\to\infty]{} b-a.
                 \end{align*}
-                $$

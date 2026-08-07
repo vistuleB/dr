@@ -1,10 +1,20 @@
 |> Section
     title=Measure $0$ sets
 
-    A set $E\subset \mathbb{R}$ is called a _measure 0_ set if its Lebesgue measure is 0. Although we have not discussed (and do not plan to discuss) precise definitions of Lebesgue measure or of the notion of measurability, for the case of measure 0 sets there is an easy explicit definition. $E$ has measure 0 if and only if for any $\epsilon>0$, $E$ can be covered by a countable union of open intervals whose lengths add up to less than $\epsilon$:
+    A set $E\subset \mathbb{R}$ is called a _measure 0_
+    set if its Lebesgue measure is 0. Although we have not
+    discussed (and do not plan to discuss) precise
+    definitions of Lebesgue measure or of the notion of
+    measurability, for the case of measure 0 sets there is
+    an easy explicit definition. $E$ has measure 0 if and
+    only if for any $\epsilon>0$, $E$ can be covered by a
+    countable union of open intervals whose lengths add up
+    to less than $\epsilon$:
 
-    $$ \forall \epsilon>0\ \ \ E\subset\bigcup_{n=1}^\infty (a_n, b_n), \ \  \sum_{n=1}^\infty (b_n-a_n) < \epsilon \ \iff \ \textrm{measure 0.} $$
+    $$
+    \forall \epsilon>0\ \ \ E\subset\bigcup_{n=1}^\infty (a_n, b_n), \ \  \sum_{n=1}^\infty (b_n-a_n) < \epsilon \ \iff \ \textrm{measure 0.}
+    $$
 
     |> Exercise
-
-        Prove that any countable set $E\subset \mathbb{R}$ has measure 0.
+        Prove that any countable set $E\subset \mathbb{R}$
+        has measure 0.

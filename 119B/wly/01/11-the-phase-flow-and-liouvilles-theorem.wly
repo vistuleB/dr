@@ -1,88 +1,124 @@
 |> Section
     title=The phase flow and Liouville's theorem
 
-    Hamiltonian systems often have quantities which are conserved; for example, in autonmous systems we saw that the Hamiltonian itself is conserved. In other cases, if the Lagrangian does not depend on one of the generalized coordinates $q_j$, then $\frac{\partial L}{\partial q_j}=0$, so, by the Euler-Lagrange equation for that coordinate, the generalized momentum $p_j = \frac{\partial L}{\partial \dot{q}_j}$ is a conserved quantity (in such a case we say that $q_j$ is a _cyclic coordinate_). Such invariant quantities lead directly to the usual conservation laws from mechanics --- the conservation of energy, of momentum, and of angular momentum --- as well as to more exotic conserved quantities that arise in specific problems.
+    Hamiltonian systems often have quantities which are
+    conserved; for example, in autonmous systems we saw
+    that the Hamiltonian itself is conserved. In other
+    cases, if the Lagrangian does not depend on one of the
+    generalized coordinates $q_j$, then
+    $\frac{\partial L}{\partial q_j}=0$, so, by the
+    Euler-Lagrange equation for that coordinate, the
+    generalized momentum
+    $p_j = \frac{\partial L}{\partial \dot{q}_j}$ is a
+    conserved quantity (in such a case we say that $q_j$
+    is a _cyclic coordinate_). Such invariant quantities
+    lead directly to the usual conservation laws from
+    mechanics --- the conservation of energy, of momentum,
+    and of angular momentum --- as well as to more exotic
+    conserved quantities that arise in specific problems.
 
-    We now discuss a different kind of conserved quantity, one that is associated not with specific solutions, but rather with an entire family of solutions. What we will do is to start with an entire set of initial states in the phase space, then let those states evolve according to the dynamical equations. After some time $t$, the initial states have evolved to occupy some new set in the phase space. It turns out that the total _area_ of the set is conserved: this is the statement of Liouville's theorem.
+    We now discuss a different kind of conserved
+    quantity, one that is associated not with specific
+    solutions, but rather with an entire family of
+    solutions. What we will do is to start with an entire
+    set of initial states in the phase space, then let
+    those states evolve according to the dynamical
+    equations. After some time $t$, the initial states
+    have evolved to occupy some new set in the phase
+    space. It turns out that the total _area_ of the set
+    is conserved: this is the statement of Liouville's
+    theorem.
 
-    To state the theorem formally, given a Hamiltonian system (>>eq:hamiltoniansystem), for each point $\mathbf{x}=(p_0,q_0)\in\mathbb{R}^2$ and time $t\ge 0$, denote by $\varphi_t(\mathbf{x})$ the point $(p(t),q(t))$, where $(p(t),q(t))$ are the solutions to the equations (>>eq:hamiltoniansystem) with initial condition $p(0)=p_0, q(0)=q_0$. (We assume that the system is such that the solutions exist for all time $t\ge 0$.) Thus, for each $t\ge 0$ we have constructed a mapping
+    To state the theorem formally, given a Hamiltonian
+    system (>>eq:hamiltoniansystem), for each point
+    $\mathbf{x}=(p_0,q_0)\in\mathbb{R}^2$ and time
+    $t\ge 0$, denote by $\varphi_t(\mathbf{x})$ the point
+    $(p(t),q(t))$, where $(p(t),q(t))$ are the solutions
+    to the equations (>>eq:hamiltoniansystem) with initial
+    condition $p(0)=p_0, q(0)=q_0$. (We assume that the
+    system is such that the solutions exist for all time
+    $t\ge 0$.) Thus, for each $t\ge 0$ we have
+    constructed a mapping
 
-    $$ \varphi_t:\mathbb{R}^2\to\mathbb{R}^2, $$
+    $$
+    \varphi_t:\mathbb{R}^2\to\mathbb{R}^2,
+    $$
 
-    which takes a ``present'' point corresponding to the state of the system at time $0$ into a ``future'' point corresponding to the state of the system $t$ units of time later. The family of maps $(\varphi_t)_{t\ge 0}$ is called the _phase flow_ of the system: it describes how points ``flow'' along the solution lines of the system.
+    which takes a ``present'' point corresponding to the
+    state of the system at time $0$ into a ``future''
+    point corresponding to the state of the system $t$
+    units of time later. The family of maps
+    $(\varphi_t)_{t\ge 0}$ is called the _phase flow_ of
+    the system: it describes how points ``flow'' along the
+    solution lines of the system.
 
     |> Theorem
         label=Liouville's theorem
+        The phase flow preserves area. More precisely, given
+        a region $E\subset\mathbb{R}^2$ with finite area, for
+        any $t\ge 0$ we have
 
-        The phase flow preserves area. More precisely, given a region $E\subset\mathbb{R}^2$ with finite area, for any $t\ge 0$ we have
-
-        $$
         \begin{align*}
         \operatorname{area}(\varphi_t(E)) = \operatorname{area}(E).
         \end{align*}
-        $$
 
     |> Proof
+        Note that for fixed $t$, there is a one-to-one
+        correspondence between points $(p,q) \in \varphi_t(E)$
+        and points $(p_0,q_0)\in E$, defined by
+        $(p,q)=\varphi_t(p_0,q_0)$. This smooth map has a
+        Jacobian
 
-        Note that for fixed $t$, there is a one-to-one correspondence between points $(p,q) \in \varphi_t(E)$ and points $(p_0,q_0)\in E$, defined by $(p,q)=\varphi_t(p_0,q_0)$. This smooth map has a Jacobian
-
-        $$
         \begin{align*}
         J_t = \frac{\partial (p,q)}{\partial (p_0,q_0)},
         \end{align*}
-        $$
 
         i.e., $J_t$ is the determinant of the Jacobian matrix
 
-        $$
         \begin{align*}
         \frac{D(p,q)}{D(p_0,q_0)} = \left(\begin{array}{cc}
         \frac{\partial p}{\partial p_0} & \frac{\partial p}{\partial q_0} \\ \frac{\partial q}{\partial p_0} & \frac{\partial q}{\partial q_0}
         \end{array}\right).
         \end{align*}
-        $$
 
-        The Jacobian factor $J_t$ enters into the area computation via a change of variables in a double integral, as follows:
+        The Jacobian factor $J_t$ enters into the area
+        computation via a change of variables in a double
+        integral, as follows:
 
-        $$
         \begin{align*}
         \operatorname{area}(\varphi_t(E)) &= \iint_{\varphi_t(E)} dp\,dq
         = \iint_E \frac{\partial (p,q)}{\partial (p_0,q_0)}\,dp_0\,dq_0 \\
         &= \iint_E J_t \,dp_0\,dq_0.
         \end{align*}
-        $$
 
-        We claim that $J_t\equiv 1$ for all $t$. This will imply that
+        We claim that $J_t\equiv 1$ for all $t$. This will
+        imply that
 
-        $$
         \begin{align*}
         \operatorname{area}(\varphi_t(E)) &= \iint_{\varphi_t(E)} dp\,dq
         = \iint_E \,dp_0\,dq_0 = \operatorname{area}(E),
         \end{align*}
-        $$
 
-        and therefore finish the proof. It will be instructive to do this by computing $J_t$ more generally for the generic (not necessarily Hamiltonian) planar system
+        and therefore finish the proof. It will be
+        instructive to do this by computing $J_t$ more
+        generally for the generic (not necessarily
+        Hamiltonian) planar system
 
-        $$
         \begin{align*}
         \dot{p} = F(p,q,t), \qquad
         \dot{q} = G(p,q,t).
         \end{align*}
-        $$
 
         Denote
 
-        $$
         \begin{align*}
         X_t = \frac{D(p,q)}{D(p_0,q_0)} = \left(\begin{array}{cc}
         \frac{\partial p}{\partial p_0} & \frac{\partial p}{\partial q_0} \\ \frac{\partial q}{\partial p_0} & \frac{\partial q}{\partial q_0}
         \end{array}\right),
         \end{align*}
-        $$
 
         and observe that, by the chain rule,
 
-        $$
         \begin{align*}
         \frac{dX_t}{dt} =
         \left(\begin{array}{cc}
@@ -94,27 +130,25 @@
         \end{array}\right)
         = A_t X_t,
         \end{align*}
-        $$
 
         where
 
-        $$
         \begin{align*}
         A_t = A_t(p_0,q_0) = \left(\begin{array}{cc} \frac{\partial F}{\partial p} & \frac{\partial F}{\partial q} \\ \frac{\partial G}{\partial p} & \frac{\partial G}{\partial q} \end{array}\right).
         \end{align*}
-        $$
 
-        In other words, for fixed $(p_0,q_0)$, the matrix $X_t$ satisfies the time-dependent linear matrix ODE
+        In other words, for fixed $(p_0,q_0)$, the matrix
+        $X_t$ satisfies the time-dependent linear matrix ODE
 
-        $$
         \begin{align*}
         \dot{X}_t = A_t X_t,
         \end{align*}
-        $$
 
-        with the initial condition $X_0 = I$ (the $2\times2$ identity matrix).
+        with the initial condition $X_0 = I$ (the $2\times2$
+        identity matrix).
 
-        As a consequence, we now claim that the determinant $J_t = \det X_t$ also satisfies an ODE, namely
+        As a consequence, we now claim that the determinant
+        $J_t = \det X_t$ also satisfies an ODE, namely
 
         $$
         \begin{equation} eq:liou-jac-ode##<<
@@ -126,25 +160,26 @@
 
         Indeed, for small positive $h>0$ we have
 
-        $$
         \begin{align*}
         J_{t+h} &= \det(X_{t+h}) = \det( X_t+h A_t X_t + O(h^2) ) \\
         &= \det((I+h A_t)X_t+O(h^2))
         = \det(I+h A_t) \det(X_t) + O(h^2) \\
         &= (1 + h \operatorname{tr}(A_t)) J_t + O(h^2),
         \end{align*}
-        $$
 
-        where the last step is true because of the exercise below on determinants of perturbations of the identity matrix. Subtracting $J_t$ from both sides and taking the limit as $h\downarrow 0$ gives
+        where the last step is true because of the exercise
+        below on determinants of perturbations of the identity
+        matrix. Subtracting $J_t$ from both sides and taking
+        the limit as $h\downarrow 0$ gives
 
-        $$
         \begin{align*}
         \frac{dJ_t}{dt} = \lim_{h\downarrow 0} \frac{J_{t+h}-J_t}{h} =
         \lim_{h\downarrow 0} \left(\operatorname{tr}(A_t)J_t + O(h)\right) = \operatorname{tr}(A_t)J_t.
         \end{align*}
-        $$
 
-        The equation (>>eq:liou-jac-ode) is an easy scalar ODE for $J_t$, with the initial condition $J_0=1$. Its solution is
+        The equation (>>eq:liou-jac-ode) is an easy scalar
+        ODE for $J_t$, with the initial condition $J_0=1$.
+        Its solution is
 
         $$
         \begin{equation} eq:liouville-jacobian##<<
@@ -156,108 +191,125 @@
         \end{equation}
         $$
 
-        Going back to the case of the Hamiltonian system, we recall that in this case
+        Going back to the case of the Hamiltonian system, we
+        recall that in this case
 
-        $$ \operatorname{div} (F,G) = \frac{\partial F}{\partial p}+\frac{\partial G}{\partial q} = -\frac{\partial^2 H}{\partial p \partial q} +
-        \frac{\partial^2 H}{\partial p \partial q} = 0, $$
+        $$
+        \operatorname{div} (F,G) = \frac{\partial F}{\partial p}+\frac{\partial G}{\partial q} = -\frac{\partial^2 H}{\partial p \partial q} +
+        \frac{\partial^2 H}{\partial p \partial q} = 0,
+        $$
 
         so we finally get that $J \equiv 1$, as claimed.
 
     |> Exercise
         label=Determinants of perturbations of the identity matrix
-
         Show that if $A$ is a square matrix then
 
-        $$
         \begin{align*}
         \frac{d}{dh}\Big|_{h=0} \det(I+h A) = \operatorname{tr}(A),
         \end{align*}
-        $$
 
         or equivalently
 
-        $$
         \begin{align*}
         \det(I+h A) = 1 + h \operatorname{tr}(A) + O(h^2).
         \end{align*}
-        $$
 
     |> Exercise
         label=Matrix exponentials
+        The exponential $\exp(A)$ of a square matrix
+        $A=(a_{i,j})_{i,j=1}^d$ is defined by
 
-        The exponential $\exp(A)$ of a square matrix $A=(a_{i,j})_{i,j=1}^d$ is defined by
-
-        $$
         \begin{align*}
         \exp(A) = \sum_{n=0}^\infty \frac{1}{n!} A^n.
         \end{align*}
-        $$
 
         |> ol
             class=list
             data-list-style=decimal
-
             |> li
-                Show that the series converges absolutely in the matrix norm
+                Show that the series converges absolutely in the
+                matrix norm
 
-                $$
                 \begin{align*}
                 \lVert A \rVert = \sum_{i,j} |a_{i,j}|.
                 \end{align*}
-                $$
 
             |> li
-                Show that the unique solution to the linear vector ODE
+                Show that the unique solution to the linear vector
+                ODE
 
-                $$
                 \begin{align*}
                 \dot{\mathbf{x}} = A \mathbf{x}
                 \end{align*}
-                $$
 
-                with initial condition $\mathbf{x}(0) = \mathbf{x}_0$ (where we think of $\mathbf{x}$ as a column vector in $\mathbb{R}^d$) can be expressed in terms of matrix exponentials, namely
+                with initial condition $\mathbf{x}(0) = \mathbf{x}_0$
+                (where we think of $\mathbf{x}$ as a column vector in
+                $\mathbb{R}^d$) can be expressed in terms of matrix
+                exponentials, namely
 
-                $$
                 \begin{align*}
                 \mathbf{x}(t) = \exp\left(t \mathbf{A}\right) \mathbf{x}_0, \qquad t\ge 0.
                 \end{align*}
-                $$
 
             |> li
-                Use this to explain the characterization of the stability of rest points in a planar system in terms of the eigenvalues of the Jacobian matrix.
+                Use this to explain the characterization of the
+                stability of rest points in a planar system in terms
+                of the eigenvalues of the Jacobian matrix.
 
             |> li
-                Prove that if $A, B$ are commuting square matrices (i.e., matrices which satisfy $AB=BA$) then $\exp(A+B)=\exp(A)\exp(B)$.
+                Prove that if $A, B$ are commuting square matrices
+                (i.e., matrices which satisfy $AB=BA$) then
+                $\exp(A+B)=\exp(A)\exp(B)$.
 
     |> Exercise
         label=Determinant of a matrix exponential
-
         Prove the formula
 
-        $$
         \begin{align*}
         \det\left( \exp(A)\right) = e^{\operatorname{tr}(A)},
         \end{align*}
-        $$
 
-        where $A$ is a square matrix and $\operatorname{tr}(A)$ denotes the trace of $A$.
+        where $A$ is a square matrix and
+        $\operatorname{tr}(A)$ denotes the trace of $A$.
 
-        $\textbf{Hint.}$ Take determinants of both sides of the equation $\exp(A)=\exp(n^{-1} A)^n$, which is true by part (4) of the exercise above, then use the fact that $\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$ and the exercise above on determinants of matrices close to $I$.
-
-    |> Corollary
-
-        The phase flow of a planar system preserves area if and only if the system is Hamiltonian.
-
-    |> Proof
-
-        We saw in the proof of Liouville's theorem that the preservation of area is determined by the Jacobian $J_t$ of the phase flow: if $J_t \equiv 1$ then the system preserves area; conversely, if $J_t(p,q)\neq 1$ for some $t$ at a point $(p,q)=\varphi_t(p_0,q_0)$, then a small disk of radius $\epsilon$ and area $\pi \epsilon^2$ around $(p_0,q_0)$ is mapped by $\varphi_t$ to a set of area approximately $\pi \epsilon^2 J_t \neq \pi \epsilon^2$, and therefore the phase flow does not preserve area.
-
-        To conclude, from the computation in (>>eq:liouville-jacobian) it follows that the system preserves area if and only if $\operatorname{div}(F,G)=0$, and we already showed in Lemma >>lem:hamiltonian-div that this is equivalent to the system being Hamiltonian.
+        $\textbf{Hint.}$ Take determinants of both sides of
+        the equation $\exp(A)=\exp(n^{-1} A)^n$, which is
+        true by part (4) of the exercise above, then use the
+        fact that $\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$ and
+        the exercise above on determinants of matrices close
+        to $I$.
 
     |> Corollary
-
-        The rest points of an autonomous Hamiltonian system are either saddle points or centers.
+        The phase flow of a planar system preserves area if
+        and only if the system is Hamiltonian.
 
     |> Proof
+        We saw in the proof of Liouville's theorem that the
+        preservation of area is determined by the Jacobian
+        $J_t$ of the phase flow: if $J_t \equiv 1$ then the
+        system preserves area; conversely, if $J_t(p,q)\neq 1$
+        for some $t$ at a point $(p,q)=\varphi_t(p_0,q_0)$,
+        then a small disk of radius $\epsilon$ and area
+        $\pi \epsilon^2$ around $(p_0,q_0)$ is mapped by
+        $\varphi_t$ to a set of area approximately
+        $\pi \epsilon^2 J_t \neq \pi \epsilon^2$, and
+        therefore the phase flow does not preserve area.
 
-        An asymptotically stable or unstable rest point (which is either a node or a spiral) would imply that the phase flow either contracts or expands small disks around the rest point; by Liouville's theorem, this is impossible.
+        To conclude, from the computation in
+        (>>eq:liouville-jacobian) it follows that the system
+        preserves area if and only if
+        $\operatorname{div}(F,G)=0$, and we already showed in
+        Lemma >>lem:hamiltonian-div that this is equivalent to
+        the system being Hamiltonian.
+
+    |> Corollary
+        The rest points of an autonomous Hamiltonian system
+        are either saddle points or centers.
+
+    |> Proof
+        An asymptotically stable or unstable rest point
+        (which is either a node or a spiral) would imply that
+        the phase flow either contracts or expands small disks
+        around the rest point; by Liouville's theorem, this is
+        impossible.

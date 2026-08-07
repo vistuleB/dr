@@ -1,23 +1,39 @@
 |> Section
     title=An autonomous Hamiltonian is conserved
 
-    In the last example above, it is important to note that although the system in its original form depends on time due to the motion of the constraint curve, the Hamiltonian, Lagrangian and the associated equations are _autonomous_, i.e., do not depend on time. This is an illustration of the type of simplification that can be achieved using the Lagrangian and Hamiltonian formulations. Furthermore, the fact that the Hamiltonian is autonomous has an important consequence, given by the following lemma.
+    In the last example above, it is important to note
+    that although the system in its original form depends
+    on time due to the motion of the constraint curve, the
+    Hamiltonian, Lagrangian and the associated equations
+    are _autonomous_, i.e., do not depend on time. This is
+    an illustration of the type of simplification that can
+    be achieved using the Lagrangian and Hamiltonian
+    formulations. Furthermore, the fact that the
+    Hamiltonian is autonomous has an important
+    consequence, given by the following lemma.
 
     |> Lemma
         handle=lem:hamiltonian-conserved
-
-        If the Hamiltonian is autonomous, then $H$ is an integral (i.e., an invariant or conserved quantity) of Hamilton's equations.
+        If the Hamiltonian is autonomous, then $H$ is an
+        integral (i.e., an invariant or conserved quantity) of
+        Hamilton's equations.
 
     |> Proof
+        The assumption means that
+        $\frac{\partial H}{\partial t} = 0$. By the chain
+        rule, it follows that
 
-        The assumption means that $\frac{\partial H}{\partial t} = 0$. By the chain rule, it follows that
-
-        $$
         \begin{align*}
         \frac{dH}{dt} &= \frac{\partial H}{\partial p} \dot{p}+\frac{\partial H}{\partial q} \dot{q} + \frac{\partial H}{\partial t} \\
         &= \frac{\partial H}{\partial p}\left(-\frac{\partial H}{\partial q}\right)+\frac{\partial H}{\partial q}\left(\frac{\partial H}{\partial p}\right)+\frac{\partial H}{\partial t}
         = \frac{\partial H}{\partial t} = 0.
         \end{align*}
-        $$
 
-    In the first two examples of the harmonic oscillator and the simple pendulum, the Hamiltonian was equal to the system's energy, so Lemma >>lem:hamiltonian-conserved corresponds to the conservation of energy. In the example of the rotating pendulum, the Hamiltonian is _not_ equal to the energy of the system, yet it is conserved. Can you think of a physical meaning to assign to this conserved quantity?
+    In the first two examples of the harmonic oscillator
+    and the simple pendulum, the Hamiltonian was equal to
+    the system's energy, so Lemma
+    >>lem:hamiltonian-conserved corresponds to the
+    conservation of energy. In the example of the rotating
+    pendulum, the Hamiltonian is _not_ equal to the energy
+    of the system, yet it is conserved. Can you think of a
+    physical meaning to assign to this conserved quantity?

@@ -1,20 +1,28 @@
 |> Section
     title=The $L_1$ ergodic theorem
 
-    A trivial addendum to the previous proof shows that we also get $L_1$ convergence of the ergodic averages.
+    A trivial addendum to the previous proof shows that
+    we also get $L_1$ convergence of the ergodic
+    averages.
 
     |> Theorem
         label=$L_1$ ergodic theorem
-
-        The convergence in (>>eq:birkhoffergodic1), (>>eq:birkhoffergodic2) is also in $L_1$.
+        The convergence in (>>eq:birkhoffergodic1),
+        (>>eq:birkhoffergodic2) is also in $L_1$.
 
     |> Proof
-        Fix $M>0$, and write $X=Y_M + Z_M$ where $Y_M = X \mathbf{1}_{\{|X|\le M\}}$ and $Z_M = X-Y_M = X \mathbf{1}_{\{|X|>M\}}$. The pointwise ergodic theorem implies that
+        Fix $M>0$, and write $X=Y_M + Z_M$ where
+        $Y_M = X \mathbf{1}_{\{|X|\le M\}}$ and
+        $Z_M = X-Y_M = X \mathbf{1}_{\{|X|>M\}}$. The
+        pointwise ergodic theorem implies that
 
-        $$ \frac{1}{n} \sum_{k=0}^n Y_M \circ T^k \to \mathbf{E}\left(Y_M\,|\,\mathcal{I}\right)
-        \ \ \ \textrm{almost surely as }n\to\infty, $$
+        $$
+        \frac{1}{n} \sum_{k=0}^n Y_M \circ T^k \to \mathbf{E}\left(Y_M\,|\,\mathcal{I}\right)
+        \ \ \ \textrm{almost surely as }n\to\infty,
+        $$
 
-        and since $|Y_M|\le M$ the bounded convergence theorem implies also convergence in $L_1$, i.e.,
+        and since $|Y_M|\le M$ the bounded convergence
+        theorem implies also convergence in $L_1$, i.e.,
 
         $$
         \begin{equation} eq:ergodic-trunc-l1##<<
@@ -24,20 +32,25 @@
 
         Next, for $Z_M$ we have the trivial estimates
 
-        $$
         \begin{align*}
         \mathbf{E} \left| \frac{1}{n} \sum_{k=0}^{n-1} Z_M \circ T^k \right|
         & \le \sum_{k=0}^{n-1} \mathbf{E}|Z_M \circ T^k| = \mathbf{E}|Z_M|, \\
         \mathbf{E} \left| \mathbf{E}\left(Z_M\,|\,\mathcal{I}\right) \right| \le \mathbf{E} \mathbf{E}\left(|Z_M|\,|\,\mathcal{I}\right) = \mathbf{E}|Z_M|,
         \end{align*}
+
+        so, combining this with (>>eq:ergodic-trunc-l1), this
+        shows that almost surely
+
+        $$
+        \limsup_{n\to\infty} \mathbf{E}\left| \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^k - \mathbf{E}\left(X\,|\,\mathcal{I}\right)\right|
+        \le 2 \mathbf{E}|Z_M|.
         $$
 
-        so, combining this with (>>eq:ergodic-trunc-l1), this shows that almost surely
-
-        $$ \limsup_{n\to\infty} \mathbf{E}\left| \frac{1}{n} \sum_{k=0}^{n-1} X\circ T^k - \mathbf{E}\left(X\,|\,\mathcal{I}\right)\right|
-        \le 2 \mathbf{E}|Z_M|. $$
-
-        Letting $M\to\infty$ finishes the proof, since $\limsup_{M\to\infty} \mathbf{E}|Z_M| = 0$ by the dominated convergence theorem.
+        Letting $M\to\infty$ finishes the proof, since
+        $\limsup_{M\to\infty} \mathbf{E}|Z_M| = 0$ by the
+        dominated convergence theorem.
 
     |> Exercise
-        Prove that if $X$ is in $L_p$ for some $p>1$ then the convergence in (>>eq:birkhoffergodic1)  is also in the $L_p$ norm.
+        Prove that if $X$ is in $L_p$ for some $p>1$ then the
+        convergence in (>>eq:birkhoffergodic1)  is also in the
+        $L_p$ norm.

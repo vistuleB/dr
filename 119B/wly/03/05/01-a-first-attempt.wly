@@ -1,7 +1,11 @@
 |> SubSection
     title=A first attempt
 
-    An obvious idea to try is to switch the electromagnet on when $x<0$ and off when $x>0$. That is, we try the control rule $u=-\operatorname{sgn}(x)$ (where $\operatorname{sgn}(x)=x/|x|$ is the signum function), leading to the equation of motion
+    An obvious idea to try is to switch the electromagnet
+    on when $x<0$ and off when $x>0$. That is, we try the
+    control rule $u=-\operatorname{sgn}(x)$ (where
+    $\operatorname{sgn}(x)=x/|x|$ is the signum
+    function), leading to the equation of motion
 
     $$
     \begin{equation} eq:magnet-unstable##<<
@@ -11,15 +15,18 @@
     \end{equation}
     $$
 
-    This can be represented in the usual way as a planar system of first-order ODEs, namely
+    This can be represented in the usual way as a planar
+    system of first-order ODEs, namely
 
-    $$
     \begin{align*}
     \dot{x} = y, \quad \dot{y}= - \operatorname{sgn}(x).
     \end{align*}
-    $$
 
-    It is not hard to see how to draw the phase portrait for this system. First, imagine that there is no electromagnet, which leads to the simpler system (describing simply the motion of a particle under a uniform gravitational force)
+    It is not hard to see how to draw the phase portrait
+    for this system. First, imagine that there is no
+    electromagnet, which leads to the simpler system
+    (describing simply the motion of a particle under a
+    uniform gravitational force)
 
     $$
     \begin{equation} eq:gravity-system##<<
@@ -31,38 +38,59 @@
 
     The solutions of this equation take the form
 
-    $$
     \begin{align*}
     x(t) = x_0 + y_0t -\tfrac12 t^2, \ \ y(t)=y_0-t,
     \end{align*}
-    $$
 
-    where $x_0$ is the initial position and $y_0$ is the initial velocity. We then have that $y=y_0-t$, and therefore
+    where $x_0$ is the initial position and $y_0$ is the
+    initial velocity. We then have that $y=y_0-t$, and
+    therefore
 
-    $$
     \begin{align*}
     x = x_0 + y_0(y_0-y)-\tfrac12(y_0-y)^2 = (x_0+\tfrac12 y_0^2)-\tfrac12 y^2,
     \end{align*}
-    $$
 
-    in other words, the solution curves of the system have the form $x=a-\tfrac12 y^2$ where $a$ is some arbitrary parameter. This leads to the phase portrait shown in Figure 14.
+    in other words, the solution curves of the system
+    have the form $x=a-\tfrac12 y^2$ where $a$ is some
+    arbitrary parameter. This leads to the phase portrait
+    shown in Figure 14.
 
     |> figure
-
         |> img
             src=figures/phasediag-gravity.png
             style=max-width: 55%
-
         |> figcaption
-            Figure 14: The phase portrait for a particle falling under the influence of gravity.
+            Figure 14: The phase portrait for a particle falling
+            under the influence of gravity.
 
-    Next, the system (>>eq:magnet-unstable) consists of modifying the equation vector field by reflecting the flow curves for negative $x$ so that they mirror the lines for positive $x$. This leads to the phase portrait in Figure 15. We see that the system indeed has a rest point at $(x,y)=(0,0)$. However, the rest point is a center, i.e., it is only neutrally stable (this is to be expected, since in fact this is an autonomous Hamiltonian system arising from a potential energy $U(x)=|x|$, and we know energy is conserved in such systems, leading to periodic oscillatory motions). So, a particle moving according to these equations of motion will indeed levitate, but will do so in a way that oscillates around the reference point $x=0$, and only under the unrealistic assumption that the physical system is indeed described to perfect precision by the equations (>>eq:magnet-unstable). In practice, due to the finite speed of response of the switching control, any physical implementation of this control rule will be unstable.
+    Next, the system (>>eq:magnet-unstable) consists of
+    modifying the equation vector field by reflecting the
+    flow curves for negative $x$ so that they mirror the
+    lines for positive $x$. This leads to the phase
+    portrait in Figure 15. We see that the system indeed
+    has a rest point at $(x,y)=(0,0)$. However, the rest
+    point is a center, i.e., it is only neutrally stable
+    (this is to be expected, since in fact this is an
+    autonomous Hamiltonian system arising from a potential
+    energy $U(x)=|x|$, and we know energy is conserved in
+    such systems, leading to periodic oscillatory
+    motions). So, a particle moving according to these
+    equations of motion will indeed levitate, but will do
+    so in a way that oscillates around the reference point
+    $x=0$, and only under the unrealistic assumption that
+    the physical system is indeed described to perfect
+    precision by the equations (>>eq:magnet-unstable). In
+    practice, due to the finite speed of response of the
+    switching control, any physical implementation of this
+    control rule will be unstable.
 
     |> figure
-
         |> img
             src=figures/phasediag-magnet-unstable.png
             style=max-width: 55%
-
         |> figcaption
-            Figure 15: The phase portrait for the equation of motion of a magnetically levitated object, using the ``naive'' approach. The rest point is only neutrally stable, and in practice this approach does not result in stable levitation.
+            Figure 15: The phase portrait for the equation of
+            motion of a magnetically levitated object, using the
+            ``naive'' approach. The rest point is only neutrally
+            stable, and in practice this approach does not result
+            in stable levitation.

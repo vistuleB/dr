@@ -1,7 +1,11 @@
 |> SubSection
     title=Analytic solution using elliptic integrals
 
-    We derive the solution under the assumption that $\theta(0) = 0$, $\dot{\theta}(0)>0$. Let $\lambda=g/\ell$, so the equation becomes $\ddot{\theta}+\lambda \sin \theta=0$. Conservation of energy gives the equation
+    We derive the solution under the assumption that
+    $\theta(0) = 0$, $\dot{\theta}(0)>0$. Let
+    $\lambda=g/\ell$, so the equation becomes
+    $\ddot{\theta}+\lambda \sin \theta=0$. Conservation
+    of energy gives the equation
 
     $$
     \begin{equation} eq:pendulum-energy-cons##<<
@@ -11,7 +15,12 @@
     \end{equation}
     $$
 
-    (to verify this, differentiate both sides). For reasons which will become clear soon, denote the integration constant on the right by $\lambda(2k^2-1)$, where $k\ge0$ and use the relation $\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$. This brings (>>eq:pendulum-energy-cons) to the form
+    (to verify this, differentiate both sides). For
+    reasons which will become clear soon, denote the
+    integration constant on the right by
+    $\lambda(2k^2-1)$, where $k\ge0$ and use the relation
+    $\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$. This
+    brings (>>eq:pendulum-energy-cons) to the form
 
     $$
     \begin{equation} eq:pendulum-energy-cons2##<<
@@ -21,36 +30,52 @@
     \end{equation}
     $$
 
-    Note that this already makes it easy to plot the phase portrait (in the $\theta$-$\dot{\theta}$ plane, or wrapped around a cylinder, since adding multiples of $2\pi$ to $\theta$ does not change the physical state of the system); see Figure 5.
+    Note that this already makes it easy to plot the
+    phase portrait (in the $\theta$-$\dot{\theta}$ plane,
+    or wrapped around a cylinder, since adding multiples
+    of $2\pi$ to $\theta$ does not change the physical
+    state of the system); see Figure 5.
 
     |> figure
-
         |> img
             src=figures/pendulumphasediag.png
             style=max-width: 52%
-
         |> img
             src=figures/pendulumphasediag3d.png
             style=max-width: 30%
-
         |> figcaption
-            Figure 5: The phase portrait of the simple pendulum: in the planar representation, the constant energy curves are given by the equation $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$ for different values of $k$.
+            Figure 5: The phase portrait of the simple pendulum:
+            in the planar representation, the constant energy
+            curves are given by the equation
+            $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$
+            for different values of $k$.
 
-    The relation between the parameter $k$ and the initial angular velocity $\dot{\theta}(0)$ is found by setting $t=0$ in (>>eq:pendulum-energy-cons2), giving
+    The relation between the parameter $k$ and the
+    initial angular velocity $\dot{\theta}(0)$ is found
+    by setting $t=0$ in (>>eq:pendulum-energy-cons2),
+    giving
 
-    $$
     \begin{align*}
     k=\frac{1}{2\sqrt{\lambda}} \dot{\theta}(0).
     \end{align*}
-    $$
 
-    It is also easy to see from the energy conservation equation (>>eq:pendulum-energy-cons2) that the periodic solutions (which are the solutions for which $\theta$ remains bounded) correspond to $0<k<1$, and that in that case we have $k=\sin (\theta_{\textrm{max}}/2)$ where $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is the maximal angle that the pendulum will reach (or approach asymptotically, in the case $\theta_{\textrm{max}}=\pi$). The equation (>>eq:pendulum-energy-cons2) is a first-order ODE, and is in a form suitable for separation of variables; e.g., we can write
+    It is also easy to see from the energy conservation
+    equation (>>eq:pendulum-energy-cons2) that the
+    periodic solutions (which are the solutions for which
+    $\theta$ remains bounded) correspond to $0<k<1$, and
+    that in that case we have
+    $k=\sin (\theta_{\textrm{max}}/2)$ where
+    $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is
+    the maximal angle that the pendulum will reach (or
+    approach asymptotically, in the case
+    $\theta_{\textrm{max}}=\pi$). The equation
+    (>>eq:pendulum-energy-cons2) is a first-order ODE, and
+    is in a form suitable for separation of variables;
+    e.g., we can write
 
-    $$
     \begin{align*}
     \frac{d\theta}{\sqrt{k^2-\sin^2 \tfrac{\theta}{2}}} = 2\sqrt{\lambda} \,dt,
     \end{align*}
-    $$
 
     or (since we stipulated that $\theta(0)=0$)
 
@@ -62,29 +87,31 @@
     \end{equation}
     $$
 
-    From this point on, assume that $k<1$. Making the substitution $ku = \sin(\theta/2)$ in the integral on the left, we get the equivalent form
+    From this point on, assume that $k<1$. Making the
+    substitution $ku = \sin(\theta/2)$ in the integral on
+    the left, we get the equivalent form
 
-    $$
     \begin{align*}
     \int_0^u \frac{du}{\sqrt{(1-u^2)(1-k^2 u^2)}} = \sqrt{\lambda} t.
     \end{align*}
-    $$
 
-    The integral on the left is related to a special function known as $\operatorname{sn}(u,k)$ (one of a family of special functions called the _Jacobi elliptic functions_), by
+    The integral on the left is related to a special
+    function known as $\operatorname{sn}(u,k)$ (one of a
+    family of special functions called the _Jacobi
+    elliptic functions_), by
 
-    $$
     \begin{align*}
     \operatorname{sn}^{-1}(u,k) = \int_0^u \frac{du}{\sqrt{(1-u^2)(1-k^2 u^2)}},
     \end{align*}
-    $$
 
-    (meaning the inverse function of $\operatorname{sn}(u,k)$ as a function of $u$; the variable $k$ is thought of as a parameter, sometimes called the _elliptic modulus_). It follows that
+    (meaning the inverse function of
+    $\operatorname{sn}(u,k)$ as a function of $u$; the
+    variable $k$ is thought of as a parameter, sometimes
+    called the _elliptic modulus_). It follows that
 
-    $$
     \begin{align*}
     \frac{1}{k}\sin\frac{\theta}{2} = u = \operatorname{sn}(\sqrt{\lambda}t ,k),
     \end{align*}
-    $$
 
     so finally we get that
 
@@ -96,10 +123,9 @@
     \end{equation}
     $$
 
-    We have thus obtained our analytic solution, given by the rather intimidating formula
+    We have thus obtained our analytic solution, given by
+    the rather intimidating formula
 
-    $$
     \begin{align*}
     \theta  = 2 \arcsin \left[k \operatorname{sn}(\sqrt{\lambda}t ,k)\right].
     \end{align*}
-    $$

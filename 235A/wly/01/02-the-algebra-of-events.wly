@@ -1,17 +1,50 @@
 |> Section
     title=The algebra of events
-    
-    A central notion in probability is that of the $\textbf{algebra of events}$ (we'll clarify later what the word ``algebra'' means here). We begin with an informal discussion. We imagine that probability is a function, denoted $\mathrm{P}$, that takes as its argument an ``event'' (i.e., occurrence of something in a real-life situation involving uncertainty) and returns a real number in $[0,1]$ representing how likely this event is to occur. For example, if a fair coin is tossed 10 times and we denote the results of the tosses by $X_1,X_2,\ldots,X_{10}$ (where each of $X_i$ is $0$ or $1$, signifying ``tails'' or ``heads''), then we can write statements like
-    
-    $$ \mathrm{P}(X_i = 0) = 1/2, \qquad (1\le i\le 10),
+
+    A central notion in probability is that of the
+    $\textbf{algebra of events}$ (we'll clarify later
+    what the word ``algebra'' means here). We begin with
+    an informal discussion. We imagine that probability is
+    a function, denoted $\mathrm{P}$, that takes as its
+    argument an ``event'' (i.e., occurrence of something
+    in a real-life situation involving uncertainty) and
+    returns a real number in $[0,1]$ representing how
+    likely this event is to occur. For example, if a fair
+    coin is tossed 10 times and we denote the results of
+    the tosses by $X_1,X_2,\ldots,X_{10}$ (where each of
+    $X_i$ is $0$ or $1$, signifying ``tails'' or
+    ``heads''), then we can write statements like
+
     $$
-    $$ \mathrm{P}\left(\sum_{i=1}^{10} X_i = 4\right) = \frac{\binom{10}{4}}{2^{10}}.
+    \mathrm{P}(X_i = 0) = 1/2, \qquad (1\le i\le 10),
     $$
-    
-    Note that if $A$ and $B$ represent events (meaning, for the purposes of the present informal discussion, objects that have a well-defined probability), then we expect that the phrases ``$A$ did not occur'', ``$A$ and $B$ both occurred'' and ``at least one of $A$ and $B$ occurred'' also represent events. We can use notation borrowed from mathematical logic and denote these new events by $\lnot A$, $A\wedge B$, and $A \vee B$, respectively.
-    Thus, the set of events is not just a set -- it is a set with some extra structure, namely the ability to perform $\textbf{negation}$, $\textbf{conjunction}$ and $\textbf{disjunction}$ operations on its elements. Such a set is called an $\textbf{algebra}$ in some contexts.
-    
-    But what if the coin is tossed an _infinite_ number of times? In other words, we now imagine an infinite sequence $X_1,X_2,X_3,\ldots$ of (independent) coin toss results. We want to be able to ask questions such as
+
+    $$
+    \mathrm{P}\left(\sum_{i=1}^{10} X_i = 4\right) = \frac{\binom{10}{4}}{2^{10}}.
+    $$
+
+    Note that if $A$ and $B$ represent events (meaning,
+    for the purposes of the present informal discussion,
+    objects that have a well-defined probability), then we
+    expect that the phrases ``$A$ did not occur'', ``$A$
+    and $B$ both occurred'' and ``at least one of $A$ and
+    $B$ occurred'' also represent events. We can use
+    notation borrowed from mathematical logic and denote
+    these new events by $\lnot A$, $A\wedge B$, and
+    $A \vee B$, respectively. Thus, the set of events is
+    not just a set -- it is a set with some extra
+    structure, namely the ability to perform
+    $\textbf{negation}$, $\textbf{conjunction}$ and
+    $\textbf{disjunction}$ operations on its elements.
+    Such a set is called an $\textbf{algebra}$ in some
+    contexts.
+
+    But what if the coin is tossed an _infinite_ number
+    of times? In other words, we now imagine an infinite
+    sequence $X_1,X_2,X_3,\ldots$ of (independent) coin
+    toss results. We want to be able to ask questions such
+    as
+
     $$
     \begin{eqnarray*}
     \mathrm{P}(\textrm{infinitely many of the $X_i$'s are 0}) &=& ? \\
@@ -19,53 +52,109 @@
     \mathrm{P}\left(\sum_{k=1}^\infty \frac{2X_k-1}{k}\textrm{ converges}\right) &=& ?
     \end{eqnarray*}
     $$
-    Do such questions make sense? (And if they do, can you guess what the answers are?) Maybe it is not enough to have an _informal_ discussion to answer this...
-    
+
+    Do such questions make sense? (And if they do, can
+    you guess what the answers are?) Maybe it is not
+    enough to have an _informal_ discussion to answer
+    this...
+
     |> Example
-        (a) An urn initially contains a white ball and a black ball. A ball is drawn out at random from the urn, then added back and another white ball is added to the urn. This procedure is repeated infinitely many times, so that after step $n$ the urn contains 1 black ball and $n+1$ white balls. For each $n\ge1$, let $A_n$ denote the event that at step $n$ the black ball was drawn. Now let $A_\infty$ denote the event
-        $$ A_\infty = \textrm{``in total, the black ball was selected infinitely many times''}, $$
-        (i.e., the event that infinitely many of the events $A_n$ occurred).
-        
-        (b) While this experiment takes place, an identical copy of the experiment is taking place in the next room. The random selections in the two neighboring rooms have no connection to each other, i.e., they are ``independent''. For each $n\ge 1$, let $B_n$ be the event that at step $n$ the black ball was drawn out of the ``copy'' experiment urn. Now let $B_\infty$ denote the event
-        
+        (a) An urn initially contains a white ball and a
+        black ball. A ball is drawn out at random from the
+        urn, then added back and another white ball is added
+        to the urn. This procedure is repeated infinitely many
+        times, so that after step $n$ the urn contains 1
+        black ball and $n+1$ white balls. For each $n\ge1$,
+        let $A_n$ denote the event that at step $n$ the black
+        ball was drawn. Now let $A_\infty$ denote the event
+
+        $$
+        A_\infty = \textrm{``in total, the black ball was selected infinitely many times''},
+        $$
+
+        (i.e., the event that infinitely many of the events
+        $A_n$ occurred).
+
+        (b) While this experiment takes place, an identical
+        copy of the experiment is taking place in the next
+        room. The random selections in the two neighboring
+        rooms have no connection to each other, i.e., they are
+        ``independent''. For each $n\ge 1$, let $B_n$ be the
+        event that at step $n$ the black ball was drawn out
+        of the ``copy'' experiment urn. Now let $B_\infty$
+        denote the event
+
         $$
         \begin{eqnarray*}
         B_\infty &=& \textrm{``in total, the black ball was selected infinitely many times in}\\&&
         \textrm{the second copy of the experiment''},
         \end{eqnarray*}
         $$
-        (in other words, the event that infinitely many of the events $B_n$ occurred).
-        
-        (c) For each $n\ge 1$, let $C_n$ be the event that both $A_n$ and $B_n$ occurred, i.e.
+
+        (in other words, the event that infinitely many of
+        the events $B_n$ occurred).
+
+        (c) For each $n\ge 1$, let $C_n$ be the event that
+        both $A_n$ and $B_n$ occurred, i.e.
+
         $$
         \begin{eqnarray*}
         C_n &=& \textrm{``at step $n$, the black ball was selected simultaneously}
         \\&& \textrm{ in both experiments'',}
         \end{eqnarray*}
         $$
-        and let $C_\infty$ denote the event ``$C_n$ occurred for infinitely many values of $n$''.
-    
+
+        and let $C_\infty$ denote the event ``$C_n$ occurred
+        for infinitely many values of $n$''.
+
     |> Theorem
-    
         We have
-        $$ \mathrm{P}(A_\infty) = \mathrm{P}(B_\infty) = 1, \qquad \mathrm{P}(C_\infty) = 0. $$
-    
+
+        $$
+        \mathrm{P}(A_\infty) = \mathrm{P}(B_\infty) = 1, \qquad \mathrm{P}(C_\infty) = 0.
+        $$
+
     |> Proof
-        
-        These claims are consequences of the $\textbf{Borel-Cantelli lemmas}$ which we will learn about later in the course. Here is a sketch of the proof that $P(C_\infty)=0$ (remember, this is still an ``informal discussion'', so our ``proof'' is really more of an exploration of what formal assumptions are needed to make the claim hold). For each $n$ we have
-        $$ \mathrm{P}(A_n) = \mathrm{P}(B_n) = \frac{1}{n+1}, $$
-        since at time $n$ each of the urns contains $n+1$ balls, only one of which is black. Moreover, the choices in both rooms are made independently, so we have
-        $$ \mathrm{P}(C_n) = \mathrm{P}(A_n \wedge B_n) = \mathrm{P}(A_n) \mathrm{P}(B_n) = \frac{1}{(n+1)^2}. $$
-        
-        It turns out that to prove that $\mathrm{P}(C_\infty)=0$, the only relevant bit of information is that the infinite series $\sum_{n=1}^\infty \mathrm{P}(C_n)$ is a convergent series; the precise values of the probabilities are irrelevant. Indeed, we can try to do various manipulations on the definition of the event $C$, as follows:
+        These claims are consequences of the
+        $\textbf{Borel-Cantelli lemmas}$ which we will learn
+        about later in the course. Here is a sketch of the
+        proof that $P(C_\infty)=0$ (remember, this is still
+        an ``informal discussion'', so our ``proof'' is really
+        more of an exploration of what formal assumptions are
+        needed to make the claim hold). For each $n$ we have
+
+        $$
+        \mathrm{P}(A_n) = \mathrm{P}(B_n) = \frac{1}{n+1},
+        $$
+
+        since at time $n$ each of the urns contains $n+1$
+        balls, only one of which is black. Moreover, the
+        choices in both rooms are made independently, so we
+        have
+
+        $$
+        \mathrm{P}(C_n) = \mathrm{P}(A_n \wedge B_n) = \mathrm{P}(A_n) \mathrm{P}(B_n) = \frac{1}{(n+1)^2}.
+        $$
+
+        It turns out that to prove that
+        $\mathrm{P}(C_\infty)=0$, the only relevant bit of
+        information is that the infinite series
+        $\sum_{n=1}^\infty \mathrm{P}(C_n)$ is a convergent
+        series; the precise values of the probabilities are
+        irrelevant. Indeed, we can try to do various
+        manipulations on the definition of the event $C$, as
+        follows:
+
         $$
         \begin{eqnarray*}
         C_\infty &=& \textrm{``infinitely many of the $C_n$'s occurred''} \\
         &=& \textrm{``for all $N\ge 1$, the event $C_n$ occurred for some $n\ge N$''.}
         \end{eqnarray*}
         $$
-        
-        For any $N\ge 1$, denote the event ``$C_n$ occurred for some $n\ge N$'' by $D_N$. Then
+
+        For any $N\ge 1$, denote the event ``$C_n$ occurred
+        for some $n\ge N$'' by $D_N$. Then
+
         $$
         \begin{eqnarray*}
         C_\infty &=& \textrm{``for all $N\ge 1$, $D_N$ occurred''} \\
@@ -73,17 +162,62 @@
         &=& \bigwedge_{N=1}^\infty D_N \quad \qquad \quad\ \ \ \ \ \ \textrm{(shorthand notation for infinite conjunction)}.
         \end{eqnarray*}
         $$
-        In particular, in order for the event $C_\infty$ to happen, $D_N$ must happen for any fixed value of $N$ (for example, $D_{100}$ must happen, $D_{101}$ must happen, etc.). It follows that $C_\infty$ is at most as likely to happen as any of the $D_N$'s; in other words we have 
-        $$ \mathrm{P}(C_\infty) \le \mathrm{P}(D_N), \qquad (N\ge 1). $$
-        Now, what can we say about $\mathrm{P}(D_N)$? Looking at the definition of $D_N$, we see that it too can be written as an infinite _disjunction_ of events, namely
+
+        In particular, in order for the event $C_\infty$ to
+        happen, $D_N$ must happen for any fixed value of $N$
+        (for example, $D_{100}$ must happen, $D_{101}$ must
+        happen, etc.). It follows that $C_\infty$ is at most
+        as likely to happen as any of the $D_N$'s; in other
+        words we have
+
+        $$
+        \mathrm{P}(C_\infty) \le \mathrm{P}(D_N), \qquad (N\ge 1).
+        $$
+
+        Now, what can we say about $\mathrm{P}(D_N)$?
+        Looking at the definition of $D_N$, we see that it
+        too can be written as an infinite _disjunction_ of
+        events, namely
+
         $$
         \begin{eqnarray*}
         D_N &=& C_N \vee C_{N+1} \vee C_{N+2} \vee \ldots \quad \textrm{(infinite disjunction)} \\
-        &=& \bigvee_{n=N}^\infty C_n \qquad\qquad\qquad\qquad\ \  \textrm{(shorthand for infinite disjunction)}. 
+        &=& \bigvee_{n=N}^\infty C_n \qquad\qquad\qquad\qquad\ \  \textrm{(shorthand for infinite disjunction)}.
         \end{eqnarray*}
         $$
-        If this were a finite disjunction, we could say that the likelihood for at least one of the events to happen is at most the sum of the likelihoods (for example, the probability that it will rain next weekend is at most the probability that it will rain next Saturday, _plus_ the probability that it will rain next Sunday; of course it might rain on both days, so the sum of the probabilities can be strictly greater than the probability of the disjunction). What can we say for an _infinite_ disjunction? Since this is an informal discussion, it is impossible to answer this without being more formal about the precise mathematical model and its assumptions. As it turns out, the correct thing to do (in the sense that it leads to the most interesting and natural mathematical theory) is to _assume_ that this fact that holds for finite disjunctions also holds for infinite ones. Whether this has any relevance to real life is a different question! If we make this assumption, we get for each $N\ge 1$ the bound
-        $$ \mathrm{P}(D_N) \le \sum_{n=N}^\infty \mathrm{P}(C_n). $$
-        But now recall that the infinite series of probabilities $\sum_{n=1}^\infty \mathrm{P}(C_n)$ converges. Therefore, for any $\epsilon>0$, we can find an $N$ for which the tail $\sum_{n=N}^\infty \mathrm{P}(C_n)$ of the series is less than $\epsilon$. For such an $N$, we get that $\mathrm{P}(D_N)< \epsilon$, and therefore that $\mathrm{P}(C_\infty)<\epsilon$. This is true for any $\epsilon>0$, so it follows that $\mathrm{P}(C_\infty)=0$.
-    
-        
+
+        If this were a finite disjunction, we could say that
+        the likelihood for at least one of the events to
+        happen is at most the sum of the likelihoods (for
+        example, the probability that it will rain next
+        weekend is at most the probability that it will rain
+        next Saturday, _plus_ the probability that it will
+        rain next Sunday; of course it might rain on both
+        days, so the sum of the probabilities can be strictly
+        greater than the probability of the disjunction). What
+        can we say for an _infinite_ disjunction? Since this
+        is an informal discussion, it is impossible to answer
+        this without being more formal about the precise
+        mathematical model and its assumptions. As it turns
+        out, the correct thing to do (in the sense that it
+        leads to the most interesting and natural mathematical
+        theory) is to _assume_ that this fact that holds for
+        finite disjunctions also holds for infinite ones.
+        Whether this has any relevance to real life is a
+        different question! If we make this assumption, we get
+        for each $N\ge 1$ the bound
+
+        $$
+        \mathrm{P}(D_N) \le \sum_{n=N}^\infty \mathrm{P}(C_n).
+        $$
+
+        But now recall that the infinite series of
+        probabilities $\sum_{n=1}^\infty \mathrm{P}(C_n)$
+        converges. Therefore, for any $\epsilon>0$, we can
+        find an $N$ for which the tail
+        $\sum_{n=N}^\infty \mathrm{P}(C_n)$ of the series is
+        less than $\epsilon$. For such an $N$, we get that
+        $\mathrm{P}(D_N)< \epsilon$, and therefore that
+        $\mathrm{P}(C_\infty)<\epsilon$. This is true for any
+        $\epsilon>0$, so it follows that
+        $\mathrm{P}(C_\infty)=0$.

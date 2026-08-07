@@ -1,50 +1,89 @@
 |> SubSection
     title=The speed of a wave of falling dominoes
 
-    If you have ever set up a long chain of dominoes that topple each other in a wavelike progression, you must have wondered how long it would take for all the dominoes to fall once the experiment is set in motion (as everyone knows, it ends all too quickly given the tedious work involved in setting up the dominoes...). We can now answer this question, in a slightly simplified model, using the theory of the pendulum discussed above.(*>>fn-dominowaves)
+    If you have ever set up a long chain of dominoes that
+    topple each other in a wavelike progression, you must
+    have wondered how long it would take for all the
+    dominoes to fall once the experiment is set in motion
+    (as everyone knows, it ends all too quickly given the
+    tedious work involved in setting up the dominoes...).
+    We can now answer this question, in a slightly
+    simplified model, using the theory of the pendulum
+    discussed above.(*>>fn-dominowaves)
 
-    Let us fix some notation for the setup of our domino wave. We assume a row of standing dominoes of height $\ell$ is arranged on a plane, with a fixed horizontal distance of $d$ between each two successive dominoes. For simplicity, we will model each domino as a simple inverted pendulum with mass $m$ (it is not difficult to adapt the analysis to the case of a compound pendulum) and that its thickness is small compared to the inter-domino spacing $d$. We denote by $\beta$ the angle formed between two adjacent dominoes when one rotates around its contact point with the floor until it just touches the other; it is given by
+    Let us fix some notation for the setup of our domino
+    wave. We assume a row of standing dominoes of height
+    $\ell$ is arranged on a plane, with a fixed
+    horizontal distance of $d$ between each two
+    successive dominoes. For simplicity, we will model
+    each domino as a simple inverted pendulum with mass
+    $m$ (it is not difficult to adapt the analysis to the
+    case of a compound pendulum) and that its thickness is
+    small compared to the inter-domino spacing $d$. We
+    denote by $\beta$ the angle formed between two
+    adjacent dominoes when one rotates around its contact
+    point with the floor until it just touches the other;
+    it is given by
 
-    $$
     \begin{align*}
     \beta = \sin^{-1}\frac{d}{\ell}.
     \end{align*}
-    $$
 
     See Figure 7.
 
     |> figure
-
         |> img
             src=figures/fallingdominoes.png
             style=max-width: 60%
-
         |> figcaption
             Figure 7: A row of falling dominoes.
 
-    Our analysis of the speed of the domino wave will be based on analyzing what happens during collisions between dominoes. We will make the following idealized assumptions:
+    Our analysis of the speed of the domino wave will be
+    based on analyzing what happens during collisions
+    between dominoes. We will make the following idealized
+    assumptions:
 
     |> ol
         class=list
+        |> li
+            Only collisions between successive dominoes occur
+            (i.e., we neglect the possible interaction between two
+            dominoes separated by a third domino).
 
         |> li
-            Only collisions between successive dominoes occur (i.e., we neglect the possible interaction between two dominoes separated by a third domino).
+            The bottom end of each domino is fixed in place by
+            static friction with the floor while it topples, so
+            the domino is only free to rotate around it.
 
         |> li
-            The bottom end of each domino is fixed in place by static friction with the floor while it topples, so the domino is only free to rotate around it.
+            Collisions are instantaneous and are elastic, i.e.,
+            involve no dissipation of energy: both the energy and
+            momentum of the system are the same _immediately
+            before and after a collision_ (of course, during other
+            times energy and momentum are not conserved due to
+            friction forces and dissipation of kinetic energy when
+            dominoes hit the floor).
 
-        |> li
-            Collisions are instantaneous and are elastic, i.e., involve no dissipation of energy: both the energy and momentum of the system are the same _immediately before and after a collision_ (of course, during other times energy and momentum are not conserved due to friction forces and dissipation of kinetic energy when dominoes hit the floor).
+    We will now derive equations relating the initial
+    angular velocity $\omega_0$ of one domino, ``domino
+    $A$'', to the initial angular velocity $\omega_1$ of
+    the next one in the row, ``domino $B$''. Two
+    intermediate quantities that will play a role in the
+    analysis are the angular velocity $\Omega_0$ of
+    domino $A$ _just before_ it collides with domino $B$,
+    and its angular velocity $\Omega_1$ _immediately
+    after_ the collision. The relationships between the
+    four quantities
+    $\omega_0, \omega_1, \Omega_0, \Omega_1$ are
+    determined by the conservation of energy and momentum.
 
-    We will now derive equations relating the initial angular velocity $\omega_0$ of one domino, ``domino $A$'', to the initial angular velocity $\omega_1$ of the next one in the row, ``domino $B$''. Two intermediate quantities that will play a role in the analysis are the angular velocity $\Omega_0$ of domino $A$ _just before_ it collides with domino $B$, and its angular velocity $\Omega_1$ _immediately after_ the collision. The relationships between the four quantities $\omega_0, \omega_1, \Omega_0, \Omega_1$ are determined by the conservation of energy and momentum.
+    First, conservation of energy during the motion of
+    domino $A$ from the time it starts to rotate until it
+    hits domino $B$ gives the equation
 
-    First, conservation of energy during the motion of domino $A$ from the time it starts to rotate until it hits domino $B$ gives the equation
-
-    $$
     \begin{align*}
     \tfrac12 m \ell^2 \omega_0^2 + mg\ell = \tfrac12 m \ell^2 \Omega_0^2 + mg\ell \cos \beta,
     \end{align*}
-    $$
 
     which can be solved for $\Omega_0$ to give
 
@@ -56,13 +95,12 @@
     \end{equation}
     $$
 
-    Next, conservation of energy during the collision gives
+    Next, conservation of energy during the collision
+    gives
 
-    $$
     \begin{align*}
     \tfrac12 m\ell^2 \Omega_0^2 = \tfrac12 m\ell^2 \Omega_1^2 + \tfrac12m\ell^2 \omega_1^2,
     \end{align*}
-    $$
 
     which simplifies to
 
@@ -74,13 +112,14 @@
     \end{equation}
     $$
 
-    To express the conservation of momentum, it is easier (and equivalent) to write an equation for the conservation of _angular_ momentum around the base point of domino $B$. This gives
+    To express the conservation of momentum, it is easier
+    (and equivalent) to write an equation for the
+    conservation of _angular_ momentum around the base
+    point of domino $B$. This gives
 
-    $$
     \begin{align*}
     m\ell^2\Omega_0 \cos^2\beta = m\ell^2\Omega_1 \cos^2 \beta + m\ell^2\omega_1.
     \end{align*}
-    $$
 
     That is,
 
@@ -92,7 +131,9 @@
     \end{equation}
     $$
 
-    It is not difficult to solve (>>eq:dominowave-cons2), (>>eq:dominowave-cons3) for $\Omega_1$ and $\omega_1$, to get
+    It is not difficult to solve (>>eq:dominowave-cons2),
+    (>>eq:dominowave-cons3) for $\Omega_1$ and $\omega_1$,
+    to get
 
     $$
     \begin{equation} eq:dominowave-cons4##<<
@@ -105,80 +146,97 @@
 
     where
 
-    $$
     \begin{align*}
     f_{\pm} = \frac{2}{\cos^2 \beta \pm \cos^{-2}\beta}.
     \end{align*}
-    $$
 
-    Plugging the value of $\Omega_0$ obtained from (>>eq:dominowave-cons1) into (>>eq:dominowave-cons4) finally yields an equation expressing $\omega_1$ in terms of $\omega_0$, namely
+    Plugging the value of $\Omega_0$ obtained from
+    (>>eq:dominowave-cons1) into (>>eq:dominowave-cons4)
+    finally yields an equation expressing $\omega_1$ in
+    terms of $\omega_0$, namely
 
-    $$
     \begin{align*}
     \omega_1 = f_+ \sqrt{\omega_0^2 + \frac{2g}{\ell}(1-\cos \beta)} = H(\omega_0).
     \end{align*}
-    $$
 
-    Our analysis has produced the following result: if we start the domino wave going by giving the first domino in the chain a slight push that gives it an initial angular velocity $\omega_0$, then the next domino it will collide with will start its motion with an initial angular velocity equal to $\omega_1=H(\omega_0)$. That domino will collide with a third domino, which will acquire an initial angular velocity of $\omega_2=H(\omega_1)=H(H(\omega_0))$, and so forth: the $n$th domino in the chain will get an initial angular velocity of
+    Our analysis has produced the following result: if we
+    start the domino wave going by giving the first domino
+    in the chain a slight push that gives it an initial
+    angular velocity $\omega_0$, then the next domino it
+    will collide with will start its motion with an
+    initial angular velocity equal to
+    $\omega_1=H(\omega_0)$. That domino will collide with
+    a third domino, which will acquire an initial angular
+    velocity of $\omega_2=H(\omega_1)=H(H(\omega_0))$,
+    and so forth: the $n$th domino in the chain will get
+    an initial angular velocity of
 
-    $$
     \begin{align*}
     \omega_{n-1} = H^{n}(\omega_0) = H(H(H(\ldots H(\omega_0)))\ldots)
     \end{align*}
+
+    (the $n$th functional iterate of $H$). While it may
+    appear as if the way the wave gets started is
+    important, a more careful look at the properties of
+    the function $H$ shows that in fact the wave will
+    settle down to an equilibrium state in which each
+    domino gets an initial angular velocity equal to
+
+    $$
+    \omega_\infty = \lim_{n\to\infty} \omega_n.
     $$
 
-    (the $n$th functional iterate of $H$). While it may appear as if the way the wave gets started is important, a more careful look at the properties of the function $H$ shows that in fact the wave will settle down to an equilibrium state in which each domino gets an initial angular velocity equal to
+    This equilibrium angular velocity must satisfy the
+    equation
 
-    $$ \omega_\infty = \lim_{n\to\infty} \omega_n. $$
-
-    This equilibrium angular velocity must satisfy the equation
-
-    $$
     \begin{align*}
     \omega_\infty = H(\omega_\infty) = f_+ \sqrt{\omega_0^2 + \frac{2g}{\ell}(1-\cos \beta)},
     \end{align*}
-    $$
 
     which can be solved to give
 
-    $$
     \begin{align*}
     \omega_\infty = \frac{2g}{\ell}\frac{f_+^2}{1-f_+^2}(1-\cos\beta) = \frac{2g}{\ell}f_-^2(1-\cos\beta).
     \end{align*}
-    $$
 
-    We are finally ready to answer the original question regarding the speed of a traveling domino wave. Once the wave has reached its equilibrium state, each domino starts its motion with the angular velocity $\omega_\infty$, and rotates through an angle of $\beta$ before colliding with the next domino. By the theory of falling times for the inverted pendulum discussed in the previous section, the time this rotation takes is given by
+    We are finally ready to answer the original question
+    regarding the speed of a traveling domino wave. Once
+    the wave has reached its equilibrium state, each
+    domino starts its motion with the angular velocity
+    $\omega_\infty$, and rotates through an angle of
+    $\beta$ before colliding with the next domino. By the
+    theory of falling times for the inverted pendulum
+    discussed in the previous section, the time this
+    rotation takes is given by
 
-    $$
     \begin{align*}
     \tau &= \frac{1}{2\sqrt{g/\ell}} \int_{\pi-\beta}^{\pi} \frac{d\theta}{\sqrt{k^2-\sin^2\tfrac{\theta}{2}}}
     = \frac{1}{k\sqrt{g/\ell}} \int_{(\pi-\beta)/2}^{\pi/2} \frac{d\phi}{\sqrt{1-k^{-2}\sin^2 \phi}} \\
     &= \frac{1}{k\sqrt{g/\ell}} \left( K(k^{-1})-F((\pi-\beta)/2,k^{-1}) \right),
     \end{align*}
-    $$
 
     where
 
-    $$
     \begin{align*}
     k = \sqrt{\frac{4g/\ell+\omega_\infty^2}{4g/\ell}}.
     \end{align*}
-    $$
 
-    During each such rotation cycle, one can say that the wave has travelled the distance $d$ equal to the inter-domino spacing. Thus, the speed of the domino wave is given by the grand formula
+    During each such rotation cycle, one can say that the
+    wave has travelled the distance $d$ equal to the
+    inter-domino spacing. Thus, the speed of the domino
+    wave is given by the grand formula
 
-    $$
     \begin{align*}
     v_{\textrm{wave}} = \frac{d}{\tau} = k d \sqrt{\frac{g}{\ell}}
     \left( K(k^{-1})-F((\pi-\beta)/2,k^{-1}) \right)^{-1},
     \end{align*}
-    $$
 
-    Note that all quantities in this formula are expressed as functions of the ``free'' parameters $d, \ell$ and $g$.
-
+    Note that all quantities in this formula are
+    expressed as functions of the ``free'' parameters
+    $d, \ell$ and $g$.
     |> hr
-
     |> Footnote
         handle=fn-dominowaves
-
-        This section is adapted from the paper _Domino waves_ by C. J. Efthimiou and M. D. Johnson (_SIAM Review_ $\textbf{49}$ (2007), 111--120).
+        This section is adapted from the paper _Domino waves_
+        by C. J. Efthimiou and M. D. Johnson (_SIAM Review_
+        $\textbf{49}$ (2007), 111--120).

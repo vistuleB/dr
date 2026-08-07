@@ -1,51 +1,85 @@
 |> Section
     title=Stability of fixed points
 
-    What happens to the system $x_{n+1}=T(x_n)$ if we move slightly away from a fixed point $x_*$? We will call the fixed point $x_*$ _asymptotically stable_, or _attracting_, if it has the property that for initial points $x_0$ in some small neighborhood $(x_*-\delta, x_*+\delta)$ of $x_*$, the sequence of iterates $x_n = T^n(x_0)$ converges to $x_*$. We will say that $x_*$ is _asymptotically unstable_, or _repelling_, if there is some $\delta>0$ such that for any initial point $x_0\neq x_*$, the sequence of iterates $x_n=T^n(x_0)$ will eventually leave the interval $[x_*-\delta,x_*+\delta]$. It is also possible for a fixed point to exhibit a mixture of the two types of behavior; for example, it may be attracting for initial points $x_0>x_*$ and repelling for $x_0<x_*$.
+    What happens to the system $x_{n+1}=T(x_n)$ if we
+    move slightly away from a fixed point $x_*$? We will
+    call the fixed point $x_*$ _asymptotically stable_,
+    or _attracting_, if it has the property that for
+    initial points $x_0$ in some small neighborhood
+    $(x_*-\delta, x_*+\delta)$ of $x_*$, the sequence of
+    iterates $x_n = T^n(x_0)$ converges to $x_*$. We will
+    say that $x_*$ is _asymptotically unstable_, or
+    _repelling_, if there is some $\delta>0$ such that
+    for any initial point $x_0\neq x_*$, the sequence of
+    iterates $x_n=T^n(x_0)$ will eventually leave the
+    interval $[x_*-\delta,x_*+\delta]$. It is also
+    possible for a fixed point to exhibit a mixture of the
+    two types of behavior; for example, it may be
+    attracting for initial points $x_0>x_*$ and repelling
+    for $x_0<x_*$.
 
-    To understand the stability properties near a fixed point, consider the linear approximation to $T$ around $x_*$ (assuming it is continuously differentiable in a neighborhood of the fixed point):
+    To understand the stability properties near a fixed
+    point, consider the linear approximation to $T$
+    around $x_*$ (assuming it is continuously
+    differentiable in a neighborhood of the fixed point):
 
-    $$
     \begin{align*}
     T(x) &= T(x_*) + T'(x_*) (x-x_*) + o(x-x_*) \\ &= x_* + T'(x_*) (x-x_*) + o(x-x_*),
     \end{align*}
-    $$
 
-    i.e., if the initial point $x_0$ is near $x_*$ then by the neglecting the little-o $o(x-x_*)$ term, we see that for the first few values we have approximately
+    i.e., if the initial point $x_0$ is near $x_*$ then
+    by the neglecting the little-o $o(x-x_*)$ term, we
+    see that for the first few values we have
+    approximately
 
-    $$
     \begin{align*}
     x_{n+1} - x_* \approx T'(x_*) (x_n-x_*),
     \end{align*}
-    $$
 
     or, denoting $y_n = x_n-x_*$ and $\lambda=T'(x_*)$,
 
-    $$
     \begin{align*}
     y_{n+1} \approx \lambda y_n,
     \end{align*}
-    $$
 
-    which is the recurrence for geometric growth. Ignoring the small inaccuracy that comes from the linearization, clearly $y_n\to 0$ if $|\lambda|<1$, and $|y_n|$ becomes larger than some fixed small number $\delta>0$ if $|\lambda|>1$. Thus, we have essentially proved the following fact.
+    which is the recurrence for geometric growth.
+    Ignoring the small inaccuracy that comes from the
+    linearization, clearly $y_n\to 0$ if $|\lambda|<1$,
+    and $|y_n|$ becomes larger than some fixed small
+    number $\delta>0$ if $|\lambda|>1$. Thus, we have
+    essentially proved the following fact.
 
     |> Lemma
         handle=lem-fixedpoint-stability
-
-        For a fixed point $x_*$, if $|T'(x_*)|<1$ then the fixed point is asymptotically stable, and if $|T'(x_*)|>1$ then the fixed point is asymptotically unstable.
-
-    |> Exercise
-
-        Complete the argument sketched above to get a rigorous proof of Lemma >>lem-fixedpoint-stability.
-
-    |> Example
-
-        In the example above involving $T(x)=x^2$, we have $T'(0)=0$ and $T'(1)=2$, so $0$ is an asymptotically stable fixed point, and $1$ is an asymptotically unstable fixed point.
-
-    |> Example
-
-        Pull out a pocket calculator and repeatedly press the ``$\cos$'' button. The value on the display will converge to the number $x_*\approx0.739085$, which is the unique fixed point of $T(x)=\cos x$. Note that $T'(x_*)=-\sin(x_*)\approx -0.673$, which shows that the fixed point is asymptotically stable. Note that the fact that $T'(x)<0$ means that the values of $x_n=\cos^n(0)$ will oscillate around $x_*$, producing values that are alternately bigger and smaller than $x_*$.
+        For a fixed point $x_*$, if $|T'(x_*)|<1$ then the
+        fixed point is asymptotically stable, and if
+        $|T'(x_*)|>1$ then the fixed point is asymptotically
+        unstable.
 
     |> Exercise
+        Complete the argument sketched above to get a
+        rigorous proof of Lemma >>lem-fixedpoint-stability.
 
-        In the case in which $|T'(x_*)|=1$ but $T''(x_*)\neq 0$, characterize the asymptotic stability of the fixed point as a function of $T'(x_*)$ and $T''(x_*)$.
+    |> Example
+        In the example above involving $T(x)=x^2$, we have
+        $T'(0)=0$ and $T'(1)=2$, so $0$ is an asymptotically
+        stable fixed point, and $1$ is an asymptotically
+        unstable fixed point.
+
+    |> Example
+        Pull out a pocket calculator and repeatedly press the
+        ``$\cos$'' button. The value on the display will
+        converge to the number $x_*\approx0.739085$, which is
+        the unique fixed point of $T(x)=\cos x$. Note that
+        $T'(x_*)=-\sin(x_*)\approx -0.673$, which shows that
+        the fixed point is asymptotically stable. Note that
+        the fact that $T'(x)<0$ means that the values of
+        $x_n=\cos^n(0)$ will oscillate around $x_*$,
+        producing values that are alternately bigger and
+        smaller than $x_*$.
+
+    |> Exercise
+        In the case in which $|T'(x_*)|=1$ but
+        $T''(x_*)\neq 0$, characterize the asymptotic
+        stability of the fixed point as a function of
+        $T'(x_*)$ and $T''(x_*)$.

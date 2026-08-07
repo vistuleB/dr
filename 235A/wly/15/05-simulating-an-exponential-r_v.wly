@@ -1,6 +1,18 @@
 |> Section
     title=Simulating an exponential r.v.
 
-    As an illustration of Simulation Method 4 described above, in the case where $F$ is the $\operatorname{Exp}(\lambda)$ distribution, the function $g$ is easily computed to be $g(p)=-\frac{1}{\lambda} \log(1-p)$, so taking $X=-\frac{1}{\lambda} \log (1-U)$ produces an $\operatorname{Exp}(\lambda)$ r.v. We can simplify this slightly by noting that if $U\sim U[0,1]$ then also $1-U \sim U[0,1]$, so one can use the simpler function $g(1-p)=-\frac{1}{\lambda}\log p$.
+    As an illustration of Simulation Method 4 described
+    above, in the case where $F$ is the
+    $\operatorname{Exp}(\lambda)$ distribution, the
+    function $g$ is easily computed to be
+    $g(p)=-\frac{1}{\lambda} \log(1-p)$, so taking
+    $X=-\frac{1}{\lambda} \log (1-U)$ produces an
+    $\operatorname{Exp}(\lambda)$ r.v. We can simplify
+    this slightly by noting that if $U\sim U[0,1]$ then
+    also $1-U \sim U[0,1]$, so one can use the simpler
+    function $g(1-p)=-\frac{1}{\lambda}\log p$.
 
-    $\textbf{Simulation Method 5.}$ Given a random variable $U\sim U[0,1]$, the random variable $X = -\frac{1}{\lambda}\log U$ has distribution $\operatorname{Exp}(\lambda)$.
+    $\textbf{Simulation Method 5.}$ Given a random
+    variable $U\sim U[0,1]$, the random variable
+    $X = -\frac{1}{\lambda}\log U$ has distribution
+    $\operatorname{Exp}(\lambda)$.

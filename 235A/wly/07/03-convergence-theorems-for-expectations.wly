@@ -1,30 +1,62 @@
 |> Section
     title=Convergence theorems for expectations
 
-    We want to study notions of continuity for the expectation operator. If $X_n\to X$ as $n\to\infty$, under what conditions do we have that $\mathbf{E}(X_n)\to \mathbf{E} X$? First we have to decide what ``$X_n\to X$'' actually _means_. We define two notions of convergence of a sequence of random variables to a limit.
+    We want to study notions of continuity for the
+    expectation operator. If $X_n\to X$ as $n\to\infty$,
+    under what conditions do we have that
+    $\mathbf{E}(X_n)\to \mathbf{E} X$? First we have to
+    decide what ``$X_n\to X$'' actually _means_. We
+    define two notions of convergence of a sequence of
+    random variables to a limit.
 
     |> Definition
+        Let $X, X_1, X_2, \ldots$ be random variables all
+        defined on the same probability space. We say that
+        *$X_n$ converges in probability to $X$*, and denote
+        $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$, if for
+        all $\epsilon>0$ we have that
 
-        Let $X, X_1, X_2, \ldots$ be random variables all defined on the same probability space. We say that *$X_n$ converges in probability to $X$*, and denote $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$, if for all $\epsilon>0$ we have that
-        $$ \mathrm{P}(|X_n-X|>\epsilon) \xrightarrow[n\to\infty]{} 0. $$
+        $$
+        \mathrm{P}(|X_n-X|>\epsilon) \xrightarrow[n\to\infty]{} 0.
+        $$
 
     |> Definition
+        With $X,X_1,X_2,\ldots$ as before, we say that *$X_n$
+        converges almost surely to $X$* (or *converges to $X$
+        with probability 1*), and denote
+        $X_n \xrightarrow[n\to\infty]{\textrm{a.s.}} X$, if
 
-        With $X,X_1,X_2,\ldots$ as before, we say that *$X_n$ converges almost surely to $X$* (or *converges to $X$ with probability 1*), and denote $X_n \xrightarrow[n\to\infty]{\textrm{a.s.}} X$, if
-        $$ \mathrm{P}( X_n \to X ) = \mathrm{P}\left(\left\{ \omega \in \Omega : X(\omega)=\lim_{n\to\infty} X_n(\omega) \right\} \right) = 1. $$
+        $$
+        \mathrm{P}( X_n \to X ) = \mathrm{P}\left(\left\{ \omega \in \Omega : X(\omega)=\lim_{n\to\infty} X_n(\omega) \right\} \right) = 1.
+        $$
 
     |> Exercise
-
-        Show that $\left\{ \omega \in \Omega : X(\omega)=\lim_{n\to\infty} X_n(\omega) \right\}$ is an event and therefore has a well-defined probability. In other words, represent it in terms of countable union, intersection and complementation operations on simple sets that are known to be events. Hint: Use the $\epsilon-\delta$ definition of a limit.
+        Show that
+        $\left\{ \omega \in \Omega :
+        X(\omega)=\lim_{n\to\infty} X_n(\omega) \right\}$
+        is an event and therefore has a well-defined
+        probability. In other words, represent it in terms of
+        countable union, intersection and complementation
+        operations on simple sets that are known to be events.
+        Hint: Use the $\epsilon-\delta$ definition of a
+        limit.
 
     |> Lemma
         handle=lem-convergence-types
-
-        Almost sure convergence is a stronger notion of convergence than convergence in probability. In other words, if $X_n\xrightarrow[n\to\infty]{\textrm{a.s.}} X$ then $X_n\xrightarrow[n\to\infty]{\mathrm{P}} X$, but the converse is not true.
+        Almost sure convergence is a stronger notion of
+        convergence than convergence in probability. In other
+        words, if
+        $X_n\xrightarrow[n\to\infty]{\textrm{a.s.}} X$ then
+        $X_n\xrightarrow[n\to\infty]{\mathrm{P}} X$, but the
+        converse is not true.
 
     |> Exercise
+        Prove Lemma >>lem-convergence-types. For the
+        counterexample showing that convergence in probability
+        does not imply almost sure convergence, consider the
+        following sequence of random variables defined on the
+        space $((0,1),{\cal B}, \textrm{Lebesgue measure})$:
 
-        Prove Lemma >>lem-convergence-types. For the counterexample showing that convergence in probability does not imply almost sure convergence, consider the following sequence of random variables defined on the space $((0,1),{\cal B}, \textrm{Lebesgue measure})$:
         $$
         \begin{array}{l}
         1_{(0,1)}, \\
@@ -36,71 +68,121 @@
 
     |> Lemma
         handle=lem:prob-as-subseq
-
-        If $(X_n)_{n=1}^\infty$ is a sequence of r.v.s such that $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$ then there exists a subsequence $(X_{n_k})_{k=1}^\infty$ such that $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
+        If $(X_n)_{n=1}^\infty$ is a sequence of r.v.s such
+        that $X_n \xrightarrow[n\to\infty]{\mathrm{P}} X$
+        then there exists a subsequence
+        $(X_{n_k})_{k=1}^\infty$ such that
+        $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
 
     |> Exercise
-
         Prove Lemma >>lem:prob-as-subseq.
 
-    We can now formulate the fundamental convergence theorems for Lebesgue integration.
+    We can now formulate the fundamental convergence
+    theorems for Lebesgue integration.
 
     |> Theorem
         label=Bounded convergence theorem
-
-        If $X_n$ is a sequence of r.v.'s such that $|X_n|\le M$ for all $n$, and $X_n\to X$ in probability, then $\mathbf{E} X_n \to \mathbf{E} X$.
+        If $X_n$ is a sequence of r.v.'s such that
+        $|X_n|\le M$ for all $n$, and $X_n\to X$ in
+        probability, then $\mathbf{E} X_n \to \mathbf{E} X$.
 
     |> Proof
-
         Fix $\epsilon>0$. Then
+
         $$
         \begin{eqnarray*}
         |\mathbf{E} X_n - \mathbf{E} X| &\le& \mathbf{E} |X_n - X| = \mathbf{E} |X_n - X|1_{\{|X_n-X|>\epsilon\}} + \mathbf{E} |X_n - X|1_{\{|X_n-X|\le \epsilon\}} \\
         &\le& 2M \mathrm{P}(|X_n-X|>\epsilon) + \epsilon\xrightarrow[n\to\infty]{} \epsilon.
         \end{eqnarray*}
         $$
-        Since $\epsilon$ was an arbitrary positive number, this implies that $|\mathbf{E} X_n-\mathbf{E} X|\to 0$, as claimed.
+
+        Since $\epsilon$ was an arbitrary positive number,
+        this implies that
+        $|\mathbf{E} X_n-\mathbf{E} X|\to 0$, as claimed.
 
     |> Theorem
         label=Fatou's lemma
+        If $X_n \ge 0$ then
+        $\liminf_{n\to\infty} \mathbf{E} X_n \ge
+        \mathbf{E}(\liminf_{n\to\infty} X_n).$
 
-        If $X_n \ge 0$ then $\liminf_{n\to\infty} \mathbf{E} X_n \ge \mathbf{E}(\liminf_{n\to\infty} X_n).$
-
-    To see that the inequality in the lemma can fail to be an equality, let $U \sim U(0,1)$, and define $X_n = n 1_{\{U\le 1/n\}}$. Clearly $\liminf_{n\to\infty}X_n=\lim_{n\to\infty} X_n \equiv 0$, but $\mathbf{E}(X_n) = 1$ for all $n$.
+    To see that the inequality in the lemma can fail to
+    be an equality, let $U \sim U(0,1)$, and define
+    $X_n = n 1_{\{U\le 1/n\}}$. Clearly
+    $\liminf_{n\to\infty}X_n=\lim_{n\to\infty} X_n \equiv
+    0$,
+    but $\mathbf{E}(X_n) = 1$ for all $n$.
 
     |> Proof
+        Let $Y = \liminf_{n\to\infty} X_n$. Note that $Y$ can
+        be written as
 
-        Let $Y = \liminf_{n\to\infty} X_n$. Note that $Y$ can be written as
-        $$ Y = \sup_{n\ge 1} \inf_{m\ge n} X_m $$
-        (this is a general fact about the lim inf of a sequence of real numbers), or $Y = \sup_n Y_n$, where we denote
-        $$ Y_n = \inf_{m\ge n} X_m. $$
-        We have $Y_n \le X_n$, and as $n\to\infty$, $Y_n \to Y$ (in fact $Y_n \uparrow Y$) almost surely. Therefore $\mathbf{E} Y_n \le \mathbf{E} X_n$, so $\liminf_{n\to\infty} \mathbf{E} Y_n \le \liminf_{n\to\infty} \mathbf{E} X_n$, and therefore it is enough to show that
-        $$ \liminf_{n\to\infty} \mathbf{E} Y_n \ge \mathbf{E} Y. $$
+        $$
+        Y = \sup_{n\ge 1} \inf_{m\ge n} X_m
+        $$
+
+        (this is a general fact about the lim inf of a
+        sequence of real numbers), or $Y = \sup_n Y_n$, where
+        we denote
+
+        $$
+        Y_n = \inf_{m\ge n} X_m.
+        $$
+
+        We have $Y_n \le X_n$, and as $n\to\infty$,
+        $Y_n \to Y$ (in fact $Y_n \uparrow Y$) almost surely.
+        Therefore $\mathbf{E} Y_n \le \mathbf{E} X_n$, so
+        $\liminf_{n\to\infty} \mathbf{E} Y_n \le
+        \liminf_{n\to\infty} \mathbf{E} X_n$,
+        and therefore it is enough to show that
+
+        $$
+        \liminf_{n\to\infty} \mathbf{E} Y_n \ge \mathbf{E} Y.
+        $$
+
         But for any $M$ we have that
-        $$ Y_n \wedge M \xrightarrow[n\to\infty]{\textrm{a.s.}} Y \wedge M, $$
-        and this is a sequence of uniformly bounded r.v.'s, therefore by the bounded convergence theorem we get that
-        $$ \mathbf{E}(Y_n) \ge \mathbf{E}(Y_n \wedge M) \xrightarrow[n\to\infty]{} \mathbf{E}(Y\wedge M). $$
-        We therefore get that $\liminf_{n\to\infty} \mathbf{E}(Y_n)\ge \mathbf{E}(Y\wedge M)$ for any $M>0$, which implies the result because of the following exercise.
+
+        $$
+        Y_n \wedge M \xrightarrow[n\to\infty]{\textrm{a.s.}} Y \wedge M,
+        $$
+
+        and this is a sequence of uniformly bounded r.v.'s,
+        therefore by the bounded convergence theorem we get
+        that
+
+        $$
+        \mathbf{E}(Y_n) \ge \mathbf{E}(Y_n \wedge M) \xrightarrow[n\to\infty]{} \mathbf{E}(Y\wedge M).
+        $$
+
+        We therefore get that
+        $\liminf_{n\to\infty} \mathbf{E}(Y_n)\ge
+        \mathbf{E}(Y\wedge M)$
+        for any $M>0$, which implies the result because of
+        the following exercise.
 
     |> Exercise
-
         Let $Y\ge 0$ be a random variable. Prove that
-        $$ \mathbf{E}(Y) = \sup_{M>0} \mathbf{E}(Y\wedge M). $$
+
+        $$
+        \mathbf{E}(Y) = \sup_{M>0} \mathbf{E}(Y\wedge M).
+        $$
 
     |> Theorem
         label=Monotone convergence theorem
-
-        If $0\le X_n \uparrow X$ as $n\to\infty$ then $\mathbf{E} X_n \uparrow \mathbf{E} X$.
+        If $0\le X_n \uparrow X$ as $n\to\infty$ then
+        $\mathbf{E} X_n \uparrow \mathbf{E} X$.
 
     |> Proof
-
-        $$ \mathbf{E} X = \mathbf{E} [\liminf_{n\to\infty} X_n] \le \liminf_{n\to\infty} \mathbf{E} X_n \le \limsup_{n\to\infty} \mathbf{E} X_n \le \limsup_{n\to\infty}  \mathbf{E} X = \mathbf{E} X. $$
+        $$
+        \mathbf{E} X = \mathbf{E} [\liminf_{n\to\infty} X_n] \le \liminf_{n\to\infty} \mathbf{E} X_n \le \limsup_{n\to\infty} \mathbf{E} X_n \le \limsup_{n\to\infty}  \mathbf{E} X = \mathbf{E} X.
+        $$
 
     |> Theorem
         label=Dominated convergence theorem
-
-        If $X_n\to X$ almost surely, $|X_n|\le Y$ for all $n\ge 1$ and $\mathbf{E} Y<\infty$, then $\mathbf{E} X_n\to \mathbf{E} X$.
+        If $X_n\to X$ almost surely, $|X_n|\le Y$ for all
+        $n\ge 1$ and $\mathbf{E} Y<\infty$, then
+        $\mathbf{E} X_n\to \mathbf{E} X$.
 
     |> Proof
-
-        Apply Fatou's lemma separately to $Y+X_n$ and to $Y-X_n$.
+        Apply Fatou's lemma separately to $Y+X_n$ and to
+        $Y-X_n$.

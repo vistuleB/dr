@@ -2,11 +2,17 @@
     title=The exponential distribution
     handle=sec:exp-dist
 
-    We say that $X$ has the exponential distribution with parameter $\lambda$, and denote $X\sim \operatorname{Exp}(\lambda)$, if $X$ has density function
+    We say that $X$ has the exponential distribution with
+    parameter $\lambda$, and denote
+    $X\sim \operatorname{Exp}(\lambda)$, if $X$ has
+    density function
+
     $$
     f_X(x) = \lambda e^{-\lambda x} \qquad (x\ge 0)
     $$
+
     and the associated c.d.f.
+
     $$
     F_X(x) = \begin{cases} 0 & \textrm{if }x<0, \\
     1-e^{-\lambda x} & \textrm{if }x\ge 0.
@@ -19,21 +25,72 @@
         class=list
         data-list-style=decimal
         |> li
-            $\lambda$ has the role of an (inverse) $\textbf{scale parameter}$, in the sense that for $c>0$ we have that $c \operatorname{Exp}(\lambda) \stackrel{d}{=} \operatorname{Exp}(\lambda / a)$; i.e., scaling an exponential r.v. by a factor $c$ gives a new exponential r.v. where the scale parameter is divided by $c$.
+            $\lambda$ has the role of an (inverse)
+            $\textbf{scale parameter}$, in the sense that for
+            $c>0$ we have that
+            $c \operatorname{Exp}(\lambda) \stackrel{d}{=}
+            \operatorname{Exp}(\lambda / a)$;
+            i.e., scaling an exponential r.v. by a factor $c$
+            gives a new exponential r.v. where the scale parameter
+            is divided by $c$.
+
         |> li
-            The exponential distribution satisfies the $\textbf{lack of memory property}$. More precisely, if $X\sim \operatorname{Exp}(\lambda)$ then
-            $$ \mathrm{P}(X > t+s \,|\, X>t) = \mathrm{P}(X>s) \qquad (t,s>0). $$
-            Furthermore, it is not hard to show that the exponential distribution is the unique distribution on $[0,\infty)$ satisfying this property.
+            The exponential distribution satisfies the
+            $\textbf{lack of memory property}$. More precisely,
+            if $X\sim \operatorname{Exp}(\lambda)$ then
+
+            $$
+            \mathrm{P}(X > t+s \,|\, X>t) = \mathrm{P}(X>s) \qquad (t,s>0).
+            $$
+
+            Furthermore, it is not hard to show that the
+            exponential distribution is the unique distribution on
+            $[0,\infty)$ satisfying this property.
+
         |> li
-            $\mathbf{E}(X) = \lambda$, $\mathbf{V}(X) = \lambda^2$.
+
+            $\mathbf{E}(X) = \lambda$,
+            $\mathbf{V}(X) = \lambda^2$.
+
         |> li
-            The exponential distribution can be thought of as a scaling limit of geometric random variables, when the geometric distribution is interpreted as measuring _time_ rather than the number of experiments, and time is scaled so that the i.i.d. Bernoulli experiments are performed more and more frequently, but are becoming less and less probable to succeed, in such a way that the mean number of successful experiments per unit of time remains constant. More precisely, if $\lambda>0$ is fixed, $X\sim \operatorname{Exp}(\lambda)$, and for each $n$ (larger than $\lambda$) we let $W_n$ denote a random variable with distribution $\operatorname{Geom}(\lambda/n)$, then we have
-            $$ \mathrm{P}\left(\frac{1}{n} W_n > t\right)  \xrightarrow[n\to\infty]{} \mathrm{P}(X > t) \qquad (t>0). $$
+            The exponential distribution can be thought of as a
+            scaling limit of geometric random variables, when the
+            geometric distribution is interpreted as measuring
+            _time_ rather than the number of experiments, and time
+            is scaled so that the i.i.d. Bernoulli experiments are
+            performed more and more frequently, but are becoming
+            less and less probable to succeed, in such a way that
+            the mean number of successful experiments per unit of
+            time remains constant. More precisely, if $\lambda>0$
+            is fixed, $X\sim \operatorname{Exp}(\lambda)$, and
+            for each $n$ (larger than $\lambda$) we let $W_n$
+            denote a random variable with distribution
+            $\operatorname{Geom}(\lambda/n)$, then we have
+
+            $$
+            \mathrm{P}\left(\frac{1}{n} W_n > t\right)  \xrightarrow[n\to\infty]{} \mathrm{P}(X > t) \qquad (t>0).
+            $$
+
         |> li
-            If $X\sim \operatorname{Exp}(\lambda)$ and $Y \sim \operatorname{Exp}(\mu)$ are independent r.v.s then $\min(X,Y) \sim \operatorname{Exp}(\lambda+\mu)$.
+            If $X\sim \operatorname{Exp}(\lambda)$ and
+            $Y \sim \operatorname{Exp}(\mu)$ are independent
+            r.v.s then
+            $\min(X,Y) \sim \operatorname{Exp}(\lambda+\mu)$.
+
         |> li
-            If $X_1,X_2,\ldots $ are i.i.d. $\operatorname{Exp}(1)$ random variables, and we define the cumulative sums $S_0=0$, $S_n = \sum_{k=1}^n X_k$, then for each $\lambda>0$, the random variable
-            $$ N(\lambda) = \max\{ n\ge 0\,:\, S_n \le \lambda \}, $$
+            If $X_1,X_2,\ldots$ are i.i.d. $\operatorname{Exp}(1)$
+            random variables, and we define the cumulative sums
+            $S_0=0$, $S_n = \sum_{k=1}^n X_k$, then for each
+            $\lambda>0$, the random variable
+
+            $$
+            N(\lambda) = \max\{ n\ge 0\,:\, S_n \le \lambda \},
+            $$
+
             then $N(\lambda) \sim \operatorname{Poi}(\lambda)$.
 
-    $\textbf{Note.}$ One can consider $N(\lambda)$ not just for a single value of $\lambda$ but the entire family $N(t)$, where $t>0$ is a parameter denoting time. When considered as such a family, $(N(t))_{t>0}$ is called a $\textbf{Poisson process}$.
+    $\textbf{Note.}$ One can consider $N(\lambda)$ not
+    just for a single value of $\lambda$ but the entire
+    family $N(t)$, where $t>0$ is a parameter denoting
+    time. When considered as such a family, $(N(t))_{t>0}$
+    is called a $\textbf{Poisson process}$.

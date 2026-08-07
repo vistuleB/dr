@@ -1,16 +1,41 @@
 |> Section
     title=Introduction
 
-    Newton made the famous discovery that the motion of physical bodies can be described by a second-order differential equation
+    Newton made the famous discovery that the motion of
+    physical bodies can be described by a second-order
+    differential equation
 
-    $$
     \begin{align*}
     \mathbf{F} = m \mathbf{a},
     \end{align*}
-    $$
 
-    where $\mathbf{a}$ is the acceleration (the second derivative of the position of the body), $m$ is the mass, and $\mathbf{F}$ is the force, which has to be specified in order for the motion to be determined (for example, Newton's law of gravity gives a formula for the force $\mathbf{F}$ arising out of the gravitational influence of celestial bodies). The quantities $\mathbf{F}$ and $\mathbf{a}$ are vectors, but in simple problems where the motion is along only one axis can be taken as scalars.
+    where $\mathbf{a}$ is the acceleration (the second
+    derivative of the position of the body), $m$ is the
+    mass, and $\mathbf{F}$ is the force, which has to be
+    specified in order for the motion to be determined
+    (for example, Newton's law of gravity gives a formula
+    for the force $\mathbf{F}$ arising out of the
+    gravitational influence of celestial bodies). The
+    quantities $\mathbf{F}$ and $\mathbf{a}$ are vectors,
+    but in simple problems where the motion is along only
+    one axis can be taken as scalars.
 
-    In the 18th and 19th centuries it was realized that Newton's equations can be reformulated in two surprising ways. The new formulations, known as _Lagrangian_ and _Hamiltonian_ mechanics, make it easier to analyze the behavior of certain mechanical systems, and also highlight important theoretical aspects of the behavior of such systems which are not immediately apparent from the original Newtonian formulation. They also gave rise to an entirely new and highly useful branch of mathematics called the _calculus of variations_ --- a kind of ``calculus on steroids'' (see Section >>sec:variational-calculus).
+    In the 18th and 19th centuries it was realized that
+    Newton's equations can be reformulated in two
+    surprising ways. The new formulations, known as
+    _Lagrangian_ and _Hamiltonian_ mechanics, make it
+    easier to analyze the behavior of certain mechanical
+    systems, and also highlight important theoretical
+    aspects of the behavior of such systems which are not
+    immediately apparent from the original Newtonian
+    formulation. They also gave rise to an entirely new
+    and highly useful branch of mathematics called the
+    _calculus of variations_ --- a kind of ``calculus on
+    steroids'' (see Section >>sec:variational-calculus).
 
-    Our goal in this chapter is to give an introduction to this deep and beautiful part of the theory of differential equations. For simplicity, we restrict the discussion mostly to systems with one degree of freedom, and comment only briefly on higher-dimensional generalizations.
+    Our goal in this chapter is to give an introduction
+    to this deep and beautiful part of the theory of
+    differential equations. For simplicity, we restrict
+    the discussion mostly to systems with one degree of
+    freedom, and comment only briefly on
+    higher-dimensional generalizations.

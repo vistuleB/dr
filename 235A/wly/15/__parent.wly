@@ -1,6 +1,24 @@
 |> Chapter
     title=Random number generation
 
-    An important problem in applied probability theory is to produce one or more random variables distributed according to some specified distribution, starting from a source of random information whose distribution is fixed. This is referred to as $\textbf{random number generation}$ and is also known as $\textbf{statistical simulation}$ or $\textbf{sampling}$. In this chapter we survey several interesting methods for random number generation
+    An important problem in applied probability theory is
+    to produce one or more random variables distributed
+    according to some specified distribution, starting
+    from a source of random information whose distribution
+    is fixed. This is referred to as
+    $\textbf{random number generation}$ and is also known
+    as $\textbf{statistical simulation}$ or
+    $\textbf{sampling}$. In this chapter we survey
+    several interesting methods for random number
+    generation
 
-    Note that we assume that our source of randomness provides us with truly random information as the input for the computation. In the absence of such random information, the problem of producing information that _appears_ to be random using a deterministic computation applied to a non-random input, is a very different problem, known as $\textbf{pseudorandom number generation}$, which we will not discuss (although it is also very interesting!).
+    Note that we assume that our source of randomness
+    provides us with truly random information as the input
+    for the computation. In the absence of such random
+    information, the problem of producing information that
+    _appears_ to be random using a deterministic
+    computation applied to a non-random input, is a very
+    different problem, known as
+    $\textbf{pseudorandom number generation}$, which we
+    will not discuss (although it is also very
+    interesting!).

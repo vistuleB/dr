@@ -1,14 +1,56 @@
 |> Section
     title=Introduction: the problem of control
 
-    The dynamical systems we find in nature are plagued by a host of undesirable effects such as instabilities, unpredictable and chaotic behavior, and unwanted oscillations. Left to their own devices, ecosystems can suffer cycles of uninhibited growth followed by mass starvation; economies undergo cyclical downturns; human hearts go into fibrillation; aircraft would plunge down to earth; etc. The goal of control theory is to devise methods to steer dynamical systems away from unfavorable modes of behavior and towards desired ones, by manipulating the differential equation itself --- usually through manipulation of a specific term (or set of terms) present in the equation, known as the _control function_. Control theory is a large field, and its proper study requires a separate concentrated effort. In these notes we will merely give a short introduction to the subject, focusing on a few simple examples which illustrate some of the main ideas of this fascinating (and extremely useful) subject and how it relates to the theory of ODEs.
+    The dynamical systems we find in nature are plagued
+    by a host of undesirable effects such as
+    instabilities, unpredictable and chaotic behavior, and
+    unwanted oscillations. Left to their own devices,
+    ecosystems can suffer cycles of uninhibited growth
+    followed by mass starvation; economies undergo
+    cyclical downturns; human hearts go into fibrillation;
+    aircraft would plunge down to earth; etc. The goal of
+    control theory is to devise methods to steer dynamical
+    systems away from unfavorable modes of behavior and
+    towards desired ones, by manipulating the differential
+    equation itself --- usually through manipulation of a
+    specific term (or set of terms) present in the
+    equation, known as the _control function_. Control
+    theory is a large field, and its proper study requires
+    a separate concentrated effort. In these notes we will
+    merely give a short introduction to the subject,
+    focusing on a few simple examples which illustrate
+    some of the main ideas of this fascinating (and
+    extremely useful) subject and how it relates to the
+    theory of ODEs.
 
-    In mathematical terms, the problem of control can be formulated as follows. We are given a vector equation of the form
+    In mathematical terms, the problem of control can be
+    formulated as follows. We are given a vector equation
+    of the form
 
-    $$
     \begin{align*}
     \dot{\mathbf{x}} = G(\mathbf{x},\mathbf{u},t)
     \end{align*}
-    $$
 
-    where $\mathbf{x}$ is a $d$-dimensional vector dynamic variable and $G:\mathbb{R}^{d+k+1}\to\R^d$ is a smooth function. We think of $\mathbf{u}$ as a $k$-dimensional input that is a parameter to the equation. That is, given a curve $\mathbf{u}(t)$ in $\mathbf{R}^k$, we can plug it into the equation to get an ODE $\dot{\mathbf{x}}(t) = G(\mathbf{x}(t),\mathbf{u}(t),t)$ for the vector variable $\mathbf{x}$. The assumption is that we can pick $\mathbf{u}$, with the goal being of steering the solution $x(t)$ towards a specified desired behavior. For example, $\mathbf{u}$ could represent a driving force in a mechanical system; an electric voltage applied by a digital controller in an electronic circuit; an interest rate on government-issued bonds set by a central bank, etc. A common goal is to make $\mathbf{x}$ go to a specific point in $\mathbb{R}^d$ and stay there, i.e., to stabilize the system at a state that it would not normally (in the absence of deliberate control) remain stable at. We refer to $\mathbf{u}$ as the _control variable_ (or variables), or _control function_.
+    where $\mathbf{x}$ is a $d$-dimensional vector
+    dynamic variable and $G:\mathbb{R}^{d+k+1}\to\R^d$ is
+    a smooth function. We think of $\mathbf{u}$ as a
+    $k$-dimensional input that is a parameter to the
+    equation. That is, given a curve $\mathbf{u}(t)$ in
+    $\mathbf{R}^k$, we can plug it into the equation to
+    get an ODE
+    $\dot{\mathbf{x}}(t) =
+    G(\mathbf{x}(t),\mathbf{u}(t),t)$
+    for the vector variable $\mathbf{x}$. The assumption
+    is that we can pick $\mathbf{u}$, with the goal being
+    of steering the solution $x(t)$ towards a specified
+    desired behavior. For example, $\mathbf{u}$ could
+    represent a driving force in a mechanical system; an
+    electric voltage applied by a digital controller in an
+    electronic circuit; an interest rate on
+    government-issued bonds set by a central bank, etc. A
+    common goal is to make $\mathbf{x}$ go to a specific
+    point in $\mathbb{R}^d$ and stay there, i.e., to
+    stabilize the system at a state that it would not
+    normally (in the absence of deliberate control) remain
+    stable at. We refer to $\mathbf{u}$ as the _control
+    variable_ (or variables), or _control function_.

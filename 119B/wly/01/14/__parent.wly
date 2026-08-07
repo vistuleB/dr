@@ -1,12 +1,16 @@
 |> Section
     title=The pendulum equation, falling trees and domino waves
 
-    In this section we show how to obtain an exact solution of the simple pendulum equation
+    In this section we show how to obtain an exact
+    solution of the simple pendulum equation
 
-    $$
     \begin{align*}
     \ddot{\theta} + \frac{g}{\ell} \sin \theta = 0
     \end{align*}
-    $$
 
-    and show several applications of this solution. Unfortunately, the solution involves some exotic special functions that are unfamiliar to most people (possibly even to most mathematicians!) --- the elliptic integrals and Jacobi elliptic functions --- but it is useful (and entertaining) nonetheless.
+    and show several applications of this solution.
+    Unfortunately, the solution involves some exotic
+    special functions that are unfamiliar to most people
+    (possibly even to most mathematicians!) --- the
+    elliptic integrals and Jacobi elliptic functions ---
+    but it is useful (and entertaining) nonetheless.

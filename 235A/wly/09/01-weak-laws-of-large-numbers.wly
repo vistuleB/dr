@@ -4,15 +4,25 @@
     |> Theorem
         label=Weak Law of Large Numbers (WLLN)
         handle=thm-wlln
-
         If $\mathbf{E}|X_1|<\infty$ then
-        $$ \frac{S_n}{n} \xrightarrow[n\to\infty]{\mathrm{P}} \mu. $$
+
+        $$
+        \frac{S_n}{n} \xrightarrow[n\to\infty]{\mathrm{P}} \mu.
+        $$
 
     |> Proof
         alt-title=Proof in the case of finite variance
+        In the most general case, proving this requires some
+        work -- we shall deduce it from its stronger cousin,
+        the Strong Law of Large Numbers. However, if we assume
+        that $\sigma^2 = \mathbf{V}(X_1)<\infty$, the proof
+        is extremely easy! It suffices to note that in this
+        case $\mathbf{V}(S_n) = n \sigma^2$ (this is true
+        even when the $X_n$'s are not independent but only
+        uncorrelated), or $\mathbf{V}(S_n/n) = \sigma^2/n$.
+        From Chebyshev's inequality we then have that for any
+        $\epsilon>0$,
 
-        In the most general case, proving this requires some work -- we shall deduce it from its stronger cousin, the Strong Law of Large Numbers. However, if we assume that $\sigma^2 = \mathbf{V}(X_1)<\infty$, the proof is extremely easy! It suffices to note that in this case $\mathbf{V}(S_n) = n \sigma^2$ (this is true even when the $X_n$'s are not independent but only uncorrelated), or $\mathbf{V}(S_n/n) = \sigma^2/n$.
-        From Chebyshev's inequality we then have that for any $\epsilon>0$,
         $$
         \begin{eqnarray*}
         eq:variancebound##<<

@@ -1,7 +1,8 @@
 |> Section
     title=Hamiltonian systems
 
-    Recall that the general form of a planar differential equation (i.e., a system of two first-order ODEs) is
+    Recall that the general form of a planar differential
+    equation (i.e., a system of two first-order ODEs) is
 
     $$
     \begin{equation} eq:genericsystem##<<
@@ -12,13 +13,22 @@
     \end{equation}
     $$
 
-    where, in keeping with a tradition in the theory of ODEs, $\dot{f}$ denotes the derivative of a quantity $f$ with respect to the time variable $t$. The system is called a _Hamiltonian system_ if there is a function
+    where, in keeping with a tradition in the theory of
+    ODEs, $\dot{f}$ denotes the derivative of a quantity
+    $f$ with respect to the time variable $t$. The system
+    is called a _Hamiltonian system_ if there is a
+    function
 
-    $$ H=H(p,q,t) $$
+    $$
+    H=H(p,q,t)
+    $$
 
-    (called the _Hamiltonian_ associated with the system) such that the functions $F$ and $G$ satisfy
+    (called the _Hamiltonian_ associated with the system)
+    such that the functions $F$ and $G$ satisfy
 
-    $$ F(p,q,t) = -\frac{\partial H}{\partial q}, \quad G(p,q,t) = \frac{\partial H}{\partial p}. $$
+    $$
+    F(p,q,t) = -\frac{\partial H}{\partial q}, \quad G(p,q,t) = \frac{\partial H}{\partial p}.
+    $$
 
     In this case the system has the form
 
@@ -31,9 +41,14 @@
     \end{equation}
     $$
 
-    The variable $p$ is sometimes called a _generalized coordinate_, and the variable $q$ is called the _generalized momentum_ associated to $p$.
+    The variable $p$ is sometimes called a _generalized
+    coordinate_, and the variable $q$ is called the
+    _generalized momentum_ associated to $p$.
 
-    When can we say that a given system (>>eq:genericsystem) is Hamiltonian? Assuming that $F$ and $G$ are continuously differentiable, it is not difficult to see that a necessary condition is that
+    When can we say that a given system
+    (>>eq:genericsystem) is Hamiltonian? Assuming that $F$
+    and $G$ are continuously differentiable, it is not
+    difficult to see that a necessary condition is that
 
     $$
     \begin{equation} eq:hamiltonian-sufficient##<<
@@ -43,31 +58,73 @@
     \end{equation}
     $$
 
-    (or $\frac{\partial F}{\partial p} +\frac{\partial G}{\partial q}=0$) since both sides of the equation are equal to $-\frac{\partial^2 H}{\partial p \partial q}$. Equivalently, this condition can be written as
-
-    $$ \operatorname{div} \mathbf{V} = 0, $$
-
-    where $\mathbf{V}$ denotes the planar vector field $\mathbf{V}= (F,G)$ (we interpret the first coordinate of $\mathbf{V}$ as the ``$p$-coordinate'' and the second coordinate as the ``$q$-coordinate''), and $\operatorname{div} \mathbf{V}$ denotes the divergence of $\mathbf{V}$. In physics, a vector field with this property is called _divergence-free_ or _solenoidal_. Yet another way to write (>>eq:hamiltonian-sufficient) is
+    (or
+    $\frac{\partial F}{\partial p} +\frac{\partial
+    G}{\partial q}=0$)
+    since both sides of the equation are equal to
+    $-\frac{\partial^2 H}{\partial p \partial q}$.
+    Equivalently, this condition can be written as
 
     $$
+    \operatorname{div} \mathbf{V} = 0,
+    $$
+
+    where $\mathbf{V}$ denotes the planar vector field
+    $\mathbf{V}= (F,G)$ (we interpret the first
+    coordinate of $\mathbf{V}$ as the ``$p$-coordinate''
+    and the second coordinate as the ``$q$-coordinate''),
+    and $\operatorname{div} \mathbf{V}$ denotes the
+    divergence of $\mathbf{V}$. In physics, a vector
+    field with this property is called _divergence-free_
+    or _solenoidal_. Yet another way to write
+    (>>eq:hamiltonian-sufficient) is
+
     \begin{align*}
     \operatorname{curl} \mathbf{W} = 0,
     \end{align*}
-    $$
 
-    where $\mathbf{W}$ is the vector field $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the (2-dimensional version of the) curl operator, defined by $\operatorname{curl}(A,B) = \frac{\partial A}{\partial q}-\frac{\partial B}{\partial p}$. A vector field with this property is called _curl-free_ or _irrotational_.
+    where $\mathbf{W}$ is the vector field
+    $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the
+    (2-dimensional version of the) curl operator, defined
+    by
+    $\operatorname{curl}(A,B) = \frac{\partial
+    A}{\partial q}-\frac{\partial B}{\partial p}$.
+    A vector field with this property is called
+    _curl-free_ or _irrotational_.
 
     |> Lemma
         handle=lem:hamiltonian-div
-
-        If the equation (>>eq:genericsystem) is defined on a simply connected domain, the condition (>>eq:hamiltonian-sufficient) is both necessary and sufficient for the system to be Hamiltonian.
+        If the equation (>>eq:genericsystem) is defined on a
+        simply connected domain, the condition
+        (>>eq:hamiltonian-sufficient) is both necessary and
+        sufficient for the system to be Hamiltonian.
 
     |> Proof
-
-        This is a slight reformulation of a familiar fact from vector calculus, that says that in a simply connected domain, a vector field $\mathbf{W}=(A,B)$ is curl-free if and only if it is _conservative_. A conservative vector field is one for which the line integral of the field between two points is independent of the contour connecting them, or equivalently, such that the line integral on any _closed_ contour vanishes. Such a vector field can always be represented as $\mathbf{W} = \nabla H$ (the gradient of $H$) for some scalar function $H$; one simply defines $H(p,q)$ as the line integral (which for a conservative field is independent of the path of integration)
+        This is a slight reformulation of a familiar fact
+        from vector calculus, that says that in a simply
+        connected domain, a vector field $\mathbf{W}=(A,B)$
+        is curl-free if and only if it is _conservative_. A
+        conservative vector field is one for which the line
+        integral of the field between two points is
+        independent of the contour connecting them, or
+        equivalently, such that the line integral on any
+        _closed_ contour vanishes. Such a vector field can
+        always be represented as $\mathbf{W} = \nabla H$ (the
+        gradient of $H$) for some scalar function $H$; one
+        simply defines $H(p,q)$ as the line integral (which
+        for a conservative field is independent of the path of
+        integration)
 
         $$
         H(p,q) = \int_{(p_0,q_0)}^{(p,q)} \mathbf{W}\cdot \mathbf{ds} = \int_{(p_0,q_0)}^{(p,q)} A\,dp + B\,dq
         $$
 
-        between some fixed but arbitrary initial point $(p_0,q_0)$ and the point $(p,q)$. The fact that $\mathbf{W}=\nabla H$ is immediate from the fundamental theorem of calculus. In our case, $\mathbf{W}=(G,-F)$ so the equation $\mathbf{W}=\nabla H$ gives exactly the pair of equations $F=-\frac{\partial H}{\partial q}$, $G=\frac{\partial H}{\partial p}$, with $H$ serving as the desired Hamiltonian.
+        between some fixed but arbitrary initial point
+        $(p_0,q_0)$ and the point $(p,q)$. The fact that
+        $\mathbf{W}=\nabla H$ is immediate from the
+        fundamental theorem of calculus. In our case,
+        $\mathbf{W}=(G,-F)$ so the equation
+        $\mathbf{W}=\nabla H$ gives exactly the pair of
+        equations $F=-\frac{\partial H}{\partial q}$,
+        $G=\frac{\partial H}{\partial p}$, with $H$ serving
+        as the desired Hamiltonian.

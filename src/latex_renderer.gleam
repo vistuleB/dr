@@ -741,16 +741,24 @@ fn emit_document(root: VXML, di: DocumentInfo) -> String {
 // ---------------------------------------------------------------------------
 // Modular output
 //
-// `--latex-chapter` / `--latex-section` / `--latex-subsection` split the body
-// across files: a `main.tex` (preamble + title + TOC + `\input{…}` lines) plus
-// one file per chapter (and, at finer granularities, per section / subsection),
-// plus one file per standalone unit (Exercises / Bibliography). `--latex` keeps
-// everything in a single `<course>.tex`.
+// `--latex` writes a single self-contained `main.tex`. The three modular flags
+// write a `main.tex` (preamble + title + TOC + `\input{…}` lines) plus a
+// `chapters/` tree. The layout is HIERARCHICAL, and a unit becomes a FOLDER only
+// when it actually holds split children (never an empty subfolder):
 //
-// A structural unit at depth `level` (chapter=1, section=2, subsection=3)
-// becomes its own file when `level <= max_split`; otherwise it is emitted inline
-// (exactly as the monolithic emitter would). Standalone units get their own file
-// in any modular mode.
+//   --latex-chapter     chapters/01.tex … chapters/16.tex   (chapters are files)
+//   --latex-section     chapters/01/01.tex + chapters/01/sections/01.tex …
+//                       (a sectionless chapter stays a file chapters/05.tex)
+//   --latex-subsection  … chapters/01/sections/07/07.tex
+//                          + chapters/01/sections/07/subsections/1.tex …
+//
+// A numbered folder `NN/` always contains its own `NN.tex` root file. Names in a
+// container start at 1 and are zero-padded (`01`) only when the container holds
+// 10+ items, else plain (`1`). Standalone units (Exercises / Bibliography) are
+// leaf files `chapters/exercises.tex` / `chapters/bibliography.tex`.
+//
+// `\input` paths are written relative to `main.tex` (fully qualified), so plain
+// `\input` resolves them regardless of which file does the including.
 // ---------------------------------------------------------------------------
 
 pub type Granularity {
@@ -785,123 +793,148 @@ fn child_struct_tag(tag: String) -> String {
   }
 }
 
-// coord = [ch] | [ch, sec] | [ch, sec, sub]  ->  "chapters/1.tex" etc.
-fn unit_path(coord: List(Int)) -> String {
-  let joined = coord |> list.map(int.to_string) |> string.join("-")
-  case list.length(coord) {
-    1 -> "chapters/" <> joined <> ".tex"
-    2 -> "sections/" <> joined <> ".tex"
-    _ -> "subsections/" <> joined <> ".tex"
-  }
-}
-
-fn drop_tex(path: String) -> String {
-  case string.ends_with(path, ".tex") {
-    True -> string.drop_end(path, 4)
-    False -> path
-  }
-}
-
 type Files =
   List(#(String, String))
 
-// Emit a structural unit at position `coord`. Returns the text to place in the
-// PARENT (either the full inline body, or an `\input{…}` line) and any files it
-// (and its split descendants) produced.
-fn modular_unit(
+// Numbered names within a container start at 1 and are zero-padded to the width
+// of the item count — but only when there are 10+ items (so `1,2,3` for a
+// handful, `01,…,16` for many).
+fn pad_width(count: Int) -> Int {
+  string.length(int.to_string(int.max(count, 1)))
+}
+
+fn pad(n: Int, width: Int) -> String {
+  let s = int.to_string(n)
+  string.repeat("0", int.max(0, width - string.length(s))) <> s
+}
+
+fn is_v_tag(node: VXML, tag: String) -> Bool {
+  case node {
+    V(_, t, _, _) -> tag != "" && t == tag
+    _ -> False
+  }
+}
+
+fn count_tag(children: List(VXML), tag: String) -> Int {
+  list.count(children, is_v_tag(_, tag))
+}
+
+// The subfolder a chapter/section unit uses to hold its split children.
+fn child_container(level: Int) -> String {
+  case level {
+    1 -> "sections"
+    _ -> "subsections"
+  }
+}
+
+// Emit one split structural unit living in directory `dir`, named `num` (already
+// padded). Returns the `\input{…}` line for the parent plus this unit's file(s):
+//   - a FOLDER `dir/num/num.tex` + a child container, when the unit's structural
+//     children are themselves split and non-empty;
+//   - otherwise a plain FILE `dir/num.tex` with everything inline.
+// (`\input` paths are relative to the root `main.tex`, hence fully qualified.)
+fn hier_unit(
   node: VXML,
-  coord: List(Int),
-  ctx: Ctx,
+  dir: String,
+  num: String,
+  level: Int,
   ms: Int,
+  ctx: Ctx,
 ) -> #(String, Files) {
-  case list.length(coord) <= ms {
-    // deep enough to keep inline: reuse the monolithic emitter verbatim
-    False -> #(node_to_latex(node, ctx), [])
-    // this unit is its own file
+  let assert V(_, tag, attrs, children) = node
+  let gtag = child_struct_tag(tag)
+  let is_folder = level + 1 <= ms && count_tag(children, gtag) > 0
+  case is_folder {
     True -> {
-      let assert V(_, tag, attrs, children) = node
-      let #(kids, kid_files) =
-        modular_children(children, coord, child_struct_tag(tag), ctx, ms)
-      let body = heading_open(latex_cmd(tag), attrs) <> "\n" <> kids
-      let path = unit_path(coord)
-      #("\n\\input{" <> drop_tex(path) <> "}\n", [#(path, body), ..kid_files])
+      let self = dir <> "/" <> num <> "/" <> num
+      let sub = dir <> "/" <> num <> "/" <> child_container(level)
+      let #(inner, sub_files) =
+        hier_children(children, sub, gtag, level + 1, ms, ctx)
+      let content = heading_open(latex_cmd(tag), attrs) <> "\n" <> inner
+      #("\n\\input{" <> self <> "}\n", [#(self <> ".tex", content), ..sub_files])
+    }
+    False -> {
+      let self = dir <> "/" <> num
+      let content =
+        heading_open(latex_cmd(tag), attrs) <> nodes_to_latex(children, ctx)
+      #("\n\\input{" <> self <> "}\n", [#(self <> ".tex", content)])
     }
   }
 }
 
-// Walk a unit's children: structural children (tag == `struct_tag`) recurse via
-// `modular_unit` with an extended coord; everything else is emitted inline.
-fn modular_children(
+// Walk a unit's children into the parent's `.tex` body: each structural child
+// (tag == `struct_tag`) becomes an `\input` + its own file(s); everything else
+// (intro prose, statements, …) stays inline.
+fn hier_children(
   children: List(VXML),
-  prefix: List(Int),
+  dir: String,
   struct_tag: String,
-  ctx: Ctx,
+  level: Int,
   ms: Int,
+  ctx: Ctx,
 ) -> #(String, Files) {
+  let width = pad_width(count_tag(children, struct_tag))
   let #(_, text, files) =
     list.fold(children, #(0, "", []), fn(acc, child) {
       let #(cnt, text, files) = acc
-      case child {
-        V(_, t, _, _) if t == struct_tag && struct_tag != "" -> {
+      case is_v_tag(child, struct_tag) {
+        True -> {
           let cnt = cnt + 1
-          let #(ct, cf) =
-            modular_unit(child, list.append(prefix, [cnt]), ctx, ms)
-          #(cnt, text <> ct, list.append(files, cf))
+          let #(inp, cf) = hier_unit(child, dir, pad(cnt, width), level, ms, ctx)
+          #(cnt, text <> inp, list.append(files, cf))
         }
-        _ -> #(cnt, text <> node_to_latex(child, ctx), files)
+        False -> #(cnt, text <> node_to_latex(child, ctx), files)
       }
     })
   #(text, files)
 }
 
-fn modular_standalone(
-  node: VXML,
-  name: String,
-  ctx: Ctx,
-) -> #(String, Files) {
+// A standalone unit (Exercises / Bibliography) is a leaf file in `chapters/`,
+// named by its kind (it has no sub-structure to split).
+fn standalone_hier(node: VXML, name: String, ctx: Ctx) -> #(String, Files) {
   let assert V(_, tag, attrs, children) = node
-  let body = standalone_open(tag, attrs) <> nodes_to_latex(children, ctx) <> "\n"
-  #("\n\\input{" <> name <> "}\n", [#(name <> ".tex", body)])
+  let content = standalone_open(tag, attrs) <> nodes_to_latex(children, ctx) <> "\n"
+  let path = "chapters/" <> name
+  #("\n\\input{" <> path <> "}\n", [#(path <> ".tex", content)])
 }
 
-// Walk the Document's children into the modular main-body + unit files.
-fn modular_document(root: VXML, ctx: Ctx, ms: Int) -> #(String, Files) {
+// Walk the Document's children into the modular main-body + all unit files.
+// Chapters and the standalone units live under `chapters/`.
+fn hier_document(root: VXML, ms: Int, ctx: Ctx) -> #(String, Files) {
   let assert V(_, _, _, children) = root
+  let width = pad_width(count_tag(children, "Chapter"))
   let #(_, body, files) =
     list.fold(children, #(0, "", []), fn(acc, child) {
-      let #(ch, body, files) = acc
+      let #(cnt, body, files) = acc
       case child {
         V(_, "Chapter", _, _) -> {
-          let ch = ch + 1
-          let #(t, f) = modular_unit(child, [ch], ctx, ms)
-          #(ch, body <> t, list.append(files, f))
+          let cnt = cnt + 1
+          let #(inp, cf) =
+            hier_unit(child, "chapters", pad(cnt, width), 1, ms, ctx)
+          #(cnt, body <> inp, list.append(files, cf))
         }
         V(_, "Exercises", _, _) -> {
-          let #(t, f) = modular_standalone(child, "exercises", ctx)
-          #(ch, body <> t, list.append(files, f))
+          let #(inp, cf) = standalone_hier(child, "exercises", ctx)
+          #(cnt, body <> inp, list.append(files, cf))
         }
         V(_, "Bibliography", _, _) -> {
-          let #(t, f) = modular_standalone(child, "bibliography", ctx)
-          #(ch, body <> t, list.append(files, f))
+          let #(inp, cf) = standalone_hier(child, "bibliography", ctx)
+          #(cnt, body <> inp, list.append(files, cf))
         }
-        _ -> #(ch, body <> node_to_latex(child, ctx), files)
+        _ -> #(cnt, body <> node_to_latex(child, ctx), files)
       }
     })
   #(body, files)
 }
 
 // The full set of #(relative_path, content) files for the chosen granularity.
-fn build_latex_files(
-  root: VXML,
-  di: DocumentInfo,
-  gran: Granularity,
-  course_dir: String,
-) -> Files {
+fn build_latex_files(root: VXML, di: DocumentInfo, gran: Granularity) -> Files {
   case gran {
-    Monolithic -> [#(course_dir <> ".tex", emit_document(root, di))]
+    // one self-contained file: the root folder holds only `main.tex`
+    Monolithic -> [#("main.tex", emit_document(root, di))]
     _ -> {
       let ctx = build_ctx(root)
-      let #(main_body, files) = modular_document(root, ctx, max_split(gran))
+      let #(main_body, files) = hier_document(root, max_split(gran), ctx)
       [#("main.tex", wrap_document(di, main_body)), ..files]
       |> list.map(fn(pc) { #(pc.0, collapse_blank_lines(pc.1)) })
     }
@@ -943,10 +976,9 @@ pub type LatexSplitterError {
 fn our_splitter(
   di: DocumentInfo,
   gran: Granularity,
-  course_dir: String,
   root: VXML,
 ) -> Result(List(Fragment(VXML)), LatexSplitterError) {
-  build_latex_files(root, di, gran, course_dir)
+  build_latex_files(root, di, gran)
   |> list.map(fn(pc) { ds.OutputFragment(FileContent(pc.1), pc.0, root) })
   |> Ok
 }
@@ -1041,7 +1073,7 @@ pub fn render(
           parser: wd.default_writerly_parser,
           filterer: ds.default_filterer(_, options, []),
           pipeline: latex_pipeline.latex_pipeline(),
-          splitter: our_splitter(document_info, granularity, course_dir, _),
+          splitter: our_splitter(document_info, granularity, _),
           emitter: our_emitter,
           writer: ds.default_writer,
           prettifier: ds.default_prettier_prettifier,

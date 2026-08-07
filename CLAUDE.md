@@ -86,37 +86,45 @@ Useful flags:
 ### Render to LaTeX / PDF
 
 ```sh
-gleam run -- --which <course_dir> --latex             # one monolithic <course>.tex
+gleam run -- --which <course_dir> --latex             # one monolithic main.tex
 gleam run -- --which <course_dir> --latex-chapter     # main.tex + one file per chapter
 gleam run -- --which <course_dir> --latex-section     #   ...chapters that \input sections
 gleam run -- --which <course_dir> --latex-subsection  #   ...sections that \input subsections
 ```
 
-**Modularity (`Granularity` in `latex_renderer`).** `--latex` emits **one
-self-contained `<course>.tex`**. The three modular flags emit a
-`main.tex` (preamble + title + TOC) that `\input`s the body across files:
-`chapters/N.tex`, and at finer granularities `sections/N-M.tex` /
-`subsections/N-M-P.tex`, plus **one file per standalone unit** (`exercises.tex` /
-`bibliography.tex`, emitted in document order — so last). A structural unit at
-depth *level* (chapter 1, section 2, subsection 3) becomes its own file when
-`level <= max_split(granularity)`, else it is inlined exactly as the monolithic
-emitter would (`modular_unit`/`modular_children`). `default_writer` auto-creates
-the `chapters/`, `sections/`, `subsections/` subdirs. **Compile `main.tex`** for
-modular output, `<course>.tex` for monolithic. Footnote/equation numbers stay
-global (one shared `build_ctx` across all files).
+**Modularity (`Granularity` in `latex_renderer`).** The output root is **always
+`main.tex`** (the compile target). `--latex` makes it one self-contained file.
+The three modular flags make it `main.tex` (preamble + title + TOC + `\input`s) +
+a **hierarchical `chapters/` tree** built by `hier_document`/`hier_unit`/
+`hier_children`:
 
-Emits, for the monolithic case, **one self-contained `.tex` file** at
-`<course_dir>/latex/<course_dir>.tex` (e.g. `235A/latex/235A.tex`) that compiles
-with `pdflatex` into a PDF with a clickable table of contents and a PDF bookmark
-outline. Each run first
-**clears the whole `<course_dir>/latex/` directory** (via `simplifile.clear_directory`
-in `latex_renderer.render`) so stale pdflatex leftovers (`.toc`/`.aux`/`.log`/
-`.out`/`.pdf`) never linger; the `.tex` is regenerated and `figures/` re-copied
-(so changed source images are picked up). Compile with three passes (TOC +
-cross-references need to settle):
+```
+--latex-chapter     chapters/01.tex … 16.tex           (chapters are files)
+--latex-section     chapters/01/01.tex + chapters/01/sections/1.tex …
+                    (a sectionless chapter stays a file, e.g. chapters/05.tex)
+--latex-subsection  … chapters/01/sections/07/07.tex
+                       + chapters/01/sections/07/subsections/1.tex …
+```
+
+Rules: a numbered folder `NN/` always holds its own `NN.tex` root file; a unit
+becomes a folder ONLY when it actually has split children (`level+1 <= max_split`
+and non-empty) — **never an empty subfolder** (so a childless unit stays a plain
+file). Names in a container start at 1 and are zero-padded (`01`) only when the
+container has **10+ items**, else plain (`1`) — `pad`/`pad_width`. Standalone
+units → leaf files `chapters/exercises.tex` / `chapters/bibliography.tex` (in
+document order — so after the chapters). `\input` paths are fully qualified from
+the root, and `default_writer` auto-creates the nested dirs. Footnote/equation
+numbers stay global (one shared `build_ctx` across all files).
+
+Each run first **clears the whole `<course_dir>/latex/` directory** (via
+`simplifile.clear_directory` in `latex_renderer.render`) so stale pdflatex
+leftovers (`.toc`/`.aux`/`.log`/`.out`/`.pdf`) never linger; `main.tex` (+ the
+`chapters/` tree) is regenerated and `figures/` re-copied (so changed source
+images are picked up). Compile `main.tex` with three passes (TOC + cross-
+references need to settle):
 
 ```sh
-cd <course_dir>/latex && pdflatex 235A.tex && pdflatex 235A.tex && pdflatex 235A.tex
+cd <course_dir>/latex && pdflatex main.tex && pdflatex main.tex && pdflatex main.tex
 ```
 
 **The multi-pass compile is mandatory, not optional.** After pass 1 there is no

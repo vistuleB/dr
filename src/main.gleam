@@ -30,7 +30,7 @@ fn local_usage_message() {
   io.println("")
   io.println(margin <> "--latex")
   io.println(margin <> "  -> (local option) render wly -> a single self-contained")
-  io.println(margin <> "     LaTeX file <course dir>/latex/<course>.tex, compilable")
+  io.println(margin <> "     LaTeX file <course dir>/latex/main.tex, compilable")
   io.println(margin <> "     with pdflatex (clickable TOC + PDF outline)")
   io.println("")
   io.println(margin <> "--latex-chapter / --latex-section / --latex-subsection")

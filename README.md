@@ -22,19 +22,25 @@ The `.last-command` file is local; add it to `.gitignore` if you do not want it 
 On MacOS, install pdflatex with `brew install --cask basictex`
 
 Generate the LaTeX source for a course with `gleam run -- --which 235A --latex`
-(writes `235A/latex/235A.tex`), then convert it to a PDF with `pdflatex file.tex`.
+(writes `235A/latex/main.tex`), then convert it to a PDF with `pdflatex main.tex`.
 
 You can also split the source into multiple files, depending on how you want to
-modularise:
+modularise. The output root is **always `main.tex`** (the file you compile):
 
-- `--latex` — one long `235A.tex`.
-- `--latex-chapter` — a `main.tex` that `\input`s one file per chapter.
-- `--latex-section` — chapters that in turn `\input` one file per section.
-- `--latex-subsection` — sections that in turn `\input` one file per subsection.
+- `--latex` — one long `main.tex`, nothing else.
+- `--latex-chapter` — `main.tex` + `chapters/01.tex … 16.tex` (one file per chapter).
+- `--latex-section` — chapters become folders that `\input` one file per section,
+  e.g. `chapters/01/01.tex` + `chapters/01/sections/1.tex …`.
+- `--latex-subsection` — sections in turn become folders holding one file per
+  subsection, e.g. `chapters/01/sections/07/subsections/1.tex`.
 
-Standalone units (e.g. Exercises, Bibliography) get their own file too, except in
-the monolithic case. For the modular flags, **compile `main.tex`** (not the
-per-chapter files, which have no preamble of their own).
+A numbered folder `NN/` always contains its own `NN.tex`; a unit only becomes a
+folder when it actually has sub-parts to split out (never an empty folder), and
+numbers are zero-padded (`01`) only in a directory holding 10+ items, else plain
+(`1`). Standalone units (Exercises, Bibliography) get their own file
+(`chapters/exercises.tex`, `chapters/bibliography.tex`), except in the monolithic
+case where they stay inline. Whatever the layout, **compile `main.tex`** (the
+per-chapter files have no preamble of their own).
 
 **Run `pdflatex` three times.** The Table of Contents is typeset from the `.toc`
 file, which LaTeX only *writes* during a run, so the passes converge like this:
@@ -54,10 +60,10 @@ the `Rerun to get …` warning stops** (three times here). The PDF outline and a
 cross-references settle the same way.
 
 ```sh
-cd 235A/latex && pdflatex 235A.tex && pdflatex 235A.tex && pdflatex 235A.tex
+cd 235A/latex && pdflatex main.tex && pdflatex main.tex && pdflatex main.tex
 ```
 
-`latexmk -pdf 235A.tex` does the reruns for you automatically (install it with
+`latexmk -pdf main.tex` does the reruns for you automatically (install it with
 `tlmgr install latexmk` if it isn't already available).
 
 # Add a shared asset to a course

@@ -1193,11 +1193,20 @@ pub fn render(
           io.println("\nlatex renderer error: " <> ins(error) <> "\n")
         _ -> {
           let n_figs = copy_figures(course_dir, output_dir)
+          // Note: `run_renderer`'s writer already reports every .tex it wrote
+          // (a count, or one line per file under `--artifacts`), main.tex
+          // included. So don't re-announce "wrote main.tex" here — that reads
+          // as a stray duplicate. Just point at the compile target (useful in
+          // modular mode, where many .tex files exist but only main.tex
+          // compiles) and note the figures, which are copied outside the writer
+          // and so are not in its report.
           let figs_note = case n_figs {
             0 -> ""
-            _ -> " (+ " <> int.to_string(n_figs) <> " figures)"
+            _ -> " (+ " <> int.to_string(n_figs) <> " figures copied)"
           }
-          io.println("\nwrote " <> output_dir <> "main.tex" <> figs_note <> "\n")
+          io.println(
+            "\ncompile target: " <> output_dir <> "main.tex" <> figs_note <> "\n",
+          )
         }
       }
     }

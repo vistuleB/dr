@@ -24,6 +24,18 @@ On MacOS, install pdflatex with `brew install --cask basictex`
 Generate the LaTeX source for a course with `gleam run -- --which 235A --latex`
 (writes `235A/latex/235A.tex`), then convert it to a PDF with `pdflatex file.tex`.
 
+You can also split the source into multiple files, depending on how you want to
+modularise:
+
+- `--latex` — one long `235A.tex`.
+- `--latex-chapter` — a `main.tex` that `\input`s one file per chapter.
+- `--latex-section` — chapters that in turn `\input` one file per section.
+- `--latex-subsection` — sections that in turn `\input` one file per subsection.
+
+Standalone units (e.g. Exercises, Bibliography) get their own file too, except in
+the monolithic case. For the modular flags, **compile `main.tex`** (not the
+per-chapter files, which have no preamble of their own).
+
 **Run `pdflatex` twice.** The Table of Contents is typeset from the `.toc` file,
 which LaTeX only *writes* during a run — so on the first run there is no `.toc`
 yet and the **Contents page comes out blank**. The second run reads the `.toc`

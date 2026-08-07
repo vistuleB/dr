@@ -46,9 +46,8 @@
                 \pi_i({\bf x}) = x_i, \qquad i=1,2,\ldots,d
                 $$
 
-                are all measurable (where measurability is respect
-                to the Borel $\sigma$-algebra on the target space
-                $\R$).
+                are all measurable (where measurability is respect to
+                the Borel $\sigma$-algebra on the target space $\R$).
 
     |> Exercise
         Check that the definitions above are indeed all

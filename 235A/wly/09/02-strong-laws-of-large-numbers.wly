@@ -115,8 +115,8 @@
         \mathrm{P}(|S_{n_k}/{n_k} - \mu| > \epsilon \textrm{ i.o.}) = 0
         $$
 
-        for all $\epsilon>0$ (the ``i.o.'' here refers to
-        the ``running index'' $k$, not $n$). This implies as
+        for all $\epsilon>0$ (the ``i.o.'' here refers to the
+        ``running index'' $k$, not $n$). This implies as
         before that
 
         $$
@@ -176,16 +176,16 @@
         \end{eqnarray*}
         $$
 
-        Once again, we have obtained as our bound the
-        general term of a convergent series! Denoting
+        Once again, we have obtained as our bound the general
+        term of a convergent series! Denoting
 
         $$
         A_{k,\epsilon} = \left\{ \max_{n_k \le n < n_{k+1}} \left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon
         \right\},
         $$
 
-        by the Borel-Cantelli lemma this implies that for
-        any $\epsilon>0$,
+        by the Borel-Cantelli lemma this implies that for any
+        $\epsilon>0$,
         $\mathrm{P}(A_{k,\epsilon}\textrm{ i.o.})=0$ (with
         the ``i.o.'' qualifier again referring to the running
         index $k$). What about the chance that this will
@@ -299,8 +299,8 @@
         \left\{ \limsup_{n\to\infty} \left|\left(\frac{S_n}{n}-\mu\right)-\frac{T_n-\mathbf{E}(T_n)}{n} \right|>0 \right\},
         $$
 
-        has probability 0 (the equivalence between these
-        last two events follows from the observation that
+        has probability 0 (the equivalence between these last
+        two events follows from the observation that
         $\mathbf{E}(Y_n)\uparrow \mu$ by the
         monotone/dominated convergence theorems, and therefore
         also $\mathbf{E}(T_n)/n\to\mu$ as $n\to\infty$ since

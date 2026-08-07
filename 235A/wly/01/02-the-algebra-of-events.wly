@@ -174,10 +174,9 @@
         \mathrm{P}(C_\infty) \le \mathrm{P}(D_N), \qquad (N\ge 1).
         $$
 
-        Now, what can we say about $\mathrm{P}(D_N)$?
-        Looking at the definition of $D_N$, we see that it
-        too can be written as an infinite _disjunction_ of
-        events, namely
+        Now, what can we say about $\mathrm{P}(D_N)$? Looking
+        at the definition of $D_N$, we see that it too can be
+        written as an infinite _disjunction_ of events, namely
 
         $$
         \begin{eqnarray*}

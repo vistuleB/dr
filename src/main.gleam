@@ -30,8 +30,14 @@ fn local_usage_message() {
   io.println("")
   io.println(margin <> "--latex")
   io.println(margin <> "  -> (local option) render wly -> a single self-contained")
-  io.println(margin <> "     LaTeX (.tex) file under <course dir>/latex/, compilable")
+  io.println(margin <> "     LaTeX file <course dir>/latex/<course>.tex, compilable")
   io.println(margin <> "     with pdflatex (clickable TOC + PDF outline)")
+  io.println("")
+  io.println(margin <> "--latex-chapter / --latex-section / --latex-subsection")
+  io.println(margin <> "  -> modular LaTeX: a main.tex (title + TOC) that \\inputs")
+  io.println(margin <> "     one file per chapter (and, at finer granularities, per")
+  io.println(margin <> "     section / subsection) + one per standalone unit; compile")
+  io.println(margin <> "     <course dir>/latex/main.tex")
   io.println("")
   io.println(margin <> "--local")
   io.println(margin <> "  -> include source-linking tooltips")
@@ -53,6 +59,27 @@ fn local_usage_message() {
   io.println("serve book on localhost:3003, or prefix 'PORT=xxxx' argument")
   io.println("to serve on  specific port! Enjoy!")
   io.println("")
+}
+
+// Which LaTeX-output flag (if any) was passed, and at what modularity.
+// `--latex` is the monolithic single-file mode. Finer flags win over coarser
+// ones if several are given.
+fn latex_granularity(
+  user_args: dict.Dict(String, List(String)),
+) -> option.Option(latex_renderer.Granularity) {
+  let has = fn(flag) { dict.has_key(user_args, flag) }
+  case
+    has("--latex-subsection"),
+    has("--latex-section"),
+    has("--latex-chapter"),
+    has("--latex")
+  {
+    True, _, _, _ -> option.Some(latex_renderer.BySubSection)
+    _, True, _, _ -> option.Some(latex_renderer.BySection)
+    _, _, True, _ -> option.Some(latex_renderer.ByChapter)
+    _, _, _, True -> option.Some(latex_renderer.Monolithic)
+    _, _, _, _ -> option.None
+  }
 }
 
 pub fn main() {
@@ -112,6 +139,9 @@ pub fn main() {
       ds.process_command_line_arguments(args, [
         "--fmt",
         "--latex",
+        "--latex-chapter",
+        "--latex-section",
+        "--latex-subsection",
         "--local",
         "--which",
         "--offline-mathjax",
@@ -168,7 +198,7 @@ pub fn main() {
 
   case
     dict.get(amendments.user_args, "--fmt"),
-    dict.get(amendments.user_args, "--latex")
+    latex_granularity(amendments.user_args)
   {
     Ok(_), _ -> {
       io.println("")
@@ -176,14 +206,14 @@ pub fn main() {
       formatter_renderer.render(amendments, course_dir)
     }
 
-    _, Ok(_) -> {
+    _, option.Some(granularity) -> {
       io.println("")
       io.println("wly -> latex renderer")
-      latex_renderer.render(amendments, course_dir)
+      latex_renderer.render(amendments, course_dir, granularity)
       io.println("")
     }
 
-    Error(_), Error(_) -> {
+    Error(_), option.None -> {
       io.println("")
       io.println("wly -> html renderer")
       renderer.render(amendments, course_dir)

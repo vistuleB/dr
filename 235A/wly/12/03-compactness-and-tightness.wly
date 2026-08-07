@@ -13,8 +13,8 @@
         F_{n_k}(x)\xrightarrow[n\to\infty]{} H(x)
         $$
 
-        holds for any $x\in\R$ which is a continuity point
-        of $H$.
+        holds for any $x\in\R$ which is a continuity point of
+        $H$.
 
     $\textbf{Note.}$ The subsequential limit $H$ need not
     be a distribution function, since it may not satisfy
@@ -113,8 +113,8 @@
         \limsup_{n\to\infty} (1-F_n(M)+F_n(-M)) < \epsilon.
         $$
 
-        A sequence of random variables is called tight if
-        the sequence of their distribution functions is tight.
+        A sequence of random variables is called tight if the
+        sequence of their distribution functions is tight.
 
     |> Theorem
         If $(F_n)_{n=1}^\infty$ is a tight sequence of

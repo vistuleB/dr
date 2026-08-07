@@ -81,6 +81,6 @@
         \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-y^2/2} dy.
         $$
 
-        This integral cannot be evaluated explicitly in
-        terms of more familiar functions, but $\Phi$ is an
+        This integral cannot be evaluated explicitly in terms
+        of more familiar functions, but $\Phi$ is an
         important special function of mathematics nonetheless.

@@ -76,8 +76,8 @@
         F_{X_n}(x) \le \mathbf{E}(g_{x,\epsilon}(X)) \le F_X(x+\epsilon).
         $$
 
-        Now if $x$ is a point of continuity of $F_X$,
-        letting $\epsilon \downarrow 0$ gives that
+        Now if $x$ is a point of continuity of $F_X$, letting
+        $\epsilon \downarrow 0$ gives that
         $\lim_{n\to\infty}F_{X_n}(x) = F_X(x)$.
 
         Proof that $3\implies 2$: this follows immediately by

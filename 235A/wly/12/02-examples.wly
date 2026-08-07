@@ -66,5 +66,5 @@
             M_n-\log n \implies F
             $$
 
-            where $F(x) = \exp\left(-e^{-x}\right)$ is called
-            the Gumbel distribution.
+            where $F(x) = \exp\left(-e^{-x}\right)$ is called the
+            Gumbel distribution.

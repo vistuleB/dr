@@ -107,6 +107,6 @@
         -\sum_{n=N}^\infty \log(1-\mathrm{P}(A_n)) = \infty.
         $$
 
-        But $-\log(1-x) \ge x$ for all $x>0$, so this
-        follows from the assumption that the series of
-        probabilities diverges.
+        But $-\log(1-x) \ge x$ for all $x>0$, so this follows
+        from the assumption that the series of probabilities
+        diverges.

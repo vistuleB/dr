@@ -89,8 +89,8 @@
     \mathrm{P}(X_{i_1} \in A_1, \ldots X_{i_k} \in A_k) = \prod_{j=1}^k \mathrm{P}(X_{i_j} \in A_j)
     $$
 
-    for all indices $i_1,\ldots,i_k \in I$ and Borel
-    sets $A_1,\ldots, A_k \in {\cal B}(\R)$.
+    for all indices $i_1,\ldots,i_k \in I$ and Borel sets
+    $A_1,\ldots, A_k \in {\cal B}(\R)$.
 
     |> Theorem
         If $({\cal F}_i)_{i\in I}$ are a family of

@@ -34,8 +34,8 @@
         R_n(x) := e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!} = \frac{i^{n+1}}{n!}\int_0^x(x-s)^n e^{is}\,ds,
         $$
 
-        which follows from Lemma >>lem-prevlemma that we
-        used in the proof of Stirling's formula. Taking the
+        which follows from Lemma >>lem-prevlemma that we used
+        in the proof of Stirling's formula. Taking the
         absolute value and using the fact that $|e^{is}|=1$
         gives
 

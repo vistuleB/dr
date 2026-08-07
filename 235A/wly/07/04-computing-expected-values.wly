@@ -47,8 +47,8 @@
         \mathbf{E}(X_-) = -\int_{-\infty}^0 x f_X(x)\,dx, \qquad \mathbf{E}(X_+) = \int_0^\infty x f_X(x)\,dx
         $$
 
-        is finite. Similarly, for any ``reasonable''
-        function $g$ we have
+        is finite. Similarly, for any ``reasonable'' function
+        $g$ we have
 
         $$
         \mathbf{E}(g(X)) = \int_{-\infty}^\infty g(x) f_X(x)\, dx.

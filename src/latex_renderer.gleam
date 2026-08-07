@@ -460,17 +460,33 @@ fn label_of(attrs: List(Attr)) -> String {
   }
 }
 
+// The `\chapter{…}` / `\section{…}` / `\subsection{…}` line plus a `\label`,
+// with no body — shared by the inline emitter (`heading`) and the modular
+// file-splitting walk.
+fn heading_open(level: String, attrs: List(Attr)) -> String {
+  let title = find_attr(attrs, "title") |> option.unwrap("")
+  "\n\n\\" <> level <> "{" <> emit_mixed(title) <> "}\n" <> label_of(attrs)
+}
+
+// The `\chapter*{…}` head (+ `\addcontentsline` + `\label`) for a standalone
+// appendix unit (Exercises / Bibliography), no body.
+fn standalone_open(tag: String, attrs: List(Attr)) -> String {
+  let t = find_attr(attrs, "title") |> option.unwrap(tag) |> emit_mixed
+  "\n\n\\chapter*{"
+  <> t
+  <> "}\n\\addcontentsline{toc}{chapter}{"
+  <> t
+  <> "}\n"
+  <> label_of(attrs)
+}
+
 fn heading(
   level: String,
   attrs: List(Attr),
   children: List(VXML),
   ctx: Ctx,
 ) -> String {
-  let title = find_attr(attrs, "title") |> option.unwrap("")
-  "\n\n\\" <> level <> "{" <> emit_mixed(title) <> "}\n"
-  <> label_of(attrs)
-  <> nodes_to_latex(children, ctx)
-  <> "\n"
+  heading_open(level, attrs) <> nodes_to_latex(children, ctx) <> "\n"
 }
 
 fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
@@ -487,17 +503,8 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
         "SubSection" -> heading("subsection", attrs, children, ctx)
         // standalone appendix units (outside the numbered chapter sequence):
         // an unnumbered \chapter* that still appears in the TOC + outline.
-        "Exercises" | "Bibliography" -> {
-          let title = find_attr(attrs, "title") |> option.unwrap(tag)
-          "\n\n\\chapter*{"
-          <> emit_mixed(title)
-          <> "}\n\\addcontentsline{toc}{chapter}{"
-          <> emit_mixed(title)
-          <> "}\n"
-          <> label_of(attrs)
-          <> nodes_to_latex(children, ctx)
-          <> "\n"
-        }
+        "Exercises" | "Bibliography" ->
+          standalone_open(tag, attrs) <> nodes_to_latex(children, ctx) <> "\n"
         "Proof" -> {
           let opt = case find_attr(attrs, "alt-title") {
             Some(t) ->
@@ -695,7 +702,9 @@ fn collect_eq_labels(vxml: VXML, math_tok: Regexp) -> List(String) {
   }
 }
 
-fn emit_document(root: VXML, di: DocumentInfo) -> String {
+// Footnotes and equation numbers are GLOBAL, so the context is built once from
+// the whole tree and shared by every emitted file (monolithic or modular).
+fn build_ctx(root: VXML) -> Ctx {
   let assert Ok(tok) = regexp.from_string(token_pattern)
   let assert Ok(math_tok) = regexp.from_string(math_token_pattern)
   let assert Ok(amp_tok) = regexp.from_string("&[^&]*&")
@@ -705,9 +714,14 @@ fn emit_document(root: VXML, di: DocumentInfo) -> String {
     |> dict.from_list
   let base_ctx = Ctx(dict.new(), eq_numbers, tok, math_tok, amp_tok)
   let footnotes = gather_footnotes(root, base_ctx)
-  let ctx = Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
-  let body = node_to_latex(root, ctx)
-  let doc =
+  Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
+}
+
+// Wrap a document body in the preamble, `\begin{document}`, title, contents and
+// `\end{document}`. Used for both the single monolithic file and the modular
+// `main.tex` (whose body is a list of `\input{…}` lines).
+fn wrap_document(di: DocumentInfo, body: String) -> String {
+  collapse_blank_lines(
     preamble(di)
     // `\pdfbookmark[0]{Contents}{toc}` adds a top-level, unnumbered PDF outline
     // entry for the table of contents itself (which \tableofcontents does not
@@ -716,8 +730,182 @@ fn emit_document(root: VXML, di: DocumentInfo) -> String {
     <> "\\pdfbookmark[0]{Contents}{toc}\n"
     <> "\\tableofcontents\n\n"
     <> body
-    <> "\n\\end{document}\n"
-  collapse_blank_lines(doc)
+    <> "\n\\end{document}\n",
+  )
+}
+
+fn emit_document(root: VXML, di: DocumentInfo) -> String {
+  wrap_document(di, node_to_latex(root, build_ctx(root)))
+}
+
+// ---------------------------------------------------------------------------
+// Modular output
+//
+// `--latex-chapter` / `--latex-section` / `--latex-subsection` split the body
+// across files: a `main.tex` (preamble + title + TOC + `\input{…}` lines) plus
+// one file per chapter (and, at finer granularities, per section / subsection),
+// plus one file per standalone unit (Exercises / Bibliography). `--latex` keeps
+// everything in a single `<course>.tex`.
+//
+// A structural unit at depth `level` (chapter=1, section=2, subsection=3)
+// becomes its own file when `level <= max_split`; otherwise it is emitted inline
+// (exactly as the monolithic emitter would). Standalone units get their own file
+// in any modular mode.
+// ---------------------------------------------------------------------------
+
+pub type Granularity {
+  Monolithic
+  ByChapter
+  BySection
+  BySubSection
+}
+
+fn max_split(g: Granularity) -> Int {
+  case g {
+    Monolithic -> 0
+    ByChapter -> 1
+    BySection -> 2
+    BySubSection -> 3
+  }
+}
+
+fn latex_cmd(tag: String) -> String {
+  case tag {
+    "Chapter" -> "chapter"
+    "Section" -> "section"
+    _ -> "subsection"
+  }
+}
+
+fn child_struct_tag(tag: String) -> String {
+  case tag {
+    "Chapter" -> "Section"
+    "Section" -> "SubSection"
+    _ -> ""
+  }
+}
+
+// coord = [ch] | [ch, sec] | [ch, sec, sub]  ->  "chapters/1.tex" etc.
+fn unit_path(coord: List(Int)) -> String {
+  let joined = coord |> list.map(int.to_string) |> string.join("-")
+  case list.length(coord) {
+    1 -> "chapters/" <> joined <> ".tex"
+    2 -> "sections/" <> joined <> ".tex"
+    _ -> "subsections/" <> joined <> ".tex"
+  }
+}
+
+fn drop_tex(path: String) -> String {
+  case string.ends_with(path, ".tex") {
+    True -> string.drop_end(path, 4)
+    False -> path
+  }
+}
+
+type Files =
+  List(#(String, String))
+
+// Emit a structural unit at position `coord`. Returns the text to place in the
+// PARENT (either the full inline body, or an `\input{…}` line) and any files it
+// (and its split descendants) produced.
+fn modular_unit(
+  node: VXML,
+  coord: List(Int),
+  ctx: Ctx,
+  ms: Int,
+) -> #(String, Files) {
+  case list.length(coord) <= ms {
+    // deep enough to keep inline: reuse the monolithic emitter verbatim
+    False -> #(node_to_latex(node, ctx), [])
+    // this unit is its own file
+    True -> {
+      let assert V(_, tag, attrs, children) = node
+      let #(kids, kid_files) =
+        modular_children(children, coord, child_struct_tag(tag), ctx, ms)
+      let body = heading_open(latex_cmd(tag), attrs) <> "\n" <> kids
+      let path = unit_path(coord)
+      #("\n\\input{" <> drop_tex(path) <> "}\n", [#(path, body), ..kid_files])
+    }
+  }
+}
+
+// Walk a unit's children: structural children (tag == `struct_tag`) recurse via
+// `modular_unit` with an extended coord; everything else is emitted inline.
+fn modular_children(
+  children: List(VXML),
+  prefix: List(Int),
+  struct_tag: String,
+  ctx: Ctx,
+  ms: Int,
+) -> #(String, Files) {
+  let #(_, text, files) =
+    list.fold(children, #(0, "", []), fn(acc, child) {
+      let #(cnt, text, files) = acc
+      case child {
+        V(_, t, _, _) if t == struct_tag && struct_tag != "" -> {
+          let cnt = cnt + 1
+          let #(ct, cf) =
+            modular_unit(child, list.append(prefix, [cnt]), ctx, ms)
+          #(cnt, text <> ct, list.append(files, cf))
+        }
+        _ -> #(cnt, text <> node_to_latex(child, ctx), files)
+      }
+    })
+  #(text, files)
+}
+
+fn modular_standalone(
+  node: VXML,
+  name: String,
+  ctx: Ctx,
+) -> #(String, Files) {
+  let assert V(_, tag, attrs, children) = node
+  let body = standalone_open(tag, attrs) <> nodes_to_latex(children, ctx) <> "\n"
+  #("\n\\input{" <> name <> "}\n", [#(name <> ".tex", body)])
+}
+
+// Walk the Document's children into the modular main-body + unit files.
+fn modular_document(root: VXML, ctx: Ctx, ms: Int) -> #(String, Files) {
+  let assert V(_, _, _, children) = root
+  let #(_, body, files) =
+    list.fold(children, #(0, "", []), fn(acc, child) {
+      let #(ch, body, files) = acc
+      case child {
+        V(_, "Chapter", _, _) -> {
+          let ch = ch + 1
+          let #(t, f) = modular_unit(child, [ch], ctx, ms)
+          #(ch, body <> t, list.append(files, f))
+        }
+        V(_, "Exercises", _, _) -> {
+          let #(t, f) = modular_standalone(child, "exercises", ctx)
+          #(ch, body <> t, list.append(files, f))
+        }
+        V(_, "Bibliography", _, _) -> {
+          let #(t, f) = modular_standalone(child, "bibliography", ctx)
+          #(ch, body <> t, list.append(files, f))
+        }
+        _ -> #(ch, body <> node_to_latex(child, ctx), files)
+      }
+    })
+  #(body, files)
+}
+
+// The full set of #(relative_path, content) files for the chosen granularity.
+fn build_latex_files(
+  root: VXML,
+  di: DocumentInfo,
+  gran: Granularity,
+  course_dir: String,
+) -> Files {
+  case gran {
+    Monolithic -> [#(course_dir <> ".tex", emit_document(root, di))]
+    _ -> {
+      let ctx = build_ctx(root)
+      let #(main_body, files) = modular_document(root, ctx, max_split(gran))
+      [#("main.tex", wrap_document(di, main_body)), ..files]
+      |> list.map(fn(pc) { #(pc.0, collapse_blank_lines(pc.1)) })
+    }
+  }
 }
 
 // The per-node emitters each pad their output with blank lines, which stack up
@@ -735,8 +923,11 @@ fn collapse_blank_lines(s: String) -> String {
 // Renderer plumbing (splitter / emitter / render entry point)
 // ---------------------------------------------------------------------------
 
+// The classifier carries each output file's already-rendered content; the
+// splitter builds the whole file set (it has the root, document info and
+// granularity), and the emitter just formats the string into OutputLines.
 pub type LatexFragmentType {
-  WholeDocument
+  FileContent(String)
 }
 
 type Fragment(z) =
@@ -750,19 +941,21 @@ pub type LatexSplitterError {
 }
 
 fn our_splitter(
-  filename: String,
+  di: DocumentInfo,
+  gran: Granularity,
+  course_dir: String,
   root: VXML,
 ) -> Result(List(Fragment(VXML)), LatexSplitterError) {
-  Ok([ds.OutputFragment(WholeDocument, filename, root)])
+  build_latex_files(root, di, gran, course_dir)
+  |> list.map(fn(pc) { ds.OutputFragment(FileContent(pc.1), pc.0, root) })
+  |> Ok
 }
 
-fn our_emitter(
-  di: DocumentInfo,
-  fragment: Fragment(VXML),
-) -> Result(Fragment(OL), String) {
+fn our_emitter(fragment: Fragment(VXML)) -> Result(Fragment(OL), String) {
   let blame = Ext([], "latex_emitter")
+  let FileContent(content) = fragment.classifier
   let lines =
-    emit_document(fragment.payload, di)
+    content
     |> string.split("\n")
     |> list.map(fn(line) { OutputLine(blame, 0, line) })
   Ok(ds.OutputFragment(..fragment, payload: lines))
@@ -793,7 +986,11 @@ fn copy_figures(course_dir: String, output_dir: String) -> Int {
   }
 }
 
-pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
+pub fn render(
+  amendments: ds.CommandLineAmendments,
+  course_dir: String,
+  granularity: Granularity,
+) -> Nil {
   let #(output_dir_local_path, amendments) = case amendments.output_dir {
     None -> #("latex", amendments)
     Some(x) -> #(x, ds.CommandLineAmendments(..amendments, output_dir: None))
@@ -823,7 +1020,6 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
           lecturer: attr("lecturer", ""),
           date: attr("date", ""),
         )
-      let filename = course_dir <> ".tex"
       let output_dir =
         "./" <> course_dir <> "/" <> output_dir_local_path <> "/"
 
@@ -845,8 +1041,8 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
           parser: wd.default_writerly_parser,
           filterer: ds.default_filterer(_, options, []),
           pipeline: latex_pipeline.latex_pipeline(),
-          splitter: our_splitter(filename, _),
-          emitter: our_emitter(document_info, _),
+          splitter: our_splitter(document_info, granularity, course_dir, _),
+          emitter: our_emitter,
           writer: ds.default_writer,
           prettifier: ds.default_prettier_prettifier,
         )
@@ -867,7 +1063,11 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
             0 -> ""
             _ -> " (+ " <> int.to_string(n_figs) <> " figures)"
           }
-          io.println("\nwrote " <> output_dir <> filename <> figs_note <> "\n")
+          let main = case granularity {
+            Monolithic -> course_dir <> ".tex"
+            _ -> "main.tex"
+          }
+          io.println("\nwrote " <> output_dir <> main <> figs_note <> "\n")
         }
       }
     }

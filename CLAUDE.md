@@ -86,12 +86,29 @@ Useful flags:
 ### Render to LaTeX / PDF
 
 ```sh
-gleam run -- --which <course_dir> --latex
+gleam run -- --which <course_dir> --latex             # one monolithic <course>.tex
+gleam run -- --which <course_dir> --latex-chapter     # main.tex + one file per chapter
+gleam run -- --which <course_dir> --latex-section     #   ...chapters that \input sections
+gleam run -- --which <course_dir> --latex-subsection  #   ...sections that \input subsections
 ```
 
-Emits **one self-contained `.tex` file** at `<course_dir>/latex/<course_dir>.tex`
-(e.g. `235A/latex/235A.tex`) that compiles with `pdflatex` into a PDF with a
-clickable table of contents and a PDF bookmark outline. Each `--latex` run first
+**Modularity (`Granularity` in `latex_renderer`).** `--latex` emits **one
+self-contained `<course>.tex`**. The three modular flags emit a
+`main.tex` (preamble + title + TOC) that `\input`s the body across files:
+`chapters/N.tex`, and at finer granularities `sections/N-M.tex` /
+`subsections/N-M-P.tex`, plus **one file per standalone unit** (`exercises.tex` /
+`bibliography.tex`, emitted in document order — so last). A structural unit at
+depth *level* (chapter 1, section 2, subsection 3) becomes its own file when
+`level <= max_split(granularity)`, else it is inlined exactly as the monolithic
+emitter would (`modular_unit`/`modular_children`). `default_writer` auto-creates
+the `chapters/`, `sections/`, `subsections/` subdirs. **Compile `main.tex`** for
+modular output, `<course>.tex` for monolithic. Footnote/equation numbers stay
+global (one shared `build_ctx` across all files).
+
+Emits, for the monolithic case, **one self-contained `.tex` file** at
+`<course_dir>/latex/<course_dir>.tex` (e.g. `235A/latex/235A.tex`) that compiles
+with `pdflatex` into a PDF with a clickable table of contents and a PDF bookmark
+outline. Each run first
 **clears the whole `<course_dir>/latex/` directory** (via `simplifile.clear_directory`
 in `latex_renderer.render`) so stale pdflatex leftovers (`.toc`/`.aux`/`.log`/
 `.out`/`.pdf`) never linger; the `.tex` is regenerated and `figures/` re-copied

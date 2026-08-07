@@ -23,12 +23,12 @@
         B_n(x)= B_n^f(x) = \sum_{k=0}^n f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k}.
         $$
 
-        We claim that $||B_n-f||\to 0$ as $n\to\infty$,
-        which will prove the theorem. We will prove this by
-        giving a probabilistic interpretation to $B_n$.
-        Indeed, fix $x\in [0,1]$, and let $X_1,X_2,\ldots$ be
-        a sequence of i.i.d. r.v.'s with the Bernoulli
-        distribution $\textrm{Binom}(1,x)$. Denote
+        We claim that $||B_n-f||\to 0$ as $n\to\infty$, which
+        will prove the theorem. We will prove this by giving a
+        probabilistic interpretation to $B_n$. Indeed, fix
+        $x\in [0,1]$, and let $X_1,X_2,\ldots$ be a sequence
+        of i.i.d. r.v.'s with the Bernoulli distribution
+        $\textrm{Binom}(1,x)$. Denote
         $S_n=\sum_{k=1}^\infty X_k$. Then it is easy to see
         that
 
@@ -66,10 +66,10 @@
         \end{eqnarray*}
         $$
 
-        In this last expression, each of the two
-        expectations is small for a different reason. The
-        second expectation is bounded by $\epsilon$, since on
-        the event that $|S_n/n-x|\le \delta$, we have that
+        In this last expression, each of the two expectations
+        is small for a different reason. The second
+        expectation is bounded by $\epsilon$, since on the
+        event that $|S_n/n-x|\le \delta$, we have that
         $|f(S_n/n)-f(x)|<\epsilon$. To bound the first
         expectation, denote
         $M=||f||:=\max_{x\in[0,1]}|f(x)|<\infty$. Then, by
@@ -82,8 +82,8 @@
         \le \frac{2 M \sigma^2(X_1)}{n \epsilon^2} = \frac{2 M x(1-x)}{n\epsilon^2}
         $$
 
-        This bound converges to $0$, not just for a single
-        $x$ but (fortunately for us) uniformly in $x\in[0,1]$,
+        This bound converges to $0$, not just for a single $x$
+        but (fortunately for us) uniformly in $x\in[0,1]$,
         since it is bounded from above by $M/(2n\epsilon^2)$.
         So we have shown that
 

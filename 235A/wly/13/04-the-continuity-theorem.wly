@@ -61,8 +61,8 @@
         \xrightarrow[n\to\infty]{} \frac{1}{\delta} \int_{-\delta}^\delta (1-\varphi(t))\,dt
         $$
 
-        (the convergence follows from the bounded
-        convergence theorem). So we have shown that
+        (the convergence follows from the bounded convergence
+        theorem). So we have shown that
 
         $$
         \limsup_{n\to\infty} \mathrm{P}(|X_n|>M) \le \frac{1}{\delta} \int_{-\delta}^\delta (1-\varphi(t))\,dt.

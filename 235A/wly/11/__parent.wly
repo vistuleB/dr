@@ -192,9 +192,9 @@
         \mathrm{P}(S_n = k) = \frac{1+o(1)}{\sqrt{2\pi n p q}} e^{-t^2/2}
         $$
 
-        In other words, the individual probabilities for
-        $S_n$ approximate a normal density! From here, it is
-        not too hard to show that the probability
+        In other words, the individual probabilities for $S_n$
+        approximate a normal density! From here, it is not too
+        hard to show that the probability
 
         $$
         \mathrm{P}\left(a\le \frac{S_n - np}{\sqrt{npq}} \le b\right) = \sum_{np+a\sqrt{npq}\le k\le np+b\sqrt{npq}} \mathrm{P}(S_n=k)

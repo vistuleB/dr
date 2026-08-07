@@ -48,18 +48,18 @@
             \mathbf{V}(X) = \mathbf{E}(X-\mathbf{E} X)^2.
             $$
 
-            If $\mathbf{V}(X)<\infty$, by expanding the square
-            it is easy to rewrite the variance as
+            If $\mathbf{V}(X)<\infty$, by expanding the square it
+            is easy to rewrite the variance as
 
             $$
             \mathbf{V}(X) = \mathbf{E}(X^2)-(\mathbf{E} X)^2.
             $$
 
-            We denote $\sigma(X) = \sqrt{\mathbf{V}(X)}$ and
-            call this quantity the
-            $\textbf{standard deviation of } X$. Note that if
-            $a\in \R$ then $\mathbf{V}(a X) = a^2 \mathbf{V}(X)$
-            and $\sigma(a X)=|a| \sigma(X)$.
+            We denote $\sigma(X) = \sqrt{\mathbf{V}(X)}$ and call
+            this quantity the $\textbf{standard deviation of } X$.
+            Note that if $a\in \R$ then
+            $\mathbf{V}(a X) = a^2 \mathbf{V}(X)$ and
+            $\sigma(a X)=|a| \sigma(X)$.
 
         |> li
             *Chebyshev's inequality:*
@@ -109,8 +109,8 @@
             \varphi(\alpha x + (1-\alpha)y) \le \alpha \varphi(x)+(1-\alpha)\varphi(y)
             $$
 
-            for all $x,y\in\R$ and $\alpha\in [0,1]$. If
-            $\varphi$ is convex then
+            for all $x,y\in\R$ and $\alpha\in [0,1]$. If $\varphi$
+            is convex then
 
             $$
             \varphi(\mathbf{E} X) \le \mathbf{E} (\varphi(X)).

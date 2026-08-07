@@ -58,6 +58,16 @@ fn single_file_splitter(
 fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
   let #(root, chapters) =
     infra.v_extract_children(root, infra.is_v_and_tag_equals(_, "Chapter"))
+  // Top-level standalone units (Exercises / Bibliography) live in their OWN
+  // `.wly` files (siblings of the numbered chapter dirs). Extract them too, so
+  // each is written back to its own file (via its Src blame path) rather than
+  // left in the Root fragment — which would merge it into `__parent.wly` and
+  // duplicate the content on the next assemble.
+  let #(root, standalones) =
+    infra.v_extract_children(root, fn(child) {
+      infra.is_v_and_tag_equals(child, "Exercises")
+      || infra.is_v_and_tag_equals(child, "Bibliography")
+    })
   let root = fragment_bundler(root, Root, None)
   let #(chapters, sections, subsections) =
     chapters
@@ -93,11 +103,15 @@ fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
       )
     })
 
+  let standalone_fragments =
+    list.map(standalones, fragment_bundler(_, Unknown, None))
+
   list.flatten([
     [root],
     chapters,
     sections,
     subsections,
+    standalone_fragments,
   ])
   |> Ok
 }

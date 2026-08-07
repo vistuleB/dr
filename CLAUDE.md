@@ -253,6 +253,46 @@ Deliberately **not** escapable:
 Italics inside a link (`[really _emphatic_ text](url)`) are legitimate and still work;
 the escape is the mechanism for suppressing a delimiter, not tag-based scoping.
 
+### Authoring rule: paragraph indentation and the `|> Indent` escape
+
+**LaTeX first-line indents are suppressed by default after any block.** LaTeX
+normally indents the first line of *every* paragraph, including the one right
+after a display (`$$…$$`, `align*`, `eqnarray*`, …), a list, or a theorem-like
+environment (`Definition`, `Theorem`, `Proof`, …). Authors of these notes almost
+never want that — the paragraph after a block is a continuation, not a fresh
+indented paragraph. So the LaTeX emitter (`latex_renderer.gleam`) tracks a small
+paragraph-state machine (`emit_indented` / `emit_indented_node` / `node_kind`):
+the first inline text after a **block** gets an explicit `\noindent`; a paragraph
+that follows **another paragraph** (blank-line-separated prose) is left alone, so
+it takes LaTeX's normal first-line indent. Empty text nodes between a display and
+the following prose are skipped (`is_blank_text`) so the `\noindent` lands on the
+real paragraph, not a stray blank `T`.
+
+**`|> Indent` forces the next paragraph to indent** — the author's escape hatch
+against the `\noindent`. Put a bare `|> Indent` tag immediately before a
+paragraph and:
+
+- **LaTeX side:** the emitter emits `\indent` instead of `\noindent` for that
+  paragraph (it overrides the post-block suppression). `node_kind` classifies
+  `Indent` as `KIndent`, which sets the next node's hint to `HintIndent`.
+- **HTML side:** the paragraph element gets an `indent` class
+  (`<p class="indent">`). This is wired by the **`add_class_to_next_sibling`**
+  desugarer (in `wly/desugaring/`, `dl.add_class_to_next_sibling(#("Indent",
+  "indent"))` in `pipeline.gleam`, run right after `delete_if_empty("p")`): it
+  appends the class to the marker's immediately-following sibling and drops the
+  marker. **The `indent` class is intentionally a no-op in this layout** (these
+  notes separate paragraphs with blank lines, not first-line indents — see the
+  documented `p.indent {}` placeholder in `shared/app.css`); it is emitted anyway
+  so a future layout that *does* indent paragraphs can style it.
+
+`Indent` is registered in `pre_transformation_document_tags` and `p_cannot_contain`
+(HTML pipeline) and is added to the `["WriterlyBlankLine", "Indent"]`
+"unbridgeable" lists in **both** pipelines (`pipeline.gleam` and
+`latex_pipeline.gleam`), so a `|> Indent` marker never gets swallowed into a
+paragraph or bridged across by math/emphasis splitting. It carries no attributes
+and no children — it is a pure positional marker that is consumed during
+rendering (no `Indent` tag survives into either the HTML or the `.tex`).
+
 ### Post-render verification
 
 MathJax reports **no error** for the bug above — a lost `\\` yields valid-but-wrong TeX —

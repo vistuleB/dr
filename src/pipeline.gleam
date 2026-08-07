@@ -12,6 +12,7 @@ const our_blame = bl.Des([], "pipeline", 8)
 const p_cannot_contain = [
   "Bibliography",
   "BibliographyTitle",
+  "Indent",
   "Chapter",
   "ChapterTitle",
   "Exercises",
@@ -56,6 +57,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
   let pre_transformation_document_tags = [
     "Bibliography",
     "BibliographyTitle",
+    "Indent",
     "Chapter",
     "ChapterTitle",
     "Corollary",
@@ -318,7 +320,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         formatter_pipeline.recognized_display_delimiters(),
       ]),
       infra.DoubleDollar,
-      ["WriterlyBlankLine"],
+      ["WriterlyBlankLine", "Indent"],
     ),
     [
       // must run before markdown_link_splitting: it prepends
@@ -334,7 +336,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         "Math",
       ]),
     ],
-    pp.markdown_link_splitting(["WriterlyBlankLine"], ["MathBlock"]),
+    pp.markdown_link_splitting(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     [
       dl.math_label_to_tag_handle(#("MathBlock", "::++EquationCounter")),
       dl.substitute_counters(),
@@ -356,7 +358,7 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
-      ["WriterlyBlankLine"],
+      ["WriterlyBlankLine", "Indent"],
     ),
     [
       dl.tokenize_href_surroundings(),
@@ -396,11 +398,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
         #("(<a href=0>_0_</a>)).", "<a href=0>(_0_)</a>)."),
       ]),
     ],
-    pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine"], [
+    pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine", "Indent"], [
       "MathBlock",
       "Math",
     ]),
-    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", ["WriterlyBlankLine"], [
+    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", ["WriterlyBlankLine", "Indent"], [
       "MathBlock",
       "Math",
     ]),
@@ -424,6 +426,11 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       dl.unwrap("WriterlyBlankLine"),
       dl.trim("p"),
       dl.delete_if_empty("p"),
+      // `|> Indent` marks the following paragraph to be indented: drop the
+      // marker and tag the next sibling with an `indent` class. (No visual
+      // effect in the current blank-line-separated layout, but the class is
+      // there for any future indented-paragraph layout.)
+      dl.add_class_to_next_sibling(#("Indent", "indent")),
       dl.append_class__batch([
         #("MathBlock", "math-block"),
       ]),

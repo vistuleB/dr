@@ -36,25 +36,25 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
         formatter_pipeline.recognized_display_delimiters(),
       ]),
       infra.DoubleDollar,
-      ["WriterlyBlankLine"],
+      ["WriterlyBlankLine", "Indent"],
     ),
     // `[text](url)` -> `a` node (emitter -> `\href`). Must precede inline math.
-    pp.markdown_link_splitting(["WriterlyBlankLine"], ["MathBlock"]),
+    pp.markdown_link_splitting(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     // `$...$` / `\(...\)` -> Math node (emitted verbatim, protected from the
     // emphasis splitting and prose-escaping that follow).
     pp.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
-      ["WriterlyBlankLine"],
+      ["WriterlyBlankLine", "Indent"],
     ),
     // `_italic_` -> <i> (emitter -> \emph), `*bold*` -> <b> (emitter -> \textbf),
     // skipping anything inside math.
-    pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine"], [
+    pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine", "Indent"], [
       "MathBlock",
       "Math",
     ]),
-    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", ["WriterlyBlankLine"], [
+    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", ["WriterlyBlankLine", "Indent"], [
       "MathBlock",
       "Math",
     ]),

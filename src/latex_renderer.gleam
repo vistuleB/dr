@@ -449,8 +449,103 @@ fn figure_to_latex(children: List(VXML), ctx: Ctx) -> String {
 // Tree walk
 // ---------------------------------------------------------------------------
 
+// Paragraph-indentation state carried while walking a sibling list.
+//
+// LaTeX indents the first line of every paragraph by default; authors want that
+// only BETWEEN consecutive text paragraphs. A paragraph that follows a display,
+// an environment, a list, etc. is a continuation and should NOT be indented, so
+// we emit `\noindent` before it. A bare `|> Indent` marker overrides that and
+// forces `\indent` on the next paragraph. (Paragraphs after a heading are left
+// to the class default, which already suppresses their indent.)
+type IndentHint {
+  HintDefault
+  HintNoindent
+  HintIndent
+}
+
+type NodeKind {
+  KInline
+  KBlank
+  KBlock
+  KIndent
+}
+
+fn node_kind(node: VXML) -> NodeKind {
+  case node {
+    T(_, _) -> KInline
+    V(_, "Math", _, _) | V(_, "i", _, _) | V(_, "b", _, _) | V(_, "a", _, _) ->
+      KInline
+    V(_, "WriterlyBlankLine", _, _) -> KBlank
+    V(_, "Indent", _, _) -> KIndent
+    V(_, _, _, _) -> KBlock
+  }
+}
+
+// Emit one node while threading the paragraph state. Returns the updated
+// `#(in_paragraph, hint)` and the node's output.
+// A text node whose content is empty/whitespace (a common leftover of the
+// delimiter splitting). It must not start a paragraph or swallow the pending
+// indent hint, so it is skipped entirely.
+fn is_blank_text(node: VXML) -> Bool {
+  case node {
+    T(_, lines) ->
+      lines |> list.map(fn(l) { l.content }) |> string.concat |> string.trim == ""
+    _ -> False
+  }
+}
+
+fn emit_indented(
+  node: VXML,
+  in_para: Bool,
+  hint: IndentHint,
+  ctx: Ctx,
+) -> #(Bool, IndentHint, String) {
+  case is_blank_text(node) {
+    True -> #(in_para, hint, "")
+    False ->
+      emit_indented_node(node, in_para, hint, ctx)
+  }
+}
+
+fn emit_indented_node(
+  node: VXML,
+  in_para: Bool,
+  hint: IndentHint,
+  ctx: Ctx,
+) -> #(Bool, IndentHint, String) {
+  case node_kind(node) {
+    KInline -> {
+      let prefix = case in_para, hint {
+        True, _ -> ""
+        False, HintNoindent -> "\\noindent "
+        False, HintIndent -> "\\indent "
+        False, HintDefault -> ""
+      }
+      #(True, HintDefault, prefix <> node_to_latex(node, ctx))
+    }
+    // a blank line ends the current paragraph; the next paragraph defaults to
+    // indented iff we were mid-text, else it keeps the preceding block/marker's
+    // hint
+    KBlank -> {
+      let next_hint = case in_para {
+        True -> HintDefault
+        False -> hint
+      }
+      #(False, next_hint, "\n\n")
+    }
+    KBlock -> #(False, HintNoindent, node_to_latex(node, ctx))
+    KIndent -> #(False, HintIndent, "")
+  }
+}
+
 fn nodes_to_latex(nodes: List(VXML), ctx: Ctx) -> String {
-  nodes |> list.map(node_to_latex(_, ctx)) |> string.concat
+  let #(_, _, out) =
+    list.fold(nodes, #(False, HintDefault, ""), fn(acc, node) {
+      let #(in_para, hint, out) = acc
+      let #(in_para, hint, chunk) = emit_indented(node, in_para, hint, ctx)
+      #(in_para, hint, out <> chunk)
+    })
+  out
 }
 
 fn label_of(attrs: List(Attr)) -> String {
@@ -549,6 +644,8 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
         // inlined at their call sites via \footnote{}.
         "hr" -> ""
         "Footnote" -> ""
+        // paragraph-indent marker: consumed by `emit_indented`, no direct output
+        "Indent" -> ""
         _ ->
           case statement_env(tag) {
             Ok(env) -> {
@@ -874,16 +971,21 @@ fn hier_children(
   ctx: Ctx,
 ) -> #(String, Files) {
   let width = pad_width(count_tag(children, struct_tag))
-  let #(_, text, files) =
-    list.fold(children, #(0, "", []), fn(acc, child) {
-      let #(cnt, text, files) = acc
+  // thread the paragraph-indent state (see `emit_indented`) across the intro
+  // prose; a split-out structural child counts as a block for that purpose.
+  let #(_, _, _, text, files) =
+    list.fold(children, #(0, False, HintDefault, "", []), fn(acc, child) {
+      let #(cnt, in_para, hint, text, files) = acc
       case is_v_tag(child, struct_tag) {
         True -> {
           let cnt = cnt + 1
           let #(inp, cf) = hier_unit(child, dir, pad(cnt, width), level, ms, ctx)
-          #(cnt, text <> inp, list.append(files, cf))
+          #(cnt, False, HintNoindent, text <> inp, list.append(files, cf))
         }
-        False -> #(cnt, text <> node_to_latex(child, ctx), files)
+        False -> {
+          let #(in_para, hint, chunk) = emit_indented(child, in_para, hint, ctx)
+          #(cnt, in_para, hint, text <> chunk, files)
+        }
       }
     })
   #(text, files)
@@ -1095,11 +1197,7 @@ pub fn render(
             0 -> ""
             _ -> " (+ " <> int.to_string(n_figs) <> " figures)"
           }
-          let main = case granularity {
-            Monolithic -> course_dir <> ".tex"
-            _ -> "main.tex"
-          }
-          io.println("\nwrote " <> output_dir <> main <> figs_note <> "\n")
+          io.println("\nwrote " <> output_dir <> "main.tex" <> figs_note <> "\n")
         }
       }
     }

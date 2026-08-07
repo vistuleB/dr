@@ -831,6 +831,17 @@ g[id^="mjx-eqn:eq:"] {
     color: var(--accent);
 }
 
+/* Emitted on a <p> that follows a `|> Indent` marker in the source (see the
+   `add_class_to_next_sibling` desugarer + `dl.add_class_to_next_sibling` in
+   pipeline.gleam). This layout separates paragraphs with blank lines rather
+   than first-line indents, so the class is intentionally a no-op here; it is
+   kept so a future layout that DOES indent paragraphs can hang a
+   `text-indent` off it. Its sibling effect is on the LaTeX side, where
+   `|> Indent` suppresses the emitter's `\noindent`. */
+p.indent {
+    /* no visual effect in this layout — see comment above */
+}
+
 /* ---------------------------------------------------- rules, notes, figures */
 
 /* a short left-hung rule — the print convention for a footnote separator */

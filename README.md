@@ -66,6 +66,27 @@ cd 235A/latex && pdflatex main.tex && pdflatex main.tex && pdflatex main.tex
 `latexmk -pdf main.tex` does the reruns for you automatically (install it with
 `tlmgr install latexmk` if it isn't already available).
 
+## Forcing a paragraph indent (`|> Indent`)
+
+In the LaTeX output, the first line of the paragraph right after a display, list,
+or theorem-like block is **not** indented (the emitter inserts `\noindent`) —
+that paragraph is a continuation. Only a paragraph following another paragraph
+takes the usual first-line indent. If you *want* the post-block paragraph
+indented anyway, put a bare `|> Indent` tag immediately before it:
+
+```
+$$ ... $$
+
+|> Indent
+
+This paragraph will be indented (\indent in LaTeX; class="indent" in HTML).
+```
+
+The marker is consumed during rendering. It emits `\indent` on the LaTeX side and
+adds an `indent` class to the paragraph on the HTML side (currently styled as a
+no-op, since these notes separate paragraphs with blank lines rather than
+indents).
+
 # Add a shared asset to a course
 
 As an example, say we would like to add `mathjax_setup.js` to course `235A`. We would follow these steps

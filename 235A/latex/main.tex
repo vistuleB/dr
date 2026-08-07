@@ -81,7 +81,7 @@ with definitions, lemmas, theorems, proofs etc.
 to explain or model real-life phenomena.
 \end{itemize}
 
-We will concentrate on the rigorous mathematical
+\noindent We will concentrate on the rigorous mathematical
 aspects, but we will try not to forget the connections
 to the intuitive notion of real-life probability.
 These connections will enhance our intuition, and they
@@ -129,7 +129,7 @@ $X_i$ is $0$ or $1$, signifying ``tails'' or
 \mathrm{P}\left(\sum_{i=1}^{10} X_i = 4\right) = \frac{\binom{10}{4}}{2^{10}}.
 \]
 
-Note that if $A$ and $B$ represent events (meaning,
+\noindent Note that if $A$ and $B$ represent events (meaning,
 for the purposes of the present informal discussion,
 objects that have a well-defined probability), then we
 expect that the phrases ``$A$ did not occur'', ``$A$
@@ -157,7 +157,7 @@ as
 \mathrm{P}\left(\sum_{k=1}^\infty \frac{2X_k-1}{k}\textrm{ converges}\right) &=& ?
 \end{eqnarray*}
 
-Do such questions make sense? (And if they do, can
+\noindent Do such questions make sense? (And if they do, can
 you guess what the answers are?) Maybe it is not
 enough to have an \emph{informal} discussion to answer
 this...
@@ -176,7 +176,7 @@ ball was drawn. Now let $A_\infty$ denote the event
 A_\infty = \textrm{``in total, the black ball was selected infinitely many times''},
 \]
 
-(i.e., the event that infinitely many of the events
+\noindent (i.e., the event that infinitely many of the events
 $A_n$ occurred).
 
 (b) While this experiment takes place, an identical
@@ -193,7 +193,7 @@ B_\infty &=& \textrm{``in total, the black ball was selected infinitely many tim
 \textrm{the second copy of the experiment''},
 \end{eqnarray*}
 
-(in other words, the event that infinitely many of
+\noindent (in other words, the event that infinitely many of
 the events $B_n$ occurred).
 
 (c) For each $n\ge 1$, let $C_n$ be the event that
@@ -204,7 +204,7 @@ C_n &=& \textrm{``at step $n$, the black ball was selected simultaneously}
 \\&& \textrm{ in both experiments'',}
 \end{eqnarray*}
 
-and let $C_\infty$ denote the event ``$C_n$ occurred
+\noindent and let $C_\infty$ denote the event ``$C_n$ occurred
 for infinitely many values of $n$''.
 \end{example}
 
@@ -230,7 +230,7 @@ needed to make the claim hold). For each $n$ we have
 \mathrm{P}(A_n) = \mathrm{P}(B_n) = \frac{1}{n+1},
 \]
 
-since at time $n$ each of the urns contains $n+1$
+\noindent since at time $n$ each of the urns contains $n+1$
 balls, only one of which is black. Moreover, the
 choices in both rooms are made independently, so we
 have
@@ -239,7 +239,7 @@ have
 \mathrm{P}(C_n) = \mathrm{P}(A_n \wedge B_n) = \mathrm{P}(A_n) \mathrm{P}(B_n) = \frac{1}{(n+1)^2}.
 \]
 
-It turns out that to prove that
+\noindent It turns out that to prove that
 $\mathrm{P}(C_\infty)=0$, the only relevant bit of
 information is that the infinite series
 $\sum_{n=1}^\infty \mathrm{P}(C_n)$ is a convergent
@@ -253,7 +253,7 @@ C_\infty &=& \textrm{``infinitely many of the $C_n$'s occurred''} \\
 &=& \textrm{``for all $N\ge 1$, the event $C_n$ occurred for some $n\ge N$''.}
 \end{eqnarray*}
 
-For any $N\ge 1$, denote the event ``$C_n$ occurred
+\noindent For any $N\ge 1$, denote the event ``$C_n$ occurred
 for some $n\ge N$'' by $D_N$. Then
 
 \begin{eqnarray*}
@@ -262,7 +262,7 @@ C_\infty &=& \textrm{``for all $N\ge 1$, $D_N$ occurred''} \\
 &=& \bigwedge_{N=1}^\infty D_N \quad \qquad \quad\ \ \ \ \ \ \textrm{(shorthand notation for infinite conjunction)}.
 \end{eqnarray*}
 
-In particular, in order for the event $C_\infty$ to
+\noindent In particular, in order for the event $C_\infty$ to
 happen, $D_N$ must happen for any fixed value of $N$
 (for example, $D_{100}$ must happen, $D_{101}$ must
 happen, etc.). It follows that $C_\infty$ is at most
@@ -273,7 +273,7 @@ words we have
 \mathrm{P}(C_\infty) \le \mathrm{P}(D_N), \qquad (N\ge 1).
 \]
 
-Now, what can we say about $\mathrm{P}(D_N)$? Looking
+\noindent Now, what can we say about $\mathrm{P}(D_N)$? Looking
 at the definition of $D_N$, we see that it too can be
 written as an infinite \emph{disjunction} of events, namely
 
@@ -282,7 +282,7 @@ D_N &=& C_N \vee C_{N+1} \vee C_{N+2} \vee \ldots \quad \textrm{(infinite disjun
 &=& \bigvee_{n=N}^\infty C_n \qquad\qquad\qquad\qquad\ \  \textrm{(shorthand for infinite disjunction)}.
 \end{eqnarray*}
 
-If this were a finite disjunction, we could say that
+\noindent If this were a finite disjunction, we could say that
 the likelihood for at least one of the events to
 happen is at most the sum of the likelihoods (for
 example, the probability that it will rain next
@@ -307,7 +307,7 @@ for each $N\ge 1$ the bound
 \mathrm{P}(D_N) \le \sum_{n=N}^\infty \mathrm{P}(C_n).
 \]
 
-But now recall that the infinite series of
+\noindent But now recall that the infinite series of
 probabilities $\sum_{n=1}^\infty \mathrm{P}(C_n)$
 converges. Therefore, for any $\epsilon>0$, we can
 find an $N$ for which the tail
@@ -351,7 +351,7 @@ axioms:
 A,B \in {\cal F} \implies A\cup B \in {\cal F}.  \tag{A3}
 \end{equation*}
 
-A word synonymous with algebra in this context is
+\noindent A word synonymous with algebra in this context is
 $\textbf{field}$.
 \end{defn}
 
@@ -413,7 +413,7 @@ $\mathrm{P}$ is a probability measure on
 $(\Omega, {\cal F})$.
 \end{defn}
 
-Intuitively, we think of $\Omega$ as representing the
+\noindent Intuitively, we think of $\Omega$ as representing the
 set of possible $\textbf{outcomes}$ of a
 probabilistic experiment, and refer to it as the
 $\textbf{sample space}$. The $\sigma$-algebra
@@ -489,7 +489,7 @@ $p:\Omega\to[0,1]$ be a function such that
 \sum_{\omega \in \Omega} p(\omega) = 1.
 \]
 
-This corresponds to the intuitive notion of a
+\noindent This corresponds to the intuitive notion of a
 probabilistic experiment with a finite or countably
 infinite number of outcomes, where each individual
 outcome $\omega$ has a probability $p(\omega)$ of
@@ -503,7 +503,7 @@ the probability measure $\mathrm{P}$ by
 \mathrm{P}(A) = \sum_{\omega \in A} p(\omega), \qquad A\in {\cal F}.
 \]
 
-If $\Omega$ is a finite set, a natural probability
+\noindent If $\Omega$ is a finite set, a natural probability
 measure to consider is the \textbf{uniform measure},
 defined by
 
@@ -539,20 +539,20 @@ $b-a$. In other words, we shall require that
 (a,b) \in {\cal F}, \qquad (0\le a<b\le 1),
 \]
 
-and that
+\noindent and that
 
 \begin{equation*} \tag{1}\label{eq:lebesgue}
 \mathrm{P}\big((a,b)\big) = b-a, \qquad (0\le a<b\le 1).
 \end{equation*}
 
-How do we generate a $\sigma$-algebra of subsets of
+\noindent How do we generate a $\sigma$-algebra of subsets of
 $(0,1)$ that contains all the intervals? We already
 saw that the set of \emph{all} subsets of $(0,1)$ will
 work. But that is too large! If we take all subsets,
 we will see in an exercise later that it will be
 impossible to construct the probability measure
 $\mathrm{P}$ to satisfy our requirements. So let's
-try to build the \emph{smallest possible} $\sigma$-algebra.
+try to build the \emph{smallest possible}$\sigma$-algebra.
 One way (which can perhaps be described as the
 $\textbf{bottom-up}$ approach) would be to start with
 the intervals, then take all countable unions of such
@@ -615,7 +615,7 @@ contains all the elements of ${\cal A}$, then
 $\sigma({\cal A}) \subset {\cal F}$.
 \end{enumerate}
 
-Hint for (ii): Let $({\cal F}_i)_{i\in I}$ be the
+\noindent Hint for (ii): Let $({\cal F}_i)_{i\in I}$ be the
 collection of all $\sigma$-algebras of subsets of
 $\Omega$ that contain ${\cal A}$. This is a non-empty
 collection, since it contains for example
@@ -649,7 +649,7 @@ infinite sequences of $0$'s and $1$'s, namely
 = \{ 0,1 \}^{\mathbb{N}}.
 \]
 
-What about the $\sigma$-algebra ${\cal F}$? We will
+\noindent What about the $\sigma$-algebra ${\cal F}$? We will
 take the same approach as we did in the previous
 example, which is to require certain natural sets to
 be events, and to take as our $\sigma$-algebra the
@@ -661,7 +661,7 @@ would like the set
 A_n(1) := \{ \mathbf{x}=(x_1,x_2,\ldots) \in \Omega : x_n = 1 \} \tag{2}\label{eq:specialcase}
 \end{equation*}
 
-to be an event (in words, this represents the event
+\noindent to be an event (in words, this represents the event
 ``the coin toss $x_n$ came out Heads''). Therefore we
 take ${\cal F}$ to be the $\sigma$-algebra generated
 by the collection of sets of this form.
@@ -675,13 +675,13 @@ fair coin tosses. Generalizing the notation in
 A_n(a) = \{ \mathbf{x}=(x_1,x_2,\ldots) \in \Omega : x_n = a \}.
 \]
 
-Then $\mathrm{P}$ should satisfy
+\noindent Then $\mathrm{P}$ should satisfy
 
 \[
 \mathrm{P}(A_n(a)) = \frac12,
 \]
 
-representing the fact that the $n$-th coin toss is
+\noindent representing the fact that the $n$-th coin toss is
 unbiased. But more generally, for any $n\ge 1$ and
 $(a_1,a_2,\ldots,a_n) \in \{0,1\}^n$, since the first
 $n$ coin tosses are independent, $\mathrm{P}$ should
@@ -692,7 +692,7 @@ satisfy
 %quad (n\ge 1, \ \ (a_1,\ldots,a_n)\in\{0,1\}^n)
 \end{equation*}
 
-As in the example of Lebesgue measure discussed
+\noindent As in the example of Lebesgue measure discussed
 above, the fact that a probability measure
 $\mathrm{P}$  on $(\Omega, {\cal F})$ that satisfies
 (\ref{eq:indcointosses}) exists and is unique follows from
@@ -719,7 +719,7 @@ by sets which are of the form
 \{ (x_1,x_2,\ldots) \in \Omega : x_n \in A \}
 \]
 
-for some $n\ge1$ and set $A \in {\cal F}_n$. Then
+\noindent for some $n\ge1$ and set $A \in {\cal F}_n$. Then
 there exists a unique probability measure $\mathrm{P}$
 on $(\Omega, {\cal F})$ such that for any $n\ge 1$
 and any finite sequence
@@ -729,7 +729,7 @@ and any finite sequence
 \times \ldots \times {\cal F}_n
 \]
 
-the equation
+\noindent the equation
 
 \[
 \mathrm{P}\Big(\big\{ (x_1,x_2,\ldots ) \in \Omega : x_1\in A_1, x_2 \in A_2, \ldots, x_n \in A_n \big\} \Big)
@@ -737,7 +737,7 @@ the equation
 \prod_{k=1}^n \mathrm{P}_k(A_k)
 \]
 
-holds.
+\noindent holds.
 \end{thm}
 
 \begin{xexercise}
@@ -749,7 +749,7 @@ uniqueness of a probability measure satisfying
 \ref{thm-productspaces}.
 \end{xexercise}
 
-In an upcoming homework exercise we will show an
+\noindent In an upcoming homework exercise we will show an
 alternative way of proving the existence of the
 probability space of infinite coin toss sequences
 using Lebesgue measure on $(0,1)$.
@@ -782,7 +782,7 @@ $E \in {\cal F}_2$, the set
 X^{-1}(E) = \{ \omega \in \Omega_1 : X(\omega) \in E \}
 \]
 
-is in ${\cal F}_1$.
+\noindent is in ${\cal F}_1$.
 \end{defn}
 
 \begin{defn}
@@ -808,7 +808,7 @@ if $X^{-1}(A) \in {\cal F}_1$ for all
 $A \in {\cal A}$.
 \end{xexercise}
 
-It follows that the random variables are exactly
+\noindent It follows that the random variables are exactly
 those real-valued functions on $\Omega$ for which the
 question
 
@@ -816,7 +816,7 @@ question
 \textrm{``What is the probability that $a < X < b$?''}
 \]
 
-has a well-defined answer for all $a<b$. This
+\noindent has a well-defined answer for all $a<b$. This
 observation makes it easier in practice to check if a
 given function is a random variable or not, since
 working with intervals is much easier than with the
@@ -834,7 +834,7 @@ by $X$, defined by
 \mu_X(A) = \mathrm{P}(X^{-1}(A)) = \mathrm{P}(\omega \in \Omega : X(\omega) \in A).
 \]
 
-The number $\mu_X(A)$ is the probability that $X$
+\noindent The number $\mu_X(A)$ is the probability that $X$
 ``falls in $A$'' (or ``takes its value in $A$'').
 
 \begin{xexercise}
@@ -859,7 +859,7 @@ X \stackrel{d}{=} Y.
 
 \end{defn}
 
-How can we check if two random variables are
+\noindent How can we check if two random variables are
 identically distributed? Once again, working with
 Borel sets can be difficult, but since the Borel sets
 are generated by the intervals, a simpler criterion
@@ -878,7 +878,7 @@ namely if
 \mu_1\big((a,b)\big) = \mu_2\big((a,b)\big)
 \]
 
-for all $-\infty < a<b < \infty$.
+\noindent for all $-\infty < a<b < \infty$.
 \end{lem}
 
 \section{Distribution functions}
@@ -907,7 +907,7 @@ F_X(x) = \mathrm{P}( X \le x ) = \mathrm{P}( X^{-1}((-\infty,x])) = \mathrm{P}( 
 
 \end{defn}
 
-Note that we have introduced here a useful notational
+\noindent Note that we have introduced here a useful notational
 device that will be used again many times in the
 following sections: if $A$ is a Borel set, we will
 often write $\{X \in A\}$ as shorthand for the set
@@ -961,7 +961,7 @@ If $F$ is a distribution function, then there exists
 a random variable $X$ such that $F=F_X$.
 \end{thm}
 
-This fact has a measure-theoretic proof similar to
+\noindent This fact has a measure-theoretic proof similar to
 the proof of Theorem \ref{thm-lebesgue}, but fortunately
 in this case, there is a more probabilistic proof that
 relies only on the existence of Lebesgue measure.
@@ -983,10 +983,10 @@ $-quantile}$ of $X$ if the inequalities
 \mathrm{P}(X \ge x) & \ge & 1-p
 \end{eqnarray*}
 
-hold.
+\noindent hold.
 \end{defn}
 
-Note that the question of whether $t$ is a
+\noindent Note that the question of whether $t$ is a
 $p$-quantile of $X$ can be answered just by knowing
 the distribution function $F_X$ of $X$: since
 $\mathrm{P}(X\le x)=F_X(x)$ and
@@ -1026,7 +1026,7 @@ above, we define
 X(p) = \sup\{ y : F(y) < p \}, \qquad (0<p<1).
 \]
 
-If $F$ were the distribution function of a random
+\noindent If $F$ were the distribution function of a random
 variable, then $X(p)$ would be its (minimal)
 $p$-quantile.
 
@@ -1046,7 +1046,7 @@ of sets
 \{ p : X(p) \le x \} = \{ p : p \le F(x) \},
 \]
 
-and, applying $\mathrm{P}$ to both sides of this
+\noindent and, applying $\mathrm{P}$ to both sides of this
 equation we will get
 
 \[
@@ -1054,7 +1054,7 @@ F_X(x) = \mathrm{P}(X\le x) = \mathrm{P}\big( p : p \le F(x) \big) = \mathrm{P}\
 = F(x)
 \]
 
-(since $\mathrm{P}$ is Lebesgue measure).
+\noindent (since $\mathrm{P}$ is Lebesgue measure).
 
 To prove the claim, note that if $p \le F(x)$ then
 all elements of the set $\{ y : F(y) < p\}$ satisfy
@@ -1066,7 +1066,7 @@ follows that $X(p)\ge x+\epsilon>x$ (since
 $x+\epsilon$ is in the set $\{ y : F(y)<p \}$).
 \end{proof}
 
-The function $X$ defined in the proof above is
+\noindent The function $X$ defined in the proof above is
 sometimes referred to as the (lower) quantile function
 of the distribution $F$. Note that if $F$ is a
 strictly increasing function then $X$ is simply its
@@ -1084,7 +1084,7 @@ $\mathbf{1}_A$ defined by
 \mathbf{1}_A(\omega) = \begin{cases} 0 & \omega \notin A, \\ 1 & \omega \in A. \end{cases}
 \]
 
-The above discussion shows that to specify the
+\noindent The above discussion shows that to specify the
 behavior of a random variable, it is enough to specify
 its distribution function. Another useful concept is
 that of a $\textbf{density function}$. If $F=F_X$ is
@@ -1095,7 +1095,7 @@ function $f:\R\to\R$ we have
 F(x) = \int_{-\infty}^x f(y)\,dy, \qquad (y\in\R),
 \end{equation*}
 
-then we say that $\textbf{$X$has a density function$f
+\noindent then we say that $\textbf{$X$has a density function$f
 $}$. Note that $f$ determines $F$ but is itself only
 determined by $F$ up to ``small'' changes that do not
 affect the integral in (\ref{eq:density}) (in
@@ -1118,13 +1118,13 @@ x & 0\le x \le 1, \\
 \end{cases}
 \]
 
-Such a r.v. has as its density function the function
+\noindent Such a r.v. has as its density function the function
 
 \[
 f(x) = \begin{cases} 1 & 0\le x\le 1,\\ 0&\textrm{otherwise.}\end{cases}
 \]
 
-More generally, if $a<b$ we say that $X$ is a
+\noindent More generally, if $a<b$ we say that $X$ is a
 $\textbf{uniform random variable in the interval$(a,b)
 $}$ if it has the (respective) distribution and
 density functions
@@ -1146,13 +1146,13 @@ terms of its density function
 f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}.
 \]
 
-The cumulative distribution function is denoted by
+\noindent The cumulative distribution function is denoted by
 
 \[
 \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-y^2/2} dy.
 \]
 
-This integral cannot be evaluated explicitly in terms
+\noindent This integral cannot be evaluated explicitly in terms
 of more familiar functions, but $\Phi$ is an
 important special function of mathematics nonetheless.
 \end{example}
@@ -1200,7 +1200,7 @@ $\pi_i:\R^d\to\R$ defined by
 \pi_i({\bf x}) = x_i, \qquad i=1,2,\ldots,d
 \]
 
-are all measurable (where measurability is respect to
+\noindent are all measurable (where measurability is respect to
 the Borel $\sigma$-algebra on the target space $\R$).
 \end{enumerate}
 
@@ -1241,7 +1241,7 @@ we have
 \mathbf{X}^{-1}(E) = \cap_{k=1}^d X_i^{-1}((a_i,b_i)) \in {\cal F}.
 \]
 
-Therefore by Definition \ref{defi-borelrd} and Exercise
+\noindent Therefore by Definition \ref{defi-borelrd} and Exercise
 \ref{ex-checkrv}, $\mathbf{X}$ is a random vector.
 \end{proof}
 
@@ -1275,7 +1275,7 @@ space, then the functions
 \inf_n X_n, \quad \sup_n X_n, \quad \limsup_n X_n, \quad \liminf_n X_n
 \]
 
-are all random variables. Note: Part of the question
+\noindent are all random variables. Note: Part of the question
 is to generalize the notion of random variable to a
 function taking values in
 $\overline{\mathbb{R}} = \R \cup \{-\infty, +\infty
@@ -1295,7 +1295,7 @@ to be the probability measure
 \qquad A \in {\cal B}(\R^d),
 \]
 
-similarly to the one-dimensional case. The measure
+\noindent similarly to the one-dimensional case. The measure
 $\mu_X$ is also called the
 $\textbf{joint distribution}$ (or
 $\textbf{joint law}$) of the random variables
@@ -1351,7 +1351,7 @@ variables) and returns the value
 \Delta_{a,b}^{x}f = f(b) - f(a)
 \]
 
-Then, for any real numbers $a_1 < b_1$, $a_2<b_2$,
+\noindent Then, for any real numbers $a_1 < b_1$, $a_2<b_2$,
 \ldots, $a_d < b_d$, we have
 
 \[
@@ -1389,7 +1389,7 @@ independent if
 \mathrm{P}(A\cap B) = \mathrm{P}(A)\mathrm{P}(B).
 \]
 
-More generally, a family
+\noindent More generally, a family
 ${\cal A}=(A_i)_{i\in {\cal I}}$ of events in a
 probability space $(\Omega, {\cal F}, \mathrm{P})$ is
 called an independent family if for any finite subset
@@ -1411,7 +1411,7 @@ independent if
 \mathrm{P}(X \in E, Y \in F) = \mathrm{P}(X\in E)\mathrm{P}(Y\in F)
 \]
 
-for any Borel sets $E,F \subset \R$. In other words
+\noindent for any Borel sets $E,F \subset \R$. In other words
 any two events representing possible statements about
 the behaviors of $X$ and $Y$ are independent events.
 \end{defn}
@@ -1425,7 +1425,7 @@ by
 \sigma(X) = \Big\{ X^{-1}(A) : A \in {\cal B}(\R) \Big\}
 \]
 
-is a $\sigma$-algebra (check!) called the
+\noindent is a $\sigma$-algebra (check!) called the
 $\textbf{$\sigma$-algebra generated by$X$}$. It is
 easy to check that it is the minimal $\sigma$-algebra
 with which $\Omega$ can be equipped so as to make $X$
@@ -1440,7 +1440,7 @@ independent if any two events
 $A\in {\cal A}, B\in{\cal B}$ are independent events.
 \end{defn}
 
-It follows from the above definitions that r.v.'s
+\noindent It follows from the above definitions that r.v.'s
 $X,Y$ are independent if and only if the
 $\sigma$-algebras $\sigma(X), \sigma(Y)$ generated by
 them are independent $\sigma$-algebras.
@@ -1467,7 +1467,7 @@ the $\sigma$-algebras $\{ \sigma(X_i) \}_{i\in I}$
 form an independent family of $\sigma$-algebras.
 \end{defn}
 
-Unraveling these somewhat abstract definitions, we
+\noindent Unraveling these somewhat abstract definitions, we
 see that $(X_i)_{i\in I}$ is an independent family of
 r.v.'s if and only if we have
 
@@ -1475,7 +1475,7 @@ r.v.'s if and only if we have
 \mathrm{P}(X_{i_1} \in A_1, \ldots X_{i_k} \in A_k) = \prod_{j=1}^k \mathrm{P}(X_{i_j} \in A_j)
 \]
 
-for all indices $i_1,\ldots,i_k \in I$ and Borel sets
+\noindent for all indices $i_1,\ldots,i_k \in I$ and Borel sets
 $A_1,\ldots, A_k \in {\cal B}(\R)$.
 
 \begin{thm}
@@ -1501,7 +1501,7 @@ theory. See [Dur2010], Theorem 2.1.3, p. 39 or
 [Dur2004], Theorem (4.2), p. 24.
 \end{proof}
 
-As a corollary, we get a convenient criterion for
+\noindent As a corollary, we get a convenient criterion for
 checking when the coordinates of a random vector are
 independent.
 
@@ -1530,14 +1530,14 @@ F_X(x_1,\ldots,x_d) = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2} \ldots \int_{-\i
 f(u_1,\ldots,u_d)\,du_d\ldots du_1 \qquad \forall x_1,\ldots,x_d \in \R.
 \]
 
-Show that if $f$ is a density for $\mathbf{X}$ and
+\noindent Show that if $f$ is a density for $\mathbf{X}$ and
 can be written in the form
 
 \[
 f(x_1,\ldots,x_d) = f_1(x_1) f_2(x_2) \ldots f_d(x_d),
 \]
 
-then $X_1,\ldots,X_d$ are independent.
+\noindent then $X_1,\ldots,X_d$ are independent.
 
 \item Show that if $X_1,\ldots,X_d$ are random variables
 taking values in a countable set $S$, then in order
@@ -1562,7 +1562,7 @@ events derived from the sequence $(A_n)_n$:
 \liminf A_n &=& \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty A_n.
 \end{eqnarray*}
 
-What is the meaning of these events? If we think of
+\noindent What is the meaning of these events? If we think of
 the sequence $A_n$ as representing a sequence of (not
 necessarily independent) probabilistic experiments,
 then we can translate the first event into words as
@@ -1572,7 +1572,7 @@ then we can translate the first event into words as
 &  & \textrm{that $A_n$ occurred''} \\ &=& \textrm{``the event that infinitely many of the $A_n$'s occurred''.}
 \end{eqnarray*}
 
-For this reason, the event $\limsup A_n$ is often
+\noindent For this reason, the event $\limsup A_n$ is often
 denoted by $\{ A_n\textrm{ infinitely often}\}$ or
 $\{A_n \textrm{ i.o.}\}$.
 
@@ -1618,7 +1618,7 @@ same argument.
 \inf_{N\ge 1} \sum_{n=N}^\infty \mathrm{P}(A_n).
 \]
 
-Since we assumed that
+\noindent Since we assumed that
 $\sum_{n=1}^\infty \mathrm{P}(A_n)$, converges, this
 last expression is equal to $0$.
 
@@ -1631,7 +1631,7 @@ values of $n$. Using De-Morgan's laws, we get
 &\le &\sum_{N=1}^\infty \mathrm{P}\left( \bigcap_{n=N}^\infty A_n^c \right).
 \end{eqnarray*}
 
-So, to show that this is 0 (under the assumptions
+\noindent So, to show that this is 0 (under the assumptions
 that $\sum_{n=1}^\infty \mathrm{P}(A_n) = \infty$ and
 that the events are independent), we show that
 $\mathrm{P}\left( \cap_{n=N}^\infty A_n^c \right) =
@@ -1644,13 +1644,13 @@ the probabilities, so we need to show that
 \prod_{n=N}^\infty (1-\mathrm{P}(A_n)) = 0,
 \]
 
-or equivalently (taking minus the logarithm) that
+\noindent or equivalently (taking minus the logarithm) that
 
 \[
 -\sum_{n=N}^\infty \log(1-\mathrm{P}(A_n)) = \infty.
 \]
 
-But $-\log(1-x) \ge x$ for all $x>0$, so this follows
+\noindent But $-\log(1-x) \ge x$ for all $x>0$, so this follows
 from the assumption that the series of probabilities
 diverges.
 \end{proof}
@@ -1683,7 +1683,7 @@ $A_n \uparrow A$ then $A\in {\cal L}$.
 
 \end{defn}
 
-The following is a somewhat technical result that
+\noindent The following is a somewhat technical result that
 turns out to be quite useful:
 
 \begin{thm}[Dynkin's $\pi-\lambda$ theorem]
@@ -1700,7 +1700,7 @@ intersection), then $\mu_1$ and $\mu_2$ coincide on
 the generated $\sigma$-algebra $\sigma({\cal P})$.
 \end{lem}
 
-The uniqueness theorem implies for example that to
+\noindent The uniqueness theorem implies for example that to
 check if random variables $X$ and $Y$ are equal in
 distribution, it is enough to check that they have the
 same distribution functions.
@@ -1721,7 +1721,7 @@ $\sigma$-algebra $\sigma({\cal A})$ generated by
 ${\cal A}$.
 \end{thm}
 
-Carathéodory's extension theorem is the main tool
+\noindent Carathéodory's extension theorem is the main tool
 used in measure theory for constructing measures: one
 always starts out by defining the measure on some
 relatively small family of sets and then extending to
@@ -1753,7 +1753,7 @@ experiments which consist of several independent
 smaller experiments.
 \end{itemize}
 
-Note that Durrett's book also talks about measures
+\noindent Note that Durrett's book also talks about measures
 that are not probability measures, i.e., the total
 measure of the space is not 1 and may even be
 infinite. In this setting, the theorems above can be
@@ -1832,14 +1832,14 @@ defining
 \mathbf{E}(X) = \sup \{ \mathbf{E}(Y) : Y\textrm{ is a simple function such that }Y \le X \}.
 \end{equation*}
 
-By approximation, the construction is shown to still
+\noindent By approximation, the construction is shown to still
 satisfy the properties in the Theorem and to be
 unique, since $\mathbf{E}(X)$ is squeezed between
 $\mathbf{E}(Y)$ and $\mathbf{E}(Z)$, and these can be
 made arbitrarily close to each other.
 \end{proof}
 
-We can now extend the definition of the expectation
+\noindent We can now extend the definition of the expectation
 operator to non-negative random variables. In that
 case we still define $\mathbf{E} X$ by eq.
 (\ref{eq:expec-def}). This can be thought of as a kind of
@@ -1856,11 +1856,11 @@ r.v.'s by writing
 X = X_+ - X_-,
 \]
 
-where $X_+ = \max(X,0)$ is called the
+\noindent where $X_+ = \max(X,0)$ is called the
 $\textbf{positive part of } X$ and $X_-=\max(-X,0)$
 is called the $\textbf{negative part of } X$.
 
-We say that $X$ $\textbf{has an expectation}$ if the
+We say that $X$$\textbf{has an expectation}$ if the
 two numbers $\mathbf{E} X_-, \mathbf{E} X_+$ are not
 both $\infty$. In this case we define
 
@@ -1868,11 +1868,10 @@ both $\infty$. In this case we define
 \mathbf{E} X = \mathbf{E} X_+ - \mathbf{E} X_-.
 \]
 
-This is a number in $\R\cup\{ -\infty,\infty\}$. If
+\noindent This is a number in $\R\cup\{ -\infty,\infty\}$. If
 both $\mathbf{E} X_-, \mathbf{E} X_+$ are $<\infty$,
 or in other words if $\mathbf{E} |X|<\infty$ (since
-$|X|=X_+ + X_-$), we say that $X$
-$\textbf{has finite expectation}$ or is
+$|X|=X_+ + X_-$), we say that $X$$\textbf{has finite expectation}$ or is
 $\textbf{integrable}$.
 
 \begin{thm}
@@ -1901,7 +1900,7 @@ right-hand side of this identity to be well-defined.
 See [Dur2010], section 1.4.
 \end{proof}
 
-$\textbf{Remark.}$ See \href{http://en.wikipedia.org/wiki/Lebesgue_integration\#Intuitive_interpretation}{the Wikipedia article on
+\noindent $\textbf{Remark.}$ See \href{http://en.wikipedia.org/wiki/Lebesgue_integration\#Intuitive_interpretation}{the Wikipedia article on
 Lebesgue
 integration}
 for a nice description of the difference in approaches
@@ -1913,7 +1912,7 @@ Lebesgue integral.
 
 \begin{enumerate}[label=\arabic*.]
 \item \textbf{Expectation is invariant under ``almost-sure
-equivalence'':} If $X\le Y$ \emph{almost surely}, meaning
+equivalence'':} If $X\le Y$\emph{almost surely}, meaning
 $\mathrm{P}(X\le Y)=1$, then by the definition we
 have $\mathbf{E} X \le \mathbf{E} Y$, since any
 simple function $Z$ such that $Z\le X$ can be
@@ -1922,8 +1921,7 @@ $Z'\le Y$ and $Z=Z'$ almost surely. It follows also
 that if $X=Y$ almost surely then
 $\mathbf{E} X=\mathbf{E} Y$.
 
-\item \textbf{Triangle inequality:}
-$|\mathbf{E} X| \le \mathbf{E} |X|$.
+\item \textbf{Triangle inequality:}$|\mathbf{E} X| \le \mathbf{E} |X|$.
 
 \begin{proof}
 
@@ -1956,14 +1954,14 @@ its $\textbf{variance}$ to be
 \mathbf{V}(X) = \mathbf{E}(X-\mathbf{E} X)^2.
 \]
 
-If $\mathbf{V}(X)<\infty$, by expanding the square it
+\noindent If $\mathbf{V}(X)<\infty$, by expanding the square it
 is easy to rewrite the variance as
 
 \[
 \mathbf{V}(X) = \mathbf{E}(X^2)-(\mathbf{E} X)^2.
 \]
 
-We denote $\sigma(X) = \sqrt{\mathbf{V}(X)}$ and call
+\noindent We denote $\sigma(X) = \sqrt{\mathbf{V}(X)}$ and call
 this quantity the $\textbf{standard deviation of } X$.
 Note that if $a\in \R$ then
 $\mathbf{V}(a X) = a^2 \mathbf{V}(X)$ and
@@ -1985,7 +1983,7 @@ Apply Markov's inequality to $Y=(X-\mathbf{E} X)^2$.
 \mathbf{E}|XY| \le \left(\mathbf{E} X^2 \mathbf{E} Y^2\right)^{1/2}.
 \]
 
-Equality holds if and only if $X$ and $Y$ are
+\noindent Equality holds if and only if $X$ and $Y$ are
 linearly dependent, i.e. $aX+bY\equiv 0$ holds for
 some $a,b\in \R$.
 
@@ -1996,7 +1994,7 @@ Consider the function
 p(t) = \mathbf{E}(|X| + t |Y|)^2 = t^2 \mathbf{E} Y^2 + 2t \mathbf{E}|XY| + \mathbf{E} X^2.
 \]
 
-Since $p(t)=at^2+bt+c$ is a quadratic polynomial in
+\noindent Since $p(t)=at^2+bt+c$ is a quadratic polynomial in
 $t$ that satisfies $p(t)\ge 0$ for all $t$, its
 discriminant $b^2-4ac$ must be non-positive. This
 gives
@@ -2005,7 +2003,7 @@ gives
 (\mathbf{E}|XY|)^2 - \mathbf{E} X^2 \mathbf{E} Y^2 \le 0,
 \]
 
-as claimed. The condition for equality is left as an
+\noindent as claimed. The condition for equality is left as an
 exercise.
 \end{proof}
 
@@ -2016,7 +2014,7 @@ is called convex if it satisfies
 \varphi(\alpha x + (1-\alpha)y) \le \alpha \varphi(x)+(1-\alpha)\varphi(y)
 \]
 
-for all $x,y\in\R$ and $\alpha\in [0,1]$. If $\varphi$
+\noindent for all $x,y\in\R$ and $\alpha\in [0,1]$. If $\varphi$
 is convex then
 
 \[
@@ -2128,7 +2126,7 @@ $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
 Prove Lemma \ref{lem:prob-as-subseq}.
 \end{xexercise}
 
-We can now formulate the fundamental convergence
+\noindent We can now formulate the fundamental convergence
 theorems for Lebesgue integration.
 
 \begin{thm}[Bounded convergence theorem]
@@ -2145,7 +2143,7 @@ Fix $\epsilon>0$. Then
 &\le& 2M \mathrm{P}(|X_n-X|>\epsilon) + \epsilon\xrightarrow[n\to\infty]{} \epsilon.
 \end{eqnarray*}
 
-Since $\epsilon$ was an arbitrary positive number,
+\noindent Since $\epsilon$ was an arbitrary positive number,
 this implies that
 $|\mathbf{E} X_n-\mathbf{E} X|\to 0$, as claimed.
 \end{proof}
@@ -2156,7 +2154,7 @@ $\liminf_{n\to\infty} \mathbf{E} X_n \ge
 \mathbf{E}(\liminf_{n\to\infty} X_n).$
 \end{thm}
 
-To see that the inequality in the lemma can fail to
+\noindent To see that the inequality in the lemma can fail to
 be an equality, let $U \sim U(0,1)$, and define
 $X_n = n 1_{\{U\le 1/n\}}$. Clearly
 $\liminf_{n\to\infty}X_n=\lim_{n\to\infty} X_n \equiv
@@ -2171,7 +2169,7 @@ be written as
 Y = \sup_{n\ge 1} \inf_{m\ge n} X_m
 \]
 
-(this is a general fact about the lim inf of a
+\noindent (this is a general fact about the lim inf of a
 sequence of real numbers), or $Y = \sup_n Y_n$, where
 we denote
 
@@ -2179,7 +2177,7 @@ we denote
 Y_n = \inf_{m\ge n} X_m.
 \]
 
-We have $Y_n \le X_n$, and as $n\to\infty$,
+\noindent We have $Y_n \le X_n$, and as $n\to\infty$,
 $Y_n \to Y$ (in fact $Y_n \uparrow Y$) almost surely.
 Therefore $\mathbf{E} Y_n \le \mathbf{E} X_n$, so
 $\liminf_{n\to\infty} \mathbf{E} Y_n \le
@@ -2190,13 +2188,13 @@ and therefore it is enough to show that
 \liminf_{n\to\infty} \mathbf{E} Y_n \ge \mathbf{E} Y.
 \]
 
-But for any $M$ we have that
+\noindent But for any $M$ we have that
 
 \[
 Y_n \wedge M \xrightarrow[n\to\infty]{\textrm{a.s.}} Y \wedge M,
 \]
 
-and this is a sequence of uniformly bounded r.v.'s,
+\noindent and this is a sequence of uniformly bounded r.v.'s,
 therefore by the bounded convergence theorem we get
 that
 
@@ -2204,7 +2202,7 @@ that
 \mathbf{E}(Y_n) \ge \mathbf{E}(Y_n \wedge M) \xrightarrow[n\to\infty]{} \mathbf{E}(Y\wedge M).
 \]
 
-We therefore get that
+\noindent We therefore get that
 $\liminf_{n\to\infty} \mathbf{E}(Y_n)\ge
 \mathbf{E}(Y\wedge M)$
 for any $M>0$, which implies the result because of
@@ -2254,14 +2252,14 @@ some countable set $S$, then
 \mathbf{E} X = \sum_{s\in S} s\, \mathrm{P}(X=s)
 \]
 
-when the right-hand side is well-defined, i.e., when
+\noindent when the right-hand side is well-defined, i.e., when
 at least one of the numbers
 
 \[
 \mathbf{E}(X_-)=\sum_{s\in S, s<0} (-s)\,\mathrm{P}(X=s), \qquad \mathbf{E}(X_+)= \sum_{s\in S, s>0} s\, \mathrm{P}(X=s)
 \]
 
-is finite. It follows that for any function
+\noindent is finite. It follows that for any function
 $g:\R\to\R$, we also have
 
 \[
@@ -2288,14 +2286,14 @@ If $X$ is a r.v. with a density function $f_X$, then
 \mathbf{E}(X) = \int_{-\infty}^\infty x f_X(x)\,dx
 \]
 
-when the right-hand side is well-defined, i.e., when
+\noindent when the right-hand side is well-defined, i.e., when
 at least one of the numbers
 
 \[
 \mathbf{E}(X_-) = -\int_{-\infty}^0 x f_X(x)\,dx, \qquad \mathbf{E}(X_+) = \int_0^\infty x f_X(x)\,dx
 \]
 
-is finite. Similarly, for any ``reasonable'' function
+\noindent is finite. Similarly, for any ``reasonable'' function
 $g$ we have
 
 \[
@@ -2312,7 +2310,7 @@ r.v. $Y$, e.g.,
 Y = \sum_{k=-\infty}^\infty k\epsilon 1_{\{k\epsilon < X \le (k+1)\epsilon\}}.
 \]
 
-Then
+\noindent Then
 $|\mathbf{E}(X)-\mathbf{E}(Y)| \le \mathbf{E}|X-Y|
 \le \epsilon$.
 By the previous lemma we have
@@ -2321,7 +2319,7 @@ By the previous lemma we have
 \mathbf{E}(Y)  = \sum_{k=-\infty}^\infty k\epsilon \mathrm{P}(k\epsilon<X<(k+1)\epsilon) =\sum_{k=-\infty}^\infty k\epsilon \int_{k\epsilon}^{(k+1)\epsilon} f_X(x)\,dx,
 \]
 
-so the result for $\mathbf{E} X$ follows by letting
+\noindent so the result for $\mathbf{E} X$ follows by letting
 $\epsilon\to 0$. For general functions $g(X)$ repeat
 this argument, and invoke the relevant convergence
 theorem to deduce that
@@ -2384,7 +2382,7 @@ $g_1,\ldots,g_n:\R\to\R$.
 
 \end{thm}
 
-The fact that expectation is multiplicative for
+\noindent The fact that expectation is multiplicative for
 independent random variables implies an important fact
 about the variance of a sum of independent r.v.'s. Let
 $X,Y$ be independent r.v.'s with finite variance.
@@ -2396,7 +2394,7 @@ Then we get immediately that
 &=& \mathbf{V}(X)+\mathbf{V}(Y) + 0 = \mathbf{V}(X)+\mathbf{V}(Y).
 \end{eqnarray*}
 
-More generally, if $X,Y$ are not necessarily
+\noindent More generally, if $X,Y$ are not necessarily
 independent, then we can define the covariance of $X$
 and $Y$ by
 
@@ -2404,13 +2402,13 @@ and $Y$ by
 \textrm{Cov}(X,Y) = \mathbf{E}\left[ (X-\mathbf{E} X)(Y-\mathbf{E} Y)\right].
 \]
 
-We then get the more general formula
+\noindent We then get the more general formula
 
 \[
 \mathbf{V}(X+Y) = \mathbf{V}(X) + \mathbf{V}(Y) + 2 \textrm{Cov}(X,Y).
 \]
 
-Repeating this computation with a sum of $n$
+\noindent Repeating this computation with a sum of $n$
 variables instead of just two, we get the following
 formula for the variance of a sum of r.v.'s.
 
@@ -2454,7 +2452,7 @@ applying the Cauchy-Schwartz inequality to the r.v.'s
 $X-\mathbf{E} X$ and $Y-\mathbf{E} Y$.
 \end{proof}
 
-If $\textrm{Cov}(X,Y)=0$ we say that $X$ and $Y$ are
+\noindent If $\textrm{Cov}(X,Y)=0$ we say that $X$ and $Y$ are
 $\textbf{uncorrelated}$, or $\textbf{orthogonal}$.
 This is a weaker condition than being independent, but
 because of the way the variance of a sum of r.v.'s
@@ -2468,7 +2466,7 @@ by
 \rho(X,Y) = \frac{\textrm{Cov}(X,Y)}{\sigma(X)\sigma(Y)}.
 \]
 
-This measures the correlation in units of the
+\noindent This measures the correlation in units of the
 standard deviation of $X$ and $Y$ so does not depend
 on the choice of scale. From property 6 in the above
 lemma, we get that
@@ -2477,7 +2475,7 @@ lemma, we get that
 -1\le \rho(X,Y)\le 1,
 \]
 
-with equality on either side if and only if $X$ and
+\noindent with equality on either side if and only if $X$ and
 $Y$ are linearly dependent.
 
 \section{Moments}
@@ -2513,7 +2511,7 @@ moment around a point $t$, we can write
 &=& \mathbf{V}(X) + (t-\mathbf{E} X)^2 \ge \mathbf{V}(X).
 \end{eqnarray*}
 
-So the function $t\to\mathbf{E}(X-t)^2$ is a
+\noindent So the function $t\to\mathbf{E}(X-t)^2$ is a
 quadratic polynomial that attains its minimum at
 $t=\mathbf{E} X$, and the value of the minimum is
 $\mathbf{V}(X)$. In words, the identity
@@ -2522,7 +2520,7 @@ $\mathbf{V}(X)$. In words, the identity
 \mathbf{E}(X-t)^2 = \mathbf{V}(X) + (t-\mathbf{E} X)^2
 \]
 
-says that ``the second moment around $t$ is equal to
+\noindent says that ``the second moment around $t$ is equal to
 the second moment around the mean $\mathbf{E} X$ plus
 the square of the distance between $t$ and the
 mean''. Note that this is analogous to (and
@@ -2570,7 +2568,7 @@ satisfies
 \mathrm{P}(X=0)=p = 1-\mathrm{P}(X=1).
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\mathbf{E} X = p$, $\mathbf{V}(X) = p(1-p)$.
@@ -2589,7 +2587,7 @@ $X\sim \operatorname{Bin}(n,p)$, if $X$ satisfies
 \mathrm{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \qquad (0\le k\le n).
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Bin}(1,p) \stackrel{d}{=}
@@ -2620,7 +2618,7 @@ $X\sim \operatorname{Geom}(p)$, if $X$ satisfies
 \mathrm{P}(X=k) = p(1-p)^{k-1} \qquad (k \ge 1).
 \]
 
-Some authors prefer a slightly different convention
+\noindent Some authors prefer a slightly different convention
 whereby the geometric random variables take
 nonnegative values (including $0$) rather than only
 positive values. Thus, denote
@@ -2632,7 +2630,7 @@ it satisfies
 \mathrm{P}(X'=k) = p(1-p)^{k} \qquad (k \ge ).
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Geom}(p) \stackrel{d}{=}
@@ -2646,7 +2644,7 @@ then
 X = \min\{ k\ge 1\,:\, W_k = 1\}  \sim \operatorname{Geom}(p).
 \]
 
-That is, the distribution $\operatorname{Geom}(p)$
+\noindent That is, the distribution $\operatorname{Geom}(p)$
 models the number of identical independent experiments
 we had to perform to get the first successful outcome,
 when each experiment has probability $p$ of success.
@@ -2681,7 +2679,7 @@ satisfies
 \mathrm{P}(X=k) = \binom{k+m-1}{k} p^m (1-p)^k \qquad (k\ge 0).
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{NB}(1,p) \stackrel{d}{=}
@@ -2698,7 +2696,7 @@ then
 X = \min\left\{ k\ge 0\,:\, \sum_{j=1}^{k+m} (1-W_j) = m\right\}  \sim \operatorname{NB}(m,p).
 \]
 
-In words, when performing a sequence of identical
+\noindent In words, when performing a sequence of identical
 experiments, each with probability $p$ of success,
 the number of successes observed before the $m$th
 failure is distributed according to
@@ -2718,7 +2716,7 @@ $X\sim \operatorname{Poi}(\lambda)$, if $X$ satisfies
 \mathrm{P}(X=k) = e^{-\lambda} \frac{\lambda^k}{k!} \qquad (k\ge 0).
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Poi}(\lambda) \mathop{\boxplus}
@@ -2739,7 +2737,7 @@ $\operatorname{Bin}(n,\lambda/n)$, then
 \mathrm{P}(W_n = k) \xrightarrow[n\to\infty]{} \mathrm{P}(X=k) \qquad (k\ge 0).
 \]
 
-(This is known as the $\textbf{law of rare events}$;
+\noindent (This is known as the $\textbf{law of rare events}$;
 see Section \ref{sec:poisson-limit} for the proof of a
 similar result that holds in much greater generality.)
 
@@ -2756,7 +2754,7 @@ has density function
 f_X(x) = \begin{cases} \frac{1}{b-a} & \textrm{if }a<x<b, \\ 0 & \textrm{otherwise}. \end{cases},
 \]
 
-or equivalently if the c.d.f. of $X$ is given by
+\noindent or equivalently if the c.d.f. of $X$ is given by
 
 \[
 F_X(x) = \begin{cases} 0 & \textrm{if }x<a, \\
@@ -2764,7 +2762,7 @@ F_X(x) = \begin{cases} 0 & \textrm{if }x<a, \\
 1 & \textrm{if }x>b. \end{cases}.
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\mathbf{E}(X) = \frac{a+b}{2}$,
@@ -2782,7 +2780,7 @@ density function
 f_X(x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-(x-\mu)^2/2\sigma^2} \qquad (x\in\R).
 \]
 
-In particular, the standard normal distribution is
+\noindent In particular, the standard normal distribution is
 the distribution $N(0,1)$, whose density function is
 given by
 
@@ -2790,7 +2788,7 @@ given by
 f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2} \qquad (x\in\R).
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item If $X\sim N(\mu,\sigma^2)$ then $\mathbf{E}(X)=\mu$,
@@ -2809,13 +2807,13 @@ independent standard normal r.v.s then
 \frac{1}{\sqrt{n}}(X_1+\ldots+X_n) \sim N(0,1),
 \]
 
-and also
+\noindent and also
 
 \[
 \sum_{j=1}^n \alpha_j X_j \sim N(0,1)
 \]
 
-if $\alpha_1,\ldots,\alpha_n$ are real numbers such
+\noindent if $\alpha_1,\ldots,\alpha_n$ are real numbers such
 that $\sum_j \alpha_j^2 = 1$. (Geometrically,
 $\mathbf{\alpha}\cdot \mathbf{X} = \sum_{j=1}^n
 \alpha_j X_j$
@@ -2861,7 +2859,7 @@ density function
 f_X(x) = \lambda e^{-\lambda x} \qquad (x\ge 0)
 \]
 
-and the associated c.d.f.
+\noindent and the associated c.d.f.
 
 \[
 F_X(x) = \begin{cases} 0 & \textrm{if }x<0, \\
@@ -2869,7 +2867,7 @@ F_X(x) = \begin{cases} 0 & \textrm{if }x<0, \\
 \end{cases}
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\lambda$ has the role of an (inverse)
@@ -2889,7 +2887,7 @@ if $X\sim \operatorname{Exp}(\lambda)$ then
 \mathrm{P}(X > t+s \,|\, X>t) = \mathrm{P}(X>s) \qquad (t,s>0).
 \]
 
-Furthermore, it is not hard to show that the
+\noindent Furthermore, it is not hard to show that the
 exponential distribution is the unique distribution on
 $[0,\infty)$ satisfying this property.
 
@@ -2928,10 +2926,10 @@ $\lambda>0$, the random variable
 N(\lambda) = \max\{ n\ge 0\,:\, S_n \le \lambda \},
 \]
 
-then $N(\lambda) \sim \operatorname{Poi}(\lambda)$.
+\noindent then $N(\lambda) \sim \operatorname{Poi}(\lambda)$.
 \end{enumerate}
 
-$\textbf{Note.}$ One can consider $N(\lambda)$ not
+\noindent $\textbf{Note.}$ One can consider $N(\lambda)$ not
 just for a single value of $\lambda$ but the entire
 family $N(t)$, where $t>0$ is a parameter denoting
 time. When considered as such a family, $(N(t))_{t>0}$
@@ -2948,7 +2946,7 @@ denoted $\Gamma(t)$, by
 \Gamma(t) = \int_0^\infty e^{-x} x^{t-1}\,dt \qquad (t>0).
 \]
 
-$\textbf{Properties of the gamma function:}$
+\noindent $\textbf{Properties of the gamma function:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\Gamma(n)=(n-1)!$ for integer $n\ge1$.
@@ -2958,7 +2956,7 @@ $\textbf{Properties of the gamma function:}$
 \item $\Gamma(1/2)=\sqrt{\pi}$.
 \end{enumerate}
 
-Next, we say that $X$ has the gamma distribution with
+\noindent Next, we say that $X$ has the gamma distribution with
 parameters $\alpha, \lambda>0$, and denote
 $X\sim \operatorname{Gamma}(\lambda)$, if $X$ has
 density function
@@ -2967,7 +2965,7 @@ density function
 f_X(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} e^{-\lambda x} x^{\alpha-1} \qquad (x>0).
 \]
 
-$\textbf{Properties of the gamma distribution:}$
+\noindent $\textbf{Properties of the gamma distribution:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\operatorname{Exp}(\lambda) \stackrel{d}{=}
@@ -3001,7 +2999,7 @@ closely related to the Euler gamma function) by
 B(a,b) = \int_0^1 u^{a-1}(1-u)^{b-1}\,du \qquad (a,b>0).
 \]
 
-$\textbf{Properties of the beta function:}$
+\noindent $\textbf{Properties of the beta function:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $B(a,b) = \frac{\Gamma(a) \Gamma(b)}{\Gamma(a+b)}$.
@@ -3010,7 +3008,7 @@ $\textbf{Properties of the beta function:}$
 $B(m,n) = \frac{(m-1)! (n-1)!}{(m+n-1)!}$.
 \end{enumerate}
 
-We say that $X$ has the beta distribution with
+\noindent We say that $X$ has the beta distribution with
 parameters $a,b>0$, and denote
 $X\sim \operatorname{Beta}(a,b)$, if $X$ has density
 function
@@ -3019,7 +3017,7 @@ function
 f_X(x) = \frac{1}{B(a,b)} x^{a-1} (1-x)^{b-1} \qquad (0<x<1).
 \]
 
-$\textbf{Properties of the beta distribution:}$
+\noindent $\textbf{Properties of the beta distribution:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $U[0,1] \stackrel{d}{=} \operatorname{Beta}(1,1)$.
@@ -3058,7 +3056,7 @@ density
 f_X(x) = \frac{1}{\pi} \frac{1}{1+x^2}.
 \]
 
-$\textbf{Properties:}$
+\noindent $\textbf{Properties:}$
 
 \begin{enumerate}[label=\arabic*.]
 \item $\mathbf{E} |X|=\infty$, i.e., the Cauchy
@@ -3151,13 +3149,13 @@ it. So we look at the sum of the first $n$ samples,
 S_n = \sum_{k=1}^n X_k,
 \]
 
-and use it to form the $\textbf{empirical average}$,
+\noindent and use it to form the $\textbf{empirical average}$,
 
 \[
 \overline{X}_n = \frac1n S_n = \frac{1}{n} \sum_{k=1}^n X_k.
 \]
 
-The natural question is whether we can expect the
+\noindent The natural question is whether we can expect the
 empirical average to be close to the true mean
 $\mu=\mathbf{E} X_1$ as $n\to\infty$, and in what
 sense of ``close''. A theorem or statement to that
@@ -3216,7 +3214,7 @@ If $\mathbf{E}|X_1|<\infty$ then
 
 \end{thm}
 
-As in the case of the weak law, it turns out that
+\noindent As in the case of the weak law, it turns out that
 this is easier to prove when making more restrictive
 assumptions about the distribution of $X$, and
 specifically about the existence of moments. So we
@@ -3243,7 +3241,7 @@ inequality we can get that
 \le \frac{\mathbf{E}(S_n-n\mu)^4}{n^4 \epsilon^4}.
 \end{align*}
 
-Denote $\hat{X_k}=X_k-\mu$, and
+\noindent Denote $\hat{X_k}=X_k-\mu$, and
 $T_n = S_n-n\mu= \sum_{k=1}^n \hat{X_k}$. To bound
 $\mathbf{E}(T_n^4)$, note that we can write
 
@@ -3254,7 +3252,7 @@ T_n^4 &=& \sum_{k=1}^n \hat{X_k}^4 + \binom{4}{1} \sum_{1 \le i\neq j \le n} \ha
 + \frac{1}{4!}\binom{4}{1,1,1,1} \sum_{1 \le i,j,k,\ell \le n\textrm{ distinct}} \hat{X_i} \hat{X_j} \hat{X_k} \hat{X_\ell}
 \end{eqnarray*}
 
-(where $\binom{4}{2,1,1}=4!/2!1!1!$,
+\noindent (where $\binom{4}{2,1,1}=4!/2!1!1!$,
 $\binom{4}{1,1,1,1}=4!/1!1!1!1!$ are multinomial
 coefficients). Now take the expectations on both
 sides, and use the fact that
@@ -3265,7 +3263,7 @@ are independent, to get
 \mathbf{E}(T_n^4) = n m_4 + 3n(n-1) m_2^2,
 \]
 
-where we denote
+\noindent where we denote
 $m_2 = \mathbf{E}(\hat{X}_k^2) = \mathbf{V}(X_k)$,
 $m_4=\mathbf{E}(\hat{X}_k^4)<\infty$. This gives us
 the bound we wanted! In fact, all that matters is that
@@ -3276,7 +3274,7 @@ Combining this with (\ref{eq:previousbound}), we get that
 \mathrm{P}(|S_n/n-\mu|>\epsilon) \le \frac{C}{n^2 \epsilon^4}.
 \]
 
-In particular, we have that
+\noindent In particular, we have that
 $\sum_{n=1}^\infty \mathrm{P}(|S_n/n-\mu|>\epsilon)
 <\infty$,
 so by the Borel-Cantelli lemma, the probability of the
@@ -3286,14 +3284,14 @@ event
 A_\epsilon := \left\{|S_n/n-\mu|>\epsilon \textrm{ i.o.}\right\}
 \]
 
-is $0$. This is true for all $\epsilon>0$, therefore
+\noindent is $0$. This is true for all $\epsilon>0$, therefore
 the probability of
 
 \[
 \{S_n/n\nrightarrow \mu\} \subset \bigcup_{\epsilon>0} A_\epsilon = \bigcup_{n=1}^\infty A_{1/n}
 \]
 
-is also $0$, since it is contained in a countable
+\noindent is also $0$, since it is contained in a countable
 union of events of probability 0.
 \end{proof}
 
@@ -3314,7 +3312,7 @@ This implies, again by the Borel-Cantelli lemma, that
 \mathrm{P}(|S_{n_k}/{n_k} - \mu| > \epsilon \textrm{ i.o.}) = 0
 \]
 
-for all $\epsilon>0$ (the ``i.o.'' here refers to the
+\noindent for all $\epsilon>0$ (the ``i.o.'' here refers to the
 ``running index'' $k$, not $n$). This implies as
 before that
 
@@ -3322,7 +3320,7 @@ before that
 \mathrm{P}\left(\frac{S_{n_k}}{n_k}\xrightarrow[k\to\infty]{\textrm{a.s.}} \mu\right) = 1.
 \]
 
-So, while we have not shown almost sure convergence
+\noindent So, while we have not shown almost sure convergence
 of the empirical averages to the true mean for all
 values of $n$, at least we have done so for the
 subsequence $n_k=k^2$. But this subsequence is
@@ -3350,7 +3348,7 @@ $T_n=S_n-n\mu$ as before, we have
 \frac{10 k \sigma^2}{\epsilon^2 k^4} + \frac{20 k^4 \sigma^2}{k^8} < \frac{20 \sigma^2}{k^3},
 \end{eqnarray*}
 
-where we have denoted $\sigma^2=\mathbf{V}(X_1)$.
+\noindent where we have denoted $\sigma^2=\mathbf{V}(X_1)$.
 
 The estimate that we obtained is valid for a single
 $n$. We are actually interested in the \emph{maximal}
@@ -3371,7 +3369,7 @@ naive bound you can imagine), we get easily that
 = \frac{40\sigma^2}{k^2}.
 \end{eqnarray*}
 
-Once again, we have obtained as our bound the general
+\noindent Once again, we have obtained as our bound the general
 term of a convergent series! Denoting
 
 \[
@@ -3379,7 +3377,7 @@ A_{k,\epsilon} = \left\{ \max_{n_k \le n < n_{k+1}} \left| \frac{T_n}{n} - \frac
 \right\},
 \]
 
-by the Borel-Cantelli lemma this implies that for any
+\noindent by the Borel-Cantelli lemma this implies that for any
 $\epsilon>0$,
 $\mathrm{P}(A_{k,\epsilon}\textrm{ i.o.})=0$ (with
 the ``i.o.'' qualifier again referring to the running
@@ -3393,7 +3391,7 @@ that
 \mathrm{P}\left( \bigcup_{m=1}^\infty \left\{ A_{k,1/m}\textrm{ i.o. (w.r.t. } k \textrm{)}\right\} \right) = 0,
 \]
 
-by subadditivity for countable unions and the fact
+\noindent by subadditivity for countable unions and the fact
 that $A_{k,\epsilon} \subset A_{k,\epsilon'}$ if
 $\epsilon>\epsilon'$.
 
@@ -3410,7 +3408,7 @@ E_2 &=& \left( \bigcup_{m=1}^\infty \left\{
 \right)^c
 \end{eqnarray*}
 
-both have probability 1, we get that their
+\noindent both have probability 1, we get that their
 intersection $E_1\cap E_2$ also has probability 1.
 But we have the event inclusion
 
@@ -3418,12 +3416,12 @@ But we have the event inclusion
 E_1 \cap E_2 \subset \left\{ \frac{S_n}{n} \xrightarrow[n\to\infty]{} \mu \right\}
 \]
 
-(if the conditions in both the events $E_1, E_2$
+\noindent (if the conditions in both the events $E_1, E_2$
 occur, then $S_n/n$ must converge to $\mu$), so this
 latter event also has probability 1.
 \end{proof}
 
-The above proof was a little involved, but is based
+\noindent The above proof was a little involved, but is based
 on a few simple ideas: 1. Use Chebyshev bounds
 together with the Borel-Cantelli lemma. 2. Break up
 the event $\{S_n/n\to \mu\}$ in a clever way into
@@ -3452,7 +3450,7 @@ variance, then
 
 \end{thm}
 
-Finally, we turn to the proof of the full SLLN for an
+\noindent Finally, we turn to the proof of the full SLLN for an
 i.i.d. sequence (Theorem \ref{thm-slln}), assuming only a
 finite first moment. Etemadi's 1981 proof presented in
 [Dur2010] is based on a similar idea of proving
@@ -3485,7 +3483,7 @@ It follows that the event
 \left\{ \sup_{n\to\infty} |S_n-T_n|=\infty \right\}
 \]
 
-has probability 0, and therefore the even smaller
+\noindent has probability 0, and therefore the even smaller
 event
 
 \[
@@ -3493,7 +3491,7 @@ event
 \left\{ \limsup_{n\to\infty} \left|\left(\frac{S_n}{n}-\mu\right)-\frac{T_n-\mathbf{E}(T_n)}{n} \right|>0 \right\},
 \]
 
-has probability 0 (the equivalence between these last
+\noindent has probability 0 (the equivalence between these last
 two events follows from the observation that
 $\mathbf{E}(Y_n)\uparrow \mu$ by the
 monotone/dominated convergence theorems, and therefore
@@ -3507,7 +3505,7 @@ the theorem, it is enough to prove that
 \mathrm{P}\left(\frac{T_n-\mathbf{E} T_n}{n}\to0\right) = 1.
 \]
 
-Now, to prove this, as before we establish a.s.
+\noindent Now, to prove this, as before we establish a.s.
 convergence first along a subsequence $n_k$, this
 time taking $n_k = \lfloor \alpha^k \rfloor$ where
 $\alpha>1$. (Here, $\lfloor x\rfloor$ denotes the
@@ -3525,7 +3523,7 @@ have
 = \frac{1}{\epsilon^2 n_k^2} \sum_{m=1}^{n_k} \mathbf{V}(Y_m).
 \end{eqnarray*}
 
-Therefore
+\noindent Therefore
 
 \begin{align*}
 \sum_{k=1}^\infty
@@ -3570,7 +3568,7 @@ that
 
 \end{proof}
 
-It follows that the infinite sum on the left-hand
+\noindent It follows that the infinite sum on the left-hand
 side of (\ref{eq:infinitesum}) converges, and therefore by
 the Borel-Cantelli lemma, we have that
 
@@ -3579,7 +3577,7 @@ the Borel-Cantelli lemma, we have that
 =0.
 \]
 
-Since this is true for all $\epsilon>0$, using the
+\noindent Since this is true for all $\epsilon>0$, using the
 standard trick we get that
 
 \[
@@ -3587,7 +3585,7 @@ standard trick we get that
 \mathrm{P}\left(\frac{T_{n_k}}{n_k}  \xrightarrow[k\to\infty]{}\mu\right) =  1.
 \]
 
-The last step is now to show that convergence along
+\noindent The last step is now to show that convergence along
 this subsequence forces $(T_n-\mathbf{E} T_n)/n$ to
 behave well between successive $n_k$'s. Observe that
 if $n_k \le n < n_{k+1}$ then
@@ -3596,7 +3594,7 @@ if $n_k \le n < n_{k+1}$ then
 \frac{T_{n_k}}{n_{k+1}} \le \frac{T_n}{n} \le \frac{T_{n_{k+1}}}{n_k}.
 \]
 
-Since $n_k=\lfloor \alpha^k\rfloor$, in the limit
+\noindent Since $n_k=\lfloor \alpha^k\rfloor$, in the limit
 this gives that almost surely the bounds
 
 \[
@@ -3604,7 +3602,7 @@ this gives that almost surely the bounds
 \le \alpha \mu
 \]
 
-hold. Since $\alpha>1$ was arbitrary, the
+\noindent hold. Since $\alpha>1$ was arbitrary, the
 intersection of these events for $\alpha=1+1/d$,
 $d=1,2,\ldots$, implies that
 
@@ -3612,7 +3610,7 @@ $d=1,2,\ldots$, implies that
 \mathrm{P}\left( \frac{T_n}{n} \to\mu \right) = 1,
 \]
 
-which finishes the proof of Theorem \ref{thm-slln}.
+\noindent which finishes the proof of Theorem \ref{thm-slln}.
 \end{proof}
 
 \chapter{Applications and further examples}
@@ -3640,7 +3638,7 @@ by
 B_n(x)= B_n^f(x) = \sum_{k=0}^n f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k}.
 \]
 
-We claim that $||B_n-f||\to 0$ as $n\to\infty$, which
+\noindent We claim that $||B_n-f||\to 0$ as $n\to\infty$, which
 will prove the theorem. We will prove this by giving a
 probabilistic interpretation to $B_n$. Indeed, fix
 $x\in [0,1]$, and let $X_1,X_2,\ldots$ be a sequence
@@ -3653,7 +3651,7 @@ that
 B_n(x) = \mathbf{E}_x \left[f\left(\frac{S_n}{n}\right)\right],
 \]
 
-where the notation ``$\mathbf{E}_x$'' just means
+\noindent where the notation ``$\mathbf{E}_x$'' just means
 taking the expectation, while at the same time
 highlighting the fact that the distribution of $S_n$
 depends on the parameter $x$.
@@ -3681,7 +3679,7 @@ because $f$ is uniformly continuous on $[0,1]$). Then
 \mathbf{E}_x \left[\left|f\left(\frac{S_n}{n}\right)-f(x)\right|\mathbf{1}_{\{ \left|\frac{S_n}{n}-x\right|\le\delta \}}\right]
 \end{eqnarray*}
 
-In this last expression, each of the two expectations
+\noindent In this last expression, each of the two expectations
 is small for a different reason. The second
 expectation is bounded by $\epsilon$, since on the
 event that $|S_n/n-x|\le \delta$, we have that
@@ -3697,7 +3695,7 @@ then using Chebyshev's inequality, we get
 \le \frac{2 M \sigma^2(X_1)}{n \epsilon^2} = \frac{2 M x(1-x)}{n\epsilon^2}
 \]
 
-This bound converges to $0$, not just for a single $x$
+\noindent This bound converges to $0$, not just for a single $x$
 but (fortunately for us) uniformly in $x\in[0,1]$,
 since it is bounded from above by $M/(2n\epsilon^2)$.
 So we have shown that
@@ -3707,7 +3705,7 @@ So we have shown that
 \epsilon + \frac{M}{2n\epsilon^2}.
 \]
 
-It follows that
+\noindent It follows that
 $\limsup_{n\to\infty} ||B_n-f|| \le \epsilon$, and
 since $\epsilon$ was an arbitrary positive number the
 result follows.
@@ -3735,7 +3733,7 @@ with $\mathbf{E}|X_1|=\infty$, then
 See homework.
 \end{proof}
 
-What about the weak law? It turns out that a weak law
+\noindent What about the weak law? It turns out that a weak law
 can still hold in certain situations with infinite
 expectations, although one has to consider a
 generalized empirical average where the sum of the
@@ -3751,7 +3749,7 @@ distribution:
 \mathrm{P}(X=2^k) = 2^{-k}, \qquad k=1,2,3,\ldots
 \]
 
-Let $X_1,X_2,\ldots,$ be an i.i.d. sequence with the
+\noindent Let $X_1,X_2,\ldots,$ be an i.i.d. sequence with the
 same distribution, and let $S_n = \sum_{k=1}^n X_k$.
 How much should you agree to pay to be allowed to play
 this lottery $n$ times? (Even the seemingly simple
@@ -3770,7 +3768,7 @@ In other words, how big should we expect $S_n$ to be,
 
 \end{thm}
 
-In other words, to be allowed to pay the game $n$
+\noindent In other words, to be allowed to pay the game $n$
 times when $n$ is large (and assuming the payoff is
 in dollars), it may be considered reasonable to pay
 exactly (or even better, slightly less than)
@@ -3791,7 +3789,7 @@ $a_n = \mathbf{E}(T_n)$. We will prove that
 \frac{S_n-a_n}{b_n}\xrightarrow[n\to\infty]{\mathrm{P}} 0.
 \end{align*}
 
-First we check that this is enough, by estimating
+\noindent First we check that this is enough, by estimating
 $a_n$:
 
 \begin{eqnarray*}
@@ -3800,7 +3798,7 @@ a_n &=& \sum_{k=1}^n \mathbf{E}(Y_{n,k}) = \sum_{k=1}^n \mathbf{E}(X_k \mathbf{1
 \right)
 \end{eqnarray*}
 
-where $m_n$ is the largest integer such that
+\noindent where $m_n$ is the largest integer such that
 $2^{m_n} \le b_n$, or in other words
 $m_n = \lfloor \log_2 n + \log_2 \log_2 n \rfloor$,
 which gives
@@ -3809,7 +3807,7 @@ which gives
 a_n = \sum_{k=1}^n \lfloor \log_2 n + \log_2 \log_2 n \rfloor = n \log_2 n + O(n \log_2 \log_2 n),
 \]
 
-so $a_n$ indeed behaves like $n\log_2 n$ up to
+\noindent so $a_n$ indeed behaves like $n\log_2 n$ up to
 first-order asymptotics. Now to prove
 (\ref{eq:thenprove}), note that for any $\epsilon>0$,
 
@@ -3819,14 +3817,14 @@ first-order asymptotics. Now to prove
 \mathrm{P}(T_n\neq S_n) + \mathrm{P}\left( \left|\frac{T_n-a_n}{b_n}\right| > \epsilon\right).
 \end{align*}
 
-In this bound, the first term is bounded by
+\noindent In this bound, the first term is bounded by
 
 \[
 \sum_{k=1}^n \mathrm{P}(Y_{n,k}\neq X_k) = \sum_{k=1}^n \mathrm{P}(X_k>b_n) \le \sum_{k=1}^n \frac{2}{b_n}
 \le \frac{2}{\log_2 n} \xrightarrow[n\to\infty]{} 0.
 \]
 
-To bound the second term, use Chebyshev's inequality
+\noindent To bound the second term, use Chebyshev's inequality
 and the fact that
 $\mathbf{V}(Y_{n,k})\le \mathbf{E}(Y_{n,k}^2)$ to
 write
@@ -3841,12 +3839,12 @@ write
 \le \frac{2}{\epsilon^2 b_n^2} \sum_{k=1}^n b_n = \frac{2}{\epsilon^2 \log_2 n} \xrightarrow[n\to\infty]{} 0.
 \end{eqnarray*}
 
-We conclude that the left-hand side of (\ref{eq:lhs})
+\noindent We conclude that the left-hand side of (\ref{eq:lhs})
 converges to 0, as $n\to\infty$, which finishes the
 proof.
 \end{proof}
 
-Another twist on laws of large numbers comes when we
+\noindent Another twist on laws of large numbers comes when we
 replace the notion of an i.i.d. sequence by a more
 general notion of a $\textbf{triangular array}$. In
 this case, for each $n$ we have a sequence
@@ -3877,7 +3875,7 @@ independent r.v.'s, by writing
 T_n = X_{n,1} + X_{n,2} + X_{n,3} + \ldots + X_{n,n},
 \]
 
-where
+\noindent where
 
 \begin{eqnarray*}
 X_{n,1} &=& \textrm{number of boxes purchased to get one kind of toy} \ \ =\ \ 1, \\
@@ -3887,7 +3885,7 @@ X_{n,3} &=& \textrm{number of boxes purchased after having two kinds of toys to 
 X_{n,n} &=& \textrm{number of boxes purchased after having $n-1$ kinds of toys to get the last kind}.
 \end{eqnarray*}
 
-Clearly these r.v.'s are independent. Furthermore,
+\noindent Clearly these r.v.'s are independent. Furthermore,
 $X_{n,k}$ is a geometric r.v. with parameter
 $p_{n,k} = (n-k+1)/n$. This gives us that
 
@@ -3895,7 +3893,7 @@ $p_{n,k} = (n-k+1)/n$. This gives us that
 \mathbf{E}(T_n) = \sum_{k=1}^n \mathbf{E}(X_{n,k}) = \sum_{k=1}^n \frac{n}{n-k+1} = n\left(\frac{1}{n}+\frac{1}{n-1}+\ldots+\frac{1}{2}+\frac{1}{1}\right) = n H_n,
 \]
 
-where $H_n = \sum_{k=1}^n 1/k$ is the \emph{$n$-th
+\noindent where $H_n = \sum_{k=1}^n 1/k$ is the \emph{$n$-th
 harmonic number}, and
 
 \[
@@ -3903,7 +3901,7 @@ harmonic number}, and
 \sum_{k=1}^n \frac{k-1}{n}\left(\frac{n}{n-k+1}\right)^2 \le n^2 \sum_{k=1}^n \frac{1}{k^2} \le 2 n^2
 \]
 
-(in this example, we only need a bound for
+\noindent (in this example, we only need a bound for
 $\mathbf{V}(T_n)$, but it is possible also to get
 more precise asymptotics for this quantity). It
 follows using Chebyshev's inequality that for each
@@ -3914,14 +3912,14 @@ $\epsilon>0$,
 \le \frac{2}{\epsilon^2 (\log n)^2} \xrightarrow[n\to\infty]{} 0,
 \]
 
-so $(T_n-n H_n)/(n\log n)$ converges in probability
+\noindent so $(T_n-n H_n)/(n\log n)$ converges in probability
 to $0$, and therefore we get that
 
 \[
 \frac{T_n}{n\log n} \xrightarrow[n\to\infty]{\mathrm{P}} 1.
 \]
 
-The lesson to be learned from the above examples is
+\noindent The lesson to be learned from the above examples is
 that some naturally-occurring problems in real life
 lead to more complicated situations than can be
 modeled with an i.i.d. sequence with finite mean; but
@@ -3950,7 +3948,7 @@ $S_k=\sum_{j=1}^k X_j$. Then
 
 \end{thm}
 
-Before we start the proof, note that the bound on the
+\noindent Before we start the proof, note that the bound on the
 right-hand side is the usual variance bound that
 follows from Chebyshev's inequality; except that the
 event on the left-hand side whose probability this
@@ -3966,13 +3964,13 @@ $\mathbf{E}(X_k)=0$ for all $k$. Denote
 A = \left\{ \max_{1\le k\le n} |S_k| > t\right\},
 \]
 
-and define events $A_1,A_2,\ldots,A_n$ by
+\noindent and define events $A_1,A_2,\ldots,A_n$ by
 
 \[
 A_k = \left\{ |S_k|\ge t, \ \ \max_{1\le j<k} |S_k|<t \right\}.
 \]
 
-In words, $A_k$ is the event that the sequence of
+\noindent In words, $A_k$ is the event that the sequence of
 cumulative sums $(S_j)_{j=1}^n$ exceeded $t$ in
 absolute value for the first time at time $k$. Note
 that these events are disjoint and their union is the
@@ -3989,7 +3987,7 @@ follows:
 + 2 \mathbf{E} \left[(S_k 1_{A_k}) (S_n-S-k) \right] \Big].
 \end{eqnarray*}
 
-In this last expression, the terms
+\noindent In this last expression, the terms
 $\mathbf{E} \left[(S_k 1_{A_k}) (S_n-S-k) \right]$
 are equal to $0$, since $S_k 1_{A_k}$ is a random
 variable that depends only on $X_1,\ldots,X_k$ and
@@ -4006,7 +4004,7 @@ $\mathbf{E} (S_k^2 1_{A_k})$ satisfies
 \mathbf{E} (S_k^2 1_{A_k}) \ge \mathbf{E} (t^2 1_{A_k}) = t^2 \mathrm{P}(A_k),
 \]
 
-since on the event $A_k$ we know that $S_k^2$ is at
+\noindent since on the event $A_k$ we know that $S_k^2$ is at
 least $t^2$ (look again at the definition of $A_k$).
 Combining these observations, we get that
 
@@ -4014,10 +4012,10 @@ Combining these observations, we get that
 \mathbf{V}(S_n)  \ge t^2\sum_{k=1}^n \mathrm{P}(A_k) = t^2 \mathrm{P}(A),
 \]
 
-which is exactly the claim that was to be proved.
+\noindent which is exactly the claim that was to be proved.
 \end{proof}
 
-As a corollary, we get a result on convergence of
+\noindent As a corollary, we get a result on convergence of
 random series.
 
 \begin{thm}
@@ -4049,7 +4047,7 @@ following equality of events:
 \Big\}.
 \end{eqnarray*}
 
-Or, put differently, we can look at the complement of
+\noindent Or, put differently, we can look at the complement of
 this event and represent it as
 
 \begin{eqnarray*}
@@ -4070,7 +4068,7 @@ this event and represent it as
 \right\}.
 \end{eqnarray*}
 
-This form is exactly suitable for an application of
+\noindent This form is exactly suitable for an application of
 the Kolmogorov's maximal inequality, except that here
 we have an infinite sequence of partial sums instead
 of a finite maximum. However, by the ``continuity from
@@ -4088,7 +4086,7 @@ $\epsilon>0$ and $N\ge 1$, we have
 \right) \le \lim_{M\to\infty} \frac{\mathbf{V}(S_M-S_N)}{\epsilon^2} \\ &=& \frac{1}{\epsilon^2} \sum_{n=N}^\infty \mathbf{V}(X_n).
 \end{eqnarray*}
 
-Therefore also
+\noindent Therefore also
 
 \begin{eqnarray*}
 \mathrm{P}\left( \bigcap_{N\ge 1} \left\{
@@ -4102,7 +4100,7 @@ Therefore also
 \inf_{N\ge 1} \frac{1}{\epsilon^2} \sum_{n=N}^\infty \mathbf{V}(X_n) = 0,
 \end{eqnarray*}
 
-because of our assumption that the sum of the
+\noindent because of our assumption that the sum of the
 variances converges. Finally, this is true for all
 $\epsilon>0$, so by the usual trick of replacing an
 uncountably-infinite intersection by a countable one
@@ -4115,7 +4113,7 @@ question warrants this!), we get the claim that
 
 \end{proof}
 
-One could ask whether the sufficient condition given
+\noindent One could ask whether the sufficient condition given
 by the theorem above is also necessary (it is). More
 generally, what happens for random variables with
 non-zero expectations? What happens for r.v.'s with
@@ -4144,11 +4142,11 @@ converges.
 \le 1\}}) < \infty$.
 \end{enumerate}
 
-If one of the conditions does not hold, then series
+\noindent If one of the conditions does not hold, then series
 $\sum X_n$ diverges almost surely.
 \end{thm}
 
-We postpone the proof of Theorem \ref{thm-three-series}
+\noindent We postpone the proof of Theorem \ref{thm-three-series}
 until later; we will prove it in Section
 \ref{sec-k-3-series} as an application of a generalized
 version of the central limit theorem. Note that since
@@ -4170,7 +4168,7 @@ represents the series
 \sum_{n=1}^\infty c_n X_n,
 \]
 
-where $X_1, X_2, \ldots$ is a sequence of i.i.d.
+\noindent where $X_1, X_2, \ldots$ is a sequence of i.i.d.
 r.v.'s taking the values $-1,+1$ with respective
 probabilities $1/2,1/2$. By Theorem \ref{thm-one-series}
 it follows that if $\sum_{n=1}^\infty c_n^2 < \infty$
@@ -4180,8 +4178,7 @@ can check easily that this condition is also
 necessary, in other words that the series with random
 series converges a.s. if and only if the series of
 squares $\sum c_n^2$ converges. Thus, for example,
-the $\textbf{harmonic series with random signs}$
-$\sum \pm \frac{1}{n}$ converges a.s., but the
+the $\textbf{harmonic series with random signs}$$\sum \pm \frac{1}{n}$ converges a.s., but the
 analogous series of square root reciprocals
 $\sum_n \pm \frac{1}{\sqrt{n}}$ diverges a.s. Compare
 this to the series with \emph{alternating} signs
@@ -4227,7 +4224,7 @@ For any $t\in \R$,
 
 \end{thm}
 
-Since this is such a concrete example, the proof will
+\noindent Since this is such a concrete example, the proof will
 simply require us to estimate a sum of the form
 $\sum_{0\le k\le t} \binom{n}{k} p^k (1-p)^{n-k}$.
 Knowing how to estimate such sums is a useful skill in
@@ -4250,12 +4247,12 @@ exists.
 &=& (n+1/2)\log n - n + 1 + \int_1^\infty \frac{\{x\}-\frac12}{x}\,dx + o(1),
 \end{eqnarray*}
 
-where the last integral converges because
+\noindent where the last integral converges because
 $\int_1^t (\{x\}-\frac12) dx$ is bounded and $1/x$
 decreases monotonically to 0 as $x\to\infty$.
 \end{proof}
 
-Note that an easy consequence of Lemma
+\noindent Note that an easy consequence of Lemma
 \ref{lem-prestirling} is that
 $\binom{2n}{n} = (1+o(1))2^{2n}/C\sqrt{n/2}$. We
 shall now use this to find the value of $C$.
@@ -4270,7 +4267,7 @@ $x\in\R$, we have
 f(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 + \ldots + \frac{f^{(n)}(0)}{n!} x^n + R_n(x),
 \]
 
-where
+\noindent where
 
 \[
 R_n(x) = \frac{1}{n!} \int_0^x f^{(n+1)}(t)(x-t)^n\,dt.
@@ -4298,7 +4295,7 @@ to compute $R_n(1)$:
 &\xrightarrow[n\to\infty]{} & \frac{\sqrt{2}}{C} \int_0^\infty e^{-u^2}\,du = \frac{\sqrt{2}}{C} \cdot \frac{\sqrt{\pi}}{2}.
 \end{eqnarray*}
 
-The convergence of the integrals is justified by the
+\noindent The convergence of the integrals is justified by the
 fact that $(1-u^2/n)^n \le e^{-u^2}$ for all
 $0\le u\le \sqrt{n}$, and $(1-u^2/n)^n \to e^{-u^2}$
 as $n\to\infty$, uniformly on compact intervals. To
@@ -4308,7 +4305,7 @@ finish the proof, note that
 \frac{1}{2^{2n+1}} R_n(1) = \sum_{n<k\le 2n+1} \frac{\binom{2n+1}{k}}{2^{2n+1}} = \frac12
 \]
 
-(this is the probability that a
+\noindent (this is the probability that a
 $\textrm{Binom}(2n+1,1/2)$ random variable takes a
 value $> n$). Therefore $C=\sqrt{2\pi}$, as claimed.
 \end{proof}
@@ -4318,7 +4315,7 @@ $\lim_{n\to\infty} \frac{n!}{\sqrt{2\pi n}
 (n/e)^n}=1$.
 \end{cor}
 
-Note that the proof is based on computing
+\noindent Note that the proof is based on computing
 $\mathrm{P}(S_{2n+1} > n)$ in two different ways,
 when $S_{2n+1}\sim \textrm{Binom}(2n+1,1/2)$. This is
 just the special case $p=1/2, t=0$ of Theorem
@@ -4362,7 +4359,7 @@ $\mathrm{P}(S_n=k)$, as follows:
 &=& \frac{1+o(1)}{\sqrt{2\pi n p q}} \left(1+\frac{t\sqrt{q}}{\sqrt{np}}\right)^{-k} \left(1- \frac{t\sqrt{p}}{\sqrt{nq}}\right)^{-(n-k)}.
 \end{eqnarray*}
 
-Taking the logarithm of the product of the last two
+\noindent Taking the logarithm of the product of the last two
 factors, using the facts that
 $k\approx np+t\sqrt{npq},\ n-k\approx nq-t\sqrt{npq}$,
 and that $\log(1+x)=x-x^2/2+O(x^3)$ when $x\to0$, we
@@ -4378,13 +4375,13 @@ see that
 &=& -\frac{t^2}{2} + O\left(\frac{t^3}{\sqrt{n}}\right).
 \end{eqnarray*}
 
-It follows that
+\noindent It follows that
 
 \[
 \mathrm{P}(S_n = k) = \frac{1+o(1)}{\sqrt{2\pi n p q}} e^{-t^2/2}
 \]
 
-In other words, the individual probabilities for $S_n$
+\noindent In other words, the individual probabilities for $S_n$
 approximate a normal density! From here, it is not too
 hard to show that the probability
 
@@ -4392,7 +4389,7 @@ hard to show that the probability
 \mathrm{P}\left(a\le \frac{S_n - np}{\sqrt{npq}} \le b\right) = \sum_{np+a\sqrt{npq}\le k\le np+b\sqrt{npq}} \mathrm{P}(S_n=k)
 \]
 
-is approximately a Riemann sum for the integral
+\noindent is approximately a Riemann sum for the integral
 $(2\pi)^{-1/2}\int_a^b e^{-x^2/2}\,dx =
 \Phi(b)-\Phi(a)$.
 In fact, this is true since for $a,b$ fixed and $k$
@@ -4406,7 +4403,7 @@ $(n-k)!$) followed by the $\log$ function
 second-order Taylor expansion above.
 \end{proof}
 
-One lesson that can be learned from this proof is
+\noindent One lesson that can be learned from this proof is
 that doing computations for specific distributions can
 be \emph{messy}! So we might be better off looking for more
 general, and therefore more conceptual, techniques for
@@ -4426,20 +4423,18 @@ distribution.
 
 \begin{defn}
 Let $(F_n)_{n=1}^\infty$ be a sequence of
-distribution functions. We say that $F_n$
-$\textbf{converges to a limiting distribution
-function}$
-$F$, and denote this by $F_n \implies F$, if
+distribution functions. We say that $F_n$$\textbf{converges to a limiting distribution
+function}$$F$, and denote this by $F_n \implies F$, if
 $F_n(x)\to F(x)$ as $n\to\infty$ for any $x\in\R$
 which is a continuity point of $F$. If
 $X, (X_n)_{n=1}^\infty$ are random variables, we say
-that $X_n$ $\textbf{converges in distribution to } X$
+that $X_n$$\textbf{converges in distribution to } X$
 (or, interchangeably,
 $\textbf{converges in distribution to } F_X$) if
 $F_{X_n}\implies F_X$.
 \end{defn}
 
-This definition, which may seem unnatural at first
+\noindent This definition, which may seem unnatural at first
 sight, will become more reasonable after we prove the
 following lemma.
 
@@ -4479,20 +4474,20 @@ g_{t,\epsilon}(u) = \begin{cases}
 \end{cases}
 \]
 
-Then we have that
+\noindent Then we have that
 
 \[
 \mathbf{E} (g_{x-\epsilon,\epsilon}(X_n)) \le F_{X_n}(x) = \mathbf{E}(\mathbf{1}_{(-\infty,x]}(X_n)) \le \mathbf{E}(g_{x,\epsilon}(X_n))
 \]
 
-Letting $n\to\infty$ gives the chain of inequalities
+\noindent Letting $n\to\infty$ gives the chain of inequalities
 
 \[
 F_{X}(x-\epsilon) \le \mathbf{E}(g_{x-\epsilon,x}(X)) \le \liminf_{n\to\infty} F_{X_n}(x) \le \limsup_{n\to\infty}
 F_{X_n}(x) \le \mathbf{E}(g_{x,\epsilon}(X)) \le F_X(x+\epsilon).
 \]
 
-Now if $x$ is a point of continuity of $F_X$, letting
+\noindent Now if $x$ is a point of continuity of $F_X$, letting
 $\epsilon \downarrow 0$ gives that
 $\lim_{n\to\infty}F_{X_n}(x) = F_X(x)$.
 
@@ -4557,7 +4552,7 @@ r.v.'s and $S_n=\sum_{k=1}^n X_k$, then
 \frac{S_n-n \mathbf{E}(X_1)}{\sqrt{n} \sigma(X_1)} \implies N(0,1).
 \]
 
-Similarly, using explicit computations (see the
+\noindent Similarly, using explicit computations (see the
 homework) it is not too difficult to see that this is
 also true when $X_1\sim \textrm{Poisson}(1)$,
 $X_1 \sim \textrm{Exp}(1)$, and in other specific
@@ -4573,7 +4568,7 @@ follows that
 \mathrm{P}(p X_p > x) = (1-p)^{\lfloor x/p \rfloor} \xrightarrow[p\downarrow 0]{} e^{-x}, \qquad (x > 0),
 \]
 
-so
+\noindent so
 
 \[
 p X_p \implies \textrm{Exp}(1)\qquad \textrm{ as }p\downarrow 0.
@@ -4601,13 +4596,13 @@ exercise that
 \mathrm{P}(M_n-\log n \le x) \xrightarrow[n\to\infty]{} e^{-e^{-x}}, \qquad x\to\infty
 \]
 
-It follows that
+\noindent It follows that
 
 \[
 M_n-\log n \implies F
 \]
 
-where $F(x) = \exp\left(-e^{-x}\right)$ is called the
+\noindent where $F(x) = \exp\left(-e^{-x}\right)$ is called the
 Gumbel distribution.
 \end{enumerate}
 
@@ -4624,11 +4619,11 @@ $H:\R\to[0,1]$ such that
 F_{n_k}(x)\xrightarrow[n\to\infty]{} H(x)
 \]
 
-holds for any $x\in\R$ which is a continuity point of
+\noindent holds for any $x\in\R$ which is a continuity point of
 $H$.
 \end{thm}
 
-$\textbf{Note.}$ The subsequential limit $H$ need not
+\noindent $\textbf{Note.}$ The subsequential limit $H$ need not
 be a distribution function, since it may not satisfy
 the properties $\lim_{x\to-\infty} H(x) = 0$ or
 $\lim_{x\to\infty} H(x)=1$. For example, taking
@@ -4663,7 +4658,7 @@ nondecreasing), to define a function $H:\R \to \R$ by
 H(x) = \inf\{ G(r) : r\in\mathbb{Q}, r>x \}.
 \]
 
-This function is clearly nondecreasing, and is also
+\noindent This function is clearly nondecreasing, and is also
 right-continuous, since we have
 
 \[
@@ -4671,7 +4666,7 @@ right-continuous, since we have
 = \inf\{ G(r) : r\in\mathbb{Q}, r>x \} = H(x).
 \]
 
-Finally, let $x$ be a continuity point of $H$. To
+\noindent Finally, let $x$ be a continuity point of $H$. To
 show that $F_{n_k}(x)\to H(x)$, fix some $\epsilon>0$
 and let $r_1,r_2,s$ be rationals such that
 $r_1 < r_2 < x < s$ and
@@ -4680,7 +4675,7 @@ $r_1 < r_2 < x < s$ and
 H(x)-\epsilon < H(r_1) \le H(r_2) \le H(x) \le H(s) < H(x)+\epsilon.
 \]
 
-Then since $F_{n_k}(r_2)\to G(r_2)\ge H(r_1)$, and
+\noindent Then since $F_{n_k}(r_2)\to G(r_2)\ge H(r_1)$, and
 $F_{n_k}(s)\to G(s)\le H(s)$, it follows that for
 sufficiently large $k$ we have
 
@@ -4688,17 +4683,17 @@ sufficiently large $k$ we have
 H(x)-\epsilon < F_{n_k}(r_2) \le F_{n_k}(x) \le F_{n_k}(s) < H(x)+\epsilon.
 \]
 
-Therefore
+\noindent Therefore
 
 \[
 H(x)-\epsilon \le \liminf_{n\to\infty} F_{n_k}(x) \le \limsup_{n\to\infty} F_{n_k}(x) \le H(x)+\epsilon,
 \]
 
-and since $\epsilon$ was arbitrary this proves the
+\noindent and since $\epsilon$ was arbitrary this proves the
 claim.
 \end{proof}
 
-Theorem \ref{thm-helly} can be thought of as a kind of
+\noindent Theorem \ref{thm-helly} can be thought of as a kind of
 compactness property for probability distributions,
 except that the subsequential limit guaranteed to
 exist by the theorem is not a distribution function.
@@ -4716,7 +4711,7 @@ that
 \liminf_{n\to\infty} \mu_n([-M,M]) \ge 1-\epsilon.
 \]
 
-A sequence of distribution functions
+\noindent A sequence of distribution functions
 $(F_n)_{n=1}^\infty$ is called tight if the
 associated probability measures determined by $F_n$
 form a tight sequence, or, more explicitly, if for any
@@ -4726,7 +4721,7 @@ $\epsilon>0$ there exists an $M>0$ such that
 \limsup_{n\to\infty} (1-F_n(M)+F_n(-M)) < \epsilon.
 \]
 
-A sequence of random variables is called tight if the
+\noindent A sequence of random variables is called tight if the
 sequence of their distribution functions is tight.
 \end{defn}
 
@@ -4764,7 +4759,7 @@ We have
 H(x)=\lim_{k\to\infty} F_{n_k}(x) \le \limsup_{k\to\infty} F_{n_k}(-M) \le \limsup_{k\to\infty} (F_{n_k}(-M)+(1-F_{n_k}(M)) ) < \epsilon,
 \]
 
-so this shows that $\lim_{x\to-\infty} H(x) = 0.$
+\noindent so this shows that $\lim_{x\to-\infty} H(x) = 0.$
 Similarly, let $x>M$ be a continuity point of $H$.
 Then
 
@@ -4772,10 +4767,10 @@ Then
 H(x)=\lim_{k\to\infty} F_{n_k}(x) \ge \liminf_{k\to\infty} F_{n_k}(M) \ge \liminf_{k\to\infty} (F_{n_k}(M))-F_{n_k}(-M) ) > 1-\epsilon,
 \]
 
-which shows that $\lim_{x\to\infty} H(x)=1.$
+\noindent which shows that $\lim_{x\to\infty} H(x)=1.$
 \end{proof}
 
-The condition of tightness is not very restrictive,
+\noindent The condition of tightness is not very restrictive,
 and in practical situations it is usually quite easy
 to verify. The following lemma gives an example that
 is relevant for our purposes.
@@ -4793,7 +4788,7 @@ Use Chebyshev's inequality:
 \mathrm{P}(|X_n|>M) \le \frac{\mathbf{V}(X_n)}{M^2} \le \frac{C}{M^2},
 \]
 
-so, if $\epsilon>0$ is given, taking
+\noindent so, if $\epsilon>0$ is given, taking
 $M=\sqrt{C/\epsilon}$ ensures that the left-hand side
 is bounded by $\epsilon$.
 \end{proof}
@@ -4809,14 +4804,14 @@ idea will be to show that
 \mathbf{E}\left[ g\left( \frac{S_n-n\mu}{\sqrt{n}\sigma}\right)\right] \xrightarrow[n\to\infty]{} \mathbf{E} g(N(0,1))
 \]
 
-for a sufficiently large family of functions $g$. It
+\noindent for a sufficiently large family of functions $g$. It
 turns out that the family of functions of the form
 
 \[
 g_t(x) = e^{itx}, \qquad (t\in\R),
 \]
 
-is ideally suited for this purpose. (Here and
+\noindent is ideally suited for this purpose. (Here and
 throughout, $i=\sqrt{-1}$).
 
 \begin{defn}
@@ -4829,7 +4824,7 @@ $\varphi_X$, is defined by
 
 \end{defn}
 
-Note that we are taking the expectation of a
+\noindent Note that we are taking the expectation of a
 \emph{complex-valued random variable} (which is a kind of
 two-dimensional random vector, really). However, the
 main properties of the expectation operator
@@ -4881,12 +4876,12 @@ t} \varphi_X(t)$,\
 = \mathbf{E}\left(e^{itX} e^{itY}\right) = \mathbf{E}\left(e^{itX}\right) \mathbf{E} \left(e^{itY}\right) = \varphi_X(t) \varphi_Y(t).
 \]
 
-Note that this is the main reason why characteristic
+\noindent Note that this is the main reason why characteristic
 functions are such a useful tool for studying the
 distribution of a sum of independent random variables.
 \end{enumerate}
 
-$\textbf{A note on terminology.}$ If $X$ has a
+\noindent $\textbf{A note on terminology.}$ If $X$ has a
 density function $f$, then the characteristic
 function can be computed as
 
@@ -4894,7 +4889,7 @@ function can be computed as
 \varphi_X(t) = \int_{-\infty}^\infty f_X(x) e^{itx}\,dx.
 \]
 
-In all other branches of mathematics, this would be
+\noindent In all other branches of mathematics, this would be
 called the
 $\textbf{Fourier transform}$\footnote{Well, more or less -- it is really the inverse
 Fourier transform; but it will be the Fourier
@@ -4910,7 +4905,7 @@ distribution measure of $X$, some authors write
 \varphi_X(t) = \int_{-\infty}^\infty e^{itx} d\mu(x)
 \]
 
-(which is an example of a
+\noindent (which is an example of a
 $\textbf{Lebesgue-Stieltjes integral}$) and call this
 the $\textbf{Fourier-Stieltjes transform}$ (or just
 the Fourier transform) of the measure $\mu$.
@@ -4936,15 +4931,13 @@ $\varphi_{S_n}$ where $S_n=\sum_{k=1}^n X_k$ is the
 sum of $n$ i.i.d. copies of the coin flip
 distribution above.
 
-\item $\textbf{Poisson distribution:}$
-$X\sim \textrm{Poisson}(\lambda)$.
+\item $\textbf{Poisson distribution:}$$X\sim \textrm{Poisson}(\lambda)$.
 
-\item $\textbf{Uniform distribution:}$ $X \sim U[a,b]$, and
+\item $\textbf{Uniform distribution:}$$X \sim U[a,b]$, and
 in particular $X\sim [-1,1]$ which is especially
 symmetric and useful in applications.
 
-\item $\textbf{Exponential distribution:}$
-$X\sim \textrm{Exp}(\lambda)$.
+\item $\textbf{Exponential distribution:}$$X\sim \textrm{Exp}(\lambda)$.
 
 \item $\textbf{Symmetrized exponential:}$ A r.v. $Z$ with
 density function $f_Z(x) = e^{-|x|}$. Note that this
@@ -4962,7 +4955,7 @@ of $X$.
 
 \end{xexercise}
 
-The normal distribution has the nice property that
+\noindent The normal distribution has the nice property that
 its characteristic function is equal, up to a
 constant, to its density function.
 
@@ -4982,7 +4975,7 @@ If $Z\sim N(0,1)$ then
 &=& e^{-t^2/2} \left( \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty  e^{(x-it)^2/2}\,dx \right).
 \end{eqnarray*}
 
-As Durrett suggests in his ``physics proof'' (p. 92
+\noindent As Durrett suggests in his ``physics proof'' (p. 92
 in [Dur2010], 91 in [Dur2004]), the expression in
 parentheses is $1$, since it is the integral of a
 normal density with mean $it$ and variance $1$. This
@@ -5001,14 +4994,14 @@ from the de Moivre-Laplace theorem (Theorem
 S_n/\sqrt{n} \implies N(0,1),
 \]
 
-so that
+\noindent so that
 
 \[
 \varphi_{S_n/\sqrt{n}}(t) = \mathbf{E}\left( e^{it S_n/\sqrt{n}} \right) \xrightarrow[n\to\infty]{} \varphi_Z(t),
 \qquad (t\in\R),
 \]
 
-since the function $x\to e^{i t x}$ is bounded and
+\noindent since the function $x\to e^{i t x}$ is bounded and
 continuous. On the other hand, from the exercise above
 it is easy to compute that
 $\varphi_{S_n}(t) = \cos^n(t)$, which implies that
@@ -5019,7 +5012,7 @@ $\varphi_{S_n}(t) = \cos^n(t)$, which implies that
 
 \end{proof}
 
-As a consequence, let $X\sim N(0,\sigma_1^2)$ and
+\noindent As a consequence, let $X\sim N(0,\sigma_1^2)$ and
 $Y\sim N(0,\sigma_2^2)$ be independent, and let
 $Z=X+Y$. Then
 
@@ -5027,7 +5020,7 @@ $Z=X+Y$. Then
 \varphi_X(t) = e^{-\sigma_1^2 t^2/2}, \qquad \varphi_Y(t) = e^{-\sigma_2^2 t^2/2},
 \]
 
-so $\varphi_Z(t) = e^{-(\sigma_1^2+\sigma_2^2)/2}$.
+\noindent so $\varphi_Z(t) = e^{-(\sigma_1^2+\sigma_2^2)/2}$.
 This is the same as $\varphi_W(t)$, where
 $W\sim N(0,\sigma_1^2+\sigma_2^2)$. It would be nice
 if we could deduce from this that
@@ -5086,7 +5079,7 @@ I_T = \int_{-T}^T \frac{e^{-i a t}-e^{-i b t}}{it} \varphi(t)\,dt
 = \int_{-T}^T \int_{-\infty}^\infty \frac{e^{-i a t}-e^{-i b t}}{it} e^{itx}d\mu(x)\,dt.
 \end{align*}
 
-Since
+\noindent Since
 $\frac{e^{-i a t}-e^{-i b t}}{it} = \int_a^b e^{-i t
 y}\,dy$
 is a bounded function of $t$ (it is bounded in
@@ -5101,7 +5094,7 @@ I_T&=& \int_{-\infty}^\infty \int_{-T}^T \frac{e^{-i a t}-e^{-i b t}}{it} e^{itx
 &=& \int_{-\infty}^\infty \left( R(x-a,T)-R(x-b,T) \right) d\mu(x),
 \end{eqnarray*}
 
-where we denote
+\noindent where we denote
 $R(\theta, T) = \int_{-T}^T \sin(\theta t)/t\,dt$.
 Note that in the notation of expectations this can be
 written as
@@ -5113,7 +5106,7 @@ that
 R(\theta,T)= 2\textrm{sgn}(\theta) \int_0^{|\theta|T} \frac{\sin x}{x}\,dx = 2 \textrm{sgn}(\theta) S(|\theta| T),
 \]
 
-where we denote
+\noindent where we denote
 $S(x) = \int_0^x \frac{\sin(u)}{u}\,du$ and
 $\textrm{sgn}(\theta)$ is $1$ if $\theta>0$, $-1$ if
 $\theta<0$ and $0$ if $\theta=0$. By a standard
@@ -5133,7 +5126,7 @@ C/2 & x=a\textrm{ or }x=b, \\
 \end{cases}
 \]
 
-Furthermore, the function $R(x-a,T)-R(x-b,T)$ is
+\noindent Furthermore, the function $R(x-a,T)-R(x-b,T)$ is
 bounded in absolute value by $2\sup_{x\ge 0} S(x)$.
 It follows that we can apply the bounded convergence
 theorem in (\ref{eq:inversionproof}) to get that
@@ -5143,7 +5136,7 @@ theorem in (\ref{eq:inversionproof}) to get that
 I_T \xrightarrow[T\to\infty]{} C \mathbf{E}(1_{a<X<b}) + (C/2) \mathbf{E}(\mathbf{1}_{\{X=a\}} + \mathbf{1}_{\{X=b\}}) = C \mu((a,b)) + (C/2)\mu(\{a,b\}).
 \end{align*}
 
-This is just what we claimed, minus the fact that
+\noindent This is just what we claimed, minus the fact that
 $C=2\pi$. This fact is a well-known integral
 evaluation from complex analysis. We can also deduce
 it in a self-contained manner, by applying what we
@@ -5176,7 +5169,7 @@ identity
 \frac{C}{\sqrt{2\pi}\sigma} \int_{-1}^1 e^{-x^2/2\sigma^2}\,dx = \int_{-\infty}^\infty \frac{2\sin t}{t} e^{-\sigma^2 t^2/2}\,dt.
 \]
 
-Now multiply both sides by $\sigma$ and take the
+\noindent Now multiply both sides by $\sigma$ and take the
 limit as $\sigma\to\infty$. For the left-hand side
 this should give in the limit (why?) the value
 $(2C)/\sqrt{2\pi}$. For the right-hand side this
@@ -5184,7 +5177,7 @@ should give $2\sqrt{2\pi}$. Justify these claims and
 compare the two numbers to deduce that $C=2\pi$.
 \end{xexercise}
 
-The following theorem shows that the inversion
+\noindent The following theorem shows that the inversion
 formula can be written as a simpler connection between
 the characteristic function and the density function
 of a random variable, in the case when the
@@ -5204,7 +5197,7 @@ f_X(x) &=& \frac{1}{2\pi} \int_{-\infty}^\infty \varphi_X(t) e^{-itx}\,dt.
 
 \end{thm}
 
-In the lingo of Fourier analysis, this is known as
+\noindent In the lingo of Fourier analysis, this is known as
 the
 $\textbf{inversion formula for Fourier transforms}$.
 
@@ -5251,7 +5244,7 @@ $\mathrm{P}(|X_n|>M)$, as follows:
 \mathbf{E} \left[ 2 \left( 1-\frac{\sin(2X_n/M)}{2X_n/M} \right) \mathbf{1}_{\{|X_n|>M\}}\right].
 \end{eqnarray*}
 
-But this last expression can be related to the
+\noindent But this last expression can be related to the
 behavior of the characteristic function near $0$.
 Denote $\delta=2/M$. Reverting again to the
 Lebesgue-Stieltjes integral notation, we have
@@ -5263,7 +5256,7 @@ Lebesgue-Stieltjes integral notation, we have
 = \int_{-\infty}^\infty \frac{1}{\delta}\left(\int_{-\delta}^\delta (1-e^{itx})\,dt\right)\,d\mu_{X_n}(x).
 \end{eqnarray*}
 
-Now use Fubini's theorem to get that this bound can
+\noindent Now use Fubini's theorem to get that this bound can
 be written as
 
 \[
@@ -5272,14 +5265,14 @@ be written as
 \xrightarrow[n\to\infty]{} \frac{1}{\delta} \int_{-\delta}^\delta (1-\varphi(t))\,dt
 \]
 
-(the convergence follows from the bounded convergence
+\noindent (the convergence follows from the bounded convergence
 theorem). So we have shown that
 
 \[
 \limsup_{n\to\infty} \mathrm{P}(|X_n|>M) \le \frac{1}{\delta} \int_{-\delta}^\delta (1-\varphi(t))\,dt.
 \]
 
-But, because of the assumption that
+\noindent But, because of the assumption that
 $\varphi(t)\to \varphi(0)=1$ as $t\to 0$, it follows
 that if $\delta$ is sufficiently small then
 $\delta^{-1} \int_{-\delta}^\delta (1-\varphi(t))\,dt
@@ -5316,7 +5309,7 @@ write
 = \sum_{n=0}^\infty \frac{i^n \mathbf{E} X^n}{n!} t^n.
 \]
 
-So it appears that the moments of $X$ appear as
+\noindent So it appears that the moments of $X$ appear as
 (roughly) the coefficients in the Taylor expansion of
 $\varphi_X$ around $t=0$. However, for CLT we don't
 want to assume anything beyond the existence of the
@@ -5337,7 +5330,7 @@ Start with the identity
 R_n(x) := e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!} = \frac{i^{n+1}}{n!}\int_0^x(x-s)^n e^{is}\,ds,
 \]
 
-which follows from Lemma \ref{lem-prevlemma} that we used
+\noindent which follows from Lemma \ref{lem-prevlemma} that we used
 in the proof of Stirling's formula. Taking the
 absolute value and using the fact that $|e^{is}|=1$
 gives
@@ -5347,25 +5340,25 @@ gives
 |R_n(x)| \le \frac{1}{n!} \left|\int_0^x |x-s|^n\,ds\right| = \frac{|x|^{n+1}}{n!}.
 \end{align*}
 
-To get a bound that is better-behaved for large $x$,
+\noindent To get a bound that is better-behaved for large $x$,
 note that
 
 \begin{eqnarray*} R_n(x) &=& R_{n-1}(x) - \frac{(ix)^n}{n!} = R_{n-1}(x) - \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}\,ds \\
 &=& \frac{i^n}{(n-1)!}\int_0^x (x-s)^{n-1}(e^{is}-1)\,ds.
 \end{eqnarray*}
 
-So, since $|e^{is}-1|\le 2$, we get that
+\noindent So, since $|e^{is}-1|\le 2$, we get that
 
 \begin{align*}
 \tag{15}\label{eq:secondbound}
 |R_n(x)| \le \frac{2}{(n-1)!} \left|\int_0^x |x-s|^{n-1}\,ds\right| = \frac{2|x|^{n}}{(n-1)!}.
 \end{align*}
 
-Combining (\ref{eq:firstbound}) and (\ref{eq:secondbound})
+\noindent Combining (\ref{eq:firstbound}) and (\ref{eq:secondbound})
 gives the claim.
 \end{proof}
 
-Now let $X$ be a r.v. with $\mathbf{E}|X|^n < \infty$.
+\noindent Now let $X$ be a r.v. with $\mathbf{E}|X|^n < \infty$.
 Letting $x=tX$ in Lemma \ref{lem-taylor-estimate}, taking
 expectations and using the triangle inequality, we get
 that
@@ -5376,7 +5369,7 @@ that
 \frac{|t|^{n+1} |X|^{n+1}}{(n+1)!}, \frac{2 |t|^n |X|^n}{n!} \right) \right].
 \end{align*}
 
-Note that in this minimum of two terms, when $t$ is
+\noindent Note that in this minimum of two terms, when $t$ is
 very small the first term gives a better bound, but
 when taking expectations we need the second term to
 ensure that the expectation is finite if $X$ is only
@@ -5401,7 +5394,7 @@ By (\ref{eq:taylor-expec}) above, we have
 X^2 \right) \right].
 \]
 
-As $t\to 0$, the right-hand side converges to 0 by
+\noindent As $t\to 0$, the right-hand side converges to 0 by
 the dominated convergence theorem.
 \end{proof}
 
@@ -5433,7 +5426,7 @@ $\hat{S}_n = \sum_{k=0}^n \hat{X}_k$. Then
 = \prod_{k=1}^n \varphi_{\hat{X}_k}(t/\sqrt{n}) = \left(\varphi_{\hat{X}_1}(t/\sqrt{n})\right)^n.
 \]
 
-Note that $\mathbf{E} \hat{X}_1 = 0$ and
+\noindent Note that $\mathbf{E} \hat{X}_1 = 0$ and
 $\mathbf{V}(\hat{X}_1)=\mathbf{E} \hat{X}_1^2 = 1$.
 Therefore by Theorem \ref{thm-charfun-secondmoment},
 $\varphi_{\hat{X}_1}$ satisfies
@@ -5442,13 +5435,13 @@ $\varphi_{\hat{X}_1}$ satisfies
 \varphi_{\hat{X}_1}(u) = 1 - \frac{u^2}{2} + o(u^2)
 \]
 
-as $u\to0$. It follows that
+\noindent as $u\to0$. It follows that
 
 \[
 \varphi_{\hat{S}_n/\sqrt{n}}(t) = \left(1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right) \right)^n \xrightarrow[n\to\infty]{} e^{-t^2/2}
 \]
 
-for any $t\in\R$. Using the continuity theorem
+\noindent for any $t\in\R$. Using the continuity theorem
 (Theorem \ref{thm-continuity}) and our previous
 computations, it follows that
 $\hat{S}_n \implies N(0,1)$, as claimed.
@@ -5505,7 +5498,7 @@ ${\displaystyle \lim_{n\to\infty}} \sum_{k=1}^n
 \mathbf{1}_{\{|X_{n,k}|>\epsilon\}}\right)=0$.
 \end{enumerate}
 
-Then $S_n \implies N(0,\sigma^2)$ as $n\to\infty$.
+\noindent Then $S_n \implies N(0,\sigma^2)$ as $n\to\infty$.
 \end{thm}
 
 \begin{proof}
@@ -5541,7 +5534,7 @@ that
 \frac{S_n-H_n}{\sigma(S_n)} \implies N(0,1).
 \]
 
-Equivalently, because of the asymptotic behavior of
+\noindent Equivalently, because of the asymptotic behavior of
 $\mathbf{E}(S_n)$ and $\mathbf{V}(S_n)$ it is also
 true that
 
@@ -5549,7 +5542,7 @@ true that
 \frac{S_n-\log n}{\sqrt{\log n}} \implies N(0,1).
 \]
 
-$\textbf{Note:}$ $S_n$ describes the distribution of
+\noindent $\textbf{Note:}$$S_n$ describes the distribution of
 another interesting statistic on random permutations.
 It is not too difficult to show by induction (using an
 amusing construction often referred to as the
@@ -5573,7 +5566,7 @@ the number of prime divisors of $X_n$. Then we have
 \frac{Y_n - \log\log n}{\sqrt{\log\log n}} \implies N(0,1).
 \]
 
-In other words, for any $x\in\R$ we have
+\noindent In other words, for any $x\in\R$ we have
 
 \[
 \frac{1}{n}\# \left\{ 1\le k\le n: g(k) \le \log\log n + k \sqrt{\log\log n} \right\} \xrightarrow[n\to\infty]{} \Phi(x).
@@ -5586,7 +5579,7 @@ See [Dur2010], p. 114--117 or [Dur2004], p. 119--124.
 The proof uses the moment method.
 \end{proof}
 
-Note that $Y_n$ can be written in the form
+\noindent Note that $Y_n$ can be written in the form
 $\sum_{p\le n} \mathbf{1}_{\{p | X_n\}}$, namely the
 sum over all primes $p\le n$ of the indicator of the
 event that $X_n$ is divisible by $p$. The probability
@@ -5599,7 +5592,7 @@ around
 \sum_{\textrm{prime }p\le n} \frac{1}{p},
 \]
 
-a sum that is known (thanks to Euler) to behave
+\noindent a sum that is known (thanks to Euler) to behave
 roughly like $\log\log n$. The Erdös-Kac theorem is
 intuitively related to the observation that these
 indicators $\mathbf{1}_{\{p | X_n\}}$ for different
@@ -5630,7 +5623,7 @@ algorithm would result in the sequence of steps
 (58,24) \to (24,10) \to (10,4) \to (4,2) \to (2,0),
 \]
 
-so 4 division operations were required (and the
+\noindent so 4 division operations were required (and the
 g.c.d. is 2).
 
 \begin{thm}[CLT for the number of steps in the Euclidean algorithm; D. Hensley (1992)]
@@ -5643,7 +5636,7 @@ very complicated definition) such that
 
 \end{thm}
 
-Hensley's theorem was in recent years significantly
+\noindent Hensley's theorem was in recent years significantly
 generalized and the techniques extended by Brigitte
 Vallée, a French mathematician. The fact that the
 average value of $N_n$ is approximately
@@ -5710,7 +5703,7 @@ probability $1$ the method eventually outputs a
 random variable $Z \sim \operatorname{Ber}(1/2)$.
 \end{xexercise}
 
-An interesting and useful feature of Von Neumann's
+\noindent An interesting and useful feature of Von Neumann's
 method is that it does not even require knowing the
 bias $p$ of the source; that is, it is a ``universal
 unbiasing method.''
@@ -5814,7 +5807,7 @@ condition
 c_{j-1} < U_m < U_m+\frac{1}{2^m} < c_j
 \]
 
-holds. Note that this condition can be checked by
+\noindent holds. Note that this condition can be checked by
 comparing the binary string $(X_1,\ldots,X_m)$
 against the first $m$ digits in the binary expansions
 of the numbers $c_0,\ldots,c_k$.
@@ -5830,7 +5823,7 @@ for each $1\le j\le k$ the output $\alpha_j$ is
 obtained with probability $p_j$.
 \end{xexercise}
 
-The average number of samples from $X_1,X_2,\ldots$
+\noindent The average number of samples from $X_1,X_2,\ldots$
 required for the simulation looks like a highly
 nontrivial function of the probabilities
 $p_1,\ldots,p_k$. Amazingly, to a good approximation
@@ -5853,7 +5846,7 @@ H(p_1,\ldots,p_k) \le \mathbf{E} N \le H(p_1,\ldots,p_k) + 4.
 
 \end{thm}
 
-For the proof, see my paper \emph{Sharp entropy bounds for
+\noindent For the proof, see my paper \emph{Sharp entropy bounds for
 discrete statistical simulation (Stat. Prob. Lett. 42
 (1999), 219--227)}, or section 5.11 of the book
 \emph{Elements of Information Theory, 2nd Ed.} by T. M.
@@ -5878,7 +5871,7 @@ $X=g(U)$, where
 g(p) = \sup \{ x\in\R\,:\, F(x) < p \} \qquad (0<p<1).
 \]
 
-(this is the lower quantile function associated with
+\noindent (this is the lower quantile function associated with
 $F$; see Section \ref{sec:dist-funs}).
 
 \begin{xexercise}
@@ -5924,7 +5917,7 @@ X &= R\cos \Theta, \\
 Y &= R \sin \Theta.
 \end{align*}
 
-Then $\Theta \sim U[0,2\pi]$,
+\noindent Then $\Theta \sim U[0,2\pi]$,
 $R^2 \sim \operatorname{Exp}(1/2)$, and $R$ and
 $\Theta$ are independent. Therefore $X,Y$ are
 independent and have the standard normal distribution
@@ -5953,7 +5946,7 @@ cumulative sums of i.i.d. exponential random variables
 (see Section \ref{sec:exp-dist}).
 \end{xexercise}
 
-Note that the number of samples this method requires
+\noindent Note that the number of samples this method requires
 is equal to one plus the random variable $Z$ being
 simulated. In particular, the mean number of samples
 required is $\mathbf{E} Z = \lambda+1$.
@@ -5976,7 +5969,7 @@ if
 A \in \sigma(X_n, X_{n+1}, \ldots)
 \]
 
-for all $n$. That is, one can tell whether $A$
+\noindent for all $n$. That is, one can tell whether $A$
 occurred or not by looking at the sequence
 $X_1,X_2,\ldots$, and the occurrence of $A$ is
 unaffected by changing a finite number of $X_k$'s.
@@ -5998,7 +5991,7 @@ itself, since in that case we'll have
 \mathrm{P}(A) = \mathrm{P}(A\cap A) = \mathrm{P}(A)\mathrm{P}(A) = \mathrm{P}(A)^2,
 \]
 
-which would imply the claim, since the only solutions
+\noindent which would imply the claim, since the only solutions
 to the equation $x^2=x$ are $x=0$ and $x=1$. The fact
 that a tail event is independent of itself is a
 consequence of the following two claims: 1. If
@@ -6043,7 +6036,7 @@ Assume that the eponymous three series
 \tag{19}\label{eq:k-third-series} &\sum_{n=1}^\infty \mathbf{V}(Y_n)
 \end{align*}
 
-all converge. Applying Theorem \ref{thm-one-series} to
+\noindent all converge. Applying Theorem \ref{thm-one-series} to
 the random variables $Y_n-\mathbf{E}(Y_n)$, from the
 assumption that (\ref{eq:k-third-series}) converges we
 infer that the series
@@ -6078,14 +6071,14 @@ Second, assume by contradiction that
 v_n := \sum_{k=1}^n \mathbf{V}(Y_n) \to \infty\ \textrm{ as }n\to\infty.
 \]
 
-We apply Theorem \ref{thm-lindeberg-feller} to the
+\noindent We apply Theorem \ref{thm-lindeberg-feller} to the
 triangular array
 
 \[
 X_{n,k} = v_n^{-1/2} \left(Y_k - \mathbf{E} Y_k\right).
 \]
 
-Assumptions 1, 2 and 3 of the theorem are trivially
+\noindent Assumptions 1, 2 and 3 of the theorem are trivially
 satisfied (with
 $\sigma^2 = \sum_{k=1}^n \mathbf{V}(X_{n,k}) = 1$ for
 all $n$). For assumption 4, note that
@@ -6102,7 +6095,7 @@ random variables)
 t_n = v_n^{-1/2} \sum_{k=1}^n \mathbf{E} Y_k = S_n - v_n^{-1/2}\sum_{k=1}^n Y_k,
 \]
 
-and note that on the event
+\noindent and note that on the event
 $\{\sum_n X_n \textrm{ converges} \}$ (in which case
 clearly $\sum_n Y_n$ also converges), which we
 assumed has probability~1,
@@ -6138,7 +6131,7 @@ random variable satisfying
 \mathrm{P}(X=k) = e^{-\lambda} \frac{\lambda^k}{k!}, \qquad k=0,1,2,\ldots
 \]
 
-This distribution arises naturally as measuring the
+\noindent This distribution arises naturally as measuring the
 number of successful coin tossing experiments when one
 performs a large number of independent coin tosses
 with equal bias, as long as the expected number of
@@ -6154,7 +6147,7 @@ simple exercise to check that
 S_n \implies \operatorname{Poisson}(\lambda).
 \end{equation*}
 
-As in the case of the Central Limit Theorem, it turns
+\noindent As in the case of the Central Limit Theorem, it turns
 out that the i.i.d. condition can be significantly
 weakened, so in fact the Poisson distribution arises
 almost universally as the limit law for counting
@@ -6183,7 +6176,7 @@ your house each month.
 your daily life...)
 \end{itemize}
 
-Our goal is to prove the following generalization of
+\noindent Our goal is to prove the following generalization of
 (\ref{eq:law-small-numbers-iid}), analogous to the
 Lindeberg-Feller extension of the Central Limit
 Theorem. The technique used in the proof is also
@@ -6207,7 +6200,7 @@ as $n\to\infty$.
 \item $\max_{1\le m\le n} p_{n,m} \to 0$ as $n\to\infty$.
 \end{enumerate}
 
-Then $S_n \implies \operatorname{Poisson}(\lambda)$.
+\noindent Then $S_n \implies \operatorname{Poisson}(\lambda)$.
 \end{thm}
 
 \begin{proof}
@@ -6221,7 +6214,7 @@ ch. f. of $S_n$ is then
 \varphi_{S_n} = \prod_{k=1}^n \varphi_{n,m}(t) = \prod_{k=1}^n \left((1-p_{n,m})+p_{n,m}e^{it}\right).
 \]
 
-Our goal is to show that
+\noindent Our goal is to show that
 $\varphi_{S_n}(t)\to \varphi_Z(t)$ where
 $Z\sim \operatorname{Poisson}(\lambda)$. From a past
 homework computation we know that
@@ -6231,7 +6224,7 @@ homework computation we know that
  \ \textrm{(by assumption (i)),}
 \]
 
-so let us investigate how closely
+\noindent so let us investigate how closely
 $\prod_{m=1}^n\varphi_{n,m}(t)$ is approximated by
 $\prod_{m=1}^n\exp(p_{n,m}(e^{it}-1))$. Note that for
 any $0\le p\le 1$, we have
@@ -6241,7 +6234,7 @@ any $0\le p\le 1$, we have
 |1-p+pe^{it}| &= |1+p(e^{it}-1)| \le 1 \ \ \textrm{(a convex combination of $1$ and $e^{it}$)}.
 \end{align*}
 
-We therefore get using the exercise below that
+\noindent We therefore get using the exercise below that
 
 \begin{align*}
 \Bigg| \prod_{m=1}^n &\exp\left(p_{n,m}(e^{it}-1)\right)-\prod_{m=1}^n (1+p_{n,m}(e^{it}-1))\Bigg| \\ &
@@ -6250,7 +6243,7 @@ We therefore get using the exercise below that
 &\le 40\left(\max_{1\le m\le n} p_{n,m}\right) \sum_{m=1}^n p_{n,m} \xrightarrow[n\to\infty]{} 0.
 \end{align*}
 
-This is exactly what was needed to finish the proof.
+\noindent This is exactly what was needed to finish the proof.
 \end{proof}
 
 \begin{xexercise}
@@ -6289,7 +6282,7 @@ is denoted $\mathrm{P}(A | B)$ and defined by
 \mathrm{P}(A | B) = \frac{\mathrm{P}(A \cap B)}{\mathrm{P}(B)}.
 \]
 
-Prove the $\textbf{total probability formula:}$ if
+\noindent Prove the $\textbf{total probability formula:}$ if
 $A,B_1,B_2,\ldots,B_k \in {\cal F}$ such that $\Omega$
 is the disjoint union of $B_1,\ldots, B_k$ and
 $\mathrm{P}(B_i) \neq 0$ for $1\le i\le k$, then
@@ -6299,7 +6292,7 @@ $\mathrm{P}(B_i) \neq 0$ for $1\le i\le k$, then
 \mathrm{P}(A) = \sum_{i=1}^k \mathrm{P}(B_i) \mathrm{P}(A | B_i).
 \end{equation*}
 
-(b) An urn initially contains one white ball and one
+\noindent (b) An urn initially contains one white ball and one
 black ball. At each step of the experiment, a ball is
 drawn at random from the urn, then put back and
 another ball of the same color is added. Prove that
@@ -6325,7 +6318,7 @@ $\mathrm{P}:{\cal F}\to [0,1]$ that satisfies
 \mathrm{P}(\emptyset) = 0, \qquad \mathrm{P}(\Omega) = 1.
 \end{equation*}
 
-If a pre-probability measure $\mathrm{P}$ satisfies
+\noindent If a pre-probability measure $\mathrm{P}$ satisfies
 
 \begin{equation*}
 \tag{23}\label{eq:P2}
@@ -6333,7 +6326,7 @@ A_1, A_2, \ldots \in {\cal F}\textrm{ are pairwise disjoint} \implies
 \mathrm{P}(\cup_{n=1}^\infty A_n) = \sum_{n=1}^\infty \mathrm{P}(A_n).
 \end{equation*}
 
-then we say that it is $\sigma\textbf{-additive}$. If
+\noindent then we say that it is $\sigma\textbf{-additive}$. If
 it satisfies
 
 \begin{equation*}
@@ -6342,7 +6335,7 @@ A_1,\ldots ,A_n \in {\cal F}\textrm{ are pairwise disjoint} \implies
 \mathrm{P}(\cup_{k=1}^n A_k) = \sum_{k=1}^n \mathrm{P}(A_k).
 \end{equation*}
 
-then we say that it is $\textbf{additive}$. Recall
+\noindent then we say that it is $\textbf{additive}$. Recall
 that we defined a $\textbf{probability measure}$ to
 be a pre-probability measure that is
 $\sigma$-additive.
@@ -6360,7 +6353,7 @@ $\textbf{continuity}$ properties if it satisfies
 (A_n)_{n=1}^\infty  \subset {\cal F}, \ \ A_n \supset A_{n+1}\ \forall n \implies \mathrm{P}(\cap_{n=1}^\infty A_n) = \lim_{n\to\infty} \mathrm{P}(A_n).
 \end{equation*}
 
-Prove that a probability measure satisfies the
+\noindent Prove that a probability measure satisfies the
 continuity properties, and that an additive
 pre-probability measure that satisfies the first
 continuity property (\ref{eq:cont1}) (``continuity from
@@ -6380,7 +6373,7 @@ Distribution Formula, which says that
 \mathrm{P}(A_{N,k}) = \binom{N}{k} p^k (1-p)^{N-k},
 \end{equation*}
 
-is true. You may submit a short written explanation
+\noindent is true. You may submit a short written explanation
 to test your understanding, but it is not required.
 
 (b) A group of $N$ prisoners is locked up in a
@@ -6434,7 +6427,7 @@ contains all the elements of ${\cal A}$, then
 $\sigma({\cal A}) \subset {\cal F}$.
 \end{enumerate}
 
-The $\sigma$-algebra $\sigma({\cal A})$ is called the
+\noindent The $\sigma$-algebra $\sigma({\cal A})$ is called the
 $\textbf{$\sigma$-algebra generated by } {\cal A}$.
 
 $\textbf{Hint for (b).}$ Let $({\cal F}_i)_{i\in I}$
@@ -6458,7 +6451,7 @@ function $f_X$. Let $[a,b] \subset \R$ be an interval
 \mathrm{P}(X \in [a,b]) = 1,
 \]
 
-and let $g:[a,b]\to\R$ be a monotone (strictly)
+\noindent and let $g:[a,b]\to\R$ be a monotone (strictly)
 increasing and differentiable function. Prove that the
 random variable $Y=g(X)$ (this is the function on
 $\Omega$ defined by $Y(\omega) = g(X(\omega))$, in
@@ -6469,7 +6462,7 @@ and $X$) has density function
 f_Y(x) = \begin{cases} \frac{f_X(g^{-1}(x))}{g'(g^{-1}(x))} & x\in (g(a),g(b)), \\ 0 & \textrm{otherwise.} \end{cases}
 \]
 
-(b) If $\lambda>0$, we say that a random variable has
+\noindent (b) If $\lambda>0$, we say that a random variable has
 the exponential distribution with parameter $\lambda$
 if
 
@@ -6477,7 +6470,7 @@ if
 F_X(x) = \begin{cases} 0 & x<0, \\ 1-e^{-\lambda x} & x \ge 0, \end{cases}
 \]
 
-and denote this $X \sim \textrm{Exp}(\lambda).$ Find
+\noindent and denote this $X \sim \textrm{Exp}(\lambda).$ Find
 an algorithm to produce a random variable with
 $\textrm{Exp}(\lambda)$ distribution using a random
 number generator that produces uniform random numbers
@@ -6494,7 +6487,7 @@ if it satisfies that
 \mathrm{P}(X \ge t\ |\ X \ge s) = \mathrm{P}(X \ge t-s)\qquad \textrm{ for all $0<s<t$}.
 \]
 
-Prove that exponential random variables have the lack
+\noindent Prove that exponential random variables have the lack
 of memory property.
 
 (d) Prove that any non-negative random variable that
@@ -6514,7 +6507,7 @@ $(\Omega, {\cal F}, \mathrm{P})$, then
 \mathrm{P}\left(\bigcup_{k=1}^n A_k\right) = s_1 - s_2 + s_3 - s_4 + s_5 - \ldots + (-1)^{n-1} s_n,
 \]
 
-where
+\noindent where
 
 \begin{eqnarray*}
 s_1 &=& \mathrm{P}(A_1) + \mathrm{P}(A_2) + \ldots + \mathrm{P}(A_n) = \sum_{k=1}^n \mathrm{P}(A_k), \\
@@ -6526,7 +6519,7 @@ s_d &=& \sum_{1\le k_1 < \ldots< k_d \le n} \mathrm{P}(A_{k_1} \cap A_{k_2} \cap
 s_n &=& \mathrm{P}(A_1 \cap A_2 \cap \ldots \cap A_n).
 \end{eqnarray*}
 
-(b) $N$ letters addressed to different people are
+\noindent (b) $N$ letters addressed to different people are
 inserted at random into $N$ envelopes that are
 labelled with the names and addresses of the $N$
 recipients, such that all $N!$ possible matchings
@@ -6547,7 +6540,7 @@ F(x) = \begin{cases}
 \end{cases}
 \]
 
-Compute the lower and upper quantile functions of $F$,
+\noindent Compute the lower and upper quantile functions of $F$,
 defined by
 
 \begin{center}
@@ -6558,7 +6551,7 @@ X^*(p) &=& \inf \{ x : F(x) > p \},
 $}
 \end{center}
 
-A recommended way is to plot $F$ on paper and then
+\noindent A recommended way is to plot $F$ on paper and then
 figure out the quantiles by ``eyeballing''. Of course,
 the answer should be spelled out in precise formulas.
 
@@ -6582,7 +6575,7 @@ $\mathrm{P}_2:{\cal F}_2\to [0,1]$ defined by
 \mathrm{P}_2(A) = \mathrm{P}_1(f^{-1}(A))
 \]
 
-is a probability measure. This probability measure is
+\noindent is a probability measure. This probability measure is
 called the
 $\textbf{push-forward measure of } \mathrm{P}_1
 \textbf{ under } f$.
@@ -6594,13 +6587,13 @@ $\textbf{integer part of } x$ by
 \lfloor x \rfloor = \sup \{ n \in \Z : n \le x \},
 \]
 
-and denote the $\textbf{fractional part of } x$ by
+\noindent and denote the $\textbf{fractional part of } x$ by
 
 \[
 \{ x \} = x - \lfloor x \rfloor.
 \]
 
-Let $((0,1), {\cal B}, \mathrm{P})$ be the unit
+\noindent Let $((0,1), {\cal B}, \mathrm{P})$ be the unit
 interval with the $\sigma$-algebra of Borel subsets
 and the Lebesgue probability measure, corresponding to
 the experiment of choosing a uniform random number in
@@ -6612,7 +6605,7 @@ R_n(x) = \begin{cases} 0 & 0 \le \{ 2^{n-1} x \} < 1/2, \\ 1 &
 1/2 \le \{ 2^{n-1} x \} < 1. \end{cases}
 \]
 
-For any $n\in \mathbb{N}$ and
+\noindent For any $n\in \mathbb{N}$ and
 $a_1, a_2, \ldots, a_n \in \{0,1\}$, denote by
 $B_n(a_1,\ldots,a_n)$ the set
 
@@ -6620,7 +6613,7 @@ $B_n(a_1,\ldots,a_n)$ the set
 B_n(a_1,\ldots,a_n) = \{ x \in (0,1) : R_1(x)=a_1, R_2(x)=a_2, \ldots, R_n(x) = a_n \}.
 \]
 
-Find a good explicit description for this set (``the
+\noindent Find a good explicit description for this set (``the
 set of all $x$'s such that ...''), and deduce from it
 that
 
@@ -6628,14 +6621,14 @@ that
 \mathrm{P}(B_n(a_1,\ldots,a_n)) = \frac{1}{2^n}.
 \]
 
-(c) Define a function
+\noindent (c) Define a function
 $f:(0,1) \to \{0,1\}^{\mathbb{N}}$ by
 
 \[
 f(x) = (R_1(x), R_2(x), R_3(x), \ldots).
 \]
 
-Prove that $f$ is a measurable function when the
+\noindent Prove that $f$ is a measurable function when the
 space $\{0,1\}^{\mathbb{N}}$ is equipped with the
 $\sigma$-algebra generated by the sets
 
@@ -6643,7 +6636,7 @@ $\sigma$-algebra generated by the sets
 A_n(1) = \{ (x_1,x_2,\ldots) \in \{0,1\}^{\mathbb{N}} : x_n = 1 \}.
 \]
 
-(d) Prove that the push-forward of Lebesgue measure
+\noindent (d) Prove that the push-forward of Lebesgue measure
 under $f$ is the probability measure corresponding to
 the random experiment of an infinite sequence of fair
 coin tosses.
@@ -6658,7 +6651,7 @@ Y &=& \lfloor X \rfloor := \sup \{ n\in \mathbb{Z} : n \le x \} \qquad\textrm{(`
 Z &=& \{ X \} := X-\lfloor X \rfloor \qquad \qquad\ \qquad\textrm{(``the fractional part of $X$'')}.
 \end{eqnarray*}
 
-(a) Compute the ($1$-dimensional) distributions of $Y$
+\noindent (a) Compute the ($1$-dimensional) distributions of $Y$
 and $Z$ (in the case of $Y$, since it's a discrete
 random variable it is most convenient to describe the
 distribution by giving the individual probabilities
@@ -6697,7 +6690,7 @@ $\textrm{Exp}(1)$. For each $n\ge1$ denote
 M_n = \max(X_1,X_2,\ldots,X_n) - \log n.
 \]
 
-Compute for each $n$ the distribution function of
+\noindent Compute for each $n$ the distribution function of
 $M_n$, and find the limit (if it exists)
 
 \[
@@ -6711,7 +6704,7 @@ the identity
 \mathrm{P}((X,Y) \in A) = \iint_A f_{X,Y}(x,y)\,dx\,dy
 \]
 
-holds for all ``reasonable'' sets $A\subset \R^2$ (in
+\noindent holds for all ``reasonable'' sets $A\subset \R^2$ (in
 fact, for all Borel-measurable sets, but that requires
 knowing what that integral means for a set such as
 $\R^2\setminus Q^2$...). In particular, if $X,Y$ are
@@ -6722,7 +6715,7 @@ $f_Y$, so $f_{X,Y}(x,y)=f_X(x)f_Y(y)$, then
 F_{X+Y}(t) = \mathrm{P}(X+Y \le t) = \int_{-\infty}^\infty \int_{-\infty}^{t-x} f_{X}(x)f_Y(y)\,dy\,dx.
 \]
 
-Differentiating with respect to $t$ gives (assuming
+\noindent Differentiating with respect to $t$ gives (assuming
 without justification that it is allowed to
 differentiate under the integral):
 
@@ -6730,7 +6723,7 @@ differentiate under the integral):
 f_{X+Y}(t) = \int_{-\infty}^\infty f_X(x)f_Y(t-x)\,dx.
 \]
 
-Use this formula to compute the distribution of $X+Y$
+\noindent Use this formula to compute the distribution of $X+Y$
 when $X$ and $Y$ are independent r.v.'s with the
 following (pairs of) distributions:
 
@@ -6749,7 +6742,7 @@ in a probability space. Show that
 1_{\limsup A_n} = \limsup_n 1_{A_n}.
 \]
 
-(The lim-sup on the left refers to the lim-sup
+\noindent (The lim-sup on the left refers to the lim-sup
 operation on events; on the right it refers to the
 lim-sup of a sequence of functions; the identity is an
 identity of real-valued functions on $\Omega$, i.e.,
@@ -6762,14 +6755,14 @@ claim) that
 1_{\liminf A_n} = \liminf_n 1_{A_n}.
 \]
 
-(b) Let $U$ be a uniform random variable in $(0,1)$.
+\noindent (b) Let $U$ be a uniform random variable in $(0,1)$.
 For each $n\ge 1$ define an event $A_n$ by
 
 \[
 A_n = \{U < 1/n\}.
 \]
 
-Note that
+\noindent Note that
 $\sum_{n=1}^\infty \mathrm{P}(A_n) = \infty$.
 However, compute $\mathrm{P}(A_n\textrm{ i.o.})$ and
 show that the conclusion of the second Borel-Cantelli
@@ -6814,7 +6807,7 @@ $\alpha\in [0,1]$ we have
 \varphi(\alpha x + (1-\alpha)y) \le \alpha \varphi(x) + (1-\alpha) \varphi(y).
 \]
 
-(a) Prove that an equivalent condition for $\varphi$
+\noindent (a) Prove that an equivalent condition for $\varphi$
 to be convex is that for any $x<z<y$ in $(a,b)$ we
 have
 
@@ -6822,7 +6815,7 @@ have
 \frac{\varphi(z)-\varphi(x)}{z-x} \le \frac{\varphi(y)-\varphi(z)}{y-z}.
 \]
 
-Deduce using the mean value theorem that if $\varphi$
+\noindent Deduce using the mean value theorem that if $\varphi$
 is twice continuously differentiable and satisfies
 $\varphi''\ge 0$ then it is convex.
 
@@ -6835,7 +6828,7 @@ is convex, then
 \varphi(\mathbf{E}X) \le \mathbf{E}(\varphi(X)).
 \]
 
-$\textbf{Hint.}$ Start by proving the following
+\noindent $\textbf{Hint.}$ Start by proving the following
 property of a convex function: If $\varphi$ is convex
 then at any point $x_0\in (a,b)$, $\varphi$ has a
 $\textbf{supporting line}$, that is, a linear
@@ -6857,7 +6850,7 @@ prove that
 \mathbf{V}(X) \le \frac{(b-a)^2}{4},
 \]
 
-and identify when equality holds.
+\noindent and identify when equality holds.
 
 \item Let $X_1, X_2, \ldots$ be a sequence of i.i.d.
 (independent and identically distributed) random
@@ -6868,7 +6861,7 @@ $A_1, A_2, \ldots$ by
 A_n = \{ X_n = \max(X_1,X_2,\ldots,X_n) \}
 \]
 
-(if $A_n$ occurred, we say that $n$ is a
+\noindent (if $A_n$ occurred, we say that $n$ is a
 $\textbf{record time}$).
 
 (a) Prove that $A_1,A_2,\ldots$ are independent
@@ -6884,7 +6877,7 @@ define
 \pi_n(k) = \#\{1\le j\le n : X_j \le X_k\}.
 \]
 
-By considering the joint density $f_{X_1,\ldots,X_n}$
+\noindent By considering the joint density $f_{X_1,\ldots,X_n}$
 (a uniform density on the $n$-dimensional unit cube),
 show that $\pi_n$ is a uniformly random permutation
 of $n$ elements, i.e.
@@ -6901,7 +6894,7 @@ $\pi_{n-1}$.
 R_n = \sum_{k=1}^n 1_{A_k} = \#\{ 1\le k\le n: k\textrm{ is a record time} \}, \qquad (n=1,2,\ldots).
 \]
 
-Compute $\mathbf{E}(R_n)$ and $\mathbf{V}(R_n)$.
+\noindent Compute $\mathbf{E}(R_n)$ and $\mathbf{V}(R_n)$.
 Deduce that if $(m_n)_{n=1}^\infty$ is a sequence of
 positive numbers such that $m_n \uparrow \infty$,
 however slowly, then the number $R_n$ of record times
@@ -6941,7 +6934,7 @@ $\Z$, show that
 \mathrm{P}(X+Y = n) = \sum_{k=-\infty}^\infty \mathrm{P}(X=k) \mathrm{P}(Y=n-k) \qquad(n\in\Z)
 \]
 
-(compare this formula with the convolution formula in
+\noindent (compare this formula with the convolution formula in
 the case of r.v.'s with density).
 
 (b) Use this to show that if
@@ -6965,7 +6958,7 @@ Vandermonde identity or Chu-Vandermonde identity)
 \sum_{j=0}^k \binom{n}{j} \binom{m}{k-j} = \binom{n+m}{k}, \qquad (n,m\ge 0,\ 0\le k\le n+m).
 \]
 
-As a bonus, try to find a direct combinatorial proof
+\noindent As a bonus, try to find a direct combinatorial proof
 for this identity. An amusing version of the answer
 can be found at \href{http://en.wikipedia.org/wiki/Vandermonde's_identity}{the Wikipedia article on
 Vandermonde's
@@ -6983,7 +6976,7 @@ distribution function $F$, show that
 \mathbf{E}(X)=\int_0^\infty \mathrm{P}(X\ge x)\,dx.
 \]
 
-(b) Prove that if $X_1, X_2, \ldots,$ is a sequence
+\noindent (b) Prove that if $X_1, X_2, \ldots,$ is a sequence
 of independent and identically distributed
 (``i.i.d.'') r.v.'s, then
 
@@ -6992,7 +6985,7 @@ of independent and identically distributed
 1 & \textrm{if }\mathbf{E}|X_1|=\infty. \end{cases}
 \]
 
-(c) Deduce the following converse to the Strong Law
+\noindent (c) Deduce the following converse to the Strong Law
 of Large Numbers in the case of undefined
 expectations: If $X_1,X_2,\ldots$ are i.i.d. and
 $\mathbf{E} X_1$ is undefined (meaning that
@@ -7024,7 +7017,7 @@ unexpectedly nice propreties.
 \int_{-\infty}^\infty \Big( M(t)-|t-\mathbf{E} X|\, \Big)  dt =  \mathbf{V}(X)
 \]
 
-(see hints below). Deduce in particular that
+\noindent (see hints below). Deduce in particular that
 $M(t)-|t-\mathbf{E} X|\xrightarrow[t\to\pm \infty]{}
 0$
 (again under the assumption that
@@ -7072,7 +7065,7 @@ function}, defined by
 \Gamma(t) = \int_0^\infty e^{-x} x^{t-1}\,dx, \qquad (t>0).
 \]
 
-Show that the special value $\Gamma(1/2)=\sqrt{\pi}$
+\noindent Show that the special value $\Gamma(1/2)=\sqrt{\pi}$
 of the gamma function is equivalent to the integral
 evaluation
 $\sqrt{2\pi} = \int_{-\infty}^\infty e^{-x^2/2}\,dx$
@@ -7086,7 +7079,7 @@ all $t>0$ the identity
 \Gamma(t+1)=t\,\Gamma(t).
 \]
 
-(This identity immediately implies the fact that
+\noindent (This identity immediately implies the fact that
 $\Gamma(n+1)=n!$ for integer $n\ge 0$.)
 
 (c) Find a formula for the values of $\Gamma(\cdot)$
@@ -7118,7 +7111,7 @@ where
 B(a,b)=\int_0^1 u^{a-1}(1-u)^{b-1}\,du = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
 \]
 
-is the \emph{Euler beta function}.
+\noindent is the \emph{Euler beta function}.
 
 \item $X\sim N(0,1)$. In this case, identify
 $\mathbf{E} X^n$ combinatorially as the number of
@@ -7146,7 +7139,7 @@ that
 \int_0^1 \int_0^1 \ldots \int_0^1 f\left(\frac{x_1+x_2+\ldots+x_n}{n}\right)\,dx_1\,dx_2\ldots dx_n \xrightarrow[n\to\infty]{} f(1/2).
 \]
 
-$\textbf{Hint.}$ Interpret the left-hand side as an
+\noindent $\textbf{Hint.}$ Interpret the left-hand side as an
 expected value; use the laws of large numbers.
 
 \item A bowl contains $n$ spaghetti noodles arranged in a
@@ -7169,7 +7162,7 @@ sequence of numbers $(b_n)_{n=1}^\infty$ such that
 \frac{L_n}{b_n} \xrightarrow[n\to\infty]{\mathrm{P}} 1,
 \]
 
-if such a sequence exists.
+\noindent if such a sequence exists.
 
 \item Martians communicate in a binary language with two
 symbols, $0$ and $1$. A text of length $n$ symbols
@@ -7179,13 +7172,13 @@ each of which is $1$ with probability $p$ and $0$
 with probability $1-p$. Here, $p\in(0,1)$ is a
 parameter (the ``Martian bias'').
 
-Define the $\textbf{entropy function}$ $H(p)$ by
+Define the $\textbf{entropy function}$$H(p)$ by
 
 \[
 H(p) = -p\log_2 p -(1-p)\log_2 (1-p).
 \]
 
-Prove the following result that effectively says that
+\noindent Prove the following result that effectively says that
 if $n$ is large, then with high probability a Martian
 text of length $n$ can be encoded into an ordinary
 (man-made) computer file of length approximately
@@ -7206,7 +7199,7 @@ partitioned into two disjoint sets,
 \{0,1\}^n = A_n \cup B_n,
 \]
 
-such that the following statements hold:
+\noindent such that the following statements hold:
 
 \begin{enumerate}[label=\arabic*.]
 \item $\mathrm{P}(\mathbf{T}_n \in B_n) < \epsilon$
@@ -7215,7 +7208,7 @@ such that the following statements hold:
 2^{n(H(p)+\epsilon)}$.
 \end{enumerate}
 
-$\textbf{Notes:}$ The texts in $B_n$ can be thought
+\noindent $\textbf{Notes:}$ The texts in $B_n$ can be thought
 of as the ``exceptional sequences'' -- they are the
 Martian texts of length $n$ that are rarely observed.
 The texts in $A_n$ are called ``typical sequences''.
@@ -7237,7 +7230,7 @@ the random variable given by
 P_n = \prod_{k=1}^n \left( p^{X_k} (1-p)^{1-X_k} \right).
 \]
 
-Note that $P_n$ measures the probability of the
+\noindent Note that $P_n$ measures the probability of the
 sequence that was observed up to time $n$. (Somewhat
 unusually, in this problem the probability itself is
 thought of as a random variable). Try to represent
@@ -7252,7 +7245,7 @@ inequality: For any r.v. $X$ and $t\ge0$,
 \mathrm{P}(X - \mathbf{E} X \ge t) \le \frac{\sigma^2(X)}{t^2 + \sigma^2(X)}.
 \]
 
-$\textbf{Hint.}$ Assume without loss of generality
+\noindent $\textbf{Hint.}$ Assume without loss of generality
 that $\mathbf{E} X=0$. For any $a>0$, we have that
 $\mathrm{P}(X\ge t) \le \mathrm{P}((X+a)^2\ge
 (a+t)^2)$.
@@ -7288,7 +7281,7 @@ then for any $\epsilon>0$,
 \frac{S_n}{n^{1/2+\epsilon}} \xrightarrow[n\to\infty]{\textrm{a.s.}} 0.
 \]
 
-$\textbf{Notes.}$ When $X_1$ is a ``random sign'',
+\noindent $\textbf{Notes.}$ When $X_1$ is a ``random sign'',
 i.e., a random variable that takes the values $-1,+1$
 with respective probabilities $1/2,1/2$, the sequence
 of cumulative sums $(S_n)_{n=1}^\infty$ is often
@@ -7318,13 +7311,13 @@ A. Y. Khinchin, 1924).}$
 \mathrm{P}\left(\limsup_{n\to\infty} \frac{S_n}{\sqrt{2n \log\log n}} = 1\right) = 1.
 \]
 
-Therefore, by symmetry, also
+\noindent Therefore, by symmetry, also
 
 \[
 \mathrm{P}\left(\liminf_{n\to\infty} \frac{S_n}{\sqrt{2n \log\log n}} = -1\right) = 1.
 \]
 
-It follows in particular that, almost surely, the
+\noindent It follows in particular that, almost surely, the
 random walk will cross the origin infinitely many
 times.
 
@@ -7347,7 +7340,7 @@ $k\approx n+x\sqrt{n}$ then
 \mathrm{P}(S_n=k) \approx \frac{1}{\sqrt{n}} \varphi(x).
 \]
 
-$\textbf{Hint.}$ Use the fact that
+\noindent $\textbf{Hint.}$ Use the fact that
 $\log(1+u)=u-u^2/2 + O(u^3)$ as $u\to 0$.
 
 (b) Find
@@ -7381,7 +7374,7 @@ Apply the formula
 f_{\phi(U,V)}(w,z) = \frac{1}{|J_\phi(\phi^{-1}(w,z))|} f_{U,V}(\phi^{-1}(w,z))
 \]
 
-for the density of a transformed random $2$-d vector
+\noindent for the density of a transformed random $2$-d vector
 to get the joint density of $W,Z$.
 
 \item $\textbf{(a)}$ Prove that if $X, (X_n)_{n=1}^\infty$
@@ -7420,7 +7413,7 @@ Prove the inequalities
 \frac{1}{x+x^{-1}}f(x) \le 1-\Phi(x) \le \frac{1}{x} f(x), \qquad (x>0).
 \end{equation*}
 
-Note that for large $x$ this gives a very accurate
+\noindent Note that for large $x$ this gives a very accurate
 two-sided bound for the tail of the normal
 distribution. In fact, it can be shown that
 
@@ -7428,7 +7421,7 @@ distribution. In fact, it can be shown that
 1-\Phi(x) = f(x) \cdot \frac{1}{x+\frac{1}{x+\frac{2}{x+\frac{3}{x+\frac{4}{x+\ldots}}}}}
 \]
 
-which gives a relatively efficient method of
+\noindent which gives a relatively efficient method of
 estimating $\Phi(x)$.
 
 $\textbf{Hint.}$ To prove the upper bound in
@@ -7440,7 +7433,7 @@ bound, use the identity
 \frac{d}{dx}\left(\frac{e^{-x^2/2}}{x}\right) = -\left(1+\frac{1}{x^2}\right) e^{-x^2/2}
 \]
 
-to compute $\int_x^\infty (1+u^{-2})e^{-u^2/2}\,du$.
+\noindent to compute $\int_x^\infty (1+u^{-2})e^{-u^2/2}\,du$.
 On the other hand, show that this integral is bounded
 from above by
 $(1+x^{-2})\int_x^{\infty} e^{-u^2/2}\,du$.
@@ -7453,7 +7446,7 @@ $\{1,\ldots,n\}$. Define
 T_n = \min\{ k : X_k = X_m\textrm{ for some }m<k\}.
 \]
 
-If the $X_j$'s represent the birthdays of some
+\noindent If the $X_j$'s represent the birthdays of some
 sequence of people on a planet in which the calendar
 year has $n$ days, then $T_n$ represents the number
 of people in the list who have to declare their
@@ -7464,20 +7457,20 @@ birthday. Show that
 \mathrm{P}(T_n > k) = \prod_{m=1}^{k-1} \left(1-\frac{m}{n}\right), \qquad (k\ge 2),
 \]
 
-and use this to prove that
+\noindent and use this to prove that
 
 \[
 \frac{T_n}{\sqrt{n}} \implies F_{\textrm{birthday}},
 \]
 
-where $F_{\textrm{birthday}}$ is the distribution
+\noindent where $F_{\textrm{birthday}}$ is the distribution
 function defined by
 
 \[
 F_{\textrm{birthday}}(x) = \begin{cases} 0 & x<0, \\ 1- e^{-x^2/2} & x\ge 0 \end{cases}
 \]
 
-(note: this is not the same as the normal
+\noindent (note: this is not the same as the normal
 distribution!)
 
 (b) Take $n=365$. Assuming that the approximation
@@ -7512,7 +7505,7 @@ $\textrm{Beta}(k+1,n-k+1)$. In other words, show that
 \mathrm{P}(U \le x\ |\ S_n = k) = \frac{1}{B(k,n-k)} \int_0^x u^k (1-u)^{n-k}\,du, \qquad (0\le x\le 1).
 \]
 
-Note: This problem has been whimsically suggested by
+\noindent Note: This problem has been whimsically suggested by
 Laplace in the 18th century as a way to estimate the
 probability that the sun will rise tomorrow, given the
 knowledge that it has risen in the last $n$ days. (Of
@@ -7531,7 +7524,7 @@ $X$ is a random variable with density $f_X$, then
 \mathrm{P}(A) = \int_{\R} f_X(u) \mathrm{P}(A\ |\ X=u)\,du.
 \]
 
-Note that we have not defined what it means to
+\noindent Note that we have not defined what it means to
 condition on a 0-probability event (this is a somewhat
 delicate subject that we will not discuss in this
 quarter) --- but don't worry about it, it is possible
@@ -7547,7 +7540,7 @@ distribution. For each $n$, define the random vector
 (Z_1,\ldots,Z_n)
 \]
 
-(a) The distribution of the random vector
+\noindent (a) The distribution of the random vector
 $\mathbf{X}_n$ is called the \emph{uniform distribution on
 the $(n-1)$-dimensional sphere
 $S^{n-1}=\{ x\in \R^n\,:\, ||x||=1 \}$}. Explain why
@@ -7573,19 +7566,16 @@ geometric fact which was known to Archimedes.
 following distributions.
 
 \begin{enumerate}[label=(\alph*)]
-\item $\textbf{Poisson distribution:}$
-$X\sim \textrm{Poisson}(\lambda)$.
+\item $\textbf{Poisson distribution:}$$X\sim \textrm{Poisson}(\lambda)$.
 
-\item $\textbf{Geometric distribution:}$
-$X\sim \textrm{Geom}(p)$ (assume a geometric that
+\item $\textbf{Geometric distribution:}$$X\sim \textrm{Geom}(p)$ (assume a geometric that
 starts at 1).
 
-\item $\textbf{Uniform distribution:}$ $X \sim U[a,b]$, and
+\item $\textbf{Uniform distribution:}$$X \sim U[a,b]$, and
 in particular $X\sim [-1,1]$ which is especially
 symmetric and useful in applications.
 
-\item $\textbf{Exponential distribution:}$
-$X\sim \textrm{Exp}(\lambda)$.
+\item $\textbf{Exponential distribution:}$$X\sim \textrm{Exp}(\lambda)$.
 
 \item $\textbf{Symmetrized exponential:}$ A r.v. $Z$ with
 density function $f_Z(x) = \frac12 e^{-|x|}$. Note
@@ -7622,7 +7612,7 @@ $X = \sum_{n=1}^\infty Z_n$ converges a.s. Prove that
 \varphi_X(t) = \prod_{n=1}^\infty \varphi_{Z_n}(t), \qquad (t\in \R).
 \]
 
-$\textbf{(b)}$ Let $X$ be a uniform r.v. in $(0,1)$,
+\noindent $\textbf{(b)}$ Let $X$ be a uniform r.v. in $(0,1)$,
 and let $Y_1, Y_2, \ldots$ be the (random) bits in
 its binary expansion, i.e. each $Y_n$ is either 0 or
 1, and the equation
@@ -7632,7 +7622,7 @@ its binary expansion, i.e. each $Y_n$ is either 0 or
 X = \sum_{n=1}^\infty \frac{Y_n}{2^n}
 \end{equation*}
 
-holds. Show that $Y_1, Y_2, \ldots$ are i.i.d.
+\noindent holds. Show that $Y_1, Y_2, \ldots$ are i.i.d.
 unbiased coin tosses (i.e., taking values $0,1$ with
 probabilities $1/2,1/2$).
 
@@ -7650,7 +7640,7 @@ identity
 \frac{\sin(t)}{t} = \prod_{n=1}^\infty \cos\left(\frac{t}{2^n} \right), \qquad (t\in \R).
 \end{equation*}
 
-$\textbf{(d)}$ Substitute $t=\pi/2$ in
+\noindent $\textbf{(d)}$ Substitute $t=\pi/2$ in
 (\ref{eq:infproduct}) to get the identity
 
 \[
@@ -7667,7 +7657,7 @@ density and characteristic function are related by
 f_X(x) &=& \frac{1}{2\pi} \int_{-\infty}^\infty \varphi_X(t) e^{-itx}\,dt
 \end{eqnarray*}
 
-(this shows the duality between the Fourier transform
+\noindent (this shows the duality between the Fourier transform
 and its inverse). Use this and the answer to a
 previous exercise to conclude that if $X$ is a r.v.
 with the Cauchy distribution (i.e., $X$ has density
@@ -7678,7 +7668,7 @@ function is given by
 \varphi_X(t) = e^{-|t|}.
 \]
 
-Deduce from this that if $X,Y$ are independent Cauchy
+\noindent Deduce from this that if $X,Y$ are independent Cauchy
 r.v.'s then any weighted average
 $\lambda X+(1-\lambda)Y$, where $0\le \lambda\le 1$,
 is also a Cauchy r.v. (As a special case, it follows

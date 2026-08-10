@@ -1206,6 +1206,11 @@ pub fn render(
       // (.tex, plus pdflatex leftovers .toc/.aux/.log/.out/.pdf, and figures/ —
       // it gets re-copied below, so source image changes are picked up).
       // Ignore the error when the directory does not exist yet (first run).
+      // Log the effective shell command in the same bullet style as the render
+      // stages, so it reads as the first step (before `• assembling...`).
+      io.println(
+        "• running 'rm -r " <> course_dir <> "/" <> output_dir_local_path <> "/*'",
+      )
       let _ = simplifile.clear_directory(output_dir)
 
       case ds.run_renderer(renderer, parameters, options) {

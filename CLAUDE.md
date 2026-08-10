@@ -156,6 +156,20 @@ into `main.gleam` alongside `--fmt`). Design:
 - **Cross-references become native.** `>>handle` → `\ref{handle}`; footnote
   markers `(*>>h)` are inlined as `\footnote{}` (the `Footnote` block + its `hr`
   are dropped).
+- **Named references are whole-blue links.** A bare `>>handle` links only the
+  *number* ("Theorem 3.14" = black "Theorem" + blue "3.14"). To hyperlink the
+  whole "Theorem 3.14", a **pipeline** step (`latex_pipeline.autoref_named_links_splitter`,
+  via `dl.regex_split_and_replace__outside`) recognizes `<Word> >>handle` in body
+  prose — Word ∈ {Theorem, Lemma, Proposition, Corollary, Definition, Example,
+  Exercise} — and turns the whole span into an `AutoRef` node; the emitter renders
+  it `\hyperref[handle]{Word~\ref*{handle}}`, reusing the author's own word as the
+  link text. This is done in the **pipeline** (detection = a semantic node), not
+  the emitter. We deliberately do **not** use `\autoref`: all theorem-like
+  environments share the `thm` counter, so `\autoref` would label every one of
+  them "Theorem". Refs that live in an *attribute* (a Proof's
+  `alt-title=Proof of Theorem >>h`) stay number-only `\ref` — `\hyperref` is fatal
+  in amsthm's proof optional `[...]` (a moving argument), and a number-link in a
+  proof heading is standard anyway.
 - **Equation numbering is identical to the HTML renderer.** The web numbers only
   the `name##<<`-marked equations, globally and sequentially (Writerly's
   `::++EquationCounter`), rendered as `\tag{N}`; manual mnemonic tags (`\tag{A1}`,

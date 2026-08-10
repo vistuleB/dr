@@ -1,9 +1,33 @@
 import desugaring/core as infra
 import desugaring/desugarers as dl
+import desugaring/group_replacement_splitting as grs
 import desugaring/pipelines as pp
 import formatter_pipeline
 import gleam/list
 import gleam/string
+
+// The prose words that introduce a numbered cross-reference. A "<word> >>handle"
+// span becomes a single `AutoRef` node so the emitter can hyperlink the whole
+// "Theorem 3.14" (name + number), not just the number. Add to this list to
+// cover more reference words.
+const autoref_words = [
+  "Theorem", "Lemma", "Proposition", "Corollary", "Definition", "Example",
+  "Exercise",
+]
+
+// Splitter that matches `\b(<word>|<word>|…) >>handle` in a text node and turns
+// the match into `V("AutoRef", ref="<word> >>handle")` (one capture group over
+// the whole span). Handle charset matches the emitter's ref token
+// (letter, then letters/digits/`_`/`:`/`-`); `.` is excluded on purpose.
+fn autoref_named_links_splitter() -> grs.RegexpReplacementerSplitter {
+  let words = string.join(autoref_words, "|")
+  grs.rr_splitter_for_groups([
+    #(
+      "\\b(?:" <> words <> ") >>[A-Za-z][A-Za-z0-9_:-]*",
+      grs.TagWithSplitAsVal("AutoRef", "ref"),
+    ),
+  ])
+}
 
 // The wly -> LaTeX pipeline.
 //
@@ -48,6 +72,18 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
       infra.BackslashParenthesis,
       ["WriterlyBlankLine", "Indent"],
     ),
+    // Named cross-references: recognize "Theorem >>handle" / "Lemma >>handle" /
+    // … in prose and pull the whole "<word> >>handle" span into a single
+    // `AutoRef` node (`ref` attr), so the emitter can hyperlink the WHOLE
+    // "Theorem 3.14" (not just the number). Runs BEFORE the emphasis splitters
+    // so a handle containing `_` is safely inside an attribute by then; stays
+    // out of Math/MathBlock (refs there are equation refs) and `a` (link text).
+    [
+      dl.regex_split_and_replace__outside(
+        autoref_named_links_splitter(),
+        ["Math", "MathBlock", "a"],
+      ),
+    ],
     // `_italic_` -> <i> (emitter -> \emph), `*bold*` -> <b> (emitter -> \textbf),
     // skipping anything inside math.
     pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine", "Indent"], [

@@ -478,7 +478,7 @@ $A_1 \supset A_2 \supset A_3 \supset \ldots$, then
 \end{lem}
 
 \begin{xexercise}
-Prove Lemma \ref{probspaceproperties}
+Prove \hyperref[probspaceproperties]{Lemma~\ref*{probspaceproperties}}
 \end{xexercise}
 
 \begin{example}[Discrete probability spaces]
@@ -962,7 +962,7 @@ a random variable $X$ such that $F=F_X$.
 \end{thm}
 
 \noindent This fact has a measure-theoretic proof similar to
-the proof of Theorem \ref{thm-lebesgue}, but fortunately
+the proof of \hyperref[thm-lebesgue]{Theorem~\ref*{thm-lebesgue}}, but fortunately
 in this case, there is a more probabilistic proof that
 relies only on the existence of Lebesgue measure.
 (This is one of many examples of probabilistic ideas
@@ -1011,7 +1011,7 @@ b_p &=& \inf \{ x : F_X(x) > p \}.
 \end{lem}
 
 \begin{xexercise}
-Prove Lemma \ref{lem-quantile}.
+Prove \hyperref[lem-quantile]{Lemma~\ref*{lem-quantile}}.
 \end{xexercise}
 
 \begin{proof}[Proof of Theorem \ref{thm-rvexistence}]
@@ -1241,7 +1241,7 @@ we have
 \mathbf{X}^{-1}(E) = \cap_{k=1}^d X_i^{-1}((a_i,b_i)) \in {\cal F}.
 \]
 
-\noindent Therefore by Definition \ref{defi-borelrd} and Exercise
+\noindent Therefore by \hyperref[defi-borelrd]{Definition~\ref*{defi-borelrd}} and Exercise
 \ref{ex-checkrv}, $\mathbf{X}$ is a random vector.
 \end{proof}
 
@@ -2094,7 +2094,7 @@ converse is not true.
 \end{lem}
 
 \begin{xexercise}
-Prove Lemma \ref{lem-convergence-types}. For the
+Prove \hyperref[lem-convergence-types]{Lemma~\ref*{lem-convergence-types}}. For the
 counterexample showing that convergence in probability
 does not imply almost sure convergence, consider the
 following sequence of random variables defined on the
@@ -2123,7 +2123,7 @@ $X_n \xrightarrow[k\to\infty]{\textrm{a.s.}} X$.
 \end{lem}
 
 \begin{xexercise}
-Prove Lemma \ref{lem:prob-as-subseq}.
+Prove \hyperref[lem:prob-as-subseq]{Lemma~\ref*{lem:prob-as-subseq}}.
 \end{xexercise}
 
 \noindent We can now formulate the fundamental convergence
@@ -3451,7 +3451,7 @@ variance, then
 \end{thm}
 
 \noindent Finally, we turn to the proof of the full SLLN for an
-i.i.d. sequence (Theorem \ref{thm-slln}), assuming only a
+i.i.d. sequence (\hyperref[thm-slln]{Theorem~\ref*{thm-slln}}), assuming only a
 finite first moment. Etemadi's 1981 proof presented in
 [Dur2010] is based on a similar idea of proving
 convergence first for a subsequence, and introduces
@@ -3610,7 +3610,7 @@ $d=1,2,\ldots$, implies that
 \mathrm{P}\left( \frac{T_n}{n} \to\mu \right) = 1,
 \]
 
-\noindent which finishes the proof of Theorem \ref{thm-slln}.
+\noindent which finishes the proof of \hyperref[thm-slln]{Theorem~\ref*{thm-slln}}.
 \end{proof}
 
 \chapter{Applications and further examples}
@@ -3664,7 +3664,7 @@ to $f(x)$, and therefore also the average value of
 $f(S_n/n)$, namely $B_n(x)$, should be close to
 $f(x)$, which is what we want. However, we want to
 make this claim uniformly in $x$, so instead of
-invoking the WLLN (Theorem \ref{thm-wlln}) we have to go
+invoking the WLLN (\hyperref[thm-wlln]{Theorem~\ref*{thm-wlln}}) we have to go
 back and look ``under the hood'' at Chebyshev's
 inequality which we used to prove it. We estimate
 $|B_n(x)-f(x)|$ as follows. Fix some arbitrary
@@ -4146,7 +4146,7 @@ converges.
 $\sum X_n$ diverges almost surely.
 \end{thm}
 
-\noindent We postpone the proof of Theorem \ref{thm-three-series}
+\noindent We postpone the proof of \hyperref[thm-three-series]{Theorem~\ref*{thm-three-series}}
 until later; we will prove it in Section
 \ref{sec-k-3-series} as an application of a generalized
 version of the central limit theorem. Note that since
@@ -4170,10 +4170,10 @@ represents the series
 
 \noindent where $X_1, X_2, \ldots$ is a sequence of i.i.d.
 r.v.'s taking the values $-1,+1$ with respective
-probabilities $1/2,1/2$. By Theorem \ref{thm-one-series}
+probabilities $1/2,1/2$. By \hyperref[thm-one-series]{Theorem~\ref*{thm-one-series}}
 it follows that if $\sum_{n=1}^\infty c_n^2 < \infty$
 then the series $\sum_{n=1}^\infty \pm c_n$ converges
-almost surely. From Theorem \ref{thm-three-series}, one
+almost surely. From \hyperref[thm-three-series]{Theorem~\ref*{thm-three-series}}, one
 can check easily that this condition is also
 necessary, in other words that the series with random
 series converges a.s. if and only if the series of
@@ -4285,7 +4285,7 @@ $C=\sqrt{2\pi}$.
 \end{lem}
 
 \begin{proof}
-Apply Lemma \ref{lem-prevlemma} with $f(x) = (1+x)^{2n+1}$
+Apply \hyperref[lem-prevlemma]{Lemma~\ref*{lem-prevlemma}} with $f(x) = (1+x)^{2n+1}$
 to compute $R_n(1)$:
 
 \begin{eqnarray*}
@@ -4321,13 +4321,13 @@ when $S_{2n+1}\sim \textrm{Binom}(2n+1,1/2)$. This is
 just the special case $p=1/2, t=0$ of Theorem
 \ref{thm-demoivre-laplace}. In this very special case, by
 symmetry the probability is equal to $1/2$; on the
-other hand, Lemma \ref{lem-prevlemma} enables us to relate
+other hand, \hyperref[lem-prevlemma]{Lemma~\ref*{lem-prevlemma}} enables us to relate
 this to the asymptotic behavior of $n!$ and to (half
 of) the gaussian integral
 $\int_{-\infty}^\infty e^{-x^2}\,dx$. The evaluation
 of the constant $C$ in Stirling's formula is the part
 that is attributed to James Stirling. The form that
-appears in Lemma \ref{lem-prestirling} is due to Abraham
+appears in \hyperref[lem-prestirling]{Lemma~\ref*{lem-prestirling}} is due to Abraham
 de Moivre (1733).
 
 With this preparation, it is now possible to apply
@@ -4343,7 +4343,7 @@ converge to $1-\Phi(t)$, and indeed, this follows
 without too much difficulty from Lemma
 \ref{lem-prevlemma}. The computation is left as an
 exercise. We also sketch another way of proving
-Theorem \ref{thm-demoivre-laplace} by directly
+\hyperref[thm-demoivre-laplace]{Theorem~\ref*{thm-demoivre-laplace}} by directly
 approximating the probabilities
 $\binom{n}{k} p^k (1-p)^{n-k}$ by Gaussian densities.
 
@@ -4693,7 +4693,7 @@ H(x)-\epsilon \le \liminf_{n\to\infty} F_{n_k}(x) \le \limsup_{n\to\infty} F_{n_
 claim.
 \end{proof}
 
-\noindent Theorem \ref{thm-helly} can be thought of as a kind of
+\noindent \hyperref[thm-helly]{Theorem~\ref*{thm-helly}} can be thought of as a kind of
 compactness property for probability distributions,
 except that the subsequential limit guaranteed to
 exist by the theorem is not a distribution function.
@@ -4749,7 +4749,7 @@ converges in distribution is tight.
 Let $H$ be a nondecreasing, right-continuous function
 that arises as a subsequential limit-in-distribution
 of a subsequence $F_{n_k}$, that we know exists by
-Theorem \ref{thm-helly}. To show that $H$ is a
+\hyperref[thm-helly]{Theorem~\ref*{thm-helly}}. To show that $H$ is a
 distribution function, fix $\epsilon>0$, and let $M>0$
 be the constant guaranteed to exist in the definition
 of tightness. Let $x<-M$ be a continuity point of $H$.
@@ -5061,7 +5061,7 @@ then $X \stackrel{d}{=} Y$.
 \end{cor}
 
 \begin{xexercise}
-Explain why Corollary \ref{cor:charfun-uniqueness}
+Explain why \hyperref[cor:charfun-uniqueness]{Corollary~\ref*{cor:charfun-uniqueness}}
 follows from the inversion formula.
 \end{xexercise}
 
@@ -5159,7 +5159,7 @@ density
 $f_X(x)=(\sqrt{2\pi}\sigma)^{-1} e^{-x^2/2\sigma^2}$
 and characteristic function
 $\varphi_X(t) = e^{-\sigma^2 t^2/2}$. For fixed
-$\sigma$, apply Theorem \ref{thm-inversion} in its weak
+$\sigma$, apply \hyperref[thm-inversion]{Theorem~\ref*{thm-inversion}} in its weak
 form given by (\ref{eq:almostinversion}) (that is, without
 the knowledge of the value of $C$), with parameters
 $X=X_\sigma$, $a=-1$ and $b=1$,  to deduce the
@@ -5330,7 +5330,7 @@ Start with the identity
 R_n(x) := e^{ix}-\sum_{m=0}^n \frac{(ix)^m}{m!} = \frac{i^{n+1}}{n!}\int_0^x(x-s)^n e^{is}\,ds,
 \]
 
-\noindent which follows from Lemma \ref{lem-prevlemma} that we used
+\noindent which follows from \hyperref[lem-prevlemma]{Lemma~\ref*{lem-prevlemma}} that we used
 in the proof of Stirling's formula. Taking the
 absolute value and using the fact that $|e^{is}|=1$
 gives
@@ -5359,7 +5359,7 @@ gives the claim.
 \end{proof}
 
 \noindent Now let $X$ be a r.v. with $\mathbf{E}|X|^n < \infty$.
-Letting $x=tX$ in Lemma \ref{lem-taylor-estimate}, taking
+Letting $x=tX$ in \hyperref[lem-taylor-estimate]{Lemma~\ref*{lem-taylor-estimate}}, taking
 expectations and using the triangle inequality, we get
 that
 
@@ -5428,7 +5428,7 @@ $\hat{S}_n = \sum_{k=0}^n \hat{X}_k$. Then
 
 \noindent Note that $\mathbf{E} \hat{X}_1 = 0$ and
 $\mathbf{V}(\hat{X}_1)=\mathbf{E} \hat{X}_1^2 = 1$.
-Therefore by Theorem \ref{thm-charfun-secondmoment},
+Therefore by \hyperref[thm-charfun-secondmoment]{Theorem~\ref*{thm-charfun-secondmoment}},
 $\varphi_{\hat{X}_1}$ satisfies
 
 \[
@@ -5442,7 +5442,7 @@ $\varphi_{\hat{X}_1}$ satisfies
 \]
 
 \noindent for any $t\in\R$. Using the continuity theorem
-(Theorem \ref{thm-continuity}) and our previous
+(\hyperref[thm-continuity]{Theorem~\ref*{thm-continuity}}) and our previous
 computations, it follows that
 $\hat{S}_n \implies N(0,1)$, as claimed.
 \end{proof}
@@ -5526,7 +5526,7 @@ are approximately equal to $\log n$, with an error
 term that is $O(1)$. Now taking
 $X_{n,k} =
 (\mathbf{1}_{A_k}-k^{-1})/\sqrt{\mathbf{V}(S_n)}$
-in Theorem \ref{thm-lindeberg-feller}, it is easy to check
+in \hyperref[thm-lindeberg-feller]{Theorem~\ref*{thm-lindeberg-feller}}, it is easy to check
 that the assumptions of the theorem hold. It follows
 that
 
@@ -5856,7 +5856,7 @@ $\mathbf{E} N$ can be bounded from above by the
 slightly better bound $H(p_1,\ldots,p_k)+2$.
 
 \section{Simulating a general r.v. using a uniform r.v.}
-Theorem \ref{thm-rvexistence} from Section
+\hyperref[thm-rvexistence]{Theorem~\ref*{thm-rvexistence}} from Section
 \ref{sec:dist-funs}, which we proved earlier for its
 theoretical importance, can be interpreted about a
 statement about how to simulate a random variable with
@@ -5876,7 +5876,7 @@ $F$; see Section \ref{sec:dist-funs}).
 
 \begin{xexercise}
 Explain why the above method works and its connection
-to Theorem \ref{thm-rvexistence}.
+to \hyperref[thm-rvexistence]{Theorem~\ref*{thm-rvexistence}}.
 \end{xexercise}
 
 \section{Simulating an exponential r.v.}
@@ -6024,7 +6024,7 @@ are tail events.
 \label{sec-k-3-series}
 As a further application of the Lindeberg-Feller
 central limit theorem, we prove the Kolmogorov
-three-series theorem (Theorem \ref{thm-three-series}).
+three-series theorem (\hyperref[thm-three-series]{Theorem~\ref*{thm-three-series}}).
 
 \begin{proof}[Proof of Theorem \ref{thm-three-series}]
 Denote $Y_n = X_n \mathbf{1}_{\{|X_n|\le 1\}}$.
@@ -6036,7 +6036,7 @@ Assume that the eponymous three series
 \tag{19}\label{eq:k-third-series} &\sum_{n=1}^\infty \mathbf{V}(Y_n)
 \end{align*}
 
-\noindent all converge. Applying Theorem \ref{thm-one-series} to
+\noindent all converge. Applying \hyperref[thm-one-series]{Theorem~\ref*{thm-one-series}} to
 the random variables $Y_n-\mathbf{E}(Y_n)$, from the
 assumption that (\ref{eq:k-third-series}) converges we
 infer that the series
@@ -6071,7 +6071,7 @@ Second, assume by contradiction that
 v_n := \sum_{k=1}^n \mathbf{V}(Y_n) \to \infty\ \textrm{ as }n\to\infty.
 \]
 
-\noindent We apply Theorem \ref{thm-lindeberg-feller} to the
+\noindent We apply \hyperref[thm-lindeberg-feller]{Theorem~\ref*{thm-lindeberg-feller}} to the
 triangular array
 
 \[
@@ -6107,7 +6107,7 @@ random variable. So we have shown that
 (\ref{eq:k-third-series}) converges.
 
 Finally, having shown that (\ref{eq:k-third-series})
-converges, we conclude from Theorem \ref{thm-one-series}
+converges, we conclude from \hyperref[thm-one-series]{Theorem~\ref*{thm-one-series}}
 that the series
 $\sum_n \left(Y_n-\mathbf{E}(Y_n)\right)$ converges
 almost surely. We already saw that on the event where

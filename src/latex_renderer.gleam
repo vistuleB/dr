@@ -129,6 +129,36 @@ fn strip_trailing_period(s: String) -> String {
   }
 }
 
+// Render a "<Name> >>handle" named cross-reference as a single hyperlink whose
+// visible text is "<Name> <number>": `\hyperref[handle]{Name~\ref*{handle}}`.
+// The `~` keeps name and number on one line; `\ref*` gives the number without
+// nesting a second link. Reusing the author's own word as the link text
+// sidesteps `\autoref` (which would print "Theorem" for every shared-counter
+// theorem-like environment, incl. lemmas/definitions).
+fn named_ref_to_latex(raw: String) -> String {
+  case string.split_once(raw, " >>") {
+    Ok(#(name, handle)) ->
+      "\\hyperref[" <> handle <> "]{" <> name <> "~\\ref*{" <> handle <> "}}"
+    // only ever fed a well-formed "<Name> >>handle"; if that changes, degrade
+    // gracefully to plain prose instead of emitting broken LaTeX.
+    Error(_) -> escape_prose(raw)
+  }
+}
+
+// The `AutoRef` node the pipeline builds from body-prose named refs carries the
+// literal "<Name> >>handle" in its `ref` attribute.
+//
+// NOTE: this covers named refs that appear in BODY PROSE (the pipeline turns
+// them into `AutoRef` nodes). Named refs that live in an *attribute* — notably a
+// Proof's `alt-title=Proof of Theorem >>h` — are NOT hyperlinked as a whole:
+// the proof title is amsthm's optional `[...]` argument, a *moving argument*,
+// and `\hyperref` breaks there (`\Hy@babelnormalise has an extra }`). Those keep
+// the plain `\ref` number-link (still blue on the number), which is standard for
+// proof headings anyway.
+fn autoref_to_latex(attrs: List(Attr)) -> String {
+  named_ref_to_latex(find_attr(attrs, "ref") |> option.unwrap(""))
+}
+
 // Normalize a path for created/deleted set comparison: `simplifile.get_files`
 // and our `output_dir <> path` concatenation can differ only by a leading
 // `./`, so drop it from both sides.
@@ -483,8 +513,11 @@ type NodeKind {
 fn node_kind(node: VXML) -> NodeKind {
   case node {
     T(_, _) -> KInline
-    V(_, "Math", _, _) | V(_, "i", _, _) | V(_, "b", _, _) | V(_, "a", _, _) ->
-      KInline
+    V(_, "Math", _, _)
+    | V(_, "i", _, _)
+    | V(_, "b", _, _)
+    | V(_, "a", _, _)
+    | V(_, "AutoRef", _, _) -> KInline
     V(_, "WriterlyBlankLine", _, _) -> KBlank
     V(_, "Indent", _, _) -> KIndent
     V(_, _, _, _) -> KBlock
@@ -638,6 +671,16 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
           let href = find_attr(attrs, "href") |> option.unwrap("")
           "\\href{" <> escape_url(href) <> "}{" <> nodes_to_latex(children, ctx) <> "}"
         }
+        // A named cross-reference ("Theorem >>handle", "Lemma >>handle", …),
+        // recognized in the pipeline (`autoref_named_links_splitter`) and carried
+        // here as `ref="<Name> >>handle"`. Render the WHOLE "Name 3.14" as one
+        // hyperlink by reusing the author's own word as the link text:
+        // `\hyperref[handle]{Name~\ref*{handle}}` (the `~` keeps name+number on
+        // one line; `\ref*` yields the number without nesting a second link).
+        // We deliberately do NOT use `\autoref`: all theorem-like environments
+        // share the `thm` counter, so `\autoref` would label every one of them
+        // "Theorem" regardless of kind.
+        "AutoRef" -> autoref_to_latex(attrs)
         "ol" ->
           "\n\\begin{enumerate}"
           <> enumerate_opts(attrs)

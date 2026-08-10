@@ -1031,16 +1031,27 @@ fn hier_document(root: VXML, ms: Int, ctx: Ctx) -> #(String, Files) {
 
 // The full set of #(relative_path, content) files for the chosen granularity.
 fn build_latex_files(root: VXML, di: DocumentInfo, gran: Granularity) -> Files {
-  case gran {
+  let files = case gran {
     // one self-contained file: the root folder holds only `main.tex`
     Monolithic -> [#("main.tex", emit_document(root, di))]
     _ -> {
       let ctx = build_ctx(root)
       let #(main_body, files) = hier_document(root, max_split(gran), ctx)
       [#("main.tex", wrap_document(di, main_body)), ..files]
-      |> list.map(fn(pc) { #(pc.0, collapse_blank_lines(pc.1)) })
     }
   }
+  files |> list.map(fn(pc) { #(pc.0, tidy_file(pc.1)) })
+}
+
+// Final per-file whitespace tidy. The per-node emitters prefix headings/blocks
+// with `\n\n`, which — at the very start of a split file — leaves two blank
+// lines above the leading `\chapter`/`\section`, and similar padding trails the
+// end. Collapse internal 3+ newline runs to one blank line, strip the leading
+// and trailing blank lines outright, and end with exactly one newline. Purely
+// cosmetic: leading/trailing blank lines around an `\input`ed heading are
+// ignored by TeX, so the compiled PDF is unchanged; the `.tex` just reads clean.
+fn tidy_file(s: String) -> String {
+  collapse_blank_lines(s) |> string.trim <> "\n"
 }
 
 // The per-node emitters each pad their output with blank lines, which stack up

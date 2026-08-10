@@ -129,6 +129,16 @@ fn strip_trailing_period(s: String) -> String {
   }
 }
 
+// Normalize a path for created/deleted set comparison: `simplifile.get_files`
+// and our `output_dir <> path` concatenation can differ only by a leading
+// `./`, so drop it from both sides.
+fn drop_dot_slash(s: String) -> String {
+  case string.starts_with(s, "./") {
+    True -> string.drop_start(s, 2)
+    False -> s
+  }
+}
+
 // ---------------------------------------------------------------------------
 // In-text token rewriting
 // ---------------------------------------------------------------------------
@@ -1202,6 +1212,20 @@ pub fn render(
         )
         |> ds.amend_renderer_by_command_line_amendments(amendments)
 
+      // Snapshot the `.tex` files that existed BEFORE we wipe the directory, so
+      // we can report which ones are `created` / `deleted` this run (LBP-style),
+      // relative to the previous run rather than to the empty dir. We track only
+      // `.tex` — figures + pdflatex leftovers (.aux/.toc/.log/.pdf) aren't the
+      // renderer's own artifacts and would just be noise.
+      let previously_existing =
+        case simplifile.get_files(output_dir) {
+          Ok(files) ->
+            files
+            |> list.filter(string.ends_with(_, ".tex"))
+            |> list.map(drop_dot_slash)
+          Error(_) -> []
+        }
+
       // start from a clean output directory: remove any previous run's files
       // (.tex, plus pdflatex leftovers .toc/.aux/.log/.out/.pdf, and figures/ —
       // it gets re-copied below, so source image changes are picked up).
@@ -1216,8 +1240,36 @@ pub fn render(
       case ds.run_renderer(renderer, parameters, options) {
         Error(error) ->
           io.println("\nlatex renderer error: " <> ins(error) <> "\n")
-        _ -> {
+        Ok(written_paths) -> {
           let n_figs = copy_figures(course_dir, output_dir)
+
+          // `written_paths` are relative to `output_dir`; normalize to the same
+          // form as `previously_existing` so the set difference is meaningful.
+          let written =
+            written_paths
+            |> list.map(fn(p) { drop_dot_slash(output_dir <> p) })
+
+          let created =
+            written
+            |> list.filter(fn(w) { !list.contains(previously_existing, w) })
+          let deleted =
+            previously_existing
+            |> list.filter(fn(e) { !list.contains(written, e) })
+
+          // Announce created / deleted files (LBP-style). Files that persist
+          // across runs stay silent. `deleted` files are already gone (the rm
+          // above removed them); we only need to report them.
+          case created {
+            [] -> Nil
+            _ -> io.println("")
+          }
+          list.each(created, fn(p) { io.println("created " <> p) })
+          case deleted {
+            [] -> Nil
+            _ -> io.println("")
+          }
+          list.each(deleted, fn(p) { io.println("deleted " <> p) })
+
           // Note: `run_renderer`'s writer already reports every .tex it wrote
           // (a count, or one line per file under `--artifacts`), main.tex
           // included. So don't re-announce "wrote main.tex" here — that reads

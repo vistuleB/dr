@@ -10,7 +10,7 @@ import gleam/regexp.{type Regexp}
 import gleam/string.{inspect as ins}
 import latex_pipeline
 import simplifile
-import vxml.{type Attr, type VXML, Attr, T, V}
+import vxml.{type Attr, type VXML, Attr, Line, T, V}
 import vxml/blame.{Ext}
 import vxml/io_lines.{type OutputLine, OutputLine}
 import writerly
@@ -1058,11 +1058,15 @@ fn collapse_blank_lines(s: String) -> String {
 // Renderer plumbing (splitter / emitter / render entry point)
 // ---------------------------------------------------------------------------
 
-// The classifier carries each output file's already-rendered content; the
-// splitter builds the whole file set (it has the root, document info and
-// granularity), and the emitter just formats the string into OutputLines.
+// The classifier is a small routing tag only — every fragment here is just "a
+// LaTeX file", so a single nullary variant suffices. The per-file `.tex` content
+// (the splitter has the root, document info and granularity to render it all)
+// travels in the fragment PAYLOAD, one `Line` per output line, and the emitter
+// turns those into `OutputLine`s. (Do NOT stuff the content into the classifier:
+// `--verbose` prints every classifier via `ins()` into a width-fitted table, so
+// a 150 KB preamble string there blows the verbose output up to megabytes.)
 pub type LatexFragmentType {
-  FileContent(String)
+  LatexFile
 }
 
 type Fragment(z) =
@@ -1080,18 +1084,23 @@ fn our_splitter(
   gran: Granularity,
   root: VXML,
 ) -> Result(List(Fragment(VXML)), LatexSplitterError) {
+  let blame = Ext([], "latex_splitter")
   build_latex_files(root, di, gran)
-  |> list.map(fn(pc) { ds.OutputFragment(FileContent(pc.1), pc.0, root) })
+  |> list.map(fn(pc) {
+    let #(path, content) = pc
+    let lines =
+      content |> string.split("\n") |> list.map(fn(l) { Line(blame, l) })
+    ds.OutputFragment(LatexFile, path, T(blame, lines))
+  })
   |> Ok
 }
 
 fn our_emitter(fragment: Fragment(VXML)) -> Result(Fragment(OL), String) {
   let blame = Ext([], "latex_emitter")
-  let FileContent(content) = fragment.classifier
-  let lines =
-    content
-    |> string.split("\n")
-    |> list.map(fn(line) { OutputLine(blame, 0, line) })
+  let lines = case fragment.payload {
+    T(_, ls) -> list.map(ls, fn(l) { OutputLine(blame, 0, l.content) })
+    V(_, _, _, _) -> []
+  }
   Ok(ds.OutputFragment(..fragment, payload: lines))
 }
 

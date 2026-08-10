@@ -164,12 +164,21 @@ into `main.gleam` alongside `--fmt`). Design:
   Exercise} — and turns the whole span into an `AutoRef` node; the emitter renders
   it `\hyperref[handle]{Word~\ref*{handle}}`, reusing the author's own word as the
   link text. This is done in the **pipeline** (detection = a semantic node), not
-  the emitter. We deliberately do **not** use `\autoref`: all theorem-like
+  the emitter. The word→`>>` separator is `\s+` (may be a source line break): a
+  same-line ref becomes the pipeline `AutoRef` node, while a ref split across two
+  source lines (its `Word` and `>>handle` in different `Line` records, which the
+  per-line pipeline splitter can't join) is caught instead by the emitter, whose
+  `transform_prose` sees the lines already joined. We deliberately do **not** use
+  `\autoref`: all theorem-like
   environments share the `thm` counter, so `\autoref` would label every one of
   them "Theorem". Refs that live in an *attribute* (a Proof's
-  `alt-title=Proof of Theorem >>h`) stay number-only `\ref` — `\hyperref` is fatal
-  in amsthm's proof optional `[...]` (a moving argument), and a number-link in a
-  proof heading is standard anyway.
+  `alt-title=Proof of Theorem >>h`) can't become pipeline nodes, so the emitter
+  recognizes them too — but a plain `\hyperref` is fatal in amsthm's proof
+  optional `[...]` (a *moving argument*), so those use
+  `\texorpdfstring{\hyperref[h]{Name~\ref*{h}}}{Name}`, which survives the moving
+  argument and still renders the whole "Theorem N" blue. Body links use the plain
+  `\hyperref` (`named_ref_to_latex`); attribute/moving-arg links use the robust
+  form (`named_ref_to_latex_robust`); both share `named_ref_hyperref`.
 - **Equation numbering is identical to the HTML renderer.** The web numbers only
   the `name##<<`-marked equations, globally and sequentially (Writerly's
   `::++EquationCounter`), rendered as `\tag{N}`; manual mnemonic tags (`\tag{A1}`,

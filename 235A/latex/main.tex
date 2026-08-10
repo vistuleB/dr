@@ -745,8 +745,7 @@ Explain why the ``infinite sequence of coin tosses''
 experiment is a special case of  a product of
 probability spaces, and why the existence and
 uniqueness of a probability measure satisfying
-(\ref{eq:indcointosses}) follows from Theorem
-\ref{thm-productspaces}.
+(\ref{eq:indcointosses}) follows from \texorpdfstring{\hyperref[thm-productspaces]{Theorem~\ref*{thm-productspaces}}}{Theorem}.
 \end{xexercise}
 
 \noindent In an upcoming homework exercise we will show an
@@ -1014,7 +1013,7 @@ b_p &=& \inf \{ x : F_X(x) > p \}.
 Prove \hyperref[lem-quantile]{Lemma~\ref*{lem-quantile}}.
 \end{xexercise}
 
-\begin{proof}[Proof of Theorem \ref{thm-rvexistence}]
+\begin{proof}[Proof of \texorpdfstring{\hyperref[thm-rvexistence]{Theorem~\ref*{thm-rvexistence}}}{Theorem}]
 Let $((0,1), {\cal B}, \mathrm{P})$ be the unit
 interval with Lebesgue measure, representing the
 experiment of drawing a uniform random number in
@@ -1241,8 +1240,7 @@ we have
 \mathbf{X}^{-1}(E) = \cap_{k=1}^d X_i^{-1}((a_i,b_i)) \in {\cal F}.
 \]
 
-\noindent Therefore by \hyperref[defi-borelrd]{Definition~\ref*{defi-borelrd}} and Exercise
-\ref{ex-checkrv}, $\mathbf{X}$ is a random vector.
+\noindent Therefore by \hyperref[defi-borelrd]{Definition~\ref*{defi-borelrd}} and \texorpdfstring{\hyperref[ex-checkrv]{Exercise~\ref*{ex-checkrv}}}{Exercise}, $\mathbf{X}$ is a random vector.
 \end{proof}
 
 \begin{xexercise}
@@ -1368,8 +1366,7 @@ See Chapter 1 in [Dur2010] or Appendix A.2 in
 \end{proof}
 
 \begin{thm}
-Any function $F$ satisfying the properties in Theorem
-\ref{thm-multidim} above is a distribution function of
+Any function $F$ satisfying the properties in \texorpdfstring{\hyperref[thm-multidim]{Theorem~\ref*{thm-multidim}}}{Theorem} above is a distribution function of
 some random vector $\mathbf{X}$.
 \end{thm}
 
@@ -3458,7 +3455,7 @@ convergence first for a subsequence, and introduces
 another useful technique, that of
 $\textbf{truncation}$.
 
-\begin{proof}[Proof of Theorem \ref{thm-slln}]
+\begin{proof}[Proof of \texorpdfstring{\hyperref[thm-slln]{Theorem~\ref*{thm-slln}}}{Theorem}]
 First, observe that it is enough to prove the theorem
 in the case where $X_1\ge 0$, since in the general
 case we may decompose each $X_n$ into its positive
@@ -4252,8 +4249,7 @@ $\int_1^t (\{x\}-\frac12) dx$ is bounded and $1/x$
 decreases monotonically to 0 as $x\to\infty$.
 \end{proof}
 
-\noindent Note that an easy consequence of Lemma
-\ref{lem-prestirling} is that
+\noindent Note that an easy consequence of \texorpdfstring{\hyperref[lem-prestirling]{Lemma~\ref*{lem-prestirling}}}{Lemma} is that
 $\binom{2n}{n} = (1+o(1))2^{2n}/C\sqrt{n/2}$. We
 shall now use this to find the value of $C$.
 
@@ -4318,8 +4314,7 @@ $\lim_{n\to\infty} \frac{n!}{\sqrt{2\pi n}
 \noindent Note that the proof is based on computing
 $\mathrm{P}(S_{2n+1} > n)$ in two different ways,
 when $S_{2n+1}\sim \textrm{Binom}(2n+1,1/2)$. This is
-just the special case $p=1/2, t=0$ of Theorem
-\ref{thm-demoivre-laplace}. In this very special case, by
+just the special case $p=1/2, t=0$ of \texorpdfstring{\hyperref[thm-demoivre-laplace]{Theorem~\ref*{thm-demoivre-laplace}}}{Theorem}. In this very special case, by
 symmetry the probability is equal to $1/2$; on the
 other hand, \hyperref[lem-prevlemma]{Lemma~\ref*{lem-prevlemma}} enables us to relate
 this to the asymptotic behavior of $n!$ and to (half
@@ -4331,8 +4326,7 @@ appears in \hyperref[lem-prestirling]{Lemma~\ref*{lem-prestirling}} is due to Ab
 de Moivre (1733).
 
 With this preparation, it is now possible to apply
-the same technique to prove Theorem
-\ref{thm-demoivre-laplace}. Instead of the function
+the same technique to prove \texorpdfstring{\hyperref[thm-demoivre-laplace]{Theorem~\ref*{thm-demoivre-laplace}}}{Theorem}. Instead of the function
 $f(x)=(1+x)^{2n+1}$, take the function
 $g(x)=((1-p) + p x)^n=\sum_{k=0}^n \binom{n}{k} p^k
 (1-p)^{n-k} x^k$,
@@ -4340,14 +4334,13 @@ and compute the remainder $R_k(1)$ of the Taylor
 expansion of $g$, where
 $k \approx np + t \sqrt{np(1-p)}$. This should
 converge to $1-\Phi(t)$, and indeed, this follows
-without too much difficulty from Lemma
-\ref{lem-prevlemma}. The computation is left as an
+without too much difficulty from \texorpdfstring{\hyperref[lem-prevlemma]{Lemma~\ref*{lem-prevlemma}}}{Lemma}. The computation is left as an
 exercise. We also sketch another way of proving
 \hyperref[thm-demoivre-laplace]{Theorem~\ref*{thm-demoivre-laplace}} by directly
 approximating the probabilities
 $\binom{n}{k} p^k (1-p)^{n-k}$ by Gaussian densities.
 
-\begin{proof}[Sketch of Proof of Theorem \ref{thm-demoivre-laplace}]
+\begin{proof}[Sketch of Proof of \texorpdfstring{\hyperref[thm-demoivre-laplace]{Theorem~\ref*{thm-demoivre-laplace}}}{Theorem}]
 Denote $q=1-p$. For a large $n$, let $k$ be
 approximately equal to $np+t\sqrt{npq}$, and use
 Stirling's formula to estimate the probability
@@ -4987,8 +4980,7 @@ integration.
 Alternatively, let $S_n=\sum_{k=1}^n X_k$ where
 $X_1,X_2,\ldots$ are i.i.d. coin flips with
 $\mathrm{P}(X_k)=-1=\mathrm{P}(X_k)=1=1/2$. We know
-from the de Moivre-Laplace theorem (Theorem
-\ref{thm-demoivre-laplace}) that
+from the de Moivre-Laplace theorem (\texorpdfstring{\hyperref[thm-demoivre-laplace]{Theorem~\ref*{thm-demoivre-laplace}}}{Theorem}) that
 
 \[
 S_n/\sqrt{n} \implies N(0,1),
@@ -5065,7 +5057,7 @@ Explain why \hyperref[cor:charfun-uniqueness]{Corollary~\ref*{cor:charfun-unique
 follows from the inversion formula.
 \end{xexercise}
 
-\begin{proof}[Proof of Theorem \ref{thm-inversion}]
+\begin{proof}[Proof of \texorpdfstring{\hyperref[thm-inversion]{Theorem~\ref*{thm-inversion}}}{Theorem}]
 Throughout the proof, denote $\varphi(t)=\varphi_X(t)$
 and $\mu=\mu_X$. For convenience, we use the notation
 of Lebesgue-Stieltjes integration with respect to the
@@ -5202,8 +5194,7 @@ the
 $\textbf{inversion formula for Fourier transforms}$.
 
 \begin{proof}
-This is a straightforward corollary of Theorem
-\ref{thm-inversion}. See p. 95 in either [Dur2010] or
+This is a straightforward corollary of \texorpdfstring{\hyperref[thm-inversion]{Theorem~\ref*{thm-inversion}}}{Theorem}. See p. 95 in either [Dur2010] or
 [Dur2004].
 \end{proof}
 
@@ -6026,7 +6017,7 @@ As a further application of the Lindeberg-Feller
 central limit theorem, we prove the Kolmogorov
 three-series theorem (\hyperref[thm-three-series]{Theorem~\ref*{thm-three-series}}).
 
-\begin{proof}[Proof of Theorem \ref{thm-three-series}]
+\begin{proof}[Proof of \texorpdfstring{\hyperref[thm-three-series]{Theorem~\ref*{thm-three-series}}}{Theorem}]
 Denote $Y_n = X_n \mathbf{1}_{\{|X_n|\le 1\}}$.
 Assume that the eponymous three series
 

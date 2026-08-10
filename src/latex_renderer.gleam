@@ -129,34 +129,65 @@ fn strip_trailing_period(s: String) -> String {
   }
 }
 
-// Render a "<Name> >>handle" named cross-reference as a single hyperlink whose
-// visible text is "<Name> <number>": `\hyperref[handle]{Name~\ref*{handle}}`.
-// The `~` keeps name and number on one line; `\ref*` gives the number without
-// nesting a second link. Reusing the author's own word as the link text
-// sidesteps `\autoref` (which would print "Theorem" for every shared-counter
-// theorem-like environment, incl. lemmas/definitions).
+// The single hyperlink whose visible text is "<Name> <number>":
+// `\hyperref[handle]{Name~\ref*{handle}}`. The `~` keeps name and number on one
+// line; `\ref*` gives the number without nesting a second link. Reusing the
+// author's own word as the link text sidesteps `\autoref` (which would print
+// "Theorem" for every shared-counter theorem-like environment, incl.
+// lemmas/definitions).
+fn named_ref_hyperref(name: String, handle: String) -> String {
+  "\\hyperref[" <> handle <> "]{" <> name <> "~\\ref*{" <> handle <> "}}"
+}
+
+// Split a raw "<Name>  >>handle" match into #(name, handle). The whitespace
+// between the two is `\s+` (it may be a source line break, so a newline), hence
+// we split on `>>` and trim the name rather than on a literal " >>".
+fn split_named_ref(raw: String) -> Result(#(String, String), Nil) {
+  case string.split_once(raw, ">>") {
+    Ok(#(name_ws, handle)) -> Ok(#(string.trim(name_ws), handle))
+    Error(_) -> Error(Nil)
+  }
+}
+
+// Body-prose form (normal, non-moving context): the plain hyperlink.
 fn named_ref_to_latex(raw: String) -> String {
-  case string.split_once(raw, " >>") {
-    Ok(#(name, handle)) ->
-      "\\hyperref[" <> handle <> "]{" <> name <> "~\\ref*{" <> handle <> "}}"
+  case split_named_ref(raw) {
+    Ok(#(name, handle)) -> named_ref_hyperref(name, handle)
     // only ever fed a well-formed "<Name> >>handle"; if that changes, degrade
     // gracefully to plain prose instead of emitting broken LaTeX.
     Error(_) -> escape_prose(raw)
   }
 }
 
+// Moving-argument-safe form for named refs that land inside a fragile optional
+// argument — notably a Proof's `alt-title=Proof of Theorem >>h`, which becomes
+// amsthm's proof `[...]` header. A bare `\hyperref` is fatal there
+// (`\Hy@babelnormalise has an extra }`); `\texorpdfstring{<hyperref>}{<Name>}`
+// typesets the hyperlink but hands hyperref a plain-text version for its
+// PDF-string pass, which is what makes it survive.
+fn named_ref_to_latex_robust(raw: String) -> String {
+  case split_named_ref(raw) {
+    Ok(#(name, handle)) ->
+      "\\texorpdfstring{" <> named_ref_hyperref(name, handle) <> "}{" <> name <> "}"
+    Error(_) -> escape_prose(raw)
+  }
+}
+
 // The `AutoRef` node the pipeline builds from body-prose named refs carries the
 // literal "<Name> >>handle" in its `ref` attribute.
-//
-// NOTE: this covers named refs that appear in BODY PROSE (the pipeline turns
-// them into `AutoRef` nodes). Named refs that live in an *attribute* — notably a
-// Proof's `alt-title=Proof of Theorem >>h` — are NOT hyperlinked as a whole:
-// the proof title is amsthm's optional `[...]` argument, a *moving argument*,
-// and `\hyperref` breaks there (`\Hy@babelnormalise has an extra }`). Those keep
-// the plain `\ref` number-link (still blue on the number), which is standard for
-// proof headings anyway.
 fn autoref_to_latex(attrs: List(Attr)) -> String {
   named_ref_to_latex(find_attr(attrs, "ref") |> option.unwrap(""))
+}
+
+// Regex alternative matching a "<Name> >>handle" named ref, built from the SAME
+// word list the pipeline splitter uses. Prepended to `token_pattern` so the
+// emitter also recognizes named refs that live in attributes (e.g. a Proof's
+// `alt-title`), which never become text nodes and so are out of the pipeline
+// splitter's reach.
+fn named_ref_pattern() -> String {
+  "\\b(?:"
+  <> string.join(latex_pipeline.autoref_words, "|")
+  <> ")\\s+>>[A-Za-z][A-Za-z0-9_:-]*"
 }
 
 // Normalize a path for created/deleted set comparison: `simplifile.get_files`
@@ -189,6 +220,21 @@ fn transform_prose(s: String, ctx: Ctx) -> String {
 }
 
 fn prose_token_to_latex(token: String, ctx: Ctx) -> String {
+  // A named ref "<Name> >>handle" is the only token with a word BEFORE the `>>`
+  // (the whitespace may be a source line break, so we can't test for a literal
+  // " >>"). It can land in a fragile moving argument (Proof `alt-title`), so use
+  // the robust `\texorpdfstring` form.
+  let is_named_ref =
+    string.contains(token, ">>")
+    && !string.starts_with(token, ">>")
+    && !string.starts_with(token, "(*")
+  case is_named_ref {
+    True -> named_ref_to_latex_robust(token)
+    False -> prose_ref_token_to_latex(token, ctx)
+  }
+}
+
+fn prose_ref_token_to_latex(token: String, ctx: Ctx) -> String {
   case string.starts_with(token, "(*>>") {
     True -> {
       // strip leading "(*>>" and trailing ")"
@@ -855,7 +901,12 @@ fn collect_eq_labels(vxml: VXML, math_tok: Regexp) -> List(String) {
 // Footnotes and equation numbers are GLOBAL, so the context is built once from
 // the whole tree and shared by every emitted file (monolithic or modular).
 fn build_ctx(root: VXML) -> Ctx {
-  let assert Ok(tok) = regexp.from_string(token_pattern)
+  // named-ref alternative FIRST so "Theorem >>h" is matched as a whole (and
+  // hyperlinked name+number) rather than just its trailing `>>h`. In body prose
+  // the pipeline already turned these into `AutoRef` nodes, so this only fires
+  // for named refs stuck in attributes (Proof `alt-title`).
+  let assert Ok(tok) =
+    regexp.from_string(named_ref_pattern() <> "|" <> token_pattern)
   let assert Ok(math_tok) = regexp.from_string(math_token_pattern)
   let assert Ok(amp_tok) = regexp.from_string("&[^&]*&")
   let eq_numbers =

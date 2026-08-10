@@ -9,8 +9,10 @@ import gleam/string
 // The prose words that introduce a numbered cross-reference. A "<word> >>handle"
 // span becomes a single `AutoRef` node so the emitter can hyperlink the whole
 // "Theorem 3.14" (name + number), not just the number. Add to this list to
-// cover more reference words.
-const autoref_words = [
+// cover more reference words. Shared with the emitter (`latex_renderer`), which
+// applies the same recognition to attribute-borne refs like a Proof's
+// `alt-title` (which never becomes a text node, so the pipeline can't reach it).
+pub const autoref_words = [
   "Theorem", "Lemma", "Proposition", "Corollary", "Definition", "Example",
   "Exercise",
 ]
@@ -23,7 +25,7 @@ fn autoref_named_links_splitter() -> grs.RegexpReplacementerSplitter {
   let words = string.join(autoref_words, "|")
   grs.rr_splitter_for_groups([
     #(
-      "\\b(?:" <> words <> ") >>[A-Za-z][A-Za-z0-9_:-]*",
+      "\\b(?:" <> words <> ")\\s+>>[A-Za-z][A-Za-z0-9_:-]*",
       grs.TagWithSplitAsVal("AutoRef", "ref"),
     ),
   ])

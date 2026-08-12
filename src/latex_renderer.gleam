@@ -41,12 +41,15 @@ type DocumentInfo {
 
 // Regex tokens recognized inside running text.
 //   (*>>name)   footnote reference marker
+//   (>>eq:name) parenthesized equation reference -> \eqref{eq:name} (the parens
+//               are dropped; \eqref supplies its own "(N)")
 //   >>name      cross-reference           -> \ref{name}
 //   name##<<    equation/label definition -> \label{name}
 // The name charset is exactly what Writerly handles use (letters, digits, `_`,
 // `:`, `-`). It deliberately excludes `.` so a ref at a sentence end, `>>thm-x.`,
-// does not swallow the trailing period into the label name.
-const token_pattern = "\\(\\*>>[A-Za-z][A-Za-z0-9_:-]*\\)|>>[A-Za-z][A-Za-z0-9_:-]*|[A-Za-z][A-Za-z0-9_:-]*##<<"
+// does not swallow the trailing period into the label name. The `(>>eq:…)`
+// alternative must precede the bare `>>…` so the surrounding parens are consumed.
+const token_pattern = "\\(\\*>>[A-Za-z][A-Za-z0-9_:-]*\\)|\\(>>eq:[A-Za-z0-9_:-]*\\)|>>[A-Za-z][A-Za-z0-9_:-]*|[A-Za-z][A-Za-z0-9_:-]*##<<"
 
 // Inside math we only rewrite refs and labels (never footnotes, never escape).
 const math_token_pattern = ">>[A-Za-z][A-Za-z0-9_:-]*|[A-Za-z][A-Za-z0-9_:-]*##<<"
@@ -220,14 +223,16 @@ fn transform_prose(s: String, ctx: Ctx) -> String {
 }
 
 fn prose_token_to_latex(token: String, ctx: Ctx) -> String {
-  // A named ref "<Name> >>handle" is the only token with a word BEFORE the `>>`
+  // A named ref "<Name> >>handle" is the only token with a WORD before the `>>`
   // (the whitespace may be a source line break, so we can't test for a literal
-  // " >>"). It can land in a fragile moving argument (Proof `alt-title`), so use
-  // the robust `\texorpdfstring` form.
+  // " >>"). It therefore starts with a letter — NOT `>>` (bare ref) and NOT `(`
+  // (footnote `(*>>…)` or parenthesized eq ref `(>>eq:…)`). It can land in a
+  // fragile moving argument (Proof `alt-title`), so use the robust
+  // `\texorpdfstring` form.
   let is_named_ref =
     string.contains(token, ">>")
     && !string.starts_with(token, ">>")
-    && !string.starts_with(token, "(*")
+    && !string.starts_with(token, "(")
   case is_named_ref {
     True -> named_ref_to_latex_robust(token)
     False -> prose_ref_token_to_latex(token, ctx)
@@ -245,9 +250,15 @@ fn prose_ref_token_to_latex(token: String, ctx: Ctx) -> String {
       }
     }
     False ->
-      case string.starts_with(token, ">>") {
-        True -> "\\ref{" <> string.drop_start(token, 2) <> "}"
-        False -> "\\label{" <> string.drop_end(token, 4) <> "}"
+      // parenthesized equation ref `(>>eq:name)` -> `\eqref{eq:name}` (drop the
+      // author's parens; `\eqref` prints its own "(N)")
+      case string.starts_with(token, "(>>") {
+        True -> "\\eqref{" <> token |> string.drop_start(3) |> string.drop_end(1) <> "}"
+        False ->
+          case string.starts_with(token, ">>") {
+            True -> "\\ref{" <> string.drop_start(token, 2) <> "}"
+            False -> "\\label{" <> string.drop_end(token, 4) <> "}"
+          }
       }
   }
 }
@@ -649,7 +660,9 @@ fn label_of(attrs: List(Attr)) -> String {
 // file-splitting walk.
 fn heading_open(level: String, attrs: List(Attr)) -> String {
   let title = find_attr(attrs, "title") |> option.unwrap("")
-  "\n\n\\" <> level <> "{" <> emit_mixed(title) <> "}\n" <> label_of(attrs)
+  // trailing blank line: keep `\<level>{…}` (and its `\label`) visually separated
+  // from the body that follows.
+  "\n\n\\" <> level <> "{" <> emit_mixed(title) <> "}\n" <> label_of(attrs) <> "\n"
 }
 
 // The `\chapter*{…}` head (+ `\addcontentsline` + `\label`) for a standalone

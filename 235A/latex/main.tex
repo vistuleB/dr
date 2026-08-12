@@ -68,6 +68,7 @@
 \chapter{Introduction}
 
 \section{What is probability theory}
+
 In this course we'll learn about probability theory.
 But what exactly \emph{is} probability theory? Like some
 other mathematical fields (but unlike some others), it
@@ -107,6 +108,7 @@ phenomena.
 \end{example}
 
 \section{The algebra of events}
+
 A central notion in probability is that of the
 $\textbf{algebra of events}$ (we'll clarify later
 what the word ``algebra'' means here). We begin with
@@ -323,6 +325,7 @@ $\mathrm{P}(C_\infty)=0$.
 
 \section{Basic definitions}
 \label{basic-def}
+
 We now formalize the concepts introduced in the
 previous lecture. It turns out that it's easiest to
 deal with events as subsets of a large set called the
@@ -585,7 +588,7 @@ on $(0,1)$, the minimal $\sigma$-algebra containing
 all the sub-intervals of $(0,1)$, proved to exist in
 the exercise below. There exists a unique measure
 $\mathrm{P}$ on the measure space satisfying
-(\ref{eq:lebesgue}), called $\textbf{Lebesgue measure}$
+\eqref{eq:lebesgue}, called $\textbf{Lebesgue measure}$
 on $(0,1)$.
 \end{thm}
 
@@ -669,7 +672,7 @@ by the collection of sets of this form.
 Finally, the probability measure $\mathrm{P}$ should
 conform to our notion of a sequence of independent
 fair coin tosses. Generalizing the notation in
-(\ref{eq:specialcase}), for $a\in\{0,1\}$ define
+\eqref{eq:specialcase}, for $a\in\{0,1\}$ define
 
 \[
 A_n(a) = \{ \mathbf{x}=(x_1,x_2,\ldots) \in \Omega : x_n = a \}.
@@ -695,7 +698,7 @@ satisfy
 \noindent As in the example of Lebesgue measure discussed
 above, the fact that a probability measure
 $\mathrm{P}$  on $(\Omega, {\cal F})$ that satisfies
-(\ref{eq:indcointosses}) exists and is unique follows from
+\eqref{eq:indcointosses} exists and is unique follows from
 some slightly non-trivial facts from measure theory,
 and we will take it on faith for the time being. Below
 we quote the relevant theorem from measure theory,
@@ -745,7 +748,7 @@ Explain why the ``infinite sequence of coin tosses''
 experiment is a special case of  a product of
 probability spaces, and why the existence and
 uniqueness of a probability measure satisfying
-(\ref{eq:indcointosses}) follows from \texorpdfstring{\hyperref[thm-productspaces]{Theorem~\ref*{thm-productspaces}}}{Theorem}.
+\eqref{eq:indcointosses} follows from \texorpdfstring{\hyperref[thm-productspaces]{Theorem~\ref*{thm-productspaces}}}{Theorem}.
 \end{xexercise}
 
 \noindent In an upcoming homework exercise we will show an
@@ -756,6 +759,7 @@ using Lebesgue measure on $(0,1)$.
 \chapter{Random variables}
 
 \section{Random variables and their distributions}
+
 As we have seen, a probability space is an abstract
 concept that represents our intuitive notion of a
 probabilistic experiment. Such an experiment however
@@ -882,6 +886,7 @@ namely if
 
 \section{Distribution functions}
 \label{sec:dist-funs}
+
 Instead of working with distributions of random
 variables (which are probability measure on the
 measurable space $(\R, {\cal B})$ and themselves
@@ -1097,7 +1102,7 @@ F(x) = \int_{-\infty}^x f(y)\,dy, \qquad (y\in\R),
 \noindent then we say that $\textbf{$X$has a density function$f
 $}$. Note that $f$ determines $F$ but is itself only
 determined by $F$ up to ``small'' changes that do not
-affect the integral in (\ref{eq:density}) (in
+affect the integral in \eqref{eq:density} (in
 measure-theoretic terminology we say that $f$ is
 determined ``up to a set of measure $0$''). For
 example, changing the value$f$ in a finite number of
@@ -1159,6 +1164,7 @@ important special function of mathematics nonetheless.
 \chapter{Random vectors and independence}
 
 \section{Random vectors}
+
 A random variable is a real-valued measurable
 function defined on a probability space
 $(\Omega, {\cal F}, \mathrm{P})$ (when we talk of $\R$
@@ -1284,6 +1290,7 @@ by some constant $M$.
 \end{xexercise}
 
 \section{Multi-dimensional distribution functions}
+
 If $\mathbf{X}=(X_1,\ldots,X_d)$ is a $d$-dimensional
 random vector, we define its $\textbf{distribution}$
 to be the probability measure
@@ -1549,6 +1556,7 @@ that for all $x_1,\ldots,x_d\in S$ we have
 \end{xexercise}
 
 \chapter{The Borel-Cantelli lemmas}
+
 Let $(\Omega, {\cal F}, \mathrm{P})$ be a probability
 space, and let $A_1, A_2, A_3, \ldots \in {\cal F}$
 be a sequence of events. We define the following
@@ -1653,6 +1661,7 @@ diverges.
 \end{proof}
 
 \chapter{A brief excursion into measure theory}
+
 Here we briefly mention some of the basic definitions
 and results from measure theory, and point out how we
 used them in the previous lectures. The relevant
@@ -1759,6 +1768,7 @@ formulated in greater generality.
 \chapter{Expected values}
 
 \section{Construction of the expectation operator}
+
 We wish to define the notion of the
 $\textbf{expected value}$, or $\textbf{expectation}$,
 of a random variable $X$, which will be denoted
@@ -1839,7 +1849,7 @@ made arbitrarily close to each other.
 \noindent We can now extend the definition of the expectation
 operator to non-negative random variables. In that
 case we still define $\mathbf{E} X$ by eq.
-(\ref{eq:expec-def}). This can be thought of as a kind of
+\eqref{eq:expec-def}. This can be thought of as a kind of
 ``continuity from below'' axiom that is added to the
 properties 1--3 above, although we shall see that it
 can be reformulated in several equivalent ways. Note
@@ -1877,7 +1887,7 @@ $\mathbf{E} |X|, \mathbf{E}|Y|<\infty$. Then:
 
 \begin{enumerate}[label=\arabic*.]
 \item If $X$ is a simple function then the definition
-(\ref{eq:expec-def}) coincides with the original
+\eqref{eq:expec-def} coincides with the original
 definition, namely
 $\mathbf{E}(\sum_i a_i 1_{B_i}) = \sum_i a_i
 \mathrm{P}(B_i)$.
@@ -2035,6 +2045,7 @@ the convex function $\varphi(x) = x^{s/r}$.
 \end{enumerate}
 
 \section{Convergence theorems for expectations}
+
 We want to study notions of continuity for the
 expectation operator. If $X_n\to X$ as $n\to\infty$,
 under what conditions do we have that
@@ -2476,6 +2487,7 @@ lemma, we get that
 $Y$ are linearly dependent.
 
 \section{Moments}
+
 For an integer $k\ge 0$, the \textbf{$k$-th moment} of a
 random variable $X$ is the number $\mathbf{E}(X^k)$.
 The \textbf{$k$-th moment around a point $c\in\R$} is the
@@ -2493,7 +2505,7 @@ computational and theoretical tool. Important special
 distributions often turn out to have interesting
 sequences of moments. Also note that by the
 monotonicity of the $L_p$ norms (inequality
-(\ref{eq:lpnormmono}) in Section \ref{sec-expec-prop}), the
+\eqref{eq:lpnormmono} in Section \ref{sec-expec-prop}), the
 set of values $r\ge 0$ such that $\mathbf{E}(X^r)$
 exists (one can also talk about $r$-th moments for
 non-integer $r$, but that is much less commonly
@@ -2533,6 +2545,7 @@ distance between the two lines''. Indeed, the
 physical context.
 
 \chapter{Special distributions and their properties}
+
 A small number of distributions come up again and
 again in real life applications of probability theory
 and as answers to natural theoretical questions. These
@@ -2555,6 +2568,7 @@ where $X_1,\ldots,X_n$ are independent random
 variables such that $X_k \sim D_k$ for $k=1,\ldots,n$.
 
 \section{The Bernoulli distribution}
+
 The Bernoulli distribution models the probabilistic
 experiment of a single coin toss. We say that $X$ has
 the Bernoulli distribution with parameter $0<p<1$,
@@ -2576,6 +2590,7 @@ constraint that $0\le X\le 1$.
 \end{enumerate}
 
 \section{The binomial distribution}
+
 We say that $X$ has the binomial distribution with
 parameters $n\ge 1$ and $0<p<1$, and denote
 $X\sim \operatorname{Bin}(n,p)$, if $X$ satisfies
@@ -2607,6 +2622,7 @@ $\mathbf{E} X = np$, $\mathbf{V}(X) = np(1-p)$.
 \end{enumerate}
 
 \section{The geometric distribution}
+
 We say that $X$ has the geometric distribution with
 parameter $0<p<1$, and denote
 $X\sim \operatorname{Geom}(p)$, if $X$ satisfies
@@ -2667,6 +2683,7 @@ $\mathbf{V}(X') = \frac{1-p}{p^2}$.
 \end{enumerate}
 
 \section{The negative binomial distribution}
+
 We say that $X$ has the negative binomial
 distribution with parameters $m\ge1$ and $0<p<1$, and
 denote $X\sim \operatorname{NB}(m,p)$, if $X$
@@ -2705,6 +2722,7 @@ $\operatorname{NB}(m,p)$.
 \end{enumerate}
 
 \section{The Poisson distribution}
+
 We say that $X$ has the Poisson distribution with
 parameter $\lambda>0$, and denote
 $X\sim \operatorname{Poi}(\lambda)$, if $X$ satisfies
@@ -2743,6 +2761,7 @@ $\mathbf{E} X = \lambda$, $\mathbf{V}(X)=\lambda$.
 \end{enumerate}
 
 \section{The uniform distribution}
+
 We say that $X$ has the uniform distribution in the
 interval $[a,b]$, and denote $X\sim U[a,b]$, if $X$
 has density function
@@ -2768,6 +2787,7 @@ $\mathbf{V}(X) = \frac{(b-a)^2}{12}$.
 
 \section{The normal distribution}
 \label{sec:normal-dist}
+
 We say that $X$ has the normal (a.k.a. gaussian)
 distribution with mean $\mu$ and variance $\sigma^2$,
 and denote $X\sim N(\mu,\sigma^2)$, if $X$ has
@@ -2847,6 +2867,7 @@ X,Y\sim N(0,1), & \ X,Y\textrm{ are independent } \\
 
 \section{The exponential distribution}
 \label{sec:exp-dist}
+
 We say that $X$ has the exponential distribution with
 parameter $\lambda$, and denote
 $X\sim \operatorname{Exp}(\lambda)$, if $X$ has
@@ -2933,6 +2954,7 @@ time. When considered as such a family, $(N(t))_{t>0}$
 is called a $\textbf{Poisson process}$.
 
 \section{The gamma distribution}
+
 To define the gamma distribution, first we define the
 $\textbf{Euler gamma function}$ (also called the
 $\textbf{generalized factorial function}$), an
@@ -2989,6 +3011,7 @@ $\mathbf{V}(X) = \frac{\alpha}{\lambda^2}$.
 \end{enumerate}
 
 \section{The beta distribution}
+
 Define the $\textbf{Euler beta function}$ (which is
 closely related to the Euler gamma function) by
 
@@ -3045,6 +3068,7 @@ $X^{(k)} \sim \operatorname{Beta}(k,n+1-k)$.
 \end{enumerate}
 
 \section{The Cauchy distribution}
+
 We say that $X$ has the Cauchy distribution, and
 denote $X \sim \textrm{Cauchy}$, if $X$ has the
 density
@@ -3122,6 +3146,7 @@ $}
 \end{center}
 
 \chapter{Laws of large numbers}
+
 Let $X_1, X_2, X_3, \ldots$ be a sequence of
 independent and identically distributed random
 variables. A common abbreviation for ``independent and
@@ -3199,6 +3224,7 @@ $\epsilon>0$,
 \end{proof}
 
 \section{Strong laws of large numbers}
+
 Our goal in this section will be to prove:
 
 \begin{thm}[Strong Law of Large Numbers (SLLN)]
@@ -3222,7 +3248,7 @@ least easy to prove) result.
 \begin{proof}[Proof in the case of a finite fourth moment]
 To prove that $S_n/n\to \mu$, we want to prove that
 $\mathrm{P}(|S_n/n-\mu|>\epsilon\textrm{ i.o.})=0$.
-Looking at the bound (\ref{eq:variancebound}), we see that
+Looking at the bound \eqref{eq:variancebound}, we see that
 if the bound $\sigma^2/n\epsilon^2$ were to form the
 $n$-th general term of a convergent series, then by
 the Borel-Cantelli lemma this would be enough to get
@@ -3265,7 +3291,7 @@ $m_2 = \mathbf{E}(\hat{X}_k^2) = \mathbf{V}(X_k)$,
 $m_4=\mathbf{E}(\hat{X}_k^4)<\infty$. This gives us
 the bound we wanted! In fact, all that matters is that
 $\mathbf{E}(T_n^4)\le C n^2$ for some constant $C>0$.
-Combining this with (\ref{eq:previousbound}), we get that
+Combining this with \eqref{eq:previousbound}, we get that
 
 \[
 \mathrm{P}(|S_n/n-\mu|>\epsilon) \le \frac{C}{n^2 \epsilon^4}.
@@ -3296,10 +3322,10 @@ union of events of probability 0.
 We are slowly refining our techniques to weaken the
 assumptions required to prove the SLLN. The following
 nice proof manages to harness the Chebyshev variance
-bound (\ref{eq:variancebound}) after all to deduce the
+bound \eqref{eq:variancebound} after all to deduce the
 theorem in the case of r.v.'s with finite variance.
 Observe that while the series of terms on the
-right-hand side of (\ref{eq:variancebound}) diverges, if
+right-hand side of \eqref{eq:variancebound} diverges, if
 we restrict it to a subsequence $n_k = k^2$, it will
 become a \emph{convergent} series:
 $\sum_{k=1}^\infty \sigma^2/k^2\epsilon^2<\infty$.
@@ -3566,7 +3592,7 @@ that
 \end{proof}
 
 \noindent It follows that the infinite sum on the left-hand
-side of (\ref{eq:infinitesum}) converges, and therefore by
+side of \eqref{eq:infinitesum} converges, and therefore by
 the Borel-Cantelli lemma, we have that
 
 \[
@@ -3613,6 +3639,7 @@ $d=1,2,\ldots$, implies that
 \chapter{Applications and further examples}
 
 \section{The Weierstrass approximation theorem}
+
 As an application of WLLN (or, rather, of Chebyshev's
 inequality), we prove the following theorem in
 analysis, which seems to have no connection to
@@ -3709,6 +3736,7 @@ result follows.
 \end{proof}
 
 \section{Infinite expectations and triangular arrays}
+
 After treating the ``classical'' case of an i.i.d.
 sequence with finite expectations, let's turn to
 slightly more exotic situations. First, what happens
@@ -3806,7 +3834,7 @@ a_n = \sum_{k=1}^n \lfloor \log_2 n + \log_2 \log_2 n \rfloor = n \log_2 n + O(n
 
 \noindent so $a_n$ indeed behaves like $n\log_2 n$ up to
 first-order asymptotics. Now to prove
-(\ref{eq:thenprove}), note that for any $\epsilon>0$,
+\eqref{eq:thenprove}, note that for any $\epsilon>0$,
 
 \begin{align*}
 \tag{11}\label{eq:lhs}
@@ -3836,7 +3864,7 @@ write
 \le \frac{2}{\epsilon^2 b_n^2} \sum_{k=1}^n b_n = \frac{2}{\epsilon^2 \log_2 n} \xrightarrow[n\to\infty]{} 0.
 \end{eqnarray*}
 
-\noindent We conclude that the left-hand side of (\ref{eq:lhs})
+\noindent We conclude that the left-hand side of \eqref{eq:lhs}
 converges to 0, as $n\to\infty$, which finishes the
 proof.
 \end{proof}
@@ -3928,6 +3956,7 @@ of independent random variables satisfies a (strong or
 weak) law of large numbers.
 
 \section{Random series of independent samples}
+
 We now look at the related topic of infinite series
 of independent r.v.'s. When can such a series be said
 to converge? A key technical result that will help us
@@ -4188,6 +4217,7 @@ not the same.
 \end{example}
 
 \chapter{The Central Limit Theorem, Stirling’s formula and the de Moivre-Laplace theorem}
+
 Our goal in the next few chapters will be to
 formulate and prove one of the fundamental results of
 probability theory, known as the Central Limit
@@ -4408,6 +4438,7 @@ general central limit theorem.
 \chapter{Convergence in distribution}
 
 \section{Definition}
+
 Since we will be talking about convergence of the
 distribution of random variables to the normal
 distribution, it makes sense to develop the general
@@ -4789,6 +4820,7 @@ is bounded by $\epsilon$.
 \chapter{Characteristic functions}
 
 \section{Definition and basic properties}
+
 A main tool in our proof of the central limit theorem
 will be that of characteristic functions. The basic
 idea will be to show that
@@ -4904,6 +4936,7 @@ the $\textbf{Fourier-Stieltjes transform}$ (or just
 the Fourier transform) of the measure $\mu$.
 
 \section{Examples}
+
 No study of characteristic functions is complete
 without ``dirtying your hands'' a little to compute
 the characteristic function for some important cases.
@@ -5025,6 +5058,7 @@ characteristic functions, which we consider in the
 next section.
 
 \section{The inversion formula}
+
 A fundamental question about characteristic functions
 is whether they contain all the information about a
 distribution, or in other words whether knowing the
@@ -5121,7 +5155,7 @@ C/2 & x=a\textrm{ or }x=b, \\
 \noindent Furthermore, the function $R(x-a,T)-R(x-b,T)$ is
 bounded in absolute value by $2\sup_{x\ge 0} S(x)$.
 It follows that we can apply the bounded convergence
-theorem in (\ref{eq:inversionproof}) to get that
+theorem in \eqref{eq:inversionproof} to get that
 
 \begin{align*}
 \tag{13}\label{eq:almostinversion}
@@ -5134,7 +5168,7 @@ evaluation from complex analysis. We can also deduce
 it in a self-contained manner, by applying what we
 proved to a specific measure $\mu$ and specific
 values of $a$ and $b$ for which we can evaluate the
-limit in (\ref{eq:inversionproof}) directly. This is not
+limit in \eqref{eq:inversionproof} directly. This is not
 entirely easy to do, but one possibility, involving an
 additional limiting argument, is outlined in the next
 exercise; see also Exercise 1.7.5 on p. 35 in
@@ -5152,7 +5186,7 @@ $f_X(x)=(\sqrt{2\pi}\sigma)^{-1} e^{-x^2/2\sigma^2}$
 and characteristic function
 $\varphi_X(t) = e^{-\sigma^2 t^2/2}$. For fixed
 $\sigma$, apply \hyperref[thm-inversion]{Theorem~\ref*{thm-inversion}} in its weak
-form given by (\ref{eq:almostinversion}) (that is, without
+form given by \eqref{eq:almostinversion} (that is, without
 the knowledge of the value of $C$), with parameters
 $X=X_\sigma$, $a=-1$ and $b=1$,  to deduce the
 identity
@@ -5288,6 +5322,7 @@ continuous functions).
 \end{proof}
 
 \section{Moments}
+
 The final step in our lengthy preparation for the
 proof of the central limit theorem will be to tie the
 behavior of the characteristic function $\varphi_X(t)$
@@ -5345,7 +5380,7 @@ note that
 |R_n(x)| \le \frac{2}{(n-1)!} \left|\int_0^x |x-s|^{n-1}\,ds\right| = \frac{2|x|^{n}}{(n-1)!}.
 \end{align*}
 
-\noindent Combining (\ref{eq:firstbound}) and (\ref{eq:secondbound})
+\noindent Combining \eqref{eq:firstbound} and \eqref{eq:secondbound}
 gives the claim.
 \end{proof}
 
@@ -5378,7 +5413,7 @@ $\mathbf{V}(X)<\infty$ then
 \end{thm}
 
 \begin{proof}
-By (\ref{eq:taylor-expec}) above, we have
+By \eqref{eq:taylor-expec} above, we have
 
 \[
 \frac{1}{t^2}\left|\varphi_X(t) - \left(1 + i \mu t - \frac{\mathbf{E} X^2}{2} t^2\right)\right| \le \mathbf{E} \left[ \min\left(|t| \cdot |X|^3/6,
@@ -5392,6 +5427,7 @@ the dominated convergence theorem.
 \chapter{Central limit theorems}
 
 \section{The case of i.i.d. r.v.’s}
+
 We are now ready to prove:
 
 \begin{thm}[The central limit theorem]
@@ -5439,6 +5475,7 @@ $\hat{S}_n \implies N(0,1)$, as claimed.
 \end{proof}
 
 \section{Generalizations}
+
 The CLT can be generalized in many ways. None of the
 assumptions (independence, identical distributions,
 even finite variance) are entirely necessary. A
@@ -5600,6 +5637,7 @@ terms of a statement about approximate independence
 relating to the prime numbers.
 
 \subsection{The Euclidean algorithm}
+
 As a final example from number theory, consider the
 following problem: For some $n\ge 1$, choose $X_n$
 and $Y_n$ independently and uniformly at random in
@@ -5644,6 +5682,7 @@ division-with-remainder step in the Euclidean
 algorithm.
 
 \chapter{Random number generation}
+
 An important problem in applied probability theory is
 to produce one or more random variables distributed
 according to some specified distribution, starting
@@ -5667,6 +5706,7 @@ will not discuss (although it is also very
 interesting!).
 
 \section{Unbiasing a source of randomness: simulating an unbiased coin using biased coin tosses}
+
 Assume that your source of randomness produces a
 sequence $X_1, X_2, \ldots$ of Bernoulli random
 variables with some bias $0<p<1$. Such random bits
@@ -5717,6 +5757,7 @@ very long.)
 \end{xexercise}
 
 \section{Simulating a biased coin using unbiased coin tosses}
+
 Let us now consider the reverse problem of simulating
 a biased coin toss with bias $p$ when our source of
 randomness produces independent \emph{unbiased} bits
@@ -5770,6 +5811,7 @@ $\mathbf{E} N = 2$. What is the distribution of $N$?
 \end{xexercise}
 
 \section{Simulating an arbitrary discrete distribution using unbiased coin tosses}
+
 We can generalize Simulation Method 2 described above
 to get a method for simulating an arbitrary discrete
 random variable taking values
@@ -5847,6 +5889,7 @@ $\mathbf{E} N$ can be bounded from above by the
 slightly better bound $H(p_1,\ldots,p_k)+2$.
 
 \section{Simulating a general r.v. using a uniform r.v.}
+
 \hyperref[thm-rvexistence]{Theorem~\ref*{thm-rvexistence}} from Section
 \ref{sec:dist-funs}, which we proved earlier for its
 theoretical importance, can be interpreted about a
@@ -5871,6 +5914,7 @@ to \hyperref[thm-rvexistence]{Theorem~\ref*{thm-rvexistence}}.
 \end{xexercise}
 
 \section{Simulating an exponential r.v.}
+
 As an illustration of Simulation Method 4 described
 above, in the case where $F$ is the
 $\operatorname{Exp}(\lambda)$ distribution, the
@@ -5888,6 +5932,7 @@ $X = -\frac{1}{\lambda}\log U$ has distribution
 $\operatorname{Exp}(\lambda)$.
 
 \section{Simulating a normal r.v.}
+
 Although Simulation Method 4 is very general, in many
 practical cases it is hard or annoying to compute the
 associated quantile function $g(p)$ (which in the
@@ -5915,6 +5960,7 @@ independent and have the standard normal distribution
 $N(0,1)$.
 
 \section{Simulating a Poisson r.v.}
+
 Given a sequence $U_1,U_2,\ldots$ of i.i.d. $U[0,1]$
 random variables, the following method simulates a
 $\operatorname{Poi}(\lambda)$ r.v.
@@ -5945,6 +5991,7 @@ required is $\mathbf{E} Z = \lambda+1$.
 \chapter{Additional topics}
 
 \section{The Kolmogorov 0-1 law}
+
 In this section we prove a well-known and easy result
 due to Kolmogorov, the Kolmogorov $0$-$1$ law. This
 will be useful in the next section.
@@ -6013,6 +6060,7 @@ are tail events.
 
 \section{The Kolmogorov three-series theorem}
 \label{sec-k-3-series}
+
 As a further application of the Lindeberg-Feller
 central limit theorem, we prove the Kolmogorov
 three-series theorem (\hyperref[thm-three-series]{Theorem~\ref*{thm-three-series}}).
@@ -6029,12 +6077,12 @@ Assume that the eponymous three series
 
 \noindent all converge. Applying \hyperref[thm-one-series]{Theorem~\ref*{thm-one-series}} to
 the random variables $Y_n-\mathbf{E}(Y_n)$, from the
-assumption that (\ref{eq:k-third-series}) converges we
+assumption that \eqref{eq:k-third-series} converges we
 infer that the series
 $\sum_{n=1}^\infty \big( Y_n-\mathbf{E}(Y_n) \big)$
-converges almost surely. Since (\ref{eq:k-second-series})
+converges almost surely. Since \eqref{eq:k-second-series}
 converges, this also means that $\sum_n Y_n$
-converges almost surely. Since (\ref{eq:k-first-series})
+converges almost surely. Since \eqref{eq:k-first-series}
 converges we get using the first Borel-Cantelli lemma
 that the event $\{ X_n \neq Y_n\textrm{ i.o.} \}$ has
 probability~$0$. Outside this event, the series
@@ -6045,18 +6093,18 @@ surely.
 Next, for the converse claim, assume that $\sum_n X_n$
 converges with positive probability. By the Kolmogorov
 $0$-$1$ law, it therefore converges a.s. We need to
-show that the series (\ref{eq:k-first-series}),
-(\ref{eq:k-second-series}), (\ref{eq:k-third-series})
+show that the series \eqref{eq:k-first-series},
+\eqref{eq:k-second-series}, \eqref{eq:k-third-series}
 converge.
 
-First, note that (\ref{eq:k-first-series}) must converge,
+First, note that \eqref{eq:k-first-series} must converge,
 since if it doesn't, the second Borel-Cantelli lemma
 implies that the event $\{ |X_n|>1 \textrm{ i.o.} \}$
 has probability one,which would imply that $\sum X_n$
 diverges almost surely.
 
 Second, assume by contradiction that
-(\ref{eq:k-third-series}) diverges, or equivalently that
+\eqref{eq:k-third-series} diverges, or equivalently that
 
 \[
 v_n := \sum_{k=1}^n \mathbf{V}(Y_n) \to \infty\ \textrm{ as }n\to\infty.
@@ -6095,9 +6143,9 @@ $n\to\infty$. This is easily seen to be in
 contradiction to the convergence in distribution of
 $S_n$ to a limiting distribution of a non-constant
 random variable. So we have shown that
-(\ref{eq:k-third-series}) converges.
+\eqref{eq:k-third-series} converges.
 
-Finally, having shown that (\ref{eq:k-third-series})
+Finally, having shown that \eqref{eq:k-third-series}
 converges, we conclude from \hyperref[thm-one-series]{Theorem~\ref*{thm-one-series}}
 that the series
 $\sum_n \left(Y_n-\mathbf{E}(Y_n)\right)$ converges
@@ -6112,6 +6160,7 @@ also converges.
 
 \section{The Poisson limit law}
 \label{sec:poisson-limit}
+
 The Poisson distribution is the one-parameter family
 of distributions
 $\operatorname{Poisson}(\lambda), \lambda>0$, where
@@ -6168,7 +6217,7 @@ your daily life...)
 \end{itemize}
 
 \noindent Our goal is to prove the following generalization of
-(\ref{eq:law-small-numbers-iid}), analogous to the
+\eqref{eq:law-small-numbers-iid}, analogous to the
 Lindeberg-Feller extension of the Central Limit
 Theorem. The technique used in the proof is also
 similar and uses characteristic functions.
@@ -6292,7 +6341,7 @@ $N$ steps is a uniform random number in
 $\{1,2,\ldots,N+1\}$. That is, the event that the
 number of white balls after step $N$ is equal to $k$
 has probability $1/(N+1)$ for each $1\le k\le N+1$.
-(Note: The idea is to use (\ref{eq:totalprob}), but there
+(Note: The idea is to use \eqref{eq:totalprob}, but there
 is no need to be too formal about constructing the
 relevant probability space --- you can assume an
 intuitive notion of probabilities.)
@@ -6347,7 +6396,7 @@ $\textbf{continuity}$ properties if it satisfies
 \noindent Prove that a probability measure satisfies the
 continuity properties, and that an additive
 pre-probability measure that satisfies the first
-continuity property (\ref{eq:cont1}) (``continuity from
+continuity property \eqref{eq:cont1} (``continuity from
 below'') is $\sigma$-additive, and is therefore a
 probability measure.
 
@@ -7416,7 +7465,7 @@ distribution. In fact, it can be shown that
 estimating $\Phi(x)$.
 
 $\textbf{Hint.}$ To prove the upper bound in
-(\ref{eq:twobounds}), use the fact that for $t>x$ we have
+\eqref{eq:twobounds}, use the fact that for $t>x$ we have
 $e^{-t^2/2} \le (t/x)e^{-t^2/2}$. For the lower
 bound, use the identity
 
@@ -7619,9 +7668,9 @@ probabilities $1/2,1/2$).
 
 $\textbf{(c)}$ Compute the characteristic function
 $\varphi_Z$ of $Z=2X-1$ (which is uniform in
-$(-1,1)$). Use (\ref{eq:binaryexp}) to represent this in
+$(-1,1)$). Use \eqref{eq:binaryexp} to represent this in
 terms of the characteristic functions of the $Y_n$'s
-(note that the series (\ref{eq:binaryexp}) converges
+(note that the series \eqref{eq:binaryexp} converges
 absolutely, so here there is no need to worry about
 almost sure convergence). Deduce the infinite product
 identity
@@ -7632,7 +7681,7 @@ identity
 \end{equation*}
 
 \noindent $\textbf{(d)}$ Substitute $t=\pi/2$ in
-(\ref{eq:infproduct}) to get the identity
+\eqref{eq:infproduct} to get the identity
 
 \[
 \frac{2}{\pi} = \frac{\sqrt{2}}{2}\cdot \frac{\sqrt{2+\sqrt{2}}}{2} \cdot \frac{\sqrt{2+\sqrt{2+\sqrt{2}}}}{2} \cdot \ldots

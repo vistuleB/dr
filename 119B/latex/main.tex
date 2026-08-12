@@ -68,6 +68,7 @@
 \chapter{Part 1 — Hamiltonian and Lagrangian mechanics}
 
 \section{Introduction}
+
 Newton made the famous discovery that the motion of
 physical bodies can be described by a second-order
 differential equation
@@ -108,6 +109,7 @@ freedom, and comment only briefly on
 higher-dimensional generalizations.
 
 \section{Hamiltonian systems}
+
 Recall that the general form of a planar differential
 equation (i.e., a system of two first-order ODEs) is
 
@@ -149,7 +151,7 @@ coordinate}, and the variable $q$ is called the
 \emph{generalized momentum} associated to $p$.
 
 When can we say that a given system
-(\ref{eq:genericsystem}) is Hamiltonian? Assuming that $F$
+\eqref{eq:genericsystem} is Hamiltonian? Assuming that $F$
 and $G$ are continuously differentiable, it is not
 difficult to see that a necessary condition is that
 
@@ -178,7 +180,7 @@ and $\operatorname{div} \mathbf{V}$ denotes the
 divergence of $\mathbf{V}$. In physics, a vector
 field with this property is called \emph{divergence-free}
 or \emph{solenoidal}. Yet another way to write
-(\ref{eq:hamiltonian-sufficient}) is
+\eqref{eq:hamiltonian-sufficient} is
 
 \begin{align*}
 \operatorname{curl} \mathbf{W} = 0,
@@ -195,9 +197,9 @@ A vector field with this property is called
 
 \begin{lem}
 \label{lem:hamiltonian-div}
-If the equation (\ref{eq:genericsystem}) is defined on a
+If the equation \eqref{eq:genericsystem} is defined on a
 simply connected domain, the condition
-(\ref{eq:hamiltonian-sufficient}) is both necessary and
+\eqref{eq:hamiltonian-sufficient} is both necessary and
 sufficient for the system to be Hamiltonian.
 \end{lem}
 
@@ -233,6 +235,7 @@ as the desired Hamiltonian.
 \end{proof}
 
 \section{The Euler-Lagrange equation}
+
 Given a function of three variables
 $L=L(\dot{q},q,t)$, the differential equation
 
@@ -256,9 +259,10 @@ differential equation for the quantity $q$. The
 function $L$ is called the \emph{Lagrangian}.
 
 \section{Equivalence of the Lagrange and Hamilton formalisms}
+
 We now wish to show that the Euler-Lagrange equation
 is equivalent to the idea of a Hamiltonian system.
-Start with the equation (\ref{eq:euler-lagrange}). Denote
+Start with the equation \eqref{eq:euler-lagrange}. Denote
 $p=\frac{\partial L}{\partial \dot{q}}$. The
 Hamiltonian will be defined by
 
@@ -284,7 +288,7 @@ using the chain rule we can compute
 \end{align*}
 
 \noindent which shows that we indeed get the Hamiltonian system
-(\ref{eq:hamiltoniansystem}).
+\eqref{eq:hamiltoniansystem}.
 
 Going in the other direction, if we start with a
 Hamiltonian system, we can construct a Lagrangian by
@@ -301,7 +305,7 @@ interpreted as a function of the independent variables
 $q, \dot{q}, t$, defined by the implicit equation
 $\dot{q} = \frac{\partial H}{\partial p}$. Again
 computing using the chain rule and the Hamiltonian
-equations (\ref{eq:hamiltoniansystem}), we now have that
+equations \eqref{eq:hamiltoniansystem}, we now have that
 
 \begin{align*}
 \frac{\partial L}{\partial \dot{q}} &= p + \dot{q} \frac{\partial p}{\partial \dot{q}} - \frac{\partial H}{\partial p} \frac{\partial p}{\partial \dot{q}} = p, \\
@@ -310,7 +314,7 @@ equations (\ref{eq:hamiltoniansystem}), we now have that
 \end{align*}
 
 \noindent so we have recovered the Euler-Lagrange equation
-(\ref{eq:euler-lagrange}).
+\eqref{eq:euler-lagrange}.
 
 \begin{xexercise}[Legendre transform]
 The connection between the Hamiltonian and Lagrangian
@@ -342,6 +346,7 @@ $f(x)=e^x$; (iii) $f(x)=\cosh x$.
 \end{xexercise}
 
 \section{Lagrangian formulation of Newtonian mechanics}
+
 Assume a particle of mass $m$ is constrained to move
 in one dimension under the influence of a force
 $F=F(q,t)$, where $q$ is the position coordinate. The
@@ -368,18 +373,18 @@ write the Euler-Lagrange equation for this Lagrangian.
 The relation
 $p=\frac{\partial L}{\partial q} = \dot{q}$ means
 that $p$ is simply equal to the velocity of the
-particle, and (\ref{eq:euler-lagrange}) becomes
+particle, and \eqref{eq:euler-lagrange} becomes
 
 \[
 \ddot{q} = \dot{p} = \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}} \right) = \frac{\partial L}{\partial q} = -\frac{\partial U}{\partial q},
 \]
 
-\noindent which is the same as (\ref{eq:newtonmotion}). The
+\noindent which is the same as \eqref{eq:newtonmotion}. The
 strange-looking Lagrangian formalism has reproduced
 Newton's equation of motion! Also note that the
 Hamiltonian associated with the system, related to the
-Lagrangian by equations (\ref{eq:hamilton-lagrange}) and
-(\ref{eq:lagrange-hamilton}), is
+Lagrangian by equations \eqref{eq:hamilton-lagrange} and
+\eqref{eq:lagrange-hamilton}, is
 
 \begin{align*}
 H = p \dot{q} - L = \dot{q}^2 - \left( \tfrac12 \dot{q}^2 - U(q,t) \right)
@@ -454,7 +459,7 @@ have the relation
 \noindent since $\mathbf{G}$ acts normally to the curve and
 $\frac{\partial \mathbf{x}}{\partial q}$ is
 tangential to it. Then taking the scalar product of
-both sides of (\ref{eq:curve-forces}) with
+both sides of \eqref{eq:curve-forces} with
 $\frac{\partial \mathbf{x}}{\partial q}$ gives
 
 \begin{align*}
@@ -517,8 +522,8 @@ and $\dot{q}$, we get
 \end{split}
 \end{equation*}
 
-\noindent Combining the results (\ref{eq:curveeq1}),
-(\ref{eq:curveeq2}) and (\ref{eq:curveeq3}), we get finally
+\noindent Combining the results \eqref{eq:curveeq1},
+\eqref{eq:curveeq2} and \eqref{eq:curveeq3}, we get finally
 that
 
 \begin{align*}
@@ -569,7 +574,7 @@ p = \frac{\partial L}{\partial \dot{q}} =
 
 \noindent Note that it is in one-to-one correspondence with
 $\dot{q}$, as should happen. By
-(\ref{eq:hamilton-lagrange}), we get the Hamiltonian as
+\eqref{eq:hamilton-lagrange}, we get the Hamiltonian as
 
 \begin{align*}
 H &=
@@ -718,6 +723,7 @@ Hamiltonian form is
 \end{example}
 
 \section{An autonomous Hamiltonian is conserved}
+
 In the last example above, it is important to note
 that although the system in its original form depends
 on time due to the motion of the constraint curve, the
@@ -758,6 +764,7 @@ of the system, yet it is conserved. Can you think of a
 physical meaning to assign to this conserved quantity?
 
 \section{Systems with many degrees of freedom}
+
 In the above discussion, we focused on a system with
 only one degree of freedom. In this case the equations
 of motion consisted of a single second order
@@ -994,6 +1001,7 @@ L(\dot{\mathbf{x}},\mathbf{x},t) = \tfrac12 m |\dot{\mathbf{x}}|^2 - q \phi(\mat
 \end{xexercise}
 
 \section{Rest points in autonomous Hamiltonian systems}
+
 Assume that the Hamiltonian is autonomous. The rest
 points of the system correspond to the stationary
 points of the Hamiltonian, i.e., points for which
@@ -1057,6 +1065,7 @@ geometric, explanation why rest points cannot be
 asymptotically stable or unstable.
 
 \section{The principle of least action}
+
 For times $t_0<t_1$, define the \emph{action}$A(t_0,t_1)$
 of a Lagrangian system from time $t_0$ to time $t_1$
 as the integral of the Lagrangian:
@@ -1119,6 +1128,7 @@ this course).
 
 \section{The calculus of variations}
 \label{sec:variational-calculus}
+
 Let us consider the problem of minimizing the action
 in slightly greater generality. In many areas of
 mathematics we encounter expressions of the form
@@ -1157,7 +1167,7 @@ explained below), and the area of mathematics that
 deals with such problems is called the \emph{variational
 calculus}, or \emph{calculus of variations}. In more
 advanced variational problems the form of the
-functional (\ref{eq:functional}) can be more general and
+functional \eqref{eq:functional} can be more general and
 depend for example on a vector-valued function
 $\mathbf{q}(t)$, or on higher-order derivatives of
 $q$, or on a function $q(x_1,\ldots,x_k)$ of several
@@ -1275,7 +1285,7 @@ and only if it satisfies the Euler-Lagrange equation
 
 \begin{proof}
 It is easy to see that the integral on the right-hand
-side of (\ref{eq:first-variation}) is $0$\emph{for every}$h$
+side of \eqref{eq:first-variation} is $0$\emph{for every}$h$
 satisfying $h(t_0)=h(t_1)=0$ if and only if the
 quantity in parentheses in the integrand vanishes for
 all $t$.
@@ -1439,7 +1449,7 @@ the wheel has rolled forward; see Figure 2). The
 scaling constant $a$ can now be chosen to fit the
 condition that $q(x_b)=y_b$, i.e., the curve must
 pass through the point $\mathbf{B}$. It may also be
-verified using (\ref{eq:cycloidquadrature}) that the
+verified using \eqref{eq:cycloidquadrature} that the
 nonparametric equation for the cycloid is
 
 \begin{align*}
@@ -1819,11 +1829,11 @@ J \theta''(s) = -\lambda_1 \cos \theta(s) + \lambda_2 \sin\theta(s).
 \end{equation*}
 
 \noindent Note that this equation is somewhat similar to the
-pendulum equation (\ref{eq:pendulumeq}), and indeed can be
-brought to the form of (\ref{eq:pendulumeq}) by replacing
+pendulum equation \eqref{eq:pendulumeq}, and indeed can be
+brought to the form of \eqref{eq:pendulumeq} by replacing
 the function $\theta(s)$ by a shifted version of it
 $\varphi(s)=\theta(s)+\alpha$, for a suitable
-$\alpha$. The curves solving (\ref{eq:elasticaeq}) are
+$\alpha$. The curves solving \eqref{eq:elasticaeq} are
 known as \emph{elastica} curves, and this useful
 coincidence between the elastica equation and the
 theory of the pendulum is the starting point for a
@@ -1849,6 +1859,7 @@ the conditions $q(0)=0, q(L)=R$.
 \end{xexercise}
 
 \section{The phase flow and Liouville's theorem}
+
 Hamiltonian systems often have quantities which are
 conserved; for example, in autonmous systems we saw
 that the Hamiltonian itself is conserved. In other
@@ -1878,11 +1889,11 @@ is conserved: this is the statement of Liouville's
 theorem.
 
 To state the theorem formally, given a Hamiltonian
-system (\ref{eq:hamiltoniansystem}), for each point
+system \eqref{eq:hamiltoniansystem}, for each point
 $\mathbf{x}=(p_0,q_0)\in\mathbb{R}^2$ and time
 $t\ge 0$, denote by $\varphi_t(\mathbf{x})$ the point
 $(p(t),q(t))$, where $(p(t),q(t))$ are the solutions
-to the equations (\ref{eq:hamiltoniansystem}) with initial
+to the equations \eqref{eq:hamiltoniansystem} with initial
 condition $p(0)=p_0, q(0)=q_0$. (We assume that the
 system is such that the solutions exist for all time
 $t\ge 0$.) Thus, for each $t\ge 0$ we have
@@ -2024,7 +2035,7 @@ the limit as $h\downarrow 0$ gives
 \lim_{h\downarrow 0} \left(\operatorname{tr}(A_t)J_t + O(h)\right) = \operatorname{tr}(A_t)J_t.
 \end{align*}
 
-\noindent The equation (\ref{eq:liou-jac-ode}) is an easy scalar
+\noindent The equation \eqref{eq:liou-jac-ode} is an easy scalar
 ODE for $J_t$, with the initial condition $J_0=1$.
 Its solution is
 
@@ -2141,7 +2152,7 @@ $\pi \epsilon^2 J_t \neq \pi \epsilon^2$, and
 therefore the phase flow does not preserve area.
 
 To conclude, from the computation in
-(\ref{eq:liouville-jacobian}) it follows that the system
+\eqref{eq:liouville-jacobian} it follows that the system
 preserves area if and only if
 $\operatorname{div}(F,G)=0$, and we already showed in
 \hyperref[lem:hamiltonian-div]{Lemma~\ref*{lem:hamiltonian-div}} that this is equivalent to
@@ -2162,6 +2173,7 @@ impossible.
 \end{proof}
 
 \section{Poincaré recurrence theorem}
+
 Liouville's theorem is the starting point for a set
 of important investigations into the qualitative
 behavior of Hamiltonian systems. The following theorem
@@ -2242,6 +2254,7 @@ freedom (we will not prove this, but the proof is not
 much more difficult than the planar case).
 
 \section{Liouville's theorem and ``statistical dynamics''}
+
 Another, more quantitative, way in which Liouville's
 theorem makes it possible to reach a broad
 understanding of a complicated nonlinear system
@@ -2301,18 +2314,18 @@ volume, i.e.,
 \end{align*}
 
 \noindent so it is reasonable to guess that if
-(\ref{eq:idealdensity}) holds then the density
+\eqref{eq:idealdensity} holds then the density
 $g(\mathbf{p})$ might simply be a constant. Again, if
 a result of this type were true it would give us a
 very nice and potentially useful insight into the
 behavior of the system. It turns out that
-(\ref{eq:idealdensity}) in its literal form cannot be
+\eqref{eq:idealdensity} in its literal form cannot be
 true, for the simple reason that the system has a
 natural conserved quantity, the Hamiltonian (which
 here for convenience we will call the energy); so,
 each solution only gets to explore a part of the phase
 space with a constant energy, and therefore the limit
-on the right-hand side of (\ref{eq:idealdensity}) cannot
+on the right-hand side of \eqref{eq:idealdensity} cannot
 be independent of the initial condition and must
 instead necessarily be a function of the initial
 energy. However, there is a way to work around this
@@ -2324,6 +2337,7 @@ called \emph{ergodic theory}, which we will discuss more in
 detail in the second part of the course.
 
 \section{The pendulum equation, falling trees and domino waves}
+
 In this section we show how to obtain an exact
 solution of the simple pendulum equation
 
@@ -2339,6 +2353,7 @@ elliptic integrals and Jacobi elliptic functions ---
 but it is useful (and entertaining) nonetheless.
 
 \subsection{Analytic solution using elliptic integrals}
+
 We derive the solution under the assumption that
 $\theta(0) = 0$, $\dot{\theta}(0)>0$. Let
 $\lambda=g/\ell$, so the equation becomes
@@ -2356,7 +2371,7 @@ reasons which will become clear soon, denote the
 integration constant on the right by
 $\lambda(2k^2-1)$, where $k\ge0$ and use the relation
 $\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$. This
-brings (\ref{eq:pendulum-energy-cons}) to the form
+brings \eqref{eq:pendulum-energy-cons} to the form
 
 \begin{equation*} \tag{22}\label{eq:pendulum-energy-cons2}
 \begin{split}
@@ -2382,7 +2397,7 @@ for different values of $k$.}
 
 \noindent The relation between the parameter $k$ and the
 initial angular velocity $\dot{\theta}(0)$ is found
-by setting $t=0$ in (\ref{eq:pendulum-energy-cons2}),
+by setting $t=0$ in \eqref{eq:pendulum-energy-cons2},
 giving
 
 \begin{align*}
@@ -2390,7 +2405,7 @@ k=\frac{1}{2\sqrt{\lambda}} \dot{\theta}(0).
 \end{align*}
 
 \noindent It is also easy to see from the energy conservation
-equation (\ref{eq:pendulum-energy-cons2}) that the
+equation \eqref{eq:pendulum-energy-cons2} that the
 periodic solutions (which are the solutions for which
 $\theta$ remains bounded) correspond to $0<k<1$, and
 that in that case we have
@@ -2399,7 +2414,7 @@ $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is
 the maximal angle that the pendulum will reach (or
 approach asymptotically, in the case
 $\theta_{\textrm{max}}=\pi$). The equation
-(\ref{eq:pendulum-energy-cons2}) is a first-order ODE, and
+\eqref{eq:pendulum-energy-cons2} is a first-order ODE, and
 is in a form suitable for separation of variables;
 e.g., we can write
 
@@ -2457,6 +2472,7 @@ the rather intimidating formula
 \end{align*}
 
 \subsection{Formula for the period}
+
 We can now easily derive a formula for the period of
 oscillation $T$ of the pendulum. Let
 $t_{\textrm{max}}$ be the time at which the maximal
@@ -2521,6 +2537,7 @@ amplitude $\theta_{\textrm{max}}$.}
 \end{center}
 
 \subsection{Falling time of a tree}
+
 A related question concerns the time it takes a
 vertical standing object such as a tree to fall over
 from its vertical position once it is given a small
@@ -2561,7 +2578,7 @@ $\omega_0$ by the conservation of energy equation
 $\omega_{\textrm{max}} = \sqrt{\omega_0^2+4\lambda}$.
 In other words, using the solution we just derived for
 just such initial conditions, and specifically
-(\ref{eq:ellipticintegral-trig}), the quantity we are
+\eqref{eq:ellipticintegral-trig}, the quantity we are
 trying to compute can be written as the difference of
 two times $\tau = t_2-t_1$, where
 
@@ -2605,6 +2622,7 @@ pendulum with length $2\ell/3$.
 \end{xexercise}
 
 \subsection{The speed of a wave of falling dominoes}
+
 If you have ever set up a long chain of dominoes that
 topple each other in a wavelike progression, you must
 have wondered how long it would take for all the
@@ -2725,8 +2743,8 @@ m\ell^2\Omega_0 \cos^2\beta = m\ell^2\Omega_1 \cos^2 \beta + m\ell^2\omega_1.
 \end{split}
 \end{equation*}
 
-\noindent It is not difficult to solve (\ref{eq:dominowave-cons2}),
-(\ref{eq:dominowave-cons3}) for $\Omega_1$ and $\omega_1$,
+\noindent It is not difficult to solve \eqref{eq:dominowave-cons2},
+\eqref{eq:dominowave-cons3} for $\Omega_1$ and $\omega_1$,
 to get
 
 \begin{equation*} \tag{28}\label{eq:dominowave-cons4}
@@ -2743,7 +2761,7 @@ f_{\pm} = \frac{2}{\cos^2 \beta \pm \cos^{-2}\beta}.
 \end{align*}
 
 \noindent Plugging the value of $\Omega_0$ obtained from
-(\ref{eq:dominowave-cons1}) into (\ref{eq:dominowave-cons4})
+\eqref{eq:dominowave-cons1} into \eqref{eq:dominowave-cons4}
 finally yields an equation expressing $\omega_1$ in
 terms of $\omega_0$, namely
 
@@ -2831,6 +2849,7 @@ $d, \ell$ and $g$.
 
 \section{Introduction}
 \label{sec:ergodic-intro}
+
 In this part of the course, we will consider a
 different flavor of nonlinear systems in which time
 flows in discrete steps instead of continuously. The
@@ -2864,10 +2883,10 @@ $F:\Omega\times \mathbb{N}_0\to\Omega$ (note that
 this only makes sense if the set $\Omega$ is a subset
 of a vector space so that the operation of subtraction
 is defined). Given a state $a \in \Omega$, we can
-solve the difference equation (\ref{eq:differenceeq})
+solve the difference equation \eqref{eq:differenceeq}
 starting from the initial condition $x_0=a$. The
 solution is obtained (and is easily seen to be unique)
-by rewriting (\ref{eq:differenceeq}) as
+by rewriting \eqref{eq:differenceeq} as
 $x_{n+1}=x_n+F(x_n,n)$ and iterating this ``forward
 evolution'' rule, e.g.,
 
@@ -2887,8 +2906,9 @@ and instability, and bifurcations) exist also for
 difference equations.
 
 \section{Difference equations and maps}
+
 As we commented above, the equation
-(\ref{eq:differenceeq}) can be rewritten in a way that
+\eqref{eq:differenceeq} can be rewritten in a way that
 eliminates the differencing operation, namely as
 
 \begin{equation*} \tag{30}\label{eq:differenceeq-map}
@@ -2907,13 +2927,13 @@ $\Omega$ is an abstract set with no extra structure
 (in which case there is no ``differencing'' operation,
 so it does not make sense to talk about a difference
 equation). In the case of the equation
-(\ref{eq:differenceeq-map}), usually it will be called a
+\eqref{eq:differenceeq-map}, usually it will be called a
 \emph{recurrence relation} instead of a difference
 equation. An especially nice (and very common)
 situation is one in which $T$ does not depend on the
 time variable $n$, but instead is simply a function
 $T(x)$ of the state. In this case
-(\ref{eq:differenceeq-map}) becomes
+\eqref{eq:differenceeq-map} becomes
 
 \begin{align*}
 x_{n+1} &= T(x_n),
@@ -2997,7 +3017,7 @@ conditions, e.g. (if we are trying to solve the
 recurrence for $n\ge0$) $x_0$ and $x_1$.
 
 It is well-known that the solution to the recurrence
-(\ref{eq:recurrence-fibonacci}) is given by the amusing
+\eqref{eq:recurrence-fibonacci} is given by the amusing
 formula
 
 \begin{equation*} \tag{32}\label{eq:fibonacci-closedform}
@@ -3009,7 +3029,7 @@ F_n = \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^n-\frac{1}{\sqrt{5}}\l
 \noindent This can be proved by induction by verifying the
 initial conditions and then substituting the
 expression on the right-hand side into
-(\ref{eq:recurrence-fibonacci}).
+\eqref{eq:recurrence-fibonacci}.
 
 Is there a systematic way to derive such mysterious
 formulas? As with ODEs, it is often more convenient to
@@ -3035,7 +3055,7 @@ relation is given by
 $\left(
 \begin{array}{c}X_n\\Y_n\end{array}\right)=\left(
 \begin{array}{c}F_{n+1}\\F_n\end{array}\right)$
-into (\ref{eq:recurrence-fib-matrix}), we get
+into \eqref{eq:recurrence-fib-matrix}, we get
 
 \begin{align*}
 \left( \begin{array}{c}F_{n+2}\\F_{n+1}\end{array}\right)
@@ -3048,10 +3068,10 @@ into (\ref{eq:recurrence-fib-matrix}), we get
 \end{array}\right),
 \end{align*}
 
-\noindent which reproduces (\ref{eq:recurrence-fibonacci}).
+\noindent which reproduces \eqref{eq:recurrence-fibonacci}.
 Denoting the $2\times 2$ matrix on the right-hand
-side of (\ref{eq:recurrence-fib-matrix}) by $A$, the
-recurrence relation (\ref{eq:recurrence-fib-matrix}) can
+side of \eqref{eq:recurrence-fib-matrix} by $A$, the
+recurrence relation \eqref{eq:recurrence-fib-matrix} can
 be thought of as ``geometric growth with a matrix
 multiplier''. By analogy with the geometric growth
 example, it is easy to see that its solution is
@@ -3067,17 +3087,17 @@ F_{n+1}\\F_n
 \end{split}
 \end{equation*}
 
-\noindent The formula (\ref{eq:fibonacci-closedform}) can now be
+\noindent The formula \eqref{eq:fibonacci-closedform} can now be
 derived using standard diagonalization techniques from
 linear algebra.
 \end{example}
 
 \begin{xexercise}
-Derive the formula (\ref{eq:fibonacci-closedform}) by
+Derive the formula \eqref{eq:fibonacci-closedform} by
 diagonalizing the matrix
 $A=\left(\begin{array}{cc}
 1&1\\0&1\end{array}\right)$
-and using the solution (\ref{eq:fibonacci-matrixsol}).
+and using the solution \eqref{eq:fibonacci-matrixsol}.
 \end{xexercise}
 
 \begin{example}[$3x+1$ map]
@@ -3263,6 +3283,7 @@ ellipse-shaped region.}
 \end{example}
 
 \section{Interval maps}
+
 A discrete-time system is called \emph{one-dimensional} if
 it has either $\mathbb{R}$ or a sub-interval of
 $\mathbb{R}$ as its state space. There are many
@@ -3386,6 +3407,7 @@ tent map $\Lambda_2$; (d) The Gauss map.}
 \end{center}
 
 \section{Fixed points and cycles}
+
 When we studied ODEs, we were interested in rest
 points, which are static points of the phase state
 which remain stationary under the ODE dynamics, and in
@@ -3454,6 +3476,7 @@ $k$-cycles.
 \end{xexercise}
 
 \section{Stability of fixed points}
+
 What happens to the system $x_{n+1}=T(x_n)$ if we
 move slightly away from a fixed point $x_*$? We will
 call the fixed point $x_*$\emph{asymptotically stable},
@@ -3543,10 +3566,12 @@ $T'(x_*)$ and $T''(x_*)$.
 \end{xexercise}
 
 \section{A detailed study of the logistic map}
+
 This section is based on sections 10.2--10.5 in
 Strogatz's book \emph{Nonlinear Dynamics and Chaos}.
 
 \section{Measures and measure preserving maps}
+
 Our study of maps so far has shown that even very
 simple maps such as the logistic map or the $3x+1$
 map can lead to extremely complicated behavior of the
@@ -3932,6 +3957,7 @@ extended $3x+1$ map preserves this measure.
 \end{example}
 
 \section{Measure $0$ sets}
+
 A set $E\subset \mathbb{R}$ is called a \emph{measure 0}
 set if its Lebesgue measure is 0. Although we have not
 discussed (and do not plan to discuss) precise
@@ -3952,6 +3978,7 @@ has measure 0.
 \end{xexercise}
 
 \section{Invariant sets, ergodicity and the ergodic theorem}
+
 We now come to a key idea that underlies the basis
 for all of ergodic theory and explains the importance
 of invariant measures in discrete-time dynamics. Given
@@ -4060,6 +4087,7 @@ difficult to prove.
 
 \section{The doubling map and normal numbers}
 \label{sec:normalnumbers}
+
 Our first application of the ergodic theorem is
 related to the doubling map $D(x)=2x\textrm{ mod }1$,
 which as we have seen preserves Lebesgue measure on
@@ -4115,11 +4143,11 @@ $b_1,\ldots,b_m\in\{0,1\}$, we have
 \end{thm}
 
 \begin{proof}
-The frequency on the left-hand side of (\ref{eq:normal1})
+The frequency on the left-hand side of \eqref{eq:normal1}
 is what we denoted earlier by $\mu_x^{(n)}((0,1/2))$
 (with respect to the doubling map), so by the ergodic
 theorem, it converges to $P((0,1/2))=1/2$. Similarly,
-the left-hand side of (\ref{eq:normal2}) converges to the
+the left-hand side of \eqref{eq:normal2} converges to the
 Lebesgue measure of the interval
 $[\sum_{j=1}^m b_j 2^{-j},\sum_{j=1}^m b_j
 2^{-j}+2^{-m})$,
@@ -4127,7 +4155,7 @@ which is $1/2^m$.
 \end{proof}
 
 \noindent A number $x\in (0,1)$ is called \emph{normal to base $2$}
-if it satisfies the condition (\ref{eq:normal2}) --- that
+if it satisfies the condition \eqref{eq:normal2} --- that
 is, if its binary expansion contains the digits 0 in 1
 in the right asymptotic frequency of $1/2$, and
 similarly contains each of the types of successive
@@ -4153,6 +4181,7 @@ base $10$.
 \end{xexercise}
 
 \section{Circle rotations and equidistribution on $(0,1)$}
+
 Our next application of the ergodic theorem will be
 to the circle rotation map
 $R_\alpha(x)=x+\alpha\textrm{ mod }1$. Note that
@@ -4248,11 +4277,12 @@ The ergodic theorem only guarantees the result that
 Explain why in the case of the rotation map
 $R_\alpha$, the truth of this claim is independent of
 the initial point $x$, and therefore
-(\ref{eq:equidistribution1}) follows from
-(\ref{eq:equidistribution2}).
+\eqref{eq:equidistribution1} follows from
+\eqref{eq:equidistribution2}.
 \end{xexercise}
 
 \section{Statistics of the logistic map $L_4$}
+
 As a final example of the application of the ergodic
 theorem, we justify our earlier claim that the
 logistic map $L_4$ can be understood statistically
@@ -4303,6 +4333,7 @@ have
 \chapter{Part 3 — Control theory}
 
 \section{Introduction: the problem of control}
+
 The dynamical systems we find in nature are plagued
 by a host of undesirable effects such as
 instabilities, unpredictable and chaotic behavior, and
@@ -4358,6 +4389,7 @@ stable at. We refer to $\mathbf{u}$ as the \emph{control
 variable} (or variables), or \emph{control function}.
 
 \section{Feedback}
+
 If the control variable $\mathbf{u}$ at a given time
 $t$ needs to be specified simply as a function
 $\mathbf{u}(t)$ of time, without reference to the
@@ -4377,6 +4409,7 @@ However, as we shall see below, open-loop control also
 has some surprising uses.
 
 \section{An inverted pendulum with a vertically oscillating base}
+
 The simple pendulum has two rest points: it can be
 ``hanging down'' or ``standing up''. A pendulum in the
 ``standing up'' position is called an \emph{inverted
@@ -4551,7 +4584,7 @@ depend only on the duration of the evolution rather
 than the specific starting and ending times.) The
 evolution maps $\psi_{t_0,t_1}$ have several
 important properties. First, they are linear, since
-the system (\ref{eq:kapitza-matrix}) is linear. Second,
+the system \eqref{eq:kapitza-matrix} is linear. Second,
 they satisfy the composition property
 
 \begin{align*}
@@ -4570,14 +4603,14 @@ they satisfy the composition property
 can be done by evolving it up to time $t_1$ and then
 evolving the resulting point from $t_1$ to $t_2$.
 Third, because the matrix function $t\mapsto B_t$ in
-the equation (\ref{eq:kapitza-matrix}) is periodic with
+the equation \eqref{eq:kapitza-matrix} is periodic with
 period $2T$, we have
 
 \begin{align*}
 \psi_{t_0+2T,t_1+2T}(\mathbf{x}_0) = \psi_{t_0,t_1}(\mathbf{x}_0).
 \end{align*}
 
-\noindent By the composition property (\ref{eq:composition-prop}),
+\noindent By the composition property \eqref{eq:composition-prop},
 we can now express the solution $\mathbf{x}(t)$ with
 an initial condition $\mathbf{x}(0)=\mathbf{x}_0$ at
 time $0$ as the result of a sequence of evolution
@@ -4616,7 +4649,7 @@ the following:
 
 \begin{lem}
 If $|\operatorname{tr}(P)|<2$ then the system
-(\ref{eq:kapitza-matrix}) has a stable rest point at
+\eqref{eq:kapitza-matrix} has a stable rest point at
 $\mathbf{x}=\mathbf{0}$.
 \end{lem}
 
@@ -4678,7 +4711,7 @@ some constant $D>0$ such that
 \end{align*}
 
 \noindent for any $\mathbf{y}\in\R^2$. Combining this with the
-previous comment and with (\ref{eq:kapitza-phase-flow}),
+previous comment and with \eqref{eq:kapitza-phase-flow},
 we get that
 
 \begin{align*}
@@ -4687,13 +4720,13 @@ we get that
 
 \noindent for all $t\ge 0$, which shows that
 $\mathbf{x}=\mathbf{0}$ is a neutrally stable rest
-point of the system (\ref{eq:kapitza-matrix}).
+point of the system \eqref{eq:kapitza-matrix}.
 \end{proof}
 
 \noindent To compute $S_-$ and $S_+$, observe that they are
 both obtained by evolution of the system along time
 intervals for which the matrix $B_t$ is constant; for
-such intervals the system (\ref{eq:kapitza-matrix})
+such intervals the system \eqref{eq:kapitza-matrix}
 behaves like an autonomous system, and can be solved
 explicitly using matrix exponentials.
 
@@ -4748,13 +4781,13 @@ exponentials $\exp(M_\pm)$ by directly summing the
 power series $\sum_{n=0}^\infty \frac{1}{n!}M_{\pm}^n$
 (since the even powers are scalar multiples of $I$
 and the odd powers are scalar multiples of $M_\pm$)
-to obtain the expressions in (\ref{eq:kapitza-mat-exp}).
+to obtain the expressions in \eqref{eq:kapitza-mat-exp}.
 The computation is left as an exercise.
 \end{proof}
 
 \begin{xexercise}
 Perform the power series summation outlined above to
-verify the formulas (\ref{eq:kapitza-mat-exp}).
+verify the formulas \eqref{eq:kapitza-mat-exp}.
 \end{xexercise}
 
 \noindent The final step consists of studying
@@ -4763,7 +4796,7 @@ show that for an appropriate choice of parameters,
 stability can be achieved. Denote
 $\sigma = \sigma(a, g, \ell, T) =
 \operatorname{tr}(P)$.
-By the formulas (\ref{eq:kapitza-mat-exp}), we have
+By the formulas \eqref{eq:kapitza-mat-exp}, we have
 
 \begin{align*}
 \sigma &=
@@ -4836,6 +4869,7 @@ stable.
 \end{xexercise}
 
 \section{Alternating gradient focusing}
+
 While the example discussed above is interesting
 mostly for its curiosity value, the mathematical idea
 underlying it has found a serious application as a
@@ -4878,6 +4912,7 @@ available online at
 \href{http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf}{http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf}}
 
 \section{Electromagnetic levitation}
+
 A famous practical demonstration of control theory is
 that of electromagnetic levitation. This is a method
 for causing a small magnetic object to hover in the
@@ -4936,6 +4971,7 @@ system will have an asymptotically stable equilibrium
 point at $x=0$ to which all the orbits converge.
 
 \subsection{A first attempt}
+
 An obvious idea to try is to switch the electromagnet
 on when $x<0$ and off when $x>0$. That is, we try the
 control rule $u=-\operatorname{sgn}(x)$ (where
@@ -4992,7 +5028,7 @@ shown in Figure 14.
 under the influence of gravity.}
 \end{center}
 
-\noindent Next, the system (\ref{eq:magnet-unstable}) consists of
+\noindent Next, the system \eqref{eq:magnet-unstable} consists of
 modifying the equation vector field by reflecting the
 flow curves for negative $x$ so that they mirror the
 lines for positive $x$. This leads to the phase
@@ -5008,7 +5044,7 @@ equations of motion will indeed levitate, but will do
 so in a way that oscillates around the reference point
 $x=0$, and only under the unrealistic assumption that
 the physical system is indeed described to perfect
-precision by the equations (\ref{eq:magnet-unstable}). In
+precision by the equations \eqref{eq:magnet-unstable}. In
 practice, due to the finite speed of response of the
 switching control, any physical implementation of this
 control rule will be unstable.
@@ -5023,6 +5059,7 @@ in stable levitation.}
 \end{center}
 
 \subsection{Taking velocity into account}
+
 It is apparent that to achieve stable levitation, a
 new idea is needed. Note that until now we only used
 information about the position of the particle. Why
@@ -5055,7 +5092,7 @@ to the modified system
 
 \noindent To draw the phase portrait for the modified system,
 again one has to combine the curves from the simple
-gravity system (\ref{eq:gravity-system}) with their mirror
+gravity system \eqref{eq:gravity-system} with their mirror
 images, but the choice of which one to draw at a given
 point goes according to which side of the line
 $x+by=0$ the point is on. Finding the intersection
@@ -5125,6 +5162,7 @@ and $(b^2,-b)$.)
 \end{xexercise}
 
 \subsection{Optimal switching control}
+
 Although we have achieved our goal of designing a
 stable levitation control scheme, it is not necessary
 to stop here. A natural question is to ask for the
@@ -5169,6 +5207,7 @@ device.}
 \end{center}
 
 \section{Linear Quadratic Performance control}
+
 In this section we consider control problems which
 take the general form
 
@@ -5231,8 +5270,8 @@ Note that the mapping that takes a pair
 $(\mathbf{u},\mathbf{a})$ where $\mathbf{u}$ is the
 control function and $\mathbf{a}$ is the initial
 condition $\mathbf{x}(t_1)=\mathbf{a}$ to the
-solution of (\ref{eq:lqp-linear}) is linear, and the cost
-functional (\ref{eq:lqp-quadratic}) is a quadratic
+solution of \eqref{eq:lqp-linear} is linear, and the cost
+functional \eqref{eq:lqp-quadratic} is a quadratic
 expression in $\mathbf{x}$ and $\mathbf{u}$. Thus
 this type of problem is referred to as Linear
 Quadratic Performance (LQP) control. The main
@@ -5242,6 +5281,7 @@ equation, the Ricatti equation, which furthermore is
 easy to solve numerically.
 
 \subsection{The one dimensional LQP control problem}
+
 Since the problem in this generality is somewhat
 complicated to analyze, to illustrate the main ideas
 we will focus on a simple one-dimensional settting in
@@ -5333,7 +5373,7 @@ analogous to the operator $K$ mentioned above in
 connection with the LQP control problem in arbitrary
 dimension.
 
-Now, continuing (\ref{eq:lqp-subintervals}), we may
+Now, continuing \eqref{eq:lqp-subintervals}, we may
 further expand all terms on the right-hand side as
 linear approximations in $\delta$:
 
@@ -5377,7 +5417,7 @@ p + q k^2 + 2av(T) -2 b k v(T) -v'(T) = 0.
 now, recalling that $u_*$ was defined from the value
 of the control variable \emph{under optimal control}, we
 see that the left-hand side of
-(\ref{eq:lqp-quadratic-poly}), which is a quadratic
+\eqref{eq:lqp-quadratic-poly}, which is a quadratic
 polynomial in $k$, must take its minimum at the
 correct value $k=k(T)$:
 
@@ -5402,11 +5442,12 @@ v'(T) = p + 2 a v(T) - \frac{b^2}{q} v(T)^2
 \end{equation*}
 
 \noindent obtained by plugging the expression for $k(T)$ back
-into (\ref{eq:lqp-quadratic-poly}), with the initial
+into \eqref{eq:lqp-quadratic-poly}, with the initial
 condition $v(0)=0$. This is the \emph{Ricatti equation
 with constant coefficients}.
 
 \subsection{The case of an infinite time horizon}
+
 The case $t_2=\infty$ can be approached by letting
 $T\to\infty$ in the equation above. The solution
 $v(T)$ of the Ricatti equation should converge to a
@@ -5445,12 +5486,13 @@ object is stable even in the absence of a control
 force, i.e., if we take $u=0$.
 
 \subsection{Generalization to arbitrary dimension}
+
 By repeating the above analysis in a careful manner
 for the general LQP problem in arbitrary dimension
 discussed at the beginning of this section, one can
 derive the solution for that general case. For the LQP
 problem with a finite horizon, the gain matrix $K(T)$
-from (\ref{eq:lqp-gain-mat}) is expressed as a matrix
+from \eqref{eq:lqp-gain-mat} is expressed as a matrix
 product
 
 \begin{align*}
@@ -5555,7 +5597,7 @@ linearize the equations of motion around the desired
 rest point. The output is an augmented matrix of the
 form $\left( A\,|\,B\right)$ where $A, B$ are the two
 matrices in the resulting linearized equation
-(\ref{eq:lqp-linear}). This brings the problem to the
+\eqref{eq:lqp-linear}. This brings the problem to the
 familiar setup of LQP optimal control which we
 discussed above. We now type:
 
@@ -5572,7 +5614,7 @@ discussed above. We now type:
 \noindent This asks $\texttt{Mathematica}$ to compute the gain
 matrix $K$ (in this case a vector with 4 coordinates)
 associated with the cost functional
-(\ref{eq:lqp-quadratic}) (in the case $t_2=\infty$ of an
+\eqref{eq:lqp-quadratic} (in the case $t_2=\infty$ of an
 infinite time horizon), where the quadratic forms
 $P, Q$ are defined by
 

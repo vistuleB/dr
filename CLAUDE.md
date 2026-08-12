@@ -155,7 +155,10 @@ into `main.gleam` alongside `--fmt`). Design:
   `label=` becomes the theorem note `[...]`, its `handle=` becomes `\label{}`.
 - **Cross-references become native.** `>>handle` → `\ref{handle}`; footnote
   markers `(*>>h)` are inlined as `\footnote{}` (the `Footnote` block + its `hr`
-  are dropped).
+  are dropped). A **parenthesized equation ref** `(>>eq:name)` → `\eqref{eq:name}`
+  (amsmath supplies the "(N)", so the author's parens are consumed — no "((N))");
+  only `eq:`-prefixed handles in the parenthesized prose form, so section/theorem
+  refs and in-math refs are untouched.
 - **Named references are whole-blue links.** A bare `>>handle` links only the
   *number* ("Theorem 3.14" = black "Theorem" + blue "3.14"). To hyperlink the
   whole "Theorem 3.14", a **pipeline** step (`latex_pipeline.autoref_named_links_splitter`,

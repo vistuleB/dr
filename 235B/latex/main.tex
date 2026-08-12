@@ -66,6 +66,7 @@
 \tableofcontents
 
 \chapter{A motivating example for martingales}
+
 A $\textbf{martingale}$ is a mathematical model for a
 sequence of fair gambles which has found many
 applications in both theoretical and applied
@@ -171,7 +172,7 @@ and show for example the convergence in distribution
 converges to a limiting beta distribution.
 
 \begin{xexercise}
-Prove (\ref{eq:polya-beta-dist}).
+Prove \eqref{eq:polya-beta-dist}.
 \end{xexercise}
 
 \noindent What about stronger notions of convergence such as
@@ -189,7 +190,7 @@ Y = \lim_{n\to\infty} \frac{X_n}{n+a+b}
 that guarantees that this convergence takes place is
 that the proportions $M_n = X_n/(n+a+b)$ form a
 martingale! To see what this means, note that
-(\ref{eq:polya-conditional}) can be rewritten in the form
+\eqref{eq:polya-conditional} can be rewritten in the form
 
 \[
 {M_{n+1}}_{\big| M_n = m/(n+a+b)} =
@@ -212,7 +213,7 @@ same:
 \]
 
 \noindent The martingale property, which will immediately imply
-the a.s.\ convergence (\ref{eq:polya-as-conv}) through the
+the a.s.\ convergence \eqref{eq:polya-as-conv} through the
 use of one of the martingale convergence theorems, is
 a generalization of this statement for arbitrary
 sequences $(M_n)_{n=1}^\infty$. It is written in the
@@ -232,6 +233,7 @@ subject of the next chapter.
 \chapter{Conditional expectations}
 
 \section{Elementary conditional expectations}
+
 Let $X$ and $Y$ be random variables defined on the
 same probability space
 $(\Omega, \mathcal{F}, \mathrm{P})$. We wish to
@@ -347,6 +349,7 @@ Prove the above two properties.
 \end{xexercise}
 
 \section{General conditional expectations}
+
 The above discussion brings us to the following
 important definition.
 
@@ -434,6 +437,7 @@ from measure theory, the Radon-Nikodym theorem, which
 we review in the next section.
 
 \section{Absolute continuity and the Radon-Nikodym theorem}
+
 We will formulate a version of the Radon-Nikodym
 theorem for probability spaces. The theorem involves
 the useful concept of absolute continuity of measures.
@@ -566,7 +570,7 @@ mathematics.)
 Note that the Radon-Nikodym derivative generalizes
 the ordinary derivative: if $Q$ is Lebesgue measure
 on the measure space $((0,1),\mathcal{B})$ and $P<<Q$,
-then the random variable $Z$ in (\ref{eq:abs-cont-p-q})
+then the random variable $Z$ in \eqref{eq:abs-cont-p-q}
 can be thought of as the density function of a random
 variable whose distribution measure is $P$, and can
 be computed as an actual derivative of the cumulative
@@ -581,7 +585,7 @@ a kind of ``derivative'' is that if one uses the
 Lebesgue integral notation $\int_E Z dQ$ instead of
 our more probabilistic notation
 $\mathbf{E}_{Q}(Z\mathbf{1}_E)$, the relation
-(\ref{eq:abs-cont-p-q}) can be rewritten as an intuitive
+\eqref{eq:abs-cont-p-q} can be rewritten as an intuitive
 ``change of measures'' formula
 
 \begin{equation*} \tag{6}\label{eq:abs-cont-change-var}
@@ -591,7 +595,7 @@ $\mathbf{E}_{Q}(Z\mathbf{1}_E)$, the relation
 \begin{xexercise}
 Prove that if $P<<Q$ are two probability measures on
 a measurable space $(\Omega, \mathcal{F})$ then
-(\ref{eq:abs-cont-change-var}) generalizes to the identity
+\eqref{eq:abs-cont-change-var} generalizes to the identity
 
 \[
 \int_E X dP = \int_E X \frac{dP}{dQ} dQ
@@ -865,19 +869,20 @@ then
 $X$ is a ``simple'' random variable (a linear
 combination of finitely many indicator variables,
 i.e., a random variable taking finitely many values)
-then (\ref{eq:condexp-x-times-y}) still holds. Now, assume
+then \eqref{eq:condexp-x-times-y} still holds. Now, assume
 that $X,Y\ge 0$, then we can take a sequence
 $(X_n)_{n=1}^\infty$ of simple random variables that
 are $\mathcal{G}$-measurable and such that
 $X_n\uparrow X$. By the monotone converegence
-theorem, it follows that (\ref{eq:condexp-x-times-y})
+theorem, it follows that \eqref{eq:condexp-x-times-y}
 holds also in this case. Finally, for general $X,Y$
-one proves (\ref{eq:condexp-x-times-y}) by splitting $X$
+one proves \eqref{eq:condexp-x-times-y} by splitting $X$
 and $Y$ into their positive and negative parts.
 \end{proof}
 \end{enumerate}
 
 \section{Conditional expectation as the least mean square error estimator}
+
 In this section we show that the conditional
 expectation is actually the solution to a very natural
 estimation problem. Let $X$ be a random variable with
@@ -983,6 +988,7 @@ such an approach is developed.
 \chapter{Martingales}
 
 \section{Definition and examples}
+
 We are ready to start studying the processes known as
 martingales, which generalize the ``balancing''
 property exhibited by the fraction of white balls in
@@ -1288,6 +1294,7 @@ supermartingale.
 \end{cor}
 
 \section{The martingale transform and investment strategies}
+
 Let $(\mathcal{G}_n)_{n=0}^\infty$ be a filtration.
 Assume that we are given a sequence
 $(X_n)_{n=0}^\infty$ that is adapted to the
@@ -1413,6 +1420,7 @@ martingale) gives a supermartingale.
 \end{proof}
 
 \section{The upcrossing inequality}
+
 An essential step on the way to the martingale
 convergence theorem is an inequality bounding the
 expected number of times a submartingale may cross
@@ -1494,6 +1502,7 @@ $\mathbf{E}((1-H)\bullet Y)_n\ge 0$, so we have
 \end{proof}
 
 \section{The martingale convergence theorem}
+
 With the help of the upcrossing inequality we can
 prove:
 
@@ -1589,6 +1598,7 @@ satisfies $\mathbf{E} X \le \mathbf{E} X_0$.
 \end{cor}
 
 \section{$L_p$ spaces and modes of convergence}
+
 In this section we summarize some facts about the
 $L_p$ spaces (which are function spaces that play a
 central role in many parts of mathematical analysis
@@ -1768,6 +1778,7 @@ uniform integrability).
 \end{thm}
 
 \section{Martingale convergence in $L_p$}
+
 In certain applications a martingale may not be
 bounded but can still be shown to converge based on
 boundedness in $L_p$ and similar conditions. The
@@ -1884,7 +1895,7 @@ $\textbf{Lévy's 0-1 law}$.)
 \end{thm}
 
 \begin{xexercise}
-Use (\ref{eq:levy-zero-one}) to give a new proof of
+Use \eqref{eq:levy-zero-one} to give a new proof of
 Kolmogorov's 0-1 law, which we learned about in the
 previous quarter.
 \end{xexercise}
@@ -1892,6 +1903,7 @@ previous quarter.
 \chapter{Applications of martingale theory}
 
 \section{Pólya's urn}
+
 We now revisit the P\'olya urn experiment discussed
 in Chapter 1 in which we start with $a$ white balls
 and $b$ black balls, and repeatedly sample balls at
@@ -1913,6 +1925,7 @@ follows that $M$ is distributed according to a beta
 distribution $\operatorname{Beta}(a,b)$.
 
 \section{Recurrence of simple random walk on $\mathbb{Z}$}
+
 Let $S_n = \sum_{k=1}^n X_k$ denote the simple random
 walk on $\Z$; i.e., $S_0=0$ and $(X_n)_{n=1}^\infty$
 are i.i.d.\ with
@@ -1962,6 +1975,7 @@ therefore an example of a martingale that converges
 almost surely, but not in $L_1$.
 
 \section{Branching processes and the Galton-Watson tree}
+
 The $\textbf{Galton-Watson tree}$, or
 $\textbf{Galton-Watson process}$, (named after the
 19th century statistics pioneers Francis Galton and
@@ -2189,6 +2203,7 @@ $L=\rho$ exactly, since we have
 \end{proof}
 
 \section{The Black-Scholes formula}
+
 In the financial markets, an $\textbf{option}$ is a
 contract giving its holder the right to buy or sell an
 asset from the issuer of the option for a specified
@@ -2292,10 +2307,10 @@ denotes the number of bond investment units held
 between time $n$ and $n+1$. Denote
 $X_n = A_n S_n + V_n B_n$. This represents the value
 of the investment account at time $n$. The relation
-(\ref{eq:investment-strategy-initial}) means that the
+\eqref{eq:investment-strategy-initial} means that the
 initial value $X_0$ of the investment account is $x$
 units of currency, and
-(\ref{eq:investment-strategy-rebalance}) represents the
+\eqref{eq:investment-strategy-rebalance} represents the
 fact that immediately after time $n$ the investor
 rebalances the investment portfolio, changing the
 mixture of bonds and stocks but keeping the same
@@ -2376,7 +2391,7 @@ prefer? What would be your criterion for deciding if
 the number $150$ were replaced with any other number
 higher than $100$?)
 
-Equation (\ref{eq:discrete-black-scholes}) is our
+Equation \eqref{eq:discrete-black-scholes} is our
 discrete version of the Black-Scholes formula, but the
 reasoning that lead us to it is a bit shaky, and can
 be strengthened in the following way. Assume that a
@@ -2388,7 +2403,7 @@ portfolio of stocks and bonds. Formally, a \textbf{hedging
 strategy with initial value $x$} is a pair of
 processes $(A_n,V_n)_{n=0}^N$ which is an investment
 strategy in the sense defined above, with an initial
-value $x$ as in (\ref{eq:investment-strategy-initial}),
+value $x$ as in \eqref{eq:investment-strategy-initial},
 and such that in addition we have the properties
 
 \begin{align*}
@@ -2431,7 +2446,7 @@ Assume that there is a hedging strategy with initial
 value $x$. Let $Y_n = (1+r)^{-n} X_n$ (the discounted
 value of $X_n$ at time $0$). The proof will depend on
 showing that $(Y_n)_n$ is a martingale. To see this,
-note that from (\ref{eq:investment-strategy-rebalance}) we
+note that from \eqref{eq:investment-strategy-rebalance} we
 have that
 
 \begin{align*}
@@ -2474,7 +2489,7 @@ definition of a hedging strategy) that
 x = Y_0 = \mathbf{E}(Y_0) = \mathbf{E}(Y_N) = (1+r)^{-N} \mathbf{E}(X_N) = (1+r)^{-N} \mathbf{E}(S_N-K)_+,
 \]
 
-\noindent proving (\ref{eq:hedging-strategy-condition}). This
+\noindent proving \eqref{eq:hedging-strategy-condition}. This
 completes the ``only if'' part of the proof.
 
 Conversely, assume that
@@ -2514,7 +2529,7 @@ $V_n = (X_{n-1}-A_n S_{n-1})/B_{n-1}$. Then
 $X_n\ge 0$, $(A_n)_n$ and $(V_n)_n$ are predictable
 sequences, and the above computations can be read in
 reverse to show that
-(\ref{eq:investment-strategy-rebalance}) is satisfied,
+\eqref{eq:investment-strategy-rebalance} is satisfied,
 i.e., the sequences $(A_n, V_n)_n$ represent a valid
 hedging strategy.
 \end{proof}
@@ -2530,7 +2545,7 @@ involve investing negative amounts of money (which
 would correspond to ``shorting'' stocks or issuing
 bonds).
 
-\item The formula (\ref{eq:discrete-black-scholes}) is written
+\item The formula \eqref{eq:discrete-black-scholes} is written
 in a form that is not very explicit, as it requires
 computing a messy average for a multiplicative random
 walk. In the ``real'' Black-Scholes formula, where the
@@ -2546,6 +2561,7 @@ Wikipedia will make you wish you didn't.
 \end{enumerate}
 
 \chapter{Dynamical systems}
+
 Ergodic theory is a mathematical theory that evolved
 out of the study of global properties of dynamical
 systems. Here, we speak loosely of a
@@ -2785,6 +2801,7 @@ generalization of the strong law of large numbers.
 \chapter{Measure preserving systems}
 
 \section{Measure preserving systems}
+
 In the previous section we cheated a little bit by
 considering dynamical systems without an underlying
 measurable structure or notion of measure (in fact,
@@ -2812,7 +2829,7 @@ probability measure $\mathrm{P}$ is \textbf{invariant under
 $T$}.
 \end{defn}
 
-\noindent The condition (\ref{eq:measure-pres}) is sometimes
+\noindent The condition \eqref{eq:measure-pres} is sometimes
 written in the form
 $\mathrm{P}=\mathrm{P}\circ T^{-1}$. This can be
 interpreted as the statement that the push-forward of
@@ -2848,6 +2865,7 @@ of the next section.
 
 \section{Stationary sequences}
 \label{sec-stationary}
+
 Let $(X_n)_{n=1}^\infty$ be a sequence of random
 variables. The sequence is called
 $\textbf{stationary}$ if for any $n,m\ge 1$, we have
@@ -2933,7 +2951,7 @@ $(X_n)_{n=1}^\infty$.
 \noindent What about a two-sided shift map? One can consider a
 two-sided infinite sequence
 $(X_n)_{n=-\infty}^\infty$, and say that it is
-stationary if the equation (\ref{eq:def-stationary}) holds
+stationary if the equation \eqref{eq:def-stationary} holds
 for any $m\ge1$ and $n\in\Z$. One may associate with
 such a stationary sequence the
 $\textbf{two-sided shift dynamics}$, which is the
@@ -2975,7 +2993,7 @@ measure theory that enables one to construct measures
 on infinite product spaces with prescribed
 finite-dimensional marginals (see [Dur2010], section
 A.3). Here, the stationarity condition
-(\ref{eq:def-stationary}) determines the joint
+\eqref{eq:def-stationary} determines the joint
 $m$-dimensional distribution of any block
 $(Y_n,\ldots,Y_{n+m-1})$ of $m$ successive random
 variables in the sequence, where $m\ge1$ and $n\in\Z$.
@@ -3074,7 +3092,7 @@ only dependent on the value of the last observed
 variable $X_n$; this property is known as the
 $\textbf{Markov property}$. In most cases the chain
 is also assumed to be $\textbf{time-homogoneous}$,
-meaning that the expression in (\ref{eq:markov-property})
+meaning that the expression in \eqref{eq:markov-property}
 is independent of $n$. In this case, if we denote
 
 \[
@@ -3589,6 +3607,7 @@ Prove \hyperref[lem-logistic-invariant]{Lemma~\ref*{lem-logistic-invariant}}
 \end{enumerate}
 
 \section{Ergodicity}
+
 Let $(\Omega, \mathcal{F}, \mathrm{P}, T)$ be a
 measure preserving system. An event $A\in\mathcal{F}$
 is called \textbf{$T$-invariant} (or \textbf{invariant under $T$},
@@ -3733,7 +3752,7 @@ Let $(X_n)_n$ be a stationary sequence whose
 associated shift system is ergodic (such a sequence is
 called simply a
 $\textbf{stationary ergodic sequence}$), and let $Y_n$
-be defined as in (\ref{eq:shift-equivariant}).
+be defined as in \eqref{eq:shift-equivariant}.
 
 \begin{lem}
 The stationary sequence $(Y_n)_n$ is also ergodic.
@@ -3808,9 +3827,9 @@ is known.
 \end{xexercise}
 
 \item $\textbf{Pólya's urn.}$ The limiting fraction $Y$ of
-white balls in the urn (see (\ref{eq:polya-as-conv})) is
+white balls in the urn (see \eqref{eq:polya-as-conv}) is
 an invariant random variable. By
-(\ref{eq:polya-beta-dist}), it is non-constant, which
+\eqref{eq:polya-beta-dist}, it is non-constant, which
 shows that the shift associated  with the stationary
 sequence of indicators $(I_n)_n$ in Pólya's urn
 experiment is not ergodic.
@@ -3821,7 +3840,7 @@ case of the ``tossing a randomly chosen coin'' family
 of examples discussed above. In fact, the ``random
 coin bias'' $U$ is equal to the limiting fraction $Y$
 of white balls in the urn. To see this, note that by a
-short computation (\ref{eq:polyaurn-formula}) can be
+short computation \eqref{eq:polyaurn-formula} can be
 massaged into the form
 
 \[
@@ -3981,6 +4000,7 @@ for Markov maps of the interval}, by R.\ Bowen
 \chapter{Ergodic theorems}
 
 \section{Von Neumann's $L_2$ ergodic theorem}
+
 Our first ergodic theorem is von Neumann's ergodic
 theorem, which in fact is a result in operator theory
 that has a nice interpretation for our problem of the
@@ -4012,7 +4032,7 @@ V&=\operatorname{Ker}(U-I) = \{ v\in H\,:\, Uv=v \}, \\
 V'&=\operatorname{Range}(U-I) = \{ Uw-w \,:\, w\in H \}.
 \end{align*}
 
-\noindent Note that (\ref{eq:vonneumann}) holds trivially for
+\noindent Note that \eqref{eq:vonneumann} holds trivially for
 $v\in V$. For a different reason, we also show that
 it holds for $v\in V'$: if $v=Uw-w$ then we have
 
@@ -4032,7 +4052,7 @@ then
 \noindent hence $\langle Uw-w,z\rangle = 0$.
 
 Combining the above observations we see that
-(\ref{eq:vonneumann}) holds for $v\in V+V'$. Next, we
+\eqref{eq:vonneumann} holds for $v\in V+V'$. Next, we
 claim that it also holds for $v\in \overline{V+V'}$,
 the norm closure of $V+V'$. Indeed, if
 $v\in \overline{V+V'}$ then for an arbitrary
@@ -4055,7 +4075,7 @@ $\limsup_{n\to\infty} \left\lVert
 \left(\frac{1}{n}\sum_{k=0}^{n-1} U^k-P\right)v
 \right\rVert < \epsilon$,
 and since $\epsilon$ was an arbitrary positive number
-we get (\ref{eq:vonneumann}).
+we get \eqref{eq:vonneumann}.
 
 Finally, we claim that $H=\overline{V+V'}$. Since
 $\overline{V+V'}$ is a \emph{closed} subspace of $H$, we
@@ -4136,6 +4156,7 @@ $X\in L_2(\Omega, \mathcal{F}, \mathrm{P})$, we have
 \end{thm}
 
 \section{Birkhoff's pointwise ergodic theorem}
+
 We will now prove \emph{the} fundamental result of ergodic
 theory, known alternately as
 $\textbf{Birkhoff's pointwise ergodic theorem}$;
@@ -4299,13 +4320,14 @@ A&=\{\limsup_{n\to\infty} S_n/n>\epsilon\} \subseteq A \cap \{ S_n>n\epsilon \te
 \end{proof}
 
 \section{The $L_1$ ergodic theorem}
+
 A trivial addendum to the previous proof shows that
 we also get $L_1$ convergence of the ergodic
 averages.
 
 \begin{thm}[$L_1$ ergodic theorem]
-The convergence in (\ref{eq:birkhoffergodic1}),
-(\ref{eq:birkhoffergodic2}) is also in $L_1$.
+The convergence in \eqref{eq:birkhoffergodic1},
+\eqref{eq:birkhoffergodic2} is also in $L_1$.
 \end{thm}
 
 \begin{proof}
@@ -4334,7 +4356,7 @@ theorem implies also convergence in $L_1$, i.e.,
 \mathbf{E} \left| \mathbf{E}\left(Z_M\,|\,\mathcal{I}\right) \right| \le \mathbf{E} \mathbf{E}\left(|Z_M|\,|\,\mathcal{I}\right) = \mathbf{E}|Z_M|,
 \end{align*}
 
-\noindent so, combining this with (\ref{eq:ergodic-trunc-l1}), this
+\noindent so, combining this with \eqref{eq:ergodic-trunc-l1}, this
 shows that almost surely
 
 \[
@@ -4349,11 +4371,12 @@ dominated convergence theorem.
 
 \begin{xexercise}
 Prove that if $X$ is in $L_p$ for some $p>1$ then the
-convergence in (\ref{eq:birkhoffergodic1})  is also in the
+convergence in \eqref{eq:birkhoffergodic1}  is also in the
 $L_p$ norm.
 \end{xexercise}
 
 \section{Consequences of the ergodic theorem}
+
 In probability theory and many related fields, the
 ergodic theorem is an essential tool that is used
 frequently in concrete situations. Here are some of
@@ -4594,7 +4617,7 @@ surely with respect to Lebesgue measure, since
 $\gamma$ and Lebesgue are mutually absolutely
 continuous with respect to each other). Thus, the
 formula on the right-hand side of
-(\ref{eq:gauss-quotient}) (which is oddly reminiscent of
+\eqref{eq:gauss-quotient} (which is oddly reminiscent of
 Benford's law, though they are not related) represents
 the limiting distribution of the first quotient of a
 random number. For example, the frequency of
@@ -4704,10 +4727,10 @@ $\operatorname{Leb}(\cdot)$ denotes Lebesgue measure
 Gauss measure is used instead).
 \end{thm}
 
-\noindent Note that (\ref{eq:cont-frac-entropy2}) and
-(\ref{eq:cont-frac-entropy3}) follow easily by combining
-(\ref{eq:cont-frac-entropy1}) with
-(\ref{eq:cont-frac-approx}). The interesting constant
+\noindent Note that \eqref{eq:cont-frac-entropy2} and
+\eqref{eq:cont-frac-entropy3} follow easily by combining
+\eqref{eq:cont-frac-entropy1} with
+\eqref{eq:cont-frac-approx}. The interesting constant
 $\frac{\pi^2}{6\log 2}$ is sometimes referred to as
 the
 $\textbf{entropy constant of the continued fraction
@@ -4717,6 +4740,7 @@ map}$.
 \chapter{Entropy and information theory}
 
 \section{Entropy and its basic properties}
+
 In this chapter we give an introduction to
 $\textbf{information theory}$, a beautiful theory at
 the intersection of ergodic theory, probability,
@@ -4886,6 +4910,7 @@ Prove \hyperref[lem-entropy-properties]{Lemma~\ref*{lem-entropy-properties}}.
 \end{xexercise}
 
 \section{The noiseless coding theorem}
+
 Our first interpretation of the entropy function will
 be in terms of the problem of
 $\textbf{noiseless coding}$. Recall that the
@@ -5148,6 +5173,7 @@ replaced by a prefix code with the same word lengths.
 \end{xexercise}
 
 \section{The asymptotic equipartition property}
+
 A related way of thinking about entropy is in terms
 of data compression: given a string of source symbols
 of length $n$ (which could itself be a binary string
@@ -5248,7 +5274,7 @@ $E = A^N\setminus T$.
 
 We now claim that $T$ and $E$ satisfy the properties
 in the theorem. Property 1 holds automatically by
-(\ref{eq:aep-typicalevent}). For property 2, observe that
+\eqref{eq:aep-typicalevent}. For property 2, observe that
 if
 $(x_1,\ldots,x_N)=(\alpha_{j_1},\ldots,\alpha_{j_N})\in
 T$
@@ -5269,12 +5295,12 @@ N\left(H(\mathbf{p}) - \epsilon\right) \le
 
 \noindent But $\prod_{n=1}^N p_{j_n}$ is exactly
 $\mathrm{P}((X_1,\ldots,X_N)=(x_1,\ldots,x_N))$, so
-we get (\ref{eq:aep-prob-bound}). On the other hand, the
+we get \eqref{eq:aep-prob-bound}. On the other hand, the
 total probability of observing \emph{any} typical sequence
 is $\mathrm{P}(B)$, which is bounded between
 $1-\epsilon$ and $1$ (hence, between $1/2$ and $1$,
 if we assume $\epsilon<1/2$). This implies
-(\ref{eq:aep-numtypical}).
+\eqref{eq:aep-numtypical}.
 \end{proof}
 
 \noindent The implication of the theorem is that since the
@@ -5294,6 +5320,7 @@ noiseless coding theorem.
 \end{xexercise}
 
 \section{Ergodic sources and the Shannon-McMillan-Breiman theorem}
+
 We are now ready to discuss the situation for a
 general stationary ergodic source $X_1,X_2,\ldots$.
 It turns out that a version of the asymptotic
@@ -5352,7 +5379,7 @@ $H(X\,|\,Y,Z) \le H(X\,|\,Z)$ if $Z$ is another
 random variable, and explain why this implies \texorpdfstring{\hyperref[lem-entropy-ergodic]{Lemma~\ref*{lem-entropy-ergodic}}}{Lemma}.
 \end{xexercise}
 
-\noindent We refer to $H$ in (\ref{eq:entropy-ergodic}) as \textbf{the
+\noindent We refer to $H$ in \eqref{eq:entropy-ergodic} as \textbf{the
 entropy of the source $(X_n)_{n=1}^\infty$}. There is
 an equivalent way to define it which is also
 interesting. Since $H_n\to H$, the Ces\`aro averages
@@ -5417,7 +5444,7 @@ $\mathrm{P}(n^{-1} \log Z_n \ge \epsilon \
 \textrm{i.o.}) = 0$.
 This is true for any $\epsilon>0$, so taking a union
 of these events over $\epsilon=1/k, k=1,2,\ldots$
-gives (\ref{eq:aep-lemma}).
+gives \eqref{eq:aep-lemma}.
 \end{proof}
 
 \begin{proof}[Proof of \texorpdfstring{\hyperref[thm-shannon-mcmillan-breiman]{Theorem~\ref*{thm-shannon-mcmillan-breiman}}}{Theorem}]
@@ -5475,7 +5502,7 @@ H = -\mathbf{E} \log_2 p(X_0\,|\,\mathcal{G}_{-\infty}^{-1}),
 \end{equation*}
 
 \noindent where we adopt the notation (in the same vein as
-(\ref{eq:psymbols1}) and (\ref{eq:psymbols2}))
+\eqref{eq:psymbols1} and \eqref{eq:psymbols2})
 
 \begin{equation*} \tag{37}\label{eq:psymbols-generalized}
 p(x\,|\,\mathcal{G}_s^t) = \mathrm{P}\left(X_{t+1}=x\,|\,\mathcal{G}_s^t\right).
@@ -5488,7 +5515,7 @@ p(X_0\,|\,\mathcal{G}_{-\infty}^{-1}) = \sum_{j=1}^d \mathbf{1}_{\{X_0=\alpha_j\
 \]
 
 \noindent and use this to write the right-hand side of
-(\ref{eq:entropy-simpler}) as
+\eqref{eq:entropy-simpler} as
 
 \begin{align*}
 -\mathbf{E} \log_2 p(X_0\,|\,\mathcal{G}_{-\infty}^{-1})
@@ -5509,10 +5536,10 @@ p(\alpha_j\,|\,\mathcal{G}_{-\infty}^{-1})
 \end{align*}
 
 \noindent which is the same as the right-hand side of
-(\ref{eq:entropy-newformula}).
+\eqref{eq:entropy-newformula}.
 
 Having derived the representation
-(\ref{eq:entropy-simpler}) for the source entropy, we now
+\eqref{eq:entropy-simpler} for the source entropy, we now
 apply another piece of heavy machinery, the ergodic
 theorem, which implies that
 
@@ -5530,7 +5557,7 @@ that this ergodic average can be rewritten in the form
 \noindent (where the notation
 $p(x_0,\ldots,x_{n-1}\,|\,\mathcal{G}_s^t)$ is
 defined as an obvious generalization of
-(\ref{eq:psymbols-generalized})). So we conclude that
+\eqref{eq:psymbols-generalized}). So we conclude that
 
 \[
 -\frac{1}{n} \log_2 p(X_0,\ldots,X_{n-1}\,|\,\mathcal{G}_{-\infty}^{-1})
@@ -5538,7 +5565,7 @@ defined as an obvious generalization of
 \]
 
 \noindent This fact bears some resemblance to the claim
-(\ref{eq:shannon-mcmillan-breiman}) that we are trying to
+\eqref{eq:shannon-mcmillan-breiman} that we are trying to
 prove, and indeed, we can deduce ``half'' of our
 result from it --- a one-sided asymptotic bound ---
 using \hyperref[lem-aep-lemma]{Lemma~\ref*{lem-aep-lemma}}, as follows. Define a
@@ -5592,8 +5619,8 @@ the inequality
 \end{equation*}
 
 \noindent holds. Since $H_k \searrow H$, the inequalities
-(\ref{eq:smb-first-half}) and (\ref{eq:smb-second-half})
-together imply (\ref{eq:shannon-mcmillan-breiman}). To
+\eqref{eq:smb-first-half} and \eqref{eq:smb-second-half}
+together imply \eqref{eq:shannon-mcmillan-breiman}. To
 this end, for each $k\ge 1$ we define the ``$k$th
 order Markov approximation'' to the function
 $p(x_1\ldots,x_n)$ by
@@ -5618,7 +5645,7 @@ known as a $\textbf{Markov chain of order$k$}$ or
 $\textbf{Markov chain with memory$k$}$.
 
 Now observe that we have an expansion analogous to
-(\ref{eq:aep-ergodic-average1}), namely
+\eqref{eq:aep-ergodic-average1}, namely
 
 \[
 -\frac{1}{n} \log_2 p_k(X_0,\ldots,X_{n-1}) = -\frac{1}{n} \log_2 p(X_0,\ldots,X_{k-1}) - \frac{1}{n} \sum_{j=k}^{n-1} \log_2 p(X_j\,|\,X_{j-k},\ldots,X_{j-1}).
@@ -5632,12 +5659,12 @@ theorem, we deduce that
 \]
 
 \noindent This again bears a resemblance to
-(\ref{eq:shannon-mcmillan-breiman}), and we can relate the
+\eqref{eq:shannon-mcmillan-breiman}, and we can relate the
 two using the lemma. Define a sequence
 $(Y_n)_{n=k}^\infty$ of random variables by
 $Y_n =
 \frac{p_k(X_0,\ldots,X_{n-1})}{p(X_0,\ldots,X_{n-1})}$.
-A short computation similar to (\ref{eq:aep-expec1}),
+A short computation similar to \eqref{eq:aep-expec1},
 which we leave to the reader to verify, shows that
 $\mathbf{E}(Y_n) \le 1$ for all $n\ge k$, so from
 \hyperref[lem-aep-lemma]{Lemma~\ref*{lem-aep-lemma}} we get that almost surely,
@@ -5650,7 +5677,7 @@ $\mathbf{E}(Y_n) \le 1$ for all $n\ge k$, so from
 -H_k + \limsup_{n\to\infty} \left(- \frac{1}{n}\log_2 p(X_0,\ldots,X_{n-1}) \right),
 \end{align*}
 
-\noindent which proves (\ref{eq:smb-second-half}) and thus finishes
+\noindent which proves \eqref{eq:smb-second-half} and thus finishes
 the proof.
 \end{proof}
 

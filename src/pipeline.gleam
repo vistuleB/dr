@@ -295,6 +295,11 @@ pub fn pipeline(
       )),
       dl.set_handle_value(#("Footnote", "::øøFootnoteCounter", infra.GoBack)),
       dl.dr_create_index(),
+      // insert the Document's optional `cover` image into the Index page,
+      // between the title header and the table of contents (no-op when the
+      // Document has no `cover` attribute; a bare filename resolves against
+      // `figures/`)
+      dl.dr_insert_cover_image(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
         #("SectionTitle", "::øøChapterCounter.::øøSectionCounter "),

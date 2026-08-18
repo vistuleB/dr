@@ -36,6 +36,9 @@ type DocumentInfo {
     institution: String,
     lecturer: String,
     date: String,
+    // optional cover image, shown between the title and the TOC; a bare
+    // filename resolves against the `figures/` directory
+    cover: Option(String),
   )
 }
 
@@ -931,6 +934,33 @@ fn build_ctx(root: VXML) -> Ctx {
   Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
 }
 
+// Resolve a `cover` attribute value into an `\includegraphics` path: a bare
+// filename defaults to the `figures/` directory (matching the HTML side's
+// `dr_insert_cover_image`), while a value that already carries a path or URL
+// (contains a `/`) is used verbatim.
+fn resolve_cover_src(cover: String) -> String {
+  case string.contains(cover, "/") {
+    True -> cover
+    False -> "figures/" <> cover
+  }
+}
+
+// The optional cover image, shown centered between the title and the TOC. Uses
+// the `\fitwidth` macro (defined in the preamble) so an over-wide image is
+// scaled down to `\linewidth` but a narrower one keeps its natural size.
+// Returns the empty string for a Document without a cover.
+fn cover_latex(di: DocumentInfo) -> String {
+  case di.cover {
+    None -> ""
+    Some(cover) ->
+      "\\begin{center}\n"
+      <> "\\fitwidth{\\includegraphics{"
+      <> resolve_cover_src(cover)
+      <> "}}\n"
+      <> "\\end{center}\n\n"
+  }
+}
+
 // Wrap a document body in the preamble, `\begin{document}`, title, contents and
 // `\end{document}`. Used for both the single monolithic file and the modular
 // `main.tex` (whose body is a list of `\input{…}` lines).
@@ -941,6 +971,8 @@ fn wrap_document(di: DocumentInfo, body: String) -> String {
     // entry for the table of contents itself (which \tableofcontents does not
     // bookmark on its own), pointing at the TOC page.
     <> "\n\\begin{document}\n\\maketitle\n"
+    // optional cover image, between the title and the table of contents
+    <> cover_latex(di)
     <> "\\pdfbookmark[0]{Contents}{toc}\n"
     <> "\\tableofcontents\n\n"
     <> body
@@ -1290,6 +1322,9 @@ pub fn render(
           institution: attr("institution", ""),
           lecturer: attr("lecturer", ""),
           date: attr("date", ""),
+          // optional: absent for courses without a cover image
+          cover: infra.v_first_attr_with_key(parsed, "cover")
+            |> option.map(fn(a) { a.val }),
         )
       let output_dir =
         "./" <> course_dir <> "/" <> output_dir_local_path <> "/"

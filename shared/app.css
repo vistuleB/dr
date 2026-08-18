@@ -655,6 +655,15 @@ g[id^="mjx-eqn:eq:"] {
     max-width: 32rem;
 }
 
+/* Optional cover image, sitting between the title header and the toc. Only
+   documents whose Document node carries a `cover` attribute emit one. */
+.index__cover {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: var(--space-xl) auto var(--space-lg);
+}
+
 /* Three levels deep: chapter → section → subsection. Every level is a
    two-column grid with the number hanging in the left column, so the titles
    line up on a single axis regardless of depth. */

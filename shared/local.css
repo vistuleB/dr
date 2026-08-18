@@ -97,6 +97,15 @@ figure:hover:has(> .t-3003) img {
   background-color: #bfb;
 }
 
+/* display-math tooltips: the tooltip is absolutely positioned, so the block
+   must be its positioning context. dr's app.css `.math-block` is not
+   positioned (unlike courses'), so establish it here — author-mode only, and
+   harmless to layout since there are no offsets. Without this the tooltip
+   escapes to a distant ancestor and never appears above the block. */
+.math-block {
+  position: relative;
+}
+
 /* display-math tooltips: reveal on math-block hover, tint the block */
 .math-block:hover > .t-3003 {
   display: block;

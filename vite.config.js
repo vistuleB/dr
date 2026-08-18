@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import fs from "node:fs";
+import { exec } from "child_process";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -112,6 +113,56 @@ export default defineConfig(({ mode }) => {
               `  \x1b[32m➜\x1b[0m  \x1b[1mServing:\x1b[0m \x1b[36m${rootPath}\x1b[0m`,
             );
             _print();
+          };
+        },
+      },
+      {
+        // Author-mode (`--local`) source-linking tooltips POST here; each
+        // `cmd` is validated against ALLOWED_COMMANDS before being executed,
+        // so only `open <safe-path>` and `code --goto <path:line:col>` run.
+        name: name,
+        configureServer(server) {
+          return () => {
+            server.middlewares.use((req, res, next) => {
+              if (req.url !== "/log-event" || req.method !== "POST") {
+                return next();
+              }
+
+              let body = "";
+              req.on("data", (chunk) => (body += chunk));
+              req.on("end", () => {
+                try {
+                  const { cmd } = JSON.parse(body);
+                  console.log(`${name} received '${cmd}'`);
+
+                  // Validate and sanitize the command
+                  const sanitizedCmd = validateAndSanitizeCommand(cmd);
+
+                  if (!sanitizedCmd) {
+                    console.error(`${name} rejected command: ${cmd}`);
+                    res.writeHead(403, { "Content-Type": "application/json" });
+                    res.end(
+                      JSON.stringify({
+                        success: false,
+                        error: "Command not allowed",
+                      }),
+                    );
+                    return;
+                  }
+
+                  // Execute only the sanitized command
+                  exec(sanitizedCmd, { cwd: process.cwd() }, (error) => {
+                    if (error) console.error(`${name} error: ${error.message}`);
+                  });
+                  res.writeHead(200, { "Content-Type": "application/json" });
+                  res.end(JSON.stringify({ success: true }));
+                } catch (e) {
+                  console.error(`${name} parse error:`, e);
+                  res.writeHead(400);
+                  res.end();
+                }
+              });
+            });
           };
         },
       },

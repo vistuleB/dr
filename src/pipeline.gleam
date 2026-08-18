@@ -1,5 +1,6 @@
 import vxml/blame as bl
 import desugaring/desugarers as dl
+import desugaring as ds
 import formatter_pipeline
 import gleam/list
 import gleam/string
@@ -53,7 +54,11 @@ const p_cannot_be_contained_in = [
   "p",
 ]
 
-pub fn pipeline(course: String) -> List(infra.Desugarer) {
+pub fn pipeline(
+  course: String,
+  parameters: ds.RendererParameters,
+  author_mode: Bool,
+) -> List(infra.Desugarer) {
   let pre_transformation_document_tags = [
     "Bibliography",
     "BibliographyTitle",
@@ -412,6 +417,30 @@ pub fn pipeline(course: String) -> List(infra.Desugarer) {
       // NOT escapable: browser-side MathJax re-scans the page, so a bare
       // "$" in prose would open math -- "\$" has to survive to the output.
       dl.unescape_delimiters__outside(["_", "*"], ["Math", "MathBlock"]),
+    ],
+    // author-mode source-linking tooltips (only with `--local`): every
+    // source line, every inline `Math`, every display `MathBlock`, and every
+    // `img` is wrapped/adorned with a `t-3003`/`t-3003-c` span carrying its
+    // `path:line:col`, which `local.css` styles as a hover tooltip and
+    // `app.js` wires to the local dev server (`/log-event`) for click-to-open.
+    // Must run while `Math`/`MathBlock` are still V-nodes, i.e. before the
+    // `fold_contents_into_text("Math")` + final rename below. `Navigation` and
+    // `Index` are skipped so the auto-generated menu/TOC don't sprout tooltips.
+    case author_mode {
+      False -> []
+      True -> [
+        dl.ti2_turn_lines_into_3003_spans(parameters.input_dir, [
+          "Math",
+          "MathBlock",
+          "Navigation",
+          "Index",
+        ]),
+        dl.ti2_adorn_img_with_3003_spans(parameters.output_dir, []),
+        dl.ti2_adorn_with_3003_spans(#(parameters.input_dir, "", ["MathBlock"])),
+        dl.ti2_wrap_with_3003_spans(#(parameters.input_dir, "", ["Math"])),
+      ]
+    },
+    [
       dl.fold_contents_into_text("Math"),
       dl.find_replace_if_has_ancestor_else(
         #(["Math", "MathBlock"], #("``", "“"), #("``", "\"")),

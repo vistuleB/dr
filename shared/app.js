@@ -187,3 +187,55 @@ const onKeyDown = (e) => {
 };
 
 document.addEventListener("keydown", onKeyDown);
+
+// ---------------------------------------------------------------------------
+// Author mode (`--local`): source-linking tooltips.
+//
+// The pipeline (gated on `author_mode`) injects `t-3003` spans that carry a
+// source `path:line:col`. `local.css` reveals them on hover; here we make them
+// clickable: a click POSTs to the dev server's `/log-event` endpoint (see
+// vite.config.js), which opens the file in the editor (`code --goto`) or the
+// underlying asset (`open`, for image `t-3003-i` tooltips). No `t-3003` spans
+// on the page means we are not in author mode, so this is a no-op for the
+// normal (non-`--local`) build, whose pages don't even load this behavior's
+// `local.css`.
+// ---------------------------------------------------------------------------
+const sendCmdTo3003 = (command) => {
+  const payload = { cmd: command };
+  const url =
+    window.location.protocol === "file:"
+      ? "http://localhost:3003/log-event"
+      : "/log-event";
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+};
+
+const authorModeInit = () => {
+  const tooltips = document.getElementsByClassName("t-3003");
+
+  if (tooltips.length <= 0) return; // no tooltips == not author mode
+
+  for (const t of tooltips) {
+    if (t.classList.contains("t-3003-i")) {
+      const urls = t.getElementsByClassName("t-3003-i-url");
+      for (const u of urls) {
+        u.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          sendCmdTo3003("open " + u.innerHTML);
+        });
+      }
+    } else {
+      t.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        sendCmdTo3003("code --goto " + t.innerHTML);
+      });
+    }
+  }
+};
+
+authorModeInit();

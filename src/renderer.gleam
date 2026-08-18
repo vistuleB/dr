@@ -983,7 +983,7 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       assembler: wd.default_writerly_assembler(_, options),
       parser: wd.default_writerly_parser,
       filterer: ds.default_filterer(_, options, []),
-      pipeline: pipeline.pipeline(course_dir),
+      pipeline: pipeline.pipeline(course_dir, parameters, author_mode),
       splitter: our_splitter,
       emitter: our_emitter(_, offline_mathjax, document_info, author_mode),
       writer: ds.default_writer,

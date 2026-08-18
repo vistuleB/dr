@@ -945,19 +945,26 @@ fn resolve_cover_src(cover: String) -> String {
   }
 }
 
-// The optional cover image, shown centered between the title and the TOC. Uses
-// the `\fitwidth` macro (defined in the preamble) so an over-wide image is
-// scaled down to `\linewidth` but a narrower one keeps its natural size.
-// Returns the empty string for a Document without a cover.
+// The optional cover image, shown on its own page between the title and the
+// TOC, centered both horizontally (`center`) and vertically (the `\vfill`
+// sandwich, anchored by `\null` so the leading fill is not discarded at the top
+// of the page). The `\fitwidth` macro (defined in the preamble) scales an
+// over-wide image down to `\linewidth` while leaving a narrower one at its
+// natural size. The trailing `\clearpage` flushes the cover page so the TOC
+// starts fresh. Returns the empty string for a Document without a cover.
 fn cover_latex(di: DocumentInfo) -> String {
   case di.cover {
     None -> ""
     Some(cover) ->
-      "\\begin{center}\n"
+      "\\clearpage\n"
+      <> "\\null\\vfill\n"
+      <> "\\begin{center}\n"
       <> "\\fitwidth{\\includegraphics{"
       <> resolve_cover_src(cover)
       <> "}}\n"
-      <> "\\end{center}\n\n"
+      <> "\\end{center}\n"
+      <> "\\vfill\n"
+      <> "\\clearpage\n\n"
   }
 }
 

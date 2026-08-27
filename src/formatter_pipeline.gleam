@@ -196,6 +196,7 @@ pub fn formatter_pipeline(
           })
         }),
       ),
+      dl.trim_empty_lines("MathBlock"),
       dl.group_consecutive_children__outside(
         #("p", p_cannot_contain),
         p_cannot_be_contained_in,

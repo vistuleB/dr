@@ -336,14 +336,14 @@ pub fn pipeline(
       // originator><>'(>>handle)'</></sup>`. FootnoteCounter itself is
       // incremented at the `Footnote` node above (prepend_counter_
       // incrementing_attribute), not here.
-      dl.footnote_marker_to_sup_handle("FootnoteCounter", [
+      dl.footnote_marker_to_sup_handle__outside("FootnoteCounter", [
         "MathBlock",
         "Math",
       ]),
     ],
     pp.markdown_link_splitting(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     [
-      dl.math_label_to_tag_handle(#("MathBlock", "::++EquationCounter")),
+      dl.math_label_with_handle_to_mathjax_tag(#("MathBlock", "::++EquationCounter")),
       dl.substitute_counters(),
       dl.handles_generate_v_definitions_from_t_definitions(),
       dl.dr_create_menu(),
@@ -374,8 +374,8 @@ pub fn pipeline(
         #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
       ]),
       dl.detokenize_href_surroundings(),
-      // pulls the literal parens the footnote_marker_to_sup_handle-
-      // produced `(>>handle)` text leaves outside the <a> (once
+      // pulls the literal parens that footnote_marker_to_sup_handle__outside
+      // produced as `(>>handle)` text leaves outside the <a> (once
       // handles_substitute turns it into `(<a href=...>N</a>)`) inside
       // the link, so the whole "(N)" is clickable, not just "N". Must
       // run after pp.create_math_elements above: rearrange_links does
@@ -429,13 +429,13 @@ pub fn pipeline(
     case author_mode {
       False -> []
       True -> [
-        dl.ti2_turn_lines_into_3003_spans(parameters.input_dir, [
+        dl.ti2_turn_lines_into_3003_spans__outside(parameters.input_dir, [
           "Math",
           "MathBlock",
           "Navigation",
           "Index",
         ]),
-        dl.ti2_adorn_img_with_3003_spans(parameters.output_dir, []),
+        dl.ti2_adorn_img_with_3003_spans(parameters.output_dir),
         dl.ti2_adorn_with_3003_spans(#(parameters.input_dir, "", ["MathBlock"])),
         dl.ti2_wrap_with_3003_spans(#(parameters.input_dir, "", ["Math"])),
       ]

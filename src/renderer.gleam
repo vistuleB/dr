@@ -794,31 +794,12 @@ fn our_emitter(
   }
 }
 
-fn cleanup_html_files(output_dir: String) -> Result(Nil, String) {
-  io.println("• rm " <> output_dir <> "/**.html")
+fn existing_html_artifacts(output_dir: String) -> List(String) {
   case simplifile.read_directory(output_dir) {
-    Ok(files) -> {
+    Ok(files) ->
       files
       |> list.filter(fn(file) { string.ends_with(file, ".html") })
-      |> list.map(fn(file) {
-        let file_path = output_dir <> "/" <> file
-        case simplifile.delete(file_path) {
-          Ok(_) -> Ok(Nil)
-          Error(error) -> {
-            io.println(
-              "Warning: Could not delete "
-              <> file_path
-              <> ": "
-              <> string.inspect(error),
-            )
-            Ok(Nil)
-            // continue even if some files can't be deleted
-          }
-        }
-      })
-      |> result.all
-      |> result.map(fn(_) { Nil })
-    }
+
     Error(error) -> {
       io.println(
         "Warning: Could not read output directory "
@@ -826,10 +807,36 @@ fn cleanup_html_files(output_dir: String) -> Result(Nil, String) {
         <> ": "
         <> string.inspect(error),
       )
-      Ok(Nil)
-      // continue even if directory can't be read
+      []
     }
   }
+}
+
+fn cleanup_stale_html_files(
+  output_dir: String,
+  existing_artifacts: List(String),
+  written_artifacts: List(String),
+) -> Nil {
+  let written_html =
+    written_artifacts
+    |> list.filter(fn(path) { string.ends_with(path, ".html") })
+  let stale_html =
+    existing_artifacts
+    |> list.filter(fn(path) { !list.contains(written_html, path) })
+
+  list.each(stale_html, fn(path) {
+    let full_path = output_dir <> "/" <> path
+    case simplifile.delete(full_path) {
+      Ok(_) -> io.println("deleted " <> full_path)
+      Error(error) ->
+        io.println(
+          "Warning: Could not delete "
+          <> full_path
+          <> ": "
+          <> string.inspect(error),
+        )
+    }
+  })
 }
 
 fn filename_shorthand_to_path_fragment(
@@ -991,14 +998,15 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
     )
     |> ds.amend_renderer_by_command_line_amendments(amendments)
 
-  // clean up HTML files before rendering
-  case cleanup_html_files(parameters.output_dir) {
-    Ok(_) -> Nil
-    Error(error) -> io.println("HTML cleanup failed: " <> error)
-  }
+  let existing_html = existing_html_artifacts(parameters.output_dir)
 
   case ds.run_renderer(renderer, parameters, options) {
     Error(error) -> io.println("\nrenderer error: " <> ins(error) <> "\n")
-    _ -> Nil
+    Ok(written_artifacts) ->
+      cleanup_stale_html_files(
+        parameters.output_dir,
+        existing_html,
+        written_artifacts,
+      )
   }
 }

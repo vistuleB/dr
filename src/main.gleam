@@ -1,12 +1,12 @@
 import argv
 import desugaring as ds
+import desugaring/core as infra
 import formatter_renderer
 import gleam/dict
 import gleam/io
 import gleam/list
 import gleam/option
 import gleam/string
-import desugaring/core as infra
 import latex_renderer
 import on
 import renderer
@@ -15,50 +15,57 @@ import simplifile
 const ins = string.inspect
 
 fn local_usage_message() {
-  let margin = "   "
-  io.println(margin <> "--fmt [<cols>] [<cols> <penalty>] [-file <name>]")
-  io.println(margin <> "  -> (local option) run the formatter")
-  io.println("")
-  io.println(margin <> "     optional arguments:")
-  io.println("")
-  io.println(margin <> "     • <cols>: preferred line length")
-  io.println(margin <> "     • <cols> <penalty>: preferred line")
-  io.println(margin <> "       length and indentation penalty (number")
-  io.println(margin <> "       of chars subtracted from line length at")
-  io.println(margin <> "       each added level of indentation in the file)")
-  io.println(margin <> "     • -file <name>: format only the given file")
-  io.println("")
-  io.println(margin <> "--latex-monolithic")
-  io.println(margin <> "  -> (local option) render wly -> a single self-contained")
-  io.println(margin <> "     LaTeX file <course dir>/latex/main.tex, compilable")
-  io.println(margin <> "     with pdflatex (clickable TOC + PDF outline)")
-  io.println("")
-  io.println(margin <> "--latex-chapters / --latex-sections / --latex-subsections")
-  io.println(margin <> "  -> modular LaTeX: a main.tex (title + TOC) that \\inputs")
-  io.println(margin <> "     one file per chapter (and, at finer granularities, per")
-  io.println(margin <> "     section / subsection) + one per standalone unit; compile")
-  io.println(margin <> "     <course dir>/latex/main.tex")
-  io.println("")
-  io.println(margin <> "--local")
-  io.println(margin <> "  -> include source-linking tooltips")
-  io.println(margin <> "     server !)")
-  io.println("")
-  io.println(margin <> "--offline-mathjax")
-  io.println(margin <> "  -> use local mathjax library instead of CDN url")
-  io.println("")
-  io.println(margin <> "--last-command")
-  io.println(margin <> "  -> run the same arguments as the previous command (from local")
-  io.println(margin <> "     .last-command file)")
-  io.println("")
-  io.println("...and don't forget to include '--which <course dir>' in")
-  io.println("order to specify which course you want to compile/run!")
-  io.println("")
-  io.println("                             ***")
-  io.println("")
-  io.println("Local server usage: use 'COURSE=<course dir> npm run dev' to")
-  io.println("serve book on localhost:3003, or prefix 'PORT=xxxx' argument")
-  io.println("to serve on  specific port! Enjoy!")
-  io.println("")
+  let margin = string.repeat(" ", ds.help_message_margin)
+  let message =
+    [
+      margin <> "--fmt [<cols>] [<cols> <penalty>] [-file <name>]",
+      margin <> "  -> (local option) run the formatter",
+      "",
+      margin <> "     optional arguments:",
+      "",
+      margin <> "     • <cols>: preferred line length",
+      margin <> "     • <cols> <penalty>: preferred line",
+      margin <> "       length and indentation penalty (number",
+      margin <> "       of chars subtracted from line length at",
+      margin <> "       each added level of indentation in the file)",
+      margin <> "     • -file <name>: format only the given file",
+      "",
+      margin <> "--latex-monolithic",
+      margin <> "  -> (local option) render wly -> a single self-contained",
+      margin <> "     LaTeX file <course dir>/latex/main.tex, compilable",
+      margin <> "     with pdflatex (clickable TOC + PDF outline)",
+      "",
+      margin <> "--latex-chapters / --latex-sections / --latex-subsections",
+      margin <> "  -> modular LaTeX: a main.tex (title + TOC) that \\inputs",
+      margin <> "     one file per chapter (and, at finer granularities, per",
+      margin <> "     section / subsection) + one per standalone unit; compile",
+      margin <> "     <course dir>/latex/main.tex",
+      "",
+      margin <> "--local",
+      margin <> "  -> include source-linking tooltips",
+      margin <> "     server !)",
+      "",
+      margin <> "--offline-mathjax",
+      margin <> "  -> use local mathjax library instead of CDN url",
+      "",
+      margin <> "--last-command",
+      margin
+        <> "  -> run the same arguments as the previous command (from local",
+      margin <> "     .last-command file)",
+      "",
+      "...and don't forget to include '--which <course dir>' in",
+      "order to specify which course you want to compile/run!",
+      "",
+      "                             ***",
+      "",
+      "Local server usage: use 'COURSE=<course dir> npm run dev' to",
+      "serve book on localhost:3003, or prefix 'PORT=xxxx' argument",
+      "to serve on  specific port! Enjoy!",
+      "",
+    ]
+    |> string.join("\n")
+
+  io.println(message)
 }
 
 // Which LaTeX-output flag (if any) was passed, and at what modularity.

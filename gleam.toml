@@ -13,7 +13,7 @@ version = "1.0.0"
 # https://gleam.run/writing-gleam/gleam-toml/.
 
 [dependencies]
-vxml = ">= 1.0.3 and < 2.0.0"
+vxml = ">= 1.0.5 and < 2.0.0"
 writerly = { "path" = "../../vistuleB/wly/writerly" }
 desugaring = { "path" = "../../vistuleB/wly/desugaring" }
 

@@ -447,15 +447,33 @@ pub fn pipeline(
     case author_mode {
       False -> []
       True -> [
-        dl.ti2_turn_lines_into_3003_spans__outside(parameters.input_dir, [
-          "Math",
-          "MathBlock",
-          "Navigation",
-          "Index",
-        ]),
-        dl.ti2_adorn_img_with_3003_spans(parameters.output_dir),
-        dl.ti2_adorn_with_3003_spans(#(parameters.input_dir, "", ["MathBlock"])),
-        dl.ti2_wrap_with_3003_spans(#(parameters.input_dir, "", ["Math"])),
+        dl.source_provenance_wrap_lines__outside(
+          #(parameters.input_dir, [#("class", "t-3003-c")], [
+            #("class", "t-3003"),
+          ]),
+          ["Math", "MathBlock", "Navigation", "Index"],
+        ),
+        dl.source_provenance_append_img_spans(
+          #(
+            parameters.output_dir,
+            "original",
+            ["img", "figure", "Carousel"],
+            [#("class", "t-3003 t-3003-i")],
+            [#("class", "t-3003-i-url")],
+          ),
+        ),
+        dl.source_provenance_append_span(
+          #(parameters.input_dir, [#("class", "t-3003")], ["MathBlock"]),
+        ),
+        dl.source_provenance_wrap(
+          #(
+            parameters.input_dir,
+            "span",
+            [#("class", "t-3003-c")],
+            [#("class", "t-3003")],
+            ["Math"],
+          ),
+        ),
       ]
     },
     [

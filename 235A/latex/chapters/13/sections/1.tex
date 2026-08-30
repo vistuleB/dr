@@ -1,0 +1,115 @@
+\section{Definition and basic properties}
+
+A main tool in our proof of the central limit theorem
+will be that of characteristic functions. The basic
+idea will be to show that
+
+\[
+\mathbf{E}\left[ g\left( \frac{S_n-n\mu}{\sqrt{n}\sigma}\right)\right] \xrightarrow[n\to\infty]{} \mathbf{E} g(N(0,1))
+\]
+
+\noindent for a sufficiently large family of functions $g$. It
+turns out that the family of functions of the form
+
+\[
+g_t(x) = e^{itx}, \qquad (t\in\R),
+\]
+
+\noindent is ideally suited for this purpose. (Here and
+throughout, $i=\sqrt{-1}$).
+
+\begin{defn}
+The characteristic function of a r.v. $X$, denoted
+$\varphi_X$, is defined by
+
+\[
+\varphi_X(t) = \mathbf{E}\left(e^{i t X}\right) = \mathbf{E}(\cos(t X)) + i \mathbf{E}(\sin(t X)), \qquad (t\in\R).
+\]
+
+\end{defn}
+
+\noindent Note that we are taking the expectation of a
+\emph{complex-valued random variable} (which is a kind of
+two-dimensional random vector, really). However, the
+main properties of the expectation operator
+(linearity, the triangle inequality etc.) that hold
+for real-valued random variables also hold for
+complex-valued ones, so this will not pose too much of
+a problem.
+
+Here are some simple properties of characteristic
+functions. For simplicity we denote
+$\varphi = \varphi_X$ where there is no risk of
+confusion.
+
+\begin{enumerate}[label=\arabic*.]
+\item $\varphi(0) = \mathbf{E} e^{i\cdot 0\cdot X} = 1$.
+
+\item $\varphi(-t) = \mathbf{E} e^{-i t X} = \mathbf{E}
+\left(\overline{e^{it X}}\right) =
+\overline{\varphi(t)}$
+(where $\overline{z}$ denotes the complex conjugate
+of a complex number $z$).
+
+\item $|\varphi(t)| \le \mathbf{E}\left|e^{i t X}\right| =
+1$
+by the triangle inequality.
+
+\item $|\varphi(t)-\varphi(s)| \le \mathbf{E} \left| e^{i t
+X} - e^{isX}\right| = \mathbf{E} \left|e^{i s X}
+\left(e^{i(t-s)X}-1\right)\right| = \mathbf{E} \left|
+e^{i(t-s)X}-1\right|$.
+Note also that
+$\mathbf{E} \left|e^{i u X}-1\right|\to 0$ as
+$u \downarrow 0$ by the bounded convergence theorem.
+It follows that $\varphi$ is a uniformly continuous
+function on $\R$.
+
+\item $\varphi_{a X}(t) = \mathbf{E} e^{i a t X} =
+\varphi_X(a t)$,\
+\ $(a\in\R)$.
+
+\item $\varphi_{X+b}(t) = \mathbf{E} e^{i t (X+b)} = e^{i b
+t} \varphi_X(t)$,\
+\ $(b\in\R)$.
+
+\item $\textbf{Important:}$ If $X,Y$ are independent then
+
+\[
+\varphi_{X+Y}(t) = \mathbf{E}\left(e^{it(X+Y)}\right)
+= \mathbf{E}\left(e^{itX} e^{itY}\right) = \mathbf{E}\left(e^{itX}\right) \mathbf{E} \left(e^{itY}\right) = \varphi_X(t) \varphi_Y(t).
+\]
+
+\noindent Note that this is the main reason why characteristic
+functions are such a useful tool for studying the
+distribution of a sum of independent random variables.
+\end{enumerate}
+
+\noindent $\textbf{A note on terminology.}$ If $X$ has a
+density function $f$, then the characteristic
+function can be computed as
+
+\[
+\varphi_X(t) = \int_{-\infty}^\infty f_X(x) e^{itx}\,dx.
+\]
+
+\noindent In all other branches of mathematics, this would be
+called the
+$\textbf{Fourier transform}$\footnote{Well, more or less -- it is really the inverse
+Fourier transform; but it will be the Fourier
+transform if we replace $t$ by $-t$, so that is
+almost the same thing.}
+of $f$.
+
+So the concept of a characteristic function
+generalizes the Fourier transform. If $\mu$ is the
+distribution measure of $X$, some authors write
+
+\[
+\varphi_X(t) = \int_{-\infty}^\infty e^{itx} d\mu(x)
+\]
+
+\noindent (which is an example of a
+$\textbf{Lebesgue-Stieltjes integral}$) and call this
+the $\textbf{Fourier-Stieltjes transform}$ (or just
+the Fourier transform) of the measure $\mu$.

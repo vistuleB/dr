@@ -1,0 +1,219 @@
+\section{Infinite expectations and triangular arrays}
+
+After treating the ``classical'' case of an i.i.d.
+sequence with finite expectations, let's turn to
+slightly more exotic situations. First, what happens
+if the expectation is infinite? For the strong law,
+the following result shows that we have no hope of
+having convergence in a meaningful sense.
+
+\begin{thm}[Converse to SLLN]
+If $X_1,X_2,\ldots,$ is an i.i.d. sequence of r.v.'s
+with $\mathbf{E}|X_1|=\infty$, then
+
+\[
+\mathrm{P}\left( \exists \lim_{n\to\infty} \frac{1}{n}\sum_{k=1}^n X_k \right) = 0.
+\]
+
+\end{thm}
+
+\begin{proof}
+See homework.
+\end{proof}
+
+\noindent What about the weak law? It turns out that a weak law
+can still hold in certain situations with infinite
+expectations, although one has to consider a
+generalized empirical average where the sum of the
+first $n$ samples is divided by a quantity growing
+faster than $n$. Rather than develop a complete
+theory, we will consider the particular example of the
+$\textbf{St. Petersburg Lottery}$. In this example,
+the winning in a single round of lottery is an
+integer-valued random variable with the following
+distribution:
+
+\[
+\mathrm{P}(X=2^k) = 2^{-k}, \qquad k=1,2,3,\ldots
+\]
+
+\noindent Let $X_1,X_2,\ldots,$ be an i.i.d. sequence with the
+same distribution, and let $S_n = \sum_{k=1}^n X_k$.
+How much should you agree to pay to be allowed to play
+this lottery $n$ times? (Even the seemingly simple
+case $n=1$ of this question  has been a subject of
+quite some debate by economists! See \href{http://en.wikipedia.org/wiki/St._Petersburg_paradox}{the Wikipedia
+article on the St. Petersburg
+paradox}).
+In other words, how big should we expect $S_n$ to be,
+\emph{with probability close to 1}?
+
+\begin{thm}
+
+\[
+\frac{S_n}{n\log_2 n} \xrightarrow[n\to\infty]{\mathrm{P}} 1.
+\]
+
+\end{thm}
+
+\noindent In other words, to be allowed to pay the game $n$
+times when $n$ is large (and assuming the payoff is
+in dollars), it may be considered reasonable to pay
+exactly (or even better, slightly less than)
+$\log_2 n$ dollars \emph{per round played}. For example,
+if $n=1024$ you would be paying \$10 per round.
+
+\begin{proof}
+The proof uses a truncation idea similar to the one
+we saw in the proof of SLLN, except that for each $n$
+we will truncate the first $n$ variables at a level
+which is a function of $n$. Denote $b_n = n\log_2 n$,
+$Y_{n,k} = X_k \mathbf{1}_{\{X_k<b_n\}}$,
+$T_n=\sum_{k=1}^n Y_{n,k}$, and
+$a_n = \mathbf{E}(T_n)$. We will prove that
+
+\begin{align*}
+\tag{10}\label{eq:thenprove}
+\frac{S_n-a_n}{b_n}\xrightarrow[n\to\infty]{\mathrm{P}} 0.
+\end{align*}
+
+\noindent First we check that this is enough, by estimating
+$a_n$:
+
+\begin{eqnarray*}
+a_n &=& \sum_{k=1}^n \mathbf{E}(Y_{n,k}) = \sum_{k=1}^n \mathbf{E}(X_k \mathbf{1}_{\{X_k<b_n\}})
+= \sum_{k=1}^n \left(\frac12\cdot 2 + \frac14\cdot 4 + \frac18 \cdot 8 + \ldots + \frac{1}{2^{m_{n}}}\cdot 2^{m_{n}}
+\right)
+\end{eqnarray*}
+
+\noindent where $m_n$ is the largest integer such that
+$2^{m_n} \le b_n$, or in other words
+$m_n = \lfloor \log_2 n + \log_2 \log_2 n \rfloor$,
+which gives
+
+\[
+a_n = \sum_{k=1}^n \lfloor \log_2 n + \log_2 \log_2 n \rfloor = n \log_2 n + O(n \log_2 \log_2 n),
+\]
+
+\noindent so $a_n$ indeed behaves like $n\log_2 n$ up to
+first-order asymptotics. Now to prove
+\eqref{eq:thenprove}, note that for any $\epsilon>0$,
+
+\begin{align*}
+\tag{11}\label{eq:lhs}
+\mathrm{P}\left( \left|\frac{S_n-a_n}{b_n}\right| > \epsilon\right) \le
+\mathrm{P}(T_n\neq S_n) + \mathrm{P}\left( \left|\frac{T_n-a_n}{b_n}\right| > \epsilon\right).
+\end{align*}
+
+\noindent In this bound, the first term is bounded by
+
+\[
+\sum_{k=1}^n \mathrm{P}(Y_{n,k}\neq X_k) = \sum_{k=1}^n \mathrm{P}(X_k>b_n) \le \sum_{k=1}^n \frac{2}{b_n}
+\le \frac{2}{\log_2 n} \xrightarrow[n\to\infty]{} 0.
+\]
+
+\noindent To bound the second term, use Chebyshev's inequality
+and the fact that
+$\mathbf{V}(Y_{n,k})\le \mathbf{E}(Y_{n,k}^2)$ to
+write
+
+\begin{eqnarray*}
+\mathrm{P}\left( \left|\frac{T_n-a_n}{b_n}\right| > \epsilon\right) &\le& \frac{\mathbf{V}(T_n)}{\epsilon^2 b_n^2}
+\le \frac{1}{\epsilon^2 b_n^2} \sum_{k=1}^n \mathbf{E}(Y_{n,k}^2) \\
+&\le& \frac{1}{\epsilon^2 b_n^2} \sum_{k=1}^n
+\left(\frac12\cdot 2^2 + \frac14\cdot 4^2 + \frac18 \cdot 8^2 + \ldots + \frac{1}{2^{m_{n}}}\cdot 2^{2m_{n}} \right) \\
+&\le&
+\frac{1}{\epsilon^2 b_n^2} \sum_{k=1}^n 2\cdot 2^{m_n}
+\le \frac{2}{\epsilon^2 b_n^2} \sum_{k=1}^n b_n = \frac{2}{\epsilon^2 \log_2 n} \xrightarrow[n\to\infty]{} 0.
+\end{eqnarray*}
+
+\noindent We conclude that the left-hand side of \eqref{eq:lhs}
+converges to 0, as $n\to\infty$, which finishes the
+proof.
+\end{proof}
+
+\noindent Another twist on laws of large numbers comes when we
+replace the notion of an i.i.d. sequence by a more
+general notion of a $\textbf{triangular array}$. In
+this case, for each $n$ we have a sequence
+$X_{n,1},X_{n,2},\ldots,X_{n,n}$ of independent, but
+not necessarily identically distributed, and we denote
+$S_n=\sum_{k=1}^n X_{n,k}$ -- this is the sum of the
+samples in the $n$-th experiment. Here, for each $n$
+there could be a separate experiment involving $n$
+different r.v.'s, and the r.v.'s $X_{n,k}$ and
+$X_{m,j}$ for $n\neq m$ are not even assumed to be
+defined on the same probability space, let alone to be
+independent of each other.
+
+Again, instead of giving general conditions for a law
+of large numbers to hold, consider the following
+example of the so-called
+$\textbf{coupon collector's problem}$: A brand of
+breakfast cereals comes with a small toy chosen
+uniformly at random from a set of $n$ possible kinds
+of toys. A collector will buy more boxes of cereals
+until she has collected all $n$ different toys.
+Denote by $T_n$ the number of boxes she ends up
+buying. What can we say about the size of $T_n$?
+Fortunately, we can represent it as a sum of
+independent r.v.'s, by writing
+
+\[
+T_n = X_{n,1} + X_{n,2} + X_{n,3} + \ldots + X_{n,n},
+\]
+
+\noindent where
+
+\begin{eqnarray*}
+X_{n,1} &=& \textrm{number of boxes purchased to get one kind of toy} \ \ =\ \ 1, \\
+X_{n,2} &=& \textrm{number of boxes purchased after having one toy to get a different kind}, \\
+X_{n,3} &=& \textrm{number of boxes purchased after having two kinds of toys to get a third kind}, \\
+& \vdots&  \\
+X_{n,n} &=& \textrm{number of boxes purchased after having $n-1$ kinds of toys to get the last kind}.
+\end{eqnarray*}
+
+\noindent Clearly these r.v.'s are independent. Furthermore,
+$X_{n,k}$ is a geometric r.v. with parameter
+$p_{n,k} = (n-k+1)/n$. This gives us that
+
+\[
+\mathbf{E}(T_n) = \sum_{k=1}^n \mathbf{E}(X_{n,k}) = \sum_{k=1}^n \frac{n}{n-k+1} = n\left(\frac{1}{n}+\frac{1}{n-1}+\ldots+\frac{1}{2}+\frac{1}{1}\right) = n H_n,
+\]
+
+\noindent where $H_n = \sum_{k=1}^n 1/k$ is the \emph{$n$-th
+harmonic number}, and
+
+\[
+\mathbf{V}(T_n) = \sum_{k=1}^n \mathbf{V}(X_{n,k}) =
+\sum_{k=1}^n \frac{k-1}{n}\left(\frac{n}{n-k+1}\right)^2 \le n^2 \sum_{k=1}^n \frac{1}{k^2} \le 2 n^2
+\]
+
+\noindent (in this example, we only need a bound for
+$\mathbf{V}(T_n)$, but it is possible also to get
+more precise asymptotics for this quantity). It
+follows using Chebyshev's inequality that for each
+$\epsilon>0$,
+
+\[
+\mathrm{P}\left( \left|\frac{T_n-n H_n}{n \log n} \right| > \epsilon\right) \le \frac{\mathbf{V}(T_n)}{\epsilon^2 n^2 (\log n)^2}
+\le \frac{2}{\epsilon^2 (\log n)^2} \xrightarrow[n\to\infty]{} 0,
+\]
+
+\noindent so $(T_n-n H_n)/(n\log n)$ converges in probability
+to $0$, and therefore we get that
+
+\[
+\frac{T_n}{n\log n} \xrightarrow[n\to\infty]{\mathrm{P}} 1.
+\]
+
+\noindent The lesson to be learned from the above examples is
+that some naturally-occurring problems in real life
+lead to more complicated situations than can be
+modeled with an i.i.d. sequence with finite mean; but
+often such problems can be analyzed anyway using the
+same ideas and techniques that we developed. In
+probability textbooks you can find a general treatment
+of various conditions under which a triangular array
+of independent random variables satisfies a (strong or
+weak) law of large numbers.

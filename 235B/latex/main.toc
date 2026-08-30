@@ -1,0 +1,35 @@
+\contentsline {chapter}{\numberline {1}A motivating example for martingales}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Conditional expectations}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Elementary conditional expectations}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}General conditional expectations}{7}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Absolute continuity and the Radon-Nikodym theorem}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Properties and examples of conditional expectations}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Conditional expectation as the least mean square error estimator}{12}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Martingales}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Definition and examples}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The martingale transform and investment strategies}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}The upcrossing inequality}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}The martingale convergence theorem}{19}{section.3.4}%
+\contentsline {section}{\numberline {3.5}$L_p$ spaces and modes of convergence}{20}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Martingale convergence in $L_p$}{22}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Applications of martingale theory}{24}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pólya's urn}{24}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Recurrence of simple random walk on $\mathbb {Z}$}{24}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Branching processes and the Galton-Watson tree}{25}{section.4.3}%
+\contentsline {section}{\numberline {4.4}The Black-Scholes formula}{27}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Dynamical systems}{32}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Measure preserving systems}{36}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Measure preserving systems}{36}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Stationary sequences}{36}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Examples of measure preserving systems}{38}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Ergodicity}{45}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Ergodic theorems}{51}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Von Neumann's $L_2$ ergodic theorem}{51}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Birkhoff's pointwise ergodic theorem}{53}{section.7.2}%
+\contentsline {section}{\numberline {7.3}The $L_1$ ergodic theorem}{55}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Consequences of the ergodic theorem}{55}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Entropy and information theory}{61}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Entropy and its basic properties}{61}{section.8.1}%
+\contentsline {section}{\numberline {8.2}The noiseless coding theorem}{63}{section.8.2}%
+\contentsline {section}{\numberline {8.3}The asymptotic equipartition property}{66}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Ergodic sources and the Shannon-McMillan-Breiman theorem}{67}{section.8.4}%

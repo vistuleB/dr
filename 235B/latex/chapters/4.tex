@@ -1,0 +1,659 @@
+
+
+\chapter{Applications of martingale theory}
+
+\section{Pólya's urn}
+We now revisit the P\'olya urn experiment discussed
+in Chapter 1 in which we start with $a$ white balls
+and $b$ black balls, and repeatedly sample balls at
+random from the urn, at each step putting back the
+ball we sampled and adding another ball with the same
+color. We showed in that discussion that the
+proportion
+
+\[
+M_n = \frac{X_n}{n+a+b}
+\]
+
+\noindent of white balls in the urn is a martingale, which
+takes values in $[0,1]$. By the martingale
+convergence theorem we see that the limit
+$M = \lim_{n\to\infty}$ exists almost surely. By an
+explicit computation mentioned in Chapter 1, it
+follows that $M$ is distributed according to a beta
+distribution $\operatorname{Beta}(a,b)$.
+
+\section{Recurrence of simple random walk on $\mathbb{Z}$}
+Let $S_n = \sum_{k=1}^n X_k$ denote the simple random
+walk on $\Z$; i.e., $S_0=0$ and $(X_n)_{n=1}^\infty$
+are i.i.d.\ with
+$\mathrm{P}(X_n=-1)=\mathrm{P}(X_n=1)=\tfrac12$.
+
+\begin{thm}
+The random walk is $\textbf{recurrent}$. That is, for
+any $m\in\Z$ we have
+
+\[
+\mathrm{P}(S_n = m \textrm{ i.o.}) = 1.
+\]
+
+\end{thm}
+
+\begin{proof}
+Define a random variable
+$N = \inf \{ n>0\,:\, S_n = -1 \}$ (on the event that
+$S_n$ never visits $-1$, set $N=\infty$). Let
+$M_n = S_{N\wedge n}$. By Theorem
+\ref{thm-stopping-mart}, the sequence $(M_n)_{n=1}^\infty$
+is a martingale with respect to the filtration
+$\mathcal{G}_n = \sigma(X_1,\ldots,X_n)$.
+Furthermore, $M_n \ge -1$ for all $n$, so by
+Corollary \ref{mart-conv-cor}, the limit
+$M=\lim_{n\to\infty} M_n$ exists almost surely. But
+then we must have $M\equiv -1$ almost surely, since
+any other limit is impossible (until the sequence
+$S_{N\wedge n}$ stops at $-1$, it fluctuates by
+$\pm 1$ at each step). This implies that $N<\infty$
+almost surely, so the random walk is guaranteed to
+visit $-1$ with probability $1$.
+\end{proof}
+
+\begin{xexercise}
+Complete the proof by explaining why if the random
+walk almost surely visits $-1$ when starting from $0$
+then it almost surely visits every lattice point
+$m\in\Z$, and therefore also almost surely visits
+every $m\in\Z$ infinitely often.
+\end{xexercise}
+
+\noindent Note that the almost sure martingale limit
+$M=\lim_{n\to\infty} S_{N\wedge n}$ in the proof
+above satisfies $\mathbf{E} M=-1$, whereas
+$\mathbf{E}(S_{N \wedge n})=0$ for all $n$. This is
+therefore an example of a martingale that converges
+almost surely, but not in $L_1$.
+
+\section{Branching processes and the Galton-Watson tree}
+The $\textbf{Galton-Watson tree}$, or
+$\textbf{Galton-Watson process}$, (named after the
+19th century statistics pioneers Francis Galton and
+Henry William Watson) is a mathematical model for a
+genealogical tree, or for the population statistics of
+a unisexual animal species. It is the simplest in a
+family of models known as
+$\textbf{branching processes}$. The model was
+originally conceived at a time when family names were
+only passed on by male descendants and hence takes
+only male offspring into account, leading to a
+somewhat simpler (though socially anachronistic)
+mathematical model than some later more realistic
+variants.  (The original model is still used however
+to model various biological and physical phenomena.)
+
+Let $p_0, p_1, \ldots$ be nonnegative numbers such
+that $\sum_k p_k = 1$, and let $X$ be a random
+variable with $\mathrm{P}(X=k)=p_k$, $n=0,1,2,\ldots$.
+We think of $p_k$ as the probability for a specimen
+to have $k$ offspring, and refer to the distribution
+of $X$ as the $\textbf{offspring distribution}$. Let
+$(X_{n,m})_{n,m\ge 0}$ be a family of i.i.d.\ copies
+of $X$. The Galton-Watson process is a sequence of
+random variables $Z_0, Z_1, Z_2, \ldots$, where for
+each $n$, $Z_n$ represents the number of
+$n$th-generation descendants of the original species
+patriarch at time $0$. $Z_n$ is defined by the
+initial condition $Z_0=1$ together with the
+recurrence relation
+
+\[
+Z_n = \sum_{m=1}^{Z_{n-1}} X_{n-1,m},
+\]
+
+\noindent corresponding to the assumption that each of the
+$Z_{n-1}$$(n-1)$th-generation specimens bear a
+number of offspring with the distribution of $X$,
+with all offspring numbers being independent of each
+other.
+
+Let $\mu=\mathbf{E} X = \sum_k k p_k$ be the expected
+number of offspring. We will prove:
+
+\begin{thm}
+\label{thm-galton-watson}
+Let $E$ be the ``extinction event''
+
+\[
+E = \{ Z_n=0 \textnormal{ for all large enough }n\} = \{ \textnormal{the species eventually becomes extinct} \}.
+\]
+
+\noindent Then
+
+\begin{enumerate}[label=\arabic*.]
+\item If $\mu< 1$ then $\mathrm{P}(E) = 1$.
+
+\item If $\mu=1$ and $\mathrm{P}(X=1)<1$ then
+$\mathrm{P}(E)=1$.
+
+\item If $\mu>1$ then $\mathrm{P}(E)<1$.
+\end{enumerate}
+
+\end{thm}
+
+\noindent The reason martingale theory is relevant to the
+problem is the following simple lemma.
+
+\begin{lem}
+The sequence $(Z_n/\mu^n)_{n=0}^\infty$ is a
+martingale with respect to the filtration
+$\mathcal{G}_n = \sigma(X_{\ell,m}\,:\, 0\le \ell< n,
+m\ge 0)$.
+\end{lem}
+
+\begin{proof}
+Compute
+$\mathbf{E}\left(Z_{n+1}\,|\,\mathcal{G}_n\right)$,
+using the standard properties of conditional
+expectation:
+
+\begin{align*}
+\mathbf{E}\left(Z_{n+1}\,|\,\mathcal{G}_n\right) &= \mathbf{E}\left(\sum_{m=1}^{Z_{n}} X_{n,m}\,|\,\mathcal{G}_n\right)
+=
+\mathbf{E}\left( \sum_{k=0}^\infty  \mathbf{1}_{\{Z_n=k\}} \sum_{m=1}^{Z_{n}} X_{n,m}\,|\,\mathcal{G}_n\right)
+\\
+&= \sum_{k=0}^\infty
+\mathbf{E}\left( \mathbf{1}_{\{Z_n=k\}} \sum_{m=1}^{k} X_{n,m}\,|\,\mathcal{G}_n\right)
+= \sum_{k=0}^\infty \mathbf{1}_{\{Z_n=k\}}
+\mathbf{E}\left(  \sum_{m=1}^{k} X_{n,m}\,|\,\mathcal{G}_n\right) \\
+&=
+\sum_{k=0}^\infty \mathbf{1}_{\{Z_n=k\}} k \mathbf{E}(X_{n,1}) = \mu \sum_{k=0}^\infty k \mathbf{1}_{\{Z_n=k\}} = \mu Z_n.
+\end{align*}
+
+\noindent Dividing by $\mu^{n+1}$ gives the result.
+\end{proof}
+
+\begin{proof}[Proof of parts 1 and 2 of Theorem \ref{thm-galton-watson}]
+By the lemma we have $\mathbf{E}(Z_n)=\mu^n$. If
+$\mu<1$ then
+
+\[
+\mathrm{P}(Z_n>0)=\mathrm{P}(Z_n\ge 1)\le \mathbf{E}(Z_n) = \mu^n \to 0.
+\]
+
+\noindent Since $E^c = \cap_{n=1}^\infty \{ Z_n>0 \}$, an
+intersection of a decreasing sequence of sets, we
+therefore get that
+$\mathrm{P}(E^c)=\displaystyle\lim_{n\to\infty}
+\mathrm{P}(Z_n>0)=0$,
+which proves part 1.
+
+To prove part 2, let
+
+\[
+Z_\infty = \lim_{n\to\infty} \mu^{-n} Z_n
+\]
+
+\noindent be the limit of the nonnegative martingale
+$\mu^{-n} Z_n$, guaranteed to exist almost surely by
+Corollary \ref{mart-conv-cor}. In the case when $\mu=1$,
+$Z_\infty$ is the limit of the sequence $Z_n$ itself.
+Under the assumption that $\mathrm{P}(X=1)<1$, this
+limit can only be $0$, since on the event that
+$\{Z_n=k>0\}$, $|Z_{n+1}-k|\ge 1$ with positive
+probability.
+\end{proof}
+
+\noindent To prove the final claim regarding the behavior when
+$\mu>1$, associate with the random variable $X$
+(which takes nonnegative integer values) a function
+
+\[
+\varphi(z) = \mathbf{E}(z^X) = \sum_{k=0}^\infty p_k z^k, \qquad (0\le z\le 1).
+\]
+
+\noindent The function $\varphi(z)$ is called the \textbf{generating
+function of $X$}. It turns out that the way it
+encodes information about the distribution of $X$ is
+especially suited to the problem at hand, because of
+the following lemma.
+
+\begin{lem}
+The probability for the Galton-Watson process to
+become extinct by the $n$th generation is given by
+
+\[
+\mathrm{P}(Z_n = 0) = \varphi^{(n)}(0) = (\overbrace{\varphi\circ \varphi\circ \ldots \circ \varphi}^{\textrm{$n$ times}})(0),
+\]
+
+\noindent (in words: the $n$th functional iterate of $\varphi$
+evaluated at $z=0$.)
+\end{lem}
+
+\begin{proof}
+For $n=0$ the claim is true, with the natural
+convention that $\varphi^{(0)}(z)=z$. For general $n$,
+we have that
+
+\begin{align*}
+\mathrm{P}(Z_n = 0) &= \mathbf{E}\left[ \mathrm{P}\left( Z_n=0\,|\,Z_1 \right) \right] = \sum_{k=0}^\infty \mathrm{P}(Z_1=k) \mathrm{P}\left(Z_n=0\,|\,Z_1=k\right) \\
+&= \sum_{k=0}^\infty p_k \mathrm{P}\left(Z_n=0\,|\,Z_1=k\right).
+\end{align*}
+
+\noindent Now note that
+$\mathrm{P}\left(Z_n=0\,|\,Z_1=k\right)=\mathrm{P}(Z_{n-1}=0)^k$,
+since that is the probability for $k$ initial
+patriarchial specimens to become extinct within $n-1$
+generations. So, by induction we get that
+
+\[
+\mathrm{P}(Z_n=0) = \sum_{k=0}^\infty p_k \mathrm{P}(Z_{n-1}=0)^k = \varphi(\mathrm{P}(Z_{n-1}=0)) = \varphi(\varphi^{(n-1)}(0))
+= \varphi^{(n)}(0).
+\]
+
+\end{proof}
+
+\noindent Using the lemma we see that if we are able to prove
+that
+
+\[
+\mathrm{P}\left(\bigcup_{n=1}^\infty \{Z_n=0\}\right)= \lim_{n\to\infty} \mathrm{P}(Z_n=0) = \lim_{n\to\infty} \varphi^{(n)}(0)<1,
+\]
+
+\noindent the final part of Theorem \ref{thm-galton-watson} will
+follow. The question therefore reduces to studying the
+functional iterates $\varphi^{(n)}(0)$. Note that
+$\varphi$ is continuously differentiable on $(0,1)$
+and satisfies
+
+\begin{align*}
+\varphi(0) &= p_0 \ge 0, \\
+\varphi(1) &=1, \\
+\varphi'(z) &= \sum_{k=1}^\infty k p_k z^{k-1} \ge 0 \qquad\quad\  \ \textrm{(so $\varphi$ is nondecreasing),}\\
+\varphi''(z) &= \sum_{k=2}^\infty k(k-1) p_k z^{k-2} \ge 0 \ \ \textrm{(so $\varphi$ is convex)}, \\
+\lim_{z\uparrow 1} \varphi'(z) &= \sum_{k=1}^\infty k p_k = \mu > 1.
+\end{align*}
+
+\noindent In fact, since $\mu>1$ there must be some $k\ge 2$
+such that $p_k>0$, so $\varphi$ is strictly
+increasing and strictly convex.
+
+\begin{xexercise}
+Show that from the properties above it follows that
+$\varphi$ has a unique fixed point $0\le \rho<1$,
+i.e., a point where $\varphi(\rho)=\rho$ (drawing a
+rough sketch of the graph of $\varphi$ is very
+helpful to explain why this is true).
+\end{xexercise}
+
+\begin{proof}[Proof of part 3 of Theorem \ref{thm-galton-watson}]
+The sequence $a_n = \varphi^{(n)}(0)$ is increasing,
+so converges to a limit $L$. Since $\varphi$ is
+increasing, by induction $a_n\le \rho$ for all $n$.
+So also
+$L=\lim_{n\to\infty} a_n = \mathrm{P}(E) \le \rho <1$,
+which was the claim. (In fact, it is easy to see that
+$L=\rho$ exactly, since we have
+
+\[
+\varphi(L)=\varphi(\lim_{n\to\infty} a_n) = \lim_{n\to\infty} \varphi(a_n) = \lim_{n\to\infty} a_{n+1} = L,
+\]
+
+\noindent so $L$ is a fixed point of $\varphi$.)
+\end{proof}
+
+\section{The Black-Scholes formula}
+In the financial markets, an $\textbf{option}$ is a
+contract giving its holder the right to buy or sell an
+asset from the issuer of the option for a specified
+price at some future date.\footnote{This section is based on sections 15.1--15.2 in the
+book \emph{Probability with Martingales} by David Williams.}
+Options are useful financial instruments that allow
+market participants to calibrate the amount of risk
+they want to be exposed to; effectively, risk-averse
+players can use options to insure themselves against
+unexpected events, paying a premium to other investors
+willing to bear the risk (either because they have a
+higher tolerance for risk or because their perception
+of the amount of risk is different). In theory, this
+makes the financial markets more efficient and helps
+the economy.
+
+Options have been used in one form or another since
+ancient times. However, a good quantitative model
+allowing the computation of the monetary value of an
+option was not known until two economists, Fischer
+Black and Myron Scholes, proposed such a model in 1973
+using the mathematics of Brownian motion. Their
+formula for the valuation of options, known as the
+$\textbf{Black-Scholes formula}$, was the basis for
+awarding the 1997 Nobel prize in economics to Scholes
+and Robert Merton, another economist who played a part
+in the development of the Black-Scholes model (Black
+died in 1995 so the prize could not be awarded to
+him).
+
+We will discuss here a simplified variant of the
+Black-Scholes option pricing model in which time
+progresses in discrete steps, so that we do not need
+to know about continuous-time processes such as
+Brownian motion. Assume that in our simplified
+economy, an investor has the option of investing her
+money in one of two ways. The first way is to lend the
+money; technically, she does this by buying
+$\textbf{risk-free bonds}$ (issued by a reliable
+entity such as the U.S. government), which are loan
+contracts guaranteeing a fixed interest rate of $r$.
+Thus, $V$ units of currency invested in bonds at time
+$0$ will be worth $(1+r)^n V$ after $n$ time units.
+(Of course, this is the result of \emph{compounded
+interest}: in this formula we are assuming that after
+each time unit our investor takes the interest payment
+from the last time unit and reinvests it by buying
+more bonds.)
+
+The second type of investment opportunity is to buy
+$\textbf{stocks}$. These are assumed to be risky
+investments whose value fluctuates randomly. We make
+the assumption that the price of stocks is a
+multiplicative random walk with an initial (possibly
+random) value $S_0$ such that
+
+\[
+S_n = (1+R_n) S_{n-1} \qquad (n\ge1),
+\]
+
+\noindent where $R_n$ represents the ``random rate of
+interest'' in the $n$th time period. We further
+assume that $R_1,R_2,\ldots$ are an i.i.d.\ sequence
+of random variables satisfying
+
+\[
+\mathrm{P}(R_n = a) = 1-p, \ \ \mathrm{P}(R_n = b) = p,
+\]
+
+\noindent where $a,b$ are two values in $(-1,\infty)$
+satisfying $a<r<b$, and $p$ is taken to be
+$p=\frac{r-a}{b-a}$. This choice of $p$ ensures that
+$\mathbf{E}(R_1) = r$, so that on average the random
+interest rate is equal to the risk-free interest rate.
+(Any other choice of $p$ would cause an investor to
+always prefer one of the two asset classes to the
+other, making the model essentially uninteresting.)
+
+Our investor starts with an amount $x$ of money and
+invests it over time, allocating the available funds
+to either stocks or bonds as she wishes. Formally, let
+$\mathcal{G}_n = \sigma(S_0,R_1,\ldots,R_n)$. Denote
+$B_0=1, B_n=(1+r)^n$ (in analogy with the
+multiplicative random walk $S_n$, this is the value
+of an investment account concentrated in bonds and
+started from an initial investment of 1 unit of
+currency). An $\textbf{investment strategy}$ is a
+pair $(A_n, V_n)_{n=0}^N$ of processes (where $N$ may
+be finite, or infinite) which are predictable with
+respect to the filtration $(\mathcal{G}_n)_n$, and
+such that the following relations are satisfied:
+
+\begin{align*}
+x &= \tag{9}\label{eq:investment-strategy-initial} A_0 S_0 + V_0 B_0, \\
+A_n S_n + V_n B_n &= \tag{10}\label{eq:investment-strategy-rebalance} A_{n+1} S_n + V_{n+1} B_n, \qquad (1\le n< N).
+\end{align*}
+
+\noindent Here, $A_n$ denotes the number of stock investment
+units held between time $n$ and $n+1$, and $V_n$
+denotes the number of bond investment units held
+between time $n$ and $n+1$. Denote
+$X_n = A_n S_n + V_n B_n$. This represents the value
+of the investment account at time $n$. The relation
+(\ref{eq:investment-strategy-initial}) means that the
+initial value $X_0$ of the investment account is $x$
+units of currency, and
+(\ref{eq:investment-strategy-rebalance}) represents the
+fact that immediately after time $n$ the investor
+rebalances the investment portfolio, changing the
+mixture of bonds and stocks but keeping the same
+amount invested. In a slight simplification of real
+life, the model assumes that the act of rebalancing
+the portfolio does not involve paying a fee to a
+brokerage or account management company, an assumption
+technically referred to as
+$\textbf{zero transaction costs}$.
+
+In our model, we now add a third type of investment
+opportunity. A $\textbf{European option}$ is a
+contract that gives an investor the right (but not the
+obligation) to buy $1$ unit of stocks at some fixed
+time $N$ for a price of $K$ units of currency. The
+act of taking advantage of this right is referred to
+as $\textbf{exercising}$ the
+option\footnote{A common variant is the $\textbf{American option}$,
+in which the right to exercise the option exists at
+any time up to and including time $N$.}. The time $N$ is called
+the $\textbf{expiration time}$, and $K$ is called the
+$\textbf{strike price}$. The question we wish to
+address is: what is the ``fair value''
+$v_\textrm{fair}$ such that an investor would
+consider paying an amount $v_\textrm{fair}$ (or
+better yet, slightly less than $v_\textrm{fair}$) for
+such an option offered to him at time $0$? Note that
+at time $N$ the option is worth $S_N-K$ if $S_n\ge K$,
+or $0$ otherwise (i.e., if the market price of stocks
+at time $N$ is below the strike price at expiration
+time, the option gives a pointless right to buy stocks
+at a higher price than the one for which they are
+being offered for sale on the free market. This is a
+right which no rational investor would want to
+exercise; in this case the option is said to have
+$\textbf{expired worthless}$). In other words, the
+value of the option at its expiration time is exactly
+the (random) amount $(S_N-K)_+$, the positive part of
+the random variable $S_N-K$. An investor considering
+an investment in options at time $0$ would be
+reasonable to consider the expected value of this
+quantity,
+
+\[
+\mathbf{E}(S_N-K)_+,
+\]
+
+\noindent as her expected return after $N$ time units of
+investment. Comparing this to the return on investing
+the same amount $v_\textrm{fair}$ in risk-free bonds,
+which is equal to
+
+\[
+(1+r)^N v_\textrm{fair},
+\]
+
+\noindent the investor may conclude that $v_\textrm{fair}$ is
+exactly the value that equalizes both quantities (thus
+making her indifferent to the choice of which type of
+investment to make), namely
+
+\begin{equation*} \tag{11}\label{eq:discrete-black-scholes}
+v_\textrm{fair} = (1+r)^{-N} \mathbf{E}(S_N-K)_+.
+\end{equation*}
+
+\noindent In finance, it is typical to think of this type of
+expression as the quantity $\mathbf{E}(S_N-K)_+$
+``discounted'' $N$ units of time into the future. The
+idea is that the promise of future money is worth less
+than actual money in the present. The ``rate of
+discounting,'' which is the factor by which it becomes
+worth less and less with every time unit it recedes
+further into the future, is exactly the risk-free
+interest rate $1+r$. (Think of a situation in which
+someone offers you a choice between \(\$100\) today
+or \(\$150\) in a month's time. Which would you
+prefer? What would be your criterion for deciding if
+the number $150$ were replaced with any other number
+higher than $100$?)
+
+Equation (\ref{eq:discrete-black-scholes}) is our
+discrete version of the Black-Scholes formula, but the
+reasoning that lead us to it is a bit shaky, and can
+be strengthened in the following way. Assume that a
+market for options hasn't developed yet, so none are
+being offered for sale. An investor may come up with a
+clever way of replicating the outcome of investing in
+an option using a particular way of managing a
+portfolio of stocks and bonds. Formally, a \textbf{hedging
+strategy with initial value $x$} is a pair of
+processes $(A_n,V_n)_{n=0}^N$ which is an investment
+strategy in the sense defined above, with an initial
+value $x$ as in (\ref{eq:investment-strategy-initial}),
+and such that in addition we have the properties
+
+\begin{align*}
+X_n &\ge 0,  \qquad \qquad \qquad (0\le n\le N), \\
+X_N &= (S_N-K)_+,
+\end{align*}
+
+\noindent (where as before $X_n = A_n S_n + V_n B_n$ denotes
+the value of the portfolio at time $n$). Note that a
+hedging strategy behaves for all intents and purposes
+like an option with strike price $K$ and expiration
+time $N$; any investor who possesses such a strategy
+could issue actual options with these parameters and
+sell them to other investors, charging slightly more
+than $x$ units of currency, investing $x$ of them in
+the hedging scheme (which precisely offsets the
+options he sold) and making an instant and risk-free
+profit. (Note that the condition $X_n\ge0$ is
+required to ensure that the manager of the hedging
+strategy will not have to inject new cash at any point
+in time to keep the investment going; she will never
+be ``underwater.'') Thus, we have a rather convincing
+argument that any value of $x$ for which one is able
+to find such a hedging strategy is, \emph{by definition},
+the fair value of the option.
+
+\begin{thm}
+A hedging strategy with initial value $x$ exists if
+and only if
+
+\begin{equation*} \tag{12}\label{eq:hedging-strategy-condition}
+x=(1+r)^{-N}\mathbf{E}(S_N-K)_+,
+\end{equation*}
+
+\noindent and in this case it is unique.
+\end{thm}
+
+\begin{proof}
+Assume that there is a hedging strategy with initial
+value $x$. Let $Y_n = (1+r)^{-n} X_n$ (the discounted
+value of $X_n$ at time $0$). The proof will depend on
+showing that $(Y_n)_n$ is a martingale. To see this,
+note that from (\ref{eq:investment-strategy-rebalance}) we
+have that
+
+\begin{align*}
+X_n - X_{n-1} &= (A_n S_n + V_n B_n) - (A_n S_{n-1} + V_n B_{n-1})
+= A_n (S_n-S_{n-1}) + V_n (B_n-B_{n-1}) \\
+&= A_n R_n S_{n-1} + r V_n B_{n-1} = A_n S_{n-1}(R_n-r) + r(A_n S_{n-1} + V_n B_{n-1}) \\
+&= A_n S_{n-1} (R_n-r) + r X_{n-1}.
+\end{align*}
+
+\noindent It follows that
+
+\[
+Y_n-Y_{n-1} = (1+r)^{-n}(X_n-(1+r)X_{n-1}) = (1+r)^{-n}A_n S_{n-1}(R_n-r).
+\]
+
+\noindent Thus, $Y_n$ can be expressed as
+
+\begin{align*}
+Y_n &= Y_0 + \sum_{k=1}^n (Y_k-Y_{k-1}) =
+x + \sum_{k=1}^n (1+r)^{-k}A_k S_{k-1} (R_k-r) \\
+&= x + \sum_{k=1}^n F_k (Z_k-Z_{k-1}),
+\end{align*}
+
+\noindent where $F_n = (1+r)^{-n} A_n S_{n-1}$ and
+$Z_n = \sum_{k=1}^n (R_k-r)$. In other words, we have
+shown that $Y_n$ can be represented as
+
+\[
+Y_n = x + (F\bullet Z)_n.
+\]
+
+\noindent Here, the sequence $(F_n)_n$ is predictable with
+respect to the filtration $(\mathcal{G}_n)_n$, and
+$Z_n$ is a martingale, so this is a genuine
+martingale transform, and $(Y_n)_n$ is a martingale,
+as claimed above. In particular we get (using the
+definition of a hedging strategy) that
+
+\[
+x = Y_0 = \mathbf{E}(Y_0) = \mathbf{E}(Y_N) = (1+r)^{-N} \mathbf{E}(X_N) = (1+r)^{-N} \mathbf{E}(S_N-K)_+,
+\]
+
+\noindent proving (\ref{eq:hedging-strategy-condition}). This
+completes the ``only if'' part of the proof.
+
+Conversely, assume that
+$x=(1+r)^{-N} \mathbf{E}(S_N-K)_+$. We need to
+construct a hedging strategy with this initial value,
+and show that it is uniquely determined. Inspired by
+the insights gained by the computation above, we
+define a martingale
+
+\[
+Y_n = \mathbf{E}\left((1+r)^{-N}(S_N-K)_+\,|\,\mathcal{G}_n\right), \qquad (0\le n\le N)
+\]
+
+\noindent so that $Y_0 = x$ and $Y_N = (1+r)^{-N} (S_N-K)_+$,
+and look for a predictable sequence $(F_n)_n$ such
+that $Y_n = x + (F\bullet Z)_n$. The fact that a
+unique such process exists is the result of a simple
+computation which can be distilled into the following
+lemma.
+
+\begin{lem}
+\label{lem-easy-martingale-rep}
+If $(M_n)_{n=0}^N$ is a martingale w.r.t.\ the
+filtration $(\mathcal{G}_n)_n$ satisfying $M_0 = 0$,
+then there is a unique predictable process
+$(F_n)_{n=1}^N$ such that $M = F\bullet Z$, with
+$Z_n=\sum_{k=1}^n (R_k-r)$ as above.
+\end{lem}
+
+\begin{xexercise}
+Prove Lemma \ref{lem-easy-martingale-rep}.
+\end{xexercise}
+
+\noindent Working our way backwards, we now define
+$X_n = (1+r)^n Y_n$, $A_n = (1+r)^n F_n/S_{n-1}$ and
+$V_n = (X_{n-1}-A_n S_{n-1})/B_{n-1}$. Then
+$X_n\ge 0$, $(A_n)_n$ and $(V_n)_n$ are predictable
+sequences, and the above computations can be read in
+reverse to show that
+(\ref{eq:investment-strategy-rebalance}) is satisfied,
+i.e., the sequences $(A_n, V_n)_n$ represent a valid
+hedging strategy.
+\end{proof}
+
+\noindent $\textbf{Notes.}$
+
+\begin{enumerate}[label=\arabic*.]
+\item In the proof above, one can check that the processes
+$A_n, V_n$ are nonnegative. This means that, although
+we didn't require it as part of the definition of
+hedging strategies, in practice hedging will never
+involve investing negative amounts of money (which
+would correspond to ``shorting'' stocks or issuing
+bonds).
+
+\item The formula (\ref{eq:discrete-black-scholes}) is written
+in a form that is not very explicit, as it requires
+computing a messy average for a multiplicative random
+walk. In the ``real'' Black-Scholes formula, where the
+stock price $(S_n)_n$ process is modeled by a
+$\textbf{geometric Brownian motion}$ (the
+continuous-time analogue of a multiplicative random
+walk), one can evaluate the corresponding expectation
+to obtain a much more explicit formula. The
+Black-Scholes model has also been adapted to
+American-style options and other variants. As usual,
+if you want to learn more about this subject,
+Wikipedia will make you wish you didn't.
+\end{enumerate}
+

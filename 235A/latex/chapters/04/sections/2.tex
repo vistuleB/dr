@@ -1,0 +1,92 @@
+\section{Multi-dimensional distribution functions}
+
+If $\mathbf{X}=(X_1,\ldots,X_d)$ is a $d$-dimensional
+random vector, we define its $\textbf{distribution}$
+to be the probability measure
+
+\[
+\mu_{\mathbf{X}}(A) = \mathrm{P}(X^{-1}(A)) = \mathrm{P}(\omega \in \Omega : X(\omega) \in A),
+\qquad A \in {\cal B}(\R^d),
+\]
+
+\noindent similarly to the one-dimensional case. The measure
+$\mu_X$ is also called the
+$\textbf{joint distribution}$ (or
+$\textbf{joint law}$) of the random variables
+$X_1,\ldots,X_d$.
+
+Once again, to avoid having to work with measures, we
+introduce the concept of a $\textbf{$d
+$-dimensional distribution function}$.
+
+\begin{defn}
+The $d$-dimensional distribution function of a
+$d$-dimensional random vector
+$\mathbf{X}=(X_1,\ldots,X_d)$ (also called the joint
+distribution function of $X_1,\ldots,X_d$) is the
+function $F_{\mathbf{X}}:\R^d\to[0,1]$ defined by
+
+\begin{align*}
+F_{\mathbf{X}}(x_1,x_2,\ldots,x_d)
+&= \mathrm{P}( X_1 \le x_1, X_2 \le x_2, \ldots, X_d \le x_d) \\
+&= \mu_{\mathbf{X}}\Big( (-\infty,x_1] \times (-\infty,x_2] \times \cdots \times (-\infty,x_d] \Big)
+\end{align*}
+
+\end{defn}
+
+\begin{thm}[Properties of distribution functions]
+\label{thm-multidim}
+If $F=F_{\mathbf X}$ is a distribution function of a
+$d$-dimensional random vector, then it has the
+following properties:
+
+\begin{enumerate}[label=(\roman*)]
+\item $F$ is nondecreasing in each coordinate.
+
+\item For any $1\le i\le d$,
+$\lim_{x_i\to-\infty} F(\mathbf{x}) = 0$.
+
+\item $\lim_{\mathbf{x}\to(\infty,\ldots,\infty)}
+F(\mathbf{x}) = 1$.
+
+\item $F$ is right-continuous, i.e.,
+$F(\mathbf{x}+) := \lim_{\mathbf{y}\downarrow
+\mathbf{x}} F(\mathbf{y}) = F(\mathbf{x}),$
+where here $\mathbf{y}\downarrow \mathbf{x}$ means
+that $y_i\downarrow x_i$ in each coordinate.
+
+\item For $1\le i\le d$ and $a<b$, denote by
+$\Delta_{a,b}^{x}$ the \emph{differencing operator in the
+variable $x$}, which takes a function $f$ of the real
+variable $x$ (and possibly also dependent on other
+variables) and returns the value
+
+\[
+\Delta_{a,b}^{x}f = f(b) - f(a)
+\]
+
+\noindent Then, for any real numbers $a_1 < b_1$, $a_2<b_2$,
+\ldots, $a_d < b_d$, we have
+
+\[
+\Delta^{x_1}_{a_1,b_1} \Delta^{x_2}_{a_d,b_d}
+\ldots \Delta^{x_d}_{a_d,b_d} F \ge 0.
+\]
+\end{enumerate}
+
+\end{thm}
+
+\begin{proof}
+See Chapter 1 in [Dur2010] or Appendix A.2 in
+[Dur2004].
+\end{proof}
+
+\begin{thm}
+Any function $F$ satisfying the properties in \texorpdfstring{\hyperref[thm-multidim]{Theorem~\ref*{thm-multidim}}}{Theorem} above is a distribution function of
+some random vector $\mathbf{X}$.
+\end{thm}
+
+\begin{proof}
+See Chapter 1 in [Dur2010] or Appendix A.2 in
+[Dur2004].
+\end{proof}

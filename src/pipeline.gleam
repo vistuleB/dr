@@ -1,12 +1,13 @@
-import vxml/blame as bl
-import desugaring/desugarers as dl
 import desugaring as ds
+import desugaring/core as infra
+import desugaring/desugarers as dl
+import desugaring/pipelines as pp
 import formatter_pipeline
 import gleam/list
 import gleam/string
-import desugaring/core as infra
-import desugaring/pipelines as pp
+import local_desugarers as local_dl
 import vxml
+import vxml/blame as bl
 
 const our_blame = bl.Des([], "pipeline", 8)
 
@@ -294,7 +295,7 @@ pub fn pipeline(
         infra.Continue,
       )),
       dl.set_handle_value(#("Footnote", "::øøFootnoteCounter", infra.GoBack)),
-      dl.dr_create_index(),
+      local_dl.dr_create_index(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
         #("SectionTitle", "::øøChapterCounter.::øøSectionCounter "),
@@ -343,13 +344,18 @@ pub fn pipeline(
     ],
     pp.markdown_link_splitting(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     [
-      dl.math_label_with_handle_to_mathjax_tag(#("MathBlock", "::++EquationCounter")),
+      dl.math_label_with_handle_to_mathjax_tag(#(
+        "MathBlock",
+        "::++EquationCounter",
+      )),
       dl.substitute_counters(),
       dl.handles_generate_v_definitions_from_t_definitions(),
-      dl.dr_create_menu(),
+      local_dl.dr_create_menu(),
       dl.handles_add_ids(),
       dl.handles_generate_dictionary("path"),
-      dl.handles_substitute(#("path", "a", "a", [], [], ["a"], ["Math", "MathBlock"])),
+      dl.handles_substitute(
+        #("path", "a", "a", [], [], ["a"], ["Math", "MathBlock"]),
+      ),
       // consumes the 'used' column that handles_substitute leaves on the
       // GrandWrapper dictionary; must sit between the two
       dl.handles_warn_unused(["MathBlock"]),
@@ -403,14 +409,26 @@ pub fn pipeline(
         #("(<a href=0>_0_</a>)).", "<a href=0>(_0_)</a>)."),
       ]),
     ],
-    pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine", "Indent"], [
-      "MathBlock",
-      "Math",
-    ]),
-    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", ["WriterlyBlankLine", "Indent"], [
-      "MathBlock",
-      "Math",
-    ]),
+    pp.barbaric_symmetric_delim_splitting(
+      "_",
+      "_",
+      "i",
+      ["WriterlyBlankLine", "Indent"],
+      [
+        "MathBlock",
+        "Math",
+      ],
+    ),
+    pp.barbaric_symmetric_delim_splitting(
+      "\\*",
+      "*",
+      "b",
+      ["WriterlyBlankLine", "Indent"],
+      [
+        "MathBlock",
+        "Math",
+      ],
+    ),
     [
       // must come AFTER every splitting step above, or it would re-arm
       // delimiters that splitting just neutralized. "$" is deliberately
@@ -442,12 +460,16 @@ pub fn pipeline(
     },
     [
       dl.fold_contents_into_text("Math"),
-      dl.find_replace_if_has_ancestor_else(
-        #(["Math", "MathBlock"], #("``", "“"), #("``", "\"")),
-      ),
-      dl.find_replace_if_has_ancestor_else(
-        #(["Math", "MathBlock"], #("''", "”"), #("''", "\"")),
-      ),
+      dl.find_replace_if_has_ancestor_else(#(
+        ["Math", "MathBlock"],
+        #("``", "“"),
+        #("``", "\""),
+      )),
+      dl.find_replace_if_has_ancestor_else(#(
+        ["Math", "MathBlock"],
+        #("''", "”"),
+        #("''", "\""),
+      )),
       dl.group_consecutive_children__outside(
         #("p", p_cannot_contain),
         p_cannot_be_contained_in,
@@ -472,7 +494,7 @@ pub fn pipeline(
         #("Exercises", "exercises"),
         #("Bibliography", "bibliography"),
       ]),
-      dl.dr_generate_js_course(course),
+      local_dl.dr_generate_js_course(course),
       dl.rename__batch([
         #("Chapter", "div"),
         #("ChapterTitle", "h1"),

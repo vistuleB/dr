@@ -1,0 +1,121 @@
+\section{Basic definitions}
+\label{basic-def}
+
+We now formalize the concepts introduced in the
+previous lecture. It turns out that it's easiest to
+deal with events as subsets of a large set called the
+$\textbf{probability space}$, instead of as abstract
+logical statements. The logical operations of
+negation, conjunction and disjunction are replaced by
+the set-theoretic operations of taking the complement,
+intersection or union, but the intuitive meaning
+attached to those operations is the same.
+
+\begin{defn}[Algebra]
+If $\Omega$ is a set, an $\textbf{algebra}$ of
+subsets of $\Omega$ is a collection ${\cal F}$ of
+subsets of $\Omega$ that satisfies the following
+axioms:
+
+\begin{equation*}
+\emptyset \in {\cal F},  \tag{A1}\qquad\qquad\qquad
+\end{equation*}
+
+\begin{equation*}
+ \ \ A \in {\cal F} \implies \Omega\setminus A \in {\cal F}, \tag{A2} \\
+\end{equation*}
+
+\begin{equation*}
+A,B \in {\cal F} \implies A\cup B \in {\cal F}.  \tag{A3}
+\end{equation*}
+
+\noindent A word synonymous with algebra in this context is
+$\textbf{field}$.
+\end{defn}
+
+\begin{defn}[$\sigma$-algebra]
+A  $\textbf{$\sigma$-algebra}$ (also called a
+$\textbf{$\sigma$-field}$) is an algebra ${\cal F}$
+that satisfies the additional axiom
+
+\begin{equation*}
+A_1, A_2, A_3, \ldots \in \mathcal{F}
+\implies
+\bigcup_{n=1}^{\infty} A_n \in \mathcal{F}.
+\tag{A4}
+\end{equation*}
+
+\end{defn}
+
+\begin{example}
+If $\Omega$ is any set, then $\{ \emptyset, \Omega \}$
+is a $\sigma$-algebra -- in fact it is the smallest
+possible $\sigma$-algebra of subsets of $\Omega$.
+Similarly, the power set ${\cal P}(\Omega)$ of all
+subsets of $\Omega$ is a $\sigma$-algebra, and is
+(obviously) the largest $\sigma$-algebra of subsets
+of $\Omega$.
+\end{example}
+
+\begin{defn}[Measurable space]
+A $\textbf{measurable space}$ is a pair
+($\Omega,{\cal F})$ where $\Omega$ is a set and
+${\cal F}$ is a $\sigma$-algebra of subsets of
+$\Omega$.
+\end{defn}
+
+\begin{defn}[Probability measure]
+Given a measurable space $(\Omega, {\cal F})$, a
+$\textbf{probability measure}$ on $(\Omega, {\cal F})$
+is a function $\mathrm{P}:{\cal F}\to[0,1]$ that
+satisfies the properties:
+
+\begin{equation*}
+\mathrm{P}(\emptyset) = 0, \quad \mathrm{P}(\Omega) = 1,
+\tag{P1}
+\end{equation*}
+
+\begin{equation*}
+A_1, A_2, \ldots \in {\cal F}\textrm{ are pairwise disjoint} \implies
+\mathrm{P}(\cup_{n=1}^\infty A_n) = \sum_{n=1}^\infty \mathrm{P}(A_n).
+\tag{P2}
+\end{equation*}
+
+\end{defn}
+
+\begin{defn}[Probability space]
+A $\textbf{probability space}$ is a triple
+$(\Omega, {\cal F}, \mathrm{P})$, where
+$(\Omega, {\cal F})$ is a measurable space, and
+$\mathrm{P}$ is a probability measure on
+$(\Omega, {\cal F})$.
+\end{defn}
+
+\noindent Intuitively, we think of $\Omega$ as representing the
+set of possible $\textbf{outcomes}$ of a
+probabilistic experiment, and refer to it as the
+$\textbf{sample space}$. The $\sigma$-algebra
+${\cal F}$ is the $\textbf{$\sigma
+$-algebra of events}$, namely those subsets of
+$\Omega$ which have a well-defined probability (as we
+shall see later, it is not always possible to assign
+well-defined probabilities to \emph{all} sets of outcomes).
+And $\mathrm{P}$ is the ``notion'' or ``measure'' of
+probability on our sample space.
+
+Probability theory can be described loosely as the
+study of probability spaces (this is of course a gross
+oversimplification...). A more general mathematical
+theory called $\textbf{measure theory}$ studies
+$\textbf{measure spaces}$, which are like probability
+spaces except that the measures can take values in
+$[0,\infty]$ instead of $[0,1]$, and the total
+measure of the space is not necessarily equal to $1$
+(such measures are referred to as $\textbf{$\sigma
+$-additive nonnegative measures}$). Measure theory is
+an important and non-trivial theory, and studying it
+requires a separate concentrated effort. We shall
+content ourselves with citing and using some of its
+most basic results. For proofs and more details, refer
+to Chapter 1 and the measure theory appendix in
+[Dur2010] or to a measure theory textbook.

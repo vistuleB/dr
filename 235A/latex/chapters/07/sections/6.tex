@@ -1,0 +1,57 @@
+\section{Moments}
+
+For an integer $k\ge 0$, the \textbf{$k$-th moment} of a
+random variable $X$ is the number $\mathbf{E}(X^k)$.
+The \textbf{$k$-th moment around a point $c\in\R$} is the
+number $\mathbf{E}(X-c)^k$. If $c$ is not mentioned
+it is understood that the moment is around 0. The
+\textbf{$k$-th central moment} is the $k$-th moment around
+$\mathbf{E} X$ (when it exists), i.e.,
+$\mathbf{E}(X-\mathbf{E} X)^k$. In this terminology,
+the variance is the second central moment.
+
+The sequence of moments (usually around 0, or around
+$\mathbf{E} X$) often contains important information
+about the behavior of $X$ and is an important
+computational and theoretical tool. Important special
+distributions often turn out to have interesting
+sequences of moments. Also note that by the
+monotonicity of the $L_p$ norms (inequality
+\eqref{eq:lpnormmono} in Section \ref{sec-expec-prop}), the
+set of values $r\ge 0$ such that $\mathbf{E}(X^r)$
+exists (one can also talk about $r$-th moments for
+non-integer $r$, but that is much less commonly
+discussed) is an interval containing $0$.
+
+A nice characterization of the variance is that it is
+the minimal second moment. To compute the second
+moment around a point $t$, we can write
+
+\begin{eqnarray*}
+\mathbf{E}(X-t)^2 &=& \mathbf{E}[ (X-\mathbf{E} X)-(t-\mathbf{E} X)]^2 \\ &=& \mathbf{E}(X-\mathbf{E} X)^2 + \mathbf{E}(t-\mathbf{E} X)^2 + 2(t-\mathbf{E} X) \mathbf{E}(X-\mathbf{E} X) \\
+&=& \mathbf{V}(X) + (t-\mathbf{E} X)^2 \ge \mathbf{V}(X).
+\end{eqnarray*}
+
+\noindent So the function $t\to\mathbf{E}(X-t)^2$ is a
+quadratic polynomial that attains its minimum at
+$t=\mathbf{E} X$, and the value of the minimum is
+$\mathbf{V}(X)$. In words, the identity
+
+\[
+\mathbf{E}(X-t)^2 = \mathbf{V}(X) + (t-\mathbf{E} X)^2
+\]
+
+\noindent says that ``the second moment around $t$ is equal to
+the second moment around the mean $\mathbf{E} X$ plus
+the square of the distance between $t$ and the
+mean''. Note that this is analogous to (and
+mathematically equivalent to) the Huygens-Steiner
+theorem (also called the Parallel Axis theorem, see
+Wikipedia) from mechanics, which says that ``the
+moment of inertia of a body with unit mass around a
+given axis $L$ is equal to the moment of inertia
+around the line parallel to $L$ passing through the
+center of mass of the body, plus the square of the
+distance between the two lines''. Indeed, the
+``moment'' terminology seems to originate in this
+physical context.

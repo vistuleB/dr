@@ -1,0 +1,165 @@
+
+
+\chapter{A motivating example for martingales}
+A $\textbf{martingale}$ is a mathematical model for a
+sequence of fair gambles which has found many
+applications in both theoretical and applied
+probability. (In particular, martingales play an
+important role in the mathematics of investing and
+other areas of mathematical finance --- so knowing
+about them can actually make you money!) One of the
+most important facts about martingales is that under
+fairly mild assumptions they converge (almost surely,
+or in $L_1$ or according to some other notion of
+convergence). This is made precise in a family of
+important results known as \emph{martingale convergence
+theorems}. Our goal in the next few chapters will be
+to develop the basic theory of martingales and its
+applications and prove some of the martingale
+convergence theorems.
+
+We start our study of martingales with a motivating
+example: a famous experiment known as
+$\textbf{Pólya's urn experiment}$. In this model, an
+urn originally contains $a$ white balls and $b$ black
+balls. The experimenter samples a uniformly random
+ball from the urn, examines its color, then puts the
+ball back and adds another ball of the same color;
+this is repeated to infinity. Let $X_n$ denote the
+number of white balls in the urn after the $n$th
+step. Clearly $X_0 = a$ and the distribution of
+$X_{n+1}$ can be expressed most naturally by
+conditioning on $X_n$, namely
+
+\begin{equation*} \tag{1}\label{eq:polya-conditional}
+{X_{n+1}}_{\big| X_n = m} =
+\begin{cases}
+m+1 & \textrm{with probability }\frac{m}{n+a+b}, \\
+m & \textrm{with probability }\frac{n+a+b-m}{n+a+b}. \\
+\end{cases}
+\end{equation*}
+
+\noindent It turns out that it is not too difficult to find an
+unconditional formula for the probability distribution
+of $X_n$. Let $I_n$ be the indicator random variable
+of the event that in the $n$th sampling step a white
+ball was drawn. First, an amusing observation is that
+the probability of observing a particular sequence of
+white/black samples in the first $n$ sampling steps
+is only dependent on the number of white and black
+balls. That is, for any sequence
+$(x_1,x_2,\ldots,x_n)\in \{0,1\}^n$ the probability
+$\mathrm{P}(I_1 = x_1, \ldots, I_n = x_n)$ only
+depends on $k=\sum_{j=1}^n x_j$. To see this, note
+that if at a given stage $t$ of the experiment the
+urn contained $A$ white and $B$ black balls, the
+probability to draw ``white then black'' in the next
+two steps would be
+
+\[
+\frac{A}{t+a+b}\cdot \frac{B}{t+a+b+1},
+\]
+
+\noindent which is clearly equal to the probability of drawing
+``black then white,'' given by
+
+\[
+\frac{B}{t+a+b}\cdot \frac{A}{t+a+b+1}.
+\]
+
+\noindent Thus, permuting the 1's and 0's in the sequence
+$(x_1,\ldots,x_n)$ has no effect on the
+probability\footnote{A sequence of r.v.'s with this property is called
+$\textbf{exchangeable}$. There is an important result
+about such sequences (that we will not talk about
+here) called $\textbf{De-Finetti's theorem}$, which
+you might want to read about.}. It follows that for
+any such $(x_1,\ldots,x_n)$ with $\sum x_j=k$ we have
+
+\begin{align*}
+\mathrm{P}(I_j = x_j,\ j=1,\ldots,n) &= \mathrm{P}(I_1=\ldots=I_k=1,\ I_{k+1}=\ldots=I_n=0) \\
+&=
+\tag{2}\label{eq:polyaurn-formula}
+\frac{a(a+1)\ldots(a+k-1)\cdot b(b+1)\ldots(b+n-k-1)}{(a+b)(a+b+1)\ldots(a+b+n)}.
+\end{align*}
+
+\noindent Therefore the probability of having $p$ white balls
+after $n$ steps is
+
+\begin{align*}
+\mathrm{P}(X_n = p) &= \binom{n}{p-a}
+\mathrm{P}(I_1=\ldots=I_{p-a}=1,\ I_{p-a+1}=\ldots=I_n=0) \\
+&=
+\binom{n}{p-a}
+\frac{a(a+1)\ldots(a+p-a-1)\cdot b(b+1)\ldots(b+n-p+a-1)}{(a+b)(a+b+1)\ldots(a+b+n)}
+\end{align*}
+
+\noindent for $a \le p \le n+a$. This formula is so explicit
+that it is easy to analyze the distribution of $X_n$
+and show for example the convergence in distribution
+
+\begin{equation*} \tag{3}\label{eq:polya-beta-dist}
+\frac{X_n}{n+a+b} \implies \textrm{Beta}(a,b).
+\end{equation*}
+
+\noindent That is, the \emph{proportion} of white balls in the urn
+converges to a limiting beta distribution.
+
+\begin{xexercise}
+Prove (\ref{eq:polya-beta-dist}).
+\end{xexercise}
+
+\noindent What about stronger notions of convergence such as
+convergence in probability or almost sure convergence?
+This seems like a harder question that requires
+understanding more about the \emph{joint} distribution of
+different $X_n$'s. It turns out that we also have
+almost sure convergence, that is, the limit
+
+\begin{equation*} \tag{4}\label{eq:polya-as-conv}
+Y = \lim_{n\to\infty} \frac{X_n}{n+a+b}
+\end{equation*}
+
+\noindent exists almost surely, and that the main relevant fact
+that guarantees that this convergence takes place is
+that the proportions $M_n = X_n/(n+a+b)$ form a
+martingale! To see what this means, note that
+(\ref{eq:polya-conditional}) can be rewritten in the form
+
+\[
+{M_{n+1}}_{\big| M_n = m/(n+a+b)} =
+\begin{cases}
+\frac{m+1}{n+a+b+1} & \textrm{with probability }\frac{m}{n+a+b}, \\
+\frac{m}{n+a+b+1} & \textrm{with probability }\frac{n+a+b-m}{n+a+b}. \\
+\end{cases}
+\]
+
+\noindent Thus, the value of $M_{n+1}$ can be either greater or
+smaller than the value of $M_n$, but the amounts by
+which it increases or decreases, weighted by the
+respective probabilities of each of these events,
+balance out, so that \emph{on average}, the value stays the
+same:
+
+\[
+\frac{m}{n+a+b} = \frac{m}{n+a+b}\cdot \frac{m+1}{n+a+b+1} +
+\frac{n+a+b-m}{n+a+b} \cdot \frac{m}{n+a+b+1}
+\]
+
+\noindent The martingale property, which will immediately imply
+the a.s.\ convergence (\ref{eq:polya-as-conv}) through the
+use of one of the martingale convergence theorems, is
+a generalization of this statement for arbitrary
+sequences $(M_n)_{n=1}^\infty$. It is written in the
+more abstract form:
+
+\[
+\mathbf{E}\left(M_{n+1}\,|\,M_1,\ldots,M_n\right) = M_n.
+\]
+
+\noindent In this equation, the quantity on the left represents
+a new kind of random variable that we still haven't
+discussed, a \emph{conditional expectation}. So, before
+developing the theory of martingales we need a good
+understanding of conditional expectations. This is the
+subject of the next chapter.

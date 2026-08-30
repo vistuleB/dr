@@ -22,7 +22,7 @@
     follows from Chebyshev's inequality; except that the
     event on the left-hand side whose probability this
     quantity bounds is a _much bigger_ event than the
-    usual deviation event $\{ |S_n-\mathbf{E}(S_n)|>t\}$
+    usual deviation event $\{|S_n-\mathbf{E}(S_n)|>t\}$
     for which we know the Chebyshev bound holds!
 
     |> Proof

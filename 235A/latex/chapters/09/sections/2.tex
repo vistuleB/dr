@@ -1,0 +1,412 @@
+\section{Strong laws of large numbers}
+
+Our goal in this section will be to prove:
+
+\begin{thm}[Strong Law of Large Numbers (SLLN)]
+\label{thm-slln}
+If $\mathbf{E}|X_1|<\infty$ then
+
+\[
+\frac{S_n}{n} \xrightarrow[n\to\infty]{\textrm{a.s.}} \mu.
+\]
+
+\end{thm}
+
+\noindent As in the case of the weak law, it turns out that
+this is easier to prove when making more restrictive
+assumptions about the distribution of $X$, and
+specifically about the existence of moments. So we
+will prove it several times, successively weakening
+our assumptions until we get to the most general (but
+least easy to prove) result.
+
+\begin{proof}[Proof in the case of a finite fourth moment]
+To prove that $S_n/n\to \mu$, we want to prove that
+$\mathrm{P}(|S_n/n-\mu|>\epsilon\textrm{ i.o.})=0$.
+Looking at the bound \eqref{eq:variancebound}, we see that
+if the bound $\sigma^2/n\epsilon^2$ were to form the
+$n$-th general term of a convergent series, then by
+the Borel-Cantelli lemma this would be enough to get
+the desired consequence. This is not the case, but if
+we assume that $X_1$ has a finite fourth moment, then
+we could do a similar trick that \emph{will} give a
+convergent series. In that case, using Markov's
+inequality we can get that
+
+\begin{align*}
+\tag{8}\label{eq:previousbound}
+\mathrm{P}(|S_n/n-\mu|>\epsilon) = \mathrm{P}\left(\left( \sum_{k=1}^n (X_k-\mu) \right)^4 > n^4 \epsilon^4\right)
+\le \frac{\mathbf{E}(S_n-n\mu)^4}{n^4 \epsilon^4}.
+\end{align*}
+
+\noindent Denote $\hat{X_k}=X_k-\mu$, and
+$T_n = S_n-n\mu= \sum_{k=1}^n \hat{X_k}$. To bound
+$\mathbf{E}(T_n^4)$, note that we can write
+
+\begin{eqnarray*}
+T_n^4 &=& \sum_{k=1}^n \hat{X_k}^4 + \binom{4}{1} \sum_{1 \le i\neq j \le n} \hat{X_i}^3 \hat{X_j}
++ \frac12\binom{4}{2}\sum_{1 \le i\neq j \le n} \hat{X_i}^2 \hat{X_j}^2 \\
+& & + \frac12\binom{4}{2,1,1} \sum_{1\le i,j,k \le n\textrm{ distinct}} \hat{X_i}^2 \hat{X_j} \hat{X_k}
++ \frac{1}{4!}\binom{4}{1,1,1,1} \sum_{1 \le i,j,k,\ell \le n\textrm{ distinct}} \hat{X_i} \hat{X_j} \hat{X_k} \hat{X_\ell}
+\end{eqnarray*}
+
+\noindent (where $\binom{4}{2,1,1}=4!/2!1!1!$,
+$\binom{4}{1,1,1,1}=4!/1!1!1!1!$ are multinomial
+coefficients). Now take the expectations on both
+sides, and use the fact that
+$\mathbf{E}(\hat{X_k}) = 0$ and that the $\hat{X_k}$'s
+are independent, to get
+
+\[
+\mathbf{E}(T_n^4) = n m_4 + 3n(n-1) m_2^2,
+\]
+
+\noindent where we denote
+$m_2 = \mathbf{E}(\hat{X}_k^2) = \mathbf{V}(X_k)$,
+$m_4=\mathbf{E}(\hat{X}_k^4)<\infty$. This gives us
+the bound we wanted! In fact, all that matters is that
+$\mathbf{E}(T_n^4)\le C n^2$ for some constant $C>0$.
+Combining this with \eqref{eq:previousbound}, we get that
+
+\[
+\mathrm{P}(|S_n/n-\mu|>\epsilon) \le \frac{C}{n^2 \epsilon^4}.
+\]
+
+\noindent In particular, we have that
+$\sum_{n=1}^\infty \mathrm{P}(|S_n/n-\mu|>\epsilon)
+<\infty$,
+so by the Borel-Cantelli lemma, the probability of the
+event
+
+\[
+A_\epsilon := \left\{|S_n/n-\mu|>\epsilon \textrm{ i.o.}\right\}
+\]
+
+\noindent is $0$. This is true for all $\epsilon>0$, therefore
+the probability of
+
+\[
+\{S_n/n\nrightarrow \mu\} \subset \bigcup_{\epsilon>0} A_\epsilon = \bigcup_{n=1}^\infty A_{1/n}
+\]
+
+\noindent is also $0$, since it is contained in a countable
+union of events of probability 0.
+\end{proof}
+
+\begin{proof}[Proof in the case of finite variance]
+We are slowly refining our techniques to weaken the
+assumptions required to prove the SLLN. The following
+nice proof manages to harness the Chebyshev variance
+bound \eqref{eq:variancebound} after all to deduce the
+theorem in the case of r.v.'s with finite variance.
+Observe that while the series of terms on the
+right-hand side of \eqref{eq:variancebound} diverges, if
+we restrict it to a subsequence $n_k = k^2$, it will
+become a \emph{convergent} series:
+$\sum_{k=1}^\infty \sigma^2/k^2\epsilon^2<\infty$.
+This implies, again by the Borel-Cantelli lemma, that
+
+\[
+\mathrm{P}(|S_{n_k}/{n_k} - \mu| > \epsilon \textrm{ i.o.}) = 0
+\]
+
+\noindent for all $\epsilon>0$ (the ``i.o.'' here refers to the
+``running index'' $k$, not $n$). This implies as
+before that
+
+\[
+\mathrm{P}\left(\frac{S_{n_k}}{n_k}\xrightarrow[k\to\infty]{\textrm{a.s.}} \mu\right) = 1.
+\]
+
+\noindent So, while we have not shown almost sure convergence
+of the empirical averages to the true mean for all
+values of $n$, at least we have done so for the
+subsequence $n_k=k^2$. But this subsequence is
+relatively dense. In particular, if we show that in
+between elements of the subsequence $n_k=k^2$, the
+empirical average cannot fluctuate too wildly, then
+the theorem would follow. This will again follow from
+a combination of variance-based (i.e., Chebyshev)
+bounds and the Borel-Cantelli lemma. Fix some $k$,
+and take an integer $n$ satisfying
+$n_k\le n < n_{k+1}$. How likely is the $n$-th
+empirical average to deviate significantly from the
+$n_k$-th empirical average? Using the notation
+$T_n=S_n-n\mu$ as before, we have
+
+\begin{eqnarray*}
+\mathrm{P}\left( \left| \frac{T_n}{n}-\frac{T_{n_k}}{n_k} \right| > \epsilon \right) &=& \mathrm{P}\left( \left|
+\frac{n_k T_n - n T_{n_k}}{n\cdot n_k} \right|>\epsilon\right) \\
+\textrm{(by triangle ineq.)}  &\le&
+\mathrm{P}\left( \left| \frac{T_n -T_{n_k}}{n_k} \right| > \epsilon/2 \right)+ \mathrm{P}\left( \left|T_n\right| \frac{n-n_k}{n\cdot n_k}
+> \epsilon/2 \right) \\
+\textrm{(by Chebyshev's ineq.)} &\le&
+\frac{4 \mathbf{V}(T_n-T_{n_k})}{\epsilon^2 n_k^2} + \frac{4\mathbf{V}(T_n)(n-n_k)^2}{n^2 n_k^2} \\
+&\le&
+\frac{10 k \sigma^2}{\epsilon^2 k^4} + \frac{20 k^4 \sigma^2}{k^8} < \frac{20 \sigma^2}{k^3},
+\end{eqnarray*}
+
+\noindent where we have denoted $\sigma^2=\mathbf{V}(X_1)$.
+
+The estimate that we obtained is valid for a single
+$n$. We are actually interested in the \emph{maximal}
+fluctuation of the empirical averages $S_n/n$ from
+$S_{n_k}/n_k$, when $n$ ranges in the interval
+$[n_k,n_{k+1})$. By a simple subadditivity argument,
+usually referred to as a $\textbf{union bound}$
+(i.e., bounding the probability of a union of events
+by the sum of the probabilities, which is the most
+naive bound you can imagine), we get easily that
+
+\begin{eqnarray*}
+\mathrm{P}\left(\max_{n_k \le n < n_{k+1}} \left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon \right)
+&=&
+\mathrm{P}\left(\bigcup_{n_k \le n < n_{k+1}} \left\{\left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon \right\}\right) \\
+&\le& \sum_{n=n_k}^{n_{k+1}-1}
+\mathrm{P}\left(\left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon \right) < \frac{20 \sigma^2\cdot 2k}{k^3}
+= \frac{40\sigma^2}{k^2}.
+\end{eqnarray*}
+
+\noindent Once again, we have obtained as our bound the general
+term of a convergent series! Denoting
+
+\[
+A_{k,\epsilon} = \left\{ \max_{n_k \le n < n_{k+1}} \left| \frac{T_n}{n} - \frac{T_{n_k}}{n_k} \right| > \epsilon
+\right\},
+\]
+
+\noindent by the Borel-Cantelli lemma this implies that for any
+$\epsilon>0$,
+$\mathrm{P}(A_{k,\epsilon}\textrm{ i.o.})=0$ (with
+the ``i.o.'' qualifier again referring to the running
+index $k$). What about the chance that this will
+happen for some $\epsilon>0$? After all, there are so
+many $\epsilon$'s out there... But no, we also get
+that
+
+\[
+\mathrm{P}\left(\bigcup_{\epsilon>0} \left\{ A_{k,\epsilon}\textrm{ i.o.} \right\} \right) =
+\mathrm{P}\left( \bigcup_{m=1}^\infty \left\{ A_{k,1/m}\textrm{ i.o. (w.r.t. } k \textrm{)}\right\} \right) = 0,
+\]
+
+\noindent by subadditivity for countable unions and the fact
+that $A_{k,\epsilon} \subset A_{k,\epsilon'}$ if
+$\epsilon>\epsilon'$.
+
+Finally, combining our two main results, namely that
+the two events
+
+\begin{eqnarray*}
+E_1 &=& \left\{ \frac{S_{n_k}}{n_k} \xrightarrow[n\to\infty]{} \mu \right\},
+\\
+E_2 &=& \left( \bigcup_{m=1}^\infty \left\{
+\max_{n_k\le n< n_{k+1}} \left|\frac{T_n}{n}-\frac{T_{n_k}}{n_k} \right| > \frac{1}{m}
+\textrm{ for inifinitely many } k \textrm{'s}
+\right\}
+\right)^c
+\end{eqnarray*}
+
+\noindent both have probability 1, we get that their
+intersection $E_1\cap E_2$ also has probability 1.
+But we have the event inclusion
+
+\[
+E_1 \cap E_2 \subset \left\{ \frac{S_n}{n} \xrightarrow[n\to\infty]{} \mu \right\}
+\]
+
+\noindent (if the conditions in both the events $E_1, E_2$
+occur, then $S_n/n$ must converge to $\mu$), so this
+latter event also has probability 1.
+\end{proof}
+
+\noindent The above proof was a little involved, but is based
+on a few simple ideas: 1. Use Chebyshev bounds
+together with the Borel-Cantelli lemma. 2. Break up
+the event $\{S_n/n\to \mu\}$ in a clever way into
+events which can be managed using this technique,
+namely (in this case) the weaker convergence along the
+subsequence $n_k = k^2$, and separately the control
+of the fluctuations of the empirical averages in each
+range $[n_k,n_{k+1})$ between successive elements of
+the subsequence.
+
+An extra benefit of the above proof is that it
+doesn't use the full power of the assumption that the
+$X_n$'s are independent. In fact, everything is based
+on variance computations of sums of the $X_k$'s, so
+the proof works equally well for \emph{uncorrelated} random
+variables!
+
+\begin{thm}[SLLN for uncorrelated r.v.'s with finite variance]
+If $X_1,X_2,\ldots$ are a sequence of uncorrelated
+and identically distributed r.v.'s with finite
+variance, then
+
+\[
+\frac{1}{n}\sum_{k=1}^n X_k \xrightarrow[n\to\infty]{\textrm{a.s.}} \mathbf{E} X_1.
+\]
+
+\end{thm}
+
+\noindent Finally, we turn to the proof of the full SLLN for an
+i.i.d. sequence (\hyperref[thm-slln]{Theorem~\ref*{thm-slln}}), assuming only a
+finite first moment. Etemadi's 1981 proof presented in
+[Dur2010] is based on a similar idea of proving
+convergence first for a subsequence, and introduces
+another useful technique, that of
+$\textbf{truncation}$.
+
+\begin{proof}[Proof of \texorpdfstring{\hyperref[thm-slln]{Theorem~\ref*{thm-slln}}}{Theorem}]
+First, observe that it is enough to prove the theorem
+in the case where $X_1\ge 0$, since in the general
+case we may decompose each $X_n$ into its positive
+and negative parts, and this gives two i.i.d.
+sequences of nonnegative r.v.'s. The validity of the
+SLLN for each of the two sequences implies the result
+for their difference.
+
+Second, for each $n\ge 1$ let
+$Y_n = X_n \mathbf{1}_{\{X_n\le n\}}$ (``$X_n$
+truncated at $n$''), and denote
+$T_n=Y_1+Y_2+\ldots +Y_n$. Since
+$\mathbf{E} X_1<\infty$, by a homework exercise we
+know that
+$\sum_{n=1}^\infty \mathrm{P}(X_n> n)<\infty$, which
+by the Borel-Cantelli lemma implies that
+$\mathrm{P}(X_n>n\textrm{ i.o.}) = \mathrm{P}(X_n\neq
+Y_n\textrm{ i.o.}) = 0$.
+It follows that the event
+
+\[
+\left\{ \sup_{n\to\infty} |S_n-T_n|=\infty \right\}
+\]
+
+\noindent has probability 0, and therefore the even smaller
+event
+
+\[
+\left\{ \limsup_{n\to\infty} \left|\frac{S_n}{n}-\frac{T_n}{n} \right|>0 \right\}=
+\left\{ \limsup_{n\to\infty} \left|\left(\frac{S_n}{n}-\mu\right)-\frac{T_n-\mathbf{E}(T_n)}{n} \right|>0 \right\},
+\]
+
+\noindent has probability 0 (the equivalence between these last
+two events follows from the observation that
+$\mathbf{E}(Y_n)\uparrow \mu$ by the
+monotone/dominated convergence theorems, and therefore
+also $\mathbf{E}(T_n)/n\to\mu$ as $n\to\infty$ since
+$(n^{-1} \mathbf{E}(T_n))_{n=1}^\infty$ is the
+sequence of arithmetic averages of the
+$\mathbf{E}(Y_n)$'s). So we have shown that to prove
+the theorem, it is enough to prove that
+
+\[
+\mathrm{P}\left(\frac{T_n-\mathbf{E} T_n}{n}\to0\right) = 1.
+\]
+
+\noindent Now, to prove this, as before we establish a.s.
+convergence first along a subsequence $n_k$, this
+time taking $n_k = \lfloor \alpha^k \rfloor$ where
+$\alpha>1$. (Here, $\lfloor x\rfloor$ denotes the
+``floor'' function, namely the largest integer
+$\le x$). This is done by again combining the
+Borel-Cantelli lemma with a Chebyshev variance bound,
+except that showing that the sum of the bounds gives a
+convergent series requires more work than before. We
+have
+
+\begin{eqnarray*}
+\mathrm{P}\left(\left|\frac{T_{n_k}}{n_k} - \frac{\mathbf{E}(T_{n_k})}{n_k}\right| > \epsilon\right)
+&\le&
+\frac{\mathbf{V}(T_{n_k})}{\epsilon^2 n_k^2}
+= \frac{1}{\epsilon^2 n_k^2} \sum_{m=1}^{n_k} \mathbf{V}(Y_m).
+\end{eqnarray*}
+
+\noindent Therefore
+
+\begin{align*}
+\sum_{k=1}^\infty
+\mathrm{P}\left(\left|\frac{T_{n_k}}{n_k} - \frac{\mathbf{E}(T_{n_k})}{n_k}\right| > \epsilon\right)
+&\le
+\sum_{k=1}^\infty  \frac{1}{\epsilon^2 n_k^2} \sum_{m=1}^{n_k} \mathbf{V}(Y_m)
+= \frac{1}{\epsilon^2} \sum_{m=1}^\infty \mathbf{V}(Y_m) \sum_{n_k\ge m} \frac{1}{n_k^2}
+\\
+&\le
+\frac{1}{\epsilon^2} \sum_{m=1}^\infty \mathbf{V}(Y_m) \frac{1}{m^2}(1+\alpha^{-2}+\alpha^{-4}+\alpha^{-6}+\ldots)
+\\
+&=
+\tag{9}\label{eq:infinitesum}
+\frac{1}{\epsilon^2(1-\alpha^{-2})} \sum_{m=1}^\infty  \frac{\mathbf{V}(Y_m)}{m^2}
+\end{align*}
+
+\begin{lem}
+We have
+
+\[
+\sum_{m=1}^\infty \frac{\mathbf{V}(Y_m)}{m^2} \le 4 \mathbf{E} X_1 < \infty.
+\]
+
+\end{lem}
+
+\begin{proof}
+Using the formula
+$\mathbf{E}(Z)=\int_0^\infty \mathrm{P}(Z>x)\,dx$
+that's valid for any nonnegative r.v. $Z$, we have
+that
+
+\begin{eqnarray*}
+\sum_{m=1}^\infty \frac{\mathbf{V}(Y_m)}{m^2} &\le& \sum_{m=1}^\infty \frac{1}{m^2} \mathbf{E}(Y_m^2)
+=\sum_{m=1}^\infty \frac{1}{m^2}\mathbf{E}\left(X_m^2 \mathbf{1}_{\{X_m\le m\}}\right) \\
+&=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^\infty \mathrm{P}\left(X_m^2 \mathbf{1}_{\{X_m\le m\}}>t\right)dt \\
+&=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^\infty \mathrm{P}\left(\sqrt{t} \le X_m \le m \right)dt \\
+&=& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^{m^2} \mathrm{P}\left(\sqrt{t} \le X_1 \le m \right)dt \\
+&\le& \sum_{m=1}^\infty \frac{1}{m^2} \int_0^{m^2} \mathrm{P}\left(X_1 \ge \sqrt{t} \right)dt \\
+&=& \int_0^\infty \left(\sum_{m\ge \sqrt{t}} \frac{1}{m^2}\right) \mathrm{P}\left(X_1\ge \sqrt{t}\right)dt \\
+&\le& \int_0^\infty \frac{2}{\sqrt{t}} \mathrm{P}\left(X_1\ge \sqrt{t}\right)dt = 4 \int_0^\infty \mathrm{P}(X_1\ge u)du = 4\mathbf{E}(X_1).
+\end{eqnarray*}
+
+\end{proof}
+
+\noindent It follows that the infinite sum on the left-hand
+side of \eqref{eq:infinitesum} converges, and therefore by
+the Borel-Cantelli lemma, we have that
+
+\[
+\mathrm{P}\left(\left|\frac{T_{n_k}}{n_k} - \frac{\mathbf{E}(T_{n_k})}{n_k}\right| > \epsilon\textrm{ infinitely often (w.r.t. } k \textrm{)}\right)
+=0.
+\]
+
+\noindent Since this is true for all $\epsilon>0$, using the
+standard trick we get that
+
+\[
+\mathrm{P}\left(\frac{T_{n_k}}{n_k} - \frac{\mathbf{E}(T_{n_k})}{n_k}\xrightarrow[k\to\infty]{}0\right) =
+\mathrm{P}\left(\frac{T_{n_k}}{n_k}  \xrightarrow[k\to\infty]{}\mu\right) =  1.
+\]
+
+\noindent The last step is now to show that convergence along
+this subsequence forces $(T_n-\mathbf{E} T_n)/n$ to
+behave well between successive $n_k$'s. Observe that
+if $n_k \le n < n_{k+1}$ then
+
+\[
+\frac{T_{n_k}}{n_{k+1}} \le \frac{T_n}{n} \le \frac{T_{n_{k+1}}}{n_k}.
+\]
+
+\noindent Since $n_k=\lfloor \alpha^k\rfloor$, in the limit
+this gives that almost surely the bounds
+
+\[
+\frac{1}{\alpha} \mu \le \liminf_{n\to\infty} \frac{T_n}{n} \le \limsup_{n\to\infty} \frac{T_n}{n}
+\le \alpha \mu
+\]
+
+\noindent hold. Since $\alpha>1$ was arbitrary, the
+intersection of these events for $\alpha=1+1/d$,
+$d=1,2,\ldots$, implies that
+
+\[
+\mathrm{P}\left( \frac{T_n}{n} \to\mu \right) = 1,
+\]
+
+\noindent which finishes the proof of \hyperref[thm-slln]{Theorem~\ref*{thm-slln}}.
+\end{proof}

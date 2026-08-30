@@ -1,0 +1,206 @@
+\section{Generalizations}
+
+The CLT can be generalized in many ways. None of the
+assumptions (independence, identical distributions,
+even finite variance) are entirely necessary. A
+central paradigm of probability theory is that any
+random quantity that arises as a sum of many small
+contributions that are either independent or not too
+strongly dependent, will converge to the normal
+distribution in some asymptotic limit. Thousands of
+examples exist, but there is no single
+all-encompassing theorem that includes all of them as
+a special case. Rather, probabilists have a toolbox of
+tricks and techniques that they try to apply in order
+to prove normal convergence in any given situation.
+characteristic functions are among the more useful
+techniques. Another important technique, the so-called
+$\textbf{moment method}$, involves the direct use of
+moments: If we can show that
+$\mathbf{E}(W_n^k)\to \mathbf{E}(Z^k)$, where
+$(W_n)_{n=1}^\infty$ is the (normalized) sequence
+being studied, and $Z\sim N(0,1)$, then by Theorem
+3.3.12 in [Dur2010] (p. 105) or Theorem (3.12) in
+[Dur2004] (p. 109), that implies that
+$W_n\implies N(0,1)$.
+
+We now discuss several examples of interesting
+generalizations of CLT.
+
+\subsection{Triangular arrays}
+
+\begin{thm}[Lindeberg-Feller CLT for triangular arrays]
+\label{thm-lindeberg-feller}
+Let $(X_{n,k})_{1\le k\le n<\infty}$ be a triangular
+array of r.v.'s. Denote $S_n = \sum_{k=1}^n X_{n,k}$
+(the sum of the $n$-th row). Assume that:
+
+\begin{enumerate}[label=\arabic*.]
+\item For each $n$, the r.v.'s $(X_{n,k})_{k=1}^n$ are
+independent.
+
+\item $\mathbf{E} X_{n,k}=0$ for all $n,k$.
+
+\item $\mathbf{V}(S_n) = \sigma_n^2 \to \sigma^2<\infty$ as
+$n\to\infty$.
+
+\item For all $\epsilon>0$,
+${\displaystyle \lim_{n\to\infty}} \sum_{k=1}^n
+\mathbf{E}\left( X_{n,k}^2
+\mathbf{1}_{\{|X_{n,k}|>\epsilon\}}\right)=0$.
+\end{enumerate}
+
+\noindent Then $S_n \implies N(0,\sigma^2)$ as $n\to\infty$.
+\end{thm}
+
+\begin{proof}
+See [Dur2010], p. 110--111 or [Dur2004], p. 115--116.
+The proof uses the characteristic function technique
+and is a straightforward extension of the proof for
+the i.i.d. case.
+\end{proof}
+
+\begin{example}
+(Record times and cycles in permutations). Let
+$X_1, X_2, \ldots$ be i.i.d. $U(0,1)$ r.v.'s. Let
+$A_n$ be the event that
+$\{X_n = \max(X_1,\ldots,X_n)\}$ (in this case, we
+say that $n$ is a $\textbf{record time}$). Let
+$S_n = \sum_{k=1}^n \mathbf{1}_{A_k}$ be the number
+of record times up to time $n$. We saw in a homework
+exercise that the $A_k$'s are independent events and
+$\mathrm{P}(A_k) = 1/k$. This implies that
+$\mathbf{E}(S_n) = \sum_{k=1}^n \frac{1}{k} = H_n$
+(the $n$-th $\textbf{harmonic number}$) and
+$\mathbf{V}(S_n) = \sum_{k=1}^n \frac{k-1}{k^2}$.
+Note that both $\mathbf{E}(S_n)$ and $\mathbf{V}(S_n)$
+are approximately equal to $\log n$, with an error
+term that is $O(1)$. Now taking
+$X_{n,k} =
+(\mathbf{1}_{A_k}-k^{-1})/\sqrt{\mathbf{V}(S_n)}$
+in \hyperref[thm-lindeberg-feller]{Theorem~\ref*{thm-lindeberg-feller}}, it is easy to check
+that the assumptions of the theorem hold. It follows
+that
+
+\[
+\frac{S_n-H_n}{\sigma(S_n)} \implies N(0,1).
+\]
+
+\noindent Equivalently, because of the asymptotic behavior of
+$\mathbf{E}(S_n)$ and $\mathbf{V}(S_n)$ it is also
+true that
+
+\[
+\frac{S_n-\log n}{\sqrt{\log n}} \implies N(0,1).
+\]
+
+\noindent $\textbf{Note:}$$S_n$ describes the distribution of
+another interesting statistic on random permutations.
+It is not too difficult to show by induction (using an
+amusing construction often referred to as the
+$\textbf{Chinese restaurant process}$) that if
+$\sigma \in S_n$ is a uniformly random permutation on
+$n$ elements, then the number of cycles in $\sigma$
+is a random variable which is equal in distribution to
+$S_n$.
+\end{example}
+
+\subsection{Erdös-Kac theorem}
+
+\begin{thm}[Erdös-Kac theorem (1940)]
+Let $g(m)$ denote the number of prime divisors of an
+integer $k$ (for example, $g(28)=2)$. For each
+$n\ge 1$, let $X_n$ be a uniformly random integer
+chosen in $\{1,2,\ldots,n\}$, and let $Y_n=g(X_n)$ be
+the number of prime divisors of $X_n$. Then we have
+
+\[
+\frac{Y_n - \log\log n}{\sqrt{\log\log n}} \implies N(0,1).
+\]
+
+\noindent In other words, for any $x\in\R$ we have
+
+\[
+\frac{1}{n}\# \left\{ 1\le k\le n: g(k) \le \log\log n + k \sqrt{\log\log n} \right\} \xrightarrow[n\to\infty]{} \Phi(x).
+\]
+
+\end{thm}
+
+\begin{proof}
+See [Dur2010], p. 114--117 or [Dur2004], p. 119--124.
+The proof uses the moment method.
+\end{proof}
+
+\noindent Note that $Y_n$ can be written in the form
+$\sum_{p\le n} \mathbf{1}_{\{p | X_n\}}$, namely the
+sum over all primes $p\le n$ of the indicator of the
+event that $X_n$ is divisible by $p$. The probability
+that $X_n$ is divisible by $p$ is roughly $1/p$, at
+least if $p$ is significantly smaller than $n$.
+Therefore we can expect $Y_n$  to be on the average
+around
+
+\[
+\sum_{\textrm{prime }p\le n} \frac{1}{p},
+\]
+
+\noindent a sum that is known (thanks to Euler) to behave
+roughly like $\log\log n$. The Erdös-Kac theorem is
+intuitively related to the observation that these
+indicators $\mathbf{1}_{\{p | X_n\}}$ for different
+$p$'s are also close to being independent (a fact
+which follows from the Chinese remainder theorem). Of
+course, they are only approximately independent, and
+making these observations precise is the challenge to
+proving the theorem. In fact, many famous open
+problems in number theory (even the Riemann
+Hypothesis, widely considered to be the most important
+open problem in mathematics) can be formulated in
+terms of a statement about approximate independence
+(in some loose sense) of some arithmetic sequence
+relating to the prime numbers.
+
+\subsection{The Euclidean algorithm}
+
+As a final example from number theory, consider the
+following problem: For some $n\ge 1$, choose $X_n$
+and $Y_n$ independently and uniformly at random in
+$\{1,2,\ldots,n\}$, and compute their greatest common
+divisor (g.c.d.) using the Euclidean algorithm. Let
+$N_n$ be the number of division (with remainder)
+steps that were required. For example, if $X = 58$
+and $Y=24$ then the application of the Euclidean
+algorithm would result in the sequence of steps
+
+\[
+(58,24) \to (24,10) \to (10,4) \to (4,2) \to (2,0),
+\]
+
+\noindent so 4 division operations were required (and the
+g.c.d. is 2).
+
+\begin{thm}[CLT for the number of steps in the Euclidean algorithm; D. Hensley (1992)]
+There exists a constant $\sigma_\infty$ (which has a
+very complicated definition) such that
+
+\[
+\frac{N_n - \frac{12 \log 2}{\pi^2} \log n}{\sigma_\infty \sqrt{\log n}} \implies N(0,1).
+\]
+
+\end{thm}
+
+\noindent Hensley's theorem was in recent years significantly
+generalized and the techniques extended by Brigitte
+Vallée, a French mathematician. The fact that the
+average value of $N_n$ is approximately
+$(12\log 2/\pi^2)\log n$ was previously known from
+work of Heilbronn and Dixon in 1969--1970, using ideas
+dating back to Gauss, who discovered the probability
+distribution now called the ``Gauss measure''. This is
+the probability distribution on $(0,1)$ with density
+$\frac{1}{\log 2(1+x)}$, which Gauss found (but did
+not prove!) describes the limiting distribution of the
+ratio of a pair of independent $U(0,1)$ random
+variables after many iterations of the
+division-with-remainder step in the Euclidean
+algorithm.

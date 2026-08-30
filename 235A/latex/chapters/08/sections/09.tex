@@ -1,0 +1,56 @@
+\section{The gamma distribution}
+
+To define the gamma distribution, first we define the
+$\textbf{Euler gamma function}$ (also called the
+$\textbf{generalized factorial function}$), an
+important special function of mathematical analysis,
+denoted $\Gamma(t)$, by
+
+\[
+\Gamma(t) = \int_0^\infty e^{-x} x^{t-1}\,dt \qquad (t>0).
+\]
+
+\noindent $\textbf{Properties of the gamma function:}$
+
+\begin{enumerate}[label=\arabic*.]
+\item $\Gamma(n)=(n-1)!$ for integer $n\ge1$.
+
+\item $\Gamma(t+1) = t\, \Gamma(t)$ for all $t>0$.
+
+\item $\Gamma(1/2)=\sqrt{\pi}$.
+\end{enumerate}
+
+\noindent Next, we say that $X$ has the gamma distribution with
+parameters $\alpha, \lambda>0$, and denote
+$X\sim \operatorname{Gamma}(\lambda)$, if $X$ has
+density function
+
+\[
+f_X(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} e^{-\lambda x} x^{\alpha-1} \qquad (x>0).
+\]
+
+\noindent $\textbf{Properties of the gamma distribution:}$
+
+\begin{enumerate}[label=\arabic*.]
+\item $\operatorname{Exp}(\lambda) \stackrel{d}{=}
+\operatorname{Gamma}(1,\lambda)$.
+
+\item The parameter $\lambda$ has the role of a scale
+parameter in the same sense as for the exponential
+distribution: for $c>0$ we have
+$c \operatorname{Gamma}(\alpha,\lambda)
+\stackrel{d}{=} \operatorname{Gamma}(\alpha,
+\lambda/c)$.
+
+\item $\operatorname{Gamma}(\alpha,\lambda) \boxplus
+\operatorname{Gamma}(\beta,\lambda) =
+\operatorname{Gamma}(\alpha+\beta,\lambda)$.
+
+\item $\operatorname{Gamma}(\alpha,\lambda) =
+\mathop{\boxplus}\limits_{k=1}^n
+\operatorname{Exp}(\lambda)$.
+
+\item If $X\sim \operatorname{Gamma}(\alpha,\lambda)$ then
+$\mathbf{E} X = \frac{\alpha}{\lambda}$,
+$\mathbf{V}(X) = \frac{\alpha}{\lambda^2}$.
+\end{enumerate}

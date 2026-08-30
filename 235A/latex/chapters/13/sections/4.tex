@@ -1,0 +1,88 @@
+\section{The continuity theorem}
+
+\begin{thm}
+\label{thm-continuity}
+Let $(X_n)_{n=1}^\infty$ be r.v.'s. Then:
+
+\begin{enumerate}[label=(\roman*)]
+\item If $X_n \implies X$ for some r.v. $X$, then
+$\varphi_{X_n}(t)\to \varphi_X(t)$ for all $t\in\R$.
+
+\item If the limit
+$\varphi(t) = \lim_{n\to\infty} \varphi_{X_n}(t)$
+exists for all $t\in\R$, and $\varphi$ is continuous
+at 0, then $\varphi\equiv \varphi_X$ for some r.v.
+$X$, and $X_n \implies X$.
+\end{enumerate}
+
+\end{thm}
+
+\begin{proof}
+Part (i) follows immediately from the fact that
+convergence in distribution implies that
+$\mathbf{E} g(X_n)\to \mathbf{E} g(X)$ for any
+bounded continuous function. It remains to prove the
+less trivial claim in part (ii). Assume that
+$\varphi_{X_n}(t)\to \varphi(t)$ for all $t\in\R$ and
+that $\varphi$ is continuous at $0$. First, we show
+that the sequence $(X_n)_{n=1}^\infty$ is tight.
+Fixing an $M>0$, we can bound the probability
+$\mathrm{P}(|X_n|>M)$, as follows:
+
+\begin{eqnarray*} \mathrm{P}(|X_n|>M) &=& \mathbf{E}\left( \mathbf{1}_{\{|X_n|>M\}}\right) \le
+\mathbf{E} \left[ 2 \left( 1-\frac{M}{2|X_n|} \right) \mathbf{1}_{\{|X_n|>M\}}\right] \\
+&\le&
+\mathbf{E} \left[ 2 \left( 1-\frac{\sin(2X_n/M)}{2X_n/M} \right) \mathbf{1}_{\{|X_n|>M\}}\right].
+\end{eqnarray*}
+
+\noindent But this last expression can be related to the
+behavior of the characteristic function near $0$.
+Denote $\delta=2/M$. Reverting again to the
+Lebesgue-Stieltjes integral notation, we have
+
+\begin{eqnarray*}
+&&\mathbf{E} \left[ 2 \left( 1-\frac{\sin(2X_n/M)}{2X_n/M} \right) \mathbf{1}_{\{|X_n|>M\}}\right]
+ \ =\ \  2\int_{|x|>2/\delta} \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x) \\
+&\le& 2\int_{-\infty}^\infty \left(1-\frac{\sin (\delta x)}{\delta x}\right) d\mu_{X_n}(x)
+= \int_{-\infty}^\infty \frac{1}{\delta}\left(\int_{-\delta}^\delta (1-e^{itx})\,dt\right)\,d\mu_{X_n}(x).
+\end{eqnarray*}
+
+\noindent Now use Fubini's theorem to get that this bound can
+be written as
+
+\[
+\frac{1}{\delta} \int_{-\delta}^\delta \int_{-\infty}^\infty (1-e^{itx})\,d\mu_{X_n}(x)\,dt
+=\frac{1}{\delta} \int_{-\delta}^\delta (1-\varphi_{X_n}(t))\,dt
+\xrightarrow[n\to\infty]{} \frac{1}{\delta} \int_{-\delta}^\delta (1-\varphi(t))\,dt
+\]
+
+\noindent (the convergence follows from the bounded convergence
+theorem). So we have shown that
+
+\[
+\limsup_{n\to\infty} \mathrm{P}(|X_n|>M) \le \frac{1}{\delta} \int_{-\delta}^\delta (1-\varphi(t))\,dt.
+\]
+
+\noindent But, because of the assumption that
+$\varphi(t)\to \varphi(0)=1$ as $t\to 0$, it follows
+that if $\delta$ is sufficiently small then
+$\delta^{-1} \int_{-\delta}^\delta (1-\varphi(t))\,dt
+< \epsilon$,
+where $\epsilon>0$ is arbitrary; so this establishes
+the tightness claim.
+
+Finally, to finish the proof, let $(n_k)_{k=1}^\infty$
+be a subsequence (guaranteed to exist by tightness)
+such that $X_{n_k}\implies Y$ for some r.v. $Y$. Then
+$\varphi_{X_{n_k}}(t)\to \varphi_Y(t)=\varphi(t)$ as
+$k\to\infty$ for all $t\in\R$, so
+$\varphi\equiv\varphi_Y$. This determines the
+distribution of $Y$, which means that the limit in
+distribution is the same no matter what convergent in
+distribution subsequence of the sequence $(X_n)_n$ we
+take. But this implies that $X_n\implies Y$ (why? The
+reader is invited to verify this last claim; it is
+best to use the definition of convergence in
+distribution in terms of expectations of bounded
+continuous functions).
+\end{proof}

@@ -1,0 +1,84 @@
+\section{Examples}
+
+\begin{example}[Indicator random variables]
+If $A$ is an event in a probability space
+$(\Omega, {\cal F}, \mathrm{P})$, its
+$\textbf{indicator random variable}$ is the r.v.
+$\mathbf{1}_A$ defined by
+
+\[
+\mathbf{1}_A(\omega) = \begin{cases} 0 & \omega \notin A, \\ 1 & \omega \in A. \end{cases}
+\]
+
+\noindent The above discussion shows that to specify the
+behavior of a random variable, it is enough to specify
+its distribution function. Another useful concept is
+that of a $\textbf{density function}$. If $F=F_X$ is
+a distribution function such that for some nonnegative
+function $f:\R\to\R$ we have
+
+\begin{equation*} \tag{4}\label{eq:density}
+F(x) = \int_{-\infty}^x f(y)\,dy, \qquad (y\in\R),
+\end{equation*}
+
+\noindent then we say that $\textbf{$X$has a density function$f
+$}$. Note that $f$ determines $F$ but is itself only
+determined by $F$ up to ``small'' changes that do not
+affect the integral in \eqref{eq:density} (in
+measure-theoretic terminology we say that $f$ is
+determined ``up to a set of measure $0$''). For
+example, changing the value$f$ in a finite number of
+points results in a density function that is equally
+valid for computing $F$.
+\end{example}
+
+\begin{example}[Uniform random variables]
+We say that $\textbf{$X
+$is a uniform random variable on$(0,1)$}$ if it has
+the distribution function
+
+\[
+F(x) = \begin{cases} 0 & x \le 0, \\
+x & 0\le x \le 1, \\
+1 & x \ge 1.
+\end{cases}
+\]
+
+\noindent Such a r.v. has as its density function the function
+
+\[
+f(x) = \begin{cases} 1 & 0\le x\le 1,\\ 0&\textrm{otherwise.}\end{cases}
+\]
+
+\noindent More generally, if $a<b$ we say that $X$ is a
+$\textbf{uniform random variable in the interval$(a,b)
+$}$ if it has the (respective) distribution and
+density functions
+
+\[
+F(x) = \begin{cases} 0 & x \le a, \\ \frac{x-a}{b-a} & a\le x\le b, \\ 1 & x\ge b, \end{cases}
+\qquad
+f(x) = \begin{cases} \frac{1}{b-a} & a\le x\le b, \\ 0 & \textrm{otherwise.}
+\end{cases}
+\]
+
+\end{example}
+
+\begin{example}[Standard normal distribution]
+The normal (or gaussian) distribution is given in
+terms of its density function
+
+\[
+f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}.
+\]
+
+\noindent The cumulative distribution function is denoted by
+
+\[
+\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-y^2/2} dy.
+\]
+
+\noindent This integral cannot be evaluated explicitly in terms
+of more familiar functions, but $\Phi$ is an
+important special function of mathematics nonetheless.
+\end{example}

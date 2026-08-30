@@ -8,64 +8,61 @@ import gleam/list
 import gleam/option
 import gleam/string
 import latex_renderer
+import local_desugarers
 import on
 import renderer
 import simplifile
 
 const ins = string.inspect
 
-fn local_usage_message() {
+fn local_cli_usage() -> String {
   let margin = string.repeat(" ", ds.help_message_margin)
-  let message =
-    [
-      margin <> "--fmt [<cols>] [<cols> <penalty>] [-file <name>]",
-      margin <> "  -> (local option) run the formatter",
-      "",
-      margin <> "     optional arguments:",
-      "",
-      margin <> "     • <cols>: preferred line length",
-      margin <> "     • <cols> <penalty>: preferred line",
-      margin <> "       length and indentation penalty (number",
-      margin <> "       of chars subtracted from line length at",
-      margin <> "       each added level of indentation in the file)",
-      margin <> "     • -file <name>: format only the given file",
-      "",
-      margin <> "--latex-monolithic",
-      margin <> "  -> (local option) render wly -> a single self-contained",
-      margin <> "     LaTeX file <course dir>/latex/main.tex, compilable",
-      margin <> "     with pdflatex (clickable TOC + PDF outline)",
-      "",
-      margin <> "--latex-chapters / --latex-sections / --latex-subsections",
-      margin <> "  -> modular LaTeX: a main.tex (title + TOC) that \\inputs",
-      margin <> "     one file per chapter (and, at finer granularities, per",
-      margin <> "     section / subsection) + one per standalone unit; compile",
-      margin <> "     <course dir>/latex/main.tex",
-      "",
-      margin <> "--local",
-      margin <> "  -> include source-linking tooltips",
-      margin <> "     server !)",
-      "",
-      margin <> "--offline-mathjax",
-      margin <> "  -> use local mathjax library instead of CDN url",
-      "",
-      margin <> "--last-command",
-      margin
-        <> "  -> run the same arguments as the previous command (from local",
-      margin <> "     .last-command file)",
-      "",
-      "...and don't forget to include '--which <course dir>' in",
-      "order to specify which course you want to compile/run!",
-      "",
-      "                             ***",
-      "",
-      "Local server usage: use 'COURSE=<course dir> npm run dev' to",
-      "serve book on localhost:3003, or prefix 'PORT=xxxx' argument",
-      "to serve on  specific port! Enjoy!",
-      "",
-    ]
-    |> string.join("\n")
-
-  io.println(message)
+  [
+    margin <> "--fmt [<cols>] [<cols> <penalty>] [-file <name>]",
+    margin <> "  -> (local option) run the formatter",
+    "",
+    margin <> "     optional arguments:",
+    "",
+    margin <> "     • <cols>: preferred line length",
+    margin <> "     • <cols> <penalty>: preferred line",
+    margin <> "       length and indentation penalty (number",
+    margin <> "       of chars subtracted from line length at",
+    margin <> "       each added level of indentation in the file)",
+    margin <> "     • -file <name>: format only the given file",
+    "",
+    margin <> "--latex-monolithic",
+    margin <> "  -> (local option) render wly -> a single self-contained",
+    margin <> "     LaTeX file <course dir>/latex/main.tex, compilable",
+    margin <> "     with pdflatex (clickable TOC + PDF outline)",
+    "",
+    margin <> "--latex-chapters / --latex-sections / --latex-subsections",
+    margin <> "  -> modular LaTeX: a main.tex (title + TOC) that \\inputs",
+    margin <> "     one file per chapter (and, at finer granularities, per",
+    margin <> "     section / subsection) + one per standalone unit; compile",
+    margin <> "     <course dir>/latex/main.tex",
+    "",
+    margin <> "--local",
+    margin <> "  -> include source-linking tooltips",
+    margin <> "     server !)",
+    "",
+    margin <> "--offline-mathjax",
+    margin <> "  -> use local mathjax library instead of CDN url",
+    "",
+    margin <> "--last-command",
+    margin <> "  -> run the same arguments as the previous command (from local",
+    margin <> "     .last-command file)",
+    "",
+    "...and don't forget to include '--which <course dir>' in",
+    "order to specify which course you want to compile/run!",
+    "",
+    "                             ***",
+    "",
+    "Local server usage: use 'COURSE=<course dir> npm run dev' to",
+    "serve book on localhost:3003, or prefix 'PORT=xxxx' argument",
+    "to serve on  specific port! Enjoy!",
+    "",
+  ]
+  |> string.join("\n")
 }
 
 // Which LaTeX-output flag (if any) was passed, and at what modularity.
@@ -124,22 +121,25 @@ pub fn main() {
     False -> args
   }
 
-  let args_string = string.join(args, " ")
-
-  use _ <- on.stay(case args {
-    ["--help"] | ["-help"] | ["-h"] -> {
-      ds.basic_cli_usage("\n'gleam run' command line options (basic):")
-      local_usage_message()
-      on.Return(Nil)
-    }
-
-    ["--esoteric"] -> {
-      ds.advanced_cli_usage("\n'gleam run' command line options (esoteric):")
-      on.Return(Nil)
-    }
-
-    _ -> on.Stay(Nil)
+  let #(args, help_requested) = ds.handle_help_requests(args, local_cli_usage)
+  use _ <- on.stay(case help_requested {
+    True -> on.Return(Nil)
+    False -> on.Stay(Nil)
   })
+
+  use #(args, maintenance_requested) <- on.error_ok(
+    ds.handle_maintenance_requests(args, local_desugarers.assertive_tests),
+    fn(error) {
+      io.println("maintenance error: " <> error)
+      io.println("")
+    },
+  )
+  use _ <- on.stay(case maintenance_requested {
+    True -> on.Return(Nil)
+    False -> on.Stay(Nil)
+  })
+
+  let args_string = string.join(args, " ")
 
   use amendments <- on.stay(
     case
@@ -158,7 +158,7 @@ pub fn main() {
         io.println("")
         io.println("command line error: " <> ins(error))
         ds.basic_cli_usage("\ncommand line usage:")
-        local_usage_message()
+        local_cli_usage() |> io.print
         on.Return(Nil)
       }
 

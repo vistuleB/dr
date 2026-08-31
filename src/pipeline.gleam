@@ -352,13 +352,14 @@ pub fn pipeline(
       dl.handles_generate_v_definitions_from_t_definitions(),
       local_dl.dr_create_menu(),
       dl.handles_add_ids(),
-      dl.handles_generate_dictionary("path"),
-      dl.handles_substitute(
+      dl.handles_grand_wrapper_generate_dictionary("path"),
+      dl.handles_grand_wrapper_substitute(
         #("path", "a", "a", [], [], ["a"], ["Math", "MathBlock"]),
       ),
-      // consumes the 'used' column that handles_substitute leaves on the
+      // consumes the 'used' column that handles_grand_wrapper_substitute
+      // leaves on the
       // GrandWrapper dictionary; must sit between the two
-      dl.handles_warn_unused(["MathBlock"]),
+      dl.handles_grand_wrapper_warn_unused(["MathBlock"]),
       dl.unwrap("GrandWrapper"),
     ],
     // Parse inline math into Math nodes BEFORE href tokenization: pre-transformationtokenize_href_surroundings
@@ -382,7 +383,8 @@ pub fn pipeline(
       dl.detokenize_href_surroundings(),
       // pulls the literal parens that footnote_marker_to_sup_handle__outside
       // produced as `(>>handle)` text leaves outside the <a> (once
-      // handles_substitute turns it into `(<a href=...>N</a>)`) inside
+      // handles_grand_wrapper_substitute turns it into
+      // `(<a href=...>N</a>)`) inside
       // the link, so the whole "(N)" is clickable, not just "N". Must
       // run after pp.create_math_elements above: rearrange_links does
       // its own internal tokenize/detokenize round-trip that treats

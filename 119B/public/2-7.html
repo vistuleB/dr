@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 2.7 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,150 +42,248 @@
   </div>
   <h1>
     2.7
-    Measures and measure preserving maps
+    <span class="t-3003-c">Measures and measure preserving maps<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:2:11</span></span>
   </h1>
   <p>
-    Our study of maps so far has shown that even very
-    simple maps such as the logistic map or the $3x+1$
-    map can lead to extremely complicated behavior of the
-    associated dynamical system. Is there any hope of
-    understanding such complicated systems in some
-    meaningful sense? Yes, there is. A key insight is that
-    one should focus on questions of a statistical nature:
-    instead of trying to predict in detail where the orbit
-    of a particular initial point $x_0$ will go (which is
-    hopeless for a chaotic system), instead we will try to
-    make predictions about statistical behavior of orbits,
-    i.e., how often they visit each part of the state
-    space. The mathematical object that encodes such a set
-    of statistics is called a
-    <i>probability measure</i>, and
-    as we will see, a natural condition for a measure to
-    encode the correct information about a map is that the
-    map is
-    <i>measure preserving</i>.
+    <span class="t-3003-c">Our study of maps so far has shown that even very<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:4:5</span></span>
+    <span class="t-3003-c">simple maps such as the logistic map or the
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:5:5</span></span><span class="t-3003-c">$3x+1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:5:49</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:5:55</span></span>
+    <span class="t-3003-c">map can lead to extremely complicated behavior of the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:6:5</span></span>
+    <span class="t-3003-c">associated dynamical system. Is there any hope of<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:7:5</span></span>
+    <span class="t-3003-c">understanding such complicated systems in some<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:8:5</span></span>
+    <span class="t-3003-c">meaningful sense? Yes, there is. A key insight is that<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:9:5</span></span>
+    <span class="t-3003-c">one should focus on questions of a statistical nature:<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:10:5</span></span>
+    <span class="t-3003-c">instead of trying to predict in detail where the orbit<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:11:5</span></span>
+    <span class="t-3003-c">of a particular initial point
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:12:5</span></span><span class="t-3003-c">$x_0$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:12:35</span></span><span class="t-3003-c">
+      will go (which is<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:12:40</span></span>
+    <span class="t-3003-c">hopeless for a chaotic system), instead we will try to<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:13:5</span></span>
+    <span class="t-3003-c">make predictions about statistical behavior of orbits,<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:14:5</span></span>
+    <span class="t-3003-c">i.e., how often they visit each part of the state<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:15:5</span></span>
+    <span class="t-3003-c">space. The mathematical object that encodes such a set<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:16:5</span></span>
+    <span class="t-3003-c">of statistics is called a
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:17:5</span></span><i><span class="t-3003-c">probability measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:17:32</span></span></i><span class="t-3003-c">, and<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:17:52</span></span>
+    <span class="t-3003-c">as we will see, a natural condition for a measure to<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:18:5</span></span>
+    <span class="t-3003-c">encode the correct information about a map is that the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:19:5</span></span>
+    <span class="t-3003-c">map is
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:20:5</span></span><i><span class="t-3003-c">measure preserving<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:20:13</span></span></i><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:20:32</span></span>
   </p>
   <p>
-    Let $\Omega$ be a set. The theory of probability
-    measures can be developed in much greater generality,
-    but for our purposes we will assume that $\Omega$ is
-    a connected open (or closed) subset of $\mathbb{R}$
-    or of $\mathbb{R}^d$. Thus, on $\Omega$ there is a
-    natural "measure" $d\mathbf{x}$ of $d$-dimensional
-    volume familiar from multivariate calculus. The
-    probability measures that we will consider take the
-    form
+    <span class="t-3003-c">Let
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:22:5</span></span><span class="t-3003-c">$\Omega$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:22:9</span></span><span class="t-3003-c">
+      be a set. The theory of probability<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:22:17</span></span>
+    <span class="t-3003-c">measures can be developed in much greater generality,<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:23:5</span></span>
+    <span class="t-3003-c">but for our purposes we will assume that
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:24:5</span></span><span class="t-3003-c">$\Omega$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:24:46</span></span><span class="t-3003-c">
+      is<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:24:54</span></span>
+    <span class="t-3003-c">a connected open (or closed) subset of
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:25:5</span></span><span class="t-3003-c">$\mathbb{R}$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:25:44</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:25:56</span></span>
+    <span class="t-3003-c">or of
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:26:5</span></span><span class="t-3003-c">$\mathbb{R}^d$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:26:11</span></span><span class="t-3003-c">. Thus, on
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:26:25</span></span><span class="t-3003-c">$\Omega$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:26:36</span></span><span class="t-3003-c">
+      there is a<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:26:44</span></span>
+    <span class="t-3003-c">natural "measure"
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:27:5</span></span><span class="t-3003-c">$d\mathbf{x}$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:27:25</span></span><span class="t-3003-c">
+      of
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:27:38</span></span><span class="t-3003-c">$d$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:27:42</span></span><span class="t-3003-c">-dimensional<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:27:45</span></span>
+    <span class="t-3003-c">volume familiar from multivariate calculus. The<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:28:5</span></span>
+    <span class="t-3003-c">probability measures that we will consider take the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:29:5</span></span>
+    <span class="t-3003-c">form<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:30:5</span></span>
   </p>
   <div class="math-block">
     $$
     P(d\mathbf{x})=f(\mathbf{x})\,d\mathbf{x}
-    $$
+    $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:32:5</span>
   </div>
   <p>
-    where $f$ is a nonnegative function such that
-    $\int_{\Omega} f(\mathbf{x})\,d\mathbf{x} = 1$.
-    Formally, the measure $P$ is considered to be a
-    function $A\mapsto P(A)$ that takes a subset
-    $A\subset \Omega$ and returns a number
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:36:5</span></span><span class="t-3003-c">$f$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:36:11</span></span><span class="t-3003-c">
+      is a nonnegative function such that<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:36:14</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:37:5</span></span><span class="t-3003-c">$\int_{\Omega} f(\mathbf{x})\,d\mathbf{x} = 1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:37:5</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:37:51</span></span>
+    <span class="t-3003-c">Formally, the measure
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:38:5</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:38:27</span></span><span class="t-3003-c">
+      is considered to be a<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:38:30</span></span>
+    <span class="t-3003-c">function
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:39:5</span></span><span class="t-3003-c">$A\mapsto P(A)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:39:14</span></span><span class="t-3003-c">
+      that takes a subset<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:39:29</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:40:5</span></span><span class="t-3003-c">$A\subset \Omega$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:40:5</span></span><span class="t-3003-c">
+      and returns a number<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:40:22</span></span>
   </p>
   <div class="math-block">
     $$
     P(A) = \int_A f(\mathbf{x})d\mathbf{x}.
-    $$
+    $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:42:5</span>
   </div>
   <p>
-    Both the function $f$, called the
-    <i>probability
-      density function</i>
-    associated with $P$, and the set $A$
-    are assumed to be sufficiently well-behaved that
-    $P(A)$ is defined. (You can learn about the precise
-    technical definitions, which we will not discuss here,
-    in an advanced class on real analysis, measure theory
-    or probability theory). A set $A$ for which $P(A)$ is
-    defined is called a
-    <i>measurable set</i>. It is an
-    annoying fact of life that not all sets are
-    measurable, but in practice all sets that you are ever
-    likely to encounter will be measurable, so we will not
-    worry about that.
+    <span class="t-3003-c">Both the function
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:46:5</span></span><span class="t-3003-c">$f$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:46:23</span></span><span class="t-3003-c">, called the
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:46:26</span></span><i><span class="t-3003-c">probability<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:46:40</span></span>
+      <span class="t-3003-c">density function<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:47:5</span></span></i><span class="t-3003-c">
+      associated with
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:47:22</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:47:39</span></span><span class="t-3003-c">, and the set
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:47:42</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:47:56</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:47:59</span></span>
+    <span class="t-3003-c">are assumed to be sufficiently well-behaved that<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:48:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:49:5</span></span><span class="t-3003-c">$P(A)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:49:5</span></span><span class="t-3003-c">
+      is defined. (You can learn about the precise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:49:11</span></span>
+    <span class="t-3003-c">technical definitions, which we will not discuss here,<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:50:5</span></span>
+    <span class="t-3003-c">in an advanced class on real analysis, measure theory<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:51:5</span></span>
+    <span class="t-3003-c">or probability theory). A set
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:52:5</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:52:35</span></span><span class="t-3003-c">
+      for which
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:52:38</span></span><span class="t-3003-c">$P(A)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:52:49</span></span><span class="t-3003-c">
+      is<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:52:55</span></span>
+    <span class="t-3003-c">defined is called a
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:53:5</span></span><i><span class="t-3003-c">measurable set<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:53:26</span></span></i><span class="t-3003-c">. It is an<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:53:41</span></span>
+    <span class="t-3003-c">annoying fact of life that not all sets are<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:54:5</span></span>
+    <span class="t-3003-c">measurable, but in practice all sets that you are ever<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:55:5</span></span>
+    <span class="t-3003-c">likely to encounter will be measurable, so we will not<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:56:5</span></span>
+    <span class="t-3003-c">worry about that.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:57:5</span></span>
   </p>
   <p>
-    Now, if $T:\Omega\to \Omega$ is a map and $P$ is a
-    probability measure on $\Omega$, we say that $T$
-    <i>preserves the measure $P$</i>
-    (or
-    <i>is measure
-      preserving for $P$</i>) if for any measurable set $A$
-    the following identity holds:
+    <span class="t-3003-c">Now, if
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:59:5</span></span><span class="t-3003-c">$T:\Omega\to \Omega$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:59:13</span></span><span class="t-3003-c">
+      is a map and
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:59:33</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:59:47</span></span><span class="t-3003-c">
+      is a<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:59:50</span></span>
+    <span class="t-3003-c">probability measure on
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:60:5</span></span><span class="t-3003-c">$\Omega$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:60:28</span></span><span class="t-3003-c">, we say that
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:60:36</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:60:50</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:60:53</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:61:5</span></span><i><span class="t-3003-c">preserves the measure
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:61:6</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:61:28</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:61:31</span></span></i><span class="t-3003-c">
+      (or
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:61:32</span></span><i><span class="t-3003-c">is measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:61:38</span></span>
+      <span class="t-3003-c">preserving for
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:62:5</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:62:20</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:62:23</span></span></i><span class="t-3003-c">) if for any measurable set
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:62:24</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:62:52</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:62:55</span></span>
+    <span class="t-3003-c">the following identity holds:<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:63:5</span></span>
   </p>
   <div class="math-block">
     $$
     P(A) = P(T^{-1}(A)),
-    $$
+    $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:65:5</span>
   </div>
   <p>
-    that is,
+    <span class="t-3003-c">that is,<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:69:5</span></span>
   </p>
   <div class="math-block">
     $$
     \int_A f(\mathbf{x})d\mathbf{x} = \int_{T^{-1}(A)} f(\mathbf{x})d\mathbf{x}.
-    $$
+    $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:71:5</span>
   </div>
   <p>
-    For interval maps, it is sufficient to prove this
-    when $A$ is an interval. The intuitive meaning of the
-    definition is that if the measure $P$ represents the
-    statistical distribution of a random element $x$ in
-    $\Omega$ (corresponding to the state of the dynamical
-    system at some time $n$), then $T(x)$, which
-    corresponds to the state at time $n+1$, will have the
-    same statistical distribution. In other words, the
-    probabilistic behavior is stationary with respect to
-    the time dynamics. A dynamical system $(\Omega, T)$
-    together with a probability measure $P$ that is
-    preserved by $T$ is called a
-    <i>measure preserving
-      system</i>. If $T$ preserves the measure $P$, we say
-    that $P$ is an
-    <i>invariant measure</i>
-    for $T$.
+    <span class="t-3003-c">For interval maps, it is sufficient to prove this<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:75:5</span></span>
+    <span class="t-3003-c">when
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:76:5</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:76:10</span></span><span class="t-3003-c">
+      is an interval. The intuitive meaning of the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:76:13</span></span>
+    <span class="t-3003-c">definition is that if the measure
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:77:5</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:77:39</span></span><span class="t-3003-c">
+      represents the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:77:42</span></span>
+    <span class="t-3003-c">statistical distribution of a random element
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:78:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:78:50</span></span><span class="t-3003-c">
+      in<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:78:53</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:79:5</span></span><span class="t-3003-c">$\Omega$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:79:5</span></span><span class="t-3003-c">
+      (corresponding to the state of the dynamical<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:79:13</span></span>
+    <span class="t-3003-c">system at some time
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:80:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:80:25</span></span><span class="t-3003-c">), then
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:80:28</span></span><span class="t-3003-c">$T(x)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:80:36</span></span><span class="t-3003-c">, which<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:80:42</span></span>
+    <span class="t-3003-c">corresponds to the state at time
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:81:5</span></span><span class="t-3003-c">$n+1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:81:38</span></span><span class="t-3003-c">, will have the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:81:43</span></span>
+    <span class="t-3003-c">same statistical distribution. In other words, the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:82:5</span></span>
+    <span class="t-3003-c">probabilistic behavior is stationary with respect to<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:83:5</span></span>
+    <span class="t-3003-c">the time dynamics. A dynamical system
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:84:5</span></span><span class="t-3003-c">$(\Omega, T)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:84:43</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:84:56</span></span>
+    <span class="t-3003-c">together with a probability measure
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:85:5</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:85:41</span></span><span class="t-3003-c">
+      that is<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:85:44</span></span>
+    <span class="t-3003-c">preserved by
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:86:5</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:86:18</span></span><span class="t-3003-c">
+      is called a
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:86:21</span></span><i><span class="t-3003-c">measure preserving<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:86:35</span></span>
+      <span class="t-3003-c">system<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:87:5</span></span></i><span class="t-3003-c">. If
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:87:12</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:87:17</span></span><span class="t-3003-c">
+      preserves the measure
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:87:20</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:87:43</span></span><span class="t-3003-c">, we say<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:87:46</span></span>
+    <span class="t-3003-c">that
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:88:5</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:88:10</span></span><span class="t-3003-c">
+      is an
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:88:13</span></span><i><span class="t-3003-c">invariant measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:88:21</span></span></i><span class="t-3003-c">
+      for
+      <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:88:39</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:88:44</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:88:47</span></span>
   </p>
   <div
     label="Circle rotation map"
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.23</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:90:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:90:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:90:5</span></span><b><span class="t-3003-c">2.23<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:90:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:90:5</span></span>
     </h3>
     <p>
-      <span class="label">Circle rotation map</span>The circle rotation map $R_\alpha$ preserves the
-      standard length measure on $[0,1)$ (which in analysis
-      is called
-      <i>Lebesgue measure</i>
-      --- pronounced like
-      <i>le-baig</i>), i.e., the measure with density
-      $f(x)\equiv 1$.
+      <span class="label"><span class="t-3003-c">Circle rotation map<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:91:15</span></span></span><span class="t-3003-c">The circle rotation map
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:92:9</span></span><span class="t-3003-c">$R_\alpha$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:92:33</span></span><span class="t-3003-c">
+        preserves the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:92:43</span></span>
+      <span class="t-3003-c">standard length measure on
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:93:9</span></span><span class="t-3003-c">$[0,1)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:93:36</span></span><span class="t-3003-c">
+        (which in analysis<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:93:43</span></span>
+      <span class="t-3003-c">is called
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:94:9</span></span><i><span class="t-3003-c">Lebesgue measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:94:20</span></span></i><span class="t-3003-c">
+        --- pronounced like<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:94:37</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:95:9</span></span><i><span class="t-3003-c">le-baig<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:95:10</span></span></i><span class="t-3003-c">), i.e., the measure with density<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:95:18</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:96:9</span></span><span class="t-3003-c">$f(x)\equiv 1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:96:9</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:96:23</span></span>
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>This fact is obvious if you think of the intuitive
-      meaning of the circle rotation map, but for
-      illustration purposes here is a formal proof. If $A$
-      is a subset of $[\alpha,1)$ then
-      $R_\alpha^{-1}(A) = A-\alpha$, so clearly the length
-      measure is preserved. Similarly, if
-      $A \subset [0,\alpha)$ then
-      $R_\alpha^{-1}(A) = A+1-\alpha$ and again the length
-      measure is preserved. For a general $A\subset[0,1)$,
-      write $A$ as a disjoint union $A=A'\sqcup A"$ where
-      $A'\subset[0,\alpha)$, $A"\subset[\alpha,1)$, then
-      $R_\alpha^{-1}(A) = R_\alpha^{-1}(A')\sqcup
-      R_\alpha^{-1}(A")$
-      has the same Lebesgue measure as $A$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span><span class="t-3003-c">This fact is obvious if you think of the intuitive<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:99:9</span></span>
+      <span class="t-3003-c">meaning of the circle rotation map, but for<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:100:9</span></span>
+      <span class="t-3003-c">illustration purposes here is a formal proof. If
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:101:9</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:101:58</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:101:61</span></span>
+      <span class="t-3003-c">is a subset of
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:102:9</span></span><span class="t-3003-c">$[\alpha,1)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:102:24</span></span><span class="t-3003-c">
+        then<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:102:36</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:103:9</span></span><span class="t-3003-c">$R_\alpha^{-1}(A) = A-\alpha$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:103:9</span></span><span class="t-3003-c">, so clearly the length<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:103:38</span></span>
+      <span class="t-3003-c">measure is preserved. Similarly, if<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:104:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:105:9</span></span><span class="t-3003-c">$A \subset [0,\alpha)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:105:9</span></span><span class="t-3003-c">
+        then<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:105:31</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:106:9</span></span><span class="t-3003-c">$R_\alpha^{-1}(A) = A+1-\alpha$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:106:9</span></span><span class="t-3003-c">
+        and again the length<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:106:40</span></span>
+      <span class="t-3003-c">measure is preserved. For a general
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:107:9</span></span><span class="t-3003-c">$A\subset[0,1)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:107:45</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:107:60</span></span>
+      <span class="t-3003-c">write
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:108:9</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:108:15</span></span><span class="t-3003-c">
+        as a disjoint union
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:108:18</span></span><span class="t-3003-c">$A=A'\sqcup A"$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:108:39</span></span><span class="t-3003-c">
+        where<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:108:55</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:109:9</span></span><span class="t-3003-c">$A'\subset[0,\alpha)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:109:9</span></span><span class="t-3003-c">,
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:109:30</span></span><span class="t-3003-c">$A"\subset[\alpha,1)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:109:32</span></span><span class="t-3003-c">, then<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:109:54</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:110:9</span></span><span class="t-3003-c">$R_\alpha^{-1}(A) = R_\alpha^{-1}(A')\sqcup
+        R_\alpha^{-1}(A")$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:110:9</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:111:28</span></span>
+      <span class="t-3003-c">has the same Lebesgue measure as
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:112:9</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:112:42</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:112:45</span></span><span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div
@@ -192,12 +291,13 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.24</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:114:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:114:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:114:5</span></span><b><span class="t-3003-c">2.24<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:114:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:114:5</span></span>
     </h3>
     <p>
-      <span class="label">Doubling map</span>The doubling map also preserves Lebesgue measure.
+      <span class="label"><span class="t-3003-c">Doubling map<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:115:15</span></span></span><span class="t-3003-c">The doubling map also preserves Lebesgue measure.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:116:9</span></span>
     </p>
   </div>
   <div>
@@ -211,7 +311,7 @@
       = \tfrac12 P(A)
       + \tfrac12 P(\tfrac12+A) =
       P(A).
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:119:9</span>
     </div>
     <p>
       <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
@@ -222,14 +322,20 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>2.25</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:127:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:127:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:127:5</span></span><b><span class="t-3003-c">2.25<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:127:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:127:5</span></span>
     </h3>
     <p>
-      Show that the tent map $\Lambda_2$ (the special case
-      $a=2$ of the family of tent maps $\Lambda_a$)
-      preserves Lebesgue measure.
+      <span class="t-3003-c">Show that the tent map
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:129:9</span></span><span class="t-3003-c">$\Lambda_2$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:129:32</span></span><span class="t-3003-c">
+        (the special case<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:129:43</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:130:9</span></span><span class="t-3003-c">$a=2$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:130:9</span></span><span class="t-3003-c">
+        of the family of tent maps
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:130:14</span></span><span class="t-3003-c">$\Lambda_a$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:130:42</span></span><span class="t-3003-c">)<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:130:53</span></span>
+      <span class="t-3003-c">preserves Lebesgue measure.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:131:9</span></span>
     </p>
   </div>
   <div
@@ -237,24 +343,33 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.26</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:133:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:133:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:133:5</span></span><b><span class="t-3003-c">2.26<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:133:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:133:5</span></span>
     </h3>
     <p>
-      <span class="label">Logistic map $L_4$</span>For $r=4$, the logistic map $L_r=L_4$ preserves the
-      measure
+      <span class="label"><span class="t-3003-c">Logistic map
+          <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:134:15</span></span><span class="t-3003-c">$L_4$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:134:28</span></span><span class="t-3003-c">
+          <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:134:33</span></span></span><span class="t-3003-c">For
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:135:9</span></span><span class="t-3003-c">$r=4$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:135:13</span></span><span class="t-3003-c">, the logistic map
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:135:18</span></span><span class="t-3003-c">$L_r=L_4$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:135:37</span></span><span class="t-3003-c">
+        preserves the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:135:46</span></span>
+      <span class="t-3003-c">measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:136:9</span></span>
     </p>
     <div class="math-block">
       $$
       P(dx) = \frac{1}{\pi \sqrt{x(1-x)}}\,dx.
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:138:9</span>
     </div>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Denote $f(x)=\frac{1}{\pi \sqrt{x(1-x)}}$. If
-      $A \subset [0,1]$ is an interval, then
+      <span class="proof">Proof</span><span class="t-3003-c">Denote
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:143:9</span></span><span class="t-3003-c">$f(x)=\frac{1}{\pi \sqrt{x(1-x)}}$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:143:16</span></span><span class="t-3003-c">. If<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:143:50</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:144:9</span></span><span class="t-3003-c">$A \subset [0,1]$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:144:9</span></span><span class="t-3003-c">
+        is an interval, then<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:144:26</span></span>
     </p>
     <div class="math-block">
       $$
@@ -264,56 +379,67 @@
       \int_{L_4^{-1}(A)\cap\left[1/2,1\right]} f(x)\,dx \\
       &amp;= \int_A f(\lambda_1(y))\frac{dy}{L_4'(\lambda_1(y))} + \int_A f(\lambda_2(z)) \frac{dz}{-L_4'(\lambda_2(z))},
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:146:9</span>
     </div>
     <p>
-      where we define
-      $\lambda_1(y)=\tfrac12(1-\sqrt{1-y}),
-      \lambda_2(z)=\tfrac12(1+\sqrt{1-z})$
-      (the functions $x=\lambda_{1,2}(w)$ are the two
-      solutions of the equation $L_4(w)=x$), and we make
-      the substitutions
+      <span class="t-3003-c">where we define<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:153:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:154:9</span></span><span class="t-3003-c">$\lambda_1(y)=\tfrac12(1-\sqrt{1-y}),
+        \lambda_2(z)=\tfrac12(1+\sqrt{1-z})$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:154:9</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:155:45</span></span>
+      <span class="t-3003-c">(the functions
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:156:9</span></span><span class="t-3003-c">$x=\lambda_{1,2}(w)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:156:24</span></span><span class="t-3003-c">
+        are the two<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:156:44</span></span>
+      <span class="t-3003-c">solutions of the equation
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:157:9</span></span><span class="t-3003-c">$L_4(w)=x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:157:35</span></span><span class="t-3003-c">), and we make<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:157:45</span></span>
+      <span class="t-3003-c">the substitutions<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:158:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       y&amp;=L_4(x) \leftrightarrow x=\lambda_1(y) \textrm{ in the first integral,} \\ z&amp;=L_4(x) \leftrightarrow x=\lambda_2(z) \textrm{ in the second integral}.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:160:9</span>
     </div>
     <p>
-      Note that $L_4$ is decreasing on $[1/2,1]$, which
-      explains why we needed to insert a minus sign in front
-      of the $L_4'(\lambda_2(z))$ term in the second
-      integral.
+      <span class="t-3003-c">Note that
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:164:9</span></span><span class="t-3003-c">$L_4$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:164:19</span></span><span class="t-3003-c">
+        is decreasing on
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:164:24</span></span><span class="t-3003-c">$[1/2,1]$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:164:42</span></span><span class="t-3003-c">, which<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:164:51</span></span>
+      <span class="t-3003-c">explains why we needed to insert a minus sign in front<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:165:9</span></span>
+      <span class="t-3003-c">of the
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:166:9</span></span><span class="t-3003-c">$L_4'(\lambda_2(z))$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:166:16</span></span><span class="t-3003-c">
+        term in the second<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:166:36</span></span>
+      <span class="t-3003-c">integral.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:167:9</span></span>
     </p>
     <p>
-      Now, since we are trying to prove that the expression
-      above is equal to $P(A)=\int_A f(x)\,dx$, it will be
-      enough to show that the following identity holds:
+      <span class="t-3003-c">Now, since we are trying to prove that the expression<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:169:9</span></span>
+      <span class="t-3003-c">above is equal to
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:170:9</span></span><span class="t-3003-c">$P(A)=\int_A f(x)\,dx$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:170:27</span></span><span class="t-3003-c">, it will be<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:170:49</span></span>
+      <span class="t-3003-c">enough to show that the following identity holds:<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:171:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       f(x) = f(\lambda_1(x))\frac{1}{|L_4'(\lambda_1(x))|} + f(\lambda_2(x))\frac{1}{|L_4'(\lambda_2(x))|}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:173:9</span>
     </div>
     <p>
-      (the absolute value signs make the sum on the right
-      more symmetric, though of course the first one is
-      unnecessary). This identity is strange but easy to
-      verify: noting the simple relations
+      <span class="t-3003-c">(the absolute value signs make the sum on the right<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:177:9</span></span>
+      <span class="t-3003-c">more symmetric, though of course the first one is<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:178:9</span></span>
+      <span class="t-3003-c">unnecessary). This identity is strange but easy to<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:179:9</span></span>
+      <span class="t-3003-c">verify: noting the simple relations<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:180:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       L_4'(w) &amp;=4(1-2w), \\ f(w)&amp;=\frac{2}{\pi\sqrt{L_4(w)}}, \\ L_4(\lambda_1(x)) &amp;= L_4(\lambda_2(x)) =x,
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:182:9</span>
     </div>
     <p>
-      the right-hand side of the identity becomes
+      <span class="t-3003-c">the right-hand side of the identity becomes<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:186:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -325,60 +451,76 @@
       \frac{1}{2\pi} \left( \frac{1}{\sqrt{x}}\cdot \frac{1}{\sqrt{1-x}} +
       \frac{1}{\sqrt{x}}\cdot \frac{1}{\sqrt{1-x}} \right) = \frac{1}{\pi\sqrt{x(1-x)}} = f(x).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:188:9</span>
     </div>
     <p>
       <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    The idea used in the proof above can be generalized
-    to give a criterion for checking whether a map is
-    measure-preserving.
+    <span class="t-3003-c">The idea used in the proof above can be generalized<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:197:5</span></span>
+    <span class="t-3003-c">to give a criterion for checking whether a map is<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:198:5</span></span>
+    <span class="t-3003-c">measure-preserving.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:199:5</span></span>
   </p>
   <div
     class="statement lemma"
     id="_43_h.a.i_"
   >
     <h3>
-      <b>Lemma</b>
-      <b>2.27</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:201:5</span></span><b><span class="t-3003-c">Lemma<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:201:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:201:5</span></span><b><span class="t-3003-c">2.27<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:201:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:201:5</span></span>
     </h3>
     <p>
-      Let $T:I\to I$ be an interval map that is piecewise
-      smooth and monotonic, i.e., the interval $I$ can be
-      decomposed into a union of finitely many subintervals
-      on each of which $T$ is smooth and monotonic (in
-      fact, the claim is true even if this is true for a
-      subdivision into countably many subintervals). Then
-      $T$ preserves the measure $P(dx)=f(x)dx$ if and only
-      if the density $f(x)$ satisfies the equation
+      <span class="t-3003-c">Let
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:203:9</span></span><span class="t-3003-c">$T:I\to I$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:203:13</span></span><span class="t-3003-c">
+        be an interval map that is piecewise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:203:23</span></span>
+      <span class="t-3003-c">smooth and monotonic, i.e., the interval
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:204:9</span></span><span class="t-3003-c">$I$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:204:50</span></span><span class="t-3003-c">
+        can be<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:204:53</span></span>
+      <span class="t-3003-c">decomposed into a union of finitely many subintervals<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:205:9</span></span>
+      <span class="t-3003-c">on each of which
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:206:9</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:206:26</span></span><span class="t-3003-c">
+        is smooth and monotonic (in<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:206:29</span></span>
+      <span class="t-3003-c">fact, the claim is true even if this is true for a<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:207:9</span></span>
+      <span class="t-3003-c">subdivision into countably many subintervals). Then<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:208:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:209:9</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:209:9</span></span><span class="t-3003-c">
+        preserves the measure
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:209:12</span></span><span class="t-3003-c">$P(dx)=f(x)dx$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:209:35</span></span><span class="t-3003-c">
+        if and only<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:209:49</span></span>
+      <span class="t-3003-c">if the density
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:210:9</span></span><span class="t-3003-c">$f(x)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:210:24</span></span><span class="t-3003-c">
+        satisfies the equation<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:210:30</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       f(x) = \sum_{y\in T^{-1}(x)} \frac{f(y)}{|T'(y)|}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:212:9</span>
     </div>
     <p>
-      for all but countably many points $x\in I$, where the
-      sum ranges over all pre-images of $x$.
+      <span class="t-3003-c">for all but countably many points
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:216:9</span></span><span class="t-3003-c">$x\in I$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:216:43</span></span><span class="t-3003-c">, where the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:216:51</span></span>
+      <span class="t-3003-c">sum ranges over all pre-images of
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:217:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:217:43</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:217:46</span></span>
     </p>
   </div>
   <div class="statement exercise">
     <h3>
-      <b>Exercise</b>
-      <b>2.28</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:219:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:219:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:219:5</span></span><b><span class="t-3003-c">2.28<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:219:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:219:5</span></span>
     </h3>
     <p>
-      Prove
-      <a
+      <span class="t-3003-c">Prove
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:220:9</span></span><a
         href="./2-7.html#_43_h.a.i_"
         class=""
-      >Lemma 2.27</a>.
+      >Lemma 2.27</a><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:220:9</span></span>
     </p>
   </div>
   <div
@@ -386,34 +528,42 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.29</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:222:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:222:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:222:5</span></span><b><span class="t-3003-c">2.29<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:222:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:222:5</span></span>
     </h3>
     <p>
-      <span class="label">Gauss map</span>The Gauss map $G(x)$ preserves the measure $\gamma$
-      on $(0,1)$ (called
-      <i>Gauss measure</i>), defined by
+      <span class="label"><span class="t-3003-c">Gauss map<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:223:15</span></span></span><span class="t-3003-c">The Gauss map
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:224:9</span></span><span class="t-3003-c">$G(x)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:224:23</span></span><span class="t-3003-c">
+        preserves the measure
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:224:29</span></span><span class="t-3003-c">$\gamma$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:224:52</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:224:60</span></span>
+      <span class="t-3003-c">on
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:225:9</span></span><span class="t-3003-c">$(0,1)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:225:12</span></span><span class="t-3003-c">
+        (called
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:225:19</span></span><i><span class="t-3003-c">Gauss measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:225:29</span></span></i><span class="t-3003-c">), defined by<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:225:43</span></span>
     </p>
     <div class="math-block">
       $$
       \gamma(dx) = \frac{1}{\log 2}\cdot \frac{1}{1+x}\,dx.
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:227:9</span>
     </div>
   </div>
   <div class="statement exercise">
     <h3>
-      <b>Exercise</b>
-      <b>2.30</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:231:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:231:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:231:5</span></span><b><span class="t-3003-c">2.30<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:231:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:231:5</span></span>
     </h3>
     <p>
-      Use
-      <a
+      <span class="t-3003-c">Use
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:232:9</span></span><a
         href="./2-7.html#_43_h.a.i_"
         class=""
-      >Lemma 2.27</a>
-      to prove this.
+      >Lemma 2.27</a><span class="t-3003-c">
+        to prove this.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:232:9</span></span>
     </p>
   </div>
   <div
@@ -421,13 +571,16 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>2.31</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:234:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:234:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:234:5</span></span><b><span class="t-3003-c">2.31<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:234:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:234:5</span></span>
     </h3>
     <p>
-      The additive Gauss map $g:[0,1]\to[0,1]$ is defined
-      by
+      <span class="t-3003-c">The additive Gauss map
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:236:9</span></span><span class="t-3003-c">$g:[0,1]\to[0,1]$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:236:32</span></span><span class="t-3003-c">
+        is defined<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:236:49</span></span>
+      <span class="t-3003-c">by<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:237:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -436,27 +589,30 @@
       \frac{1-x}{x}&amp;\textrm{if }\tfrac12\le x\le 1
       \end{cases}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:239:9</span>
     </div>
     <p>
-      (see Figure (11a)). Show that $g$ preserves the
-      measure
+      <span class="t-3003-c">(see Figure (11a)). Show that
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:245:9</span></span><span class="t-3003-c">$g$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:245:39</span></span><span class="t-3003-c">
+        preserves the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:245:42</span></span>
+      <span class="t-3003-c">measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:246:9</span></span>
     </p>
     <div class="math-block">
       $$
       m(dx)=\frac{1}{x}\,dx.
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:248:9</span>
     </div>
     <p>
-      (Note: this measure is not a probability measure,
-      since the integral of the density is infinite.
-      However, the concept of measure-preservation makes
-      sense for such measures, and
-      <a
+      <span class="t-3003-c">(Note: this measure is not a probability measure,<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:252:9</span></span>
+      <span class="t-3003-c">since the integral of the density is infinite.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:253:9</span></span>
+      <span class="t-3003-c">However, the concept of measure-preservation makes<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:254:9</span></span>
+      <span class="t-3003-c">sense for such measures, and
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:255:9</span></span><a
         href="./2-7.html#_43_h.a.i_"
         class=""
-      >Lemma 2.27</a>
-      is still valid in this context.)
+      >Lemma 2.27</a><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:255:9</span></span>
+      <span class="t-3003-c">is still valid in this context.)<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:256:9</span></span>
     </p>
   </div>
   <div
@@ -464,23 +620,26 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>2.32</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:258:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:258:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:258:5</span></span><b><span class="t-3003-c">2.32<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:258:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:258:5</span></span>
     </h3>
     <p>
-      Show that
-      <i>Boole's transformation</i>
+      <span class="t-3003-c">Show that
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:260:9</span></span><i><span class="t-3003-c">Boole's transformation<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:260:20</span></span></i><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:260:43</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       B(x)=x-\frac{1}{x}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:262:9</span>
     </div>
     <p>
-      preserves Lebesgue measure on $\mathbb{R}$.
+      <span class="t-3003-c">preserves Lebesgue measure on
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:266:9</span></span><span class="t-3003-c">$\mathbb{R}$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:266:39</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:266:51</span></span>
     </p>
   </div>
   <div
@@ -488,12 +647,15 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>2.33</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:268:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:268:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:268:5</span></span><b><span class="t-3003-c">2.33<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:268:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:268:5</span></span>
     </h3>
     <p>
-      The interval map $N:[0,1]\to[0,1]$
+      <span class="t-3003-c">The interval map
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:270:9</span></span><span class="t-3003-c">$N:[0,1]\to[0,1]$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:270:26</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:270:43</span></span>
     </p>
     <div class="math-block">
       $$
@@ -504,39 +666,40 @@
       2-\frac{1}{x} &amp; \textrm{if }\tfrac12 \le x \le 1,
       \end{cases}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:272:9</span>
     </div>
     <p>
-      arises in the study of Pythagorean triples. (Figure
-      11(b) explains why it is denoted by $N$.) Show that
-      it preserves the measure
+      <span class="t-3003-c">arises in the study of Pythagorean triples. (Figure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:280:9</span></span>
+      <span class="t-3003-c">11(b) explains why it is denoted by
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:281:9</span></span><span class="t-3003-c">$N$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:281:45</span></span><span class="t-3003-c">.) Show that<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:281:48</span></span>
+      <span class="t-3003-c">it preserves the measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:282:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \pi(dx) = \frac{1}{x(1-x)}\,dx.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:284:9</span>
     </div>
   </div>
   <p>
-    Although much of our discussion has been focused on
-    interval maps, the concept of measure preserving
-    systems appears in many different contexts (including
-    some rather exotic ones), as the next few examples
-    illustrate.
+    <span class="t-3003-c">Although much of our discussion has been focused on<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:288:5</span></span>
+    <span class="t-3003-c">interval maps, the concept of measure preserving<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:289:5</span></span>
+    <span class="t-3003-c">systems appears in many different contexts (including<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:290:5</span></span>
+    <span class="t-3003-c">some rather exotic ones), as the next few examples<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:291:5</span></span>
+    <span class="t-3003-c">illustrate.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:292:5</span></span>
   </p>
   <figure>
     <span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
         src="figures/slowgauss.png"
         style="max-width: 100%; display: block; margin: 0 auto"
-      >(a)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/slowgauss.png</span></span><span class="t-3003-c">(a)<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:300:13</span></span></span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
         src="figures/pythagorean.png"
         style="max-width: 100%; display: block; margin: 0 auto"
-      >(b)</span>
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/pythagorean.png</span></span><span class="t-3003-c">(b)<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:307:13</span></span></span>
     <figcaption>
-      Figure 11: (a) The additive Gauss map; (b) The
-      Pythagorean triples map.
+      <span class="t-3003-c">Figure 11: (a) The additive Gauss map; (b) The<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:310:13</span></span>
+      <span class="t-3003-c">Pythagorean triples map.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:311:13</span></span>
     </figcaption>
   </figure>
   <div
@@ -544,19 +707,23 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.34</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:313:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:313:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:313:5</span></span><b><span class="t-3003-c">2.34<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:313:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:313:5</span></span>
     </h3>
     <p>
-      <span class="label">Hamiltonian flow</span>By Liouville's theorem, the phase flow of a
-      Hamiltonian system preserves area measure in
-      $\mathbb{R}^2$ (also called the two-dimensional
-      Lebesgue measure). This is a continuous-time dynamical
-      system, but the notion of measure preserving dynamics
-      makes sense for such systems as well. In particular,
-      if the system is discretized by fixing a time step
-      $\tau$, we get a map preserving Lebesgue measure.
+      <span class="label"><span class="t-3003-c">Hamiltonian flow<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:314:15</span></span></span><span class="t-3003-c">By Liouville's theorem, the phase flow of a<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:315:9</span></span>
+      <span class="t-3003-c">Hamiltonian system preserves area measure in<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:316:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:317:9</span></span><span class="t-3003-c">$\mathbb{R}^2$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:317:9</span></span><span class="t-3003-c">
+        (also called the two-dimensional<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:317:23</span></span>
+      <span class="t-3003-c">Lebesgue measure). This is a continuous-time dynamical<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:318:9</span></span>
+      <span class="t-3003-c">system, but the notion of measure preserving dynamics<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:319:9</span></span>
+      <span class="t-3003-c">makes sense for such systems as well. In particular,<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:320:9</span></span>
+      <span class="t-3003-c">if the system is discretized by fixing a time step<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:321:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:322:9</span></span><span class="t-3003-c">$\tau$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:322:9</span></span><span class="t-3003-c">, we get a map preserving Lebesgue measure.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:322:15</span></span>
     </p>
   </div>
   <div
@@ -564,27 +731,49 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.35</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:324:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:324:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:324:5</span></span><b><span class="t-3003-c">2.35<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:324:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:324:5</span></span>
     </h3>
     <p>
-      <span class="label">Geodesic flow</span>The geodesic flow is a continuous-time dynamical
-      system on a curved surface. Its phase space is the set
-      of points $(x,v)$ where $x$ is a point on the surface
-      and $v$ is a tangent vector to the surface based at
-      $x$ (representing the direction and speed in which a
-      person standing at $x$ will start walking). The flow
-      $\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$
-      and maps it to a new pair $(x',v')=\varphi(x,v)$
-      representing where the person will be, and which
-      direction they will be pointing at, $t$ time units
-      later. It can be shown that the geodesic flow
-      preserves the natural volume measure associated with
-      the phase space (roughly speaking, the measure is
-      product of the surface area measure of the surface in
-      the component $x$, and a standard area measure in the
-      $v$ component).
+      <span class="label"><span class="t-3003-c">Geodesic flow<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:325:15</span></span></span><span class="t-3003-c">The geodesic flow is a continuous-time dynamical<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:326:9</span></span>
+      <span class="t-3003-c">system on a curved surface. Its phase space is the set<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:327:9</span></span>
+      <span class="t-3003-c">of points
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:328:9</span></span><span class="t-3003-c">$(x,v)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:328:19</span></span><span class="t-3003-c">
+        where
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:328:26</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:328:33</span></span><span class="t-3003-c">
+        is a point on the surface<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:328:36</span></span>
+      <span class="t-3003-c">and
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:329:9</span></span><span class="t-3003-c">$v$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:329:13</span></span><span class="t-3003-c">
+        is a tangent vector to the surface based at<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:329:16</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:330:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:330:9</span></span><span class="t-3003-c">
+        (representing the direction and speed in which a<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:330:12</span></span>
+      <span class="t-3003-c">person standing at
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:331:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:331:28</span></span><span class="t-3003-c">
+        will start walking). The flow<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:331:31</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:332:9</span></span><span class="t-3003-c">$\varphi_t(\cdot,\cdot)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:332:9</span></span><span class="t-3003-c">
+        takes such a pair
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:332:33</span></span><span class="t-3003-c">$(x,v)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:332:52</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:332:59</span></span>
+      <span class="t-3003-c">and maps it to a new pair
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:333:9</span></span><span class="t-3003-c">$(x',v')=\varphi(x,v)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:333:35</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:333:57</span></span>
+      <span class="t-3003-c">representing where the person will be, and which<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:334:9</span></span>
+      <span class="t-3003-c">direction they will be pointing at,
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:335:9</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:335:45</span></span><span class="t-3003-c">
+        time units<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:335:48</span></span>
+      <span class="t-3003-c">later. It can be shown that the geodesic flow<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:336:9</span></span>
+      <span class="t-3003-c">preserves the natural volume measure associated with<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:337:9</span></span>
+      <span class="t-3003-c">the phase space (roughly speaking, the measure is<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:338:9</span></span>
+      <span class="t-3003-c">product of the surface area measure of the surface in<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:339:9</span></span>
+      <span class="t-3003-c">the component
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:340:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:340:23</span></span><span class="t-3003-c">, and a standard area measure in the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:340:26</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:341:9</span></span><span class="t-3003-c">$v$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:341:9</span></span><span class="t-3003-c">
+        component).<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:341:12</span></span>
     </p>
   </div>
   <div
@@ -592,32 +781,34 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.36</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:343:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:343:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:343:5</span></span><b><span class="t-3003-c">2.36<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:343:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:343:5</span></span>
     </h3>
     <p>
-      <span class="label">Billiard map</span>Billiard maps can be thought of as a limiting case of
-      certain Hamiltonian systems (think of a limit in which
-      the reflecting wall is actually a strongly repelling
-      potential well that becomes steeper and steeper), so
-      they too have an invariant measure. In certain natural
-      coordinates $\phi, \theta, \ell$, the formula for the
-      invariant measure becomes
+      <span class="label"><span class="t-3003-c">Billiard map<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:344:15</span></span></span><span class="t-3003-c">Billiard maps can be thought of as a limiting case of<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:345:9</span></span>
+      <span class="t-3003-c">certain Hamiltonian systems (think of a limit in which<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:346:9</span></span>
+      <span class="t-3003-c">the reflecting wall is actually a strongly repelling<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:347:9</span></span>
+      <span class="t-3003-c">potential well that becomes steeper and steeper), so<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:348:9</span></span>
+      <span class="t-3003-c">they too have an invariant measure. In certain natural<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:349:9</span></span>
+      <span class="t-3003-c">coordinates
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:350:9</span></span><span class="t-3003-c">$\phi, \theta, \ell$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:350:21</span></span><span class="t-3003-c">, the formula for the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:350:41</span></span>
+      <span class="t-3003-c">invariant measure becomes<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:351:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       P(A) = \int_A \frac{\sin \theta}{\sin \theta_1}\, d\theta\, d\phi\, d\ell.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:353:9</span>
     </div>
     <p>
-      (For the meaning of these quantities, see the
-      interesting article
-      <i>What is the ergodic theorem?</i>, G.
-      D. Birkhoff,
-      <i>American Math. Monthly</i>, April 1942.)
+      <span class="t-3003-c">(For the meaning of these quantities, see the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:357:9</span></span>
+      <span class="t-3003-c">interesting article
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:358:9</span></span><i><span class="t-3003-c">What is the ergodic theorem?<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:358:30</span></span></i><span class="t-3003-c">, G.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:358:59</span></span>
+      <span class="t-3003-c">D. Birkhoff,
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:359:9</span></span><i><span class="t-3003-c">American Math. Monthly<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:359:23</span></span></i><span class="t-3003-c">, April 1942.)<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:359:46</span></span>
     </p>
   </div>
   <div
@@ -625,42 +816,59 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.37</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:361:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:361:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:361:5</span></span><b><span class="t-3003-c">2.37<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:361:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:361:5</span></span>
     </h3>
     <p>
-      <span class="label">$3x+1$ map</span>One of the many (ultimately unsuccessful) attempts at
-      solving the famous $3x+1$ problem mentioned in
-      <a
+      <span class="label"><span class="t-3003-c">
+          <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:362:15</span></span><span class="t-3003-c">$3x+1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:362:15</span></span><span class="t-3003-c">
+          map<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:362:21</span></span></span><span class="t-3003-c">One of the many (ultimately unsuccessful) attempts at<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:363:9</span></span>
+      <span class="t-3003-c">solving the famous
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:364:9</span></span><span class="t-3003-c">$3x+1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:364:28</span></span><span class="t-3003-c">
+        problem mentioned in<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:364:34</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:365:9</span></span><a
         href="./2-1.html#_36_h.a.i_"
         class=""
-      >Section 2.1</a>
-      was based on the
-      observation that since the formula of the $3x+1$ map
-      $T(x)$ depends on the parity of $x$, the range of
-      definition of $T$ can be expanded to include numbers
-      of the form
+      >Section 2.1</a><span class="t-3003-c">
+        was based on the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:365:9</span></span>
+      <span class="t-3003-c">observation that since the formula of the
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:366:9</span></span><span class="t-3003-c">$3x+1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:366:51</span></span><span class="t-3003-c">
+        map<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:366:57</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:367:9</span></span><span class="t-3003-c">$T(x)$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:367:9</span></span><span class="t-3003-c">
+        depends on the parity of
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:367:15</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:367:41</span></span><span class="t-3003-c">, the range of<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:367:44</span></span>
+      <span class="t-3003-c">definition of
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:368:9</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:368:23</span></span><span class="t-3003-c">
+        can be expanded to include numbers<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:368:26</span></span>
+      <span class="t-3003-c">of the form<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:369:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       a_0 + a_1 \cdot 2 + a_2 \cdot 4 + a_3\cdot 8 + \ldots + a_n \cdot 2^n + \ldots = \sum_{n=0}^\infty a_n 2^n.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:371:9</span>
     </div>
     <p>
-      Such exotic numbers, which have an infinite binary
-      expansion to the
-      <i>left</i>
-      of the "binary point", are
-      called
-      <i>$2$-adic integers</i>
-      and have fascinating
-      properties. In particular, there is a natural measure
-      associated with them that is analogous to Lebesgue
-      measure on $\mathbb{R}$. It can be shown that the
-      extended $3x+1$ map preserves this measure.
+      <span class="t-3003-c">Such exotic numbers, which have an infinite binary<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:375:9</span></span>
+      <span class="t-3003-c">expansion to the
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:376:9</span></span><i><span class="t-3003-c">left<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:376:27</span></span></i><span class="t-3003-c">
+        of the "binary point", are<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:376:32</span></span>
+      <span class="t-3003-c">called
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:377:9</span></span><i><span class="t-3003-c">
+          <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:377:17</span></span><span class="t-3003-c">$2$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:377:17</span></span><span class="t-3003-c">-adic integers<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:377:20</span></span></i><span class="t-3003-c">
+        and have fascinating<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:377:35</span></span>
+      <span class="t-3003-c">properties. In particular, there is a natural measure<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:378:9</span></span>
+      <span class="t-3003-c">associated with them that is analogous to Lebesgue<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:379:9</span></span>
+      <span class="t-3003-c">measure on
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:380:9</span></span><span class="t-3003-c">$\mathbb{R}$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:380:20</span></span><span class="t-3003-c">. It can be shown that the<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:380:32</span></span>
+      <span class="t-3003-c">extended
+        <span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:381:9</span></span><span class="t-3003-c">$3x+1$<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:381:18</span></span><span class="t-3003-c">
+        map preserves this measure.<span class="t-3003">./119B/wly/02/07-measures-and-measure-preserving-maps.wly:381:24</span></span>
     </p>
   </div>
 </body>

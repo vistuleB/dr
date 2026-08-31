@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 1.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,61 +42,75 @@
   </div>
   <h1>
     1.1
-    Introduction
+    <span class="t-3003-c">Introduction<span class="t-3003">./119B/wly/01/01-introduction.wly:2:11</span></span>
   </h1>
   <p>
-    Newton made the famous discovery that the motion of
-    physical bodies can be described by a second-order
-    differential equation
+    <span class="t-3003-c">Newton made the famous discovery that the motion of<span class="t-3003">./119B/wly/01/01-introduction.wly:4:5</span></span>
+    <span class="t-3003-c">physical bodies can be described by a second-order<span class="t-3003">./119B/wly/01/01-introduction.wly:5:5</span></span>
+    <span class="t-3003-c">differential equation<span class="t-3003">./119B/wly/01/01-introduction.wly:6:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \mathbf{F} = m \mathbf{a},
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/01-introduction.wly:8:5</span>
   </div>
   <p>
-    where $\mathbf{a}$ is the acceleration (the second
-    derivative of the position of the body), $m$ is the
-    mass, and $\mathbf{F}$ is the force, which has to be
-    specified in order for the motion to be determined
-    (for example, Newton's law of gravity gives a formula
-    for the force $\mathbf{F}$ arising out of the
-    gravitational influence of celestial bodies). The
-    quantities $\mathbf{F}$ and $\mathbf{a}$ are vectors,
-    but in simple problems where the motion is along only
-    one axis can be taken as scalars.
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:12:5</span></span><span class="t-3003-c">$\mathbf{a}$<span class="t-3003">./119B/wly/01/01-introduction.wly:12:11</span></span><span class="t-3003-c">
+      is the acceleration (the second<span class="t-3003">./119B/wly/01/01-introduction.wly:12:23</span></span>
+    <span class="t-3003-c">derivative of the position of the body),
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:13:5</span></span><span class="t-3003-c">$m$<span class="t-3003">./119B/wly/01/01-introduction.wly:13:46</span></span><span class="t-3003-c">
+      is the<span class="t-3003">./119B/wly/01/01-introduction.wly:13:49</span></span>
+    <span class="t-3003-c">mass, and
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:14:5</span></span><span class="t-3003-c">$\mathbf{F}$<span class="t-3003">./119B/wly/01/01-introduction.wly:14:15</span></span><span class="t-3003-c">
+      is the force, which has to be<span class="t-3003">./119B/wly/01/01-introduction.wly:14:27</span></span>
+    <span class="t-3003-c">specified in order for the motion to be determined<span class="t-3003">./119B/wly/01/01-introduction.wly:15:5</span></span>
+    <span class="t-3003-c">(for example, Newton's law of gravity gives a formula<span class="t-3003">./119B/wly/01/01-introduction.wly:16:5</span></span>
+    <span class="t-3003-c">for the force
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:17:5</span></span><span class="t-3003-c">$\mathbf{F}$<span class="t-3003">./119B/wly/01/01-introduction.wly:17:19</span></span><span class="t-3003-c">
+      arising out of the<span class="t-3003">./119B/wly/01/01-introduction.wly:17:31</span></span>
+    <span class="t-3003-c">gravitational influence of celestial bodies). The<span class="t-3003">./119B/wly/01/01-introduction.wly:18:5</span></span>
+    <span class="t-3003-c">quantities
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:19:5</span></span><span class="t-3003-c">$\mathbf{F}$<span class="t-3003">./119B/wly/01/01-introduction.wly:19:16</span></span><span class="t-3003-c">
+      and
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:19:28</span></span><span class="t-3003-c">$\mathbf{a}$<span class="t-3003">./119B/wly/01/01-introduction.wly:19:33</span></span><span class="t-3003-c">
+      are vectors,<span class="t-3003">./119B/wly/01/01-introduction.wly:19:45</span></span>
+    <span class="t-3003-c">but in simple problems where the motion is along only<span class="t-3003">./119B/wly/01/01-introduction.wly:20:5</span></span>
+    <span class="t-3003-c">one axis can be taken as scalars.<span class="t-3003">./119B/wly/01/01-introduction.wly:21:5</span></span>
   </p>
   <p>
-    In the 18th and 19th centuries it was realized that
-    Newton's equations can be reformulated in two
-    surprising ways. The new formulations, known as
-    <i>Lagrangian</i>
-    and
-    <i>Hamiltonian</i>
-    mechanics, make it
-    easier to analyze the behavior of certain mechanical
-    systems, and also highlight important theoretical
-    aspects of the behavior of such systems which are not
-    immediately apparent from the original Newtonian
-    formulation. They also gave rise to an entirely new
-    and highly useful branch of mathematics called the
-    <i>calculus of variations</i>
-    --- a kind of "calculus on
-    steroids" (see
-    <a
+    <span class="t-3003-c">In the 18th and 19th centuries it was realized that<span class="t-3003">./119B/wly/01/01-introduction.wly:23:5</span></span>
+    <span class="t-3003-c">Newton's equations can be reformulated in two<span class="t-3003">./119B/wly/01/01-introduction.wly:24:5</span></span>
+    <span class="t-3003-c">surprising ways. The new formulations, known as<span class="t-3003">./119B/wly/01/01-introduction.wly:25:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:26:5</span></span><i><span class="t-3003-c">Lagrangian<span class="t-3003">./119B/wly/01/01-introduction.wly:26:6</span></span></i><span class="t-3003-c">
+      and
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:26:17</span></span><i><span class="t-3003-c">Hamiltonian<span class="t-3003">./119B/wly/01/01-introduction.wly:26:23</span></span></i><span class="t-3003-c">
+      mechanics, make it<span class="t-3003">./119B/wly/01/01-introduction.wly:26:35</span></span>
+    <span class="t-3003-c">easier to analyze the behavior of certain mechanical<span class="t-3003">./119B/wly/01/01-introduction.wly:27:5</span></span>
+    <span class="t-3003-c">systems, and also highlight important theoretical<span class="t-3003">./119B/wly/01/01-introduction.wly:28:5</span></span>
+    <span class="t-3003-c">aspects of the behavior of such systems which are not<span class="t-3003">./119B/wly/01/01-introduction.wly:29:5</span></span>
+    <span class="t-3003-c">immediately apparent from the original Newtonian<span class="t-3003">./119B/wly/01/01-introduction.wly:30:5</span></span>
+    <span class="t-3003-c">formulation. They also gave rise to an entirely new<span class="t-3003">./119B/wly/01/01-introduction.wly:31:5</span></span>
+    <span class="t-3003-c">and highly useful branch of mathematics called the<span class="t-3003">./119B/wly/01/01-introduction.wly:32:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:33:5</span></span><i><span class="t-3003-c">calculus of variations<span class="t-3003">./119B/wly/01/01-introduction.wly:33:6</span></span></i><span class="t-3003-c">
+      --- a kind of "calculus on<span class="t-3003">./119B/wly/01/01-introduction.wly:33:29</span></span>
+    <span class="t-3003-c">steroids" (see
+      <span class="t-3003">./119B/wly/01/01-introduction.wly:34:5</span></span><a
       href="./1-10.html#_20_h.a.i_"
       class=""
-    >Section 1.10</a>).
+    >Section 1.10</a><span class="t-3003-c">).<span class="t-3003">./119B/wly/01/01-introduction.wly:34:5</span></span>
   </p>
   <p>
-    Our goal in this chapter is to give an introduction
-    to this deep and beautiful part of the theory of
-    differential equations. For simplicity, we restrict
-    the discussion mostly to systems with one degree of
-    freedom, and comment only briefly on
-    higher-dimensional generalizations.
+    <span class="t-3003-c">Our goal in this chapter is to give an introduction<span class="t-3003">./119B/wly/01/01-introduction.wly:36:5</span></span>
+    <span class="t-3003-c">to this deep and beautiful part of the theory of<span class="t-3003">./119B/wly/01/01-introduction.wly:37:5</span></span>
+    <span class="t-3003-c">differential equations. For simplicity, we restrict<span class="t-3003">./119B/wly/01/01-introduction.wly:38:5</span></span>
+    <span class="t-3003-c">the discussion mostly to systems with one degree of<span class="t-3003">./119B/wly/01/01-introduction.wly:39:5</span></span>
+    <span class="t-3003-c">freedom, and comment only briefly on<span class="t-3003">./119B/wly/01/01-introduction.wly:40:5</span></span>
+    <span class="t-3003-c">higher-dimensional generalizations.<span class="t-3003">./119B/wly/01/01-introduction.wly:41:5</span></span>
   </p>
 </body>
 </html>

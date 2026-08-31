@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 1.11 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,117 +42,154 @@
   </div>
   <h1>
     1.11
-    The phase flow and Liouville's theorem
+    <span class="t-3003-c">The phase flow and Liouville's theorem<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:2:11</span></span>
   </h1>
   <p>
-    Hamiltonian systems often have quantities which are
-    conserved; for example, in autonmous systems we saw
-    that the Hamiltonian itself is conserved. In other
-    cases, if the Lagrangian does not depend on one of the
-    generalized coordinates $q_j$, then
-    $\frac{\partial L}{\partial q_j}=0$, so, by the
-    Euler-Lagrange equation for that coordinate, the
-    generalized momentum
-    $p_j = \frac{\partial L}{\partial \dot{q}_j}$ is a
-    conserved quantity (in such a case we say that $q_j$
-    is a
-    <i>cyclic coordinate</i>). Such invariant quantities
-    lead directly to the usual conservation laws from
-    mechanics --- the conservation of energy, of momentum,
-    and of angular momentum --- as well as to more exotic
-    conserved quantities that arise in specific problems.
+    <span class="t-3003-c">Hamiltonian systems often have quantities which are<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:4:5</span></span>
+    <span class="t-3003-c">conserved; for example, in autonmous systems we saw<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:5:5</span></span>
+    <span class="t-3003-c">that the Hamiltonian itself is conserved. In other<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:6:5</span></span>
+    <span class="t-3003-c">cases, if the Lagrangian does not depend on one of the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:7:5</span></span>
+    <span class="t-3003-c">generalized coordinates
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:8:5</span></span><span class="t-3003-c">$q_j$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:8:29</span></span><span class="t-3003-c">, then<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:8:34</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:9:5</span></span><span class="t-3003-c">$\frac{\partial L}{\partial q_j}=0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:9:5</span></span><span class="t-3003-c">, so, by the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:9:40</span></span>
+    <span class="t-3003-c">Euler-Lagrange equation for that coordinate, the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:10:5</span></span>
+    <span class="t-3003-c">generalized momentum<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:11:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:12:5</span></span><span class="t-3003-c">$p_j = \frac{\partial L}{\partial \dot{q}_j}$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:12:5</span></span><span class="t-3003-c">
+      is a<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:12:50</span></span>
+    <span class="t-3003-c">conserved quantity (in such a case we say that
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:13:5</span></span><span class="t-3003-c">$q_j$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:13:52</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:13:57</span></span>
+    <span class="t-3003-c">is a
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:14:5</span></span><i><span class="t-3003-c">cyclic coordinate<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:14:11</span></span></i><span class="t-3003-c">). Such invariant quantities<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:14:29</span></span>
+    <span class="t-3003-c">lead directly to the usual conservation laws from<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:15:5</span></span>
+    <span class="t-3003-c">mechanics --- the conservation of energy, of momentum,<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:16:5</span></span>
+    <span class="t-3003-c">and of angular momentum --- as well as to more exotic<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:17:5</span></span>
+    <span class="t-3003-c">conserved quantities that arise in specific problems.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:18:5</span></span>
   </p>
   <p>
-    We now discuss a different kind of conserved
-    quantity, one that is associated not with specific
-    solutions, but rather with an entire family of
-    solutions. What we will do is to start with an entire
-    set of initial states in the phase space, then let
-    those states evolve according to the dynamical
-    equations. After some time $t$, the initial states
-    have evolved to occupy some new set in the phase
-    space. It turns out that the total
-    <i>area</i>
-    of the set
-    is conserved: this is the statement of Liouville's
-    theorem.
+    <span class="t-3003-c">We now discuss a different kind of conserved<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:20:5</span></span>
+    <span class="t-3003-c">quantity, one that is associated not with specific<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:21:5</span></span>
+    <span class="t-3003-c">solutions, but rather with an entire family of<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:22:5</span></span>
+    <span class="t-3003-c">solutions. What we will do is to start with an entire<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:23:5</span></span>
+    <span class="t-3003-c">set of initial states in the phase space, then let<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:24:5</span></span>
+    <span class="t-3003-c">those states evolve according to the dynamical<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:25:5</span></span>
+    <span class="t-3003-c">equations. After some time
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:26:5</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:26:32</span></span><span class="t-3003-c">, the initial states<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:26:35</span></span>
+    <span class="t-3003-c">have evolved to occupy some new set in the phase<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:27:5</span></span>
+    <span class="t-3003-c">space. It turns out that the total
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:28:5</span></span><i><span class="t-3003-c">area<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:28:41</span></span></i><span class="t-3003-c">
+      of the set<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:28:46</span></span>
+    <span class="t-3003-c">is conserved: this is the statement of Liouville's<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:29:5</span></span>
+    <span class="t-3003-c">theorem.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:30:5</span></span>
   </p>
   <p>
-    To state the theorem formally, given a Hamiltonian
-    system
-    <a
+    <span class="t-3003-c">To state the theorem formally, given a Hamiltonian<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:32:5</span></span>
+    <span class="t-3003-c">system
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:33:5</span></span><a
       href="./1-2.html#_2_h.a.i_"
       class=""
     >(2)</a>, for each point
-    $\mathbf{x}=(p_0,q_0)\in\mathbb{R}^2$ and time
-    $t\ge 0$, denote by $\varphi_t(\mathbf{x})$ the point
-    $(p(t),q(t))$, where $(p(t),q(t))$ are the solutions
-    to the equations
-    <a
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:34:5</span></span><span class="t-3003-c">$\mathbf{x}=(p_0,q_0)\in\mathbb{R}^2$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:34:5</span></span><span class="t-3003-c">
+      and time<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:34:42</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:35:5</span></span><span class="t-3003-c">$t\ge 0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:35:5</span></span><span class="t-3003-c">, denote by
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:35:13</span></span><span class="t-3003-c">$\varphi_t(\mathbf{x})$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:35:25</span></span><span class="t-3003-c">
+      the point<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:35:48</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:36:5</span></span><span class="t-3003-c">$(p(t),q(t))$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:36:5</span></span><span class="t-3003-c">, where
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:36:18</span></span><span class="t-3003-c">$(p(t),q(t))$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:36:26</span></span><span class="t-3003-c">
+      are the solutions<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:36:39</span></span>
+    <span class="t-3003-c">to the equations
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:37:5</span></span><a
       href="./1-2.html#_2_h.a.i_"
       class=""
     >(2)</a>
     with initial
-    condition $p(0)=p_0, q(0)=q_0$. (We assume that the
-    system is such that the solutions exist for all time
-    $t\ge 0$.) Thus, for each $t\ge 0$ we have
-    constructed a mapping
+    <span class="t-3003-c">condition
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:38:5</span></span><span class="t-3003-c">$p(0)=p_0, q(0)=q_0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:38:15</span></span><span class="t-3003-c">. (We assume that the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:38:35</span></span>
+    <span class="t-3003-c">system is such that the solutions exist for all time<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:39:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:40:5</span></span><span class="t-3003-c">$t\ge 0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:40:5</span></span><span class="t-3003-c">.) Thus, for each
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:40:13</span></span><span class="t-3003-c">$t\ge 0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:40:31</span></span><span class="t-3003-c">
+      we have<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:40:39</span></span>
+    <span class="t-3003-c">constructed a mapping<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:41:5</span></span>
   </p>
   <div class="math-block">
     $$
     \varphi_t:\mathbb{R}^2\to\mathbb{R}^2,
-    $$
+    $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:43:5</span>
   </div>
   <p>
-    which takes a "present" point corresponding to the
-    state of the system at time $0$ into a "future"
-    point corresponding to the state of the system $t$
-    units of time later. The family of maps
-    $(\varphi_t)_{t\ge 0}$ is called the
-    <i>phase flow</i>
-    of
-    the system: it describes how points "flow" along the
-    solution lines of the system.
+    <span class="t-3003-c">which takes a "present" point corresponding to the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:47:5</span></span>
+    <span class="t-3003-c">state of the system at time
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:48:5</span></span><span class="t-3003-c">$0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:48:33</span></span><span class="t-3003-c">
+      into a "future"<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:48:36</span></span>
+    <span class="t-3003-c">point corresponding to the state of the system
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:49:5</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:49:52</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:49:55</span></span>
+    <span class="t-3003-c">units of time later. The family of maps<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:50:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:51:5</span></span><span class="t-3003-c">$(\varphi_t)_{t\ge 0}$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:51:5</span></span><span class="t-3003-c">
+      is called the
+      <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:51:27</span></span><i><span class="t-3003-c">phase flow<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:51:43</span></span></i><span class="t-3003-c">
+      of<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:51:54</span></span>
+    <span class="t-3003-c">the system: it describes how points "flow" along the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:52:5</span></span>
+    <span class="t-3003-c">solution lines of the system.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:53:5</span></span>
   </p>
   <div
     label="Liouville's theorem"
     class="statement theorem"
   >
     <h3>
-      <b>Theorem</b>
-      <b>1.23</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:55:5</span></span><b><span class="t-3003-c">Theorem<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:55:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:55:5</span></span><b><span class="t-3003-c">1.23<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:55:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:55:5</span></span>
     </h3>
     <p>
-      <span class="label">Liouville's theorem</span>The phase flow preserves area. More precisely, given
-      a region $E\subset\mathbb{R}^2$ with finite area, for
-      any $t\ge 0$ we have
+      <span class="label"><span class="t-3003-c">Liouville's theorem<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:56:15</span></span></span><span class="t-3003-c">The phase flow preserves area. More precisely, given<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:57:9</span></span>
+      <span class="t-3003-c">a region
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:58:9</span></span><span class="t-3003-c">$E\subset\mathbb{R}^2$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:58:18</span></span><span class="t-3003-c">
+        with finite area, for<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:58:40</span></span>
+      <span class="t-3003-c">any
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:59:9</span></span><span class="t-3003-c">$t\ge 0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:59:13</span></span><span class="t-3003-c">
+        we have<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:59:21</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \operatorname{area}(\varphi_t(E)) = \operatorname{area}(E).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:61:9</span>
     </div>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>Note that for fixed $t$, there is a one-to-one
-      correspondence between points $(p,q) \in \varphi_t(E)$
-      and points $(p_0,q_0)\in E$, defined by
-      $(p,q)=\varphi_t(p_0,q_0)$. This smooth map has a
-      Jacobian
+      <span class="proof">Proof</span><span class="t-3003-c">Note that for fixed
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:66:9</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:66:29</span></span><span class="t-3003-c">, there is a one-to-one<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:66:32</span></span>
+      <span class="t-3003-c">correspondence between points
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:67:9</span></span><span class="t-3003-c">$(p,q) \in \varphi_t(E)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:67:39</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:67:63</span></span>
+      <span class="t-3003-c">and points
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:68:9</span></span><span class="t-3003-c">$(p_0,q_0)\in E$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:68:20</span></span><span class="t-3003-c">, defined by<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:68:36</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:69:9</span></span><span class="t-3003-c">$(p,q)=\varphi_t(p_0,q_0)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:69:9</span></span><span class="t-3003-c">. This smooth map has a<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:69:35</span></span>
+      <span class="t-3003-c">Jacobian<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:70:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       J_t = \frac{\partial (p,q)}{\partial (p_0,q_0)},
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:72:9</span>
     </div>
     <p>
-      i.e., $J_t$ is the determinant of the Jacobian matrix
+      <span class="t-3003-c">i.e.,
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:76:9</span></span><span class="t-3003-c">$J_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:76:15</span></span><span class="t-3003-c">
+        is the determinant of the Jacobian matrix<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:76:20</span></span>
     </p>
     <div class="math-block">
       $$
@@ -160,12 +198,14 @@
       \frac{\partial p}{\partial p_0} &amp; \frac{\partial p}{\partial q_0} \\ \frac{\partial q}{\partial p_0} &amp; \frac{\partial q}{\partial q_0}
       \end{array}\right).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:78:9</span>
     </div>
     <p>
-      The Jacobian factor $J_t$ enters into the area
-      computation via a change of variables in a double
-      integral, as follows:
+      <span class="t-3003-c">The Jacobian factor
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:84:9</span></span><span class="t-3003-c">$J_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:84:29</span></span><span class="t-3003-c">
+        enters into the area<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:84:34</span></span>
+      <span class="t-3003-c">computation via a change of variables in a double<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:85:9</span></span>
+      <span class="t-3003-c">integral, as follows:<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:86:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -174,11 +214,14 @@
       = \iint_E \frac{\partial (p,q)}{\partial (p_0,q_0)}\,dp_0\,dq_0 \\
       &amp;= \iint_E J_t \,dp_0\,dq_0.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:88:9</span>
     </div>
     <p>
-      We claim that $J_t\equiv 1$ for all $t$. This will
-      imply that
+      <span class="t-3003-c">We claim that
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:94:9</span></span><span class="t-3003-c">$J_t\equiv 1$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:94:23</span></span><span class="t-3003-c">
+        for all
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:94:36</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:94:45</span></span><span class="t-3003-c">. This will<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:94:48</span></span>
+      <span class="t-3003-c">imply that<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:95:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -186,13 +229,15 @@
       \operatorname{area}(\varphi_t(E)) &amp;= \iint_{\varphi_t(E)} dp\,dq
       = \iint_E \,dp_0\,dq_0 = \operatorname{area}(E),
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:97:9</span>
     </div>
     <p>
-      and therefore finish the proof. It will be
-      instructive to do this by computing $J_t$ more
-      generally for the generic (not necessarily
-      Hamiltonian) planar system
+      <span class="t-3003-c">and therefore finish the proof. It will be<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:102:9</span></span>
+      <span class="t-3003-c">instructive to do this by computing
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:103:9</span></span><span class="t-3003-c">$J_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:103:45</span></span><span class="t-3003-c">
+        more<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:103:50</span></span>
+      <span class="t-3003-c">generally for the generic (not necessarily<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:104:9</span></span>
+      <span class="t-3003-c">Hamiltonian) planar system<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:105:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -200,10 +245,10 @@
       \dot{p} = F(p,q,t), \qquad
       \dot{q} = G(p,q,t).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:107:9</span>
     </div>
     <p>
-      Denote
+      <span class="t-3003-c">Denote<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:112:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -212,10 +257,10 @@
       \frac{\partial p}{\partial p_0} &amp; \frac{\partial p}{\partial q_0} \\ \frac{\partial q}{\partial p_0} &amp; \frac{\partial q}{\partial q_0}
       \end{array}\right),
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:114:9</span>
     </div>
     <p>
-      and observe that, by the chain rule,
+      <span class="t-3003-c">and observe that, by the chain rule,<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:120:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -230,36 +275,45 @@
       \end{array}\right)
       = A_t X_t,
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:122:9</span>
     </div>
     <p>
-      where
+      <span class="t-3003-c">where<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:134:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       A_t = A_t(p_0,q_0) = \left(\begin{array}{cc} \frac{\partial F}{\partial p} &amp; \frac{\partial F}{\partial q} \\ \frac{\partial G}{\partial p} &amp; \frac{\partial G}{\partial q} \end{array}\right).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:136:9</span>
     </div>
     <p>
-      In other words, for fixed $(p_0,q_0)$, the matrix
-      $X_t$ satisfies the time-dependent linear matrix ODE
+      <span class="t-3003-c">In other words, for fixed
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:140:9</span></span><span class="t-3003-c">$(p_0,q_0)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:140:35</span></span><span class="t-3003-c">, the matrix<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:140:46</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:141:9</span></span><span class="t-3003-c">$X_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:141:9</span></span><span class="t-3003-c">
+        satisfies the time-dependent linear matrix ODE<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:141:14</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \dot{X}_t = A_t X_t,
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:143:9</span>
     </div>
     <p>
-      with the initial condition $X_0 = I$ (the $2\times2$
-      identity matrix).
+      <span class="t-3003-c">with the initial condition
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:147:9</span></span><span class="t-3003-c">$X_0 = I$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:147:36</span></span><span class="t-3003-c">
+        (the
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:147:45</span></span><span class="t-3003-c">$2\times2$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:147:51</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:147:61</span></span>
+      <span class="t-3003-c">identity matrix).<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:148:9</span></span>
     </p>
     <p>
-      As a consequence, we now claim that the determinant
-      $J_t = \det X_t$ also satisfies an ODE, namely
+      <span class="t-3003-c">As a consequence, we now claim that the determinant<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:150:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:151:9</span></span><span class="t-3003-c">$J_t = \det X_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:151:9</span></span><span class="t-3003-c">
+        also satisfies an ODE, namely<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:151:25</span></span>
     </p>
     <div
       id="_21_h.a.i_"
@@ -271,10 +325,12 @@
       \dot{J}_t = \operatorname{tr}(A_t) J_t.
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:153:9</span>
     </div>
     <p>
-      Indeed, for small positive $h&gt;0$ we have
+      <span class="t-3003-c">Indeed, for small positive
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:161:9</span></span><span class="t-3003-c">$h&gt;0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:161:36</span></span><span class="t-3003-c">
+        we have<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:161:41</span></span>
     </p>
     <div class="math-block">
       $$
@@ -284,13 +340,17 @@
       = \det(I+h A_t) \det(X_t) + O(h^2) \\
       &amp;= (1 + h \operatorname{tr}(A_t)) J_t + O(h^2),
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:163:9</span>
     </div>
     <p>
-      where the last step is true because of the exercise
-      below on determinants of perturbations of the identity
-      matrix. Subtracting $J_t$ from both sides and taking
-      the limit as $h\downarrow 0$ gives
+      <span class="t-3003-c">where the last step is true because of the exercise<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:170:9</span></span>
+      <span class="t-3003-c">below on determinants of perturbations of the identity<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:171:9</span></span>
+      <span class="t-3003-c">matrix. Subtracting
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:172:9</span></span><span class="t-3003-c">$J_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:172:29</span></span><span class="t-3003-c">
+        from both sides and taking<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:172:34</span></span>
+      <span class="t-3003-c">the limit as
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:173:9</span></span><span class="t-3003-c">$h\downarrow 0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:173:22</span></span><span class="t-3003-c">
+        gives<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:173:37</span></span>
     </p>
     <div class="math-block">
       $$
@@ -298,17 +358,19 @@
       \frac{dJ_t}{dt} = \lim_{h\downarrow 0} \frac{J_{t+h}-J_t}{h} =
       \lim_{h\downarrow 0} \left(\operatorname{tr}(A_t)J_t + O(h)\right) = \operatorname{tr}(A_t)J_t.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:175:9</span>
     </div>
     <p>
-      The equation
-      <a
+      <span class="t-3003-c">The equation
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:180:9</span></span><a
         href="./1-11.html#_21_h.a.i_"
         class=""
       >(18)</a>
       is an easy scalar
-      ODE for $J_t$, with the initial condition $J_0=1$.
-      Its solution is
+      <span class="t-3003-c">ODE for
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:181:9</span></span><span class="t-3003-c">$J_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:181:17</span></span><span class="t-3003-c">, with the initial condition
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:181:22</span></span><span class="t-3003-c">$J_0=1$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:181:51</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:181:58</span></span>
+      <span class="t-3003-c">Its solution is<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:182:9</span></span>
     </p>
     <div
       id="_22_h.a.i_"
@@ -322,20 +384,21 @@
       &amp;= \exp\left( \int_0^t \operatorname{div}(F,G) \,ds \right).
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:184:9</span>
     </div>
     <p>
-      Going back to the case of the Hamiltonian system, we
-      recall that in this case
+      <span class="t-3003-c">Going back to the case of the Hamiltonian system, we<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:194:9</span></span>
+      <span class="t-3003-c">recall that in this case<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:195:9</span></span>
     </p>
     <div class="math-block">
       $$
       \operatorname{div} (F,G) = \frac{\partial F}{\partial p}+\frac{\partial G}{\partial q} = -\frac{\partial^2 H}{\partial p \partial q} +
       \frac{\partial^2 H}{\partial p \partial q} = 0,
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:197:9</span>
     </div>
     <p>
-      so we finally get that $J \equiv 1$, as claimed.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="t-3003-c">so we finally get that
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:202:9</span></span><span class="t-3003-c">$J \equiv 1$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:202:32</span></span><span class="t-3003-c">, as claimed.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:202:44</span></span><span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div
@@ -343,29 +406,32 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>1.24</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:204:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:204:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:204:5</span></span><b><span class="t-3003-c">1.24<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:204:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:204:5</span></span>
     </h3>
     <p>
-      Show that if $A$ is a square matrix then
+      <span class="t-3003-c">Show that if
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:206:9</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:206:22</span></span><span class="t-3003-c">
+        is a square matrix then<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:206:25</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \frac{d}{dh}\Big|_{h=0} \det(I+h A) = \operatorname{tr}(A),
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:208:9</span>
     </div>
     <p>
-      or equivalently
+      <span class="t-3003-c">or equivalently<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:212:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \det(I+h A) = 1 + h \operatorname{tr}(A) + O(h^2).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:214:9</span>
     </div>
   </div>
   <div
@@ -373,20 +439,25 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>1.25</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:218:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:218:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:218:5</span></span><b><span class="t-3003-c">1.25<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:218:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:218:5</span></span>
     </h3>
     <p>
-      The exponential $\exp(A)$ of a square matrix
-      $A=(a_{i,j})_{i,j=1}^d$ is defined by
+      <span class="t-3003-c">The exponential
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:220:9</span></span><span class="t-3003-c">$\exp(A)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:220:25</span></span><span class="t-3003-c">
+        of a square matrix<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:220:34</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:221:9</span></span><span class="t-3003-c">$A=(a_{i,j})_{i,j=1}^d$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:221:9</span></span><span class="t-3003-c">
+        is defined by<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:221:32</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \exp(A) = \sum_{n=0}^\infty \frac{1}{n!} A^n.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:223:9</span>
     </div>
     <ol
       class="list"
@@ -394,55 +465,64 @@
     >
       <li>
         <p>
-          Show that the series converges absolutely in the
-          matrix norm
+          <span class="t-3003-c">Show that the series converges absolutely in the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:231:17</span></span>
+          <span class="t-3003-c">matrix norm<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:232:17</span></span>
         </p>
         <div class="math-block">
           $$
           \begin{align*}
           \lVert A \rVert = \sum_{i,j} |a_{i,j}|.
           \end{align*}
-          $$
+          $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:234:17</span>
         </div>
       </li>
       <li>
         <p>
-          Show that the unique solution to the linear vector
-          ODE
+          <span class="t-3003-c">Show that the unique solution to the linear vector<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:239:17</span></span>
+          <span class="t-3003-c">ODE<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:240:17</span></span>
         </p>
         <div class="math-block">
           $$
           \begin{align*}
           \dot{\mathbf{x}} = A \mathbf{x}
           \end{align*}
-          $$
+          $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:242:17</span>
         </div>
         <p>
-          with initial condition $\mathbf{x}(0) = \mathbf{x}_0$
-          (where we think of $\mathbf{x}$ as a column vector in
-          $\mathbb{R}^d$) can be expressed in terms of matrix
-          exponentials, namely
+          <span class="t-3003-c">with initial condition
+            <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:246:17</span></span><span class="t-3003-c">$\mathbf{x}(0) = \mathbf{x}_0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:246:40</span></span><span class="t-3003-c">
+            <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:246:70</span></span>
+          <span class="t-3003-c">(where we think of
+            <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:247:17</span></span><span class="t-3003-c">$\mathbf{x}$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:247:36</span></span><span class="t-3003-c">
+            as a column vector in<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:247:48</span></span>
+          <span class="t-3003-c">
+            <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:248:17</span></span><span class="t-3003-c">$\mathbb{R}^d$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:248:17</span></span><span class="t-3003-c">) can be expressed in terms of matrix<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:248:31</span></span>
+          <span class="t-3003-c">exponentials, namely<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:249:17</span></span>
         </p>
         <div class="math-block">
           $$
           \begin{align*}
           \mathbf{x}(t) = \exp\left(t \mathbf{A}\right) \mathbf{x}_0, \qquad t\ge 0.
           \end{align*}
-          $$
+          $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:251:17</span>
         </div>
       </li>
       <li>
         <p>
-          Use this to explain the characterization of the
-          stability of rest points in a planar system in terms
-          of the eigenvalues of the Jacobian matrix.
+          <span class="t-3003-c">Use this to explain the characterization of the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:256:17</span></span>
+          <span class="t-3003-c">stability of rest points in a planar system in terms<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:257:17</span></span>
+          <span class="t-3003-c">of the eigenvalues of the Jacobian matrix.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:258:17</span></span>
         </p>
       </li>
       <li>
         <p>
-          Prove that if $A, B$ are commuting square matrices
-          (i.e., matrices which satisfy $AB=BA$) then
-          $\exp(A+B)=\exp(A)\exp(B)$.
+          <span class="t-3003-c">Prove that if
+            <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:261:17</span></span><span class="t-3003-c">$A, B$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:261:31</span></span><span class="t-3003-c">
+            are commuting square matrices<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:261:37</span></span>
+          <span class="t-3003-c">(i.e., matrices which satisfy
+            <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:262:17</span></span><span class="t-3003-c">$AB=BA$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:262:47</span></span><span class="t-3003-c">) then<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:262:54</span></span>
+          <span class="t-3003-c">
+            <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:263:17</span></span><span class="t-3003-c">$\exp(A+B)=\exp(A)\exp(B)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:263:17</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:263:43</span></span>
         </p>
       </li>
     </ol>
@@ -452,92 +532,127 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>1.26</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:265:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:265:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:265:5</span></span><b><span class="t-3003-c">1.26<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:265:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:265:5</span></span>
     </h3>
     <p>
-      Prove the formula
+      <span class="t-3003-c">Prove the formula<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:267:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \det\left( \exp(A)\right) = e^{\operatorname{tr}(A)},
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:269:9</span>
     </div>
     <p>
-      where $A$ is a square matrix and
-      $\operatorname{tr}(A)$ denotes the trace of $A$.
+      <span class="t-3003-c">where
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:273:9</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:273:15</span></span><span class="t-3003-c">
+        is a square matrix and<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:273:18</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:274:9</span></span><span class="t-3003-c">$\operatorname{tr}(A)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:274:9</span></span><span class="t-3003-c">
+        denotes the trace of
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:274:31</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:274:53</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:274:56</span></span>
     </p>
     <p>
-      $\textbf{Hint.}$ Take determinants of both sides of
-      the equation $\exp(A)=\exp(n^{-1} A)^n$, which is
-      true by part (4) of the exercise above, then use the
-      fact that $\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$ and
-      the exercise above on determinants of matrices close
-      to $I$.
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:276:9</span></span><span class="t-3003-c">$\textbf{Hint.}$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:276:9</span></span><span class="t-3003-c">
+        Take determinants of both sides of<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:276:25</span></span>
+      <span class="t-3003-c">the equation
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:277:9</span></span><span class="t-3003-c">$\exp(A)=\exp(n^{-1} A)^n$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:277:22</span></span><span class="t-3003-c">, which is<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:277:48</span></span>
+      <span class="t-3003-c">true by part (4) of the exercise above, then use the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:278:9</span></span>
+      <span class="t-3003-c">fact that
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:279:9</span></span><span class="t-3003-c">$\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:279:19</span></span><span class="t-3003-c">
+        and<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:279:57</span></span>
+      <span class="t-3003-c">the exercise above on determinants of matrices close<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:280:9</span></span>
+      <span class="t-3003-c">to
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:281:9</span></span><span class="t-3003-c">$I$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:281:12</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:281:15</span></span>
     </p>
   </div>
   <div class="statement corollary">
     <h3>
-      <b>Corollary</b>
-      <b>1.27</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:283:5</span></span><b><span class="t-3003-c">Corollary<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:283:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:283:5</span></span><b><span class="t-3003-c">1.27<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:283:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:283:5</span></span>
     </h3>
     <p>
-      The phase flow of a planar system preserves area if
-      and only if the system is Hamiltonian.
+      <span class="t-3003-c">The phase flow of a planar system preserves area if<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:284:9</span></span>
+      <span class="t-3003-c">and only if the system is Hamiltonian.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:285:9</span></span>
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>We saw in the proof of Liouville's theorem that the
-      preservation of area is determined by the Jacobian
-      $J_t$ of the phase flow: if $J_t \equiv 1$ then the
-      system preserves area; conversely, if $J_t(p,q)\neq 1$
-      for some $t$ at a point $(p,q)=\varphi_t(p_0,q_0)$,
-      then a small disk of radius $\epsilon$ and area
-      $\pi \epsilon^2$ around $(p_0,q_0)$ is mapped by
-      $\varphi_t$ to a set of area approximately
-      $\pi \epsilon^2 J_t \neq \pi \epsilon^2$, and
-      therefore the phase flow does not preserve area.
+      <span class="proof">Proof</span><span class="t-3003-c">We saw in the proof of Liouville's theorem that the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:288:9</span></span>
+      <span class="t-3003-c">preservation of area is determined by the Jacobian<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:289:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:290:9</span></span><span class="t-3003-c">$J_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:290:9</span></span><span class="t-3003-c">
+        of the phase flow: if
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:290:14</span></span><span class="t-3003-c">$J_t \equiv 1$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:290:37</span></span><span class="t-3003-c">
+        then the<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:290:51</span></span>
+      <span class="t-3003-c">system preserves area; conversely, if
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:291:9</span></span><span class="t-3003-c">$J_t(p,q)\neq 1$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:291:47</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:291:63</span></span>
+      <span class="t-3003-c">for some
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:292:9</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:292:18</span></span><span class="t-3003-c">
+        at a point
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:292:21</span></span><span class="t-3003-c">$(p,q)=\varphi_t(p_0,q_0)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:292:33</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:292:59</span></span>
+      <span class="t-3003-c">then a small disk of radius
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:293:9</span></span><span class="t-3003-c">$\epsilon$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:293:37</span></span><span class="t-3003-c">
+        and area<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:293:47</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:294:9</span></span><span class="t-3003-c">$\pi \epsilon^2$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:294:9</span></span><span class="t-3003-c">
+        around
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:294:25</span></span><span class="t-3003-c">$(p_0,q_0)$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:294:33</span></span><span class="t-3003-c">
+        is mapped by<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:294:44</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:295:9</span></span><span class="t-3003-c">$\varphi_t$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:295:9</span></span><span class="t-3003-c">
+        to a set of area approximately<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:295:20</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:296:9</span></span><span class="t-3003-c">$\pi \epsilon^2 J_t \neq \pi \epsilon^2$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:296:9</span></span><span class="t-3003-c">, and<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:296:49</span></span>
+      <span class="t-3003-c">therefore the phase flow does not preserve area.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:297:9</span></span>
     </p>
     <p>
-      To conclude, from the computation in
-      <a
+      <span class="t-3003-c">To conclude, from the computation in<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:299:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:300:9</span></span><a
         href="./1-11.html#_22_h.a.i_"
         class=""
       >(19)</a>
       it follows that the system
-      preserves area if and only if
-      $\operatorname{div}(F,G)=0$, and we already showed in
-      <a
+      <span class="t-3003-c">preserves area if and only if<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:301:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:302:9</span></span><span class="t-3003-c">$\operatorname{div}(F,G)=0$<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:302:9</span></span><span class="t-3003-c">, and we already showed in<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:302:36</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:303:9</span></span><a
         href="./1-2.html#_4_h.a.i_"
         class=""
-      >Lemma 1.1</a>
-      that this is equivalent to
-      the system being Hamiltonian.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      >Lemma 1.1</a><span class="t-3003-c">
+        that this is equivalent to<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:303:9</span></span>
+      <span class="t-3003-c">the system being Hamiltonian.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:304:9</span></span><span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <div class="statement corollary">
     <h3>
-      <b>Corollary</b>
-      <b>1.28</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:306:5</span></span><b><span class="t-3003-c">Corollary<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:306:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:306:5</span></span><b><span class="t-3003-c">1.28<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:306:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:306:5</span></span>
     </h3>
     <p>
-      The rest points of an autonomous Hamiltonian system
-      are either saddle points or centers.
+      <span class="t-3003-c">The rest points of an autonomous Hamiltonian system<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:307:9</span></span>
+      <span class="t-3003-c">are either saddle points or centers.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:308:9</span></span>
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>An asymptotically stable or unstable rest point
-      (which is either a node or a spiral) would imply that
-      the phase flow either contracts or expands small disks
-      around the rest point; by Liouville's theorem, this is
-      impossible.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="proof">Proof</span><span class="t-3003-c">An asymptotically stable or unstable rest point<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:311:9</span></span>
+      <span class="t-3003-c">(which is either a node or a spiral) would imply that<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:312:9</span></span>
+      <span class="t-3003-c">the phase flow either contracts or expands small disks<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:313:9</span></span>
+      <span class="t-3003-c">around the rest point; by Liouville's theorem, this is<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:314:9</span></span>
+      <span class="t-3003-c">impossible.<span class="t-3003">./119B/wly/01/11-the-phase-flow-and-liouvilles-theorem.wly:315:9</span></span><span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
 </body>

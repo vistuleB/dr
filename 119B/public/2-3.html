@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 2.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,35 +42,45 @@
   </div>
   <h1>
     2.3
-    Interval maps
+    <span class="t-3003-c">Interval maps<span class="t-3003">./119B/wly/02/03-interval-maps.wly:2:11</span></span>
   </h1>
   <p>
-    A discrete-time system is called
-    <i>one-dimensional</i>
-    if
-    it has either $\mathbb{R}$ or a sub-interval of
-    $\mathbb{R}$ as its state space. There are many
-    interesting examples of such systems, and it will be
-    especially convenient to focus on maps defined on an
-    interval, usually taken to be the unit interval
-    $[0,1]$ (or in some cases the open interval $(0,1)$).
-    Such a map is called an
-    <i>interval map</i>. The logistic
-    map is one especially interesting example of an
-    interval map. Here are some additional maps that we
-    will consider later.
+    <span class="t-3003-c">A discrete-time system is called
+      <span class="t-3003">./119B/wly/02/03-interval-maps.wly:4:5</span></span><i><span class="t-3003-c">one-dimensional<span class="t-3003">./119B/wly/02/03-interval-maps.wly:4:39</span></span></i><span class="t-3003-c">
+      if<span class="t-3003">./119B/wly/02/03-interval-maps.wly:4:55</span></span>
+    <span class="t-3003-c">it has either
+      <span class="t-3003">./119B/wly/02/03-interval-maps.wly:5:5</span></span><span class="t-3003-c">$\mathbb{R}$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:5:19</span></span><span class="t-3003-c">
+      or a sub-interval of<span class="t-3003">./119B/wly/02/03-interval-maps.wly:5:31</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/03-interval-maps.wly:6:5</span></span><span class="t-3003-c">$\mathbb{R}$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:6:5</span></span><span class="t-3003-c">
+      as its state space. There are many<span class="t-3003">./119B/wly/02/03-interval-maps.wly:6:17</span></span>
+    <span class="t-3003-c">interesting examples of such systems, and it will be<span class="t-3003">./119B/wly/02/03-interval-maps.wly:7:5</span></span>
+    <span class="t-3003-c">especially convenient to focus on maps defined on an<span class="t-3003">./119B/wly/02/03-interval-maps.wly:8:5</span></span>
+    <span class="t-3003-c">interval, usually taken to be the unit interval<span class="t-3003">./119B/wly/02/03-interval-maps.wly:9:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/03-interval-maps.wly:10:5</span></span><span class="t-3003-c">$[0,1]$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:10:5</span></span><span class="t-3003-c">
+      (or in some cases the open interval
+      <span class="t-3003">./119B/wly/02/03-interval-maps.wly:10:12</span></span><span class="t-3003-c">$(0,1)$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:10:49</span></span><span class="t-3003-c">).<span class="t-3003">./119B/wly/02/03-interval-maps.wly:10:56</span></span>
+    <span class="t-3003-c">Such a map is called an
+      <span class="t-3003">./119B/wly/02/03-interval-maps.wly:11:5</span></span><i><span class="t-3003-c">interval map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:11:30</span></span></i><span class="t-3003-c">. The logistic<span class="t-3003">./119B/wly/02/03-interval-maps.wly:11:43</span></span>
+    <span class="t-3003-c">map is one especially interesting example of an<span class="t-3003">./119B/wly/02/03-interval-maps.wly:12:5</span></span>
+    <span class="t-3003-c">interval map. Here are some additional maps that we<span class="t-3003">./119B/wly/02/03-interval-maps.wly:13:5</span></span>
+    <span class="t-3003-c">will consider later.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:14:5</span></span>
   </p>
   <div
     label="Doubling map"
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.10</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:16:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/03-interval-maps.wly:16:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:16:5</span></span><b><span class="t-3003-c">2.10<span class="t-3003">./119B/wly/02/03-interval-maps.wly:16:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:16:5</span></span>
     </h3>
     <p>
-      <span class="label">Doubling map</span>The doubling map $D:[0,1)\to[0,1)$ is defined by
+      <span class="label"><span class="t-3003-c">Doubling map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:17:15</span></span></span><span class="t-3003-c">The doubling map
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:18:9</span></span><span class="t-3003-c">$D:[0,1)\to[0,1)$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:18:26</span></span><span class="t-3003-c">
+        is defined by<span class="t-3003">./119B/wly/02/03-interval-maps.wly:18:43</span></span>
     </p>
     <div class="math-block">
       $$
@@ -78,20 +89,21 @@
       2x &amp; \textrm{if }0\le x&lt;\tfrac12, \\ 2x-1 &amp; \textrm{if }\tfrac12 \le x &lt; 1,
       \end{cases}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:20:9</span>
     </div>
     <p>
-      (see Figure 10). As we will see later, it is closely
-      related to binary expansions of real numbers in
-      $(0,1)$. In particular, trying to understand the
-      statistical properties of binary expansions of random
-      numbers leads naturally to questions about properties
-      of the doubling map --- see
-      <a
+      <span class="t-3003-c">(see Figure 10). As we will see later, it is closely<span class="t-3003">./119B/wly/02/03-interval-maps.wly:26:9</span></span>
+      <span class="t-3003-c">related to binary expansions of real numbers in<span class="t-3003">./119B/wly/02/03-interval-maps.wly:27:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:28:9</span></span><span class="t-3003-c">$(0,1)$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:28:9</span></span><span class="t-3003-c">. In particular, trying to understand the<span class="t-3003">./119B/wly/02/03-interval-maps.wly:28:16</span></span>
+      <span class="t-3003-c">statistical properties of binary expansions of random<span class="t-3003">./119B/wly/02/03-interval-maps.wly:29:9</span></span>
+      <span class="t-3003-c">numbers leads naturally to questions about properties<span class="t-3003">./119B/wly/02/03-interval-maps.wly:30:9</span></span>
+      <span class="t-3003-c">of the doubling map --- see
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:31:9</span></span><a
         href="./2-10.html#_46_h.a.i_"
         class=""
-      >Section 2.10</a>
-      for further discussion.
+      >Section 2.10</a><span class="t-3003-c">
+        for further discussion.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:32:9</span></span>
     </p>
   </div>
   <div
@@ -99,13 +111,17 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.11</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:34:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/03-interval-maps.wly:34:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:34:5</span></span><b><span class="t-3003-c">2.11<span class="t-3003">./119B/wly/02/03-interval-maps.wly:34:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:34:5</span></span>
     </h3>
     <p>
-      <span class="label">Circle rotation map</span>For $0&lt;\alpha&lt;1$, the circle rotation map
-      $R_\alpha:[0,1)\to[0,1)$ is defined by
+      <span class="label"><span class="t-3003-c">Circle rotation map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:35:15</span></span></span><span class="t-3003-c">For
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:36:9</span></span><span class="t-3003-c">$0&lt;\alpha&lt;1$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:36:13</span></span><span class="t-3003-c">, the circle rotation map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:36:25</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:37:9</span></span><span class="t-3003-c">$R_\alpha:[0,1)\to[0,1)$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:37:9</span></span><span class="t-3003-c">
+        is defined by<span class="t-3003">./119B/wly/02/03-interval-maps.wly:37:33</span></span>
     </p>
     <div class="math-block">
       $$
@@ -116,14 +132,17 @@
       x+\alpha-1 &amp; \textrm{if } 1-\alpha \le x\le 1.
       \end{cases}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:39:9</span>
     </div>
     <p>
-      The reason for the name of this map is that if one
-      considers the interval $[0,1]$ as a topological
-      circle by identifying the two ends, the map
-      corresponds to a rotation of the circle by the angle
-      $2\pi \alpha$.
+      <span class="t-3003-c">The reason for the name of this map is that if one<span class="t-3003">./119B/wly/02/03-interval-maps.wly:47:9</span></span>
+      <span class="t-3003-c">considers the interval
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:48:9</span></span><span class="t-3003-c">$[0,1]$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:48:32</span></span><span class="t-3003-c">
+        as a topological<span class="t-3003">./119B/wly/02/03-interval-maps.wly:48:39</span></span>
+      <span class="t-3003-c">circle by identifying the two ends, the map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:49:9</span></span>
+      <span class="t-3003-c">corresponds to a rotation of the circle by the angle<span class="t-3003">./119B/wly/02/03-interval-maps.wly:50:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:51:9</span></span><span class="t-3003-c">$2\pi \alpha$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:51:9</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:51:22</span></span>
     </p>
   </div>
   <div
@@ -131,13 +150,16 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.12</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:53:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/03-interval-maps.wly:53:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:53:5</span></span><b><span class="t-3003-c">2.12<span class="t-3003">./119B/wly/02/03-interval-maps.wly:53:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:53:5</span></span>
     </h3>
     <p>
-      <span class="label">Tent map</span>The tent maps are another one-parameter family of
-      maps $\Lambda_a$, $0&lt;a\le 2$, defined by
+      <span class="label"><span class="t-3003-c">Tent map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:54:15</span></span></span><span class="t-3003-c">The tent maps are another one-parameter family of<span class="t-3003">./119B/wly/02/03-interval-maps.wly:55:9</span></span>
+      <span class="t-3003-c">maps
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:56:9</span></span><span class="t-3003-c">$\Lambda_a$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:56:14</span></span><span class="t-3003-c">,
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:56:25</span></span><span class="t-3003-c">$0&lt;a\le 2$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:56:27</span></span><span class="t-3003-c">, defined by<span class="t-3003">./119B/wly/02/03-interval-maps.wly:56:37</span></span>
     </p>
     <div class="math-block">
       $$
@@ -146,10 +168,11 @@
       ax &amp; \textrm{if }0\le x&lt;\tfrac12, \\ a-ax &amp; \textrm{if }\tfrac12 \le x \le 1.
       \end{cases}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:58:9</span>
     </div>
     <p>
-      Figure 10 illustrates the extreme case $a=2$.
+      <span class="t-3003-c">Figure 10 illustrates the extreme case
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:64:9</span></span><span class="t-3003-c">$a=2$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:64:48</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:64:53</span></span>
     </p>
   </div>
   <div
@@ -157,30 +180,42 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.13</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:66:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/03-interval-maps.wly:66:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:66:5</span></span><b><span class="t-3003-c">2.13<span class="t-3003">./119B/wly/02/03-interval-maps.wly:66:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:66:5</span></span>
     </h3>
     <p>
-      <span class="label">Gauss map</span>Denote by $\{ x \}=x-\lfloor x\rfloor$ the fractional
-      part of a real number $x$ (where
-      $\lfloor x\rfloor = \max\{ n\in\mathbb{Z}\,:\,n\le
-      x\}$
-      is the integer part of $x$). The Gauss map
-      $G:(0,1)\to[0,1)$, which is related to so-called
-      continued fraction expansions of real numbers, is
-      defined by
+      <span class="label"><span class="t-3003-c">Gauss map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:67:15</span></span></span><span class="t-3003-c">Denote by
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:68:9</span></span><span class="t-3003-c">$\{ x \}=x-\lfloor x\rfloor$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:68:19</span></span><span class="t-3003-c">
+        the fractional<span class="t-3003">./119B/wly/02/03-interval-maps.wly:68:47</span></span>
+      <span class="t-3003-c">part of a real number
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:69:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:69:31</span></span><span class="t-3003-c">
+        (where<span class="t-3003">./119B/wly/02/03-interval-maps.wly:69:34</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:70:9</span></span><span class="t-3003-c">$\lfloor x\rfloor = \max\{ n\in\mathbb{Z}\,:\,n\le
+        x\}$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:70:9</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:71:13</span></span>
+      <span class="t-3003-c">is the integer part of
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:72:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:72:32</span></span><span class="t-3003-c">). The Gauss map<span class="t-3003">./119B/wly/02/03-interval-maps.wly:72:35</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:73:9</span></span><span class="t-3003-c">$G:(0,1)\to[0,1)$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:73:9</span></span><span class="t-3003-c">, which is related to so-called<span class="t-3003">./119B/wly/02/03-interval-maps.wly:73:26</span></span>
+      <span class="t-3003-c">continued fraction expansions of real numbers, is<span class="t-3003">./119B/wly/02/03-interval-maps.wly:74:9</span></span>
+      <span class="t-3003-c">defined by<span class="t-3003">./119B/wly/02/03-interval-maps.wly:75:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       G(x) &amp;= \left\{ \frac{1}{x} \right\},
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:77:9</span>
     </div>
     <p>
-      i.e., $G(x)=1/x-n$ for $1/(n+1)&lt;x&lt;1/n$,
-      ($n=1,2,\ldots$).
+      <span class="t-3003-c">i.e.,
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:81:9</span></span><span class="t-3003-c">$G(x)=1/x-n$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:81:15</span></span><span class="t-3003-c">
+        for
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:81:27</span></span><span class="t-3003-c">$1/(n+1)&lt;x&lt;1/n$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:81:32</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/02/03-interval-maps.wly:81:47</span></span>
+      <span class="t-3003-c">(<span class="t-3003">./119B/wly/02/03-interval-maps.wly:82:9</span></span><span class="t-3003-c">$n=1,2,\ldots$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:82:10</span></span><span class="t-3003-c">).<span class="t-3003">./119B/wly/02/03-interval-maps.wly:82:24</span></span>
     </p>
   </div>
   <div
@@ -188,9 +223,10 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>2.14</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:84:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/03-interval-maps.wly:84:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:84:5</span></span><b><span class="t-3003-c">2.14<span class="t-3003">./119B/wly/02/03-interval-maps.wly:84:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:84:5</span></span>
     </h3>
     <ol
       class="list"
@@ -198,25 +234,41 @@
     >
       <li>
         <p>
-          Show (or read in a number theory textbook how to
-          show) that the numbers $x\in [0,1]$ for which the
-          sequence of iterates $G^n(x)$ eventually reaches $0$
-          (and is therefore undefined for larger values of $n$)
-          are precisely the rational numbers.
+          <span class="t-3003-c">Show (or read in a number theory textbook how to<span class="t-3003">./119B/wly/02/03-interval-maps.wly:90:17</span></span>
+          <span class="t-3003-c">show) that the numbers
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:91:17</span></span><span class="t-3003-c">$x\in [0,1]$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:91:40</span></span><span class="t-3003-c">
+            for which the<span class="t-3003">./119B/wly/02/03-interval-maps.wly:91:52</span></span>
+          <span class="t-3003-c">sequence of iterates
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:92:17</span></span><span class="t-3003-c">$G^n(x)$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:92:38</span></span><span class="t-3003-c">
+            eventually reaches
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:92:46</span></span><span class="t-3003-c">$0$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:92:66</span></span><span class="t-3003-c">
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:92:69</span></span>
+          <span class="t-3003-c">(and is therefore undefined for larger values of
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:93:17</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:93:66</span></span><span class="t-3003-c">)<span class="t-3003">./119B/wly/02/03-interval-maps.wly:93:69</span></span>
+          <span class="t-3003-c">are precisely the rational numbers.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:94:17</span></span>
         </p>
       </li>
       <li>
         <p>
-          Show that the eventually periodic points of $G$
-          (numbers $x$ for which for some $n$, $G^n(x)$ belongs
-          to an $m$-cycle, see the definition below) are the
-          quadratic irrationals, i.e., the irrational numbers
-          which are solutions of quadratic equations.
+          <span class="t-3003-c">Show that the eventually periodic points of
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:97:17</span></span><span class="t-3003-c">$G$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:97:61</span></span><span class="t-3003-c">
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:97:64</span></span>
+          <span class="t-3003-c">(numbers
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:98:17</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:98:26</span></span><span class="t-3003-c">
+            for which for some
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:98:29</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:98:49</span></span><span class="t-3003-c">,
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:98:52</span></span><span class="t-3003-c">$G^n(x)$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:98:54</span></span><span class="t-3003-c">
+            belongs<span class="t-3003">./119B/wly/02/03-interval-maps.wly:98:62</span></span>
+          <span class="t-3003-c">to an
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:99:17</span></span><span class="t-3003-c">$m$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:99:23</span></span><span class="t-3003-c">-cycle, see the definition below) are the<span class="t-3003">./119B/wly/02/03-interval-maps.wly:99:26</span></span>
+          <span class="t-3003-c">quadratic irrationals, i.e., the irrational numbers<span class="t-3003">./119B/wly/02/03-interval-maps.wly:100:17</span></span>
+          <span class="t-3003-c">which are solutions of quadratic equations.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:101:17</span></span>
         </p>
       </li>
       <li>
         <p>
-          Find a formula for all the fixed points of $G$.
+          <span class="t-3003-c">Find a formula for all the fixed points of
+            <span class="t-3003">./119B/wly/02/03-interval-maps.wly:104:17</span></span><span class="t-3003-c">$G$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:104:60</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:104:63</span></span>
         </p>
       </li>
     </ol>
@@ -225,20 +277,24 @@
     <span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
         src="figures/doublingmap.png"
         style="max-width: 100%; display: block; margin: 0 auto"
-      >(a)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/doublingmap.png</span></span><span class="t-3003-c">(a)<span class="t-3003">./119B/wly/02/03-interval-maps.wly:112:13</span></span></span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
         src="figures/circlerotation03.png"
         style="max-width: 100%; display: block; margin: 0 auto"
-      >(b)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/circlerotation03.png</span></span><span class="t-3003-c">(b)<span class="t-3003">./119B/wly/02/03-interval-maps.wly:119:13</span></span></span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
         src="figures/tentmap.png"
         style="max-width: 100%; display: block; margin: 0 auto"
-      >(c)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/tentmap.png</span></span><span class="t-3003-c">(c)<span class="t-3003">./119B/wly/02/03-interval-maps.wly:126:13</span></span></span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
         src="figures/gaussmap.png"
         style="max-width: 100%; display: block; margin: 0 auto"
-      >(d)</span>
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/gaussmap.png</span></span><span class="t-3003-c">(d)<span class="t-3003">./119B/wly/02/03-interval-maps.wly:133:13</span></span></span>
     <figcaption>
-      Figure 10: (a) The doubling map; (b) The circle
-      rotation map $R_\alpha$ for $\alpha=0.3$; (c) the
-      tent map $\Lambda_2$; (d) The Gauss map.
+      <span class="t-3003-c">Figure 10: (a) The doubling map; (b) The circle<span class="t-3003">./119B/wly/02/03-interval-maps.wly:136:13</span></span>
+      <span class="t-3003-c">rotation map
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:137:13</span></span><span class="t-3003-c">$R_\alpha$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:137:26</span></span><span class="t-3003-c">
+        for
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:137:36</span></span><span class="t-3003-c">$\alpha=0.3$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:137:41</span></span><span class="t-3003-c">; (c) the<span class="t-3003">./119B/wly/02/03-interval-maps.wly:137:53</span></span>
+      <span class="t-3003-c">tent map
+        <span class="t-3003">./119B/wly/02/03-interval-maps.wly:138:13</span></span><span class="t-3003-c">$\Lambda_2$<span class="t-3003">./119B/wly/02/03-interval-maps.wly:138:22</span></span><span class="t-3003-c">; (d) The Gauss map.<span class="t-3003">./119B/wly/02/03-interval-maps.wly:138:33</span></span>
     </figcaption>
   </figure>
 </body>

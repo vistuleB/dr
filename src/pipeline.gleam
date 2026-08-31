@@ -337,7 +337,7 @@ pub fn pipeline(
       // originator><>'(>>handle)'</></sup>`. FootnoteCounter itself is
       // incremented at the `Footnote` node above (prepend_counter_
       // incrementing_attribute), not here.
-      dl.footnote_marker_to_sup_handle__outside("FootnoteCounter", [
+      local_dl.dr_footnote_marker_to_sup_handle__outside("FootnoteCounter", [
         "MathBlock",
         "Math",
       ]),
@@ -381,7 +381,8 @@ pub fn pipeline(
         #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
       ]),
       dl.detokenize_href_surroundings(),
-      // pulls the literal parens that footnote_marker_to_sup_handle__outside
+      // pulls the literal parens that
+      // dr_footnote_marker_to_sup_handle__outside
       // produced as `(>>handle)` text leaves outside the <a> (once
       // handles_grand_wrapper_substitute turns it into
       // `(<a href=...>N</a>)`) inside

@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 2.8 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,34 +42,48 @@
   </div>
   <h1>
     2.8
-    Measure $0$ sets
+    <span class="t-3003-c">Measure
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:2:11</span></span><span class="t-3003-c">$0$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:2:19</span></span><span class="t-3003-c">
+      sets<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:2:22</span></span>
   </h1>
   <p>
-    A set $E\subset \mathbb{R}$ is called a
-    <i>measure 0</i>
-    set if its Lebesgue measure is 0. Although we have not
-    discussed (and do not plan to discuss) precise
-    definitions of Lebesgue measure or of the notion of
-    measurability, for the case of measure 0 sets there is
-    an easy explicit definition. $E$ has measure 0 if and
-    only if for any $\epsilon&gt;0$, $E$ can be covered by a
-    countable union of open intervals whose lengths add up
-    to less than $\epsilon$:
+    <span class="t-3003-c">A set
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:4:5</span></span><span class="t-3003-c">$E\subset \mathbb{R}$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:4:11</span></span><span class="t-3003-c">
+      is called a
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:4:32</span></span><i><span class="t-3003-c">measure 0<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:4:46</span></span></i><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:4:56</span></span>
+    <span class="t-3003-c">set if its Lebesgue measure is 0. Although we have not<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:5:5</span></span>
+    <span class="t-3003-c">discussed (and do not plan to discuss) precise<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:6:5</span></span>
+    <span class="t-3003-c">definitions of Lebesgue measure or of the notion of<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:7:5</span></span>
+    <span class="t-3003-c">measurability, for the case of measure 0 sets there is<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:8:5</span></span>
+    <span class="t-3003-c">an easy explicit definition.
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:9:5</span></span><span class="t-3003-c">$E$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:9:34</span></span><span class="t-3003-c">
+      has measure 0 if and<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:9:37</span></span>
+    <span class="t-3003-c">only if for any
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:10:5</span></span><span class="t-3003-c">$\epsilon&gt;0$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:10:21</span></span><span class="t-3003-c">,
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:10:33</span></span><span class="t-3003-c">$E$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:10:35</span></span><span class="t-3003-c">
+      can be covered by a<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:10:38</span></span>
+    <span class="t-3003-c">countable union of open intervals whose lengths add up<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:11:5</span></span>
+    <span class="t-3003-c">to less than
+      <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:12:5</span></span><span class="t-3003-c">$\epsilon$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:12:18</span></span><span class="t-3003-c">:<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:12:28</span></span>
   </p>
   <div class="math-block">
     $$
     \forall \epsilon&gt;0\ \ \ E\subset\bigcup_{n=1}^\infty (a_n, b_n), \ \  \sum_{n=1}^\infty (b_n-a_n) &lt; \epsilon \ \iff \ \textrm{measure 0.}
-    $$
+    $$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:14:5</span>
   </div>
   <div class="statement exercise">
     <h3>
-      <b>Exercise</b>
-      <b>2.38</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:18:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:18:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:18:5</span></span><b><span class="t-3003-c">2.38<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:18:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:18:5</span></span>
     </h3>
     <p>
-      Prove that any countable set $E\subset \mathbb{R}$
-      has measure 0.
+      <span class="t-3003-c">Prove that any countable set
+        <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:19:9</span></span><span class="t-3003-c">$E\subset \mathbb{R}$<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:19:38</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:19:59</span></span>
+      <span class="t-3003-c">has measure 0.<span class="t-3003">./119B/wly/02/08-measure-0-sets.wly:20:9</span></span>
     </p>
   </div>
 </body>

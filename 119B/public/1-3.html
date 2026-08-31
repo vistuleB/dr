@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 1.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,11 +42,12 @@
   </div>
   <h1>
     1.3
-    The Euler-Lagrange equation
+    <span class="t-3003-c">The Euler-Lagrange equation<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:2:11</span></span>
   </h1>
   <p>
-    Given a function of three variables
-    $L=L(\dot{q},q,t)$, the differential equation
+    <span class="t-3003-c">Given a function of three variables<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:4:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:5:5</span></span><span class="t-3003-c">$L=L(\dot{q},q,t)$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:5:5</span></span><span class="t-3003-c">, the differential equation<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:5:23</span></span>
   </p>
   <div
     id="_5_h.a.i_"
@@ -57,23 +59,38 @@
     \frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q}} \right) = \frac{\partial L}{\partial q}
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:7:5</span>
   </div>
   <p>
-    is called the
-    <i>Euler-Lagrange equation</i>. Note that
-    the notation here may be slightly confusing: for the
-    purpose of computing $L(\dot{q},q,t)$ and finding
-    $\frac{\partial L}{\partial \dot{q}}$, one must think
-    of $\dot{q}$ as an independent variable that has no
-    connection to $q$. But once
-    $\frac{\partial L}{\partial \dot{q}}$ is evaluated,
-    to apply the time-derivative $\frac{d}{dt}$, one
-    should think of $\dot{q}$ as the time-derivative of
-    $q$. This leads to a second-order ordinary
-    differential equation for the quantity $q$. The
-    function $L$ is called the
-    <i>Lagrangian</i>.
+    <span class="t-3003-c">is called the
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:15:5</span></span><i><span class="t-3003-c">Euler-Lagrange equation<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:15:20</span></span></i><span class="t-3003-c">. Note that<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:15:44</span></span>
+    <span class="t-3003-c">the notation here may be slightly confusing: for the<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:16:5</span></span>
+    <span class="t-3003-c">purpose of computing
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:17:5</span></span><span class="t-3003-c">$L(\dot{q},q,t)$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:17:26</span></span><span class="t-3003-c">
+      and finding<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:17:42</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:18:5</span></span><span class="t-3003-c">$\frac{\partial L}{\partial \dot{q}}$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:18:5</span></span><span class="t-3003-c">, one must think<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:18:42</span></span>
+    <span class="t-3003-c">of
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:19:5</span></span><span class="t-3003-c">$\dot{q}$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:19:8</span></span><span class="t-3003-c">
+      as an independent variable that has no<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:19:17</span></span>
+    <span class="t-3003-c">connection to
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:20:5</span></span><span class="t-3003-c">$q$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:20:19</span></span><span class="t-3003-c">. But once<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:20:22</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:21:5</span></span><span class="t-3003-c">$\frac{\partial L}{\partial \dot{q}}$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:21:5</span></span><span class="t-3003-c">
+      is evaluated,<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:21:42</span></span>
+    <span class="t-3003-c">to apply the time-derivative
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:22:5</span></span><span class="t-3003-c">$\frac{d}{dt}$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:22:34</span></span><span class="t-3003-c">, one<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:22:48</span></span>
+    <span class="t-3003-c">should think of
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:23:5</span></span><span class="t-3003-c">$\dot{q}$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:23:21</span></span><span class="t-3003-c">
+      as the time-derivative of<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:23:30</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:24:5</span></span><span class="t-3003-c">$q$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:24:5</span></span><span class="t-3003-c">. This leads to a second-order ordinary<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:24:8</span></span>
+    <span class="t-3003-c">differential equation for the quantity
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:25:5</span></span><span class="t-3003-c">$q$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:25:44</span></span><span class="t-3003-c">. The<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:25:47</span></span>
+    <span class="t-3003-c">function
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:26:5</span></span><span class="t-3003-c">$L$<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:26:14</span></span><span class="t-3003-c">
+      is called the
+      <span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:26:17</span></span><i><span class="t-3003-c">Lagrangian<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:26:33</span></span></i><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/03-the-euler-lagrange-equation.wly:26:44</span></span>
   </p>
 </body>
 </html>

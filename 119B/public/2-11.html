@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 2.11 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,31 +42,46 @@
   </div>
   <h1>
     2.11
-    Circle rotations and equidistribution on $(0,1)$
+    <span class="t-3003-c">Circle rotations and equidistribution on
+      <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:2:11</span></span><span class="t-3003-c">$(0,1)$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:2:52</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:2:59</span></span>
   </h1>
   <p>
-    Our next application of the ergodic theorem will be
-    to the circle rotation map
-    $R_\alpha(x)=x+\alpha\textrm{ mod }1$. Note that
-    $R_\alpha^n(x)=x+n\alpha\textrm{ mod }1 = \left\{
-    x+n\alpha \right\}$
-    (where $\left\{u\right\}=u-\lfloor u \rfloor$ denotes
-    the fractional part of a real number $u$).
+    <span class="t-3003-c">Our next application of the ergodic theorem will be<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:4:5</span></span>
+    <span class="t-3003-c">to the circle rotation map<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:5:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:6:5</span></span><span class="t-3003-c">$R_\alpha(x)=x+\alpha\textrm{ mod }1$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:6:5</span></span><span class="t-3003-c">. Note that<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:6:42</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:7:5</span></span><span class="t-3003-c">$R_\alpha^n(x)=x+n\alpha\textrm{ mod }1 = \left\{
+      x+n\alpha \right\}$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:7:5</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:8:24</span></span>
+    <span class="t-3003-c">(where
+      <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:9:5</span></span><span class="t-3003-c">$\left\{u\right\}=u-\lfloor u \rfloor$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:9:12</span></span><span class="t-3003-c">
+      denotes<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:9:50</span></span>
+    <span class="t-3003-c">the fractional part of a real number
+      <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:10:5</span></span><span class="t-3003-c">$u$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:10:42</span></span><span class="t-3003-c">).<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:10:45</span></span>
   </p>
   <div class="statement theorem">
     <h3>
-      <b>Theorem</b>
-      <b>2.42</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:12:5</span></span><b><span class="t-3003-c">Theorem<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:12:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:12:5</span></span><b><span class="t-3003-c">2.42<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:12:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:12:5</span></span>
     </h3>
     <p>
-      The map $R_\alpha$ is ergodic if and only if $\alpha$
-      is irrational.
+      <span class="t-3003-c">The map
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:13:9</span></span><span class="t-3003-c">$R_\alpha$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:13:17</span></span><span class="t-3003-c">
+        is ergodic if and only if
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:13:27</span></span><span class="t-3003-c">$\alpha$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:13:54</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:13:62</span></span>
+      <span class="t-3003-c">is irrational.<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:14:9</span></span>
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>If $\alpha=p/q$ is rational, the set
+      <span class="proof">Proof</span><span class="t-3003-c">If
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:17:9</span></span><span class="t-3003-c">$\alpha=p/q$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:17:12</span></span><span class="t-3003-c">
+        is rational, the set<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:17:24</span></span>
     </p>
     <div class="math-block">
       $$
@@ -75,38 +91,57 @@
       \cup \left[\tfrac{3}{q}, \tfrac{7}{2q}\right]
       \cup \ldots
       \cup \left[\tfrac{q-1}{q}, \tfrac{2q-1}{2q}\right]
-      $$
+      $$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:19:9</span>
     </div>
     <p>
-      is an example of a nontrivial invariant set. The
-      other direction (that if $\alpha$ is irrational then
-      the map is ergodic) can be proved using Fourier
-      series. Here is a sketch of the proof. The idea is to
-      check the ergodic theorem by taking some well-behaved
-      function $g:[0,1)\to\mathbb{R}$ and looking at sums
-      of the form
+      <span class="t-3003-c">is an example of a nontrivial invariant set. The<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:28:9</span></span>
+      <span class="t-3003-c">other direction (that if
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:29:9</span></span><span class="t-3003-c">$\alpha$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:29:34</span></span><span class="t-3003-c">
+        is irrational then<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:29:42</span></span>
+      <span class="t-3003-c">the map is ergodic) can be proved using Fourier<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:30:9</span></span>
+      <span class="t-3003-c">series. Here is a sketch of the proof. The idea is to<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:31:9</span></span>
+      <span class="t-3003-c">check the ergodic theorem by taking some well-behaved<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:32:9</span></span>
+      <span class="t-3003-c">function
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:33:9</span></span><span class="t-3003-c">$g:[0,1)\to\mathbb{R}$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:33:18</span></span><span class="t-3003-c">
+        and looking at sums<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:33:40</span></span>
+      <span class="t-3003-c">of the form<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:34:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       \mu_x^{(n)}(g) = \frac{1}{n} \sum_{k=0}^{n-1} g(R_\alpha^k(x))
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:36:9</span>
     </div>
     <p>
-      (such sums are called
-      <i>ergodic averages</i>, since they
-      represent an averaging of the values of $g$ over
-      orbits of $x$). It can be shown that if the averages
-      converge to the "ideal average" $\int_0^1 g(x)\,dx$
-      (the average of $g$ with respect to the invariant
-      measure, which in this case is simply Lebesgue
-      measure) for a sufficiently large family of functions
-      $g$, then the map is ergodic. It turns out that for
-      the circle rotation map, this is particularly simple
-      to check when $g_m(x)=e^{2\pi i m x}$ is a complex
-      exponential, $m\in\mathbb{Z}$. For $m=0$ the claim is
-      trivial, and for $m\neq 0$ we have
+      <span class="t-3003-c">(such sums are called
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:40:9</span></span><i><span class="t-3003-c">ergodic averages<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:40:32</span></span></i><span class="t-3003-c">, since they<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:40:49</span></span>
+      <span class="t-3003-c">represent an averaging of the values of
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:41:9</span></span><span class="t-3003-c">$g$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:41:49</span></span><span class="t-3003-c">
+        over<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:41:52</span></span>
+      <span class="t-3003-c">orbits of
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:42:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:42:19</span></span><span class="t-3003-c">). It can be shown that if the averages<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:42:22</span></span>
+      <span class="t-3003-c">converge to the "ideal average"
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:43:9</span></span><span class="t-3003-c">$\int_0^1 g(x)\,dx$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:43:43</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:43:62</span></span>
+      <span class="t-3003-c">(the average of
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:44:9</span></span><span class="t-3003-c">$g$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:44:25</span></span><span class="t-3003-c">
+        with respect to the invariant<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:44:28</span></span>
+      <span class="t-3003-c">measure, which in this case is simply Lebesgue<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:45:9</span></span>
+      <span class="t-3003-c">measure) for a sufficiently large family of functions<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:46:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:47:9</span></span><span class="t-3003-c">$g$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:47:9</span></span><span class="t-3003-c">, then the map is ergodic. It turns out that for<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:47:12</span></span>
+      <span class="t-3003-c">the circle rotation map, this is particularly simple<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:48:9</span></span>
+      <span class="t-3003-c">to check when
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:49:9</span></span><span class="t-3003-c">$g_m(x)=e^{2\pi i m x}$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:49:23</span></span><span class="t-3003-c">
+        is a complex<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:49:46</span></span>
+      <span class="t-3003-c">exponential,
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:50:9</span></span><span class="t-3003-c">$m\in\mathbb{Z}$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:50:22</span></span><span class="t-3003-c">. For
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:50:38</span></span><span class="t-3003-c">$m=0$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:50:44</span></span><span class="t-3003-c">
+        the claim is<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:50:49</span></span>
+      <span class="t-3003-c">trivial, and for
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:51:9</span></span><span class="t-3003-c">$m\neq 0$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:51:26</span></span><span class="t-3003-c">
+        we have<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:51:35</span></span>
     </p>
     <div class="math-block">
       $$
@@ -122,30 +157,35 @@
       &amp;=
       \frac{1}{n} e^{2\pi i m x} \frac{1-e^{2\pi i n m \alpha}}{1-e^{2\pi i m \alpha}} \xrightarrow[n\to\infty]{}0=\int_0^1 e^{2\pi i m x}\,dx = \int_0^1 g_m(x)\,dx.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:53:9</span>
     </div>
     <p>
       <span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    Applying the ergodic theorem, we get (see the
-    exercise below the proof) the following famous result
-    in number theory, proved in 1909 and 1910
-    independently by Weyl, Sierpinski and Bohl.
+    <span class="t-3003-c">Applying the ergodic theorem, we get (see the<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:66:5</span></span>
+    <span class="t-3003-c">exercise below the proof) the following famous result<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:67:5</span></span>
+    <span class="t-3003-c">in number theory, proved in 1909 and 1910<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:68:5</span></span>
+    <span class="t-3003-c">independently by Weyl, Sierpinski and Bohl.<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:69:5</span></span>
   </p>
   <div
     label="Equidistribution theorem"
     class="statement theorem"
   >
     <h3>
-      <b>Theorem</b>
-      <b>2.43</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:71:5</span></span><b><span class="t-3003-c">Theorem<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:71:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:71:5</span></span><b><span class="t-3003-c">2.43<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:71:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:71:5</span></span>
     </h3>
     <p>
-      <span class="label">Equidistribution theorem</span>If $\alpha\in(0,1)$ is irrational then for any
-      $0\le a&lt;b\le 1$
+      <span class="label"><span class="t-3003-c">Equidistribution theorem<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:72:15</span></span></span><span class="t-3003-c">If
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:73:9</span></span><span class="t-3003-c">$\alpha\in(0,1)$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:73:12</span></span><span class="t-3003-c">
+        is irrational then for any<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:73:28</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:74:9</span></span><span class="t-3003-c">$0\le a&lt;b\le 1$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:74:9</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:74:24</span></span>
     </p>
     <div
       id="_47_h.a.i_"
@@ -157,17 +197,18 @@
       \frac{1}{n} \#\Big\{ 1\le k \le n \,:\, \left\{n\alpha\right\} \in (a,b) \Big\} \xrightarrow[n\to\infty]{} b-a.
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:76:9</span>
     </div>
   </div>
   <div class="statement exercise">
     <h3>
-      <b>Exercise</b>
-      <b>2.44</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:84:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:84:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:84:5</span></span><b><span class="t-3003-c">2.44<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:84:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:84:5</span></span>
     </h3>
     <p>
-      The ergodic theorem only guarantees the result that
+      <span class="t-3003-c">The ergodic theorem only guarantees the result that<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:85:9</span></span>
     </p>
     <div
       id="_48_h.a.i_"
@@ -179,19 +220,25 @@
       \frac{1}{n} \#\Big\{ 1\le k \le n \,:\, \left\{x+n\alpha\right\} \in (a,b) \Big\} \xrightarrow[n\to\infty]{} b-a
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:87:9</span>
     </div>
     <p>
-      holds for all $x\in [0,1)$ except on a measure-0 set.
-      Explain why in the case of the rotation map
-      $R_\alpha$, the truth of this claim is independent of
-      the initial point $x$, and therefore
-      <a
+      <span class="t-3003-c">holds for all
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:95:9</span></span><span class="t-3003-c">$x\in [0,1)$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:95:23</span></span><span class="t-3003-c">
+        except on a measure-0 set.<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:95:35</span></span>
+      <span class="t-3003-c">Explain why in the case of the rotation map<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:96:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:97:9</span></span><span class="t-3003-c">$R_\alpha$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:97:9</span></span><span class="t-3003-c">, the truth of this claim is independent of<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:97:19</span></span>
+      <span class="t-3003-c">the initial point
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:98:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:98:27</span></span><span class="t-3003-c">, and therefore<span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:98:30</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:99:9</span></span><a
         href="./2-11.html#_47_h.a.i_"
         class=""
       >(37)</a>
       follows from
-      <a
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/11-circle-rotations-and-equidistribution.wly:100:9</span></span><a
         href="./2-11.html#_48_h.a.i_"
         class=""
       >(38)</a>.

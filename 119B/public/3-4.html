@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 3.4 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,51 +42,60 @@
   </div>
   <h1>
     3.4
-    Alternating gradient focusing
+    <span class="t-3003-c">Alternating gradient focusing<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:2:11</span></span>
   </h1>
   <p>
-    While the example discussed above is interesting
-    mostly for its curiosity value, the mathematical idea
-    underlying it has found a serious application as a
-    method for focusing beams of charged particles in
-    particle accelerators. The method, known as
-    <i>alternating gradient focusing</i>
-    or
-    <i>strong focusing</i>,
-    is an essential piece of technology used in all
-    particle accelerator designs since the invention of
-    the technique in the early 1950's. Roughly, the idea
-    is as follows. In particle accelerators, beams of
-    charged particles moving at close to the speed of
-    light are directed along an approximately circular
-    path by passing them through a sequence of powerful
-    magnets. To focus the beams in order to achieve a
-    high-quality beam suitable for performing useful
-    experiments, the magnetic fields are carefully
-    designed to create magnetic analogues of optical
-    lenses. However, due to the way the physical law
-    (called the Lorentz force) that governs how charged
-    particles are influenced by magnetic fields works, it
-    turns out that these magnetic lenses can only focus a
-    beam along one axis: if the lens focuses the beam
-    along the $x$-axis (where we imagine the beam to be
-    moving in the $y$-direction), then it will
-    <i>defocus</i>
-    the beam along the $z$-axis, and vice versa. The
-    alternating gradient focusing technique is based on
-    the observation that a series of magnetic lenses that
-    focus the beam along alternating axes (an $x$-focusing
-    lens, followed by a $z$-focusing lens, followed by an
-    $x$-focusing lens, etc.) will achieve a net focusing
-    effect along
-    <i>both</i>
-    axes! Mathematically, the analysis
-    showing the validity of the idea is virtually
-    identical to the stability analysis we performed above
-    for the inverted pendulum with an oscillating
-    base.
+    <span class="t-3003-c">While the example discussed above is interesting<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:4:5</span></span>
+    <span class="t-3003-c">mostly for its curiosity value, the mathematical idea<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:5:5</span></span>
+    <span class="t-3003-c">underlying it has found a serious application as a<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:6:5</span></span>
+    <span class="t-3003-c">method for focusing beams of charged particles in<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:7:5</span></span>
+    <span class="t-3003-c">particle accelerators. The method, known as<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:8:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:9:5</span></span><i><span class="t-3003-c">alternating gradient focusing<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:9:6</span></span></i><span class="t-3003-c">
+      or
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:9:36</span></span><i><span class="t-3003-c">strong focusing<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:9:41</span></span></i><span class="t-3003-c">,<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:9:57</span></span>
+    <span class="t-3003-c">is an essential piece of technology used in all<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:10:5</span></span>
+    <span class="t-3003-c">particle accelerator designs since the invention of<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:11:5</span></span>
+    <span class="t-3003-c">the technique in the early 1950's. Roughly, the idea<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:12:5</span></span>
+    <span class="t-3003-c">is as follows. In particle accelerators, beams of<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:13:5</span></span>
+    <span class="t-3003-c">charged particles moving at close to the speed of<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:14:5</span></span>
+    <span class="t-3003-c">light are directed along an approximately circular<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:15:5</span></span>
+    <span class="t-3003-c">path by passing them through a sequence of powerful<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:16:5</span></span>
+    <span class="t-3003-c">magnets. To focus the beams in order to achieve a<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:17:5</span></span>
+    <span class="t-3003-c">high-quality beam suitable for performing useful<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:18:5</span></span>
+    <span class="t-3003-c">experiments, the magnetic fields are carefully<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:19:5</span></span>
+    <span class="t-3003-c">designed to create magnetic analogues of optical<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:20:5</span></span>
+    <span class="t-3003-c">lenses. However, due to the way the physical law<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:21:5</span></span>
+    <span class="t-3003-c">(called the Lorentz force) that governs how charged<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:22:5</span></span>
+    <span class="t-3003-c">particles are influenced by magnetic fields works, it<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:23:5</span></span>
+    <span class="t-3003-c">turns out that these magnetic lenses can only focus a<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:24:5</span></span>
+    <span class="t-3003-c">beam along one axis: if the lens focuses the beam<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:25:5</span></span>
+    <span class="t-3003-c">along the
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:26:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:26:15</span></span><span class="t-3003-c">-axis (where we imagine the beam to be<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:26:18</span></span>
+    <span class="t-3003-c">moving in the
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:27:5</span></span><span class="t-3003-c">$y$<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:27:19</span></span><span class="t-3003-c">-direction), then it will
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:27:22</span></span><i><span class="t-3003-c">defocus<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:27:49</span></span></i><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:27:57</span></span>
+    <span class="t-3003-c">the beam along the
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:28:5</span></span><span class="t-3003-c">$z$<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:28:24</span></span><span class="t-3003-c">-axis, and vice versa. The<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:28:27</span></span>
+    <span class="t-3003-c">alternating gradient focusing technique is based on<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:29:5</span></span>
+    <span class="t-3003-c">the observation that a series of magnetic lenses that<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:30:5</span></span>
+    <span class="t-3003-c">focus the beam along alternating axes (an
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:31:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:31:47</span></span><span class="t-3003-c">-focusing<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:31:50</span></span>
+    <span class="t-3003-c">lens, followed by a
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:32:5</span></span><span class="t-3003-c">$z$<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:32:25</span></span><span class="t-3003-c">-focusing lens, followed by an<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:32:28</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:33:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:33:5</span></span><span class="t-3003-c">-focusing lens, etc.) will achieve a net focusing<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:33:8</span></span>
+    <span class="t-3003-c">effect along
+      <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:34:5</span></span><i><span class="t-3003-c">both<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:34:19</span></span></i><span class="t-3003-c">
+      axes! Mathematically, the analysis<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:34:24</span></span>
+    <span class="t-3003-c">showing the validity of the idea is virtually<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:35:5</span></span>
+    <span class="t-3003-c">identical to the stability analysis we performed above<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:36:5</span></span>
+    <span class="t-3003-c">for the inverted pendulum with an oscillating<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:37:5</span></span>
+    <span class="t-3003-c">base.<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:38:5</span></span>
     <sup id="_53_h.a.i_">
-      <a
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:38:10</span></span><a
         href="./3-4.html#_54_h.a.i_"
         class=""
       >(1)</a>
@@ -98,14 +108,19 @@
     class="footnote"
   >
     <p>
-      <a href="#_53_h.a.i_">(1)</a>
-      See equations (2.11), (2.12), (2.33) and (2.34) in
-      the paper
-      <i>Theory of the alternating gradient
-        synchrotron</i>, by E. D. Courant and H. S. Snyder
-      (Annals of Physics $\textbf{3}$ (1958), 1--48),
-      available online at
-      <a href="http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf">http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf</a>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:40:5</span></span><a href="#_53_h.a.i_"><span class="t-3003-c">(1)<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:40:5</span></span></a><span class="t-3003-c">
+        See equations (2.11), (2.12), (2.33) and (2.34) in<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:40:5</span></span>
+      <span class="t-3003-c">the paper
+        <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:43:9</span></span><i><span class="t-3003-c">Theory of the alternating gradient<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:43:20</span></span>
+        <span class="t-3003-c">synchrotron<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:44:9</span></span></i><span class="t-3003-c">, by E. D. Courant and H. S. Snyder<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:44:21</span></span>
+      <span class="t-3003-c">(Annals of Physics
+        <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:45:9</span></span><span class="t-3003-c">$\textbf{3}$<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:45:28</span></span><span class="t-3003-c">
+        (1958), 1--48),<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:45:40</span></span>
+      <span class="t-3003-c">available online at<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:46:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:47:9</span></span><a href="http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf"><span class="t-3003-c">http://ab-abp-rlc.web.cern.ch/ab-abp-rlc/AP-literature/Courant-Snyder-1958.pdf<span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:47:10</span></span></a><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/04-alternating-gradient-focusing.wly:47:169</span></span>
     </p>
   </div>
 </body>

@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 3.5 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,36 +42,38 @@
   </div>
   <h1>
     3.5
-    Electromagnetic levitation
+    <span class="t-3003-c">Electromagnetic levitation<span class="t-3003">./119B/wly/03/05/__parent.wly:2:11</span></span>
   </h1>
   <p>
-    A famous practical demonstration of control theory is
-    that of electromagnetic levitation. This is a method
-    for causing a small magnetic object to hover in the
-    air by causing an electromagnet (a coil that behaves
-    like a magnet when an electric current is passed
-    through it) positioned above the object to pull on it,
-    balancing the magnetic attraction force against the
-    force of gravity. There are several known ways to
-    achieve stable levitation, a few of which use physical
-    principles that are unrelated to control theory (for
-    example, one of the most amusing demonstrations of
-    levitation was in an experiment performed by a group
-    of Dutch researchers in the year 2000 that used the
-    physical effect of
-    <i>diamagnetism</i>
-    to levitate a live
-    frog). However, the easiest --- and from our point of
-    view, the most interesting --- approach is to modulate
-    the attractive magnetic field of the electromagnet
-    using a feedback control scheme.
+    <span class="t-3003-c">A famous practical demonstration of control theory is<span class="t-3003">./119B/wly/03/05/__parent.wly:4:5</span></span>
+    <span class="t-3003-c">that of electromagnetic levitation. This is a method<span class="t-3003">./119B/wly/03/05/__parent.wly:5:5</span></span>
+    <span class="t-3003-c">for causing a small magnetic object to hover in the<span class="t-3003">./119B/wly/03/05/__parent.wly:6:5</span></span>
+    <span class="t-3003-c">air by causing an electromagnet (a coil that behaves<span class="t-3003">./119B/wly/03/05/__parent.wly:7:5</span></span>
+    <span class="t-3003-c">like a magnet when an electric current is passed<span class="t-3003">./119B/wly/03/05/__parent.wly:8:5</span></span>
+    <span class="t-3003-c">through it) positioned above the object to pull on it,<span class="t-3003">./119B/wly/03/05/__parent.wly:9:5</span></span>
+    <span class="t-3003-c">balancing the magnetic attraction force against the<span class="t-3003">./119B/wly/03/05/__parent.wly:10:5</span></span>
+    <span class="t-3003-c">force of gravity. There are several known ways to<span class="t-3003">./119B/wly/03/05/__parent.wly:11:5</span></span>
+    <span class="t-3003-c">achieve stable levitation, a few of which use physical<span class="t-3003">./119B/wly/03/05/__parent.wly:12:5</span></span>
+    <span class="t-3003-c">principles that are unrelated to control theory (for<span class="t-3003">./119B/wly/03/05/__parent.wly:13:5</span></span>
+    <span class="t-3003-c">example, one of the most amusing demonstrations of<span class="t-3003">./119B/wly/03/05/__parent.wly:14:5</span></span>
+    <span class="t-3003-c">levitation was in an experiment performed by a group<span class="t-3003">./119B/wly/03/05/__parent.wly:15:5</span></span>
+    <span class="t-3003-c">of Dutch researchers in the year 2000 that used the<span class="t-3003">./119B/wly/03/05/__parent.wly:16:5</span></span>
+    <span class="t-3003-c">physical effect of
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:17:5</span></span><i><span class="t-3003-c">diamagnetism<span class="t-3003">./119B/wly/03/05/__parent.wly:17:25</span></span></i><span class="t-3003-c">
+      to levitate a live<span class="t-3003">./119B/wly/03/05/__parent.wly:17:38</span></span>
+    <span class="t-3003-c">frog). However, the easiest --- and from our point of<span class="t-3003">./119B/wly/03/05/__parent.wly:18:5</span></span>
+    <span class="t-3003-c">view, the most interesting --- approach is to modulate<span class="t-3003">./119B/wly/03/05/__parent.wly:19:5</span></span>
+    <span class="t-3003-c">the attractive magnetic field of the electromagnet<span class="t-3003">./119B/wly/03/05/__parent.wly:20:5</span></span>
+    <span class="t-3003-c">using a feedback control scheme.<span class="t-3003">./119B/wly/03/05/__parent.wly:21:5</span></span>
   </p>
   <p>
-    We will discuss the following simple model for a
-    levitation device. The levitating object is idealized
-    as a particle moving along a one-dimensional
-    (vertical) axis, whose position $x(t)$ satisfies the
-    equation
+    <span class="t-3003-c">We will discuss the following simple model for a<span class="t-3003">./119B/wly/03/05/__parent.wly:23:5</span></span>
+    <span class="t-3003-c">levitation device. The levitating object is idealized<span class="t-3003">./119B/wly/03/05/__parent.wly:24:5</span></span>
+    <span class="t-3003-c">as a particle moving along a one-dimensional<span class="t-3003">./119B/wly/03/05/__parent.wly:25:5</span></span>
+    <span class="t-3003-c">(vertical) axis, whose position
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:26:5</span></span><span class="t-3003-c">$x(t)$<span class="t-3003">./119B/wly/03/05/__parent.wly:26:37</span></span><span class="t-3003-c">
+      satisfies the<span class="t-3003">./119B/wly/03/05/__parent.wly:26:43</span></span>
+    <span class="t-3003-c">equation<span class="t-3003">./119B/wly/03/05/__parent.wly:27:5</span></span>
   </p>
   <div class="math-block">
     $$
@@ -79,39 +82,48 @@
     1 &amp; \textrm{if the electromagnet is on.}
     \end{cases}
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/05/__parent.wly:29:5</span>
   </div>
   <p>
-    The idea is that when the electromagnet is turned
-    off, the particle experiences a downward acceleration
-    due to the effect of gravity, and when the
-    electromagnet is switched on, the attractive magnetic
-    force causes an upward acceleration that overcomes
-    gravity and exactly negates it. For simplicity, we
-    choose units such that the gravitational constant $g$
-    is equal to $1$, and assume that the acceleration
-    when the electromagnet is switched on is exactly equal
-    in magnitude (and opposite in its direction) to the
-    gravitational acceleration. The control variable $u$
-    is a binary "on/off" variable that corresponds to
-    the decision of when to activate the electromagnet (a
-    control scheme based on a binary control variable is
-    sometimes called a
-    <i>switching control</i>). Our goal is
-    to design a feedback-based control rule
+    <span class="t-3003-c">The idea is that when the electromagnet is turned<span class="t-3003">./119B/wly/03/05/__parent.wly:35:5</span></span>
+    <span class="t-3003-c">off, the particle experiences a downward acceleration<span class="t-3003">./119B/wly/03/05/__parent.wly:36:5</span></span>
+    <span class="t-3003-c">due to the effect of gravity, and when the<span class="t-3003">./119B/wly/03/05/__parent.wly:37:5</span></span>
+    <span class="t-3003-c">electromagnet is switched on, the attractive magnetic<span class="t-3003">./119B/wly/03/05/__parent.wly:38:5</span></span>
+    <span class="t-3003-c">force causes an upward acceleration that overcomes<span class="t-3003">./119B/wly/03/05/__parent.wly:39:5</span></span>
+    <span class="t-3003-c">gravity and exactly negates it. For simplicity, we<span class="t-3003">./119B/wly/03/05/__parent.wly:40:5</span></span>
+    <span class="t-3003-c">choose units such that the gravitational constant
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:41:5</span></span><span class="t-3003-c">$g$<span class="t-3003">./119B/wly/03/05/__parent.wly:41:55</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:41:58</span></span>
+    <span class="t-3003-c">is equal to
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:42:5</span></span><span class="t-3003-c">$1$<span class="t-3003">./119B/wly/03/05/__parent.wly:42:17</span></span><span class="t-3003-c">, and assume that the acceleration<span class="t-3003">./119B/wly/03/05/__parent.wly:42:20</span></span>
+    <span class="t-3003-c">when the electromagnet is switched on is exactly equal<span class="t-3003">./119B/wly/03/05/__parent.wly:43:5</span></span>
+    <span class="t-3003-c">in magnitude (and opposite in its direction) to the<span class="t-3003">./119B/wly/03/05/__parent.wly:44:5</span></span>
+    <span class="t-3003-c">gravitational acceleration. The control variable
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:45:5</span></span><span class="t-3003-c">$u$<span class="t-3003">./119B/wly/03/05/__parent.wly:45:54</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:45:57</span></span>
+    <span class="t-3003-c">is a binary "on/off" variable that corresponds to<span class="t-3003">./119B/wly/03/05/__parent.wly:46:5</span></span>
+    <span class="t-3003-c">the decision of when to activate the electromagnet (a<span class="t-3003">./119B/wly/03/05/__parent.wly:47:5</span></span>
+    <span class="t-3003-c">control scheme based on a binary control variable is<span class="t-3003">./119B/wly/03/05/__parent.wly:48:5</span></span>
+    <span class="t-3003-c">sometimes called a
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:49:5</span></span><i><span class="t-3003-c">switching control<span class="t-3003">./119B/wly/03/05/__parent.wly:49:25</span></span></i><span class="t-3003-c">). Our goal is<span class="t-3003">./119B/wly/03/05/__parent.wly:49:43</span></span>
+    <span class="t-3003-c">to design a feedback-based control rule<span class="t-3003">./119B/wly/03/05/__parent.wly:50:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     u = u(x, \dot{x})
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/05/__parent.wly:52:5</span>
   </div>
   <p>
-    (where we denote $u=\ddot{x}=\pm 1$ to correspond to
-    the two states of the electromagnet) such that the
-    system will have an asymptotically stable equilibrium
-    point at $x=0$ to which all the orbits converge.
+    <span class="t-3003-c">(where we denote
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:56:5</span></span><span class="t-3003-c">$u=\ddot{x}=\pm 1$<span class="t-3003">./119B/wly/03/05/__parent.wly:56:22</span></span><span class="t-3003-c">
+      to correspond to<span class="t-3003">./119B/wly/03/05/__parent.wly:56:40</span></span>
+    <span class="t-3003-c">the two states of the electromagnet) such that the<span class="t-3003">./119B/wly/03/05/__parent.wly:57:5</span></span>
+    <span class="t-3003-c">system will have an asymptotically stable equilibrium<span class="t-3003">./119B/wly/03/05/__parent.wly:58:5</span></span>
+    <span class="t-3003-c">point at
+      <span class="t-3003">./119B/wly/03/05/__parent.wly:59:5</span></span><span class="t-3003-c">$x=0$<span class="t-3003">./119B/wly/03/05/__parent.wly:59:14</span></span><span class="t-3003-c">
+      to which all the orbits converge.<span class="t-3003">./119B/wly/03/05/__parent.wly:59:19</span></span>
   </p>
 </body>
 </html>

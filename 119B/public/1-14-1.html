@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 1.14.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,14 +42,18 @@
   </div>
   <h1>
     1.14.1
-    Analytic solution using elliptic integrals
+    <span class="t-3003-c">Analytic solution using elliptic integrals<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:2:11</span></span>
   </h1>
   <p>
-    We derive the solution under the assumption that
-    $\theta(0) = 0$, $\dot{\theta}(0)&gt;0$. Let
-    $\lambda=g/\ell$, so the equation becomes
-    $\ddot{\theta}+\lambda \sin \theta=0$. Conservation
-    of energy gives the equation
+    <span class="t-3003-c">We derive the solution under the assumption that<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:4:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:5:5</span></span><span class="t-3003-c">$\theta(0) = 0$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:5:5</span></span><span class="t-3003-c">,
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:5:20</span></span><span class="t-3003-c">$\dot{\theta}(0)&gt;0$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:5:22</span></span><span class="t-3003-c">. Let<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:5:41</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:6:5</span></span><span class="t-3003-c">$\lambda=g/\ell$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:6:5</span></span><span class="t-3003-c">, so the equation becomes<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:6:21</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:7:5</span></span><span class="t-3003-c">$\ddot{\theta}+\lambda \sin \theta=0$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:7:5</span></span><span class="t-3003-c">. Conservation<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:7:42</span></span>
+    <span class="t-3003-c">of energy gives the equation<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:8:5</span></span>
   </p>
   <div
     id="_25_h.a.i_"
@@ -60,16 +65,20 @@
     \tfrac12 \dot{\theta}^2-\lambda \cos \theta = \textrm{const}
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:10:5</span>
   </div>
   <p>
-    (to verify this, differentiate both sides). For
-    reasons which will become clear soon, denote the
-    integration constant on the right by
-    $\lambda(2k^2-1)$, where $k\ge0$ and use the relation
-    $\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$. This
-    brings
-    <a
+    <span class="t-3003-c">(to verify this, differentiate both sides). For<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:18:5</span></span>
+    <span class="t-3003-c">reasons which will become clear soon, denote the<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:19:5</span></span>
+    <span class="t-3003-c">integration constant on the right by<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:20:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:21:5</span></span><span class="t-3003-c">$\lambda(2k^2-1)$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:21:5</span></span><span class="t-3003-c">, where
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:21:22</span></span><span class="t-3003-c">$k\ge0$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:21:30</span></span><span class="t-3003-c">
+      and use the relation<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:21:37</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:22:5</span></span><span class="t-3003-c">$\cos \theta = 1-2\sin^2\tfrac{\theta}{2}$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:22:5</span></span><span class="t-3003-c">. This<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:22:47</span></span>
+    <span class="t-3003-c">brings
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:23:5</span></span><a
       href="./1-14-1.html#_25_h.a.i_"
       class=""
     >(21)</a>
@@ -85,81 +94,106 @@
     (\dot{\theta})^2 = 4\lambda \left(k^2-\sin^2 \tfrac{\theta}{2} \right).
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:25:5</span>
   </div>
   <p>
-    Note that this already makes it easy to plot the
-    phase portrait (in the $\theta$-$\dot{\theta}$ plane,
-    or wrapped around a cylinder, since adding multiples
-    of $2\pi$ to $\theta$ does not change the physical
-    state of the system); see Figure 5.
+    <span class="t-3003-c">Note that this already makes it easy to plot the<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:33:5</span></span>
+    <span class="t-3003-c">phase portrait (in the
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:34:5</span></span><span class="t-3003-c">$\theta$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:34:28</span></span><span class="t-3003-c">-<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:34:36</span></span><span class="t-3003-c">$\dot{\theta}$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:34:37</span></span><span class="t-3003-c">
+      plane,<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:34:51</span></span>
+    <span class="t-3003-c">or wrapped around a cylinder, since adding multiples<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:35:5</span></span>
+    <span class="t-3003-c">of
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:36:5</span></span><span class="t-3003-c">$2\pi$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:36:8</span></span><span class="t-3003-c">
+      to
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:36:14</span></span><span class="t-3003-c">$\theta$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:36:18</span></span><span class="t-3003-c">
+      does not change the physical<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:36:26</span></span>
+    <span class="t-3003-c">state of the system); see Figure 5.<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:37:5</span></span>
   </p>
   <figure>
     <img
       src="figures/pendulumphasediag.png"
       style="max-width: 52%"
-    ><img
+    ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/pendulumphasediag.png</span></span><img
       src="figures/pendulumphasediag3d.png"
       style="max-width: 30%"
-    >
+    ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/pendulumphasediag3d.png</span></span>
     <figcaption>
-      Figure 5: The phase portrait of the simple pendulum:
-      in the planar representation, the constant energy
-      curves are given by the equation
-      $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$
-      for different values of $k$.
+      <span class="t-3003-c">Figure 5: The phase portrait of the simple pendulum:<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:47:13</span></span>
+      <span class="t-3003-c">in the planar representation, the constant energy<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:48:13</span></span>
+      <span class="t-3003-c">curves are given by the equation<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:49:13</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:50:13</span></span><span class="t-3003-c">$y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:50:13</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:50:65</span></span>
+      <span class="t-3003-c">for different values of
+        <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:51:13</span></span><span class="t-3003-c">$k$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:51:37</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:51:40</span></span>
     </figcaption>
   </figure>
   <p>
-    The relation between the parameter $k$ and the
-    initial angular velocity $\dot{\theta}(0)$ is found
-    by setting $t=0$ in
-    <a
+    <span class="t-3003-c">The relation between the parameter
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:53:5</span></span><span class="t-3003-c">$k$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:53:40</span></span><span class="t-3003-c">
+      and the<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:53:43</span></span>
+    <span class="t-3003-c">initial angular velocity
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:54:5</span></span><span class="t-3003-c">$\dot{\theta}(0)$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:54:30</span></span><span class="t-3003-c">
+      is found<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:54:47</span></span>
+    <span class="t-3003-c">by setting
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:55:5</span></span><span class="t-3003-c">$t=0$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:55:16</span></span><span class="t-3003-c">
+      in
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:55:21</span></span><a
       href="./1-14-1.html#_26_h.a.i_"
       class=""
     >(22)</a>,
-    giving
+    <span class="t-3003-c">giving<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:56:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     k=\frac{1}{2\sqrt{\lambda}} \dot{\theta}(0).
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:58:5</span>
   </div>
   <p>
-    It is also easy to see from the energy conservation
-    equation
-    <a
+    <span class="t-3003-c">It is also easy to see from the energy conservation<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:62:5</span></span>
+    <span class="t-3003-c">equation
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:63:5</span></span><a
       href="./1-14-1.html#_26_h.a.i_"
       class=""
     >(22)</a>
     that the
-    periodic solutions (which are the solutions for which
-    $\theta$ remains bounded) correspond to $0&lt;k&lt;1$, and
-    that in that case we have
-    $k=\sin (\theta_{\textrm{max}}/2)$ where
-    $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is
-    the maximal angle that the pendulum will reach (or
-    approach asymptotically, in the case
-    $\theta_{\textrm{max}}=\pi$). The equation
-    <a
+    <span class="t-3003-c">periodic solutions (which are the solutions for which<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:64:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:65:5</span></span><span class="t-3003-c">$\theta$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:65:5</span></span><span class="t-3003-c">
+      remains bounded) correspond to
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:65:13</span></span><span class="t-3003-c">$0&lt;k&lt;1$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:65:45</span></span><span class="t-3003-c">, and<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:65:52</span></span>
+    <span class="t-3003-c">that in that case we have<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:66:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:67:5</span></span><span class="t-3003-c">$k=\sin (\theta_{\textrm{max}}/2)$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:67:5</span></span><span class="t-3003-c">
+      where<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:67:39</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:68:5</span></span><span class="t-3003-c">$\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:68:5</span></span><span class="t-3003-c">
+      is<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:68:52</span></span>
+    <span class="t-3003-c">the maximal angle that the pendulum will reach (or<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:69:5</span></span>
+    <span class="t-3003-c">approach asymptotically, in the case<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:70:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:71:5</span></span><span class="t-3003-c">$\theta_{\textrm{max}}=\pi$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:71:5</span></span><span class="t-3003-c">). The equation<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:71:32</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:72:5</span></span><a
       href="./1-14-1.html#_26_h.a.i_"
       class=""
     >(22)</a>
     is a first-order ODE, and
-    is in a form suitable for separation of variables;
-    e.g., we can write
+    <span class="t-3003-c">is in a form suitable for separation of variables;<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:73:5</span></span>
+    <span class="t-3003-c">e.g., we can write<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:74:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \frac{d\theta}{\sqrt{k^2-\sin^2 \tfrac{\theta}{2}}} = 2\sqrt{\lambda} \,dt,
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:76:5</span>
   </div>
   <p>
-    or (since we stipulated that $\theta(0)=0$)
+    <span class="t-3003-c">or (since we stipulated that
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:80:5</span></span><span class="t-3003-c">$\theta(0)=0$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:80:34</span></span><span class="t-3003-c">)<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:80:47</span></span>
   </p>
   <div
     id="_27_h.a.i_"
@@ -171,50 +205,60 @@
     \int_0^\theta \frac{d\theta}{\sqrt{k^2-\sin^2 \tfrac{\theta}{2}}} = 2\sqrt{\lambda} t.
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:82:5</span>
   </div>
   <p>
-    From this point on, assume that $k&lt;1$. Making the
-    substitution $ku = \sin(\theta/2)$ in the integral on
-    the left, we get the equivalent form
+    <span class="t-3003-c">From this point on, assume that
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:90:5</span></span><span class="t-3003-c">$k&lt;1$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:90:37</span></span><span class="t-3003-c">. Making the<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:90:42</span></span>
+    <span class="t-3003-c">substitution
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:91:5</span></span><span class="t-3003-c">$ku = \sin(\theta/2)$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:91:18</span></span><span class="t-3003-c">
+      in the integral on<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:91:39</span></span>
+    <span class="t-3003-c">the left, we get the equivalent form<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:92:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \int_0^u \frac{du}{\sqrt{(1-u^2)(1-k^2 u^2)}} = \sqrt{\lambda} t.
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:94:5</span>
   </div>
   <p>
-    The integral on the left is related to a special
-    function known as $\operatorname{sn}(u,k)$ (one of a
-    family of special functions called the
-    <i>Jacobi
-      elliptic functions</i>), by
+    <span class="t-3003-c">The integral on the left is related to a special<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:98:5</span></span>
+    <span class="t-3003-c">function known as
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:99:5</span></span><span class="t-3003-c">$\operatorname{sn}(u,k)$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:99:23</span></span><span class="t-3003-c">
+      (one of a<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:99:47</span></span>
+    <span class="t-3003-c">family of special functions called the
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:100:5</span></span><i><span class="t-3003-c">Jacobi<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:100:45</span></span>
+      <span class="t-3003-c">elliptic functions<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:101:5</span></span></i><span class="t-3003-c">), by<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:101:24</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \operatorname{sn}^{-1}(u,k) = \int_0^u \frac{du}{\sqrt{(1-u^2)(1-k^2 u^2)}},
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:103:5</span>
   </div>
   <p>
-    (meaning the inverse function of
-    $\operatorname{sn}(u,k)$ as a function of $u$; the
-    variable $k$ is thought of as a parameter, sometimes
-    called the
-    <i>elliptic modulus</i>). It follows that
+    <span class="t-3003-c">(meaning the inverse function of<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:107:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:108:5</span></span><span class="t-3003-c">$\operatorname{sn}(u,k)$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:108:5</span></span><span class="t-3003-c">
+      as a function of
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:108:29</span></span><span class="t-3003-c">$u$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:108:47</span></span><span class="t-3003-c">; the<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:108:50</span></span>
+    <span class="t-3003-c">variable
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:109:5</span></span><span class="t-3003-c">$k$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:109:14</span></span><span class="t-3003-c">
+      is thought of as a parameter, sometimes<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:109:17</span></span>
+    <span class="t-3003-c">called the
+      <span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:110:5</span></span><i><span class="t-3003-c">elliptic modulus<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:110:17</span></span></i><span class="t-3003-c">). It follows that<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:110:34</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \frac{1}{k}\sin\frac{\theta}{2} = u = \operatorname{sn}(\sqrt{\lambda}t ,k),
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:112:5</span>
   </div>
   <p>
-    so finally we get that
+    <span class="t-3003-c">so finally we get that<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:116:5</span></span>
   </p>
   <div
     id="_28_h.a.i_"
@@ -226,18 +270,18 @@
     \sin\frac{\theta}{2} = k \operatorname{sn}(\sqrt{\lambda}t ,k).
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:118:5</span>
   </div>
   <p>
-    We have thus obtained our analytic solution, given by
-    the rather intimidating formula
+    <span class="t-3003-c">We have thus obtained our analytic solution, given by<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:126:5</span></span>
+    <span class="t-3003-c">the rather intimidating formula<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:127:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \theta  = 2 \arcsin \left[k \operatorname{sn}(\sqrt{\lambda}t ,k)\right].
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/14/01-analytic-solution-using-elliptic-integrals.wly:129:5</span>
   </div>
 </body>
 </html>

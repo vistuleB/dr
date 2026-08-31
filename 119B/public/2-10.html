@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 2.10 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,59 +42,84 @@
   </div>
   <h1>
     2.10
-    The doubling map and normal numbers
+    <span class="t-3003-c">The doubling map and normal numbers<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:2:11</span></span>
   </h1>
   <p>
-    Our first application of the ergodic theorem is
-    related to the doubling map $D(x)=2x\textrm{ mod }1$,
-    which as we have seen preserves Lebesgue measure on
-    $(0,1)$. We will use without proof the fact that this
-    map is ergodic. The reason this is interesting is
-    because the orbits $D^n(x)$ of a number $x$ encode
-    information about the binary expansion of $x$. More
-    precisely, write
+    <span class="t-3003-c">Our first application of the ergodic theorem is<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:5:5</span></span>
+    <span class="t-3003-c">related to the doubling map
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:6:5</span></span><span class="t-3003-c">$D(x)=2x\textrm{ mod }1$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:6:33</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:6:57</span></span>
+    <span class="t-3003-c">which as we have seen preserves Lebesgue measure on<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:7:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:8:5</span></span><span class="t-3003-c">$(0,1)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:8:5</span></span><span class="t-3003-c">. We will use without proof the fact that this<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:8:12</span></span>
+    <span class="t-3003-c">map is ergodic. The reason this is interesting is<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:9:5</span></span>
+    <span class="t-3003-c">because the orbits
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:10:5</span></span><span class="t-3003-c">$D^n(x)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:10:24</span></span><span class="t-3003-c">
+      of a number
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:10:32</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:10:45</span></span><span class="t-3003-c">
+      encode<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:10:48</span></span>
+    <span class="t-3003-c">information about the binary expansion of
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:11:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:11:47</span></span><span class="t-3003-c">. More<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:11:50</span></span>
+    <span class="t-3003-c">precisely, write<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:12:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     x = \sum_{n=1}^\infty a_n(x) 2^{-n},
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:14:5</span>
   </div>
   <p>
-    where $a_n(x) \in \{0,1\}$ is the $n$th digit in the
-    binary expansion of $x$ (in the case of a dyadic
-    number $m/2^N$ for which there is a small amount of
-    ambiguity, choose the expansion which terminates with
-    an infinite succession of $0$'s). Applying the
-    doubling map gives
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:18:5</span></span><span class="t-3003-c">$a_n(x) \in \{0,1\}$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:18:11</span></span><span class="t-3003-c">
+      is the
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:18:31</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:18:39</span></span><span class="t-3003-c">th digit in the<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:18:42</span></span>
+    <span class="t-3003-c">binary expansion of
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:19:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:19:25</span></span><span class="t-3003-c">
+      (in the case of a dyadic<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:19:28</span></span>
+    <span class="t-3003-c">number
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:20:5</span></span><span class="t-3003-c">$m/2^N$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:20:12</span></span><span class="t-3003-c">
+      for which there is a small amount of<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:20:19</span></span>
+    <span class="t-3003-c">ambiguity, choose the expansion which terminates with<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:21:5</span></span>
+    <span class="t-3003-c">an infinite succession of
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:22:5</span></span><span class="t-3003-c">$0$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:22:31</span></span><span class="t-3003-c">'s). Applying the<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:22:34</span></span>
+    <span class="t-3003-c">doubling map gives<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:23:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     D(x) = 2x\textrm{ mod 1} = \sum_{n=1}^\infty a_n(x) 2^{-(n-1)} \textrm{ mod }1 = \sum_{n=1}^\infty a_{n+1}(x)2^{-n},
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:25:5</span>
   </div>
   <p>
-    from which we conclude that $a_n(D(x)) = a_{n+1}(x)$
-    -- in terms of the binary expansion, the doubling map
-    has the effect of "chopping off" the leading digit
-    in the expansion. Successive applications of $D$ will
-    chop off additional digits. By tracking the frequency
-    of visits of $D(x)$ to a specific set such as
-    $(0,1/2) = \{ u\in(0,1)\,:\, a_1(u)=0 \}$, we can
-    prove the following result:
+    <span class="t-3003-c">from which we conclude that
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:29:5</span></span><span class="t-3003-c">$a_n(D(x)) = a_{n+1}(x)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:29:33</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:29:57</span></span>
+    <span class="t-3003-c">-- in terms of the binary expansion, the doubling map<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:30:5</span></span>
+    <span class="t-3003-c">has the effect of "chopping off" the leading digit<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:31:5</span></span>
+    <span class="t-3003-c">in the expansion. Successive applications of
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:32:5</span></span><span class="t-3003-c">$D$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:32:50</span></span><span class="t-3003-c">
+      will<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:32:53</span></span>
+    <span class="t-3003-c">chop off additional digits. By tracking the frequency<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:33:5</span></span>
+    <span class="t-3003-c">of visits of
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:34:5</span></span><span class="t-3003-c">$D(x)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:34:18</span></span><span class="t-3003-c">
+      to a specific set such as<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:34:24</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:35:5</span></span><span class="t-3003-c">$(0,1/2) = \{ u\in(0,1)\,:\, a_1(u)=0 \}$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:35:5</span></span><span class="t-3003-c">, we can<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:35:46</span></span>
+    <span class="t-3003-c">prove the following result:<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:36:5</span></span>
   </p>
   <div class="statement theorem">
     <h3>
-      <b>Theorem</b>
-      <b>2.40</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:38:5</span></span><b><span class="t-3003-c">Theorem<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:38:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:38:5</span></span><b><span class="t-3003-c">2.40<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:38:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:38:5</span></span>
     </h3>
     <p>
-      All numbers $x\in(0,1)$ except those lying in some
-      measure-0 set have the property:
+      <span class="t-3003-c">All numbers
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:39:9</span></span><span class="t-3003-c">$x\in(0,1)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:39:21</span></span><span class="t-3003-c">
+        except those lying in some<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:39:32</span></span>
+      <span class="t-3003-c">measure-0 set have the property:<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:40:9</span></span>
     </p>
     <div
       id="_44_h.a.i_"
@@ -105,11 +131,12 @@
       \frac{1}{n}\#\left\{ 1\le k\le n\,:\, a_n(x) = 0 \right\} \xrightarrow[n\to\infty]{} \tfrac12,
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:42:9</span>
     </div>
     <p>
-      and, more generally, for any
-      $b_1,\ldots,b_m\in\{0,1\}$, we have
+      <span class="t-3003-c">and, more generally, for any<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:50:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:51:9</span></span><span class="t-3003-c">$b_1,\ldots,b_m\in\{0,1\}$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:51:9</span></span><span class="t-3003-c">, we have<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:51:35</span></span>
     </p>
     <div
       id="_45_h.a.i_"
@@ -121,71 +148,104 @@
       \frac{1}{n}\#\left\{ 1\le k\le n\,:\, a_k(x) = b_1,\ldots, a_{k+m-1}(x)=b_m \right\} \xrightarrow[n\to\infty]{} \frac{1}{2^m}.
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:53:9</span>
     </div>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>The frequency on the left-hand side of
-      <a
+      <span class="proof">Proof</span><span class="t-3003-c">The frequency on the left-hand side of
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:62:9</span></span><a
         href="./2-10.html#_44_h.a.i_"
         class=""
       >(35)</a>
-      is what we denoted earlier by $\mu_x^{(n)}((0,1/2))$
-      (with respect to the doubling map), so by the ergodic
-      theorem, it converges to $P((0,1/2))=1/2$. Similarly,
-      the left-hand side of
-      <a
+      
+      <span class="t-3003-c">is what we denoted earlier by
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:63:9</span></span><span class="t-3003-c">$\mu_x^{(n)}((0,1/2))$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:63:39</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:63:61</span></span>
+      <span class="t-3003-c">(with respect to the doubling map), so by the ergodic<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:64:9</span></span>
+      <span class="t-3003-c">theorem, it converges to
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:65:9</span></span><span class="t-3003-c">$P((0,1/2))=1/2$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:65:34</span></span><span class="t-3003-c">. Similarly,<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:65:50</span></span>
+      <span class="t-3003-c">the left-hand side of
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:66:9</span></span><a
         href="./2-10.html#_45_h.a.i_"
         class=""
       >(36)</a>
       converges to the
-      Lebesgue measure of the interval
-      $[\sum_{j=1}^m b_j 2^{-j},\sum_{j=1}^m b_j
-      2^{-j}+2^{-m})$,
-      which is $1/2^m$.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="t-3003-c">Lebesgue measure of the interval<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:67:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:68:9</span></span><span class="t-3003-c">$[\sum_{j=1}^m b_j 2^{-j},\sum_{j=1}^m b_j
+        2^{-j}+2^{-m})$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:68:9</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:69:24</span></span>
+      <span class="t-3003-c">which is
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:70:9</span></span><span class="t-3003-c">$1/2^m$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:70:18</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:70:25</span></span><span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
   <p>
-    A number $x\in (0,1)$ is called
-    <i>normal to base $2$</i>
-    if it satisfies the condition
-    <a
+    <span class="t-3003-c">A number
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:72:5</span></span><span class="t-3003-c">$x\in (0,1)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:72:14</span></span><span class="t-3003-c">
+      is called
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:72:26</span></span><i><span class="t-3003-c">normal to base
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:72:38</span></span><span class="t-3003-c">$2$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:72:53</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:72:56</span></span></i><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:72:57</span></span>
+    <span class="t-3003-c">if it satisfies the condition
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:73:5</span></span><a
       href="./2-10.html#_45_h.a.i_"
       class=""
     >(36)</a>
     --- that
-    is, if its binary expansion contains the digits 0 in 1
-    in the right asymptotic frequency of $1/2$, and
-    similarly contains each of the types of successive
-    pairs "$00$", "$01$", "$10$" and "$11$" with
-    asymptotic frequency $1/4$, each triple of digits
-    with frequency $1/8$, etc. In other words, the binary
-    expansion of a number that is normal to base $2$ is
-    hard to distinguish (at least based on statistics)
-    from the output of an ideal random number generator.
-    We proved above that "almost every" $x\in (0,1)$
-    (all $x$ except for those in some measure-$0$ set) is
-    normal to base $2$. This can be generalized to
-    arbitrary bases.
+    <span class="t-3003-c">is, if its binary expansion contains the digits 0 in 1<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:74:5</span></span>
+    <span class="t-3003-c">in the right asymptotic frequency of
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:75:5</span></span><span class="t-3003-c">$1/2$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:75:42</span></span><span class="t-3003-c">, and<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:75:47</span></span>
+    <span class="t-3003-c">similarly contains each of the types of successive<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:76:5</span></span>
+    <span class="t-3003-c">pairs "<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:5</span></span><span class="t-3003-c">$00$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:13</span></span><span class="t-3003-c">", "<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:17</span></span><span class="t-3003-c">$01$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:23</span></span><span class="t-3003-c">", "<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:27</span></span><span class="t-3003-c">$10$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:33</span></span><span class="t-3003-c">" and "<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:37</span></span><span class="t-3003-c">$11$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:46</span></span><span class="t-3003-c">" with<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:77:50</span></span>
+    <span class="t-3003-c">asymptotic frequency
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:78:5</span></span><span class="t-3003-c">$1/4$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:78:26</span></span><span class="t-3003-c">, each triple of digits<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:78:31</span></span>
+    <span class="t-3003-c">with frequency
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:79:5</span></span><span class="t-3003-c">$1/8$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:79:20</span></span><span class="t-3003-c">, etc. In other words, the binary<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:79:25</span></span>
+    <span class="t-3003-c">expansion of a number that is normal to base
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:80:5</span></span><span class="t-3003-c">$2$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:80:50</span></span><span class="t-3003-c">
+      is<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:80:53</span></span>
+    <span class="t-3003-c">hard to distinguish (at least based on statistics)<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:81:5</span></span>
+    <span class="t-3003-c">from the output of an ideal random number generator.<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:82:5</span></span>
+    <span class="t-3003-c">We proved above that "almost every"
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:83:5</span></span><span class="t-3003-c">$x\in (0,1)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:83:43</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:83:55</span></span>
+    <span class="t-3003-c">(all
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:84:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:84:10</span></span><span class="t-3003-c">
+      except for those in some measure-<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:84:13</span></span><span class="t-3003-c">$0$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:84:47</span></span><span class="t-3003-c">
+      set) is<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:84:50</span></span>
+    <span class="t-3003-c">normal to base
+      <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:85:5</span></span><span class="t-3003-c">$2$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:85:20</span></span><span class="t-3003-c">. This can be generalized to<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:85:23</span></span>
+    <span class="t-3003-c">arbitrary bases.<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:86:5</span></span>
   </p>
   <div
     label="Normal numbers to base $10$"
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>2.41</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:88:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:88:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:88:5</span></span><b><span class="t-3003-c">2.41<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:88:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:88:5</span></span>
     </h3>
     <p>
-      Define the notion of a number $x\in(0,1)$ that is
-      normal to base $10$. Define an interval map
-      $E:(0,1)\to(0,1)$ that is related to the decimal
-      expansion of a number in the same way that $D$ is
-      related to the binary expansion, and use it to prove
-      that almost every number $x\in(0,1)$ is normal to
-      base $10$.
+      <span class="t-3003-c">Define the notion of a number
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:90:9</span></span><span class="t-3003-c">$x\in(0,1)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:90:39</span></span><span class="t-3003-c">
+        that is<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:90:50</span></span>
+      <span class="t-3003-c">normal to base
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:91:9</span></span><span class="t-3003-c">$10$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:91:24</span></span><span class="t-3003-c">. Define an interval map<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:91:28</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:92:9</span></span><span class="t-3003-c">$E:(0,1)\to(0,1)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:92:9</span></span><span class="t-3003-c">
+        that is related to the decimal<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:92:26</span></span>
+      <span class="t-3003-c">expansion of a number in the same way that
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:93:9</span></span><span class="t-3003-c">$D$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:93:52</span></span><span class="t-3003-c">
+        is<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:93:55</span></span>
+      <span class="t-3003-c">related to the binary expansion, and use it to prove<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:94:9</span></span>
+      <span class="t-3003-c">that almost every number
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:95:9</span></span><span class="t-3003-c">$x\in(0,1)$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:95:34</span></span><span class="t-3003-c">
+        is normal to<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:95:45</span></span>
+      <span class="t-3003-c">base
+        <span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:96:9</span></span><span class="t-3003-c">$10$<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:96:14</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/10-the-doubling-map-and-normal-numbers.wly:96:18</span></span>
     </p>
   </div>
 </body>

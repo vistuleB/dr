@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 2.4 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,80 +42,161 @@
   </div>
   <h1>
     2.4
-    Fixed points and cycles
+    <span class="t-3003-c">Fixed points and cycles<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:2:11</span></span>
   </h1>
   <p>
-    When we studied ODEs, we were interested in rest
-    points, which are static points of the phase state
-    which remain stationary under the ODE dynamics, and in
-    periodic orbits which close in on themselves and lead
-    to infinite repetition of a sequence of movements. In
-    discrete-time systems, the analogous concepts are
-    <i>fixed points</i>
-    and
-    <i>cycles</i>. A point $x\in I$ is a
-    fixed point of a map $T:I\to\mathbb{R}$ if $T(x)=x$.
-    We call a finite sequence $(x_j)_{j=1}^n$ a cycle (or
-    an $n$-cycle if we want to emphasize its length) of
-    $T$ if all the $x_j$'s are distinct and
-    $T(x_1)=x_2, T(x_2)=x_3, \ldots, T(x_{n-1})=x_n,
-    T(x_n)=x_1$.
+    <span class="t-3003-c">When we studied ODEs, we were interested in rest<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:4:5</span></span>
+    <span class="t-3003-c">points, which are static points of the phase state<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:5:5</span></span>
+    <span class="t-3003-c">which remain stationary under the ODE dynamics, and in<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:6:5</span></span>
+    <span class="t-3003-c">periodic orbits which close in on themselves and lead<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:7:5</span></span>
+    <span class="t-3003-c">to infinite repetition of a sequence of movements. In<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:8:5</span></span>
+    <span class="t-3003-c">discrete-time systems, the analogous concepts are<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:9:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:10:5</span></span><i><span class="t-3003-c">fixed points<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:10:6</span></span></i><span class="t-3003-c">
+      and
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:10:19</span></span><i><span class="t-3003-c">cycles<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:10:25</span></span></i><span class="t-3003-c">. A point
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:10:32</span></span><span class="t-3003-c">$x\in I$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:10:42</span></span><span class="t-3003-c">
+      is a<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:10:50</span></span>
+    <span class="t-3003-c">fixed point of a map
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:11:5</span></span><span class="t-3003-c">$T:I\to\mathbb{R}$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:11:26</span></span><span class="t-3003-c">
+      if
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:11:44</span></span><span class="t-3003-c">$T(x)=x$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:11:48</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:11:56</span></span>
+    <span class="t-3003-c">We call a finite sequence
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:12:5</span></span><span class="t-3003-c">$(x_j)_{j=1}^n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:12:31</span></span><span class="t-3003-c">
+      a cycle (or<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:12:46</span></span>
+    <span class="t-3003-c">an
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:13:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:13:8</span></span><span class="t-3003-c">-cycle if we want to emphasize its length) of<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:13:11</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:14:5</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:14:5</span></span><span class="t-3003-c">
+      if all the
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:14:8</span></span><span class="t-3003-c">$x_j$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:14:20</span></span><span class="t-3003-c">'s are distinct and<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:14:25</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:15:5</span></span><span class="t-3003-c">$T(x_1)=x_2, T(x_2)=x_3, \ldots, T(x_{n-1})=x_n,
+      T(x_n)=x_1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:15:5</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:16:16</span></span>
   </p>
   <p>
-    The fixed points can be found graphically by drawing
-    the graph of $T$ and the graph of the curve $y=x$,
-    and finding their intersections. Note that if
-    $(x_j)_{j=1}^n$ is an $n$-cycle of $T$ then
-    $x_1 = T(T(T(\ldots(T(x_1)))\ldots)$ (that is,
-    iterating $T$ $n$-times starting from $x_1$ leads
-    back to $x_1$). The map $T$ iterated $n$ times is
-    denoted $T^n$ (usually it is understood from the
-    context that this represents an iteration rather than
-    raising to a power; when there is risk of confusion
-    one needs to be careful and say explicitly what is
-    meant). So, the $n$-cycles can be found by first
-    computing the iterated map $T^n$ and then finding the
-    fixed points of $T^n$. Note that such a fixed point
-    could turn out to be the first point of an $n$-cycle,
-    or it could be a fixed point of $T$, or a fixed point
-    of $T^k$ for some $k&lt;n$ that is a divisor of $n$ (in
-    this case we can use it to generate a $k$-cycle
-    $x_1,T(x_1,\ldots,T^{k-1}(x_1)$). In practice,
-    finding the $n$-cycles often becomes very hard to do
-    when $n$ is larger than some very small number.
+    <span class="t-3003-c">The fixed points can be found graphically by drawing<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:18:5</span></span>
+    <span class="t-3003-c">the graph of
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:19:5</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:19:18</span></span><span class="t-3003-c">
+      and the graph of the curve
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:19:21</span></span><span class="t-3003-c">$y=x$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:19:49</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:19:54</span></span>
+    <span class="t-3003-c">and finding their intersections. Note that if<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:20:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:21:5</span></span><span class="t-3003-c">$(x_j)_{j=1}^n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:21:5</span></span><span class="t-3003-c">
+      is an
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:21:20</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:21:27</span></span><span class="t-3003-c">-cycle of
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:21:30</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:21:40</span></span><span class="t-3003-c">
+      then<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:21:43</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:22:5</span></span><span class="t-3003-c">$x_1 = T(T(T(\ldots(T(x_1)))\ldots)$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:22:5</span></span><span class="t-3003-c">
+      (that is,<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:22:41</span></span>
+    <span class="t-3003-c">iterating
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:23:5</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:23:15</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:23:18</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:23:19</span></span><span class="t-3003-c">-times starting from
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:23:22</span></span><span class="t-3003-c">$x_1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:23:43</span></span><span class="t-3003-c">
+      leads<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:23:48</span></span>
+    <span class="t-3003-c">back to
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:24:5</span></span><span class="t-3003-c">$x_1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:24:13</span></span><span class="t-3003-c">). The map
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:24:18</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:24:29</span></span><span class="t-3003-c">
+      iterated
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:24:32</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:24:42</span></span><span class="t-3003-c">
+      times is<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:24:45</span></span>
+    <span class="t-3003-c">denoted
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:25:5</span></span><span class="t-3003-c">$T^n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:25:13</span></span><span class="t-3003-c">
+      (usually it is understood from the<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:25:18</span></span>
+    <span class="t-3003-c">context that this represents an iteration rather than<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:26:5</span></span>
+    <span class="t-3003-c">raising to a power; when there is risk of confusion<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:27:5</span></span>
+    <span class="t-3003-c">one needs to be careful and say explicitly what is<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:28:5</span></span>
+    <span class="t-3003-c">meant). So, the
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:29:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:29:21</span></span><span class="t-3003-c">-cycles can be found by first<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:29:24</span></span>
+    <span class="t-3003-c">computing the iterated map
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:30:5</span></span><span class="t-3003-c">$T^n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:30:32</span></span><span class="t-3003-c">
+      and then finding the<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:30:37</span></span>
+    <span class="t-3003-c">fixed points of
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:31:5</span></span><span class="t-3003-c">$T^n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:31:21</span></span><span class="t-3003-c">. Note that such a fixed point<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:31:26</span></span>
+    <span class="t-3003-c">could turn out to be the first point of an
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:32:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:32:48</span></span><span class="t-3003-c">-cycle,<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:32:51</span></span>
+    <span class="t-3003-c">or it could be a fixed point of
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:33:5</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:33:37</span></span><span class="t-3003-c">, or a fixed point<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:33:40</span></span>
+    <span class="t-3003-c">of
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:34:5</span></span><span class="t-3003-c">$T^k$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:34:8</span></span><span class="t-3003-c">
+      for some
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:34:13</span></span><span class="t-3003-c">$k&lt;n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:34:23</span></span><span class="t-3003-c">
+      that is a divisor of
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:34:28</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:34:50</span></span><span class="t-3003-c">
+      (in<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:34:53</span></span>
+    <span class="t-3003-c">this case we can use it to generate a
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:35:5</span></span><span class="t-3003-c">$k$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:35:43</span></span><span class="t-3003-c">-cycle<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:35:46</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:36:5</span></span><span class="t-3003-c">$x_1,T(x_1,\ldots,T^{k-1}(x_1)$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:36:5</span></span><span class="t-3003-c">). In practice,<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:36:36</span></span>
+    <span class="t-3003-c">finding the
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:37:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:37:17</span></span><span class="t-3003-c">-cycles often becomes very hard to do<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:37:20</span></span>
+    <span class="t-3003-c">when
+      <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:38:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:38:10</span></span><span class="t-3003-c">
+      is larger than some very small number.<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:38:13</span></span>
   </p>
   <div class="statement example">
     <h3>
-      <b>Example</b>
-      <b>2.15</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:40:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:40:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:40:5</span></span><b><span class="t-3003-c">2.15<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:40:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:40:5</span></span>
     </h3>
     <p>
-      Consider the map $T(x)=x^2$ on $[0,1]$. The fixed
-      points are solutions of $x^2=x$, i.e., $x=0$ and
-      $x=1$. Computing the iterated maps gives
-      $T^2(x)=T(T(x))=x^4, T^3(x)=x^8, \ldots,
-      T^n(x)=x^{2^n}, \ldots$.
-      The fixed points of $T^n$ are still $x=0$ and $x=1$,
-      which means there are no $n$-cycles for $n&gt;1$.
+      <span class="t-3003-c">Consider the map
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:41:9</span></span><span class="t-3003-c">$T(x)=x^2$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:41:26</span></span><span class="t-3003-c">
+        on
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:41:36</span></span><span class="t-3003-c">$[0,1]$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:41:40</span></span><span class="t-3003-c">. The fixed<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:41:47</span></span>
+      <span class="t-3003-c">points are solutions of
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:42:9</span></span><span class="t-3003-c">$x^2=x$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:42:33</span></span><span class="t-3003-c">, i.e.,
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:42:40</span></span><span class="t-3003-c">$x=0$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:42:48</span></span><span class="t-3003-c">
+        and<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:42:53</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:43:9</span></span><span class="t-3003-c">$x=1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:43:9</span></span><span class="t-3003-c">. Computing the iterated maps gives<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:43:14</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:44:9</span></span><span class="t-3003-c">$T^2(x)=T(T(x))=x^4, T^3(x)=x^8, \ldots,
+        T^n(x)=x^{2^n}, \ldots$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:44:9</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:45:32</span></span>
+      <span class="t-3003-c">The fixed points of
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:46:9</span></span><span class="t-3003-c">$T^n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:46:29</span></span><span class="t-3003-c">
+        are still
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:46:34</span></span><span class="t-3003-c">$x=0$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:46:45</span></span><span class="t-3003-c">
+        and
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:46:50</span></span><span class="t-3003-c">$x=1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:46:55</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:46:60</span></span>
+      <span class="t-3003-c">which means there are no
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:47:9</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:47:34</span></span><span class="t-3003-c">-cycles for
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:47:37</span></span><span class="t-3003-c">$n&gt;1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:47:49</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:47:54</span></span>
     </p>
   </div>
   <div class="statement example">
     <h3>
-      <b>Example</b>
-      <b>2.16</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:49:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:49:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:49:5</span></span><b><span class="t-3003-c">2.16<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:49:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:49:5</span></span>
     </h3>
     <p>
-      The doubling map $D(x)=2x\textrm{ mod }1$ has no
-      fixed points. What about $2$-cycles? We have
-      $D^2(x)=D(D(x))=4x\textrm{ mod }1$. The equation
-      $x=D(D(x))$ has two solutions: $x_1=4x_1-1$ gives
-      $x_1=1/3$; $x_2=4x_2-2=2/3 = D(x_1)$. So we have
-      found a $2$-cycle $(1/3,2/3)$. In general, it is
-      possible to identify all $k$-cycles, by noting an
-      important connection between the doubling map and the
-      binary expansion of a real number.
+      <span class="t-3003-c">The doubling map
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:50:9</span></span><span class="t-3003-c">$D(x)=2x\textrm{ mod }1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:50:26</span></span><span class="t-3003-c">
+        has no<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:50:50</span></span>
+      <span class="t-3003-c">fixed points. What about
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:51:9</span></span><span class="t-3003-c">$2$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:51:34</span></span><span class="t-3003-c">-cycles? We have<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:51:37</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:52:9</span></span><span class="t-3003-c">$D^2(x)=D(D(x))=4x\textrm{ mod }1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:52:9</span></span><span class="t-3003-c">. The equation<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:52:43</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:53:9</span></span><span class="t-3003-c">$x=D(D(x))$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:53:9</span></span><span class="t-3003-c">
+        has two solutions:
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:53:20</span></span><span class="t-3003-c">$x_1=4x_1-1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:53:40</span></span><span class="t-3003-c">
+        gives<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:53:52</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:54:9</span></span><span class="t-3003-c">$x_1=1/3$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:54:9</span></span><span class="t-3003-c">;
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:54:18</span></span><span class="t-3003-c">$x_2=4x_2-2=2/3 = D(x_1)$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:54:20</span></span><span class="t-3003-c">. So we have<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:54:45</span></span>
+      <span class="t-3003-c">found a
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:55:9</span></span><span class="t-3003-c">$2$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:55:17</span></span><span class="t-3003-c">-cycle
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:55:20</span></span><span class="t-3003-c">$(1/3,2/3)$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:55:27</span></span><span class="t-3003-c">. In general, it is<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:55:38</span></span>
+      <span class="t-3003-c">possible to identify all
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:56:9</span></span><span class="t-3003-c">$k$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:56:34</span></span><span class="t-3003-c">-cycles, by noting an<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:56:37</span></span>
+      <span class="t-3003-c">important connection between the doubling map and the<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:57:9</span></span>
+      <span class="t-3003-c">binary expansion of a real number.<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:58:9</span></span>
     </p>
   </div>
   <div
@@ -122,21 +204,26 @@
     class="statement exercise"
   >
     <h3>
-      <b>Exercise</b>
-      <b>2.17</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:60:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:60:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:60:5</span></span><b><span class="t-3003-c">2.17<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:60:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:60:5</span></span>
     </h3>
     <p>
-      Identify all the $k$-cycles of the doubling map, by
-      using the connection with binary expansions (see the
-      discussion in
-      <a
+      <span class="t-3003-c">Identify all the
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:62:9</span></span><span class="t-3003-c">$k$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:62:26</span></span><span class="t-3003-c">-cycles of the doubling map, by<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:62:29</span></span>
+      <span class="t-3003-c">using the connection with binary expansions (see the<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:63:9</span></span>
+      <span class="t-3003-c">discussion in
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:64:9</span></span><a
         href="./2-10.html#_46_h.a.i_"
         class=""
-      >Section 2.10</a>).
-      Alternatively, plot $D^k(x)=2^k x \textrm{ mod }1$
-      and use a graphical approach to identify all the
-      $k$-cycles.
+      >Section 2.10</a><span class="t-3003-c">).<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:64:9</span></span>
+      <span class="t-3003-c">Alternatively, plot
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:65:9</span></span><span class="t-3003-c">$D^k(x)=2^k x \textrm{ mod }1$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:65:29</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:65:59</span></span>
+      <span class="t-3003-c">and use a graphical approach to identify all the<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:66:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:67:9</span></span><span class="t-3003-c">$k$<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:67:9</span></span><span class="t-3003-c">-cycles.<span class="t-3003">./119B/wly/02/04-fixed-points-and-cycles.wly:67:12</span></span>
     </p>
   </div>
 </body>

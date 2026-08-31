@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 3.5.1 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,14 +42,21 @@
   </div>
   <h1>
     3.5.1
-    A first attempt
+    <span class="t-3003-c">A first attempt<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:2:11</span></span>
   </h1>
   <p>
-    An obvious idea to try is to switch the electromagnet
-    on when $x&lt;0$ and off when $x&gt;0$. That is, we try the
-    control rule $u=-\operatorname{sgn}(x)$ (where
-    $\operatorname{sgn}(x)=x/|x|$ is the signum
-    function), leading to the equation of motion
+    <span class="t-3003-c">An obvious idea to try is to switch the electromagnet<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:4:5</span></span>
+    <span class="t-3003-c">on when
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:5:5</span></span><span class="t-3003-c">$x&lt;0$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:5:13</span></span><span class="t-3003-c">
+      and off when
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:5:18</span></span><span class="t-3003-c">$x&gt;0$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:5:32</span></span><span class="t-3003-c">. That is, we try the<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:5:37</span></span>
+    <span class="t-3003-c">control rule
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:6:5</span></span><span class="t-3003-c">$u=-\operatorname{sgn}(x)$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:6:18</span></span><span class="t-3003-c">
+      (where<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:6:44</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:7:5</span></span><span class="t-3003-c">$\operatorname{sgn}(x)=x/|x|$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:7:5</span></span><span class="t-3003-c">
+      is the signum<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:7:34</span></span>
+    <span class="t-3003-c">function), leading to the equation of motion<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:8:5</span></span>
   </p>
   <div
     id="_55_h.a.i_"
@@ -60,25 +68,25 @@
     \ddot{x} = \begin{cases} -1 &amp; \textrm{if }x&gt;0 \\ 1&amp;\textrm{if }x&lt;0\end{cases} \ = -\operatorname{sgn}(x).
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:10:5</span>
   </div>
   <p>
-    This can be represented in the usual way as a planar
-    system of first-order ODEs, namely
+    <span class="t-3003-c">This can be represented in the usual way as a planar<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:18:5</span></span>
+    <span class="t-3003-c">system of first-order ODEs, namely<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:19:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \dot{x} = y, \quad \dot{y}= - \operatorname{sgn}(x).
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:21:5</span>
   </div>
   <p>
-    It is not hard to see how to draw the phase portrait
-    for this system. First, imagine that there is no
-    electromagnet, which leads to the simpler system
-    (describing simply the motion of a particle under a
-    uniform gravitational force)
+    <span class="t-3003-c">It is not hard to see how to draw the phase portrait<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:25:5</span></span>
+    <span class="t-3003-c">for this system. First, imagine that there is no<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:26:5</span></span>
+    <span class="t-3003-c">electromagnet, which leads to the simpler system<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:27:5</span></span>
+    <span class="t-3003-c">(describing simply the motion of a particle under a<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:28:5</span></span>
+    <span class="t-3003-c">uniform gravitational force)<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:29:5</span></span>
   </p>
   <div
     id="_56_h.a.i_"
@@ -90,88 +98,103 @@
     \dot{x} = y, \quad \dot{y}= -1.
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:31:5</span>
   </div>
   <p>
-    The solutions of this equation take the form
+    <span class="t-3003-c">The solutions of this equation take the form<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:39:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     x(t) = x_0 + y_0t -\tfrac12 t^2, \ \ y(t)=y_0-t,
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:41:5</span>
   </div>
   <p>
-    where $x_0$ is the initial position and $y_0$ is the
-    initial velocity. We then have that $y=y_0-t$, and
-    therefore
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:45:5</span></span><span class="t-3003-c">$x_0$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:45:11</span></span><span class="t-3003-c">
+      is the initial position and
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:45:16</span></span><span class="t-3003-c">$y_0$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:45:45</span></span><span class="t-3003-c">
+      is the<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:45:50</span></span>
+    <span class="t-3003-c">initial velocity. We then have that
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:46:5</span></span><span class="t-3003-c">$y=y_0-t$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:46:41</span></span><span class="t-3003-c">, and<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:46:50</span></span>
+    <span class="t-3003-c">therefore<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:47:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     x = x_0 + y_0(y_0-y)-\tfrac12(y_0-y)^2 = (x_0+\tfrac12 y_0^2)-\tfrac12 y^2,
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:49:5</span>
   </div>
   <p>
-    in other words, the solution curves of the system
-    have the form $x=a-\tfrac12 y^2$ where $a$ is some
-    arbitrary parameter. This leads to the phase portrait
-    shown in Figure 14.
+    <span class="t-3003-c">in other words, the solution curves of the system<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:53:5</span></span>
+    <span class="t-3003-c">have the form
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:54:5</span></span><span class="t-3003-c">$x=a-\tfrac12 y^2$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:54:19</span></span><span class="t-3003-c">
+      where
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:54:37</span></span><span class="t-3003-c">$a$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:54:44</span></span><span class="t-3003-c">
+      is some<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:54:47</span></span>
+    <span class="t-3003-c">arbitrary parameter. This leads to the phase portrait<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:55:5</span></span>
+    <span class="t-3003-c">shown in Figure 14.<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:56:5</span></span>
   </p>
   <figure>
     <img
       src="figures/phasediag-gravity.png"
       style="max-width: 55%"
-    >
+    ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/phasediag-gravity.png</span></span>
     <figcaption>
-      Figure 14: The phase portrait for a particle falling
-      under the influence of gravity.
+      <span class="t-3003-c">Figure 14: The phase portrait for a particle falling<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:63:13</span></span>
+      <span class="t-3003-c">under the influence of gravity.<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:64:13</span></span>
     </figcaption>
   </figure>
   <p>
-    Next, the system
-    <a
+    <span class="t-3003-c">Next, the system
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:66:5</span></span><a
       href="./3-5-1.html#_55_h.a.i_"
       class=""
     >(43)</a>
     consists of
-    modifying the equation vector field by reflecting the
-    flow curves for negative $x$ so that they mirror the
-    lines for positive $x$. This leads to the phase
-    portrait in Figure 15. We see that the system indeed
-    has a rest point at $(x,y)=(0,0)$. However, the rest
-    point is a center, i.e., it is only neutrally stable
-    (this is to be expected, since in fact this is an
-    autonomous Hamiltonian system arising from a potential
-    energy $U(x)=|x|$, and we know energy is conserved in
-    such systems, leading to periodic oscillatory
-    motions). So, a particle moving according to these
-    equations of motion will indeed levitate, but will do
-    so in a way that oscillates around the reference point
-    $x=0$, and only under the unrealistic assumption that
-    the physical system is indeed described to perfect
-    precision by the equations
-    <a
+    <span class="t-3003-c">modifying the equation vector field by reflecting the<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:67:5</span></span>
+    <span class="t-3003-c">flow curves for negative
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:68:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:68:30</span></span><span class="t-3003-c">
+      so that they mirror the<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:68:33</span></span>
+    <span class="t-3003-c">lines for positive
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:69:5</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:69:24</span></span><span class="t-3003-c">. This leads to the phase<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:69:27</span></span>
+    <span class="t-3003-c">portrait in Figure 15. We see that the system indeed<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:70:5</span></span>
+    <span class="t-3003-c">has a rest point at
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:71:5</span></span><span class="t-3003-c">$(x,y)=(0,0)$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:71:25</span></span><span class="t-3003-c">. However, the rest<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:71:38</span></span>
+    <span class="t-3003-c">point is a center, i.e., it is only neutrally stable<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:72:5</span></span>
+    <span class="t-3003-c">(this is to be expected, since in fact this is an<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:73:5</span></span>
+    <span class="t-3003-c">autonomous Hamiltonian system arising from a potential<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:74:5</span></span>
+    <span class="t-3003-c">energy
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:75:5</span></span><span class="t-3003-c">$U(x)=|x|$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:75:12</span></span><span class="t-3003-c">, and we know energy is conserved in<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:75:22</span></span>
+    <span class="t-3003-c">such systems, leading to periodic oscillatory<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:76:5</span></span>
+    <span class="t-3003-c">motions). So, a particle moving according to these<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:77:5</span></span>
+    <span class="t-3003-c">equations of motion will indeed levitate, but will do<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:78:5</span></span>
+    <span class="t-3003-c">so in a way that oscillates around the reference point<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:79:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:80:5</span></span><span class="t-3003-c">$x=0$<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:80:5</span></span><span class="t-3003-c">, and only under the unrealistic assumption that<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:80:10</span></span>
+    <span class="t-3003-c">the physical system is indeed described to perfect<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:81:5</span></span>
+    <span class="t-3003-c">precision by the equations
+      <span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:82:5</span></span><a
       href="./3-5-1.html#_55_h.a.i_"
       class=""
     >(43)</a>. In
-    practice, due to the finite speed of response of the
-    switching control, any physical implementation of this
-    control rule will be unstable.
+    <span class="t-3003-c">practice, due to the finite speed of response of the<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:83:5</span></span>
+    <span class="t-3003-c">switching control, any physical implementation of this<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:84:5</span></span>
+    <span class="t-3003-c">control rule will be unstable.<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:85:5</span></span>
   </p>
   <figure>
     <img
       src="figures/phasediag-magnet-unstable.png"
       style="max-width: 55%"
-    >
+    ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/phasediag-magnet-unstable.png</span></span>
     <figcaption>
-      Figure 15: The phase portrait for the equation of
-      motion of a magnetically levitated object, using the
-      "naive" approach. The rest point is only neutrally
-      stable, and in practice this approach does not result
-      in stable levitation.
+      <span class="t-3003-c">Figure 15: The phase portrait for the equation of<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:92:13</span></span>
+      <span class="t-3003-c">motion of a magnetically levitated object, using the<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:93:13</span></span>
+      <span class="t-3003-c">"naive" approach. The rest point is only neutrally<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:94:13</span></span>
+      <span class="t-3003-c">stable, and in practice this approach does not result<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:95:13</span></span>
+      <span class="t-3003-c">in stable levitation.<span class="t-3003">./119B/wly/03/05/01-a-first-attempt.wly:96:13</span></span>
     </figcaption>
   </figure>
 </body>

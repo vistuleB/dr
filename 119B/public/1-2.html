@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 1.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,11 +42,11 @@
   </div>
   <h1>
     1.2
-    Hamiltonian systems
+    <span class="t-3003-c">Hamiltonian systems<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:2:11</span></span>
   </h1>
   <p>
-    Recall that the general form of a planar differential
-    equation (i.e., a system of two first-order ODEs) is
+    <span class="t-3003-c">Recall that the general form of a planar differential<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:4:5</span></span>
+    <span class="t-3003-c">equation (i.e., a system of two first-order ODEs) is<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:5:5</span></span>
   </p>
   <div
     id="_1_h.a.i_"
@@ -58,35 +59,44 @@
     \dot{q} &amp;= G(p,q,t),
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:7:5</span>
   </div>
   <p>
-    where, in keeping with a tradition in the theory of
-    ODEs, $\dot{f}$ denotes the derivative of a quantity
-    $f$ with respect to the time variable $t$. The system
-    is called a
-    <i>Hamiltonian system</i>
-    if there is a
-    function
+    <span class="t-3003-c">where, in keeping with a tradition in the theory of<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:16:5</span></span>
+    <span class="t-3003-c">ODEs,
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:17:5</span></span><span class="t-3003-c">$\dot{f}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:17:11</span></span><span class="t-3003-c">
+      denotes the derivative of a quantity<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:17:20</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:18:5</span></span><span class="t-3003-c">$f$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:18:5</span></span><span class="t-3003-c">
+      with respect to the time variable
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:18:8</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:18:43</span></span><span class="t-3003-c">. The system<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:18:46</span></span>
+    <span class="t-3003-c">is called a
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:19:5</span></span><i><span class="t-3003-c">Hamiltonian system<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:19:18</span></span></i><span class="t-3003-c">
+      if there is a<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:19:37</span></span>
+    <span class="t-3003-c">function<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:20:5</span></span>
   </p>
   <div class="math-block">
     $$
     H=H(p,q,t)
-    $$
+    $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:22:5</span>
   </div>
   <p>
-    (called the
-    <i>Hamiltonian</i>
-    associated with the system)
-    such that the functions $F$ and $G$ satisfy
+    <span class="t-3003-c">(called the
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:26:5</span></span><i><span class="t-3003-c">Hamiltonian<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:26:18</span></span></i><span class="t-3003-c">
+      associated with the system)<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:26:30</span></span>
+    <span class="t-3003-c">such that the functions
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:27:5</span></span><span class="t-3003-c">$F$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:27:29</span></span><span class="t-3003-c">
+      and
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:27:32</span></span><span class="t-3003-c">$G$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:27:37</span></span><span class="t-3003-c">
+      satisfy<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:27:40</span></span>
   </p>
   <div class="math-block">
     $$
     F(p,q,t) = -\frac{\partial H}{\partial q}, \quad G(p,q,t) = \frac{\partial H}{\partial p}.
-    $$
+    $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:29:5</span>
   </div>
   <p>
-    In this case the system has the form
+    <span class="t-3003-c">In this case the system has the form<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:33:5</span></span>
   </p>
   <div
     id="_2_h.a.i_"
@@ -99,24 +109,35 @@
     \dot{q} &amp;= \ \ \frac{\partial H}{\partial p}.
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:35:5</span>
   </div>
   <p>
-    The variable $p$ is sometimes called a
-    <i>generalized
-      coordinate</i>, and the variable $q$ is called the
-    <i>generalized momentum</i>
-    associated to $p$.
+    <span class="t-3003-c">The variable
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:44:5</span></span><span class="t-3003-c">$p$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:44:18</span></span><span class="t-3003-c">
+      is sometimes called a
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:44:21</span></span><i><span class="t-3003-c">generalized<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:44:45</span></span>
+      <span class="t-3003-c">coordinate<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:45:5</span></span></i><span class="t-3003-c">, and the variable
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:45:16</span></span><span class="t-3003-c">$q$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:45:35</span></span><span class="t-3003-c">
+      is called the<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:45:38</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:46:5</span></span><i><span class="t-3003-c">generalized momentum<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:46:6</span></span></i><span class="t-3003-c">
+      associated to
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:46:27</span></span><span class="t-3003-c">$p$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:46:42</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:46:45</span></span>
   </p>
   <p>
-    When can we say that a given system
-    <a
+    <span class="t-3003-c">When can we say that a given system<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:48:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:49:5</span></span><a
       href="./1-2.html#_1_h.a.i_"
       class=""
     >(1)</a>
-    is Hamiltonian? Assuming that $F$
-    and $G$ are continuously differentiable, it is not
-    difficult to see that a necessary condition is that
+    is Hamiltonian? Assuming that
+    <span class="t-3003-c">$F$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:49:37</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:49:40</span></span>
+    <span class="t-3003-c">and
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:50:5</span></span><span class="t-3003-c">$G$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:50:9</span></span><span class="t-3003-c">
+      are continuously differentiable, it is not<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:50:12</span></span>
+    <span class="t-3003-c">difficult to see that a necessary condition is that<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:51:5</span></span>
   </p>
   <div
     id="_3_h.a.i_"
@@ -128,33 +149,46 @@
     \frac{\partial F}{\partial p} = -\frac{\partial G}{\partial q},
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:53:5</span>
   </div>
   <p>
-    (or
-    $\frac{\partial F}{\partial p} +\frac{\partial
-    G}{\partial q}=0$)
-    since both sides of the equation are equal to
-    $-\frac{\partial^2 H}{\partial p \partial q}$.
-    Equivalently, this condition can be written as
+    <span class="t-3003-c">(or<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:61:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:62:5</span></span><span class="t-3003-c">$\frac{\partial F}{\partial p} +\frac{\partial
+      G}{\partial q}=0$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:62:5</span></span><span class="t-3003-c">)<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:63:22</span></span>
+    <span class="t-3003-c">since both sides of the equation are equal to<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:64:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:65:5</span></span><span class="t-3003-c">$-\frac{\partial^2 H}{\partial p \partial q}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:65:5</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:65:50</span></span>
+    <span class="t-3003-c">Equivalently, this condition can be written as<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:66:5</span></span>
   </p>
   <div class="math-block">
     $$
     \operatorname{div} \mathbf{V} = 0,
-    $$
+    $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:68:5</span>
   </div>
   <p>
-    where $\mathbf{V}$ denotes the planar vector field
-    $\mathbf{V}= (F,G)$ (we interpret the first
-    coordinate of $\mathbf{V}$ as the "$p$-coordinate"
-    and the second coordinate as the "$q$-coordinate"),
-    and $\operatorname{div} \mathbf{V}$ denotes the
-    divergence of $\mathbf{V}$. In physics, a vector
-    field with this property is called
-    <i>divergence-free</i>
-    or
-    <i>solenoidal</i>. Yet another way to write
-    <a
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:72:5</span></span><span class="t-3003-c">$\mathbf{V}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:72:11</span></span><span class="t-3003-c">
+      denotes the planar vector field<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:72:23</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:73:5</span></span><span class="t-3003-c">$\mathbf{V}= (F,G)$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:73:5</span></span><span class="t-3003-c">
+      (we interpret the first<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:73:24</span></span>
+    <span class="t-3003-c">coordinate of
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:74:5</span></span><span class="t-3003-c">$\mathbf{V}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:74:19</span></span><span class="t-3003-c">
+      as the "<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:74:31</span></span><span class="t-3003-c">$p$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:74:41</span></span><span class="t-3003-c">-coordinate"<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:74:44</span></span>
+    <span class="t-3003-c">and the second coordinate as the "<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:75:5</span></span><span class="t-3003-c">$q$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:75:40</span></span><span class="t-3003-c">-coordinate"),<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:75:43</span></span>
+    <span class="t-3003-c">and
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:76:5</span></span><span class="t-3003-c">$\operatorname{div} \mathbf{V}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:76:9</span></span><span class="t-3003-c">
+      denotes the<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:76:40</span></span>
+    <span class="t-3003-c">divergence of
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:77:5</span></span><span class="t-3003-c">$\mathbf{V}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:77:19</span></span><span class="t-3003-c">. In physics, a vector<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:77:31</span></span>
+    <span class="t-3003-c">field with this property is called
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:78:5</span></span><i><span class="t-3003-c">divergence-free<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:78:41</span></span></i><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:78:57</span></span>
+    <span class="t-3003-c">or
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:79:5</span></span><i><span class="t-3003-c">solenoidal<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:79:9</span></span></i><span class="t-3003-c">. Yet another way to write<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:79:20</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:80:5</span></span><a
       href="./1-2.html#_3_h.a.i_"
       class=""
     >(3)</a>
@@ -165,79 +199,110 @@
     \begin{align*}
     \operatorname{curl} \mathbf{W} = 0,
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:82:5</span>
   </div>
   <p>
-    where $\mathbf{W}$ is the vector field
-    $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the
-    (2-dimensional version of the) curl operator, defined
-    by
-    $\operatorname{curl}(A,B) = \frac{\partial
-    A}{\partial q}-\frac{\partial B}{\partial p}$.
-    A vector field with this property is called
-    <i>curl-free</i>
-    or
-    <i>irrotational</i>.
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:86:5</span></span><span class="t-3003-c">$\mathbf{W}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:86:11</span></span><span class="t-3003-c">
+      is the vector field<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:86:23</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:87:5</span></span><span class="t-3003-c">$\mathbf{W}=(G,-F)$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:87:5</span></span><span class="t-3003-c">, and
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:87:24</span></span><span class="t-3003-c">$\operatorname{curl}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:87:30</span></span><span class="t-3003-c">
+      is the<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:87:51</span></span>
+    <span class="t-3003-c">(2-dimensional version of the) curl operator, defined<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:88:5</span></span>
+    <span class="t-3003-c">by<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:89:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:90:5</span></span><span class="t-3003-c">$\operatorname{curl}(A,B) = \frac{\partial
+      A}{\partial q}-\frac{\partial B}{\partial p}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:90:5</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:91:50</span></span>
+    <span class="t-3003-c">A vector field with this property is called<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:92:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:93:5</span></span><i><span class="t-3003-c">curl-free<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:93:6</span></span></i><span class="t-3003-c">
+      or
+      <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:93:16</span></span><i><span class="t-3003-c">irrotational<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:93:21</span></span></i><span class="t-3003-c">.<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:93:34</span></span>
   </p>
   <div
     class="statement lemma"
     id="_4_h.a.i_"
   >
     <h3>
-      <b>Lemma</b>
-      <b>1.1</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:95:5</span></span><b><span class="t-3003-c">Lemma<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:95:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:95:5</span></span><b><span class="t-3003-c">1.1<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:95:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:95:5</span></span>
     </h3>
     <p>
-      If the equation
-      <a
+      <span class="t-3003-c">If the equation
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:97:9</span></span><a
         href="./1-2.html#_1_h.a.i_"
         class=""
       >(1)</a>
       is defined on a
-      simply connected domain, the condition
-      <a
+      <span class="t-3003-c">simply connected domain, the condition<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:98:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:99:9</span></span><a
         href="./1-2.html#_3_h.a.i_"
         class=""
       >(3)</a>
       is both necessary and
-      sufficient for the system to be Hamiltonian.
+      <span class="t-3003-c">sufficient for the system to be Hamiltonian.<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:100:9</span></span>
     </p>
   </div>
   <div>
     <p>
-      <span class="proof">Proof</span>This is a slight reformulation of a familiar fact
-      from vector calculus, that says that in a simply
-      connected domain, a vector field $\mathbf{W}=(A,B)$
-      is curl-free if and only if it is
-      <i>conservative</i>. A
-      conservative vector field is one for which the line
-      integral of the field between two points is
-      independent of the contour connecting them, or
-      equivalently, such that the line integral on any
-      <i>closed</i>
-      contour vanishes. Such a vector field can
-      always be represented as $\mathbf{W} = \nabla H$ (the
-      gradient of $H$) for some scalar function $H$; one
-      simply defines $H(p,q)$ as the line integral (which
-      for a conservative field is independent of the path of
-      integration)
+      <span class="proof">Proof</span><span class="t-3003-c">This is a slight reformulation of a familiar fact<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:103:9</span></span>
+      <span class="t-3003-c">from vector calculus, that says that in a simply<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:104:9</span></span>
+      <span class="t-3003-c">connected domain, a vector field
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:105:9</span></span><span class="t-3003-c">$\mathbf{W}=(A,B)$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:105:42</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:105:60</span></span>
+      <span class="t-3003-c">is curl-free if and only if it is
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:106:9</span></span><i><span class="t-3003-c">conservative<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:106:44</span></span></i><span class="t-3003-c">. A<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:106:57</span></span>
+      <span class="t-3003-c">conservative vector field is one for which the line<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:107:9</span></span>
+      <span class="t-3003-c">integral of the field between two points is<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:108:9</span></span>
+      <span class="t-3003-c">independent of the contour connecting them, or<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:109:9</span></span>
+      <span class="t-3003-c">equivalently, such that the line integral on any<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:110:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:111:9</span></span><i><span class="t-3003-c">closed<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:111:10</span></span></i><span class="t-3003-c">
+        contour vanishes. Such a vector field can<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:111:17</span></span>
+      <span class="t-3003-c">always be represented as
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:112:9</span></span><span class="t-3003-c">$\mathbf{W} = \nabla H$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:112:34</span></span><span class="t-3003-c">
+        (the<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:112:57</span></span>
+      <span class="t-3003-c">gradient of
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:113:9</span></span><span class="t-3003-c">$H$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:113:21</span></span><span class="t-3003-c">) for some scalar function
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:113:24</span></span><span class="t-3003-c">$H$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:113:51</span></span><span class="t-3003-c">; one<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:113:54</span></span>
+      <span class="t-3003-c">simply defines
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:114:9</span></span><span class="t-3003-c">$H(p,q)$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:114:24</span></span><span class="t-3003-c">
+        as the line integral (which<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:114:32</span></span>
+      <span class="t-3003-c">for a conservative field is independent of the path of<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:115:9</span></span>
+      <span class="t-3003-c">integration)<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:116:9</span></span>
     </p>
     <div class="math-block">
       $$
       H(p,q) = \int_{(p_0,q_0)}^{(p,q)} \mathbf{W}\cdot \mathbf{ds} = \int_{(p_0,q_0)}^{(p,q)} A\,dp + B\,dq
-      $$
+      $$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:118:9</span>
     </div>
     <p>
-      between some fixed but arbitrary initial point
-      $(p_0,q_0)$ and the point $(p,q)$. The fact that
-      $\mathbf{W}=\nabla H$ is immediate from the
-      fundamental theorem of calculus. In our case,
-      $\mathbf{W}=(G,-F)$ so the equation
-      $\mathbf{W}=\nabla H$ gives exactly the pair of
-      equations $F=-\frac{\partial H}{\partial q}$,
-      $G=\frac{\partial H}{\partial p}$, with $H$ serving
-      as the desired Hamiltonian.<span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
+      <span class="t-3003-c">between some fixed but arbitrary initial point<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:122:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:123:9</span></span><span class="t-3003-c">$(p_0,q_0)$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:123:9</span></span><span class="t-3003-c">
+        and the point
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:123:20</span></span><span class="t-3003-c">$(p,q)$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:123:35</span></span><span class="t-3003-c">. The fact that<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:123:42</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:124:9</span></span><span class="t-3003-c">$\mathbf{W}=\nabla H$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:124:9</span></span><span class="t-3003-c">
+        is immediate from the<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:124:30</span></span>
+      <span class="t-3003-c">fundamental theorem of calculus. In our case,<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:125:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:126:9</span></span><span class="t-3003-c">$\mathbf{W}=(G,-F)$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:126:9</span></span><span class="t-3003-c">
+        so the equation<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:126:28</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:127:9</span></span><span class="t-3003-c">$\mathbf{W}=\nabla H$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:127:9</span></span><span class="t-3003-c">
+        gives exactly the pair of<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:127:30</span></span>
+      <span class="t-3003-c">equations
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:128:9</span></span><span class="t-3003-c">$F=-\frac{\partial H}{\partial q}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:128:19</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:128:53</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:129:9</span></span><span class="t-3003-c">$G=\frac{\partial H}{\partial p}$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:129:9</span></span><span class="t-3003-c">, with
+        <span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:129:42</span></span><span class="t-3003-c">$H$<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:129:49</span></span><span class="t-3003-c">
+        serving<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:129:52</span></span>
+      <span class="t-3003-c">as the desired Hamiltonian.<span class="t-3003">./119B/wly/01/02-hamiltonian-systems.wly:130:9</span></span><span style="color:#0000;visibility:none;">A</span><span class="qed">$\square$</span>
     </p>
   </div>
 </body>

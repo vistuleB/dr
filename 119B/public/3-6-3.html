@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 3.6.3 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,107 +42,134 @@
   </div>
   <h1>
     3.6.3
-    Generalization to arbitrary dimension
+    <span class="t-3003-c">Generalization to arbitrary dimension<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:2:11</span></span>
   </h1>
   <p>
-    By repeating the above analysis in a careful manner
-    for the general LQP problem in arbitrary dimension
-    discussed at the beginning of this section, one can
-    derive the solution for that general case. For the LQP
-    problem with a finite horizon, the gain matrix $K(T)$
-    from
-    <a
+    <span class="t-3003-c">By repeating the above analysis in a careful manner<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:4:5</span></span>
+    <span class="t-3003-c">for the general LQP problem in arbitrary dimension<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:5:5</span></span>
+    <span class="t-3003-c">discussed at the beginning of this section, one can<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:6:5</span></span>
+    <span class="t-3003-c">derive the solution for that general case. For the LQP<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:7:5</span></span>
+    <span class="t-3003-c">problem with a finite horizon, the gain matrix
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:8:5</span></span><span class="t-3003-c">$K(T)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:8:52</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:8:58</span></span>
+    <span class="t-3003-c">from
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:9:5</span></span><a
       href="./3-6.html#_59_h.a.i_"
       class=""
     >(47)</a>
     is expressed as a matrix
-    product
+    <span class="t-3003-c">product<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:10:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     K(T) = Q^{-1}B^\top V(T),
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:12:5</span>
   </div>
   <p>
-    where $V(T)$ is a matrix related to the optimal cost
-    function $J_*(\mathbf{w},T)$ (defined analogously to
-    $I_*(w,T)$) by
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:16:5</span></span><span class="t-3003-c">$V(T)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:16:11</span></span><span class="t-3003-c">
+      is a matrix related to the optimal cost<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:16:17</span></span>
+    <span class="t-3003-c">function
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:17:5</span></span><span class="t-3003-c">$J_*(\mathbf{w},T)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:17:14</span></span><span class="t-3003-c">
+      (defined analogously to<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:17:33</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:18:5</span></span><span class="t-3003-c">$I_*(w,T)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:18:5</span></span><span class="t-3003-c">) by<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:18:15</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     J_*(\mathbf{w},T) = \mathbf{w}^\top V(T)\mathbf{w}.
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:20:5</span>
   </div>
   <p>
-    Furthermore, $V$ satisfies the matrix differential
-    equation (also referred to as the Ricatti equation)
+    <span class="t-3003-c">Furthermore,
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:24:5</span></span><span class="t-3003-c">$V$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:24:18</span></span><span class="t-3003-c">
+      satisfies the matrix differential<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:24:21</span></span>
+    <span class="t-3003-c">equation (also referred to as the Ricatti equation)<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:25:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     \frac{dV}{dt} = P + A^\top V(T) + V(T) A - V(T) B Q^{-1} B^\top V(T)
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:27:5</span>
   </div>
   <p>
-    with boundary condition $V(0) = 0$ (the zero matrix).
-    For an infinite time horizon, we again look for
-    stationary solutions, which leads to the
-    <i>algebraic
-      Ricatti equation</i>
+    <span class="t-3003-c">with boundary condition
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:31:5</span></span><span class="t-3003-c">$V(0) = 0$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:31:29</span></span><span class="t-3003-c">
+      (the zero matrix).<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:31:39</span></span>
+    <span class="t-3003-c">For an infinite time horizon, we again look for<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:32:5</span></span>
+    <span class="t-3003-c">stationary solutions, which leads to the
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:33:5</span></span><i><span class="t-3003-c">algebraic<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:33:47</span></span>
+      <span class="t-3003-c">Ricatti equation<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:34:5</span></span></i><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:34:22</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     P + A^\top V + V A - V B Q^{-1} B^\top V = 0,
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:36:5</span>
   </div>
   <p>
-    which is a system of quadratic equations in the
-    entries of $V$. The (constant) gain matrix $K$ is
-    again given by
+    <span class="t-3003-c">which is a system of quadratic equations in the<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:40:5</span></span>
+    <span class="t-3003-c">entries of
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:41:5</span></span><span class="t-3003-c">$V$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:41:16</span></span><span class="t-3003-c">. The (constant) gain matrix
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:41:19</span></span><span class="t-3003-c">$K$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:41:48</span></span><span class="t-3003-c">
+      is<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:41:51</span></span>
+    <span class="t-3003-c">again given by<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:42:5</span></span>
   </p>
   <div class="math-block">
     $$
     \begin{align*}
     K = Q^{-1}B^\top V.
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:44:5</span>
   </div>
   <p>
-    While these equations may seem intimidating at first
-    sight, they are easy to solve numerically on a
-    computer. Symbolic math software applications such as
-    $\texttt{Mathematica}$ even contain specialized
-    packages for control theory that make the process of
-    deriving optimal LQP control rules highly automated
-    and quite simple in practice, as the next example
-    demonstrates.
+    <span class="t-3003-c">While these equations may seem intimidating at first<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:48:5</span></span>
+    <span class="t-3003-c">sight, they are easy to solve numerically on a<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:49:5</span></span>
+    <span class="t-3003-c">computer. Symbolic math software applications such as<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:50:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:51:5</span></span><span class="t-3003-c">$\texttt{Mathematica}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:51:5</span></span><span class="t-3003-c">
+      even contain specialized<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:51:27</span></span>
+    <span class="t-3003-c">packages for control theory that make the process of<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:52:5</span></span>
+    <span class="t-3003-c">deriving optimal LQP control rules highly automated<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:53:5</span></span>
+    <span class="t-3003-c">and quite simple in practice, as the next example<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:54:5</span></span>
+    <span class="t-3003-c">demonstrates.<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:55:5</span></span>
   </p>
   <div
     label="The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$"
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>3.8</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:57:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:57:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:57:5</span></span><b><span class="t-3003-c">3.8<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:57:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:57:5</span></span>
     </h3>
     <p>
-      <span class="label">The inverted pendulum with cart: LQP optimal control with $\texttt{Mathematica}$</span>The controlled inverted pendulum with cart is a
-      dynamical system with 2 degrees of freedom
-      $\theta=\theta(t)$ (representing the angle of the
-      pendulum relative to the positive $x$-axis) and
-      $x=x(t)$ (representing the displacement of the cart
-      along the $x$-axis), satisfying the equations of
-      motion
+      <span class="label"><span class="t-3003-c">The inverted pendulum with cart: LQP optimal control with
+          <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:58:15</span></span><span class="t-3003-c">$\texttt{Mathematica}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:58:73</span></span><span class="t-3003-c">
+          <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:58:95</span></span></span><span class="t-3003-c">The controlled inverted pendulum with cart is a<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:59:9</span></span>
+      <span class="t-3003-c">dynamical system with 2 degrees of freedom<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:60:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:61:9</span></span><span class="t-3003-c">$\theta=\theta(t)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:61:9</span></span><span class="t-3003-c">
+        (representing the angle of the<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:61:27</span></span>
+      <span class="t-3003-c">pendulum relative to the positive
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:62:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:62:43</span></span><span class="t-3003-c">-axis) and<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:62:46</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:63:9</span></span><span class="t-3003-c">$x=x(t)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:63:9</span></span><span class="t-3003-c">
+        (representing the displacement of the cart<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:63:17</span></span>
+      <span class="t-3003-c">along the
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:64:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:64:19</span></span><span class="t-3003-c">-axis), satisfying the equations of<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:64:22</span></span>
+      <span class="t-3003-c">motion<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:65:9</span></span>
       <sup id="_64_h.a.i_">
-        <a
+        <span class="t-3003-c">
+          <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:65:15</span></span><a
           href="./3-6-3.html#_65_h.a.i_"
           class=""
         >(1)</a>
@@ -154,31 +182,36 @@
       4\ddot{x} &amp;=  \ddot{\theta}\sin \theta + \dot{\theta}^2 \cos \theta + 2 u, \\
       0 &amp;= \ddot{\theta}+2\cos \theta - 2\ddot{x} \sin\theta,
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:67:9</span>
     </div>
     <p>
-      where $u$ is the control variable representing a
-      control force being applied to the cart --- see Figure
-      19.
+      <span class="t-3003-c">where
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:72:9</span></span><span class="t-3003-c">$u$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:72:15</span></span><span class="t-3003-c">
+        is the control variable representing a<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:72:18</span></span>
+      <span class="t-3003-c">control force being applied to the cart --- see Figure<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:73:9</span></span>
+      <span class="t-3003-c">19.<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:74:9</span></span>
     </p>
     <figure>
       <img
         src="figures/invertedpendulum-cart.png"
         style="max-width: 48%"
-      >
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/invertedpendulum-cart.png</span></span>
       <figcaption>
-        Figure 19: The inverted pendulum and cart.
+        <span class="t-3003-c">Figure 19: The inverted pendulum and cart.<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:81:17</span></span>
       </figcaption>
     </figure>
     <p>
-      The system can be thought of in the usual way as a
-      system of 4 coupled first-order ODEs in the variables
-      $\theta, \dot{\theta}, x, \dot{x}$. The goal of the
-      control problem is to bring the system to a stable
-      equilibrium at
-      $(x,\dot{x},\theta,\dot{\theta}) = (0,0,\pi/2,0)$. In
-      $\texttt{Mathematica}$, we type the following
-      commands:
+      <span class="t-3003-c">The system can be thought of in the usual way as a<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:83:9</span></span>
+      <span class="t-3003-c">system of 4 coupled first-order ODEs in the variables<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:84:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:85:9</span></span><span class="t-3003-c">$\theta, \dot{\theta}, x, \dot{x}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:85:9</span></span><span class="t-3003-c">. The goal of the<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:85:43</span></span>
+      <span class="t-3003-c">control problem is to bring the system to a stable<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:86:9</span></span>
+      <span class="t-3003-c">equilibrium at<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:87:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:88:9</span></span><span class="t-3003-c">$(x,\dot{x},\theta,\dot{\theta}) = (0,0,\pi/2,0)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:88:9</span></span><span class="t-3003-c">. In<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:88:58</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:89:9</span></span><span class="t-3003-c">$\texttt{Mathematica}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:89:9</span></span><span class="t-3003-c">, we type the following<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:89:31</span></span>
+      <span class="t-3003-c">commands:<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:90:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -197,20 +230,27 @@
       \end{array}
       \right)_{}^{\mathcal{S}}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:92:9</span>
     </div>
     <p>
-      The second command causes $\texttt{Mathematica}$ to
-      linearize the equations of motion around the desired
-      rest point. The output is an augmented matrix of the
-      form $\left( A\,|\,B\right)$ where $A, B$ are the two
-      matrices in the resulting linearized equation
-      <a
+      <span class="t-3003-c">The second command causes
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:108:9</span></span><span class="t-3003-c">$\texttt{Mathematica}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:108:35</span></span><span class="t-3003-c">
+        to<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:108:57</span></span>
+      <span class="t-3003-c">linearize the equations of motion around the desired<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:109:9</span></span>
+      <span class="t-3003-c">rest point. The output is an augmented matrix of the<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:110:9</span></span>
+      <span class="t-3003-c">form
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:111:9</span></span><span class="t-3003-c">$\left( A\,|\,B\right)$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:111:14</span></span><span class="t-3003-c">
+        where
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:111:37</span></span><span class="t-3003-c">$A, B$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:111:44</span></span><span class="t-3003-c">
+        are the two<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:111:50</span></span>
+      <span class="t-3003-c">matrices in the resulting linearized equation<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:112:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:113:9</span></span><a
         href="./3-6.html#_57_h.a.i_"
         class=""
       >(45)</a>. This brings the problem to the
-      familiar setup of LQP optimal control which we
-      discussed above. We now type:
+      <span class="t-3003-c">familiar setup of LQP optimal control which we<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:114:9</span></span>
+      <span class="t-3003-c">discussed above. We now type:<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:115:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -223,19 +263,28 @@
       \scriptsize{\text{Out[3]=}}\quad &amp;
       \{-1.,-5.97415,14.8452,13.7966\}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:117:9</span>
     </div>
     <p>
-      This asks $\texttt{Mathematica}$ to compute the gain
-      matrix $K$ (in this case a vector with 4 coordinates)
-      associated with the cost functional
-      <a
+      <span class="t-3003-c">This asks
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:127:9</span></span><span class="t-3003-c">$\texttt{Mathematica}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:127:19</span></span><span class="t-3003-c">
+        to compute the gain<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:127:41</span></span>
+      <span class="t-3003-c">matrix
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:128:9</span></span><span class="t-3003-c">$K$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:128:16</span></span><span class="t-3003-c">
+        (in this case a vector with 4 coordinates)<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:128:19</span></span>
+      <span class="t-3003-c">associated with the cost functional<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:129:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:130:9</span></span><a
         href="./3-6.html#_58_h.a.i_"
         class=""
       >(46)</a>
-      (in the case $t_2=\infty$ of an
-      infinite time horizon), where the quadratic forms
-      $P, Q$ are defined by
+      (in the case
+      <span class="t-3003-c">$t_2=\infty$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:130:24</span></span><span class="t-3003-c">
+        of an<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:130:36</span></span>
+      <span class="t-3003-c">infinite time horizon), where the quadratic forms<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:131:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:132:9</span></span><span class="t-3003-c">$P, Q$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:132:9</span></span><span class="t-3003-c">
+        are defined by<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:132:15</span></span>
     </p>
     <div class="math-block">
       $$
@@ -246,20 +295,21 @@
       \qquad
       Q = (1).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:134:9</span>
     </div>
     <p>
-      Using the gain matrix computed by
-      $\texttt{Mathematica}$, we see that the solution to
-      the optimal control problem we defined is given by the
-      feedback rule
+      <span class="t-3003-c">Using the gain matrix computed by<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:142:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:143:9</span></span><span class="t-3003-c">$\texttt{Mathematica}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:143:9</span></span><span class="t-3003-c">, we see that the solution to<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:143:31</span></span>
+      <span class="t-3003-c">the optimal control problem we defined is given by the<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:144:9</span></span>
+      <span class="t-3003-c">feedback rule<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:145:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       u = - x -5.97415\, \dot{x} + 14.8452\, \theta + 13.7966\, \dot{\theta}.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:147:9</span>
     </div>
   </div>
   <hr>
@@ -268,12 +318,17 @@
     class="footnote"
   >
     <p>
-      <a href="#_64_h.a.i_">(1)</a>
-      This example is based on a blog post written by
-      Andrew Moylan on the website of Wolfram Research
-      (maker of the $\texttt{Mathematica}$ software); see
-      the link:
-      <a href="http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/">http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/</a>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:151:5</span></span><a href="#_64_h.a.i_"><span class="t-3003-c">(1)<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:151:5</span></span></a><span class="t-3003-c">
+        This example is based on a blog post written by<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:151:5</span></span>
+      <span class="t-3003-c">Andrew Moylan on the website of Wolfram Research<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:154:9</span></span>
+      <span class="t-3003-c">(maker of the
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:155:9</span></span><span class="t-3003-c">$\texttt{Mathematica}$<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:155:23</span></span><span class="t-3003-c">
+        software); see<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:155:45</span></span>
+      <span class="t-3003-c">the link:<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:156:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:157:9</span></span><a href="http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/"><span class="t-3003-c">http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/<span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:157:10</span></span></a><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/03/06/03-generalization-to-arbitrary-dimension.wly:157:141</span></span>
     </p>
   </div>
 </body>

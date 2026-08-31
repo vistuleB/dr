@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 3.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,28 +42,40 @@
   </div>
   <h1>
     3.2
-    Feedback
+    <span class="t-3003-c">Feedback<span class="t-3003">./119B/wly/03/02-feedback.wly:2:11</span></span>
   </h1>
   <p>
-    If the control variable $\mathbf{u}$ at a given time
-    $t$ needs to be specified simply as a function
-    $\mathbf{u}(t)$ of time, without reference to the
-    current state $\mathbf{x}(t)$ of the dynamical
-    system, we are talking about control without feedback
-    (technically, this is known as
-    <i>open-loop control</i>).
-    Alternatively, if we allow $\mathbf{u}$ to be
-    specified as a function $\mathbf{u}(\mathbf{x},t)$
-    (that is, if the controller is allowed to "look at
-    what she is doing"), this means that the control
-    system incorporates feedback. A control system of this
-    type is known as
-    <i>closed-loop control</i>. Feedback is an
-    extremely powerful idea --- as anyone who has tried to
-    drive a car blindfolded knows! Indeed, almost all of
-    control theory focuses on control with feedback.
-    However, as we shall see below, open-loop control also
-    has some surprising uses.
+    <span class="t-3003-c">If the control variable
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:4:5</span></span><span class="t-3003-c">$\mathbf{u}$<span class="t-3003">./119B/wly/03/02-feedback.wly:4:29</span></span><span class="t-3003-c">
+      at a given time<span class="t-3003">./119B/wly/03/02-feedback.wly:4:41</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:5:5</span></span><span class="t-3003-c">$t$<span class="t-3003">./119B/wly/03/02-feedback.wly:5:5</span></span><span class="t-3003-c">
+      needs to be specified simply as a function<span class="t-3003">./119B/wly/03/02-feedback.wly:5:8</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:6:5</span></span><span class="t-3003-c">$\mathbf{u}(t)$<span class="t-3003">./119B/wly/03/02-feedback.wly:6:5</span></span><span class="t-3003-c">
+      of time, without reference to the<span class="t-3003">./119B/wly/03/02-feedback.wly:6:20</span></span>
+    <span class="t-3003-c">current state
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:7:5</span></span><span class="t-3003-c">$\mathbf{x}(t)$<span class="t-3003">./119B/wly/03/02-feedback.wly:7:19</span></span><span class="t-3003-c">
+      of the dynamical<span class="t-3003">./119B/wly/03/02-feedback.wly:7:34</span></span>
+    <span class="t-3003-c">system, we are talking about control without feedback<span class="t-3003">./119B/wly/03/02-feedback.wly:8:5</span></span>
+    <span class="t-3003-c">(technically, this is known as
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:9:5</span></span><i><span class="t-3003-c">open-loop control<span class="t-3003">./119B/wly/03/02-feedback.wly:9:37</span></span></i><span class="t-3003-c">).<span class="t-3003">./119B/wly/03/02-feedback.wly:9:55</span></span>
+    <span class="t-3003-c">Alternatively, if we allow
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:10:5</span></span><span class="t-3003-c">$\mathbf{u}$<span class="t-3003">./119B/wly/03/02-feedback.wly:10:32</span></span><span class="t-3003-c">
+      to be<span class="t-3003">./119B/wly/03/02-feedback.wly:10:44</span></span>
+    <span class="t-3003-c">specified as a function
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:11:5</span></span><span class="t-3003-c">$\mathbf{u}(\mathbf{x},t)$<span class="t-3003">./119B/wly/03/02-feedback.wly:11:29</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:11:55</span></span>
+    <span class="t-3003-c">(that is, if the controller is allowed to "look at<span class="t-3003">./119B/wly/03/02-feedback.wly:12:5</span></span>
+    <span class="t-3003-c">what she is doing"), this means that the control<span class="t-3003">./119B/wly/03/02-feedback.wly:13:5</span></span>
+    <span class="t-3003-c">system incorporates feedback. A control system of this<span class="t-3003">./119B/wly/03/02-feedback.wly:14:5</span></span>
+    <span class="t-3003-c">type is known as
+      <span class="t-3003">./119B/wly/03/02-feedback.wly:15:5</span></span><i><span class="t-3003-c">closed-loop control<span class="t-3003">./119B/wly/03/02-feedback.wly:15:23</span></span></i><span class="t-3003-c">. Feedback is an<span class="t-3003">./119B/wly/03/02-feedback.wly:15:43</span></span>
+    <span class="t-3003-c">extremely powerful idea --- as anyone who has tried to<span class="t-3003">./119B/wly/03/02-feedback.wly:16:5</span></span>
+    <span class="t-3003-c">drive a car blindfolded knows! Indeed, almost all of<span class="t-3003">./119B/wly/03/02-feedback.wly:17:5</span></span>
+    <span class="t-3003-c">control theory focuses on control with feedback.<span class="t-3003">./119B/wly/03/02-feedback.wly:18:5</span></span>
+    <span class="t-3003-c">However, as we shall see below, open-loop control also<span class="t-3003">./119B/wly/03/02-feedback.wly:19:5</span></span>
+    <span class="t-3003-c">has some surprising uses.<span class="t-3003">./119B/wly/03/02-feedback.wly:20:5</span></span>
   </p>
 </body>
 </html>

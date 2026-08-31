@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 2.2 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,16 +42,17 @@
   </div>
   <h1>
     2.2
-    Difference equations and maps
+    <span class="t-3003-c">Difference equations and maps<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:2:11</span></span>
   </h1>
   <p>
-    As we commented above, the equation
-    <a
+    <span class="t-3003-c">As we commented above, the equation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:4:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:5:5</span></span><a
       href="./2-1.html#_35_h.a.i_"
       class=""
     >(29)</a>
     can be rewritten in a way that
-    eliminates the differencing operation, namely as
+    <span class="t-3003-c">eliminates the differencing operation, namely as<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:6:5</span></span>
   </p>
   <div
     id="_37_h.a.i_"
@@ -62,30 +64,44 @@
     x_{n+1} &amp;= T(x_n,n),
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:8:5</span>
   </div>
   <p>
-    where $T(x_n,n)=x_n+F(x_n,n)$. In many cases the
-    evolution rule of a system is described by giving the
-    function $T:\Omega\times \mathbb{N}_0\to\Omega$
-    instead of $F:\Omega\times \mathbb{N}_0\to\Omega$;
-    clearly these two descriptions are equivalent, but the
-    latter has the advantage that it makes sense even when
-    $\Omega$ is an abstract set with no extra structure
-    (in which case there is no "differencing" operation,
-    so it does not make sense to talk about a difference
-    equation). In the case of the equation
-    <a
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:16:5</span></span><span class="t-3003-c">$T(x_n,n)=x_n+F(x_n,n)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:16:11</span></span><span class="t-3003-c">. In many cases the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:16:34</span></span>
+    <span class="t-3003-c">evolution rule of a system is described by giving the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:17:5</span></span>
+    <span class="t-3003-c">function
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:18:5</span></span><span class="t-3003-c">$T:\Omega\times \mathbb{N}_0\to\Omega$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:18:14</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:18:52</span></span>
+    <span class="t-3003-c">instead of
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:19:5</span></span><span class="t-3003-c">$F:\Omega\times \mathbb{N}_0\to\Omega$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:19:16</span></span><span class="t-3003-c">;<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:19:54</span></span>
+    <span class="t-3003-c">clearly these two descriptions are equivalent, but the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:20:5</span></span>
+    <span class="t-3003-c">latter has the advantage that it makes sense even when<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:21:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:22:5</span></span><span class="t-3003-c">$\Omega$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:22:5</span></span><span class="t-3003-c">
+      is an abstract set with no extra structure<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:22:13</span></span>
+    <span class="t-3003-c">(in which case there is no "differencing" operation,<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:23:5</span></span>
+    <span class="t-3003-c">so it does not make sense to talk about a difference<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:24:5</span></span>
+    <span class="t-3003-c">equation). In the case of the equation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:25:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:26:5</span></span><a
       href="./2-2.html#_37_h.a.i_"
       class=""
     >(30)</a>, usually it will be called a
-    <i>recurrence relation</i>
-    instead of a difference
-    equation. An especially nice (and very common)
-    situation is one in which $T$ does not depend on the
-    time variable $n$, but instead is simply a function
-    $T(x)$ of the state. In this case
-    <a
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:27:5</span></span><i><span class="t-3003-c">recurrence relation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:27:6</span></span></i><span class="t-3003-c">
+      instead of a difference<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:27:26</span></span>
+    <span class="t-3003-c">equation. An especially nice (and very common)<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:28:5</span></span>
+    <span class="t-3003-c">situation is one in which
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:29:5</span></span><span class="t-3003-c">$T$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:29:31</span></span><span class="t-3003-c">
+      does not depend on the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:29:34</span></span>
+    <span class="t-3003-c">time variable
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:30:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:30:19</span></span><span class="t-3003-c">, but instead is simply a function<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:30:22</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:31:5</span></span><span class="t-3003-c">$T(x)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:31:5</span></span><span class="t-3003-c">
+      of the state. In this case<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:31:11</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:32:5</span></span><a
       href="./2-2.html#_37_h.a.i_"
       class=""
     >(30)</a>
@@ -96,54 +112,60 @@
     \begin{align*}
     x_{n+1} &amp;= T(x_n),
     \end{align*}
-    $$
+    $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:34:5</span>
   </div>
   <p>
-    and the function $T:\Omega\to\Omega$ is called the
-    <i>evolution map</i>, or just the
-    <i>map</i>, associated with
-    the system; it tells the state of the system one unit
-    of time into the future as a function of the present
-    state. We shall be concerned exclusively with such
-    time-independent systems.
+    <span class="t-3003-c">and the function
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:38:5</span></span><span class="t-3003-c">$T:\Omega\to\Omega$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:38:22</span></span><span class="t-3003-c">
+      is called the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:38:41</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:39:5</span></span><i><span class="t-3003-c">evolution map<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:39:6</span></span></i><span class="t-3003-c">, or just the
+      <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:39:20</span></span><i><span class="t-3003-c">map<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:39:35</span></span></i><span class="t-3003-c">, associated with<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:39:39</span></span>
+    <span class="t-3003-c">the system; it tells the state of the system one unit<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:40:5</span></span>
+    <span class="t-3003-c">of time into the future as a function of the present<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:41:5</span></span>
+    <span class="t-3003-c">state. We shall be concerned exclusively with such<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:42:5</span></span>
+    <span class="t-3003-c">time-independent systems.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:43:5</span></span>
   </p>
   <div
     label="Arithmetic growth"
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.1</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:45:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:45:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:45:5</span></span><b><span class="t-3003-c">2.1<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:45:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:45:5</span></span>
     </h3>
     <p>
-      <span class="label">Arithmetic growth</span>The equation for arithmetic growth is
+      <span class="label"><span class="t-3003-c">Arithmetic growth<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:46:15</span></span></span><span class="t-3003-c">The equation for arithmetic growth is<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:47:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       x_{n+1} = x_n + b,
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:49:9</span>
     </div>
     <p>
-      where $b\in\mathbb{R}$ is a constant. As a difference
-      equation, it will be written as
+      <span class="t-3003-c">where
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:53:9</span></span><span class="t-3003-c">$b\in\mathbb{R}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:53:15</span></span><span class="t-3003-c">
+        is a constant. As a difference<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:53:31</span></span>
+      <span class="t-3003-c">equation, it will be written as<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:54:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       x_{n+1}-x_n = b.
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:56:9</span>
     </div>
     <p>
-      Its solution is the arithmetic sequence
+      <span class="t-3003-c">Its solution is the arithmetic sequence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:60:9</span></span>
     </p>
     <div class="math-block">
       $$
       x_n = x_0 + bn.
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:62:9</span>
     </div>
   </div>
   <div
@@ -151,32 +173,38 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.2</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:66:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:66:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:66:5</span></span><b><span class="t-3003-c">2.2<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:66:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:66:5</span></span>
     </h3>
     <p>
-      <span class="label">Geometric growth</span>The equation for geometric growth is
+      <span class="label"><span class="t-3003-c">Geometric growth<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:67:15</span></span></span><span class="t-3003-c">The equation for geometric growth is<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:68:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       x_{n+1} = r x_n ,
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:70:9</span>
     </div>
     <p>
-      where $r\in\mathbb{R}$ is a constant, or
-      $x_{n+1}-x_n = (r-1)x_n$ as a difference equation
-      (so, like the ODE $\dot{x}(t)=cx(t)$, it is suitable
-      to model situations in which the rate of change of a
-      quantity is proportional to it). The solution is the
-      geometric sequence
+      <span class="t-3003-c">where
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:74:9</span></span><span class="t-3003-c">$r\in\mathbb{R}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:74:15</span></span><span class="t-3003-c">
+        is a constant, or<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:74:31</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:75:9</span></span><span class="t-3003-c">$x_{n+1}-x_n = (r-1)x_n$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:75:9</span></span><span class="t-3003-c">
+        as a difference equation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:75:33</span></span>
+      <span class="t-3003-c">(so, like the ODE
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:76:9</span></span><span class="t-3003-c">$\dot{x}(t)=cx(t)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:76:27</span></span><span class="t-3003-c">, it is suitable<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:76:45</span></span>
+      <span class="t-3003-c">to model situations in which the rate of change of a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:77:9</span></span>
+      <span class="t-3003-c">quantity is proportional to it). The solution is the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:78:9</span></span>
+      <span class="t-3003-c">geometric sequence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:79:9</span></span>
     </p>
     <div class="math-block">
       $$
       x_n = x_0 r^n.
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:81:9</span>
     </div>
   </div>
   <div
@@ -184,15 +212,20 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.3</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:85:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:85:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:85:5</span></span><b><span class="t-3003-c">2.3<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:85:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:85:5</span></span>
     </h3>
     <p>
-      <span class="label">Fibonacci numbers</span>The sequence of Fibonacci numbers $(F_n)_{n=1}^\infty$
-      is defined as the unique sequence that satisfies the
-      initial conditions $F_1=F_2=1$ together with the
-      recurrence relation
+      <span class="label"><span class="t-3003-c">Fibonacci numbers<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:86:15</span></span></span><span class="t-3003-c">The sequence of Fibonacci numbers
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:87:9</span></span><span class="t-3003-c">$(F_n)_{n=1}^\infty$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:87:43</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:87:63</span></span>
+      <span class="t-3003-c">is defined as the unique sequence that satisfies the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:88:9</span></span>
+      <span class="t-3003-c">initial conditions
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:89:9</span></span><span class="t-3003-c">$F_1=F_2=1$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:89:28</span></span><span class="t-3003-c">
+        together with the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:89:39</span></span>
+      <span class="t-3003-c">recurrence relation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:90:9</span></span>
     </p>
     <div
       id="_38_h.a.i_"
@@ -204,39 +237,44 @@
       F_{n+2}=F_{n+1}+F_n \qquad (n\ge0).
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:92:9</span>
     </div>
     <p>
-      Note that this is a
-      <i>second-order recurrence
-        relation</i>
-      --- the discrete-time analogue of a second
-      order differential equation. In general, a
-      second-order recurrence will have the form
+      <span class="t-3003-c">Note that this is a
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:100:9</span></span><i><span class="t-3003-c">second-order recurrence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:100:30</span></span>
+        <span class="t-3003-c">relation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:101:9</span></span></i><span class="t-3003-c">
+        --- the discrete-time analogue of a second<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:101:18</span></span>
+      <span class="t-3003-c">order differential equation. In general, a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:102:9</span></span>
+      <span class="t-3003-c">second-order recurrence will have the form<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:103:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       x_{n+2} &amp;= T(x_n,x_{n+1},n),
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:105:9</span>
     </div>
     <p>
-      i.e., each successive value in the sequence is
-      computed as a function of the last two values (and
-      possibly the time parameter). To solve the recurrence
-      we will need to specify not one but two initial
-      conditions, e.g. (if we are trying to solve the
-      recurrence for $n\ge0$) $x_0$ and $x_1$.
+      <span class="t-3003-c">i.e., each successive value in the sequence is<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:109:9</span></span>
+      <span class="t-3003-c">computed as a function of the last two values (and<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:110:9</span></span>
+      <span class="t-3003-c">possibly the time parameter). To solve the recurrence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:111:9</span></span>
+      <span class="t-3003-c">we will need to specify not one but two initial<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:112:9</span></span>
+      <span class="t-3003-c">conditions, e.g. (if we are trying to solve the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:113:9</span></span>
+      <span class="t-3003-c">recurrence for
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:114:9</span></span><span class="t-3003-c">$n\ge0$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:114:24</span></span><span class="t-3003-c">)
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:114:31</span></span><span class="t-3003-c">$x_0$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:114:33</span></span><span class="t-3003-c">
+        and
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:114:38</span></span><span class="t-3003-c">$x_1$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:114:43</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:114:48</span></span>
     </p>
     <p>
-      It is well-known that the solution to the recurrence
-      <a
+      <span class="t-3003-c">It is well-known that the solution to the recurrence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:116:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:117:9</span></span><a
         href="./2-2.html#_38_h.a.i_"
         class=""
       >(31)</a>
       is given by the amusing
-      formula
+      <span class="t-3003-c">formula<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:118:9</span></span>
     </p>
     <div
       id="_39_h.a.i_"
@@ -248,25 +286,29 @@
       F_n = \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^n-\frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^n.
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:120:9</span>
     </div>
     <p>
-      This can be proved by induction by verifying the
-      initial conditions and then substituting the
-      expression on the right-hand side into
-      <a
+      <span class="t-3003-c">This can be proved by induction by verifying the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:128:9</span></span>
+      <span class="t-3003-c">initial conditions and then substituting the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:129:9</span></span>
+      <span class="t-3003-c">expression on the right-hand side into<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:130:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:131:9</span></span><a
         href="./2-2.html#_38_h.a.i_"
         class=""
       >(31)</a>.
     </p>
     <p>
-      Is there a systematic way to derive such mysterious
-      formulas? As with ODEs, it is often more convenient to
-      represent a second- (or higher-) order system as a
-      first-order system. We can do this by constructing a
-      new system whose state space is $\mathbb{R}^2$
-      instead of $\mathbb{R}$, where the recurrence
-      relation is given by
+      <span class="t-3003-c">Is there a systematic way to derive such mysterious<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:133:9</span></span>
+      <span class="t-3003-c">formulas? As with ODEs, it is often more convenient to<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:134:9</span></span>
+      <span class="t-3003-c">represent a second- (or higher-) order system as a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:135:9</span></span>
+      <span class="t-3003-c">first-order system. We can do this by constructing a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:136:9</span></span>
+      <span class="t-3003-c">new system whose state space is
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:137:9</span></span><span class="t-3003-c">$\mathbb{R}^2$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:137:41</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:137:55</span></span>
+      <span class="t-3003-c">instead of
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:138:9</span></span><span class="t-3003-c">$\mathbb{R}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:138:20</span></span><span class="t-3003-c">, where the recurrence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:138:32</span></span>
+      <span class="t-3003-c">relation is given by<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:139:9</span></span>
     </p>
     <div
       id="_40_h.a.i_"
@@ -284,15 +326,17 @@
       \left( \begin{array}{c}X_n\\Y_n\end{array}\right).
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:141:9</span>
     </div>
     <p>
-      Substituting
-      $\left(
-      \begin{array}{c}X_n\\Y_n\end{array}\right)=\left(
-      \begin{array}{c}F_{n+1}\\F_n\end{array}\right)$
-      into
-      <a
+      <span class="t-3003-c">Substituting<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:155:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:156:9</span></span><span class="t-3003-c">$\left(
+        \begin{array}{c}X_n\\Y_n\end{array}\right)=\left(
+        \begin{array}{c}F_{n+1}\\F_n\end{array}\right)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:156:9</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:158:56</span></span>
+      <span class="t-3003-c">into
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:159:9</span></span><a
         href="./2-2.html#_40_h.a.i_"
         class=""
       >(33)</a>, we get
@@ -309,30 +353,33 @@
       \left( \begin{array}{c} F_{n+1}+F_n \\ F_{n+1}
       \end{array}\right),
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:161:9</span>
     </div>
     <p>
-      which reproduces
-      <a
+      <span class="t-3003-c">which reproduces
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:172:9</span></span><a
         href="./2-2.html#_38_h.a.i_"
         class=""
       >(31)</a>.
-      Denoting the $2\times 2$ matrix on the right-hand
-      side of
-      <a
+      <span class="t-3003-c">Denoting the
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:173:9</span></span><span class="t-3003-c">$2\times 2$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:173:22</span></span><span class="t-3003-c">
+        matrix on the right-hand<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:173:33</span></span>
+      <span class="t-3003-c">side of
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:174:9</span></span><a
         href="./2-2.html#_40_h.a.i_"
         class=""
       >(33)</a>
-      by $A$, the
-      recurrence relation
-      <a
+      by
+      <span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:174:14</span></span><span class="t-3003-c">, the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:174:17</span></span>
+      <span class="t-3003-c">recurrence relation
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:175:9</span></span><a
         href="./2-2.html#_40_h.a.i_"
         class=""
       >(33)</a>
       can
-      be thought of as "geometric growth with a matrix
-      multiplier". By analogy with the geometric growth
-      example, it is easy to see that its solution is
+      <span class="t-3003-c">be thought of as "geometric growth with a matrix<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:176:9</span></span>
+      <span class="t-3003-c">multiplier". By analogy with the geometric growth<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:177:9</span></span>
+      <span class="t-3003-c">example, it is easy to see that its solution is<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:178:9</span></span>
     </p>
     <div
       id="_41_h.a.i_"
@@ -349,37 +396,40 @@
       \end{array}\right).
       \end{split}
       \end{equation}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:180:9</span>
     </div>
     <p>
-      The formula
-      <a
+      <span class="t-3003-c">The formula
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:193:9</span></span><a
         href="./2-2.html#_39_h.a.i_"
         class=""
       >(32)</a>
       can now be
-      derived using standard diagonalization techniques from
-      linear algebra.
+      <span class="t-3003-c">derived using standard diagonalization techniques from<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:194:9</span></span>
+      <span class="t-3003-c">linear algebra.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:195:9</span></span>
     </p>
   </div>
   <div class="statement exercise">
     <h3>
-      <b>Exercise</b>
-      <b>2.4</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:197:5</span></span><b><span class="t-3003-c">Exercise<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:197:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:197:5</span></span><b><span class="t-3003-c">2.4<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:197:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:197:5</span></span>
     </h3>
     <p>
-      Derive the formula
-      <a
+      <span class="t-3003-c">Derive the formula
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:198:9</span></span><a
         href="./2-2.html#_39_h.a.i_"
         class=""
       >(32)</a>
       by
-      diagonalizing the matrix
-      $A=\left(\begin{array}{cc}
-      1&amp;1\\0&amp;1\end{array}\right)$
-      and using the solution
-      <a
+      <span class="t-3003-c">diagonalizing the matrix<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:199:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:200:9</span></span><span class="t-3003-c">$A=\left(\begin{array}{cc}
+        1&amp;1\\0&amp;1\end{array}\right)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:200:9</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:201:36</span></span>
+      <span class="t-3003-c">and using the solution
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:202:9</span></span><a
         href="./2-2.html#_41_h.a.i_"
         class=""
       >(34)</a>.
@@ -390,13 +440,19 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.5</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:204:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:204:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:204:5</span></span><b><span class="t-3003-c">2.5<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:204:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:204:5</span></span>
     </h3>
     <p>
-      <span class="label">$3x+1$ map</span>On the state space $\Omega=\mathbb{N}$, define the
-      map $T:\mathbb{N}\to\mathbb{N}$ by
+      <span class="label"><span class="t-3003-c">
+          <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:205:15</span></span><span class="t-3003-c">$3x+1$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:205:15</span></span><span class="t-3003-c">
+          map<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:205:21</span></span></span><span class="t-3003-c">On the state space
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:206:9</span></span><span class="t-3003-c">$\Omega=\mathbb{N}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:206:28</span></span><span class="t-3003-c">, define the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:206:47</span></span>
+      <span class="t-3003-c">map
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:207:9</span></span><span class="t-3003-c">$T:\mathbb{N}\to\mathbb{N}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:207:13</span></span><span class="t-3003-c">
+        by<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:207:40</span></span>
     </p>
     <div class="math-block">
       $$
@@ -404,14 +460,18 @@
       T(x) &amp;= \begin{cases} x/2 &amp; \textrm{if $x$ is even}, \\ 3x+1 &amp; \textrm{if $x$ is odd}.
       \end{cases}
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:209:9</span>
     </div>
     <p>
-      It is interesting to ask what happens if we start
-      from some initial value $x_0$ and apply the map to
-      get the subsequent values
-      $x_1=T(x_0), x_2=T(x_1)=T(T(x_0)),$ etc. Let's look
-      at some examples:
+      <span class="t-3003-c">It is interesting to ask what happens if we start<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:214:9</span></span>
+      <span class="t-3003-c">from some initial value
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:215:9</span></span><span class="t-3003-c">$x_0$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:215:33</span></span><span class="t-3003-c">
+        and apply the map to<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:215:38</span></span>
+      <span class="t-3003-c">get the subsequent values<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:216:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:217:9</span></span><span class="t-3003-c">$x_1=T(x_0), x_2=T(x_1)=T(T(x_0)),$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:217:9</span></span><span class="t-3003-c">
+        etc. Let's look<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:217:44</span></span>
+      <span class="t-3003-c">at some examples:<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:218:9</span></span>
     </p>
     <div class="math-block">
       $$
@@ -423,16 +483,19 @@
       x=7: \quad &amp; 7 \mapsto 22\mapsto 11\mapsto 34\mapsto 17\mapsto 52\mapsto 26\mapsto13\mapsto40
       \mapsto20 \\ &amp; \ \,\mapsto10\mapsto \ldots[\textrm{see above}] \ldots \mapsto [\textrm{infinite cycle of }4,2,1].
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:220:9</span>
     </div>
     <p>
-      Is it true that for any initial number $x_0$,
-      iterating the map will eventually reach the infinite
-      cycle $4,2,1$? This famous question, known as the
-      <i>Collatz problem</i>, was proposed 75 years ago.
-      Extensive research and numerical computations suggest
-      that the answer is yes, but no one knows how to prove
-      this.
+      <span class="t-3003-c">Is it true that for any initial number
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:229:9</span></span><span class="t-3003-c">$x_0$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:229:48</span></span><span class="t-3003-c">,<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:229:53</span></span>
+      <span class="t-3003-c">iterating the map will eventually reach the infinite<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:230:9</span></span>
+      <span class="t-3003-c">cycle
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:231:9</span></span><span class="t-3003-c">$4,2,1$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:231:15</span></span><span class="t-3003-c">? This famous question, known as the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:231:22</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:232:9</span></span><i><span class="t-3003-c">Collatz problem<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:232:10</span></span></i><span class="t-3003-c">, was proposed 75 years ago.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:232:26</span></span>
+      <span class="t-3003-c">Extensive research and numerical computations suggest<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:233:9</span></span>
+      <span class="t-3003-c">that the answer is yes, but no one knows how to prove<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:234:9</span></span>
+      <span class="t-3003-c">this.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:235:9</span></span>
     </p>
   </div>
   <div
@@ -440,40 +503,58 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.6</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:237:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:237:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:237:5</span></span><b><span class="t-3003-c">2.6<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:237:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:237:5</span></span>
     </h3>
     <p>
-      <span class="label">Discretized forward evolution of an ODE</span>If $\dot{x}=F(x)$ is an autonomous ODE (say on
-      $\mathbb{R}$ or some region of $\mathbb{R}^d$), we
-      can discretize time by allowing it to flow only in
-      integer multiples of some fixed time step $\tau$.
-      That is, we consider the phase flow
-      $(\varphi_t)_{t\ge 0}$ of the system, and for each
-      initial condition $x_0$ define a sequence
-      $(x_n)_{n=0}^\infty$ by
+      <span class="label"><span class="t-3003-c">Discretized forward evolution of an ODE<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:238:15</span></span></span><span class="t-3003-c">If
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:239:9</span></span><span class="t-3003-c">$\dot{x}=F(x)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:239:12</span></span><span class="t-3003-c">
+        is an autonomous ODE (say on<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:239:26</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:240:9</span></span><span class="t-3003-c">$\mathbb{R}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:240:9</span></span><span class="t-3003-c">
+        or some region of
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:240:21</span></span><span class="t-3003-c">$\mathbb{R}^d$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:240:40</span></span><span class="t-3003-c">), we<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:240:54</span></span>
+      <span class="t-3003-c">can discretize time by allowing it to flow only in<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:241:9</span></span>
+      <span class="t-3003-c">integer multiples of some fixed time step
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:242:9</span></span><span class="t-3003-c">$\tau$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:242:51</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:242:57</span></span>
+      <span class="t-3003-c">That is, we consider the phase flow<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:243:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:244:9</span></span><span class="t-3003-c">$(\varphi_t)_{t\ge 0}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:244:9</span></span><span class="t-3003-c">
+        of the system, and for each<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:244:31</span></span>
+      <span class="t-3003-c">initial condition
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:245:9</span></span><span class="t-3003-c">$x_0$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:245:27</span></span><span class="t-3003-c">
+        define a sequence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:245:32</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:246:9</span></span><span class="t-3003-c">$(x_n)_{n=0}^\infty$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:246:9</span></span><span class="t-3003-c">
+        by<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:246:29</span></span>
     </p>
     <div class="math-block">
       $$
       x_n = \varphi_{n\tau}(x_0) \qquad (n\ge 1).
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:248:9</span>
     </div>
     <p>
-      Because the phase flow satisfies the equation
-      $\varphi_{t+s}(x)=\varphi_t\circ \varphi_s(x)$, it is
-      easy to see that $x_n$ satisfies the recurrence
-      relation
+      <span class="t-3003-c">Because the phase flow satisfies the equation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:252:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:253:9</span></span><span class="t-3003-c">$\varphi_{t+s}(x)=\varphi_t\circ \varphi_s(x)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:253:9</span></span><span class="t-3003-c">, it is<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:253:55</span></span>
+      <span class="t-3003-c">easy to see that
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:254:9</span></span><span class="t-3003-c">$x_n$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:254:26</span></span><span class="t-3003-c">
+        satisfies the recurrence<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:254:31</span></span>
+      <span class="t-3003-c">relation<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:255:9</span></span>
     </p>
     <div class="math-block">
       $$
       x_{n+1} = T(x_n),
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:257:9</span>
     </div>
     <p>
-      where $T = \varphi_\tau$. So, the ODE has given rise
-      to a discrete-time dynamical system by fixing the
-      time-step $\tau$.
+      <span class="t-3003-c">where
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:261:9</span></span><span class="t-3003-c">$T = \varphi_\tau$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:261:15</span></span><span class="t-3003-c">. So, the ODE has given rise<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:261:33</span></span>
+      <span class="t-3003-c">to a discrete-time dynamical system by fixing the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:262:9</span></span>
+      <span class="t-3003-c">time-step
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:263:9</span></span><span class="t-3003-c">$\tau$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:263:19</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:263:25</span></span>
     </p>
   </div>
   <div
@@ -481,48 +562,66 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.7</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:265:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:265:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:265:5</span></span><b><span class="t-3003-c">2.7<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:265:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:265:5</span></span>
     </h3>
     <p>
-      <span class="label">Poincaré section map of an ODE</span>The time-discretization procedure described in the
-      above example requires an arbitrary choice of a time
-      unit. There is a more natural way to construct a
-      discrete-time dynamical system starting from an ODE
-      that avoids this difficulty, called the
-      <i>Poincaré
-        section map</i>
-      or
-      <i>first-return map</i>. Assume the phase
-      space $\Omega$ of the ODE is $n$-dimensional (i.e., a
-      subset of $\mathbb{R}^n$, or more generally, an
-      "$n$-dimensional manifold"). Furthermore, assume
-      that there is an $(n-1)$-dimensional subset
-      $A \subset \Omega$ that has the property that all
-      solutions are known to pass infinitely many times
-      through $A$ and through its complement
-      $\Omega\setminus A$. The Poincaré map $T:A\to A$ is
-      defined by
+      <span class="label"><span class="t-3003-c">Poincaré section map of an ODE<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:266:15</span></span></span><span class="t-3003-c">The time-discretization procedure described in the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:267:9</span></span>
+      <span class="t-3003-c">above example requires an arbitrary choice of a time<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:268:9</span></span>
+      <span class="t-3003-c">unit. There is a more natural way to construct a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:269:9</span></span>
+      <span class="t-3003-c">discrete-time dynamical system starting from an ODE<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:270:9</span></span>
+      <span class="t-3003-c">that avoids this difficulty, called the
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:271:9</span></span><i><span class="t-3003-c">Poincaré<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:271:50</span></span>
+        <span class="t-3003-c">section map<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:272:9</span></span></i><span class="t-3003-c">
+        or
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:272:21</span></span><i><span class="t-3003-c">first-return map<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:272:26</span></span></i><span class="t-3003-c">. Assume the phase<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:272:43</span></span>
+      <span class="t-3003-c">space
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:273:9</span></span><span class="t-3003-c">$\Omega$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:273:15</span></span><span class="t-3003-c">
+        of the ODE is
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:273:23</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:273:38</span></span><span class="t-3003-c">-dimensional (i.e., a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:273:41</span></span>
+      <span class="t-3003-c">subset of
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:274:9</span></span><span class="t-3003-c">$\mathbb{R}^n$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:274:19</span></span><span class="t-3003-c">, or more generally, an<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:274:33</span></span>
+      <span class="t-3003-c">"<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:275:9</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:275:11</span></span><span class="t-3003-c">-dimensional manifold"). Furthermore, assume<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:275:14</span></span>
+      <span class="t-3003-c">that there is an
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:276:9</span></span><span class="t-3003-c">$(n-1)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:276:26</span></span><span class="t-3003-c">-dimensional subset<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:276:33</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:277:9</span></span><span class="t-3003-c">$A \subset \Omega$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:277:9</span></span><span class="t-3003-c">
+        that has the property that all<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:277:27</span></span>
+      <span class="t-3003-c">solutions are known to pass infinitely many times<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:278:9</span></span>
+      <span class="t-3003-c">through
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:279:9</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:279:17</span></span><span class="t-3003-c">
+        and through its complement<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:279:20</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:280:9</span></span><span class="t-3003-c">$\Omega\setminus A$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:280:9</span></span><span class="t-3003-c">. The Poincaré map
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:280:28</span></span><span class="t-3003-c">$T:A\to A$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:280:47</span></span><span class="t-3003-c">
+        is<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:280:57</span></span>
+      <span class="t-3003-c">defined by<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:281:9</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       T(x) = \varphi_{\tau(x)}(x),
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:283:9</span>
     </div>
     <p>
-      where $\tau(x) = \inf\{ t&gt;0\,:\, \varphi_t(x)\in A\}$
-      and $\varphi_t:\Omega\to\Omega$ is the phase flow of
-      the system.
+      <span class="t-3003-c">where
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:287:9</span></span><span class="t-3003-c">$\tau(x) = \inf\{ t&gt;0\,:\, \varphi_t(x)\in A\}$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:287:15</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:287:62</span></span>
+      <span class="t-3003-c">and
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:288:9</span></span><span class="t-3003-c">$\varphi_t:\Omega\to\Omega$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:288:13</span></span><span class="t-3003-c">
+        is the phase flow of<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:288:40</span></span>
+      <span class="t-3003-c">the system.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:289:9</span></span>
     </p>
     <p>
-      Poincaré maps are an extremely useful tool in the
-      analysis of ODEs. A nice illustration of this general
-      construction and its applicability in a specific
-      example is given on page 279 of Strogatz's book
-      <i>Nonlinear Dynamics and Chaos</i>.
+      <span class="t-3003-c">Poincaré maps are an extremely useful tool in the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:291:9</span></span>
+      <span class="t-3003-c">analysis of ODEs. A nice illustration of this general<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:292:9</span></span>
+      <span class="t-3003-c">construction and its applicability in a specific<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:293:9</span></span>
+      <span class="t-3003-c">example is given on page 279 of Strogatz's book<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:294:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:295:9</span></span><i><span class="t-3003-c">Nonlinear Dynamics and Chaos<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:295:10</span></span></i><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:295:39</span></span>
     </p>
   </div>
   <div
@@ -530,58 +629,79 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.8</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:297:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:297:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:297:5</span></span><b><span class="t-3003-c">2.8<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:297:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:297:5</span></span>
     </h3>
     <p>
-      <span class="label">Logistic map</span>An important and fascinating example that we will
-      spend a lot of time discussing is the
-      <i>logistic map</i>
-      $L:[0,1]\to[0,1]$, a dynamical system with state
-      space $\Omega=[0,1]$. It is actually not one map, but
-      a family of maps $L=L_r$ where $0\le r\le 4$ is a
-      parameter. The map $L_r$ is defined by the formula
+      <span class="label"><span class="t-3003-c">Logistic map<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:298:15</span></span></span><span class="t-3003-c">An important and fascinating example that we will<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:299:9</span></span>
+      <span class="t-3003-c">spend a lot of time discussing is the
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:300:9</span></span><i><span class="t-3003-c">logistic map<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:300:48</span></span></i><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:300:61</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:301:9</span></span><span class="t-3003-c">$L:[0,1]\to[0,1]$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:301:9</span></span><span class="t-3003-c">, a dynamical system with state<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:301:26</span></span>
+      <span class="t-3003-c">space
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:302:9</span></span><span class="t-3003-c">$\Omega=[0,1]$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:302:15</span></span><span class="t-3003-c">. It is actually not one map, but<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:302:29</span></span>
+      <span class="t-3003-c">a family of maps
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:303:9</span></span><span class="t-3003-c">$L=L_r$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:303:26</span></span><span class="t-3003-c">
+        where
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:303:33</span></span><span class="t-3003-c">$0\le r\le 4$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:303:40</span></span><span class="t-3003-c">
+        is a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:303:53</span></span>
+      <span class="t-3003-c">parameter. The map
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:304:9</span></span><span class="t-3003-c">$L_r$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:304:28</span></span><span class="t-3003-c">
+        is defined by the formula<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:304:33</span></span>
     </p>
     <div class="math-block">
       $$
       \begin{align*}
       L_r(x) = rx(1-x).
       \end{align*}
-      $$
+      $$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:306:9</span>
     </div>
     <p>
-      The logistic map was introduced as a simple model for
-      the fluctuations in the population of a species of
-      animals (or plants, or bacteria etc.) in an
-      environment with limited resources. The idea is that
-      $x$ represents the size of the population (as a
-      fraction of some absolute maximum), and the
-      assumptions are that for small values of $x$, the
-      population will increase in a roughly geometric
-      pattern, but for large values of $x$ the growth will
-      taper off as the animals deplete the available food
-      resources, leading to starvation and a dramatic
-      reduction in population size for even larger values of
-      $x$ (see Figure 8).
+      <span class="t-3003-c">The logistic map was introduced as a simple model for<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:310:9</span></span>
+      <span class="t-3003-c">the fluctuations in the population of a species of<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:311:9</span></span>
+      <span class="t-3003-c">animals (or plants, or bacteria etc.) in an<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:312:9</span></span>
+      <span class="t-3003-c">environment with limited resources. The idea is that<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:313:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:314:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:314:9</span></span><span class="t-3003-c">
+        represents the size of the population (as a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:314:12</span></span>
+      <span class="t-3003-c">fraction of some absolute maximum), and the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:315:9</span></span>
+      <span class="t-3003-c">assumptions are that for small values of
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:316:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:316:50</span></span><span class="t-3003-c">, the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:316:53</span></span>
+      <span class="t-3003-c">population will increase in a roughly geometric<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:317:9</span></span>
+      <span class="t-3003-c">pattern, but for large values of
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:318:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:318:42</span></span><span class="t-3003-c">
+        the growth will<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:318:45</span></span>
+      <span class="t-3003-c">taper off as the animals deplete the available food<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:319:9</span></span>
+      <span class="t-3003-c">resources, leading to starvation and a dramatic<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:320:9</span></span>
+      <span class="t-3003-c">reduction in population size for even larger values of<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:321:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:322:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:322:9</span></span><span class="t-3003-c">
+        (see Figure 8).<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:322:12</span></span>
     </p>
     <figure>
       <img
         src="figures/logisticmap28.png"
         style="max-width: 62%"
-      >
+      ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/logisticmap28.png</span></span>
       <figcaption>
-        Figure 8: The logistic map $L_r$ for $r=2.5$.
+        <span class="t-3003-c">Figure 8: The logistic map
+          <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:329:17</span></span><span class="t-3003-c">$L_r$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:329:44</span></span><span class="t-3003-c">
+          for
+          <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:329:49</span></span><span class="t-3003-c">$r=2.5$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:329:54</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:329:61</span></span>
       </figcaption>
     </figure>
     <p>
-      The behavior of the logistic map, depending on the
-      value of $r$, can be very simple, or very complicated
-      (or somewhere in between) --- in fact, it is one of
-      the simplest examples of a chaotic system, and
-      studying it will give us valuable insights into the
-      more general theory of discrete-time dynamical
-      systems.
+      <span class="t-3003-c">The behavior of the logistic map, depending on the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:331:9</span></span>
+      <span class="t-3003-c">value of
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:332:9</span></span><span class="t-3003-c">$r$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:332:18</span></span><span class="t-3003-c">, can be very simple, or very complicated<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:332:21</span></span>
+      <span class="t-3003-c">(or somewhere in between) --- in fact, it is one of<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:333:9</span></span>
+      <span class="t-3003-c">the simplest examples of a chaotic system, and<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:334:9</span></span>
+      <span class="t-3003-c">studying it will give us valuable insights into the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:335:9</span></span>
+      <span class="t-3003-c">more general theory of discrete-time dynamical<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:336:9</span></span>
+      <span class="t-3003-c">systems.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:337:9</span></span>
     </p>
   </div>
   <div
@@ -589,55 +709,66 @@
     class="statement example"
   >
     <h3>
-      <b>Example</b>
-      <b>2.9</b>
-      
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:339:5</span></span><b><span class="t-3003-c">Example<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:339:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:339:5</span></span><b><span class="t-3003-c">2.9<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:339:5</span></span></b><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:339:5</span></span>
     </h3>
     <p>
-      <span class="label">Billiard maps</span>An interesting class of examples with a geometric
-      flavor are the billiard maps. Given some odd-shaped
-      bounded region $D$ in the plane, we let a billiard
-      ball bounce around in $D$, reflecting off the walls
-      without loss of energy. This is a continuous time
-      system, but a standard simplification step is to take
-      its Poincaré section map with respect to the set of
-      times at which the ball hits the wall. Thus, the state
-      space of a billiard system considered as a
-      discrete-time system is the set of pairs $(x,\theta)$
-      where $x \in \partial D$ is a boundary point and
-      $\theta\in [0,2\pi)$ is the angle of the ball's
-      velocity immediately after it reflects off the wall at
-      $x$.
+      <span class="label"><span class="t-3003-c">Billiard maps<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:340:15</span></span></span><span class="t-3003-c">An interesting class of examples with a geometric<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:341:9</span></span>
+      <span class="t-3003-c">flavor are the billiard maps. Given some odd-shaped<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:342:9</span></span>
+      <span class="t-3003-c">bounded region
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:343:9</span></span><span class="t-3003-c">$D$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:343:24</span></span><span class="t-3003-c">
+        in the plane, we let a billiard<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:343:27</span></span>
+      <span class="t-3003-c">ball bounce around in
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:344:9</span></span><span class="t-3003-c">$D$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:344:31</span></span><span class="t-3003-c">, reflecting off the walls<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:344:34</span></span>
+      <span class="t-3003-c">without loss of energy. This is a continuous time<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:345:9</span></span>
+      <span class="t-3003-c">system, but a standard simplification step is to take<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:346:9</span></span>
+      <span class="t-3003-c">its Poincaré section map with respect to the set of<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:347:9</span></span>
+      <span class="t-3003-c">times at which the ball hits the wall. Thus, the state<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:348:9</span></span>
+      <span class="t-3003-c">space of a billiard system considered as a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:349:9</span></span>
+      <span class="t-3003-c">discrete-time system is the set of pairs
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:350:9</span></span><span class="t-3003-c">$(x,\theta)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:350:50</span></span><span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:350:62</span></span>
+      <span class="t-3003-c">where
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:351:9</span></span><span class="t-3003-c">$x \in \partial D$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:351:15</span></span><span class="t-3003-c">
+        is a boundary point and<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:351:33</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:352:9</span></span><span class="t-3003-c">$\theta\in [0,2\pi)$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:352:9</span></span><span class="t-3003-c">
+        is the angle of the ball's<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:352:29</span></span>
+      <span class="t-3003-c">velocity immediately after it reflects off the wall at<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:353:9</span></span>
+      <span class="t-3003-c">
+        <span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:354:9</span></span><span class="t-3003-c">$x$<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:354:9</span></span><span class="t-3003-c">.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:354:12</span></span>
     </p>
     <p>
-      Billiard systems exhibit an extremely rich behavior
-      that is extensively studied by mathematicians and
-      physicists as a toy model for more complicated systems
-      such as the behavior of an ideal gas. Depending on the
-      shape of the "billiard table," the system can have a
-      chaotic structure or a more orderly behavior where
-      nearby initial conditions do not drift far apart. See
-      Figure 9 for some examples.
+      <span class="t-3003-c">Billiard systems exhibit an extremely rich behavior<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:356:9</span></span>
+      <span class="t-3003-c">that is extensively studied by mathematicians and<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:357:9</span></span>
+      <span class="t-3003-c">physicists as a toy model for more complicated systems<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:358:9</span></span>
+      <span class="t-3003-c">such as the behavior of an ideal gas. Depending on the<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:359:9</span></span>
+      <span class="t-3003-c">shape of the "billiard table," the system can have a<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:360:9</span></span>
+      <span class="t-3003-c">chaotic structure or a more orderly behavior where<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:361:9</span></span>
+      <span class="t-3003-c">nearby initial conditions do not drift far apart. See<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:362:9</span></span>
+      <span class="t-3003-c">Figure 9 for some examples.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:363:9</span></span>
     </p>
     <figure>
       <span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
           src="figures/billiards-bunimovichstadium.png"
           style="max-width: 100%; display: block; margin: 0 auto"
-        >(a)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+        ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/billiards-bunimovichstadium.png</span></span><span class="t-3003-c">(a)<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:371:17</span></span></span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
           src="figures/billiards-sinai.png"
           style="max-width: 78%; display: block; margin: 0 auto"
-        >(b)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+        ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/billiards-sinai.png</span></span><span class="t-3003-c">(b)<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:378:17</span></span></span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
           src="figures/billiard-ellipse.jpg"
           style="max-width: 100%; display: block; margin: 0 auto"
-        >(c)</span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
+        ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/billiard-ellipse.jpg</span></span><span class="t-3003-c">(c)<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:385:17</span></span></span><span style="display: inline-block; width: 44%; vertical-align: top; margin: 0 1%"><img
           src="figures/billiard-hyperbola.jpg"
           style="max-width: 100%; display: block; margin: 0 auto"
-        >(d)</span>
+        ><span class="t-3003 t-3003-i"><span class="t-3003-i-url">119B/public/figures/billiard-hyperbola.jpg</span></span><span class="t-3003-c">(d)<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:392:17</span></span></span>
       <figcaption>
-        Figure 9: Billiard dynamical systems: (a) The
-        "Bunimovich stadium"; (b) The "Sinai billiard"
-        (source: Wikipedia); (c) and (d) billiard in an
-        ellipse-shaped region.
+        <span class="t-3003-c">Figure 9: Billiard dynamical systems: (a) The<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:395:17</span></span>
+        <span class="t-3003-c">"Bunimovich stadium"; (b) The "Sinai billiard"<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:396:17</span></span>
+        <span class="t-3003-c">(source: Wikipedia); (c) and (d) billiard in an<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:397:17</span></span>
+        <span class="t-3003-c">ellipse-shaped region.<span class="t-3003">./119B/wly/02/02-difference-equations-and-maps.wly:398:17</span></span>
       </figcaption>
     </figure>
   </div>

@@ -21,8 +21,9 @@
   <meta name="twitter:title" content="Chapter 3.6 of Ordinary Differential Equations Lecture Notes - MATH 119B | UC Davis">
   <meta property="twitter:description" content="Ordinary Differential Equations Lecture Notes for MATH 119B, Spring 2012, by Dan Romik, Department of Mathematics, UC Davis">
   <link rel="stylesheet" type="text/css" href="app.css" />
+  <link rel="stylesheet" type="text/css" href="local.css" />
   <script type="text/javascript" src="mathjax_setup.js"></script>
-  <script type="text/javascript" src="tex-svg.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" defer></script>
   <script type="text/javascript" src="course.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </head>
@@ -41,11 +42,11 @@
   </div>
   <h1>
     3.6
-    Linear Quadratic Performance control
+    <span class="t-3003-c">Linear Quadratic Performance control<span class="t-3003">./119B/wly/03/06/__parent.wly:2:11</span></span>
   </h1>
   <p>
-    In this section we consider control problems which
-    take the general form
+    <span class="t-3003-c">In this section we consider control problems which<span class="t-3003">./119B/wly/03/06/__parent.wly:4:5</span></span>
+    <span class="t-3003-c">take the general form<span class="t-3003">./119B/wly/03/06/__parent.wly:5:5</span></span>
   </p>
   <div
     id="_57_h.a.i_"
@@ -57,21 +58,39 @@
     \dot{\mathbf{x}} = A \mathbf{x} + B \mathbf{u},
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/__parent.wly:7:5</span>
   </div>
   <p>
-    where the state $\mathbf{x}$ of the dynamical system
-    is an $n$-dimensional vector, the control variable
-    $\mathbf{u}$ is an $m$-dimensional vector, and $A, B$
-    are linear operators (i.e., $A$ is an $n\times n$
-    matrix and $B$ is an $n\times m$ matrix). The goal of
-    the control will be to bring the dynamical variable
-    $\mathbf{x}$ to the origin. Moreover, we associate
-    with any proposed solution a
-    <i>cost functional</i>
-    that
-    measures how effective it is. The cost functional will
-    take the form
+    <span class="t-3003-c">where the state
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:15:5</span></span><span class="t-3003-c">$\mathbf{x}$<span class="t-3003">./119B/wly/03/06/__parent.wly:15:21</span></span><span class="t-3003-c">
+      of the dynamical system<span class="t-3003">./119B/wly/03/06/__parent.wly:15:33</span></span>
+    <span class="t-3003-c">is an
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:16:5</span></span><span class="t-3003-c">$n$<span class="t-3003">./119B/wly/03/06/__parent.wly:16:11</span></span><span class="t-3003-c">-dimensional vector, the control variable<span class="t-3003">./119B/wly/03/06/__parent.wly:16:14</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:17:5</span></span><span class="t-3003-c">$\mathbf{u}$<span class="t-3003">./119B/wly/03/06/__parent.wly:17:5</span></span><span class="t-3003-c">
+      is an
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:17:17</span></span><span class="t-3003-c">$m$<span class="t-3003">./119B/wly/03/06/__parent.wly:17:24</span></span><span class="t-3003-c">-dimensional vector, and
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:17:27</span></span><span class="t-3003-c">$A, B$<span class="t-3003">./119B/wly/03/06/__parent.wly:17:52</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:17:58</span></span>
+    <span class="t-3003-c">are linear operators (i.e.,
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:18:5</span></span><span class="t-3003-c">$A$<span class="t-3003">./119B/wly/03/06/__parent.wly:18:33</span></span><span class="t-3003-c">
+      is an
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:18:36</span></span><span class="t-3003-c">$n\times n$<span class="t-3003">./119B/wly/03/06/__parent.wly:18:43</span></span><span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:18:54</span></span>
+    <span class="t-3003-c">matrix and
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:19:5</span></span><span class="t-3003-c">$B$<span class="t-3003">./119B/wly/03/06/__parent.wly:19:16</span></span><span class="t-3003-c">
+      is an
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:19:19</span></span><span class="t-3003-c">$n\times m$<span class="t-3003">./119B/wly/03/06/__parent.wly:19:26</span></span><span class="t-3003-c">
+      matrix). The goal of<span class="t-3003">./119B/wly/03/06/__parent.wly:19:37</span></span>
+    <span class="t-3003-c">the control will be to bring the dynamical variable<span class="t-3003">./119B/wly/03/06/__parent.wly:20:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:21:5</span></span><span class="t-3003-c">$\mathbf{x}$<span class="t-3003">./119B/wly/03/06/__parent.wly:21:5</span></span><span class="t-3003-c">
+      to the origin. Moreover, we associate<span class="t-3003">./119B/wly/03/06/__parent.wly:21:17</span></span>
+    <span class="t-3003-c">with any proposed solution a
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:22:5</span></span><i><span class="t-3003-c">cost functional<span class="t-3003">./119B/wly/03/06/__parent.wly:22:35</span></span></i><span class="t-3003-c">
+      that<span class="t-3003">./119B/wly/03/06/__parent.wly:22:51</span></span>
+    <span class="t-3003-c">measures how effective it is. The cost functional will<span class="t-3003">./119B/wly/03/06/__parent.wly:23:5</span></span>
+    <span class="t-3003-c">take the form<span class="t-3003">./119B/wly/03/06/__parent.wly:24:5</span></span>
   </p>
   <div
     id="_58_h.a.i_"
@@ -84,24 +103,37 @@
     \left( \mathbf{x}^\top P \mathbf{x} + \mathbf{u}^\top Q \mathbf{u} \right)\, dt,
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/__parent.wly:26:5</span>
   </div>
   <p>
-    where $-\infty&lt;t_1&lt;t_2\le \infty$, $P$ is an
-    $n\times n$ positive-definite matrix and $Q$ is an
-    $m\times m$ positive-definite matrix. The idea is
-    that we want to incentivize the controller to bring
-    $\mathbf{x}$ to the origin as fast as possible by
-    "pushing" on it as hard as possible; at the same
-    time, in a typical situation the "pushing" also
-    incurs a price since it uses resources such as
-    electricity, fuel, etc. The problem of optimal control
-    is to find the feedback-based solution
-    $\mathbf{u}=\mathbf{u}(\mathbf{x})$ that minimizes
-    the overall cost functional, which finds a balance
-    between the cost of resources and the desire to
-    achieve good performance. It turns out that the
-    solution has the form
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:35:5</span></span><span class="t-3003-c">$-\infty&lt;t_1&lt;t_2\le \infty$<span class="t-3003">./119B/wly/03/06/__parent.wly:35:11</span></span><span class="t-3003-c">,
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:35:38</span></span><span class="t-3003-c">$P$<span class="t-3003">./119B/wly/03/06/__parent.wly:35:40</span></span><span class="t-3003-c">
+      is an<span class="t-3003">./119B/wly/03/06/__parent.wly:35:43</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:36:5</span></span><span class="t-3003-c">$n\times n$<span class="t-3003">./119B/wly/03/06/__parent.wly:36:5</span></span><span class="t-3003-c">
+      positive-definite matrix and
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:36:16</span></span><span class="t-3003-c">$Q$<span class="t-3003">./119B/wly/03/06/__parent.wly:36:46</span></span><span class="t-3003-c">
+      is an<span class="t-3003">./119B/wly/03/06/__parent.wly:36:49</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:37:5</span></span><span class="t-3003-c">$m\times m$<span class="t-3003">./119B/wly/03/06/__parent.wly:37:5</span></span><span class="t-3003-c">
+      positive-definite matrix. The idea is<span class="t-3003">./119B/wly/03/06/__parent.wly:37:16</span></span>
+    <span class="t-3003-c">that we want to incentivize the controller to bring<span class="t-3003">./119B/wly/03/06/__parent.wly:38:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:39:5</span></span><span class="t-3003-c">$\mathbf{x}$<span class="t-3003">./119B/wly/03/06/__parent.wly:39:5</span></span><span class="t-3003-c">
+      to the origin as fast as possible by<span class="t-3003">./119B/wly/03/06/__parent.wly:39:17</span></span>
+    <span class="t-3003-c">"pushing" on it as hard as possible; at the same<span class="t-3003">./119B/wly/03/06/__parent.wly:40:5</span></span>
+    <span class="t-3003-c">time, in a typical situation the "pushing" also<span class="t-3003">./119B/wly/03/06/__parent.wly:41:5</span></span>
+    <span class="t-3003-c">incurs a price since it uses resources such as<span class="t-3003">./119B/wly/03/06/__parent.wly:42:5</span></span>
+    <span class="t-3003-c">electricity, fuel, etc. The problem of optimal control<span class="t-3003">./119B/wly/03/06/__parent.wly:43:5</span></span>
+    <span class="t-3003-c">is to find the feedback-based solution<span class="t-3003">./119B/wly/03/06/__parent.wly:44:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:45:5</span></span><span class="t-3003-c">$\mathbf{u}=\mathbf{u}(\mathbf{x})$<span class="t-3003">./119B/wly/03/06/__parent.wly:45:5</span></span><span class="t-3003-c">
+      that minimizes<span class="t-3003">./119B/wly/03/06/__parent.wly:45:40</span></span>
+    <span class="t-3003-c">the overall cost functional, which finds a balance<span class="t-3003">./119B/wly/03/06/__parent.wly:46:5</span></span>
+    <span class="t-3003-c">between the cost of resources and the desire to<span class="t-3003">./119B/wly/03/06/__parent.wly:47:5</span></span>
+    <span class="t-3003-c">achieve good performance. It turns out that the<span class="t-3003">./119B/wly/03/06/__parent.wly:48:5</span></span>
+    <span class="t-3003-c">solution has the form<span class="t-3003">./119B/wly/03/06/__parent.wly:49:5</span></span>
   </p>
   <div
     id="_59_h.a.i_"
@@ -113,43 +145,63 @@
     \mathbf{u} = -K \mathbf{x},
     \end{split}
     \end{equation}
-    $$
+    $$<span class="t-3003">./119B/wly/03/06/__parent.wly:51:5</span>
   </div>
   <p>
-    where $K$ is a time-dependent linear operator which
-    we will identify. Usually $K$ is expressed in the
-    form $K(t_2-t)$, i.e., as a function of the
-    "time-to-go" variable $T=t_2-t$. The most
-    interesting case is that of an infinite time horizon:
-    $t_2=\infty$; in this case we look for a stationary
-    solution in which $K$ is a constant matrix, called
-    the
-    <i>gain matrix</i>.
+    <span class="t-3003-c">where
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:59:5</span></span><span class="t-3003-c">$K$<span class="t-3003">./119B/wly/03/06/__parent.wly:59:11</span></span><span class="t-3003-c">
+      is a time-dependent linear operator which<span class="t-3003">./119B/wly/03/06/__parent.wly:59:14</span></span>
+    <span class="t-3003-c">we will identify. Usually
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:60:5</span></span><span class="t-3003-c">$K$<span class="t-3003">./119B/wly/03/06/__parent.wly:60:31</span></span><span class="t-3003-c">
+      is expressed in the<span class="t-3003">./119B/wly/03/06/__parent.wly:60:34</span></span>
+    <span class="t-3003-c">form
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:61:5</span></span><span class="t-3003-c">$K(t_2-t)$<span class="t-3003">./119B/wly/03/06/__parent.wly:61:10</span></span><span class="t-3003-c">, i.e., as a function of the<span class="t-3003">./119B/wly/03/06/__parent.wly:61:20</span></span>
+    <span class="t-3003-c">"time-to-go" variable
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:62:5</span></span><span class="t-3003-c">$T=t_2-t$<span class="t-3003">./119B/wly/03/06/__parent.wly:62:29</span></span><span class="t-3003-c">. The most<span class="t-3003">./119B/wly/03/06/__parent.wly:62:38</span></span>
+    <span class="t-3003-c">interesting case is that of an infinite time horizon:<span class="t-3003">./119B/wly/03/06/__parent.wly:63:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:64:5</span></span><span class="t-3003-c">$t_2=\infty$<span class="t-3003">./119B/wly/03/06/__parent.wly:64:5</span></span><span class="t-3003-c">; in this case we look for a stationary<span class="t-3003">./119B/wly/03/06/__parent.wly:64:17</span></span>
+    <span class="t-3003-c">solution in which
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:65:5</span></span><span class="t-3003-c">$K$<span class="t-3003">./119B/wly/03/06/__parent.wly:65:23</span></span><span class="t-3003-c">
+      is a constant matrix, called<span class="t-3003">./119B/wly/03/06/__parent.wly:65:26</span></span>
+    <span class="t-3003-c">the
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:66:5</span></span><i><span class="t-3003-c">gain matrix<span class="t-3003">./119B/wly/03/06/__parent.wly:66:10</span></span></i><span class="t-3003-c">.<span class="t-3003">./119B/wly/03/06/__parent.wly:66:22</span></span>
   </p>
   <p>
-    Note that the mapping that takes a pair
-    $(\mathbf{u},\mathbf{a})$ where $\mathbf{u}$ is the
-    control function and $\mathbf{a}$ is the initial
-    condition $\mathbf{x}(t_1)=\mathbf{a}$ to the
-    solution of
-    <a
+    <span class="t-3003-c">Note that the mapping that takes a pair<span class="t-3003">./119B/wly/03/06/__parent.wly:68:5</span></span>
+    <span class="t-3003-c">
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:69:5</span></span><span class="t-3003-c">$(\mathbf{u},\mathbf{a})$<span class="t-3003">./119B/wly/03/06/__parent.wly:69:5</span></span><span class="t-3003-c">
+      where
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:69:30</span></span><span class="t-3003-c">$\mathbf{u}$<span class="t-3003">./119B/wly/03/06/__parent.wly:69:37</span></span><span class="t-3003-c">
+      is the<span class="t-3003">./119B/wly/03/06/__parent.wly:69:49</span></span>
+    <span class="t-3003-c">control function and
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:70:5</span></span><span class="t-3003-c">$\mathbf{a}$<span class="t-3003">./119B/wly/03/06/__parent.wly:70:26</span></span><span class="t-3003-c">
+      is the initial<span class="t-3003">./119B/wly/03/06/__parent.wly:70:38</span></span>
+    <span class="t-3003-c">condition
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:71:5</span></span><span class="t-3003-c">$\mathbf{x}(t_1)=\mathbf{a}$<span class="t-3003">./119B/wly/03/06/__parent.wly:71:15</span></span><span class="t-3003-c">
+      to the<span class="t-3003">./119B/wly/03/06/__parent.wly:71:43</span></span>
+    <span class="t-3003-c">solution of
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:72:5</span></span><a
       href="./3-6.html#_57_h.a.i_"
       class=""
     >(45)</a>
     is linear, and the cost
-    functional
-    <a
+    <span class="t-3003-c">functional
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:73:5</span></span><a
       href="./3-6.html#_58_h.a.i_"
       class=""
     >(46)</a>
     is a quadratic
-    expression in $\mathbf{x}$ and $\mathbf{u}$. Thus
-    this type of problem is referred to as Linear
-    Quadratic Performance (LQP) control. The main
-    advantage of LQP control problems is that they have an
-    explicit solution in terms of an ordinary differential
-    equation, the Ricatti equation, which furthermore is
-    easy to solve numerically.
+    <span class="t-3003-c">expression in
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:74:5</span></span><span class="t-3003-c">$\mathbf{x}$<span class="t-3003">./119B/wly/03/06/__parent.wly:74:19</span></span><span class="t-3003-c">
+      and
+      <span class="t-3003">./119B/wly/03/06/__parent.wly:74:31</span></span><span class="t-3003-c">$\mathbf{u}$<span class="t-3003">./119B/wly/03/06/__parent.wly:74:36</span></span><span class="t-3003-c">. Thus<span class="t-3003">./119B/wly/03/06/__parent.wly:74:48</span></span>
+    <span class="t-3003-c">this type of problem is referred to as Linear<span class="t-3003">./119B/wly/03/06/__parent.wly:75:5</span></span>
+    <span class="t-3003-c">Quadratic Performance (LQP) control. The main<span class="t-3003">./119B/wly/03/06/__parent.wly:76:5</span></span>
+    <span class="t-3003-c">advantage of LQP control problems is that they have an<span class="t-3003">./119B/wly/03/06/__parent.wly:77:5</span></span>
+    <span class="t-3003-c">explicit solution in terms of an ordinary differential<span class="t-3003">./119B/wly/03/06/__parent.wly:78:5</span></span>
+    <span class="t-3003-c">equation, the Ricatti equation, which furthermore is<span class="t-3003">./119B/wly/03/06/__parent.wly:79:5</span></span>
+    <span class="t-3003-c">easy to solve numerically.<span class="t-3003">./119B/wly/03/06/__parent.wly:80:5</span></span>
   </p>
 </body>
 </html>

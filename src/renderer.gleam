@@ -1,5 +1,6 @@
-import vxml/blame.{Ext}
 import desugaring as ds
+import desugaring/core as infra
+import desugaring/writerly_defaults as wd
 import gleam/dict
 import gleam/io
 import gleam/list
@@ -7,13 +8,12 @@ import gleam/option.{type Option, None, Some}
 import gleam/regexp.{type Regexp}
 import gleam/result
 import gleam/string.{inspect as ins}
-import desugaring/core as infra
-import desugaring/writerly_defaults as wd
-import vxml/io_lines.{type OutputLine, OutputLine}
 import on
 import pipeline
 import simplifile
 import vxml.{type VXML}
+import vxml/blame.{Ext}
+import vxml/io_lines.{type OutputLine, OutputLine}
 import writerly
 
 pub type FragmentType {
@@ -58,7 +58,9 @@ fn index_error(e: infra.SingletonError) -> DRSplitterError {
   }
 }
 
-fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
+fn our_splitter(
+  root: VXML,
+) -> Result(#(List(Fragment(VXML)), ds.Feedback), DRSplitterError) {
   use index <- result.try(
     infra.descendants_with_class(root, "index")
     |> infra.read_singleton
@@ -171,7 +173,7 @@ fn our_splitter(root: VXML) -> Result(List(Fragment(VXML)), DRSplitterError) {
     exercises_fragments,
     bibliography_fragments,
   ])
-  |> Ok
+  |> fn(fragments) { Ok(#(fragments, ds.NoFeedback)) }
 }
 
 // index emitter - handles index fragments
@@ -765,7 +767,7 @@ fn our_emitter(
   offline_mathjax: Bool,
   document_info: DocumentInfo,
   author_mode: Bool,
-) -> Result(Fragment(OL), String) {
+) -> Result(#(Fragment(OL), ds.Feedback), String) {
   case fragment.classifier {
     Index ->
       index_emitter(fragment, offline_mathjax, document_info, author_mode)
@@ -792,6 +794,7 @@ fn our_emitter(
         "Bibliographic notes",
       )
   }
+  |> result.map(fn(fragment) { #(fragment, ds.NoFeedback) })
 }
 
 fn existing_html_artifacts(output_dir: String) -> List(String) {

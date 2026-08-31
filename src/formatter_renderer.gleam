@@ -1,5 +1,6 @@
-import vxml/blame.{Src}
 import desugaring as ds
+import desugaring/core as infra
+import desugaring/writerly_defaults as wd
 import formatter_pipeline.{formatter_pipeline}
 import gleam/dict
 import gleam/int
@@ -7,11 +8,10 @@ import gleam/io
 import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/string.{inspect as ins}
-import desugaring/core as infra
-import desugaring/writerly_defaults as wd
 import on
 import simplifile
 import vxml.{type VXML, V}
+import vxml/blame.{Src}
 
 const default_line_length = 55
 
@@ -51,11 +51,16 @@ fn fragment_bundler(
 fn single_file_splitter(
   root: VXML,
   input_dir_name_only: String,
-) -> Result(List(FragmentOf(VXML)), String) {
-  Ok([fragment_bundler(root, Unknown, Some(input_dir_name_only))])
+) -> Result(#(List(FragmentOf(VXML)), ds.Feedback), String) {
+  Ok(#(
+    [fragment_bundler(root, Unknown, Some(input_dir_name_only))],
+    ds.NoFeedback,
+  ))
 }
 
-fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
+fn whole_book_splitter(
+  root: VXML,
+) -> Result(#(List(FragmentOf(VXML)), ds.Feedback), String) {
   let #(root, chapters) =
     infra.v_extract_children(root, infra.is_v_and_tag_equals(_, "Chapter"))
   // Top-level standalone units (Exercises / Bibliography) live in their OWN
@@ -113,7 +118,7 @@ fn whole_book_splitter(root: VXML) -> Result(List(FragmentOf(VXML)), String) {
     subsections,
     standalone_fragments,
   ])
-  |> Ok
+  |> fn(fragments) { Ok(#(fragments, ds.NoFeedback)) }
 }
 
 fn extract_files(

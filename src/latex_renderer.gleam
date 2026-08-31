@@ -171,7 +171,11 @@ fn named_ref_to_latex(raw: String) -> String {
 fn named_ref_to_latex_robust(raw: String) -> String {
   case split_named_ref(raw) {
     Ok(#(name, handle)) ->
-      "\\texorpdfstring{" <> named_ref_hyperref(name, handle) <> "}{" <> name <> "}"
+      "\\texorpdfstring{"
+      <> named_ref_hyperref(name, handle)
+      <> "}{"
+      <> name
+      <> "}"
     Error(_) -> escape_prose(raw)
   }
 }
@@ -253,7 +257,10 @@ fn prose_ref_token_to_latex(token: String, ctx: Ctx) -> String {
       // parenthesized equation ref `(>>eq:name)` -> `\eqref{eq:name}` (drop the
       // author's parens; `\eqref` prints its own "(N)")
       case string.starts_with(token, "(>>") {
-        True -> "\\eqref{" <> token |> string.drop_start(3) |> string.drop_end(1) <> "}"
+        True ->
+          "\\eqref{"
+          <> token |> string.drop_start(3) |> string.drop_end(1)
+          <> "}"
         False ->
           case string.starts_with(token, ">>") {
             True -> "\\ref{" <> string.drop_start(token, 2) <> "}"
@@ -589,7 +596,8 @@ fn node_kind(node: VXML) -> NodeKind {
 fn is_blank_text(node: VXML) -> Bool {
   case node {
     T(_, lines) ->
-      lines |> list.map(fn(l) { l.content }) |> string.concat |> string.trim == ""
+      lines |> list.map(fn(l) { l.content }) |> string.concat |> string.trim
+      == ""
     _ -> False
   }
 }
@@ -602,8 +610,7 @@ fn emit_indented(
 ) -> #(Bool, IndentHint, String) {
   case is_blank_text(node) {
     True -> #(in_para, hint, "")
-    False ->
-      emit_indented_node(node, in_para, hint, ctx)
+    False -> emit_indented_node(node, in_para, hint, ctx)
   }
 }
 
@@ -662,7 +669,13 @@ fn heading_open(level: String, attrs: List(Attr)) -> String {
   let title = find_attr(attrs, "title") |> option.unwrap("")
   // trailing blank line: keep `\<level>{…}` (and its `\label`) visually separated
   // from the body that follows.
-  "\n\n\\" <> level <> "{" <> emit_mixed(title) <> "}\n" <> label_of(attrs) <> "\n"
+  "\n\n\\"
+  <> level
+  <> "{"
+  <> emit_mixed(title)
+  <> "}\n"
+  <> label_of(attrs)
+  <> "\n"
 }
 
 // The `\chapter*{…}` head (+ `\addcontentsline` + `\label`) for a standalone
@@ -728,7 +741,11 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
         "b" -> "\\textbf{" <> nodes_to_latex(children, ctx) <> "}"
         "a" -> {
           let href = find_attr(attrs, "href") |> option.unwrap("")
-          "\\href{" <> escape_url(href) <> "}{" <> nodes_to_latex(children, ctx) <> "}"
+          "\\href{"
+          <> escape_url(href)
+          <> "}{"
+          <> nodes_to_latex(children, ctx)
+          <> "}"
         }
         // A named cross-reference ("Theorem >>handle", "Lemma >>handle", …),
         // recognized in the pipeline (`autoref_named_links_splitter`) and carried
@@ -842,8 +859,12 @@ fn preamble(di: DocumentInfo) -> String {
   <> "  urlcolor=blue,\n"
   <> "  bookmarksnumbered=true,\n"
   <> "  bookmarksopen=true,\n"
-  <> "  pdftitle={" <> escape_prose(di.title) <> "},\n"
-  <> "  pdfauthor={" <> escape_prose(di.lecturer) <> "}\n"
+  <> "  pdftitle={"
+  <> escape_prose(di.title)
+  <> "},\n"
+  <> "  pdfauthor={"
+  <> escape_prose(di.lecturer)
+  <> "}\n"
   <> "}\n\n"
   <> "\\setcounter{tocdepth}{2}\n"
   // let TeX loosen a line as a last resort instead of running text off the page
@@ -892,7 +913,9 @@ fn preamble(di: DocumentInfo) -> String {
   <> ", "
   <> emit_mixed(di.institution)
   <> "}\n"
-  <> "\\date{" <> emit_mixed(di.date) <> "}\n"
+  <> "\\date{"
+  <> emit_mixed(di.date)
+  <> "}\n"
 }
 
 // Assign each `name##<<` marker its global equation number by document order
@@ -907,7 +930,8 @@ fn collect_eq_labels(vxml: VXML, math_tok: Regexp) -> List(String) {
       |> list.filter(fn(m) { string.ends_with(m.content, "##<<") })
       |> list.map(fn(m) { string.drop_end(m.content, 4) })
     }
-    V(_, _, _, children) -> list.flat_map(children, collect_eq_labels(_, math_tok))
+    V(_, _, _, children) ->
+      list.flat_map(children, collect_eq_labels(_, math_tok))
   }
 }
 
@@ -1096,7 +1120,8 @@ fn hier_children(
       case is_v_tag(child, struct_tag) {
         True -> {
           let cnt = cnt + 1
-          let #(inp, cf) = hier_unit(child, dir, pad(cnt, width), level, ms, ctx)
+          let #(inp, cf) =
+            hier_unit(child, dir, pad(cnt, width), level, ms, ctx)
           #(cnt, False, HintNoindent, text <> inp, list.append(files, cf))
         }
         False -> {
@@ -1112,7 +1137,8 @@ fn hier_children(
 // named by its kind (it has no sub-structure to split).
 fn standalone_hier(node: VXML, name: String, ctx: Ctx) -> #(String, Files) {
   let assert V(_, tag, attrs, children) = node
-  let content = standalone_open(tag, attrs) <> nodes_to_latex(children, ctx) <> "\n"
+  let content =
+    standalone_open(tag, attrs) <> nodes_to_latex(children, ctx) <> "\n"
   let path = "chapters/" <> name
   #("\n\\input{" <> path <> "}\n", [#(path <> ".tex", content)])
 }
@@ -1211,7 +1237,7 @@ fn our_splitter(
   di: DocumentInfo,
   gran: Granularity,
   root: VXML,
-) -> Result(List(Fragment(VXML)), LatexSplitterError) {
+) -> Result(#(List(Fragment(VXML)), ds.Feedback), LatexSplitterError) {
   let blame = Ext([], "latex_splitter")
   build_latex_files(root, di, gran)
   |> list.map(fn(pc) {
@@ -1220,16 +1246,18 @@ fn our_splitter(
       content |> string.split("\n") |> list.map(fn(l) { Line(blame, l) })
     ds.OutputFragment(LatexFile, path, T(blame, lines))
   })
-  |> Ok
+  |> fn(fragments) { Ok(#(fragments, ds.NoFeedback)) }
 }
 
-fn our_emitter(fragment: Fragment(VXML)) -> Result(Fragment(OL), String) {
+fn our_emitter(
+  fragment: Fragment(VXML),
+) -> Result(#(Fragment(OL), ds.Feedback), String) {
   let blame = Ext([], "latex_emitter")
   let lines = case fragment.payload {
     T(_, ls) -> list.map(ls, fn(l) { OutputLine(blame, 0, l.content) })
     V(_, _, _, _) -> []
   }
-  Ok(ds.OutputFragment(..fragment, payload: lines))
+  Ok(#(ds.OutputFragment(..fragment, payload: lines), ds.NoFeedback))
 }
 
 // Copy the course's `public/figures/` next to the emitted `.tex`, so the
@@ -1291,8 +1319,7 @@ pub fn render(
           lecturer: attr("lecturer", ""),
           date: attr("date", ""),
         )
-      let output_dir =
-        "./" <> course_dir <> "/" <> output_dir_local_path <> "/"
+      let output_dir = "./" <> course_dir <> "/" <> output_dir_local_path <> "/"
 
       let parameters =
         ds.RendererParameters(
@@ -1323,14 +1350,13 @@ pub fn render(
       // relative to the previous run rather than to the empty dir. We track only
       // `.tex` — figures + pdflatex leftovers (.aux/.toc/.log/.pdf) aren't the
       // renderer's own artifacts and would just be noise.
-      let previously_existing =
-        case simplifile.get_files(output_dir) {
-          Ok(files) ->
-            files
-            |> list.filter(string.ends_with(_, ".tex"))
-            |> list.map(drop_dot_slash)
-          Error(_) -> []
-        }
+      let previously_existing = case simplifile.get_files(output_dir) {
+        Ok(files) ->
+          files
+          |> list.filter(string.ends_with(_, ".tex"))
+          |> list.map(drop_dot_slash)
+        Error(_) -> []
+      }
 
       // start from a clean output directory: remove any previous run's files
       // (.tex, plus pdflatex leftovers .toc/.aux/.log/.out/.pdf, and figures/ —
@@ -1339,7 +1365,11 @@ pub fn render(
       // Log the effective shell command in the same bullet style as the render
       // stages, so it reads as the first step (before `• assembling...`).
       io.println(
-        "• running 'rm -r " <> course_dir <> "/" <> output_dir_local_path <> "/*'",
+        "• running 'rm -r "
+        <> course_dir
+        <> "/"
+        <> output_dir_local_path
+        <> "/*'",
       )
       let _ = simplifile.clear_directory(output_dir)
 
@@ -1388,7 +1418,11 @@ pub fn render(
             _ -> " (+ " <> int.to_string(n_figs) <> " figures copied)"
           }
           io.println(
-            "\ncompile target: " <> output_dir <> "main.tex" <> figs_note <> "\n",
+            "\ncompile target: "
+            <> output_dir
+            <> "main.tex"
+            <> figs_note
+            <> "\n",
           )
         }
       }

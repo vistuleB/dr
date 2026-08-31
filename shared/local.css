@@ -117,5 +117,6 @@ figure:hover:has(> .t-3003) img {
 
 .math-block:hover:has(> .t-3003) {
   background-color: #bfb;
+  display: flow-root;
   overflow: visible;
 }

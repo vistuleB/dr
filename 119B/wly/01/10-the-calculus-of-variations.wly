@@ -54,9 +54,9 @@
         class=list
         data-list-style=decimal
         |> li
-            What is the shortest curve in the plane connecting
-            two points? We all know it is a straight line, but how
-            can we prove it? (And how do we find the answer to the
+            What is the shortest curve in the plane connecting two
+            points? We all know it is a straight line, but how can
+            we prove it? (And how do we find the answer to the
             same question on some complicated surface?)
 
         |> li
@@ -81,21 +81,20 @@
             system that minimizes the action?
 
     The basic idea involved in solving variational
-    problems is as follows: if $q$ is an extremum
-    (minimum or maximum) point of the functional $\Phi$,
-    then it is also a _local extremum_. That means that
-    for any (sufficiently smooth) function
-    $h:[t_0,t_1]\to \R$ satisfying $h(t_0)=h(t_1)=0$, the
-    function
+    problems is as follows: if $q$ is an extremum (minimum
+    or maximum) point of the functional $\Phi$, then it is
+    also a _local extremum_. That means that for any
+    (sufficiently smooth) function $h:[t_0,t_1]\to \R$
+    satisfying $h(t_0)=h(t_1)=0$, the function
 
     $$
     \phi_{q,h}(s) = \Phi(q+s h)=\int_{t_0}^{t_1} L(\dot{q}(t)+sh'(t),q(t)+sh(t),t)\,dt
     $$
 
     (an ordinary function of a single real variable $s$)
-    has a local extremum at $s=0$. From ordinary
-    calculus, we know that the derivative of $\phi_{q,h}$
-    at $0$ must be $0$:
+    has a local extremum at $s=0$. From ordinary calculus,
+    we know that the derivative of $\phi_{q,h}$ at $0$
+    must be $0$:
 
     $$
     \phi_{q,h}'(0) = 0.
@@ -137,8 +136,8 @@
     \cdot \mathbf{u}$
     of a function of several variables in calculus, in
     that it measures the instantaneous rate of change of
-    $\Phi$ if we start from the ``point'' $q$ and head
-    off in a ``direction'' corresponding to the small
+    $\Phi$ if we start from the ``point'' $q$ and head off
+    in a ``direction'' corresponding to the small
     perturbation $s\cdot h$. We say that the function $q$
     is a _stationary point_ of $\Phi$ if
     $\delta\Phi_q(h) = 0$ for any (sufficiently smooth)
@@ -239,11 +238,11 @@
     |> Example
         label=Brachistochrone problem
         In this problem, we try to find the curve connecting
-        the points $\mathbf{A}$ and $\mathbf{B}$ in the
-        plane, for which a ball rolling downhill without
-        friction from $\mathbf{A}$ to $\mathbf{B}$, with an
-        initial velocity of $0$, will take the shortest time
-        to arrive. We choose a coordinate system such that the
+        the points $\mathbf{A}$ and $\mathbf{B}$ in the plane,
+        for which a ball rolling downhill without friction
+        from $\mathbf{A}$ to $\mathbf{B}$, with an initial
+        velocity of $0$, will take the shortest time to
+        arrive. We choose a coordinate system such that the
         $x$-axis is the _vertical_ axis and points downward
         for positive $x$, and such that $\mathbf{A}=(0,0)$,
         $\mathbf{B}=(x_b,y_b)$ with $x_b,y_b>0$. If the curve
@@ -284,15 +283,14 @@
         \frac{q'(x)}{\sqrt{2 g x(1+q'(x)^2)}} = \alpha,
         \end{align*}
 
-        where $\alpha$ is a constant. This can be rewritten
-        as
+        where $\alpha$ is a constant. This can be rewritten as
 
         $$
         \frac{q'(x)^2}{1+q'(x)^2} = x/\lambda,
         $$
 
-        where $\lambda=(2\alpha^2 g)^{-1}$, and then solved
-        by solving for $q'$ and integrating, giving the
+        where $\lambda=(2\alpha^2 g)^{-1}$, and then solved by
+        solving for $q'$ and integrating, giving the
         expression
 
         $$
@@ -327,8 +325,8 @@
         (the parameter $\theta$ represents the angle by which
         the wheel has rolled forward; see Figure 2). The
         scaling constant $a$ can now be chosen to fit the
-        condition that $q(x_b)=y_b$, i.e., the curve must
-        pass through the point $\mathbf{B}$. It may also be
+        condition that $q(x_b)=y_b$, i.e., the curve must pass
+        through the point $\mathbf{B}$. It may also be
         verified using (>>eq:cycloidquadrature) that the
         nonparametric equation for the cycloid is
 
@@ -383,18 +381,18 @@
         \mathbb{H} = \{ (x,y)\in \mathbb{R}^2\,:\, y>0 \}
         \end{align*}
 
-        (known as the _upper half plane_ in complex
-        analysis), together with a modified formula for the
-        arc length of a line segment, namely
+        (known as the _upper half plane_ in complex analysis),
+        together with a modified formula for the arc length of
+        a line segment, namely
 
         \begin{align*}
         ds = \frac{\sqrt{dx^2 + dy^2}}{y},
         \end{align*}
 
         which replaces the usual formula
-        $ds = \sqrt{dx^2+dy^2}$ for the ordinary Euclidean
-        arc length. In other words, in the hyperbolic plane,
-        the higher you go, the more ``flat'' in the vertical
+        $ds = \sqrt{dx^2+dy^2}$ for the ordinary Euclidean arc
+        length. In other words, in the hyperbolic plane, the
+        higher you go, the more ``flat'' in the vertical
         direction your hyperbolic length measurement becomes,
         in the sense that you need to traverse $y$ units of
         ordinary Euclidean distance for each unit of
@@ -484,14 +482,14 @@
 
     |> Example
         label=Isoperimetric inequality
-        The _isoperimetric problem_ was the classical
-        problem, discussed already by the ancient Greeks, of
-        finding the simple closed curve in the plane with
-        perimeter $L$ that bounds the largest area (in modern
-        times the problem has been considerably generalized to
-        higher dimensions, curved spaces etc.). The answer is
-        that the so-called _isoperimetric curve_ is a circle,
-        and can be derived using the calculus of variations. A
+        The _isoperimetric problem_ was the classical problem,
+        discussed already by the ancient Greeks, of finding
+        the simple closed curve in the plane with perimeter
+        $L$ that bounds the largest area (in modern times the
+        problem has been considerably generalized to higher
+        dimensions, curved spaces etc.). The answer is that
+        the so-called _isoperimetric curve_ is a circle, and
+        can be derived using the calculus of variations. A
         slight complication is that the problem involves
         minimizing a functional (the area bounded by the
         curve) subject to a constraint (representing the fixed
@@ -536,10 +534,10 @@
         = \int_{x_0}^{x_1} L_\lambda(q',q)\,dx,
         \end{align*}
 
-        where $L_\lambda$ is a new Lagrangian that is
-        obtained by taking the ``original'' Lagrangian $L=q$
-        and adding a constant multiple of the constraint
-        function $\sqrt{1+q'^2}$. The price of replacing the
+        where $L_\lambda$ is a new Lagrangian that is obtained
+        by taking the ``original'' Lagrangian $L=q$ and adding
+        a constant multiple of the constraint function
+        $\sqrt{1+q'^2}$. The price of replacing the
         constrained problem by an unconstrained one is the
         introduction of an additional parameter, $\lambda$,
         known as the _Lagrange multiplier_. After solving the
@@ -630,38 +628,36 @@
         E = -\int_{x_1}^{x_2} \rho gy\,ds
         $$
 
-        is minimized. Find the general equation for the
-        shape.
+        is minimized. Find the general equation for the shape.
 
     |> Example
         label=The elastic rod
-        A thin elastic rod of length $L$ is made to bend as
-        it is clamped horizontally between the two points
-        $(0,0)$ and $(A,0)$ (where $A<L$). Its shape can be
-        determined from the condition that the elastic energy
-        is minimized. The energy is proportional to an
-        integral along the curve of the square of its
-        curvature:
+        A thin elastic rod of length $L$ is made to bend as it
+        is clamped horizontally between the two points $(0,0)$
+        and $(A,0)$ (where $A<L$). Its shape can be determined
+        from the condition that the elastic energy is
+        minimized. The energy is proportional to an integral
+        along the curve of the square of its curvature:
 
         $$
         E = \int \tfrac12 J (\textrm{curvature})^2\,ds = \tfrac12 J \int \kappa(s)^2 \,ds,
         $$
 
-        where $J$ is a constant characteristic of the
-        material and geometric cross section of the rod, and
-        $ds$ denotes arc length. The curvature $\kappa(s)$ at
-        a point along the curve is the reciprocal of the
-        _radius of curvature_, defined as the radius of a
-        circle that can be brought to touch the curve
-        tangentially in such a way that both the first and
-        second derivatives of the curve and circle coincide.
+        where $J$ is a constant characteristic of the material
+        and geometric cross section of the rod, and $ds$
+        denotes arc length. The curvature $\kappa(s)$ at a
+        point along the curve is the reciprocal of the _radius
+        of curvature_, defined as the radius of a circle that
+        can be brought to touch the curve tangentially in such
+        a way that both the first and second derivatives of
+        the curve and circle coincide.
 
-        Let the shape of the rod be described by the
-        functions $(x(s), y(s))$ of the arc length parameter
-        $s$, which varies from $0$ to $L$. Let
-        $\theta=\theta(s)$ be the angle between the positive
-        $x$-axis and the tangent to the curve at the point
-        $(x(s),y(s))$; i.e., we have the relations
+        Let the shape of the rod be described by the functions
+        $(x(s), y(s))$ of the arc length parameter $s$, which
+        varies from $0$ to $L$. Let $\theta=\theta(s)$ be the
+        angle between the positive $x$-axis and the tangent to
+        the curve at the point $(x(s),y(s))$; i.e., we have
+        the relations
 
         \begin{align*}
         \tan \theta = \frac{dy}{dx}, \quad \cos\theta = \frac{dx}{ds}, \quad \sin\theta = \frac{dy}{ds}.
@@ -740,6 +736,6 @@
 
         where $\rho$ is the density of the material, $v$ is
         the velocity of motion and $L$ is the length of the
-        body of the bullet. Find the optimal shape $q(x)$
-        that results in the smallest resistance, subject to
-        the conditions $q(0)=0, q(L)=R$.
+        body of the bullet. Find the optimal shape $q(x)$ that
+        results in the smallest resistance, subject to the
+        conditions $q(0)=0, q(L)=R$.

@@ -72,9 +72,9 @@
         \end{align*}
 
         where $r\in\mathbb{R}$ is a constant, or
-        $x_{n+1}-x_n = (r-1)x_n$ as a difference equation
-        (so, like the ODE $\dot{x}(t)=cx(t)$, it is suitable
-        to model situations in which the rate of change of a
+        $x_{n+1}-x_n = (r-1)x_n$ as a difference equation (so,
+        like the ODE $\dot{x}(t)=cx(t)$, it is suitable to
+        model situations in which the rate of change of a
         quantity is proportional to it). The solution is the
         geometric sequence
 
@@ -97,10 +97,10 @@
         \end{equation}
         $$
 
-        Note that this is a _second-order recurrence
-        relation_ --- the discrete-time analogue of a second
-        order differential equation. In general, a
-        second-order recurrence will have the form
+        Note that this is a _second-order recurrence relation_
+        --- the discrete-time analogue of a second order
+        differential equation. In general, a second-order
+        recurrence will have the form
 
         \begin{align*}
         x_{n+2} &= T(x_n,x_{n+1},n),
@@ -134,9 +134,9 @@
         formulas? As with ODEs, it is often more convenient to
         represent a second- (or higher-) order system as a
         first-order system. We can do this by constructing a
-        new system whose state space is $\mathbb{R}^2$
-        instead of $\mathbb{R}$, where the recurrence
-        relation is given by
+        new system whose state space is $\mathbb{R}^2$ instead
+        of $\mathbb{R}$, where the recurrence relation is
+        given by
 
         $$
         \begin{equation} eq:recurrence-fib-matrix##<<
@@ -169,13 +169,13 @@
         \end{array}\right),
         \end{align*}
 
-        which reproduces (>>eq:recurrence-fibonacci).
-        Denoting the $2\times 2$ matrix on the right-hand
-        side of (>>eq:recurrence-fib-matrix) by $A$, the
-        recurrence relation (>>eq:recurrence-fib-matrix) can
-        be thought of as ``geometric growth with a matrix
-        multiplier''. By analogy with the geometric growth
-        example, it is easy to see that its solution is
+        which reproduces (>>eq:recurrence-fibonacci). Denoting
+        the $2\times 2$ matrix on the right-hand side of
+        (>>eq:recurrence-fib-matrix) by $A$, the recurrence
+        relation (>>eq:recurrence-fib-matrix) can be thought
+        of as ``geometric growth with a matrix multiplier''.
+        By analogy with the geometric growth example, it is
+        easy to see that its solution is
 
         $$
         \begin{equation} eq:fibonacci-matrixsol##<<
@@ -197,25 +197,23 @@
     |> Exercise
         Derive the formula (>>eq:fibonacci-closedform) by
         diagonalizing the matrix
-        $A=\left(\begin{array}{cc}
-        1&1\\0&1\end{array}\right)$
+        $A=\left(\begin{array}{cc} 1&1\\0&1\end{array}\right)$
         and using the solution (>>eq:fibonacci-matrixsol).
 
     |> Example
         label=$3x+1$ map
-        On the state space $\Omega=\mathbb{N}$, define the
-        map $T:\mathbb{N}\to\mathbb{N}$ by
+        On the state space $\Omega=\mathbb{N}$, define the map
+        $T:\mathbb{N}\to\mathbb{N}$ by
 
         \begin{align*}
         T(x) &= \begin{cases} x/2 & \textrm{if $x$ is even}, \\ 3x+1 & \textrm{if $x$ is odd}.
         \end{cases}
         \end{align*}
 
-        It is interesting to ask what happens if we start
-        from some initial value $x_0$ and apply the map to
-        get the subsequent values
-        $x_1=T(x_0), x_2=T(x_1)=T(T(x_0)),$ etc. Let's look
-        at some examples:
+        It is interesting to ask what happens if we start from
+        some initial value $x_0$ and apply the map to get the
+        subsequent values $x_1=T(x_0), x_2=T(x_1)=T(T(x_0)),$
+        etc. Let's look at some examples:
 
         \begin{align*}
         x=1: \quad & 1\mapsto 4 \mapsto 2 \mapsto 1 \mapsto [\textrm{infinite cycle of }4,2,1], \\
@@ -237,13 +235,12 @@
     |> Example
         label=Discretized forward evolution of an ODE
         If $\dot{x}=F(x)$ is an autonomous ODE (say on
-        $\mathbb{R}$ or some region of $\mathbb{R}^d$), we
-        can discretize time by allowing it to flow only in
-        integer multiples of some fixed time step $\tau$.
-        That is, we consider the phase flow
-        $(\varphi_t)_{t\ge 0}$ of the system, and for each
-        initial condition $x_0$ define a sequence
-        $(x_n)_{n=0}^\infty$ by
+        $\mathbb{R}$ or some region of $\mathbb{R}^d$), we can
+        discretize time by allowing it to flow only in integer
+        multiples of some fixed time step $\tau$. That is, we
+        consider the phase flow $(\varphi_t)_{t\ge 0}$ of the
+        system, and for each initial condition $x_0$ define a
+        sequence $(x_n)_{n=0}^\infty$ by
 
         $$
         x_n = \varphi_{n\tau}(x_0) \qquad (n\ge 1).
@@ -298,9 +295,9 @@
         label=Logistic map
         An important and fascinating example that we will
         spend a lot of time discussing is the _logistic map_
-        $L:[0,1]\to[0,1]$, a dynamical system with state
-        space $\Omega=[0,1]$. It is actually not one map, but
-        a family of maps $L=L_r$ where $0\le r\le 4$ is a
+        $L:[0,1]\to[0,1]$, a dynamical system with state space
+        $\Omega=[0,1]$. It is actually not one map, but a
+        family of maps $L=L_r$ where $0\le r\le 4$ is a
         parameter. The map $L_r$ is defined by the formula
 
         \begin{align*}

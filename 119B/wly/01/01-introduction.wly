@@ -33,8 +33,8 @@
     _calculus of variations_ --- a kind of ``calculus on
     steroids'' (see Section >>sec:variational-calculus).
 
-    Our goal in this chapter is to give an introduction
-    to this deep and beautiful part of the theory of
+    Our goal in this chapter is to give an introduction to
+    this deep and beautiful part of the theory of
     differential equations. For simplicity, we restrict
     the discussion mostly to systems with one degree of
     freedom, and comment only briefly on

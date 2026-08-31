@@ -4,8 +4,8 @@
     If the control variable $\mathbf{u}$ at a given time
     $t$ needs to be specified simply as a function
     $\mathbf{u}(t)$ of time, without reference to the
-    current state $\mathbf{x}(t)$ of the dynamical
-    system, we are talking about control without feedback
+    current state $\mathbf{x}(t)$ of the dynamical system,
+    we are talking about control without feedback
     (technically, this is known as _open-loop control_).
     Alternatively, if we allow $\mathbf{u}$ to be
     specified as a function $\mathbf{u}(\mathbf{x},t)$

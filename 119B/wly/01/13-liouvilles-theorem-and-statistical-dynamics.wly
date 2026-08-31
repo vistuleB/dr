@@ -21,13 +21,13 @@
     \end{align*}
 
     where the integrand is equal to $1$ if
-    $\mathbf{p}(t)\in A$ or $0$ otherwise, and ask
-    whether this quantity (which might be called the
-    _empirical frequency of visits to $A$_) might
-    converge to an interesting limit (which will be a
-    function of the set $A$) as $T\to\infty$. An ideal
-    situation is one in which the limit does not depend on
-    the initial condition $\mathbf{p}(0)$, and looks like
+    $\mathbf{p}(t)\in A$ or $0$ otherwise, and ask whether
+    this quantity (which might be called the _empirical
+    frequency of visits to $A$_) might converge to an
+    interesting limit (which will be a function of the set
+    $A$) as $T\to\infty$. An ideal situation is one in
+    which the limit does not depend on the initial
+    condition $\mathbf{p}(0)$, and looks like
 
     $$
     \begin{equation} eq:idealdensity##<<

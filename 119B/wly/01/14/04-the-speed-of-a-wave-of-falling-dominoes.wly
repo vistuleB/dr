@@ -13,17 +13,16 @@
 
     Let us fix some notation for the setup of our domino
     wave. We assume a row of standing dominoes of height
-    $\ell$ is arranged on a plane, with a fixed
-    horizontal distance of $d$ between each two
-    successive dominoes. For simplicity, we will model
-    each domino as a simple inverted pendulum with mass
-    $m$ (it is not difficult to adapt the analysis to the
-    case of a compound pendulum) and that its thickness is
-    small compared to the inter-domino spacing $d$. We
-    denote by $\beta$ the angle formed between two
-    adjacent dominoes when one rotates around its contact
-    point with the floor until it just touches the other;
-    it is given by
+    $\ell$ is arranged on a plane, with a fixed horizontal
+    distance of $d$ between each two successive dominoes.
+    For simplicity, we will model each domino as a simple
+    inverted pendulum with mass $m$ (it is not difficult
+    to adapt the analysis to the case of a compound
+    pendulum) and that its thickness is small compared to
+    the inter-domino spacing $d$. We denote by $\beta$ the
+    angle formed between two adjacent dominoes when one
+    rotates around its contact point with the floor until
+    it just touches the other; it is given by
 
     \begin{align*}
     \beta = \sin^{-1}\frac{d}{\ell}.
@@ -69,13 +68,13 @@
     $A$'', to the initial angular velocity $\omega_1$ of
     the next one in the row, ``domino $B$''. Two
     intermediate quantities that will play a role in the
-    analysis are the angular velocity $\Omega_0$ of
-    domino $A$ _just before_ it collides with domino $B$,
-    and its angular velocity $\Omega_1$ _immediately
-    after_ the collision. The relationships between the
-    four quantities
-    $\omega_0, \omega_1, \Omega_0, \Omega_1$ are
-    determined by the conservation of energy and momentum.
+    analysis are the angular velocity $\Omega_0$ of domino
+    $A$ _just before_ it collides with domino $B$, and its
+    angular velocity $\Omega_1$ _immediately after_ the
+    collision. The relationships between the four
+    quantities $\omega_0, \omega_1, \Omega_0, \Omega_1$
+    are determined by the conservation of energy and
+    momentum.
 
     First, conservation of energy during the motion of
     domino $A$ from the time it starts to rotate until it
@@ -167,9 +166,9 @@
     initial angular velocity equal to
     $\omega_1=H(\omega_0)$. That domino will collide with
     a third domino, which will acquire an initial angular
-    velocity of $\omega_2=H(\omega_1)=H(H(\omega_0))$,
-    and so forth: the $n$th domino in the chain will get
-    an initial angular velocity of
+    velocity of $\omega_2=H(\omega_1)=H(H(\omega_0))$, and
+    so forth: the $n$th domino in the chain will get an
+    initial angular velocity of
 
     \begin{align*}
     \omega_{n-1} = H^{n}(\omega_0) = H(H(H(\ldots H(\omega_0)))\ldots)
@@ -231,9 +230,9 @@
     \left( K(k^{-1})-F((\pi-\beta)/2,k^{-1}) \right)^{-1},
     \end{align*}
 
-    Note that all quantities in this formula are
-    expressed as functions of the ``free'' parameters
-    $d, \ell$ and $g$.
+    Note that all quantities in this formula are expressed
+    as functions of the ``free'' parameters $d, \ell$ and
+    $g$.
     |> hr
     |> Footnote
         handle=fn-dominowaves

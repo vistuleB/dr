@@ -70,14 +70,14 @@
     $$
 
     where $\mathbf{V}$ denotes the planar vector field
-    $\mathbf{V}= (F,G)$ (we interpret the first
-    coordinate of $\mathbf{V}$ as the ``$p$-coordinate''
-    and the second coordinate as the ``$q$-coordinate''),
-    and $\operatorname{div} \mathbf{V}$ denotes the
-    divergence of $\mathbf{V}$. In physics, a vector
-    field with this property is called _divergence-free_
-    or _solenoidal_. Yet another way to write
-    (>>eq:hamiltonian-sufficient) is
+    $\mathbf{V}= (F,G)$ (we interpret the first coordinate
+    of $\mathbf{V}$ as the ``$p$-coordinate'' and the
+    second coordinate as the ``$q$-coordinate''), and
+    $\operatorname{div} \mathbf{V}$ denotes the divergence
+    of $\mathbf{V}$. In physics, a vector field with this
+    property is called _divergence-free_ or _solenoidal_.
+    Yet another way to write (>>eq:hamiltonian-sufficient)
+    is
 
     \begin{align*}
     \operatorname{curl} \mathbf{W} = 0,
@@ -87,8 +87,8 @@
     $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the
     (2-dimensional version of the) curl operator, defined
     by
-    $\operatorname{curl}(A,B) = \frac{\partial
-    A}{\partial q}-\frac{\partial B}{\partial p}$.
+    $\operatorname{curl}(A,B) = \frac{\partial A}{\partial
+    q}-\frac{\partial B}{\partial p}$.
     A vector field with this property is called
     _curl-free_ or _irrotational_.
 
@@ -100,20 +100,19 @@
         sufficient for the system to be Hamiltonian.
 
     |> Proof
-        This is a slight reformulation of a familiar fact
-        from vector calculus, that says that in a simply
-        connected domain, a vector field $\mathbf{W}=(A,B)$
-        is curl-free if and only if it is _conservative_. A
-        conservative vector field is one for which the line
-        integral of the field between two points is
-        independent of the contour connecting them, or
-        equivalently, such that the line integral on any
-        _closed_ contour vanishes. Such a vector field can
-        always be represented as $\mathbf{W} = \nabla H$ (the
-        gradient of $H$) for some scalar function $H$; one
-        simply defines $H(p,q)$ as the line integral (which
-        for a conservative field is independent of the path of
-        integration)
+        This is a slight reformulation of a familiar fact from
+        vector calculus, that says that in a simply connected
+        domain, a vector field $\mathbf{W}=(A,B)$ is curl-free
+        if and only if it is _conservative_. A conservative
+        vector field is one for which the line integral of the
+        field between two points is independent of the contour
+        connecting them, or equivalently, such that the line
+        integral on any _closed_ contour vanishes. Such a
+        vector field can always be represented as
+        $\mathbf{W} = \nabla H$ (the gradient of $H$) for some
+        scalar function $H$; one simply defines $H(p,q)$ as
+        the line integral (which for a conservative field is
+        independent of the path of integration)
 
         $$
         H(p,q) = \int_{(p_0,q_0)}^{(p,q)} \mathbf{W}\cdot \mathbf{ds} = \int_{(p_0,q_0)}^{(p,q)} A\,dp + B\,dq
@@ -126,5 +125,5 @@
         $\mathbf{W}=(G,-F)$ so the equation
         $\mathbf{W}=\nabla H$ gives exactly the pair of
         equations $F=-\frac{\partial H}{\partial q}$,
-        $G=\frac{\partial H}{\partial p}$, with $H$ serving
-        as the desired Hamiltonian.
+        $G=\frac{\partial H}{\partial p}$, with $H$ serving as
+        the desired Hamiltonian.

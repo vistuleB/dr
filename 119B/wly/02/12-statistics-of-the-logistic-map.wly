@@ -9,8 +9,8 @@
     is ergodic.
 
     |> Theorem
-        For all $0\le a<b\le 1$ and for all $x\in[0,1]$
-        except on a set of measure $0$, we have
+        For all $0\le a<b\le 1$ and for all $x\in[0,1]$ except
+        on a set of measure $0$, we have
 
         \begin{align*}
         \frac{1}{n}\# &\left\{ 0\le k\le n-1\,:\, L_4^k(x) \in (a,b) \right\} \\
@@ -33,8 +33,8 @@
                 where $h(x) = \frac{2}{\pi}\arcsin(\sqrt{x})$. (Two
                 interval maps that are related to each other via a
                 relation of the type $T_1=h\circ T_2 h^{-1}$, where
-                $h:I\to I$ is invertible, are called _conjugate
-                maps_, and share many similar properties.)
+                $h:I\to I$ is invertible, are called _conjugate maps_,
+                and share many similar properties.)
 
             |> li
                 Use this to prove that the tent map satisfies a

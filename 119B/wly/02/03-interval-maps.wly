@@ -45,15 +45,14 @@
         \end{align*}
 
         The reason for the name of this map is that if one
-        considers the interval $[0,1]$ as a topological
-        circle by identifying the two ends, the map
-        corresponds to a rotation of the circle by the angle
-        $2\pi \alpha$.
+        considers the interval $[0,1]$ as a topological circle
+        by identifying the two ends, the map corresponds to a
+        rotation of the circle by the angle $2\pi \alpha$.
 
     |> Example
         label=Tent map
-        The tent maps are another one-parameter family of
-        maps $\Lambda_a$, $0<a\le 2$, defined by
+        The tent maps are another one-parameter family of maps
+        $\Lambda_a$, $0<a\le 2$, defined by
 
         \begin{align*}
         \Lambda_a(x) &= \begin{cases}
@@ -87,11 +86,11 @@
             class=list
             data-list-style=decimal
             |> li
-                Show (or read in a number theory textbook how to
-                show) that the numbers $x\in [0,1]$ for which the
-                sequence of iterates $G^n(x)$ eventually reaches $0$
-                (and is therefore undefined for larger values of $n$)
-                are precisely the rational numbers.
+                Show (or read in a number theory textbook how to show)
+                that the numbers $x\in [0,1]$ for which the sequence
+                of iterates $G^n(x)$ eventually reaches $0$ (and is
+                therefore undefined for larger values of $n$) are
+                precisely the rational numbers.
 
             |> li
                 Show that the eventually periodic points of $G$
@@ -134,5 +133,5 @@
 
         |> figcaption
             Figure 10: (a) The doubling map; (b) The circle
-            rotation map $R_\alpha$ for $\alpha=0.3$; (c) the
-            tent map $\Lambda_2$; (d) The Gauss map.
+            rotation map $R_\alpha$ for $\alpha=0.3$; (c) the tent
+            map $\Lambda_2$; (d) The Gauss map.

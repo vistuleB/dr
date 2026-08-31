@@ -33,8 +33,8 @@
     K(k) = \int_0^{\pi/2} \frac{d\phi}{\sqrt{1-k^2 \sin^2\phi}},
     \end{align*}
 
-    using the substitution $u=\sin \phi$. By symmetry,
-    the period of oscillation of the pendulum is
+    using the substitution $u=\sin \phi$. By symmetry, the
+    period of oscillation of the pendulum is
     $4t_{\textrm{max}}$ (refer to Figure 5; the time from
     $0$ to $t_{\textrm{max}}$ represents a passage around
     one quadrant in the phase plane). So, we have derived
@@ -46,8 +46,8 @@
     \end{align*}
 
     Since $K(0)=\pi/2$, for small values of
-    $\theta_{\textrm{max}}$ we get the approximate
-    formula for small oscillations
+    $\theta_{\textrm{max}}$ we get the approximate formula
+    for small oscillations
 
     \begin{align*}
     T \approx T_0 = 2\pi \sqrt{\frac{\ell}{g}}.

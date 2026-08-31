@@ -4,8 +4,8 @@
     We derive the solution under the assumption that
     $\theta(0) = 0$, $\dot{\theta}(0)>0$. Let
     $\lambda=g/\ell$, so the equation becomes
-    $\ddot{\theta}+\lambda \sin \theta=0$. Conservation
-    of energy gives the equation
+    $\ddot{\theta}+\lambda \sin \theta=0$. Conservation of
+    energy gives the equation
 
     $$
     \begin{equation} eq:pendulum-energy-cons##<<
@@ -30,11 +30,11 @@
     \end{equation}
     $$
 
-    Note that this already makes it easy to plot the
-    phase portrait (in the $\theta$-$\dot{\theta}$ plane,
-    or wrapped around a cylinder, since adding multiples
-    of $2\pi$ to $\theta$ does not change the physical
-    state of the system); see Figure 5.
+    Note that this already makes it easy to plot the phase
+    portrait (in the $\theta$-$\dot{\theta}$ plane, or
+    wrapped around a cylinder, since adding multiples of
+    $2\pi$ to $\theta$ does not change the physical state
+    of the system); see Figure 5.
 
     |> figure
         |> img
@@ -50,10 +50,9 @@
             $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$
             for different values of $k$.
 
-    The relation between the parameter $k$ and the
-    initial angular velocity $\dot{\theta}(0)$ is found
-    by setting $t=0$ in (>>eq:pendulum-energy-cons2),
-    giving
+    The relation between the parameter $k$ and the initial
+    angular velocity $\dot{\theta}(0)$ is found by setting
+    $t=0$ in (>>eq:pendulum-energy-cons2), giving
 
     \begin{align*}
     k=\frac{1}{2\sqrt{\lambda}} \dot{\theta}(0).
@@ -65,8 +64,8 @@
     $\theta$ remains bounded) correspond to $0<k<1$, and
     that in that case we have
     $k=\sin (\theta_{\textrm{max}}/2)$ where
-    $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is
-    the maximal angle that the pendulum will reach (or
+    $\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is the
+    maximal angle that the pendulum will reach (or
     approach asymptotically, in the case
     $\theta_{\textrm{max}}=\pi$). The equation
     (>>eq:pendulum-energy-cons2) is a first-order ODE, and

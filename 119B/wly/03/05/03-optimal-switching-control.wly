@@ -15,9 +15,9 @@
     u(x) = -\operatorname{sgn}\left(x+\tfrac12 \dot{x}|\dot{x}|\right).
     \end{align*}
 
-    This makes intuitive sense, since the idea behind
-    this control rule is to toggle the electromagnet as
-    soon as the state of the system reaches the curve
+    This makes intuitive sense, since the idea behind this
+    control rule is to toggle the electromagnet as soon as
+    the state of the system reaches the curve
     $x=\tfrac12 y|y|$. The flow from that point on takes
     place along the parabola $x=\tfrac12 y^2$ (if $x>0$)
     or $x=-\tfrac12 y^2$ (if $x<0$) and leads directly to
@@ -36,9 +36,9 @@
 
     |> Exercise
         label=Optimal switching time
-        Find a formula for the time $\tau(x,\dot{x})$ it
-        takes the particle to get to the origin when the
-        optimal switching rule is used.
+        Find a formula for the time $\tau(x,\dot{x})$ it takes
+        the particle to get to the origin when the optimal
+        switching rule is used.
 
     |> figure
         |> img

@@ -76,10 +76,10 @@
 
     |> Exercise
         label=Compound pendulum
-        The falling tree problem is more accurately modeled
-        by a _compound pendulum_, where we assume the mass $m$
-        is spread out uniformly along the length of the
-        swinging rod, instead of being concentrated at its
-        end. Show that the motion of a compound pendulum with
-        length $\ell$ is equivalent to that of a simple
-        pendulum with length $2\ell/3$.
+        The falling tree problem is more accurately modeled by
+        a _compound pendulum_, where we assume the mass $m$ is
+        spread out uniformly along the length of the swinging
+        rod, instead of being concentrated at its end. Show
+        that the motion of a compound pendulum with length
+        $\ell$ is equivalent to that of a simple pendulum with
+        length $2\ell/3$.

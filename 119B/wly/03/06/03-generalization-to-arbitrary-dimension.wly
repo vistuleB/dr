@@ -150,8 +150,7 @@
     |> hr
     |> Footnote
         handle=fn-mathematica-pendulum
-        This example is based on a blog post written by
-        Andrew Moylan on the website of Wolfram Research
-        (maker of the $\texttt{Mathematica}$ software); see
-        the link:
+        This example is based on a blog post written by Andrew
+        Moylan on the website of Wolfram Research (maker of
+        the $\texttt{Mathematica}$ software); see the link:
         [http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/](http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/)

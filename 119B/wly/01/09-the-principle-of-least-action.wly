@@ -14,14 +14,14 @@
     if the system was in coordinate $q_0$ at time $t_0$
     and in coordinate $q_1$ at time $t_1$, then its
     trajectory between time $t_0$ and time $t_1$ is that
-    curve which minimizes the action $A(t_0,t_1)$,
-    subject to the constraints $q(t_0)=q_0, q(t_1)=q_1$.
-    This is a surprising statement, which we will see is
-    _almost_ equivalent to the Euler-Lagrange equation ---
-    only almost, since, to get the equivalence, we will
-    need to first modify the principle slightly to get the
-    more precise version known as the _principle of
-    stationary action_.
+    curve which minimizes the action $A(t_0,t_1)$, subject
+    to the constraints $q(t_0)=q_0, q(t_1)=q_1$. This is a
+    surprising statement, which we will see is _almost_
+    equivalent to the Euler-Lagrange equation --- only
+    almost, since, to get the equivalence, we will need to
+    first modify the principle slightly to get the more
+    precise version known as the _principle of stationary
+    action_.
 
     The principle of least action can be thought of as a
     strange, _non-causal_ interpretation of the laws of

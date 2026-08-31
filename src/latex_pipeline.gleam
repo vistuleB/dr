@@ -5,6 +5,7 @@ import desugaring/pipelines as pp
 import formatter_pipeline
 import gleam/list
 import gleam/string
+import writerly
 
 // The prose words that introduce a numbered cross-reference. A "<word> >>handle"
 // span becomes a single `AutoRef` node so the emitter can hyperlink the whole
@@ -50,7 +51,9 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
   [
     [
       dl.delete("WriterlyComment"),
-      dl.delete_attribute_if(fn(key, _) { string.starts_with(key, "!!") }),
+      dl.delete_attribute_if(fn(key, _) {
+        writerly.is_commented_attribute_key(key)
+      }),
       dl.unwrap_if_first_child("WriterlyBlankLine"),
     ],
     // Recognize every standalone display environment (plus `$$`) as a
@@ -81,21 +84,34 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
     // so a handle containing `_` is safely inside an attribute by then; stays
     // out of Math/MathBlock (refs there are equation refs) and `a` (link text).
     [
-      dl.regex_split_and_replace__outside(
-        autoref_named_links_splitter(),
-        ["Math", "MathBlock", "a"],
-      ),
+      dl.regex_split_and_replace__outside(autoref_named_links_splitter(), [
+        "Math",
+        "MathBlock",
+        "a",
+      ]),
     ],
     // `_italic_` -> <i> (emitter -> \emph), `*bold*` -> <b> (emitter -> \textbf),
     // skipping anything inside math.
-    pp.barbaric_symmetric_delim_splitting("_", "_", "i", ["WriterlyBlankLine", "Indent"], [
-      "MathBlock",
-      "Math",
-    ]),
-    pp.barbaric_symmetric_delim_splitting("\\*", "*", "b", ["WriterlyBlankLine", "Indent"], [
-      "MathBlock",
-      "Math",
-    ]),
+    pp.barbaric_symmetric_delim_splitting(
+      "_",
+      "_",
+      "i",
+      ["WriterlyBlankLine", "Indent"],
+      [
+        "MathBlock",
+        "Math",
+      ],
+    ),
+    pp.barbaric_symmetric_delim_splitting(
+      "\\*",
+      "*",
+      "b",
+      ["WriterlyBlankLine", "Indent"],
+      [
+        "MathBlock",
+        "Math",
+      ],
+    ),
     [
       // Must run after the splitting steps: turns a literal `\_` / `\*` back
       // into a bare `_` / `*` outside math. The emitter's prose escaper then

@@ -20,12 +20,12 @@
     for some numbers $p,q>0$. Note that, for a given
     control rule, to compute $I$ all that one needs to
     know is the initial condition $x(t_1)$ and the
-    duration $T=t_2-t_1$ over which the cost is
-    integrated (that is, changing the left endpoint $t_1$
-    of the interval $[t_1,t_2]$ while keeping its length
-    fixed will not change the cost functional). Let
-    $I_*(w,T)$ denote the optimal control cost associated
-    with an initial condition $x(t_1)=w$ and an interval
+    duration $T=t_2-t_1$ over which the cost is integrated
+    (that is, changing the left endpoint $t_1$ of the
+    interval $[t_1,t_2]$ while keeping its length fixed
+    will not change the cost functional). Let $I_*(w,T)$
+    denote the optimal control cost associated with an
+    initial condition $x(t_1)=w$ and an interval
     $[t_1,t_2]$ of length $T$:
 
     \begin{align*}
@@ -35,10 +35,10 @@
 
     In the derivation that follows, we assume that
     $t_2<\infty$ and that $I_*(w,T)$ is a smooth function
-    of $w$ and $T$. Furthermore, it is not hard to see
-    due to the quadratic nature of $I$ that the
-    dependence of $I_*(w,T)$ on $w$ is also quadratic,
-    i.e., we can write
+    of $w$ and $T$. Furthermore, it is not hard to see due
+    to the quadratic nature of $I$ that the dependence of
+    $I_*(w,T)$ on $w$ is also quadratic, i.e., we can
+    write
 
     \begin{align*}
     I_*(w,T) = v(T) w^2
@@ -64,9 +64,9 @@
     \end{equation}
     $$
 
-    where $z=x(t_1+\delta)$ is the value obtained from
-    the solution of the optimal control problem with
-    initial condition $x(t_1)=w$ for the interval
+    where $z=x(t_1+\delta)$ is the value obtained from the
+    solution of the optimal control problem with initial
+    condition $x(t_1)=w$ for the interval
     $[t_1,t_1+\delta]$. When $\delta$ is small, we have
     the following linear approximations in $\delta$:
 
@@ -80,10 +80,10 @@
     $$
 
     where $u_*$ is the value of the control variable at
-    time $t=t_1$ when optimal control is used with
-    initial condition $x(t_1)=w$ over the interval
-    $[t_1,t_2]$. Note that like $I_*$, $u_*$ depends only
-    on $w$ and $T=t_2-t_1$. Furthermore, by dimensional
+    time $t=t_1$ when optimal control is used with initial
+    condition $x(t_1)=w$ over the interval $[t_1,t_2]$.
+    Note that like $I_*$, $u_*$ depends only on $w$ and
+    $T=t_2-t_1$. Furthermore, by dimensional
     considerations, the dependence of $u_*$ on $w$ is
     linear, so we may write
 
@@ -91,10 +91,9 @@
     u_* = - k(T)w.
     \end{align*}
 
-    The scalar quantity $k(T)$ is a gain factor,
-    analogous to the operator $K$ mentioned above in
-    connection with the LQP control problem in arbitrary
-    dimension.
+    The scalar quantity $k(T)$ is a gain factor, analogous
+    to the operator $K$ mentioned above in connection with
+    the LQP control problem in arbitrary dimension.
 
     Now, continuing (>>eq:lqp-subintervals), we may
     further expand all terms on the right-hand side as
@@ -170,5 +169,5 @@
 
     obtained by plugging the expression for $k(T)$ back
     into (>>eq:lqp-quadratic-poly), with the initial
-    condition $v(0)=0$. This is the _Ricatti equation
-    with constant coefficients_.
+    condition $v(0)=0$. This is the _Ricatti equation with
+    constant coefficients_.

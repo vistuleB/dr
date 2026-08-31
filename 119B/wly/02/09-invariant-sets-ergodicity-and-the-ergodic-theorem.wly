@@ -1,10 +1,10 @@
 |> Section
     title=Invariant sets, ergodicity and the ergodic theorem
 
-    We now come to a key idea that underlies the basis
-    for all of ergodic theory and explains the importance
-    of invariant measures in discrete-time dynamics. Given
-    a map $T:I\to I$ and the associated recurrence
+    We now come to a key idea that underlies the basis for
+    all of ergodic theory and explains the importance of
+    invariant measures in discrete-time dynamics. Given a
+    map $T:I\to I$ and the associated recurrence
     $x_{n+1}=T(x_n)$, for every sub-interval $A\subset I$
     we can compute the frequency of visits of the
     dynamical system to $A$, namely
@@ -20,11 +20,11 @@
     function $A\mapsto \mu_x^{(n)}(A)$ is a probability
     measure (but it is a discrete probability measure,
     which assigns a positive measure of $1/n$ to the
-    specific points $x,T(x),\ldots,T^{n-1}(x)$, instead
-    of the measures we considered earlier which were
-    defined in terms of a density function $f(x)$). Now
-    let $n\to\infty$ (for fixed $x$). If we are lucky,
-    the probability measures $\mu_x^{(n)}(\cdot)$ will
+    specific points $x,T(x),\ldots,T^{n-1}(x)$, instead of
+    the measures we considered earlier which were defined
+    in terms of a density function $f(x)$). Now let
+    $n\to\infty$ (for fixed $x$). If we are lucky, the
+    probability measures $\mu_x^{(n)}(\cdot)$ will
     converge to a limiting measure $P(dx)=f(x)dx$, in the
     sense that
 
@@ -48,9 +48,9 @@
 
     It is therefore clear that an invariant measure which
     arises in this way encodes useful statistical
-    information about the orbit of the point $x$ under
-    the map $T$. On the other hand, the limiting measure
-    may depend on $x$ (or we may have convergence to a
+    information about the orbit of the point $x$ under the
+    map $T$. On the other hand, the limiting measure may
+    depend on $x$ (or we may have convergence to a
     limiting measure for some values of $x$, and fail to
     have convergence for other values). It turns out that
     for a wide family of maps, called _ergodic_ maps, the

@@ -16,8 +16,8 @@
     develop this general theory here.
 
     Let the system be described by $n$ generalized
-    coordinates $q_1, \ldots, q_n$. The Lagrangian will
-    be a function of the coordinates and their time
+    coordinates $q_1, \ldots, q_n$. The Lagrangian will be
+    a function of the coordinates and their time
     derivatives (generalized velocities):
 
     \begin{align*}
@@ -169,14 +169,14 @@
         L_1 L_2 \sin(\theta_1-\theta_2) + gL_2 \sin\theta_2.
         \end{align*}
 
-        This system of two nonlinear coupled second-order
-        ODEs is in practice impossible to solve analytically,
-        and for certain values of the energy is known to
-        exhibit chaotic behavior which is difficult to
-        understand in any reasonable sense; see Figure 1.
-        (Nonetheless, later in the course we will learn about
-        some interesting things that can still be said about
-        such systems.)
+        This system of two nonlinear coupled second-order ODEs
+        is in practice impossible to solve analytically, and
+        for certain values of the energy is known to exhibit
+        chaotic behavior which is difficult to understand in
+        any reasonable sense; see Figure 1. (Nonetheless,
+        later in the course we will learn about some
+        interesting things that can still be said about such
+        systems.)
 
         |> figure
             |> img
@@ -216,18 +216,18 @@
         The (scalar) function $\phi$ is called the _electric
         potential_, and the vector $\mathbf{A}$ is called the
         _magnetic potential_, or _vector potential_. Note that
-        $\mathbf{E}$ behaves exactly like a conventional
-        force field, causing the particle an acceleration in
-        the direction of $\mathbf{E}$ that is equal to the
-        field magnitude multiplied by the (constant) scalar
-        $q/m$, whereas the influence of the magnetic field
+        $\mathbf{E}$ behaves exactly like a conventional force
+        field, causing the particle an acceleration in the
+        direction of $\mathbf{E}$ that is equal to the field
+        magnitude multiplied by the (constant) scalar $q/m$,
+        whereas the influence of the magnetic field
         $\mathbf{B}$ is of a more exotic nature, causing an
         acceleration that depends on the particle's _velocity_
         in a direction perpendicular to its direction of
         motion.
 
-        Show that motion under the Lorentz force is
-        equivalent to the Euler-Lagrange equation
+        Show that motion under the Lorentz force is equivalent
+        to the Euler-Lagrange equation
         $\frac{d}{dt}\left(\frac{\partial L}{\partial
         \dot{\mathbf{x}}}\right)=\frac{\partial L}{\partial
         \mathbf{x}}$,

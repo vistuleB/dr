@@ -10,8 +10,8 @@
     cases $\Omega$ is a subset of $\mathbb{R}$ or the
     vector space $\mathbb{R}^d$. The state of the system
     as a function of time is a sequence
-    $(x_n)_{n=0}^\infty$ of elements of $\Omega$; i.e.,
-    it can be thought of as a function of time
+    $(x_n)_{n=0}^\infty$ of elements of $\Omega$; i.e., it
+    can be thought of as a function of time
     $n\mapsto x_n$, where the time variable takes only
     discrete values (and therefore is frequently denoted
     by the letter $n$ instead of $t$).
@@ -20,9 +20,9 @@
     ordinary differential equation $\dot{x}=F(x,t)$ to
     describe the _dynamics_, i.e., the rules according to
     which the state of the system evolves. The analogous
-    concept for a discrete-time system $(x_n)_{n\ge 0}$
-    is called a _difference equation_, which is an
-    equation of the form
+    concept for a discrete-time system $(x_n)_{n\ge 0}$ is
+    called a _difference equation_, which is an equation
+    of the form
 
     $$
     \begin{equation} eq:differenceeq##<<
@@ -33,14 +33,14 @@
     $$
 
     where $F$ is a function
-    $F:\Omega\times \mathbb{N}_0\to\Omega$ (note that
-    this only makes sense if the set $\Omega$ is a subset
-    of a vector space so that the operation of subtraction
-    is defined). Given a state $a \in \Omega$, we can
-    solve the difference equation (>>eq:differenceeq)
-    starting from the initial condition $x_0=a$. The
-    solution is obtained (and is easily seen to be unique)
-    by rewriting (>>eq:differenceeq) as
+    $F:\Omega\times \mathbb{N}_0\to\Omega$ (note that this
+    only makes sense if the set $\Omega$ is a subset of a
+    vector space so that the operation of subtraction is
+    defined). Given a state $a \in \Omega$, we can solve
+    the difference equation (>>eq:differenceeq) starting
+    from the initial condition $x_0=a$. The solution is
+    obtained (and is easily seen to be unique) by
+    rewriting (>>eq:differenceeq) as
     $x_{n+1}=x_n+F(x_n,n)$ and iterating this ``forward
     evolution'' rule, e.g.,
 

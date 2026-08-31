@@ -1,8 +1,8 @@
+import desugaring/core as infra
 import desugaring/desugarers as dl
+import desugaring/pipelines as pp
 import gleam/list
 import gleam/string
-import desugaring/core as infra
-import desugaring/pipelines as pp
 
 const minimum_line_wrap_length = 40
 
@@ -206,9 +206,12 @@ pub fn formatter_pipeline(
       dl.fold_contents_into_text("tt"),
       dl.insert_text_start_end(#("code", #("`", "`"))),
       dl.fold_contents_into_text("code"),
-      dl.insert_text_start_end_if_unique_attr(
-        #("span", "style", "font-variant:small-caps;", #("`", "`{sc}")),
-      ),
+      dl.insert_text_start_end_if_unique_attr(#(
+        "span",
+        "style",
+        "font-variant:small-caps;",
+        #("`", "`{sc}"),
+      )),
       dl.fold_children_into_text_if(
         #("span", infra.v_has_key_val(_, "style", "font-variant:small-caps;")),
       ),
@@ -385,6 +388,7 @@ pub fn formatter_pipeline(
       dl.unwrap("p"),
       dl.unwrap("MathBlock"),
       dl.delete_attribute__batch(["test", "t"]),
+      dl.format_writerly_commented_attributes(),
     ],
   ]
   |> list.flatten

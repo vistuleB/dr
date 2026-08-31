@@ -39,8 +39,8 @@
     |> hr
     |> Footnote
         handle=fn-alternating-gradient
-        See equations (2.11), (2.12), (2.33) and (2.34) in
-        the paper _Theory of the alternating gradient
+        See equations (2.11), (2.12), (2.33) and (2.34) in the
+        paper _Theory of the alternating gradient
         synchrotron_, by E. D. Courant and H. S. Snyder
         (Annals of Physics $\textbf{3}$ (1958), 1--48),
         available online at

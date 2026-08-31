@@ -17,17 +17,16 @@
     and of angular momentum --- as well as to more exotic
     conserved quantities that arise in specific problems.
 
-    We now discuss a different kind of conserved
-    quantity, one that is associated not with specific
-    solutions, but rather with an entire family of
-    solutions. What we will do is to start with an entire
-    set of initial states in the phase space, then let
-    those states evolve according to the dynamical
-    equations. After some time $t$, the initial states
-    have evolved to occupy some new set in the phase
-    space. It turns out that the total _area_ of the set
-    is conserved: this is the statement of Liouville's
-    theorem.
+    We now discuss a different kind of conserved quantity,
+    one that is associated not with specific solutions,
+    but rather with an entire family of solutions. What we
+    will do is to start with an entire set of initial
+    states in the phase space, then let those states
+    evolve according to the dynamical equations. After
+    some time $t$, the initial states have evolved to
+    occupy some new set in the phase space. It turns out
+    that the total _area_ of the set is conserved: this is
+    the statement of Liouville's theorem.
 
     To state the theorem formally, given a Hamiltonian
     system (>>eq:hamiltoniansystem), for each point
@@ -37,8 +36,8 @@
     to the equations (>>eq:hamiltoniansystem) with initial
     condition $p(0)=p_0, q(0)=q_0$. (We assume that the
     system is such that the solutions exist for all time
-    $t\ge 0$.) Thus, for each $t\ge 0$ we have
-    constructed a mapping
+    $t\ge 0$.) Thus, for each $t\ge 0$ we have constructed
+    a mapping
 
     $$
     \varphi_t:\mathbb{R}^2\to\mathbb{R}^2,
@@ -54,8 +53,8 @@
 
     |> Theorem
         label=Liouville's theorem
-        The phase flow preserves area. More precisely, given
-        a region $E\subset\mathbb{R}^2$ with finite area, for
+        The phase flow preserves area. More precisely, given a
+        region $E\subset\mathbb{R}^2$ with finite area, for
         any $t\ge 0$ we have
 
         \begin{align*}
@@ -99,10 +98,9 @@
         = \iint_E \,dp_0\,dq_0 = \operatorname{area}(E),
         \end{align*}
 
-        and therefore finish the proof. It will be
-        instructive to do this by computing $J_t$ more
-        generally for the generic (not necessarily
-        Hamiltonian) planar system
+        and therefore finish the proof. It will be instructive
+        to do this by computing $J_t$ more generally for the
+        generic (not necessarily Hamiltonian) planar system
 
         \begin{align*}
         \dot{p} = F(p,q,t), \qquad
@@ -177,9 +175,9 @@
         \lim_{h\downarrow 0} \left(\operatorname{tr}(A_t)J_t + O(h)\right) = \operatorname{tr}(A_t)J_t.
         \end{align*}
 
-        The equation (>>eq:liou-jac-ode) is an easy scalar
-        ODE for $J_t$, with the initial condition $J_0=1$.
-        Its solution is
+        The equation (>>eq:liou-jac-ode) is an easy scalar ODE
+        for $J_t$, with the initial condition $J_0=1$. Its
+        solution is
 
         $$
         \begin{equation} eq:liouville-jacobian##<<
@@ -236,8 +234,7 @@
                 \end{align*}
 
             |> li
-                Show that the unique solution to the linear vector
-                ODE
+                Show that the unique solution to the linear vector ODE
 
                 \begin{align*}
                 \dot{\mathbf{x}} = A \mathbf{x}
@@ -274,11 +271,11 @@
         $\operatorname{tr}(A)$ denotes the trace of $A$.
 
         $\textbf{Hint.}$ Take determinants of both sides of
-        the equation $\exp(A)=\exp(n^{-1} A)^n$, which is
-        true by part (4) of the exercise above, then use the
-        fact that $\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$ and
-        the exercise above on determinants of matrices close
-        to $I$.
+        the equation $\exp(A)=\exp(n^{-1} A)^n$, which is true
+        by part (4) of the exercise above, then use the fact
+        that $\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$ and the
+        exercise above on determinants of matrices close to
+        $I$.
 
     |> Corollary
         The phase flow of a planar system preserves area if
@@ -308,8 +305,8 @@
         are either saddle points or centers.
 
     |> Proof
-        An asymptotically stable or unstable rest point
-        (which is either a node or a spiral) would imply that
-        the phase flow either contracts or expands small disks
+        An asymptotically stable or unstable rest point (which
+        is either a node or a spiral) would imply that the
+        phase flow either contracts or expands small disks
         around the rest point; by Liouville's theorem, this is
         impossible.

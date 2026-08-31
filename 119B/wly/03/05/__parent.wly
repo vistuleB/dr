@@ -32,16 +32,16 @@
     \end{cases}
     \end{align*}
 
-    The idea is that when the electromagnet is turned
-    off, the particle experiences a downward acceleration
-    due to the effect of gravity, and when the
-    electromagnet is switched on, the attractive magnetic
-    force causes an upward acceleration that overcomes
-    gravity and exactly negates it. For simplicity, we
-    choose units such that the gravitational constant $g$
-    is equal to $1$, and assume that the acceleration
-    when the electromagnet is switched on is exactly equal
-    in magnitude (and opposite in its direction) to the
+    The idea is that when the electromagnet is turned off,
+    the particle experiences a downward acceleration due
+    to the effect of gravity, and when the electromagnet
+    is switched on, the attractive magnetic force causes
+    an upward acceleration that overcomes gravity and
+    exactly negates it. For simplicity, we choose units
+    such that the gravitational constant $g$ is equal to
+    $1$, and assume that the acceleration when the
+    electromagnet is switched on is exactly equal in
+    magnitude (and opposite in its direction) to the
     gravitational acceleration. The control variable $u$
     is a binary ``on/off'' variable that corresponds to
     the decision of when to activate the electromagnet (a

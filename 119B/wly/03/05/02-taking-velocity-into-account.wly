@@ -17,8 +17,8 @@
     way that will gradually reduce the size of the
     oscillations.
 
-    Formally, the idea described above leads to a
-    feedback rule of the type
+    Formally, the idea described above leads to a feedback
+    rule of the type
 
     \begin{align*}
     u = -\operatorname{sgn}(x+b\dot{x}),
@@ -54,30 +54,29 @@
             equilibrium point is a non-smooth ``sliding motion''
             along a ``chattering curve'', shown in black.
 
-    A look at the phase portrait suggests that the idea
-    is successful, and indeed results in stable
-    levitation. It is not difficult to confirm this
-    analytically. One interesting behavior that emerges
-    upon closer examination of the properties of this
-    system is that when $(x,y)$ crosses the switching
-    line $x+by=0$, if the point is close enough to the
-    origin then the equation of motion becomes
-    ill-defined, since the vector field
-    $(y,-\operatorname{sgn}(x+by))$ starts pointing back
-    towards the switching line. In practice, due to
-    time-delay effects in any physical implementation of
-    the system, the particle will undergo a ``sliding
-    motion'' in which it oscillates violently around both
-    sides of the switching motion, all the while still
-    sliding towards the origin. This phenomenon has been
-    referred to as _chattering_, since in physical
-    implementations where the binary switching is done
-    using an electrical relay, the high frequency
+    A look at the phase portrait suggests that the idea is
+    successful, and indeed results in stable levitation.
+    It is not difficult to confirm this analytically. One
+    interesting behavior that emerges upon closer
+    examination of the properties of this system is that
+    when $(x,y)$ crosses the switching line $x+by=0$, if
+    the point is close enough to the origin then the
+    equation of motion becomes ill-defined, since the
+    vector field $(y,-\operatorname{sgn}(x+by))$ starts
+    pointing back towards the switching line. In practice,
+    due to time-delay effects in any physical
+    implementation of the system, the particle will
+    undergo a ``sliding motion'' in which it oscillates
+    violently around both sides of the switching motion,
+    all the while still sliding towards the origin. This
+    phenomenon has been referred to as _chattering_, since
+    in physical implementations where the binary switching
+    is done using an electrical relay, the high frequency
     switching makes a chattering noise. We can estimate
     the rate at which the particle will approach the
     origin during the sliding motion stage: since the
-    sliding motion happens very near the line $x+by=0$
-    and we have the equation $\dot{x}=y$, the particle's
+    sliding motion happens very near the line $x+by=0$ and
+    we have the equation $\dot{x}=y$, the particle's
     position will approximately satisfy the ODE
     $\dot{x}=-x/b$, whose solution is given by
 
@@ -94,8 +93,8 @@
             class=list
             data-list-style=decimal
             |> li
-                Show that the sliding motion for points along the
-                line $x+by=0$ happens precisely for $|x|\le b^2$.
+                Show that the sliding motion for points along the line
+                $x+by=0$ happens precisely for $|x|\le b^2$.
 
             |> li
                 If we start the system at a point $(x_0,y_0)$ that

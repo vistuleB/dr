@@ -51,14 +51,14 @@
     So we see that, when $b^2<ac,$ the eigenvalues are
     pure imaginary numbers, and recall that in that case
     the rest point is a center. On the other hand, when
-    $b^2>ac$ the eigenvalues are the two real square
-    roots $\pm \sqrt{b^2-ac}$. Since in that case we have
-    one negative and one positive eigenvalue, the
-    stability theory says that the rest point is a saddle
-    point. (We assume that the Hessian matrix of second
-    derivatives is non-degenerate, i.e., that
-    $b^2\neq ac$, so that the usual criteria for
-    stability apply.) Liouville's theorem, which we will
-    discuss in a later section, will give another, more
-    geometric, explanation why rest points cannot be
-    asymptotically stable or unstable.
+    $b^2>ac$ the eigenvalues are the two real square roots
+    $\pm \sqrt{b^2-ac}$. Since in that case we have one
+    negative and one positive eigenvalue, the stability
+    theory says that the rest point is a saddle point. (We
+    assume that the Hessian matrix of second derivatives
+    is non-degenerate, i.e., that $b^2\neq ac$, so that
+    the usual criteria for stability apply.) Liouville's
+    theorem, which we will discuss in a later section,
+    will give another, more geometric, explanation why
+    rest points cannot be asymptotically stable or
+    unstable.

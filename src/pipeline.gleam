@@ -4,10 +4,10 @@ import desugaring/desugarers as dl
 import desugaring/pipelines as pp
 import formatter_pipeline
 import gleam/list
-import gleam/string
 import local_desugarers as local_dl
 import vxml
 import vxml/blame as bl
+import writerly
 
 const our_blame = bl.Des([], "pipeline", 8)
 
@@ -152,7 +152,9 @@ pub fn pipeline(
     [
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
       dl.delete("WriterlyComment"),
-      dl.delete_attribute_if(fn(key, _) { string.starts_with(key, "!!") }),
+      dl.delete_attribute_if(fn(key, _) {
+        writerly.is_commented_attribute_key(key)
+      }),
       dl.unwrap_if_first_child("WriterlyBlankLine"),
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),

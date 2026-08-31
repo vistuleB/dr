@@ -75,8 +75,8 @@
     in the right asymptotic frequency of $1/2$, and
     similarly contains each of the types of successive
     pairs ``$00$'', ``$01$'', ``$10$'' and ``$11$'' with
-    asymptotic frequency $1/4$, each triple of digits
-    with frequency $1/8$, etc. In other words, the binary
+    asymptotic frequency $1/4$, each triple of digits with
+    frequency $1/8$, etc. In other words, the binary
     expansion of a number that is normal to base $2$ is
     hard to distinguish (at least based on statistics)
     from the output of an ideal random number generator.
@@ -92,5 +92,5 @@
         $E:(0,1)\to(0,1)$ that is related to the decimal
         expansion of a number in the same way that $D$ is
         related to the binary expansion, and use it to prove
-        that almost every number $x\in(0,1)$ is normal to
-        base $10$.
+        that almost every number $x\in(0,1)$ is normal to base
+        $10$.

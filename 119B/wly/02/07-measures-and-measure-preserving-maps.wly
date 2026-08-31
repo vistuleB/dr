@@ -2,8 +2,8 @@
     title=Measures and measure preserving maps
 
     Our study of maps so far has shown that even very
-    simple maps such as the logistic map or the $3x+1$
-    map can lead to extremely complicated behavior of the
+    simple maps such as the logistic map or the $3x+1$ map
+    can lead to extremely complicated behavior of the
     associated dynamical system. Is there any hope of
     understanding such complicated systems in some
     meaningful sense? Yes, there is. A key insight is that
@@ -21,9 +21,9 @@
 
     Let $\Omega$ be a set. The theory of probability
     measures can be developed in much greater generality,
-    but for our purposes we will assume that $\Omega$ is
-    a connected open (or closed) subset of $\mathbb{R}$
-    or of $\mathbb{R}^d$. Thus, on $\Omega$ there is a
+    but for our purposes we will assume that $\Omega$ is a
+    connected open (or closed) subset of $\mathbb{R}$ or
+    of $\mathbb{R}^d$. Thus, on $\Omega$ there is a
     natural ``measure'' $d\mathbf{x}$ of $d$-dimensional
     volume familiar from multivariate calculus. The
     probability measures that we will consider take the
@@ -43,13 +43,13 @@
     P(A) = \int_A f(\mathbf{x})d\mathbf{x}.
     $$
 
-    Both the function $f$, called the _probability
-    density function_ associated with $P$, and the set $A$
-    are assumed to be sufficiently well-behaved that
-    $P(A)$ is defined. (You can learn about the precise
-    technical definitions, which we will not discuss here,
-    in an advanced class on real analysis, measure theory
-    or probability theory). A set $A$ for which $P(A)$ is
+    Both the function $f$, called the _probability density
+    function_ associated with $P$, and the set $A$ are
+    assumed to be sufficiently well-behaved that $P(A)$ is
+    defined. (You can learn about the precise technical
+    definitions, which we will not discuss here, in an
+    advanced class on real analysis, measure theory or
+    probability theory). A set $A$ for which $P(A)$ is
     defined is called a _measurable set_. It is an
     annoying fact of life that not all sets are
     measurable, but in practice all sets that you are ever
@@ -58,9 +58,9 @@
 
     Now, if $T:\Omega\to \Omega$ is a map and $P$ is a
     probability measure on $\Omega$, we say that $T$
-    _preserves the measure $P$_ (or _is measure
-    preserving for $P$_) if for any measurable set $A$
-    the following identity holds:
+    _preserves the measure $P$_ (or _is measure preserving
+    for $P$_) if for any measurable set $A$ the following
+    identity holds:
 
     $$
     P(A) = P(T^{-1}(A)),
@@ -72,8 +72,8 @@
     \int_A f(\mathbf{x})d\mathbf{x} = \int_{T^{-1}(A)} f(\mathbf{x})d\mathbf{x}.
     $$
 
-    For interval maps, it is sufficient to prove this
-    when $A$ is an interval. The intuitive meaning of the
+    For interval maps, it is sufficient to prove this when
+    $A$ is an interval. The intuitive meaning of the
     definition is that if the measure $P$ represents the
     statistical distribution of a random element $x$ in
     $\Omega$ (corresponding to the state of the dynamical
@@ -84,8 +84,8 @@
     the time dynamics. A dynamical system $(\Omega, T)$
     together with a probability measure $P$ that is
     preserved by $T$ is called a _measure preserving
-    system_. If $T$ preserves the measure $P$, we say
-    that $P$ is an _invariant measure_ for $T$.
+    system_. If $T$ preserves the measure $P$, we say that
+    $P$ is an _invariant measure_ for $T$.
 
     |> Example
         label=Circle rotation map
@@ -154,8 +154,8 @@
         $\lambda_1(y)=\tfrac12(1-\sqrt{1-y}),
         \lambda_2(z)=\tfrac12(1+\sqrt{1-z})$
         (the functions $x=\lambda_{1,2}(w)$ are the two
-        solutions of the equation $L_4(w)=x$), and we make
-        the substitutions
+        solutions of the equation $L_4(w)=x$), and we make the
+        substitutions
 
         \begin{align*}
         y&=L_4(x) \leftrightarrow x=\lambda_1(y) \textrm{ in the first integral,} \\ z&=L_4(x) \leftrightarrow x=\lambda_2(z) \textrm{ in the second integral}.
@@ -194,8 +194,8 @@
         \frac{1}{\sqrt{x}}\cdot \frac{1}{\sqrt{1-x}} \right) = \frac{1}{\pi\sqrt{x(1-x)}} = f(x).
         \end{align*}
 
-    The idea used in the proof above can be generalized
-    to give a criterion for checking whether a map is
+    The idea used in the proof above can be generalized to
+    give a criterion for checking whether a map is
     measure-preserving.
 
     |> Lemma
@@ -203,8 +203,8 @@
         Let $T:I\to I$ be an interval map that is piecewise
         smooth and monotonic, i.e., the interval $I$ can be
         decomposed into a union of finitely many subintervals
-        on each of which $T$ is smooth and monotonic (in
-        fact, the claim is true even if this is true for a
+        on each of which $T$ is smooth and monotonic (in fact,
+        the claim is true even if this is true for a
         subdivision into countably many subintervals). Then
         $T$ preserves the measure $P(dx)=f(x)dx$ if and only
         if the density $f(x)$ satisfies the equation
@@ -221,8 +221,8 @@
 
     |> Example
         label=Gauss map
-        The Gauss map $G(x)$ preserves the measure $\gamma$
-        on $(0,1)$ (called _Gauss measure_), defined by
+        The Gauss map $G(x)$ preserves the measure $\gamma$ on
+        $(0,1)$ (called _Gauss measure_), defined by
 
         $$
         \gamma(dx) = \frac{1}{\log 2}\cdot \frac{1}{1+x}\,dx.
@@ -233,8 +233,7 @@
 
     |> Exercise
         label=Additive Gauss map
-        The additive Gauss map $g:[0,1]\to[0,1]$ is defined
-        by
+        The additive Gauss map $g:[0,1]\to[0,1]$ is defined by
 
         \begin{align*}
         g(x) = \begin{cases} \frac{x}{1-x} & \textrm{if }0\le x\le \tfrac12, \\
@@ -278,8 +277,8 @@
         \end{align*}
 
         arises in the study of Pythagorean triples. (Figure
-        11(b) explains why it is denoted by $N$.) Show that
-        it preserves the measure
+        11(b) explains why it is denoted by $N$.) Show that it
+        preserves the measure
 
         \begin{align*}
         \pi(dx) = \frac{1}{x(1-x)}\,dx.
@@ -329,8 +328,8 @@
         and $v$ is a tangent vector to the surface based at
         $x$ (representing the direction and speed in which a
         person standing at $x$ will start walking). The flow
-        $\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$
-        and maps it to a new pair $(x',v')=\varphi(x,v)$
+        $\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$ and
+        maps it to a new pair $(x',v')=\varphi(x,v)$
         representing where the person will be, and which
         direction they will be pointing at, $t$ time units
         later. It can be shown that the geodesic flow
@@ -361,12 +360,11 @@
     |> Example
         label=$3x+1$ map
         One of the many (ultimately unsuccessful) attempts at
-        solving the famous $3x+1$ problem mentioned in
-        Section >>sec:ergodic-intro was based on the
-        observation that since the formula of the $3x+1$ map
-        $T(x)$ depends on the parity of $x$, the range of
-        definition of $T$ can be expanded to include numbers
-        of the form
+        solving the famous $3x+1$ problem mentioned in Section
+        >>sec:ergodic-intro was based on the observation that
+        since the formula of the $3x+1$ map $T(x)$ depends on
+        the parity of $x$, the range of definition of $T$ can
+        be expanded to include numbers of the form
 
         \begin{align*}
         a_0 + a_1 \cdot 2 + a_2 \cdot 4 + a_3\cdot 8 + \ldots + a_n \cdot 2^n + \ldots = \sum_{n=0}^\infty a_n 2^n.

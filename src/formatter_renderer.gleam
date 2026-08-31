@@ -233,7 +233,6 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       prettifier: ds.default_prettier_prettifier,
       filterer: ds.default_filterer(_, options, []),
     )
-    |> ds.amend_renderer_by_command_line_amendments(amendments)
 
   let _ = simplifile.delete(parameters.output_dir <> "/*")
 

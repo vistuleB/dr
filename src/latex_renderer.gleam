@@ -1317,7 +1317,6 @@ pub fn render(
           writer: ds.default_writer,
           prettifier: ds.default_prettier_prettifier,
         )
-        |> ds.amend_renderer_by_command_line_amendments(amendments)
 
       // Snapshot the `.tex` files that existed BEFORE we wipe the directory, so
       // we can report which ones are `created` / `deleted` this run (LBP-style),

@@ -996,7 +996,6 @@ pub fn render(amendments: ds.CommandLineAmendments, course_dir: String) -> Nil {
       writer: ds.default_writer,
       prettifier: ds.default_prettier_prettifier,
     )
-    |> ds.amend_renderer_by_command_line_amendments(amendments)
 
   let existing_html = existing_html_artifacts(parameters.output_dir)
 

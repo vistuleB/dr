@@ -122,10 +122,6 @@ pub fn main() {
   }
 
   let #(args, help_requested) = ds.handle_help_requests(args, local_cli_usage)
-  use _ <- on.stay(case help_requested {
-    True -> on.Return(Nil)
-    False -> on.Stay(Nil)
-  })
 
   use #(args, maintenance_requested) <- on.error_ok(
     ds.handle_maintenance_requests(args, local_desugarers.assertive_tests),
@@ -134,7 +130,7 @@ pub fn main() {
       io.println("")
     },
   )
-  use _ <- on.stay(case maintenance_requested {
+  use _ <- on.stay(case maintenance_requested || help_requested {
     True -> on.Return(Nil)
     False -> on.Stay(Nil)
   })

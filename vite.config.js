@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import fs from "node:fs";
-import { exec } from "child_process";
+import { execFile } from "child_process";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -24,42 +24,50 @@ export default defineConfig(({ mode }) => {
   const name = `vite ${rootPath} ${serverPort}-local server`;
   const projectRoot = path.resolve(process.cwd());
 
-  const isPathSafe = (filePath) => {
-    // Check if path starts with ..
-    if (filePath.startsWith("..")) {
-      return false;
-    }
-
+  // open targets live under <course>/public; code --goto targets under <course>/wly.
+  const publicRoot = path.resolve(projectRoot, rootPath);
+  const wlyRoot = path.resolve(projectRoot, `${courseFolder}/wly`);
+  const isInside = (base, filePath) => {
     const resolved = path.resolve(projectRoot, filePath);
-
-    // Check if resolved path is inside projectRoot
-    return (
-      resolved.startsWith(projectRoot + path.sep) || resolved === projectRoot
-    );
+    return resolved === base || resolved.startsWith(base + path.sep);
   };
 
   const ALLOWED_COMMANDS = {
     open: {
-      pattern: /^open\s+([\w\/\-\.]+)$/,
+      pattern: /^open\s+(\S+)$/,
       executor: (match) => {
         const target = match[1].trim();
-        if (!isPathSafe(target)) return null;
-        return `open "${target}"`;
+        if (!isInside(publicRoot, target)) return null;
+        if (!/\.(png|jpe?g|svg)$/i.test(target)) return null;
+        return { file: "open", args: [target] };
       },
     },
     code: {
-      pattern: /^code\s+--goto\s+([^:]+:\d+:\d+)$/,
+      pattern: /^code\s+--goto\s+(.+):(\d+):(\d+)$/,
       executor: (match) => {
-        const filePath = match[1];
-        const parts = filePath.split(":");
-        if (parts.length === 1) parts.push("1");
-        if (parts.length === 2) parts.push("1");
-        if (parts.length !== 3) return null;
-        const [path, line, col] = parts;
-        if (!/^\d+$/.test(line) || !/^\d+$/.test(col)) return null;
-        return `code --goto "${path}:${line}:${col}"`;
+        const [, filePath, line, col] = match;
+        if (!isInside(wlyRoot, filePath)) return null;
+        return { file: "code", args: ["--goto", `${filePath}:${line}:${col}`] };
       },
     },
+  };
+
+  const isLoopback = (addr) =>
+    addr === "127.0.0.1" || addr === "::1" || addr === "::ffff:127.0.0.1";
+  const localHosts = new Set([
+    `127.0.0.1:${serverPort}`,
+    `localhost:${serverPort}`,
+  ]);
+  const localOrigins = new Set([
+    `http://127.0.0.1:${serverPort}`,
+    `http://localhost:${serverPort}`,
+  ]);
+  const isLocalRequest = (req) => {
+    if (!isLoopback(req.socket?.remoteAddress)) return false;
+    if (!localHosts.has(req.headers.host)) return false;
+    const origin = req.headers.origin;
+    if (origin && origin !== "null" && !localOrigins.has(origin)) return false;
+    return true;
   };
 
   const validateAndSanitizeCommand = (cmd) => {
@@ -128,9 +136,35 @@ export default defineConfig(({ mode }) => {
                 return next();
               }
 
+              if (!isLocalRequest(req)) {
+                console.error(
+                  `${name} rejected non-local request (remote=${req.socket?.remoteAddress}, host=${req.headers.host}, origin=${req.headers.origin})`,
+                );
+                res.writeHead(403, { "Content-Type": "application/json" });
+                res.end(JSON.stringify({ success: false, error: "Forbidden" }));
+                return;
+              }
+
               let body = "";
-              req.on("data", (chunk) => (body += chunk));
+              let aborted = false;
+              const MAX_BODY = 8 * 1024;
+              req.on("data", (chunk) => {
+                if (aborted) return;
+                body += chunk;
+                if (body.length > MAX_BODY) {
+                  aborted = true;
+                  res.writeHead(413, { "Content-Type": "application/json" });
+                  res.end(
+                    JSON.stringify({
+                      success: false,
+                      error: "Payload too large",
+                    }),
+                  );
+                  req.destroy();
+                }
+              });
               req.on("end", () => {
+                if (aborted) return;
                 try {
                   const { cmd } = JSON.parse(body);
                   console.log(`${name} received '${cmd}'`);
@@ -150,10 +184,15 @@ export default defineConfig(({ mode }) => {
                     return;
                   }
 
-                  // Execute only the sanitized command
-                  exec(sanitizedCmd, { cwd: process.cwd() }, (error) => {
-                    if (error) console.error(`${name} error: ${error.message}`);
-                  });
+                  execFile(
+                    sanitizedCmd.file,
+                    sanitizedCmd.args,
+                    { cwd: process.cwd() },
+                    (error) => {
+                      if (error)
+                        console.error(`${name} error: ${error.message}`);
+                    },
+                  );
                   res.writeHead(200, { "Content-Type": "application/json" });
                   res.end(JSON.stringify({ success: true }));
                 } catch (e) {

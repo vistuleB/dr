@@ -1299,7 +1299,10 @@ pub fn render(
 
   let parent = course_dir <> "/wly/__parent.wly"
   case simplifile.read(parent) {
-    Error(_) -> io.println("\nunable to read '" <> parent <> "'")
+    Error(_) -> {
+      io.println("unable to read '" <> parent <> "'")
+      io.println("")
+    }
     Ok(contents) -> {
       let assembled = io_lines.string_to_input_lines(contents, parent, 0)
       let assert Ok(parsed) = writerly.input_lines_to_vxml(assembled)
@@ -1374,8 +1377,10 @@ pub fn render(
       let _ = simplifile.clear_directory(output_dir)
 
       case ds.run_renderer(renderer, parameters, options) {
-        Error(error) ->
-          io.println("\nlatex renderer error: " <> ins(error) <> "\n")
+        Error(error) -> {
+          io.println("latex renderer error: " <> ins(error))
+          io.println("")
+        }
         Ok(written_paths) -> {
           let n_figs = copy_figures(course_dir, output_dir)
 
@@ -1395,16 +1400,17 @@ pub fn render(
           // Announce created / deleted files (LBP-style). Files that persist
           // across runs stay silent. `deleted` files are already gone (the rm
           // above removed them); we only need to report them.
+          list.each(created, fn(p) { io.println("created " <> p) })
           case created {
             [] -> Nil
             _ -> io.println("")
           }
-          list.each(created, fn(p) { io.println("created " <> p) })
+
+          list.each(deleted, fn(p) { io.println("deleted " <> p) })
           case deleted {
             [] -> Nil
             _ -> io.println("")
           }
-          list.each(deleted, fn(p) { io.println("deleted " <> p) })
 
           // Note: `run_renderer`'s writer already reports every .tex it wrote
           // (a count, or one line per file under `--artifacts`), main.tex
@@ -1418,12 +1424,9 @@ pub fn render(
             _ -> " (+ " <> int.to_string(n_figs) <> " figures copied)"
           }
           io.println(
-            "\ncompile target: "
-            <> output_dir
-            <> "main.tex"
-            <> figs_note
-            <> "\n",
+            "compile target: " <> output_dir <> "main.tex" <> figs_note,
           )
+          io.println("")
         }
       }
     }

@@ -4,7 +4,6 @@ import desugaring/writerly_defaults as wd
 import formatter_pipeline.{formatter_pipeline}
 import gleam/dict
 import gleam/int
-import gleam/io
 import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/string.{inspect as ins}
@@ -172,16 +171,19 @@ fn extract_line_length_and_indentation_penalty(
   }
 }
 
-pub fn render(arguments: ds.ParsedCLIArguments, course_dir: String) -> Nil {
+pub fn render(
+  arguments: ds.ParsedCLIArguments,
+  course_dir: String,
+) -> Result(Nil, String) {
   let assert Ok(fmt_args) = dict.get(arguments.user_args, "--fmt")
 
   use #(files, fmt_args) <- on.error_ok(extract_files(fmt_args), fn(msg) {
-    io.println(msg)
+    Error(msg)
   })
 
   use #(line_length, indentation_penalty) <- on.error_ok(
     extract_line_length_and_indentation_penalty(fmt_args),
-    fn(msg) { io.println(msg) },
+    fn(msg) { Error(msg) },
   )
 
   let pipeline = formatter_pipeline(line_length, indentation_penalty)
@@ -241,22 +243,24 @@ pub fn render(arguments: ds.ParsedCLIArguments, course_dir: String) -> Nil {
 
   let _ = simplifile.delete(parameters.output_dir <> "/*")
 
-  list.each(
-    case files {
-      [] -> [""]
-      _ -> files
-    },
-    fn(f) {
-      io.println("")
-      let parameters =
-        ds.RendererParameters(
-          ..parameters,
-          input_dir: parameters.input_dir <> f,
-        )
-      case ds.run_renderer(renderer, parameters, options) {
-        Error(error) -> io.println("\nrenderer error: " <> ins(error) <> "\n")
-        _ -> Nil
-      }
-    },
+  use _ <- on.ok(
+    list.try_map(
+      case files {
+        [] -> [""]
+        _ -> files
+      },
+      fn(f) {
+        let parameters =
+          ds.RendererParameters(
+            ..parameters,
+            input_dir: parameters.input_dir <> f,
+          )
+        case ds.run_renderer(renderer, parameters, options) {
+          Error(error) -> Error(ins(error))
+          _ -> Ok(Nil)
+        }
+      },
+    ),
   )
+  Ok(Nil)
 }

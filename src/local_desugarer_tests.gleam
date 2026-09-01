@@ -5,6 +5,7 @@ import local_desugarers
 
 pub fn main() {
   io.println("")
+
   case
     testing.test_desugarers(
       local_desugarers.assertive_tests,

@@ -810,6 +810,7 @@ fn existing_html_artifacts(output_dir: String) -> List(String) {
         <> ": "
         <> string.inspect(error),
       )
+      io.println("")
       []
     }
   }
@@ -840,6 +841,10 @@ fn cleanup_stale_html_files(
         )
     }
   })
+  case stale_html {
+    [] -> Nil
+    _ -> io.println("")
+  }
 }
 
 fn filename_shorthand_to_path_fragment(
@@ -903,9 +908,10 @@ pub fn render(arguments: ds.ParsedCLIArguments, course_dir: String) -> Nil {
   let parent = course_dir <> "/wly/__parent.wly"
   use contents <- on.error_ok(simplifile.read(parent), fn(_) {
     case simplifile.is_file(parent) {
-      Ok(True) | Error(_) -> io.println("\nunable to read '" <> parent <> "'")
-      Ok(False) -> io.println("\nfile not found: '" <> parent <> "'")
+      Ok(True) | Error(_) -> io.println("unable to read '" <> parent <> "'")
+      Ok(False) -> io.println("file not found: '" <> parent <> "'")
     }
+    io.println("")
   })
   let assembled = io_lines.string_to_input_lines(contents, parent, 0)
   let assert Ok(parsed_contents) = writerly.input_lines_to_vxml(assembled)
@@ -959,6 +965,7 @@ pub fn render(arguments: ds.ParsedCLIArguments, course_dir: String) -> Nil {
     Some(x) -> x.val
   }
   io.println("author set favicon to be " <> favicon)
+  io.println("")
   let document_info =
     DocumentInfo(
       title: title,
@@ -1003,7 +1010,10 @@ pub fn render(arguments: ds.ParsedCLIArguments, course_dir: String) -> Nil {
   let existing_html = existing_html_artifacts(parameters.output_dir)
 
   case ds.run_renderer(renderer, parameters, options) {
-    Error(error) -> io.println("\nrenderer error: " <> ins(error) <> "\n")
+    Error(error) -> {
+      io.println("renderer error: " <> ins(error))
+      io.println("")
+    }
     Ok(written_artifacts) ->
       cleanup_stale_html_files(
         parameters.output_dir,

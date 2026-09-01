@@ -6,14 +6,13 @@ import gleam/dict
 import gleam/io
 import gleam/list
 import gleam/option
+import gleam/result
 import gleam/string
 import latex_renderer
 import local_desugarers
 import on
 import renderer
 import simplifile
-
-const ins = string.inspect
 
 fn local_cli_usage() -> String {
   let margin = string.repeat(" ", ds.help_message_margin)
@@ -47,10 +46,6 @@ fn local_cli_usage() -> String {
     "",
     margin <> "--offline-mathjax",
     margin <> "  -> use local mathjax library instead of CDN url",
-    "",
-    margin <> "--last-command",
-    margin <> "  -> run the same arguments as the previous command (from local",
-    margin <> "     .last-command file)",
     "",
     "...and don't forget to include '--which <course dir>' in",
     "order to specify which course you want to compile/run!",
@@ -86,7 +81,41 @@ fn latex_granularity(
   }
 }
 
+fn handle_formatting_request(
+  arguments: ds.ParsedCLIArguments,
+  course_dir: String,
+) -> Result(Bool, ds.CLIError) {
+  case
+    dict.get(arguments.user_args, "--fmt"),
+    latex_granularity(arguments.user_args)
+  {
+    Ok(_), _ -> {
+      io.println("wly -> wly formatter")
+      use _ <- on.ok(
+        formatter_renderer.render(arguments, course_dir)
+        |> result.map_error(ds.ClientSideError),
+      )
+      Ok(True)
+    }
+
+    _, option.Some(granularity) -> {
+      io.println("wly -> latex renderer")
+      latex_renderer.render(arguments, course_dir, granularity)
+      Ok(True)
+    }
+
+    Error(_), option.None -> Ok(False)
+  }
+}
+
+fn handle_cli_error(error: ds.CLIError) -> Nil {
+  io.println("command line error: " <> ds.cli_error_message(error))
+  io.println("")
+}
+
 pub fn main() {
+  io.println("")
+
   let args =
     argv.load().arguments
     |> list.map(fn(x) {
@@ -97,68 +126,32 @@ pub fn main() {
       }
     })
 
-  let #(args, use_last_command) = case list.contains(args, "--last-command") {
-    True -> {
-      let args = list.filter(args, fn(s) { s != "--last-command" })
-      #(args, True)
-    }
-    False -> #(args, False)
-  }
+  use args <- on.error_ok(ds.read_from_dot_last_command(args), handle_cli_error)
 
-  assert !list.contains(args, "--last-command")
-
-  let args = case use_last_command {
-    True ->
-      case simplifile.read(".last-command") {
-        Ok(contents) -> {
-          string.split(contents, " ")
-          |> list.map(string.trim)
-          |> list.filter(fn(s) { !string.is_empty(s) })
-          |> list.append(args)
-        }
-        Error(_) -> panic as "unable to find '.last-command'"
-      }
-    False -> args
-  }
-
-  let args_string = string.join(args, " ")
-
-  use arguments <- on.stay(
-    case
-      ds.process_command_line_arguments(args, [
-        "--fmt",
-        "--latex-monolithic",
-        "--latex-chapters",
-        "--latex-sections",
-        "--latex-subsections",
-        "--local",
-        "--which",
-        "--offline-mathjax",
-      ])
-    {
-      Error(error) -> {
-        io.println("")
-        io.println("command line error: " <> ins(error))
-        ds.basic_cli_usage("\ncommand line usage:")
-        local_cli_usage() |> io.print
-        on.Return(Nil)
-      }
-
-      Ok(arguments) -> {
-        on.Stay(arguments)
-      }
-    },
+  use arguments <- on.error_ok(
+    ds.process_command_line_arguments(args, [
+      "--fmt",
+      "--latex-monolithic",
+      "--latex-chapters",
+      "--latex-sections",
+      "--latex-subsections",
+      "--local",
+      "--which",
+      "--offline-mathjax",
+    ]),
+    handle_cli_error,
   )
 
-  let help_requested = ds.handle_help_requests(arguments, local_cli_usage)
+  use help_requested <- on.error_ok(
+    ds.handle_help_requests(arguments, local_cli_usage),
+    handle_cli_error,
+  )
 
   use maintenance_requested <- on.error_ok(
     ds.handle_maintenance_requests(arguments, local_desugarers.assertive_tests),
-    fn(error) {
-      io.println("maintenance error: " <> error)
-      io.println("")
-    },
+    handle_cli_error,
   )
+
   use _ <- on.stay(case maintenance_requested || help_requested {
     True -> on.Return(Nil)
     False -> on.Stay(Nil)
@@ -173,18 +166,21 @@ pub fn main() {
         }
         _ -> {
           io.println(
-            "\nexpecting '"
+            "expecting '"
             <> name
             <> "' to be a local directory with subdirectory 'wly'; crashing out",
           )
+          io.println("")
           on.Return(Nil)
         }
       }
     }
+
     _ -> {
       io.println(
-        "\nuse '--which' option to specify a project_dir name pls (without spaces); crashing out\n",
+        "use '--which' option to specify a project_dir name pls (without spaces); crashing out",
       )
+      io.println("")
       on.Return(Nil)
     }
   })
@@ -192,40 +188,26 @@ pub fn main() {
   use _ <- on.stay(case arguments.input_dir {
     option.Some(_) -> {
       io.println(
-        "\nunexpected --input-dir argument; use '--which' to specify a local project directory; crashing out\n",
+        "unexpected --input-dir argument; use '--which' to specify a local project directory; crashing out",
       )
+      io.println("")
       on.Return(Nil)
     }
     _ -> on.Stay(Nil)
   })
 
-  case
-    dict.get(arguments.user_args, "--fmt"),
-    latex_granularity(arguments.user_args)
-  {
-    Ok(_), _ -> {
-      io.println("")
-      io.println("wly -> wly formatter")
-      formatter_renderer.render(arguments, course_dir)
-    }
+  use formatting_requested <- on.error_ok(
+    handle_formatting_request(arguments, course_dir),
+    handle_cli_error,
+  )
 
-    _, option.Some(granularity) -> {
-      io.println("")
-      io.println("wly -> latex renderer")
-      latex_renderer.render(arguments, course_dir, granularity)
-      io.println("")
-    }
+  use _ <- on.stay(case formatting_requested {
+    True -> on.Return(Nil)
+    False -> on.Stay(Nil)
+  })
 
-    Error(_), option.None -> {
-      io.println("")
-      io.println("wly -> html renderer")
-      renderer.render(arguments, course_dir)
-      io.println("")
-    }
-  }
+  use _ <- on.error_ok(ds.write_to_dot_last_command(args), handle_cli_error)
 
-  case simplifile.write(".last-command", args_string) {
-    Ok(_) -> Nil
-    _ -> io.println("Warning: unable to write args_string to .last-command")
-  }
+  io.println("wly -> html renderer")
+  renderer.render(arguments, course_dir)
 }

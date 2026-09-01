@@ -2,7 +2,7 @@ import desugarers/dr_create_index
 import desugarers/dr_create_menu
 import desugarers/dr_footnote_marker_to_sup_handle__outside
 import desugarers/dr_generate_js_course
-import desugaring/testing
+import vxml_pipeline/testing
 
 pub const dr_create_index = dr_create_index.constructor
 

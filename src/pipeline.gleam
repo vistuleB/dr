@@ -1,12 +1,12 @@
-import desugaring as ds
-import desugaring/core as infra
-import desugaring/delimited_syntax as syntax
-import desugaring/desugarers as dl
 import formatter_pipeline
 import gleam/list
 import local_desugarers as local_dl
 import vxml
 import vxml/blame as bl
+import vxml_pipeline as ds
+import vxml_pipeline/core as infra
+import vxml_pipeline/delimited_syntax as syntax
+import vxml_pipeline/desugarers as dl
 import writerly
 
 const our_blame = bl.Des([], "pipeline", 8)

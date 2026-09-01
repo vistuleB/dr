@@ -1,6 +1,4 @@
 import argv
-import desugaring as ds
-import desugaring/core as infra
 import formatter_renderer
 import gleam/dict
 import gleam/io
@@ -13,6 +11,8 @@ import local_desugarers
 import on
 import renderer
 import simplifile
+import vxml_pipeline as ds
+import vxml_pipeline/core as infra
 
 fn local_cli_usage() -> String {
   let margin = string.repeat(" ", ds.help_message_margin)

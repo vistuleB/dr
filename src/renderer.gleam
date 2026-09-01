@@ -1,6 +1,3 @@
-import desugaring as ds
-import desugaring/core as infra
-import desugaring/writerly_defaults as wd
 import gleam/dict
 import gleam/io
 import gleam/list
@@ -14,6 +11,9 @@ import simplifile
 import vxml.{type VXML}
 import vxml/blame.{Ext}
 import vxml/io_lines.{type OutputLine, OutputLine}
+import vxml_pipeline as ds
+import vxml_pipeline/core as infra
+import vxml_pipeline/writerly_defaults as wd
 import writerly
 
 pub type FragmentType {

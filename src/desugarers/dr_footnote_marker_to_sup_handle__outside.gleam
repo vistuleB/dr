@@ -1,14 +1,14 @@
-import desugaring/core.{
-  type Desugarer, type DesugarerTransform, type DesugaringError,
-}
-import desugaring/nodemaps_2_transform as n2t
-import desugaring/testing
 import gleam/list
 import gleam/option.{None, Some}
 import gleam/regexp.{type Regexp}
 import gleam/string
 import vxml.{type Line, type VXML, Attr, Line, T, V}
 import vxml/blame.{type Blame} as bl
+import vxml_pipeline/core.{
+  type Desugarer, type DesugarerTransform, type DesugaringError,
+}
+import vxml_pipeline/nodemaps_2_transform as n2t
+import vxml_pipeline/testing
 
 const originator_suffix = "-originator"
 
@@ -19,7 +19,7 @@ fn split_content(blame: Blame, content: String, re: Regexp) -> List(VXML) {
   }
 }
 
-import desugaring/authoring
+import vxml_pipeline/authoring
 
 fn split_nonempty_content(
   blame: Blame,

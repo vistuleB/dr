@@ -1,6 +1,3 @@
-import desugaring as ds
-import desugaring/core as infra
-import desugaring/writerly_defaults as wd
 import formatter_pipeline.{formatter_pipeline}
 import gleam/dict
 import gleam/int
@@ -11,6 +8,9 @@ import on
 import simplifile
 import vxml.{type VXML, V}
 import vxml/blame.{Src}
+import vxml_pipeline as ds
+import vxml_pipeline/core as infra
+import vxml_pipeline/writerly_defaults as wd
 
 const default_line_length = 55
 

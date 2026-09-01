@@ -1,16 +1,16 @@
-import desugaring/authoring
-import desugaring/core.{
-  type Desugarer, type DesugarerTransform, type DesugaringError,
-  type TrafficLight, Continue, DesugaringError, GoBack,
-}
-import desugaring/nodemaps_2_transform as n2t
-import desugaring/testing
 import gleam/int
 import gleam/list
 import gleam/string
 import on
 import simplifile
 import vxml.{type VXML, V}
+import vxml_pipeline/authoring
+import vxml_pipeline/core.{
+  type Desugarer, type DesugarerTransform, type DesugaringError,
+  type TrafficLight, Continue, DesugaringError, GoBack,
+}
+import vxml_pipeline/nodemaps_2_transform as n2t
+import vxml_pipeline/testing
 
 pub const name = "dr_generate_js_course"
 

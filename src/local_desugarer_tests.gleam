@@ -1,7 +1,7 @@
 import argv
-import desugaring/testing
 import gleam/io
 import local_desugarers
+import vxml_pipeline/testing
 
 pub fn main() {
   io.println("")

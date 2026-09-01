@@ -1,10 +1,10 @@
-import desugaring/core as infra
-import desugaring/delimited_syntax as syntax
-import desugaring/desugarers as dl
-import desugaring/split_replacement as sr
 import formatter_pipeline
 import gleam/list
 import gleam/string
+import vxml_pipeline/core as infra
+import vxml_pipeline/delimited_syntax as syntax
+import vxml_pipeline/desugarers as dl
+import vxml_pipeline/split_replacement as sr
 import writerly
 
 // The prose words that introduce a numbered cross-reference. A "<word> >>handle"

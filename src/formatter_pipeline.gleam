@@ -1,6 +1,6 @@
 import desugaring/core as infra
+import desugaring/delimited_syntax as syntax
 import desugaring/desugarers as dl
-import desugaring/pipelines as pp
 import gleam/list
 import gleam/string
 
@@ -152,7 +152,7 @@ pub fn formatter_pipeline(
       dl.attribute_drop_prefixes(#("src", ["./", "/"])),
       dl.delete("QED"),
     ],
-    pp.create_mathblock_elements(
+    syntax.create_mathblock_elements(
       // recognize every standalone display delimiter (see
       // display_delimiter_dollar_policy) as a MathBlock, so a bare (un-`$$`-
       // wrapped) environment like `\begin{equation}` or `\begin{gather}` is
@@ -170,7 +170,7 @@ pub fn formatter_pipeline(
         ends_with_dollar_starts_with_punctuation,
       ),
     ],
-    pp.create_math_elements(
+    syntax.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,

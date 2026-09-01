@@ -263,7 +263,7 @@ To write a literal underscore or asterisk in prose without triggering italics/bo
 prefix it with a backslash: `\_` and `\*`. The backslash is consumed and does not
 appear in the output. This is handled by
 `dl.unescape_delimiters__outside(["_", "*"], ["Math", "MathBlock"])`, which runs
-**after** both `barbaric_symmetric_delim_splitting` steps — anything added to the
+**after** both `permissive_symmetric_delimiter_pipeline` steps — anything added to the
 pipeline that splits on a delimiter must go before it, or the escape will be re-armed.
 
 Deliberately **not** escapable:
@@ -374,9 +374,9 @@ The desugaring pipeline (`pub fn pipeline(course: String)`) transforms the parse
 6. **Auto-generate titles** — `auto_generate_child_if_missing_from_attribute` for `ChapterTitle`, `SectionTitle`, `SubSectionTitle`
 7. **Index & menu creation** — `dr_create_index()`, `dr_create_menu()` (project-specific desugarers)
 8. **Counter text injection** — `prepend_text_node__batch` (e.g. "1.3 " before section titles)
-9. **Math block parsing** — via `pp.create_mathblock_elements` (`$$`, `\begin{align}`, `\begin{align*}`)
-10. **Inline math parsing** — via `pp.create_math_elements` (`\(`, `$`)
-11. **Italic/bold splitting** — `pp.barbaric_symmetric_delim_splitting` for `_..._` → `<i>` and `*...*` → `<b>` (skipping math nodes)
+9. **Math block parsing** — via `syntax.create_mathblock_elements` (`$$`, `\begin{align}`, `\begin{align*}`)
+10. **Inline math parsing** — via `syntax.create_math_elements` (`\(`, `$`)
+11. **Italic/bold splitting** — `syntax.permissive_symmetric_delimiter_pipeline` for `_..._` → `<i>` and `*...*` → `<b>` (skipping math nodes)
 12. **Smart quotes** — `find_replace_if_has_ancestor_else` for ` `` ` → `"` and `''` → `"` (aware of Math context)
 13. **Paragraph grouping** — `group_consecutive_children__outside` (groups inline content into `<p>` tags)
 14. **Cleanup** — `unwrap("WriterlyBlankLine")`, `trim("p")`, `delete_if_empty("p")`

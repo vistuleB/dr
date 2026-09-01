@@ -1,7 +1,7 @@
 import desugaring as ds
 import desugaring/core as infra
+import desugaring/delimited_syntax as syntax
 import desugaring/desugarers as dl
-import desugaring/pipelines as pp
 import formatter_pipeline
 import gleam/list
 import local_desugarers as local_dl
@@ -322,7 +322,7 @@ pub fn pipeline(
     // `*` in `eqnarray*` bold-splits, `_` subscripts italic-split, etc.). The
     // recognized set is shared with the formatter (recognized_display_delimiters)
     // so the renderer always accepts whatever `--fmt` emits.
-    pp.create_mathblock_elements(
+    syntax.create_mathblock_elements(
       list.flatten([
         [infra.DoubleDollar],
         formatter_pipeline.recognized_display_delimiters(),
@@ -331,7 +331,7 @@ pub fn pipeline(
       ["WriterlyBlankLine", "Indent"],
     ),
     [
-      // must run before markdown_link_splitting: it prepends
+      // must run before markdown_link_pipeline: it prepends
       // `[(::øøFootnoteCounter)](>>handle-originator) ` markdown-link
       // text to each `Footnote` node's content (linking back to the
       // sup via that sup's own handle=handle-originator attribute),
@@ -344,7 +344,7 @@ pub fn pipeline(
         "Math",
       ]),
     ],
-    pp.markdown_link_splitting(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
+    syntax.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     [
       dl.math_label_with_handle_to_mathjax_tag(#(
         "MathBlock",
@@ -368,7 +368,7 @@ pub fn pipeline(
     // only recurses into T-nodes and href-bearing V-nodes, so Math nodes are opaque to it.
     // This protects inline math like `$\max(X,0)$` from the paren tokenize/detokenize round-trip
     // (which otherwise corrupts a `\command(...)` group that is a sibling of a link node).
-    pp.create_math_elements(
+    syntax.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
@@ -389,7 +389,7 @@ pub fn pipeline(
       // handles_grand_wrapper_substitute turns it into
       // `(<a href=...>N</a>)`) inside
       // the link, so the whole "(N)" is clickable, not just "N". Must
-      // run after pp.create_math_elements above: rearrange_links does
+      // run after syntax.create_math_elements above: rearrange_links does
       // its own internal tokenize/detokenize round-trip that treats
       // any non-href V-node as opaque, but raw un-parsed `$...$` text
       // is not yet opaque before create_math_elements runs, and gets
@@ -414,7 +414,7 @@ pub fn pipeline(
         #("(<a href=0>_0_</a>)).", "<a href=0>(_0_)</a>)."),
       ]),
     ],
-    pp.barbaric_symmetric_delim_splitting(
+    syntax.permissive_symmetric_delimiter_pipeline(
       "_",
       "_",
       "i",
@@ -424,7 +424,7 @@ pub fn pipeline(
         "Math",
       ],
     ),
-    pp.barbaric_symmetric_delim_splitting(
+    syntax.permissive_symmetric_delimiter_pipeline(
       "\\*",
       "*",
       "b",

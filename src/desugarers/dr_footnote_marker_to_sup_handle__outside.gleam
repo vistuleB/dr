@@ -172,7 +172,7 @@ pub const name = "dr_footnote_marker_to_sup_handle__outside"
 ///    where `handle_name` is read off that SAME
 ///    `Footnote` node's own `handle` attribute. This is
 ///    markdown-link syntax whose URL is a handle
-///    reference — once `markdown_link_splitting` (which
+///    reference — once `markdown_link_pipeline` (which
 ///    must run AFTER this desugarer) turns it into a
 ///    real `<a>`, `handles_grand_wrapper_substitute`'s
 ///    href-rewriting

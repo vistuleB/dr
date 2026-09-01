@@ -1,7 +1,7 @@
 import desugaring/core as infra
+import desugaring/delimited_syntax as syntax
 import desugaring/desugarers as dl
-import desugaring/group_replacement_splitting as grs
-import desugaring/pipelines as pp
+import desugaring/split_replacement as sr
 import formatter_pipeline
 import gleam/list
 import gleam/string
@@ -22,12 +22,12 @@ pub const autoref_words = [
 // the match into `V("AutoRef", ref="<word> >>handle")` (one capture group over
 // the whole span). Handle charset matches the emitter's ref token
 // (letter, then letters/digits/`_`/`:`/`-`); `.` is excluded on purpose.
-fn autoref_named_links_splitter() -> grs.RegexpReplacementerSplitter {
+fn autoref_named_links_split_rule() -> sr.RegexpSplitRule {
   let words = string.join(autoref_words, "|")
-  grs.rr_splitter_for_groups([
+  sr.regexp_split_rule_for_groups([
     #(
       "\\b(?:" <> words <> ")\\s+>>[A-Za-z][A-Za-z0-9_:-]*",
-      grs.TagWithSplitAsVal("AutoRef", "ref"),
+      sr.TagWithSegmentAsValue("AutoRef", "ref"),
     ),
   ])
 }
@@ -59,7 +59,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
     // Recognize every standalone display environment (plus `$$`) as a
     // MathBlock, so the emitter can strip the `$$` and emit the environment
     // (or `\[ ... \]`) directly. Shares the recognition set with the formatter.
-    pp.create_mathblock_elements(
+    syntax.create_mathblock_elements(
       list.flatten([
         [infra.DoubleDollar],
         formatter_pipeline.recognized_display_delimiters(),
@@ -68,10 +68,10 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
       ["WriterlyBlankLine", "Indent"],
     ),
     // `[text](url)` -> `a` node (emitter -> `\href`). Must precede inline math.
-    pp.markdown_link_splitting(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
+    syntax.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     // `$...$` / `\(...\)` -> Math node (emitted verbatim, protected from the
     // emphasis splitting and prose-escaping that follow).
-    pp.create_math_elements(
+    syntax.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
@@ -84,7 +84,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
     // so a handle containing `_` is safely inside an attribute by then; stays
     // out of Math/MathBlock (refs there are equation refs) and `a` (link text).
     [
-      dl.regex_split_and_replace__outside(autoref_named_links_splitter(), [
+      dl.regex_split_and_replace__outside(autoref_named_links_split_rule(), [
         "Math",
         "MathBlock",
         "a",
@@ -92,7 +92,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
     ],
     // `_italic_` -> <i> (emitter -> \emph), `*bold*` -> <b> (emitter -> \textbf),
     // skipping anything inside math.
-    pp.barbaric_symmetric_delim_splitting(
+    syntax.permissive_symmetric_delimiter_pipeline(
       "_",
       "_",
       "i",
@@ -102,7 +102,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
         "Math",
       ],
     ),
-    pp.barbaric_symmetric_delim_splitting(
+    syntax.permissive_symmetric_delimiter_pipeline(
       "\\*",
       "*",
       "b",

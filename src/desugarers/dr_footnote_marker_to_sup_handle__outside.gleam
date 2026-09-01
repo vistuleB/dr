@@ -2,6 +2,7 @@ import desugaring/core.{
   type Desugarer, type DesugarerTransform, type DesugaringError,
 }
 import desugaring/nodemaps_2_transform as n2t
+import desugaring/testing
 import gleam/list
 import gleam/option.{None, Some}
 import gleam/regexp.{type Regexp}
@@ -209,10 +210,10 @@ pub fn constructor(param: Param, outside: List(String)) -> Desugarer {
 // 🌊🌊🌊 tests 🌊🌊🌊🌊
 // 🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
 
-fn assertive_tests_data() -> List(core.AssertiveTestDataWithOutside(Param)) {
+fn assertive_tests_data() -> List(testing.AssertiveTestDataWithOutside(Param)) {
   [
     // Test 1: basic match, mid-sentence
-    core.AssertiveTestDataWithOutside(
+    testing.data_with_outside(
       param: "FootnoteCounter",
       outside: [],
       source: "
@@ -234,7 +235,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataWithOutside(Param)) {
     ),
 
     // Test 2: no match -> unchanged
-    core.AssertiveTestDataWithOutside(
+    testing.data_with_outside(
       param: "FootnoteCounter",
       outside: [],
       source: "
@@ -250,7 +251,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataWithOutside(Param)) {
     ),
 
     // Test 3: two matches on the same line
-    core.AssertiveTestDataWithOutside(
+    testing.data_with_outside(
       param: "FootnoteCounter",
       outside: [],
       source: "
@@ -276,7 +277,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataWithOutside(Param)) {
     ),
 
     // Test 4: match inside a forbidden ancestor -> unchanged
-    core.AssertiveTestDataWithOutside(
+    testing.data_with_outside(
       param: "FootnoteCounter",
       outside: ["MathBlock"],
       source: "
@@ -294,7 +295,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataWithOutside(Param)) {
     ),
 
     // Test 5: Footnote node gets a prepended backlink
-    core.AssertiveTestDataWithOutside(
+    testing.data_with_outside(
       param: "FootnoteCounter",
       outside: [],
       source: "
@@ -316,7 +317,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataWithOutside(Param)) {
     ),
 
     // Test 6: Footnote node with no handle attr -> unchanged
-    core.AssertiveTestDataWithOutside(
+    testing.data_with_outside(
       param: "FootnoteCounter",
       outside: [],
       source: "
@@ -336,9 +337,5 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataWithOutside(Param)) {
 }
 
 pub fn assertive_tests() {
-  core.assertive_test_collection_from_data_with_outside(
-    name,
-    assertive_tests_data(),
-    constructor,
-  )
+  testing.collection_with_outside(name, assertive_tests_data(), constructor)
 }

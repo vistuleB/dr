@@ -3,6 +3,7 @@ import desugaring/core.{
   type Desugarer, type DesugaringError, type TrafficLight, Continue, GoBack,
 }
 import desugaring/nodemaps_2_transform as n2t
+import desugaring/testing
 import gleam/dict.{type Dict}
 import gleam/int
 import gleam/list
@@ -270,9 +271,9 @@ fn inner_param_to_transform() -> core.DesugarerTransform {
 // 🌊🌊🌊 tests 🌊🌊🌊🌊
 // 🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
 
-fn assertive_tests_data() -> List(core.AssertiveTestDataNoParam) {
+fn assertive_tests_data() -> List(testing.AssertiveTestDataNoParam) {
   [
-    core.AssertiveTestDataNoParam(
+    testing.data_no_param(
       source: "
                 <> Document
                   <> Chapter
@@ -305,7 +306,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataNoParam) {
                           href=./index.html
                 ",
     ),
-    core.AssertiveTestDataNoParam(
+    testing.data_no_param(
       source: "
                 <> Document
                   <> Chapter
@@ -420,7 +421,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataNoParam) {
                           href=./index.html
                 ",
     ),
-    core.AssertiveTestDataNoParam(
+    testing.data_no_param(
       source: "
                 <> Document
                   <> Chapter
@@ -481,7 +482,7 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataNoParam) {
                           href=./index.html
                 ",
     ),
-    core.AssertiveTestDataNoParam(
+    testing.data_no_param(
       source: "
                 <> Document
                   <> Chapter
@@ -537,9 +538,5 @@ fn assertive_tests_data() -> List(core.AssertiveTestDataNoParam) {
 }
 
 pub fn assertive_tests() {
-  core.assertive_test_collection_from_data_no_param(
-    name,
-    assertive_tests_data(),
-    constructor,
-  )
+  testing.collection_no_param(name, assertive_tests_data(), constructor)
 }

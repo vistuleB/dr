@@ -1286,16 +1286,16 @@ fn copy_figures(course_dir: String, output_dir: String) -> Int {
 }
 
 pub fn render(
-  amendments: ds.CommandLineAmendments,
+  arguments: ds.ParsedCLIArguments,
   course_dir: String,
   granularity: Granularity,
 ) -> Nil {
-  let #(output_dir_local_path, amendments) = case amendments.output_dir {
-    None -> #("latex", amendments)
-    Some(x) -> #(x, ds.CommandLineAmendments(..amendments, output_dir: None))
+  let #(output_dir_local_path, arguments) = case arguments.output_dir {
+    None -> #("latex", arguments)
+    Some(x) -> #(x, ds.ParsedCLIArguments(..arguments, output_dir: None))
   }
-  let assert None = amendments.input_dir
-  let assert None = amendments.output_dir
+  let assert None = arguments.input_dir
+  let assert None = arguments.output_dir
 
   let parent = course_dir <> "/wly/__parent.wly"
   case simplifile.read(parent) {
@@ -1327,11 +1327,11 @@ pub fn render(
           output_dir: output_dir,
           prettifier_behavior: ds.PrettifierOff,
         )
-        |> ds.amend_renderer_parameters_by_command_line_amendments(amendments)
+        |> ds.amend_renderer_parameters_by_arguments(arguments)
 
       let options =
         ds.vanilla_options()
-        |> ds.amend_renderer_options_by_command_line_amendments(amendments)
+        |> ds.amend_renderer_options_by_arguments(arguments)
 
       let renderer =
         ds.Renderer(

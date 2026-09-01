@@ -121,23 +121,9 @@ pub fn main() {
     False -> args
   }
 
-  let #(args, help_requested) = ds.handle_help_requests(args, local_cli_usage)
-
-  use #(args, maintenance_requested) <- on.error_ok(
-    ds.handle_maintenance_requests(args, local_desugarers.assertive_tests),
-    fn(error) {
-      io.println("maintenance error: " <> error)
-      io.println("")
-    },
-  )
-  use _ <- on.stay(case maintenance_requested || help_requested {
-    True -> on.Return(Nil)
-    False -> on.Stay(Nil)
-  })
-
   let args_string = string.join(args, " ")
 
-  use amendments <- on.stay(
+  use arguments <- on.stay(
     case
       ds.process_command_line_arguments(args, [
         "--fmt",
@@ -158,13 +144,27 @@ pub fn main() {
         on.Return(Nil)
       }
 
-      Ok(amendments) -> {
-        on.Stay(amendments)
+      Ok(arguments) -> {
+        on.Stay(arguments)
       }
     },
   )
 
-  use course_dir <- on.stay(case dict.get(amendments.user_args, "--which") {
+  let help_requested = ds.handle_help_requests(arguments, local_cli_usage)
+
+  use maintenance_requested <- on.error_ok(
+    ds.handle_maintenance_requests(arguments, local_desugarers.assertive_tests),
+    fn(error) {
+      io.println("maintenance error: " <> error)
+      io.println("")
+    },
+  )
+  use _ <- on.stay(case maintenance_requested || help_requested {
+    True -> on.Return(Nil)
+    False -> on.Stay(Nil)
+  })
+
+  use course_dir <- on.stay(case dict.get(arguments.user_args, "--which") {
     Ok([name]) -> {
       let name = name |> infra.drop_ending_slash |> infra.drop_prefix("./")
       case simplifile.is_directory(name <> "/wly") {
@@ -189,7 +189,7 @@ pub fn main() {
     }
   })
 
-  use _ <- on.stay(case amendments.input_dir {
+  use _ <- on.stay(case arguments.input_dir {
     option.Some(_) -> {
       io.println(
         "\nunexpected --input-dir argument; use '--which' to specify a local project directory; crashing out\n",
@@ -200,26 +200,26 @@ pub fn main() {
   })
 
   case
-    dict.get(amendments.user_args, "--fmt"),
-    latex_granularity(amendments.user_args)
+    dict.get(arguments.user_args, "--fmt"),
+    latex_granularity(arguments.user_args)
   {
     Ok(_), _ -> {
       io.println("")
       io.println("wly -> wly formatter")
-      formatter_renderer.render(amendments, course_dir)
+      formatter_renderer.render(arguments, course_dir)
     }
 
     _, option.Some(granularity) -> {
       io.println("")
       io.println("wly -> latex renderer")
-      latex_renderer.render(amendments, course_dir, granularity)
+      latex_renderer.render(arguments, course_dir, granularity)
       io.println("")
     }
 
     Error(_), option.None -> {
       io.println("")
       io.println("wly -> html renderer")
-      renderer.render(amendments, course_dir)
+      renderer.render(arguments, course_dir)
       io.println("")
     }
   }

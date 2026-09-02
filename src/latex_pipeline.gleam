@@ -42,7 +42,7 @@ fn autoref_named_links_split_rule() -> sr.RegexpSplitRule {
 // number everything and build the clickable TOC + PDF outline.
 //
 // We therefore deliberately DO NOT run any of the HTML-only machinery:
-// counter baking, `handles_*` link substitution, `dr_create_index`,
+// counter baking, `writerly_handles_*` link substitution, `dr_create_index`,
 // `dr_create_menu`, smart-quote replacement (`` `` `` / `''` are already valid
 // LaTeX quotes) or the final rename-to-HTML batch. The only transformations we
 // keep are the ones that turn Writerly's inline syntax into a shape the emitter
@@ -51,6 +51,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
   [
     [
       dl.delete("WriterlyComment"),
+      dl.concatenate_text_nodes(),
       dl.delete_attribute_if(fn(key, _) {
         writerly.is_commented_attribute_key(key)
       }),

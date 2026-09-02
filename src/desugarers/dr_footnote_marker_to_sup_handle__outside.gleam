@@ -129,7 +129,7 @@ fn param_to_inner_param(param: Param) -> Result(InnerParam, DesugaringError) {
 
 // Bare counter name, such as "FootnoteCounter". This is not an
 // increment expression: this desugarer only reads the counter
-// with `::øø`; `prepend_counter_incrementing_attribute`
+// with `::øø`; `counters_prepend_incrementing_attribute`
 // increments it at the `Footnote` node.
 type Param =
   String
@@ -155,11 +155,11 @@ pub const name = "dr_footnote_marker_to_sup_handle__outside"
 ///    `handle_name` is expected to be independently
 ///    defined elsewhere (on a `Footnote` node, via a
 ///    bare `handle=handle_name` attribute whose value
-///    gets filled in by `set_handle_value` reading a
+///    gets filled in by `writerly_handles_set_value` reading a
 ///    counter incremented at that same `Footnote`
 ///    node) — so `(>>handle_name)` resolves to
 ///    `(<a href=...>N</a>)` via the ordinary
-///    `handles_grand_wrapper_substitute` text-reference
+///    `writerly_handles_grand_wrapper_substitute` text-reference
 ///    mechanism.
 ///    The `handle=handle_name-originator` attribute
 ///    makes the sup itself independently addressable,
@@ -175,22 +175,22 @@ pub const name = "dr_footnote_marker_to_sup_handle__outside"
 ///    markdown-link syntax whose URL is a handle
 ///    reference — once `markdown_link_pipeline` (which
 ///    must run AFTER this desugarer) turns it into a
-///    real `<a>`, `handles_grand_wrapper_substitute`'s
+///    real `<a>`, `writerly_handles_grand_wrapper_substitute`'s
 ///    href-rewriting
 ///    (the same mechanism that resolves
 ///    `href=>>handle_name` on any `<a>` tag) resolves it
 ///    to the sup's own id, giving a working backlink.
 ///
 /// Callers still need, elsewhere in the pipeline:
-///   - `prepend_counter_incrementing_attribute` on
+///   - `counters_prepend_incrementing_attribute` on
 ///     `Footnote` (increments `counter_name` at each
 ///     `Footnote` node, in document order)
-///   - `set_handle_value` on `Footnote` reading
+///   - `writerly_handles_set_value` on `Footnote` reading
 ///     `::øøcounter_name` (assigns that just-incremented
 ///     value to the node's own bare `handle=` attribute)
 ///   - `rearrange_links__batch` with
 ///     `#("(<a href=0>_0_</a>)", "<a href=0>(_0_)</a>")`
-///     (run after `handles_grand_wrapper_substitute`) to make the
+///     (run after `writerly_handles_grand_wrapper_substitute`) to make the
 ///     parens around the sup's own `(N)` part of the
 ///     link, not just the bare number
 ///

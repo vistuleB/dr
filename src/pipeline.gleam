@@ -133,7 +133,7 @@ pub fn pipeline(
       [vxml.T(our_blame, [vxml.Line(our_blame, "A")])],
     ),
     vxml.V(our_blame, "span", [vxml.Attr(our_blame, "class", "qed")], [
-      vxml.T(our_blame, [vxml.Line(our_blame, "\\(\\square\\)")]),
+      vxml.T(our_blame, [vxml.Line(our_blame, "$\\square$")]),
     ]),
   ]
 
@@ -152,6 +152,7 @@ pub fn pipeline(
     [
       dl.check_tags(#(pre_transformation_approved_tags, "pre-transformation")),
       dl.delete("WriterlyComment"),
+      dl.concatenate_text_nodes(),
       dl.delete_attribute_if(fn(key, _) {
         writerly.is_commented_attribute_key(key)
       }),
@@ -230,27 +231,27 @@ pub fn pipeline(
         "./bibliography.html",
         infra.GoBack,
       )),
-      dl.prepend_counter_incrementing_attribute(#(
+      dl.counters_prepend_incrementing_attribute(#(
         "Chapter",
         "ChapterCounter",
         infra.GoBack,
       )),
-      dl.prepend_counter_incrementing_attribute(#(
+      dl.counters_prepend_incrementing_attribute(#(
         "Section",
         "SectionCounter",
         infra.GoBack,
       )),
-      dl.prepend_counter_incrementing_attribute(#(
+      dl.counters_prepend_incrementing_attribute(#(
         "SubSection",
         "SubSectionCounter",
         infra.GoBack,
       )),
-      dl.prepend_counter_incrementing_attribute(#(
+      dl.counters_prepend_incrementing_attribute(#(
         "Statement",
         "StatementCounter",
         infra.GoBack,
       )),
-      dl.prepend_counter_incrementing_attribute(#(
+      dl.counters_prepend_incrementing_attribute(#(
         "Footnote",
         "FootnoteCounter",
         infra.GoBack,
@@ -280,23 +281,31 @@ pub fn pipeline(
         "BibliographyTitle",
         "title",
       )),
-      dl.set_handle_value(#("Chapter", "::øøChapterCounter", infra.GoBack)),
-      dl.set_handle_value(#(
+      dl.writerly_handles_set_value(#(
+        "Chapter",
+        "::øøChapterCounter",
+        infra.GoBack,
+      )),
+      dl.writerly_handles_set_value(#(
         "Section",
         "::øøChapterCounter.::øøSectionCounter",
         infra.GoBack,
       )),
-      dl.set_handle_value(#(
+      dl.writerly_handles_set_value(#(
         "SubSection",
         "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter",
         infra.GoBack,
       )),
-      dl.set_handle_value(#(
+      dl.writerly_handles_set_value(#(
         "Statement",
         "::øøChapterCounter.::øøStatementCounter",
         infra.Continue,
       )),
-      dl.set_handle_value(#("Footnote", "::øøFootnoteCounter", infra.GoBack)),
+      dl.writerly_handles_set_value(#(
+        "Footnote",
+        "::øøFootnoteCounter",
+        infra.GoBack,
+      )),
       local_dl.dr_create_index(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
@@ -346,23 +355,23 @@ pub fn pipeline(
     ],
     syntax.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     [
-      dl.math_label_with_handle_to_mathjax_tag(#(
+      dl.writerly_handles_materialize_mathjax_tags(#(
         "MathBlock",
         "::++EquationCounter",
       )),
-      dl.substitute_counters(),
-      dl.handles_generate_v_definitions_from_t_definitions(),
+      dl.counters_substitute(),
+      dl.writerly_handles_generate_v_definitions_from_t_definitions(),
       local_dl.dr_create_menu(),
-      dl.handles_add_ids(),
-      dl.handles_grand_wrapper_generate_dictionary("path"),
-      dl.handles_grand_wrapper_substitute(
+      dl.writerly_handles_add_ids(),
+      dl.writerly_handles_grand_wrapper_generate_dictionary("path"),
+      dl.writerly_handles_grand_wrapper_substitute(
         #("path", "a", "a", [], [], ["a"], ["Math", "MathBlock"]),
       ),
-      // consumes the 'used' column that handles_grand_wrapper_substitute
+      // consumes the 'used' column that writerly_handles_grand_wrapper_substitute
       // leaves on the
       // GrandWrapper dictionary; must sit between the two
-      dl.handles_grand_wrapper_warn_unused(["MathBlock"]),
-      dl.unwrap("GrandWrapper"),
+      dl.writerly_handles_grand_wrapper_warn_unused(["MathBlock"]),
+      dl.writerly_handles_grand_wrapper_unwrap(),
     ],
     // Parse inline math into Math nodes BEFORE href tokenization: pre-transformationtokenize_href_surroundings
     // only recurses into T-nodes and href-bearing V-nodes, so Math nodes are opaque to it.
@@ -386,7 +395,7 @@ pub fn pipeline(
       // pulls the literal parens that
       // dr_footnote_marker_to_sup_handle__outside
       // produced as `(>>handle)` text leaves outside the <a> (once
-      // handles_grand_wrapper_substitute turns it into
+      // writerly_handles_grand_wrapper_substitute turns it into
       // `(<a href=...>N</a>)`) inside
       // the link, so the whole "(N)" is clickable, not just "N". Must
       // run after syntax.create_math_elements above: rearrange_links does

@@ -388,7 +388,7 @@ pub fn formatter_pipeline(
       dl.unwrap("p"),
       dl.unwrap("MathBlock"),
       dl.delete_attribute__batch(["test", "t"]),
-      dl.format_writerly_commented_attributes(),
+      dl.writerly_format_commented_attributes(),
     ],
   ]
   |> list.flatten

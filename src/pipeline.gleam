@@ -201,111 +201,41 @@ pub fn pipeline(
         #("Exercises", "counter", "FootnoteCounter"),
         #("Bibliography", "counter", "FootnoteCounter"),
       ]),
-      dl.prepend_attribute(#(
-        "Chapter",
-        "path",
-        "./::øøChapterCounter-0.html",
-        infra.GoBack,
-      )),
-      dl.prepend_attribute(#(
-        "Section",
-        "path",
-        "./::øøChapterCounter-::øøSectionCounter.html",
-        infra.GoBack,
-      )),
-      dl.prepend_attribute(#(
-        "SubSection",
-        "path",
-        "./::øøChapterCounter-::øøSectionCounter-::øøSubSectionCounter.html",
-        infra.GoBack,
-      )),
-      dl.prepend_attribute(#(
-        "Exercises",
-        "path",
-        "./exercises.html",
-        infra.GoBack,
-      )),
-      dl.prepend_attribute(#(
-        "Bibliography",
-        "path",
-        "./bibliography.html",
-        infra.GoBack,
-      )),
-      dl.counters_prepend_incrementing_attribute(#(
-        "Chapter",
-        "ChapterCounter",
-        infra.GoBack,
-      )),
-      dl.counters_prepend_incrementing_attribute(#(
-        "Section",
-        "SectionCounter",
-        infra.GoBack,
-      )),
-      dl.counters_prepend_incrementing_attribute(#(
-        "SubSection",
-        "SubSectionCounter",
-        infra.GoBack,
-      )),
-      dl.counters_prepend_incrementing_attribute(#(
-        "Statement",
-        "StatementCounter",
-        infra.GoBack,
-      )),
-      dl.counters_prepend_incrementing_attribute(#(
-        "Footnote",
-        "FootnoteCounter",
-        infra.GoBack,
-      )),
-      dl.auto_generate_child_if_missing_from_attribute(#(
-        "Chapter",
-        "ChapterTitle",
-        "title",
-      )),
-      dl.auto_generate_child_if_missing_from_attribute(#(
-        "Section",
-        "SectionTitle",
-        "title",
-      )),
-      dl.auto_generate_child_if_missing_from_attribute(#(
-        "SubSection",
-        "SubSectionTitle",
-        "title",
-      )),
-      dl.auto_generate_child_if_missing_from_attribute(#(
-        "Exercises",
-        "ExercisesTitle",
-        "title",
-      )),
-      dl.auto_generate_child_if_missing_from_attribute(#(
-        "Bibliography",
-        "BibliographyTitle",
-        "title",
-      )),
-      dl.writerly_handles_set_value(#(
-        "Chapter",
-        "::øøChapterCounter",
-        infra.GoBack,
-      )),
-      dl.writerly_handles_set_value(#(
-        "Section",
-        "::øøChapterCounter.::øøSectionCounter",
-        infra.GoBack,
-      )),
-      dl.writerly_handles_set_value(#(
-        "SubSection",
-        "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter",
-        infra.GoBack,
-      )),
-      dl.writerly_handles_set_value(#(
-        "Statement",
-        "::øøChapterCounter.::øøStatementCounter",
-        infra.Continue,
-      )),
-      dl.writerly_handles_set_value(#(
-        "Footnote",
-        "::øøFootnoteCounter",
-        infra.GoBack,
-      )),
+      dl.prepend_attribute__batch([
+        #("Chapter", "path", "./::øøChapterCounter-0.html"),
+        #("Section", "path", "./::øøChapterCounter-::øøSectionCounter.html"),
+        #(
+          "SubSection",
+          "path",
+          "./::øøChapterCounter-::øøSectionCounter-::øøSubSectionCounter.html",
+        ),
+        #("Exercises", "path", "./exercises.html"),
+        #("Bibliography", "path", "./bibliography.html"),
+      ]),
+      dl.sigil_counters_prepend_incrementing_attribute__batch([
+        #("Chapter", "ChapterCounter"),
+        #("Section", "SectionCounter"),
+        #("SubSection", "SubSectionCounter"),
+        #("Statement", "StatementCounter"),
+        #("Footnote", "FootnoteCounter"),
+      ]),
+      dl.auto_generate_child_if_missing_from_attribute__batch([
+        #("Chapter", "ChapterTitle", "title"),
+        #("Section", "SectionTitle", "title"),
+        #("SubSection", "SubSectionTitle", "title"),
+        #("Exercises", "ExercisesTitle", "title"),
+        #("Bibliography", "BibliographyTitle", "title"),
+      ]),
+      dl.writerly_handles_set_value__batch([
+        #("Chapter", "::øøChapterCounter"),
+        #("Section", "::øøChapterCounter.::øøSectionCounter"),
+        #(
+          "SubSection",
+          "::øøChapterCounter.::øøSectionCounter.::øøSubSectionCounter",
+        ),
+        #("Statement", "::øøChapterCounter.::øøStatementCounter"),
+        #("Footnote", "::øøFootnoteCounter"),
+      ]),
       local_dl.dr_create_index(),
       dl.prepend_text_node__batch([
         #("ChapterTitle", "::øøChapterCounter. "),
@@ -325,12 +255,6 @@ pub fn pipeline(
         proof_default,
       )),
     ],
-    // Wrap EVERY standalone display environment in `$$` (if not already), so a
-    // bare `\begin{equation}` / `\begin{eqnarray*}` / … reaches MathJax as valid
-    // display math instead of being processed as prose (which mangles it — the
-    // `*` in `eqnarray*` bold-splits, `_` subscripts italic-split, etc.). The
-    // recognized set is shared with the formatter (recognized_display_delimiters)
-    // so the renderer always accepts whatever `--fmt` emits.
     syntax.create_mathblock_elements(
       list.flatten([
         [infra.DoubleDollar],
@@ -340,14 +264,6 @@ pub fn pipeline(
       ["WriterlyBlankLine", "Indent"],
     ),
     [
-      // must run before markdown_link_pipeline: it prepends
-      // `[(::øøFootnoteCounter)](>>handle-originator) ` markdown-link
-      // text to each `Footnote` node's content (linking back to the
-      // sup via that sup's own handle=handle-originator attribute),
-      // and wraps `(*>>handle)` call sites in `<sup handle=handle-
-      // originator><>'(>>handle)'</></sup>`. FootnoteCounter itself is
-      // incremented at the `Footnote` node above (prepend_counter_
-      // incrementing_attribute), not here.
       local_dl.dr_footnote_marker_to_sup_handle__outside("FootnoteCounter", [
         "MathBlock",
         "Math",
@@ -359,7 +275,7 @@ pub fn pipeline(
         "MathBlock",
         "::++EquationCounter",
       )),
-      dl.counters_substitute(),
+      dl.sigil_counters_substitute__outside(["pre"]),
       dl.writerly_handles_generate_v_definitions_from_t_definitions(),
       local_dl.dr_create_menu(),
       dl.writerly_handles_add_ids(),
@@ -367,16 +283,9 @@ pub fn pipeline(
       dl.writerly_handles_grand_wrapper_substitute(
         #("path", "a", "a", [], [], ["a"], ["Math", "MathBlock"]),
       ),
-      // consumes the 'used' column that writerly_handles_grand_wrapper_substitute
-      // leaves on the
-      // GrandWrapper dictionary; must sit between the two
       dl.writerly_handles_grand_wrapper_warn_unused(["MathBlock"]),
       dl.writerly_handles_grand_wrapper_unwrap(),
     ],
-    // Parse inline math into Math nodes BEFORE href tokenization: pre-transformationtokenize_href_surroundings
-    // only recurses into T-nodes and href-bearing V-nodes, so Math nodes are opaque to it.
-    // This protects inline math like `$\max(X,0)$` from the paren tokenize/detokenize round-trip
-    // (which otherwise corrupts a `\command(...)` group that is a sibling of a link node).
     syntax.create_math_elements(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
@@ -392,29 +301,6 @@ pub fn pipeline(
         #("Theorem <a href=1>_1_</a>", "<a href=1>Theorem _1_</a>"),
       ]),
       dl.detokenize_href_surroundings(),
-      // pulls the literal parens that
-      // dr_footnote_marker_to_sup_handle__outside
-      // produced as `(>>handle)` text leaves outside the <a> (once
-      // writerly_handles_grand_wrapper_substitute turns it into
-      // `(<a href=...>N</a>)`) inside
-      // the link, so the whole "(N)" is clickable, not just "N". Must
-      // run after syntax.create_math_elements above: rearrange_links does
-      // its own internal tokenize/detokenize round-trip that treats
-      // any non-href V-node as opaque, but raw un-parsed `$...$` text
-      // is not yet opaque before create_math_elements runs, and gets
-      // corrupted by the same class of bug fixed by moving
-      // create_math_elements before tokenize_href_surroundings above.
-      // Pull the literal parens of an equation reference `(>>handle)` inside
-      // the resulting link so the whole "(N)" is clickable. The surroundings
-      // tokenizer (tokenize_href_surroundings) splits on opening delimiters and
-      // spaces but never on a closing `)`, so a `)` glues to whatever follows
-      // it: `(N) ` tokenizes with a bare `)` but `(N).`, `(N),`, `(N))` do not.
-      // One pattern per trailing token is therefore needed to cover references
-      // that are followed by sentence punctuation or a closing group paren,
-      // rather than only those followed by whitespace. References embedded in
-      // display math (e.g. `...(>>handle)}\\` inside a `\textrm{}`) leave a
-      // `)}\\`-style token that matches none of these and is deliberately left
-      // untouched.
       dl.rearrange_links__batch([
         #("(<a href=0>_0_</a>)", "<a href=0>(_0_)</a>"),
         #("(<a href=0>_0_</a>).", "<a href=0>(_0_)</a>."),
@@ -444,20 +330,8 @@ pub fn pipeline(
       ],
     ),
     [
-      // must come AFTER every splitting step above, or it would re-arm
-      // delimiters that splitting just neutralized. "$" is deliberately
-      // NOT escapable: browser-side MathJax re-scans the page, so a bare
-      // "$" in prose would open math -- "\$" has to survive to the output.
       dl.unescape_delimiters__outside(["_", "*"], ["Math", "MathBlock"]),
     ],
-    // author-mode source-linking tooltips (only with `--local`): every
-    // source line, every inline `Math`, every display `MathBlock`, and every
-    // `img` is wrapped/adorned with a `t-3003`/`t-3003-c` span carrying its
-    // `path:line:col`, which `local.css` styles as a hover tooltip and
-    // `app.js` wires to the local dev server (`/log-event`) for click-to-open.
-    // Must run while `Math`/`MathBlock` are still V-nodes, i.e. before the
-    // `fold_contents_into_text("Math")` + final rename below. `Navigation` and
-    // `Index` are skipped so the auto-generated menu/TOC don't sprout tooltips.
     case author_mode {
       False -> []
       True -> [
@@ -509,10 +383,6 @@ pub fn pipeline(
       dl.unwrap("WriterlyBlankLine"),
       dl.trim("p"),
       dl.delete_if_empty("p"),
-      // `|> Indent` marks the following paragraph to be indented: drop the
-      // marker and tag the next sibling with an `indent` class. (No visual
-      // effect in the current blank-line-separated layout, but the class is
-      // there for any future indented-paragraph layout.)
       dl.add_class_to_next_sibling(#("Indent", "indent")),
       dl.append_class__batch([
         #("MathBlock", "math-block"),

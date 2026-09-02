@@ -920,51 +920,42 @@ pub fn render(arguments: ds.ParsedCLIArguments, course_dir: String) -> Nil {
       panic as "__parent.wly did not specify the banner attribute (what should appear in the browser tab)"
     Some(x) -> x.val
   }
-  io.println("author set banner to be " <> banner)
   let title = case infra.v_first_attr_with_key(parsed_contents, "title") {
     None -> panic as "__parent.wly did not specify any title attribute"
     Some(x) -> x.val
   }
-  io.println("author set title to be " <> title)
   let course = case infra.v_first_attr_with_key(parsed_contents, "course") {
     None -> panic as "__parent.wly did not specify any course attribute"
     Some(x) -> x.val
   }
-  io.println("author set course to be " <> course)
   let term = case infra.v_first_attr_with_key(parsed_contents, "term") {
     None -> panic as "__parent.wly did not specify any term attribute"
     Some(x) -> x.val
   }
-  io.println("author set term to be " <> term)
   let department = case
     infra.v_first_attr_with_key(parsed_contents, "department")
   {
     None -> panic as "__parent.wly did not specify any department attribute"
     Some(x) -> x.val
   }
-  io.println("author set department to be " <> department)
   let institution = case
     infra.v_first_attr_with_key(parsed_contents, "institution")
   {
     None -> panic as "__parent.wly did not specify any institution attribute"
     Some(x) -> x.val
   }
-  io.println("author set institution to be " <> institution)
   let lecturer = case infra.v_first_attr_with_key(parsed_contents, "lecturer") {
     None -> panic as "__parent.wly did not specify any lecturer attribute"
     Some(x) -> x.val
   }
-  io.println("author set lecturer to be " <> lecturer)
   let date = case infra.v_first_attr_with_key(parsed_contents, "date") {
     None -> panic as "__parent.wly did not specify any date attribute"
     Some(x) -> x.val
   }
-  io.println("author set date to be " <> date)
   let favicon = case infra.v_first_attr_with_key(parsed_contents, "favicon") {
     None -> panic as "__parent.wly did not specify any favicon attribute"
     Some(x) -> x.val
   }
-  io.println("author set favicon to be " <> favicon)
   io.println("")
   let document_info =
     DocumentInfo(

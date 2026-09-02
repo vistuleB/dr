@@ -129,7 +129,7 @@ fn param_to_inner_param(param: Param) -> Result(InnerParam, DesugaringError) {
 
 // Bare counter name, such as "FootnoteCounter". This is not an
 // increment expression: this desugarer only reads the counter
-// with `::øø`; `counters_prepend_incrementing_attribute`
+// with `::øø`; `sigil_counters_prepend_incrementing_attribute`
 // increments it at the `Footnote` node.
 type Param =
   String
@@ -182,7 +182,7 @@ pub const name = "dr_footnote_marker_to_sup_handle__outside"
 ///    to the sup's own id, giving a working backlink.
 ///
 /// Callers still need, elsewhere in the pipeline:
-///   - `counters_prepend_incrementing_attribute` on
+///   - `sigil_counters_prepend_incrementing_attribute` on
 ///     `Footnote` (increments `counter_name` at each
 ///     `Footnote` node, in document order)
 ///   - `writerly_handles_set_value` on `Footnote` reading

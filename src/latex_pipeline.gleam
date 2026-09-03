@@ -2,7 +2,7 @@ import formatter_pipeline
 import gleam/list
 import gleam/string
 import vxml_pipeline/core as infra
-import vxml_pipeline/delimited_syntax as syntax
+import vxml_pipeline/delimiter_pipelines as syntax
 import vxml_pipeline/desugarers as dl
 import vxml_pipeline/split_replacement as sr
 import writerly
@@ -60,23 +60,25 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
     // Recognize every standalone display environment (plus `$$`) as a
     // MathBlock, so the emitter can strip the `$$` and emit the environment
     // (or `\[ ... \]`) directly. Shares the recognition set with the formatter.
-    syntax.create_mathblock_elements(
+    syntax.math_block_pipeline(
       list.flatten([
         [infra.DoubleDollar],
         formatter_pipeline.recognized_display_delimiters(),
       ]),
       infra.DoubleDollar,
       ["WriterlyBlankLine", "Indent"],
+      [],
     ),
     // `[text](url)` -> `a` node (emitter -> `\href`). Must precede inline math.
     syntax.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
     // `$...$` / `\(...\)` -> Math node (emitted verbatim, protected from the
     // emphasis splitting and prose-escaping that follow).
-    syntax.create_math_elements(
+    syntax.inline_math_pipeline(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
       ["WriterlyBlankLine", "Indent"],
+      [],
     ),
     // Named cross-references: recognize "Theorem >>handle" / "Lemma >>handle" /
     // … in prose and pull the whole "<word> >>handle" span into a single

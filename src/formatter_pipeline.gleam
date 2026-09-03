@@ -1,7 +1,7 @@
 import gleam/list
 import gleam/string
 import vxml_pipeline/core as infra
-import vxml_pipeline/delimited_syntax as syntax
+import vxml_pipeline/delimiter_pipelines as syntax
 import vxml_pipeline/desugarers as dl
 
 const minimum_line_wrap_length = 40
@@ -127,7 +127,7 @@ fn display_delimiter_dollar_policy() -> List(#(infra.LatexDelimiterPair, Bool)) 
 
 // every standalone display environment in the policy (regardless of its `$$`
 // flag). Both the formatter and the HTML renderer (src/pipeline.gleam) feed this
-// to create_mathblock_elements, so a bare occurrence is always captured as math
+// to math_block_pipeline, so a bare occurrence is always captured as math
 // rather than prose — the invariant that lets any environment be emitted bare.
 pub fn recognized_display_delimiters() -> List(infra.LatexDelimiterPair) {
   display_delimiter_dollar_policy() |> list.map(fn(row) { row.0 })
@@ -152,7 +152,7 @@ pub fn formatter_pipeline(
       dl.attribute_drop_prefixes(#("src", ["./", "/"])),
       dl.delete("QED"),
     ],
-    syntax.create_mathblock_elements(
+    syntax.math_block_pipeline(
       // recognize every standalone display delimiter (see
       // display_delimiter_dollar_policy) as a MathBlock, so a bare (un-`$$`-
       // wrapped) environment like `\begin{equation}` or `\begin{gather}` is
@@ -164,17 +164,19 @@ pub fn formatter_pipeline(
       ]),
       infra.DoubleDollar,
       ["WriterlyBlankLine"],
+      [],
     ),
     [
       dl.concatenate_consecutive_lines_if(
         ends_with_dollar_starts_with_punctuation,
       ),
     ],
-    syntax.create_math_elements(
+    syntax.inline_math_pipeline(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
       ["WriterlyBlankLine"],
+      [],
     ),
     [
       dl.trim_spaces_around_newlines__outside([

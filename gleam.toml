@@ -15,7 +15,7 @@ version = "1.0.0"
 [dependencies]
 vxml = ">= 1.0.9 and < 2.0.0"
 writerly = ">= 0.2.0 and < 1.0.0"
-vxml_pipeline = ">= 0.2.1 and < 1.0.0"
+vxml_pipeline = ">= 0.3.0 and < 1.0.0"
 
 gleam_stdlib = ">= 0.34.0 and < 2.0.0"
 argv = ">= 1.0.2 and < 2.0.0"

@@ -5,7 +5,7 @@ import vxml
 import vxml/blame as bl
 import vxml_pipeline as ds
 import vxml_pipeline/core as infra
-import vxml_pipeline/delimited_syntax as syntax
+import vxml_pipeline/delimiter_pipelines as syntax
 import vxml_pipeline/desugarers as dl
 import writerly
 
@@ -255,13 +255,14 @@ pub fn pipeline(
         proof_default,
       )),
     ],
-    syntax.create_mathblock_elements(
+    syntax.math_block_pipeline(
       list.flatten([
         [infra.DoubleDollar],
         formatter_pipeline.recognized_display_delimiters(),
       ]),
       infra.DoubleDollar,
       ["WriterlyBlankLine", "Indent"],
+      [],
     ),
     [
       local_dl.dr_footnote_marker_to_sup_handle__outside("FootnoteCounter", [
@@ -286,11 +287,12 @@ pub fn pipeline(
       dl.writerly_handles_grand_wrapper_warn_unused(["MathBlock"]),
       dl.writerly_handles_grand_wrapper_unwrap(),
     ],
-    syntax.create_math_elements(
+    syntax.inline_math_pipeline(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
       ["WriterlyBlankLine", "Indent"],
+      [],
     ),
     [
       dl.tokenize_href_surroundings(),

@@ -4,10 +4,11 @@ import gleam/io
 import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/regexp.{type Regexp}
+import gleam/result
 import gleam/string.{inspect as ins}
 import latex_pipeline
 import simplifile
-import vxml.{type Attr, type VXML, Attr, Line, T, V}
+import vxml.{type Attr, type VXML, Attr, T, V}
 import vxml/blame.{Ext}
 import vxml/io_lines.{type OutputLine, OutputLine}
 import vxml_pipeline as ds
@@ -708,6 +709,11 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
     V(_, tag, attrs, children) ->
       case tag {
         "Document" -> nodes_to_latex(children, ctx)
+        "LatexContext" | "LatexEquationDefinition" -> ""
+        "LatexInput" -> {
+          let path = find_attr(attrs, "path") |> option.unwrap("")
+          "\n\\input{" <> path <> "}\n"
+        }
         "Chapter" -> heading("chapter", attrs, children, ctx)
         "Section" -> heading("section", attrs, children, ctx)
         "SubSection" -> heading("subsection", attrs, children, ctx)
@@ -935,6 +941,45 @@ fn collect_eq_labels(vxml: VXML, math_tok: Regexp) -> List(String) {
   }
 }
 
+fn context_children(root: VXML) -> Option(List(VXML)) {
+  case root {
+    V(_, "LatexFragment", _, [V(_, "LatexContext", _, children), ..]) ->
+      Some(children)
+    _ -> None
+  }
+}
+
+fn equation_names_from_context(children: List(VXML)) -> List(String) {
+  children
+  |> list.find_map(fn(child) {
+    case child {
+      V(_, "LatexEquationDefinitions", _, definitions) -> Ok(definitions)
+      _ -> Error(Nil)
+    }
+  })
+  |> result.unwrap([])
+  |> list.filter_map(fn(definition) {
+    case definition {
+      V(_, "LatexEquationDefinition", attrs, _) ->
+        find_attr(attrs, "name") |> option.to_result(Nil)
+      _ -> Error(Nil)
+    }
+  })
+}
+
+fn footnote_root_from_context(children: List(VXML)) -> VXML {
+  let blame = Ext([], "latex_context")
+  children
+  |> list.find_map(fn(child) {
+    case child {
+      V(_, "LatexFootnoteDefinitions", _, footnotes) ->
+        Ok(V(blame, "Document", [], footnotes))
+      _ -> Error(Nil)
+    }
+  })
+  |> result.unwrap(V(blame, "Document", [], []))
+}
+
 // Footnotes and equation numbers are GLOBAL, so the context is built once from
 // the whole tree and shared by every emitted file (monolithic or modular).
 fn build_ctx(root: VXML) -> Ctx {
@@ -946,12 +991,21 @@ fn build_ctx(root: VXML) -> Ctx {
     regexp.from_string(named_ref_pattern() <> "|" <> token_pattern)
   let assert Ok(math_tok) = regexp.from_string(math_token_pattern)
   let assert Ok(amp_tok) = regexp.from_string("&[^&]*&")
+  let context = context_children(root)
+  let eq_names = case context {
+    Some(children) -> equation_names_from_context(children)
+    None -> collect_eq_labels(root, math_tok)
+  }
+  let footnote_root = case context {
+    Some(children) -> footnote_root_from_context(children)
+    None -> root
+  }
   let eq_numbers =
-    collect_eq_labels(root, math_tok)
+    eq_names
     |> list.index_map(fn(name, i) { #(name, i + 1) })
     |> dict.from_list
   let base_ctx = Ctx(dict.new(), eq_numbers, tok, math_tok, amp_tok)
-  let footnotes = gather_footnotes(root, base_ctx)
+  let footnotes = gather_footnotes(footnote_root, base_ctx)
   Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
 }
 
@@ -970,10 +1024,6 @@ fn wrap_document(di: DocumentInfo, body: String) -> String {
     <> body
     <> "\n\\end{document}\n",
   )
-}
-
-fn emit_document(root: VXML, di: DocumentInfo) -> String {
-  wrap_document(di, node_to_latex(root, build_ctx(root)))
 }
 
 // ---------------------------------------------------------------------------
@@ -1015,14 +1065,6 @@ fn max_split(g: Granularity) -> Int {
   }
 }
 
-fn latex_cmd(tag: String) -> String {
-  case tag {
-    "Chapter" -> "chapter"
-    "Section" -> "section"
-    _ -> "subsection"
-  }
-}
-
 fn child_struct_tag(tag: String) -> String {
   case tag {
     "Chapter" -> "Section"
@@ -1032,7 +1074,12 @@ fn child_struct_tag(tag: String) -> String {
 }
 
 type Files =
-  List(#(String, String))
+  List(#(String, VXML))
+
+fn latex_input(path: String) -> VXML {
+  let blame = Ext([], "latex_splitter")
+  V(blame, "LatexInput", [Attr(blame, "path", path)], [])
+}
 
 // Numbered names within a container start at 1 and are zero-padded to the width
 // of the item count — but only when there are 10+ items (so `1,2,3` for a
@@ -1065,8 +1112,8 @@ fn child_container(level: Int) -> String {
   }
 }
 
-// Emit one split structural unit living in directory `dir`, named `num` (already
-// padded). Returns the `\input{…}` line for the parent plus this unit's file(s):
+// Split one structural unit living in directory `dir`, named `num` (already
+// padded). Returns a semantic input node for the parent plus this unit's files:
 //   - a FOLDER `dir/num/num.tex` + a child container, when the unit's structural
 //     children are themselves split and non-empty;
 //   - otherwise a plain FILE `dir/num.tex` with everything inline.
@@ -1077,9 +1124,8 @@ fn hier_unit(
   num: String,
   level: Int,
   ms: Int,
-  ctx: Ctx,
-) -> #(String, Files) {
-  let assert V(_, tag, attrs, children) = node
+) -> #(VXML, Files) {
+  let assert V(blame, tag, attrs, children) = node
   let gtag = child_struct_tag(tag)
   let is_folder = level + 1 <= ms && count_tag(children, gtag) > 0
   case is_folder {
@@ -1087,103 +1133,86 @@ fn hier_unit(
       let self = dir <> "/" <> num <> "/" <> num
       let sub = dir <> "/" <> num <> "/" <> child_container(level)
       let #(inner, sub_files) =
-        hier_children(children, sub, gtag, level + 1, ms, ctx)
-      let content = heading_open(latex_cmd(tag), attrs) <> "\n" <> inner
-      #("\n\\input{" <> self <> "}\n", [#(self <> ".tex", content), ..sub_files])
+        hier_children(children, sub, gtag, level + 1, ms)
+      let content = V(blame, tag, attrs, inner)
+      #(latex_input(self), [#(self <> ".tex", content), ..sub_files])
     }
     False -> {
       let self = dir <> "/" <> num
-      let content =
-        heading_open(latex_cmd(tag), attrs) <> nodes_to_latex(children, ctx)
-      #("\n\\input{" <> self <> "}\n", [#(self <> ".tex", content)])
+      #(latex_input(self), [#(self <> ".tex", node)])
     }
   }
 }
 
-// Walk a unit's children into the parent's `.tex` body: each structural child
-// (tag == `struct_tag`) becomes an `\input` + its own file(s); everything else
-// (intro prose, statements, …) stays inline.
+// Walk a unit's children into the parent's VXML body: each structural child
+// becomes a `LatexInput` node plus its own file; other children remain inline.
 fn hier_children(
   children: List(VXML),
   dir: String,
   struct_tag: String,
   level: Int,
   ms: Int,
-  ctx: Ctx,
-) -> #(String, Files) {
+) -> #(List(VXML), Files) {
   let width = pad_width(count_tag(children, struct_tag))
-  // thread the paragraph-indent state (see `emit_indented`) across the intro
-  // prose; a split-out structural child counts as a block for that purpose.
-  let #(_, _, _, text, files) =
-    list.fold(children, #(0, False, HintDefault, "", []), fn(acc, child) {
-      let #(cnt, in_para, hint, text, files) = acc
+  let #(_, output, files) =
+    list.fold(children, #(0, [], []), fn(acc, child) {
+      let #(cnt, output, files) = acc
       case is_v_tag(child, struct_tag) {
         True -> {
           let cnt = cnt + 1
-          let #(inp, cf) =
-            hier_unit(child, dir, pad(cnt, width), level, ms, ctx)
-          #(cnt, False, HintNoindent, text <> inp, list.append(files, cf))
+          let #(inp, cf) = hier_unit(child, dir, pad(cnt, width), level, ms)
+          #(cnt, [inp, ..output], list.append(files, cf))
         }
-        False -> {
-          let #(in_para, hint, chunk) = emit_indented(child, in_para, hint, ctx)
-          #(cnt, in_para, hint, text <> chunk, files)
-        }
+        False -> #(cnt, [child, ..output], files)
       }
     })
-  #(text, files)
+  #(list.reverse(output), files)
 }
 
 // A standalone unit (Exercises / Bibliography) is a leaf file in `chapters/`,
 // named by its kind (it has no sub-structure to split).
-fn standalone_hier(node: VXML, name: String, ctx: Ctx) -> #(String, Files) {
-  let assert V(_, tag, attrs, children) = node
-  let content =
-    standalone_open(tag, attrs) <> nodes_to_latex(children, ctx) <> "\n"
+fn standalone_hier(node: VXML, name: String) -> #(VXML, Files) {
   let path = "chapters/" <> name
-  #("\n\\input{" <> path <> "}\n", [#(path <> ".tex", content)])
+  #(latex_input(path), [#(path <> ".tex", node)])
 }
 
 // Walk the Document's children into the modular main-body + all unit files.
 // Chapters and the standalone units live under `chapters/`.
-fn hier_document(root: VXML, ms: Int, ctx: Ctx) -> #(String, Files) {
-  let assert V(_, _, _, children) = root
+fn hier_document(root: VXML, ms: Int) -> #(VXML, Files) {
+  let assert V(blame, tag, attrs, children) = root
   let width = pad_width(count_tag(children, "Chapter"))
   let #(_, body, files) =
-    list.fold(children, #(0, "", []), fn(acc, child) {
+    list.fold(children, #(0, [], []), fn(acc, child) {
       let #(cnt, body, files) = acc
       case child {
         V(_, "Chapter", _, _) -> {
           let cnt = cnt + 1
-          let #(inp, cf) =
-            hier_unit(child, "chapters", pad(cnt, width), 1, ms, ctx)
-          #(cnt, body <> inp, list.append(files, cf))
+          let #(inp, cf) = hier_unit(child, "chapters", pad(cnt, width), 1, ms)
+          #(cnt, [inp, ..body], list.append(files, cf))
         }
         V(_, "Exercises", _, _) -> {
-          let #(inp, cf) = standalone_hier(child, "exercises", ctx)
-          #(cnt, body <> inp, list.append(files, cf))
+          let #(inp, cf) = standalone_hier(child, "exercises")
+          #(cnt, [inp, ..body], list.append(files, cf))
         }
         V(_, "Bibliography", _, _) -> {
-          let #(inp, cf) = standalone_hier(child, "bibliography", ctx)
-          #(cnt, body <> inp, list.append(files, cf))
+          let #(inp, cf) = standalone_hier(child, "bibliography")
+          #(cnt, [inp, ..body], list.append(files, cf))
         }
-        _ -> #(cnt, body <> node_to_latex(child, ctx), files)
+        _ -> #(cnt, [child, ..body], files)
       }
     })
-  #(body, files)
+  #(V(blame, tag, attrs, list.reverse(body)), files)
 }
 
-// The full set of #(relative_path, content) files for the chosen granularity.
-fn build_latex_files(root: VXML, di: DocumentInfo, gran: Granularity) -> Files {
-  let files = case gran {
-    // one self-contained file: the root folder holds only `main.tex`
-    Monolithic -> [#("main.tex", emit_document(root, di))]
+// The full set of path-addressed VXML files for the chosen granularity.
+fn split_latex_files(root: VXML, gran: Granularity) -> Files {
+  case gran {
+    Monolithic -> [#("main.tex", root)]
     _ -> {
-      let ctx = build_ctx(root)
-      let #(main_body, files) = hier_document(root, max_split(gran), ctx)
-      [#("main.tex", wrap_document(di, main_body)), ..files]
+      let #(main, files) = hier_document(root, max_split(gran))
+      [#("main.tex", main), ..files]
     }
   }
-  files |> list.map(fn(pc) { #(pc.0, tidy_file(pc.1)) })
 }
 
 // Final per-file whitespace tidy. The per-node emitters prefix headings/blocks
@@ -1212,15 +1241,13 @@ fn collapse_blank_lines(s: String) -> String {
 // Renderer plumbing (splitter / emitter / render entry point)
 // ---------------------------------------------------------------------------
 
-// The classifier is a small routing tag only — every fragment here is just "a
-// LaTeX file", so a single nullary variant suffices. The per-file `.tex` content
-// (the splitter has the root, document info and granularity to render it all)
-// travels in the fragment PAYLOAD, one `Line` per output line, and the emitter
-// turns those into `OutputLine`s. (Do NOT stuff the content into the classifier:
-// `--verbose` prints every classifier via `ins()` into a width-fitted table, so
-// a 150 KB preamble string there blows the verbose output up to megabytes.)
+// The classifier distinguishes the self-contained main document from body
+// fragments. Payloads remain VXML through splitting. Each payload contains the
+// pipeline-produced document context followed by the actual file subtree; the
+// emitter alone converts that semantic structure into LaTeX output lines.
 pub type LatexFragmentType {
-  LatexFile
+  LatexMainFile
+  LatexBodyFile
 }
 
 type Fragment(z) =
@@ -1234,29 +1261,40 @@ pub type LatexSplitterError {
 }
 
 fn our_splitter(
-  di: DocumentInfo,
   gran: Granularity,
   root: VXML,
 ) -> Result(#(List(Fragment(VXML)), ds.Feedback), LatexSplitterError) {
   let blame = Ext([], "latex_splitter")
-  build_latex_files(root, di, gran)
+  let assert V(_, "LatexPreparedDocument", _, [context, root]) = root
+  split_latex_files(root, gran)
   |> list.map(fn(pc) {
-    let #(path, content) = pc
-    let lines =
-      content |> string.split("\n") |> list.map(fn(l) { Line(blame, l) })
-    ds.OutputFragment(LatexFile, path, T(blame, lines))
+    let #(path, payload) = pc
+    let classifier = case path == "main.tex" {
+      True -> LatexMainFile
+      False -> LatexBodyFile
+    }
+    let payload = V(blame, "LatexFragment", [], [context, payload])
+    ds.OutputFragment(classifier, path, payload)
   })
   |> fn(fragments) { Ok(#(fragments, ds.NoFeedback)) }
 }
 
 fn our_emitter(
+  document_info: DocumentInfo,
   fragment: Fragment(VXML),
 ) -> Result(#(Fragment(OL), ds.Feedback), String) {
   let blame = Ext([], "latex_emitter")
-  let lines = case fragment.payload {
-    T(_, ls) -> list.map(ls, fn(l) { OutputLine(blame, 0, l.content) })
-    V(_, _, _, _) -> []
+  let assert V(_, "LatexFragment", _, [_, payload]) = fragment.payload
+  let ctx = build_ctx(fragment.payload)
+  let content = case fragment.classifier {
+    LatexMainFile -> wrap_document(document_info, node_to_latex(payload, ctx))
+    LatexBodyFile -> node_to_latex(payload, ctx)
   }
+  let lines =
+    content
+    |> tidy_file
+    |> string.split("\n")
+    |> list.map(fn(line) { OutputLine(blame, 0, line) })
   Ok(#(ds.OutputFragment(..fragment, payload: lines), ds.NoFeedback))
 }
 
@@ -1342,8 +1380,8 @@ pub fn render(
           parser: wd.default_writerly_parser,
           filterer: ds.default_filterer(_, options, []),
           pipeline: latex_pipeline.latex_pipeline(),
-          splitter: our_splitter(document_info, granularity, _),
-          emitter: our_emitter,
+          splitter: our_splitter(granularity, _),
+          emitter: our_emitter(document_info, _),
           writer: ds.default_writer,
           prettifier: ds.default_prettier_prettifier,
         )

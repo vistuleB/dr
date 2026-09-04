@@ -1,6 +1,7 @@
 import formatter_pipeline
 import gleam/list
 import gleam/string
+import local_desugarers as local_dl
 import vxml_pipeline/core as infra
 import vxml_pipeline/delimiter_pipelines as syntax
 import vxml_pipeline/desugarers as dl
@@ -120,6 +121,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
       // into a bare `_` / `*` outside math. The emitter's prose escaper then
       // re-escapes `_` -> `\_` (a literal underscore in LaTeX text).
       dl.unescape_delimiters__outside(["_", "*"], ["Math", "MathBlock"]),
+      local_dl.dr_latex_collect_document_context(),
     ],
   ]
   |> list.flatten

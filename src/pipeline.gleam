@@ -334,6 +334,19 @@ pub fn pipeline(
     [
       dl.unescape_delimiters__outside(["_", "*"], ["Math", "MathBlock"]),
     ],
+    // author-mode source-linking tooltips (only with `--local`): every
+    // source line, every inline `Math`, every display `MathBlock`, and every
+    // `img` is wrapped/adorned with a `t-3003`/`t-3003-c` span carrying its
+    // `path:line:col`, which `local.css` styles as a hover tooltip and
+    // `app.js` wires to the local dev server (`/log-event`) for click-to-open.
+    // Must run while `Math`/`MathBlock` are still V-nodes, i.e. before the
+    // `fold_contents_into_text("Math")` + final rename below. `Navigation` is
+    // skipped so the per-page prev/next menu doesn't sprout tooltips, but
+    // `Index` is NOT: the TOC's chapter/section/subsection titles are the
+    // author's practical way to jump straight to a unit's source from the
+    // index page, without first opening that unit. (The TOC titles keep their
+    // original source blame — `dr_create_index` copies the title nodes before
+    // counter prefixes are prepended — so each links to the right `.wly` line.)
     case author_mode {
       False -> []
       True -> [
@@ -341,7 +354,7 @@ pub fn pipeline(
           #(parameters.input_dir, [#("class", "t-3003-c")], [
             #("class", "t-3003"),
           ]),
-          ["Math", "MathBlock", "Navigation", "Index"],
+          ["Math", "MathBlock", "Navigation"],
         ),
         dl.source_provenance_append_img_spans(
           #(

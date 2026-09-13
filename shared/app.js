@@ -265,6 +265,27 @@ const authorModeInit = () => {
       });
     }
   }
+
+  // Mobile: `local.css` reveals a tooltip on `:hover`, but a touch device's
+  // emulated hover is sticky — a tapped tooltip stays open and tapping empty
+  // space never clears it (a plain `:hover` cannot be un-set without a pointer
+  // move, which a tap on inert space doesn't provide). So dismiss it
+  // deterministically with a class: a tap outside every tooltip/host adds
+  // `tt-hide` on <html>, which `local.css` uses to force every tooltip (and its
+  // highlight) off, overriding the stuck `:hover`; a tap on a host removes the
+  // class so that host's freshly-tapped `:hover` reveals its tooltip again.
+  // Desktop never fires `touchstart`, so hover behaves normally there.
+  const HOST_SELECTOR = ".t-3003, .t-3003-c, .math-block, figure";
+  document.addEventListener(
+    "touchstart",
+    (e) => {
+      document.documentElement.classList.toggle(
+        "tt-hide",
+        !e.target.closest(HOST_SELECTOR),
+      );
+    },
+    { passive: true },
+  );
 };
 
 authorModeInit();

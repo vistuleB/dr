@@ -120,3 +120,28 @@ figure:hover:has(> .t-3003) img {
   display: flow-root;
   overflow: visible;
 }
+
+/* ------------------------------------------------------------------ *
+ * Mobile dismiss. On a touch device a tap leaves a sticky `:hover`, so a
+ * tapped tooltip stays open and tapping empty space can't clear it. `app.js`
+ * adds `tt-hide` on <html> when a tap lands outside every tooltip/host (and
+ * removes it when a host is tapped); while it is set, force the tooltip — and
+ * every hover highlight — off, overriding the stuck `:hover` above. Desktop
+ * never sets the class, so hover is unaffected there.
+ * ------------------------------------------------------------------ */
+html.tt-hide .t-3003 {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+html.tt-hide .t-3003-c:hover,
+html.tt-hide .t-3003-c:has(.t-3003:hover) {
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+html.tt-hide figure:hover:has(> .t-3003) img,
+html.tt-hide .math-block:hover:has(> .t-3003) {
+  background-color: transparent !important;
+}

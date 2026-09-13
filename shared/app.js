@@ -200,15 +200,44 @@ document.addEventListener("keydown", onKeyDown);
 // normal (non-`--local`) build, whose pages don't even load this behavior's
 // `local.css`.
 // ---------------------------------------------------------------------------
+// On a mobile device the loopback-only endpoint rejects us, so `npm run
+// dev:mobile` prints a token; open the page once as
+// http://<lan-ip>:<port>/#authToken=<token> to store it here (the hash is never
+// sent to the server). It is then replayed as the X-Author-Token header.
+const AUTHOR_TOKEN_KEY = "authToken3003";
+const captureAuthToken = () => {
+  try {
+    const parts = window.location.hash.slice(1).split("&").filter(Boolean);
+    const tokenPart = parts.find((p) => p.startsWith("authToken="));
+    if (!tokenPart) return;
+    localStorage.setItem(
+      AUTHOR_TOKEN_KEY,
+      decodeURIComponent(tokenPart.slice("authToken=".length)),
+    );
+    const rest = parts.filter((p) => !p.startsWith("authToken=")).join("&");
+    history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search + (rest ? "#" + rest : ""),
+    );
+  } catch {}
+};
+captureAuthToken();
+
 const sendCmdTo3003 = (command) => {
   const payload = { cmd: command };
   const url =
     window.location.protocol === "file:"
       ? "http://localhost:3003/log-event"
       : "/log-event";
+  const headers = { "Content-Type": "application/json" };
+  try {
+    const token = localStorage.getItem(AUTHOR_TOKEN_KEY);
+    if (token) headers["X-Author-Token"] = token;
+  } catch {}
   fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(payload),
   });
 };

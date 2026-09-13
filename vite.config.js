@@ -1,6 +1,9 @@
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import fs from "node:fs";
+import os from "node:os";
+import crypto from "node:crypto";
+import qrcode from "qrcode-terminal";
 import { execFile } from "child_process";
 
 export default defineConfig(({ mode }) => {
@@ -70,6 +73,19 @@ export default defineConfig(({ mode }) => {
     return true;
   };
 
+  // A random per-startup token lets an explicitly authorized remote device (a
+  // phone under `npm run dev:mobile`) drive the endpoint without opening it to
+  // the whole LAN. The token is a custom header (so a malicious site can neither
+  // read it nor forge the request), timing-safe compared.
+  const authToken = crypto.randomBytes(24).toString("hex");
+  const hasValidToken = (req) => {
+    const provided = req.headers["x-author-token"];
+    if (typeof provided !== "string" || provided.length !== authToken.length) {
+      return false;
+    }
+    return crypto.timingSafeEqual(Buffer.from(provided), Buffer.from(authToken));
+  };
+
   const validateAndSanitizeCommand = (cmd) => {
     if (!cmd || typeof cmd !== "string") {
       return null;
@@ -121,6 +137,28 @@ export default defineConfig(({ mode }) => {
               `  \x1b[32m➜\x1b[0m  \x1b[1mServing:\x1b[0m \x1b[36m${rootPath}\x1b[0m`,
             );
             _print();
+            // Only relevant when listening on the LAN (npm run dev:mobile).
+            if (serverHost !== "127.0.0.1" && serverHost !== "localhost") {
+              const lanIp = Object.values(os.networkInterfaces())
+                .flat()
+                .find(
+                  (i) =>
+                    i && !i.internal && (i.family === "IPv4" || i.family === 4),
+                )?.address;
+              const base = lanIp
+                ? `http://${lanIp}:${serverPort}`
+                : `http://<lan-ip>:${serverPort}`;
+              const authUrl = `${base}/#authToken=${authToken}`;
+              console.log(
+                `\n  \x1b[33m🔑 Author tooltips on mobile\x1b[0m — scan once on the device:`,
+              );
+              if (lanIp) {
+                qrcode.generate(authUrl, { small: true }, (qr) =>
+                  console.log(qr),
+                );
+              }
+              console.log(`     or open: \x1b[36m${authUrl}\x1b[0m\n`);
+            }
           };
         },
       },
@@ -136,9 +174,9 @@ export default defineConfig(({ mode }) => {
                 return next();
               }
 
-              if (!isLocalRequest(req)) {
+              if (!isLocalRequest(req) && !hasValidToken(req)) {
                 console.error(
-                  `${name} rejected non-local request (remote=${req.socket?.remoteAddress}, host=${req.headers.host}, origin=${req.headers.origin})`,
+                  `${name} rejected unauthorized request (remote=${req.socket?.remoteAddress}, host=${req.headers.host}, origin=${req.headers.origin})`,
                 );
                 res.writeHead(403, { "Content-Type": "application/json" });
                 res.end(JSON.stringify({ success: false, error: "Forbidden" }));

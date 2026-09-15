@@ -18,9 +18,8 @@
 .t-3003-c:hover,
 .t-3003-c:has(.t-3003:hover) {
   background-color: #bfb;
-  padding: 5px;
-  margin: -5px;
   border-radius: 10px;
+  box-shadow: 0 0 0 5px #bfb;
 }
 
 .t-3003 {
@@ -137,8 +136,7 @@ html.tt-hide .t-3003 {
 html.tt-hide .t-3003-c:hover,
 html.tt-hide .t-3003-c:has(.t-3003:hover) {
   background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  box-shadow: none !important;
 }
 
 html.tt-hide figure:hover:has(> .t-3003) img,

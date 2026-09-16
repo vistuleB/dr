@@ -1,0 +1,46 @@
+\contentsline {chapter}{\numberline {1}Part 1 — Hamiltonian and Lagrangian mechanics}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Hamiltonian systems}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}The Euler-Lagrange equation}{6}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Equivalence of the Lagrange and Hamilton formalisms}{6}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Lagrangian formulation of Newtonian mechanics}{7}{section.1.5}%
+\contentsline {section}{\numberline {1.6}An autonomous Hamiltonian is conserved}{12}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Systems with many degrees of freedom}{12}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Rest points in autonomous Hamiltonian systems}{16}{section.1.8}%
+\contentsline {section}{\numberline {1.9}The principle of least action}{17}{section.1.9}%
+\contentsline {section}{\numberline {1.10}The calculus of variations}{17}{section.1.10}%
+\contentsline {section}{\numberline {1.11}The phase flow and Liouville's theorem}{27}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Poincaré recurrence theorem}{31}{section.1.12}%
+\contentsline {section}{\numberline {1.13}Liouville's theorem and ``statistical dynamics''}{32}{section.1.13}%
+\contentsline {section}{\numberline {1.14}The pendulum equation, falling trees and domino waves}{33}{section.1.14}%
+\contentsline {subsection}{\numberline {1.14.1}Analytic solution using elliptic integrals}{33}{subsection.1.14.1}%
+\contentsline {subsection}{\numberline {1.14.2}Formula for the period}{35}{subsection.1.14.2}%
+\contentsline {subsection}{\numberline {1.14.3}Falling time of a tree}{36}{subsection.1.14.3}%
+\contentsline {subsection}{\numberline {1.14.4}The speed of a wave of falling dominoes}{37}{subsection.1.14.4}%
+\contentsline {chapter}{\numberline {2}Part 2 — Discrete-time dynamics, chaos and ergodic theory}{41}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{41}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Difference equations and maps}{42}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Interval maps}{46}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Fixed points and cycles}{48}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Stability of fixed points}{49}{section.2.5}%
+\contentsline {section}{\numberline {2.6}A detailed study of the logistic map}{50}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Measures and measure preserving maps}{50}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Measure $0$ sets}{55}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Invariant sets, ergodicity and the ergodic theorem}{55}{section.2.9}%
+\contentsline {section}{\numberline {2.10}The doubling map and normal numbers}{56}{section.2.10}%
+\contentsline {section}{\numberline {2.11}Circle rotations and equidistribution on $(0,1)$}{57}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Statistics of the logistic map $L_4$}{58}{section.2.12}%
+\contentsline {chapter}{\numberline {3}Part 3 — Control theory}{60}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction: the problem of control}{60}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Feedback}{60}{section.3.2}%
+\contentsline {section}{\numberline {3.3}An inverted pendulum with a vertically oscillating base}{61}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Alternating gradient focusing}{67}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Electromagnetic levitation}{67}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}A first attempt}{68}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Taking velocity into account}{70}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Optimal switching control}{72}{subsection.3.5.3}%
+\contentsline {section}{\numberline {3.6}Linear Quadratic Performance control}{73}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}The one dimensional LQP control problem}{74}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}The case of an infinite time horizon}{76}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Generalization to arbitrary dimension}{76}{subsection.3.6.3}%
+\contentsline {chapter}{Bibliographic notes}{80}{chapter*.104}%

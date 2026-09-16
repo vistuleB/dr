@@ -310,10 +310,6 @@ pub fn pipeline(
       dl.detokenize_href_surroundings(),
       dl.rearrange_links__batch([
         #("(<a href=0>_0_</a>)", "<a href=0>(_0_)</a>"),
-        #("(<a href=0>_0_</a>).", "<a href=0>(_0_)</a>."),
-        #("(<a href=0>_0_</a>),", "<a href=0>(_0_)</a>,"),
-        #("(<a href=0>_0_</a>))", "<a href=0>(_0_)</a>)"),
-        #("(<a href=0>_0_</a>)).", "<a href=0>(_0_)</a>)."),
       ]),
     ],
     syntax.permissive_symmetric_delimiter_pipeline(

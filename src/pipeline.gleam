@@ -5,7 +5,7 @@ import vxml
 import vxml/blame as bl
 import vxml_pipeline as ds
 import vxml_pipeline/core as infra
-import vxml_pipeline/delimiter_pipelines as syntax
+import vxml_pipeline/delimiter_pipelines as delimiters
 import vxml_pipeline/desugarers as dl
 import writerly
 
@@ -255,7 +255,7 @@ pub fn pipeline(
         proof_default,
       )),
     ],
-    syntax.math_block_pipeline(
+    delimiters.math_block_pipeline(
       list.flatten([
         [infra.DoubleDollar],
         formatter_pipeline.recognized_display_delimiters(),
@@ -270,7 +270,9 @@ pub fn pipeline(
         "Math",
       ]),
     ],
-    syntax.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
+    delimiters.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], [
+      "MathBlock",
+    ]),
     [
       dl.writerly_handles_materialize_mathjax_tags(#(
         "MathBlock",
@@ -287,7 +289,7 @@ pub fn pipeline(
       dl.writerly_handles_grand_wrapper_warn_unused(["MathBlock"]),
       dl.writerly_handles_grand_wrapper_unwrap(),
     ],
-    syntax.inline_math_pipeline(
+    delimiters.inline_math_pipeline(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
@@ -307,7 +309,7 @@ pub fn pipeline(
         #("(<a href=0>_0_</a>)", "<a href=0>(_0_)</a>"),
       ]),
     ],
-    syntax.permissive_symmetric_delimiter_pipeline(
+    delimiters.permissive_symmetric_delimiter_pipeline(
       "_",
       "_",
       "i",
@@ -317,7 +319,7 @@ pub fn pipeline(
         "Math",
       ],
     ),
-    syntax.permissive_symmetric_delimiter_pipeline(
+    delimiters.permissive_symmetric_delimiter_pipeline(
       "\\*",
       "*",
       "b",

@@ -3,7 +3,7 @@ import gleam/list
 import gleam/string
 import local_desugarers as local_dl
 import vxml_pipeline/core as infra
-import vxml_pipeline/delimiter_pipelines as syntax
+import vxml_pipeline/delimiter_pipelines as delimiters
 import vxml_pipeline/desugarers as dl
 import vxml_pipeline/split_replacement as sr
 import writerly
@@ -61,7 +61,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
     // Recognize every standalone display environment (plus `$$`) as a
     // MathBlock, so the emitter can strip the `$$` and emit the environment
     // (or `\[ ... \]`) directly. Shares the recognition set with the formatter.
-    syntax.math_block_pipeline(
+    delimiters.math_block_pipeline(
       list.flatten([
         [infra.DoubleDollar],
         formatter_pipeline.recognized_display_delimiters(),
@@ -71,10 +71,12 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
       [],
     ),
     // `[text](url)` -> `a` node (emitter -> `\href`). Must precede inline math.
-    syntax.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], ["MathBlock"]),
+    delimiters.markdown_link_pipeline(["WriterlyBlankLine", "Indent"], [
+      "MathBlock",
+    ]),
     // `$...$` / `\(...\)` -> Math node (emitted verbatim, protected from the
     // emphasis splitting and prose-escaping that follow).
-    syntax.inline_math_pipeline(
+    delimiters.inline_math_pipeline(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,
@@ -96,7 +98,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
     ],
     // `_italic_` -> <i> (emitter -> \emph), `*bold*` -> <b> (emitter -> \textbf),
     // skipping anything inside math.
-    syntax.permissive_symmetric_delimiter_pipeline(
+    delimiters.permissive_symmetric_delimiter_pipeline(
       "_",
       "_",
       "i",
@@ -106,7 +108,7 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
         "Math",
       ],
     ),
-    syntax.permissive_symmetric_delimiter_pipeline(
+    delimiters.permissive_symmetric_delimiter_pipeline(
       "\\*",
       "*",
       "b",

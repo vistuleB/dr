@@ -1,7 +1,7 @@
 import gleam/list
 import gleam/string
 import vxml_pipeline/core as infra
-import vxml_pipeline/delimiter_pipelines as syntax
+import vxml_pipeline/delimiter_pipelines as delimiters
 import vxml_pipeline/desugarers as dl
 
 const minimum_line_wrap_length = 40
@@ -152,7 +152,7 @@ pub fn formatter_pipeline(
       dl.attribute_drop_prefixes(#("src", ["./", "/"])),
       dl.delete("QED"),
     ],
-    syntax.math_block_pipeline(
+    delimiters.math_block_pipeline(
       // recognize every standalone display delimiter (see
       // display_delimiter_dollar_policy) as a MathBlock, so a bare (un-`$$`-
       // wrapped) environment like `\begin{equation}` or `\begin{gather}` is
@@ -171,7 +171,7 @@ pub fn formatter_pipeline(
         ends_with_dollar_starts_with_punctuation,
       ),
     ],
-    syntax.inline_math_pipeline(
+    delimiters.inline_math_pipeline(
       [infra.BackslashParenthesis, infra.SingleDollar],
       infra.SingleDollar,
       infra.BackslashParenthesis,

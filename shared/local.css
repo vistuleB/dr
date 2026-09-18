@@ -18,8 +18,8 @@
 .t-3003-c:hover,
 .t-3003-c:has(.t-3003:hover) {
   background-color: #bfb;
-  border-radius: 10px;
-  box-shadow: 0 0 0 5px #bfb;
+  border-radius: 3px;
+  box-shadow: -3px 0 0 #bfb, 3px 0 0 #bfb;
 }
 
 .t-3003 {
@@ -29,7 +29,8 @@
   font-weight: normal;
   line-height: 1.6;
   font-size: 12px;
-  display: none;
+  display: block;
+  visibility: hidden;
   position: absolute;
   top: -3.85em;
   left: 50%;
@@ -82,13 +83,13 @@
 }
 
 .t-3003-c:hover .t-3003 {
-  display: block;
+  visibility: visible;
   opacity: 1;
 }
 
 /* image tooltips: reveal on figure hover, tint the image */
 figure:hover > .t-3003 {
-  display: block;
+  visibility: visible;
   opacity: 1;
 }
 
@@ -105,9 +106,16 @@ figure:hover:has(> .t-3003) img {
   position: relative;
 }
 
+/* Establish display + overflow up front (not on hover) so the block's layout
+   and clipping never change when the tooltip appears. author-mode only. */
+.math-block:has(> .t-3003) {
+  display: flow-root;
+  overflow: visible;
+}
+
 /* display-math tooltips: reveal on math-block hover, tint the block */
 .math-block:hover > .t-3003 {
-  display: block;
+  visibility: visible;
   opacity: 1;
   position: absolute;
   left: 50%;
@@ -116,8 +124,6 @@ figure:hover:has(> .t-3003) img {
 
 .math-block:hover:has(> .t-3003) {
   background-color: #bdf;
-  display: flow-root;
-  overflow: visible;
 }
 
 /* ------------------------------------------------------------------ *
@@ -129,7 +135,7 @@ figure:hover:has(> .t-3003) img {
  * never sets the class, so hover is unaffected there.
  * ------------------------------------------------------------------ */
 html.tt-hide .t-3003 {
-  display: none !important;
+  visibility: hidden !important;
   opacity: 0 !important;
 }
 

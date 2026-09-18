@@ -37,8 +37,8 @@ type DocumentInfo {
     institution: String,
     lecturer: String,
     date: String,
-    // optional cover image, shown between the title and the TOC; a bare
-    // filename resolves against the `figures/` directory
+    // optional cover image, shown on the title page between the title and the
+    // author; a bare filename resolves against the `figures/` directory
     cover: Option(String),
   )
 }
@@ -925,6 +925,9 @@ fn preamble(di: DocumentInfo) -> String {
   <> "\\date{"
   <> emit_mixed(di.date)
   <> "}\n"
+  // when a cover image is present, redefine \maketitle to place it on the title
+  // page between the title and the author (no-op otherwise)
+  <> cover_title_page_latex(di)
 }
 
 // Assign each `name##<<` marker its global equation number by document order
@@ -1023,26 +1026,40 @@ fn resolve_cover_src(cover: String) -> String {
   }
 }
 
-// The optional cover image, shown on its own page between the title and the
-// TOC, centered both horizontally (`center`) and vertically (the `\vfill`
-// sandwich, anchored by `\null` so the leading fill is not discarded at the top
-// of the page). The `\fitwidth` macro (defined in the preamble) scales an
-// over-wide image down to `\linewidth` while leaving a narrower one at its
-// natural size. The trailing `\clearpage` flushes the cover page so the TOC
-// starts fresh. Returns the empty string for a Document without a cover.
-fn cover_latex(di: DocumentInfo) -> String {
+// When the Document has a cover image, redefine `\maketitle` so the cover sits
+// ON the title page, between the title/course/term block and the
+// author/department/date block. The image is bounded by `\linewidth` and half
+// the text height with `keepaspectratio`, so it always shrinks to fit and the
+// whole title page — title, cover, author, date — stays on a single page. The
+// `\null\vfil … \vfil\null` sandwich keeps the block vertically centered.
+// Courses without a cover keep the report class's default `\maketitle`. Generic:
+// the only document-specific value is the resolved image path.
+fn cover_title_page_latex(di: DocumentInfo) -> String {
   case di.cover {
     None -> ""
     Some(cover) ->
-      "\\clearpage\n"
-      <> "\\null\\vfill\n"
-      <> "\\begin{center}\n"
-      <> "\\fitwidth{\\includegraphics{"
+      "\\makeatletter\n"
+      <> "\\renewcommand\\maketitle{%\n"
+      <> "  \\begin{titlepage}%\n"
+      <> "    \\null\\vfil\n"
+      <> "    \\begin{center}%\n"
+      <> "      {\\LARGE \\@title \\par}%\n"
+      <> "      \\vskip 2.5em%\n"
+      <> "      \\includegraphics[width=\\linewidth,height=0.5\\textheight,keepaspectratio]{"
       <> resolve_cover_src(cover)
-      <> "}}\n"
-      <> "\\end{center}\n"
-      <> "\\vfill\n"
-      <> "\\clearpage\n\n"
+      <> "}\\par\n"
+      <> "      \\vskip 2.5em%\n"
+      <> "      {\\large \\lineskip .75em%\n"
+      <> "        \\begin{tabular}[t]{c}%\n"
+      <> "          \\@author\n"
+      <> "        \\end{tabular}\\par}%\n"
+      <> "      \\vskip 1.5em%\n"
+      <> "      {\\large \\@date \\par}%\n"
+      <> "    \\end{center}\\par\n"
+      <> "    \\vfil\\null\n"
+      <> "  \\end{titlepage}%\n"
+      <> "}\n"
+      <> "\\makeatother\n"
   }
 }
 
@@ -1056,8 +1073,8 @@ fn wrap_document(di: DocumentInfo, body: String) -> String {
     // entry for the table of contents itself (which \tableofcontents does not
     // bookmark on its own), pointing at the TOC page.
     <> "\n\\begin{document}\n\\maketitle\n"
-    // optional cover image, between the title and the table of contents
-    <> cover_latex(di)
+    // the cover image (when present) is rendered on the title page itself, via
+    // the \maketitle redefinition in the preamble (see cover_title_page_latex)
     <> "\\pdfbookmark[0]{Contents}{toc}\n"
     <> "\\tableofcontents\n\n"
     <> body

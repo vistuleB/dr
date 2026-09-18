@@ -259,6 +259,22 @@ const authorModeInit = () => {
       }
     } else {
       t.addEventListener("click", (e) => {
+        // The tooltip's ::before "bridge" (and ::after "arrow") pseudo-elements
+        // extend below the tooltip box, overlapping the title/text underneath;
+        // a click there still targets .t-3003, so without this guard clicking a
+        // title would fire the command instead of following its link. Only act
+        // when the click actually lands within the tooltip's own box (which
+        // excludes those out-of-flow pseudos); otherwise let the event through
+        // so the underlying <a> navigates.
+        const r = t.getBoundingClientRect();
+        if (
+          e.clientX < r.left ||
+          e.clientX > r.right ||
+          e.clientY < r.top ||
+          e.clientY > r.bottom
+        ) {
+          return;
+        }
         e.preventDefault();
         e.stopPropagation();
         sendCmdTo3003("code --goto " + t.innerHTML);

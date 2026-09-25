@@ -37,6 +37,9 @@ type DocumentInfo {
     institution: String,
     lecturer: String,
     date: String,
+    // optional cover image, shown on the title page between the title and the
+    // author; a bare filename resolves against the `figures/` directory
+    cover: Option(String),
   )
 }
 
@@ -922,6 +925,9 @@ fn preamble(di: DocumentInfo) -> String {
   <> "\\date{"
   <> emit_mixed(di.date)
   <> "}\n"
+  // when a cover image is present, redefine \maketitle to place it on the title
+  // page between the title and the author (no-op otherwise)
+  <> cover_title_page_latex(di)
 }
 
 // Assign each `name##<<` marker its global equation number by document order
@@ -1009,6 +1015,54 @@ fn build_ctx(root: VXML) -> Ctx {
   Ctx(footnotes, eq_numbers, tok, math_tok, amp_tok)
 }
 
+// Resolve a `cover` attribute value into an `\includegraphics` path: a bare
+// filename defaults to the `figures/` directory (matching the HTML side's
+// `dr_insert_cover_image`), while a value that already carries a path or URL
+// (contains a `/`) is used verbatim.
+fn resolve_cover_src(cover: String) -> String {
+  case string.contains(cover, "/") {
+    True -> cover
+    False -> "figures/" <> cover
+  }
+}
+
+// When the Document has a cover image, redefine `\maketitle` so the cover sits
+// ON the title page, between the title/course/term block and the
+// author/department/date block. The image is bounded by `\linewidth` and half
+// the text height with `keepaspectratio`, so it always shrinks to fit and the
+// whole title page — title, cover, author, date — stays on a single page. The
+// `\null\vfil … \vfil\null` sandwich keeps the block vertically centered.
+// Courses without a cover keep the report class's default `\maketitle`. Generic:
+// the only document-specific value is the resolved image path.
+fn cover_title_page_latex(di: DocumentInfo) -> String {
+  case di.cover {
+    None -> ""
+    Some(cover) ->
+      "\\makeatletter\n"
+      <> "\\renewcommand\\maketitle{%\n"
+      <> "  \\begin{titlepage}%\n"
+      <> "    \\null\\vfil\n"
+      <> "    \\begin{center}%\n"
+      <> "      {\\LARGE \\@title \\par}%\n"
+      <> "      \\vskip 2.5em%\n"
+      <> "      \\includegraphics[width=\\linewidth,height=0.5\\textheight,keepaspectratio]{"
+      <> resolve_cover_src(cover)
+      <> "}\\par\n"
+      <> "      \\vskip 2.5em%\n"
+      <> "      {\\large \\lineskip .75em%\n"
+      <> "        \\begin{tabular}[t]{c}%\n"
+      <> "          \\@author\n"
+      <> "        \\end{tabular}\\par}%\n"
+      <> "      \\vskip 1.5em%\n"
+      <> "      {\\large \\@date \\par}%\n"
+      <> "    \\end{center}\\par\n"
+      <> "    \\vfil\\null\n"
+      <> "  \\end{titlepage}%\n"
+      <> "}\n"
+      <> "\\makeatother\n"
+  }
+}
+
 // Wrap a document body in the preamble, `\begin{document}`, title, contents and
 // `\end{document}`. Used for both the single monolithic file and the modular
 // `main.tex` (whose body is a list of `\input{…}` lines).
@@ -1019,6 +1073,8 @@ fn wrap_document(di: DocumentInfo, body: String) -> String {
     // entry for the table of contents itself (which \tableofcontents does not
     // bookmark on its own), pointing at the TOC page.
     <> "\n\\begin{document}\n\\maketitle\n"
+    // the cover image (when present) is rendered on the title page itself, via
+    // the \maketitle redefinition in the preamble (see cover_title_page_latex)
     <> "\\pdfbookmark[0]{Contents}{toc}\n"
     <> "\\tableofcontents\n\n"
     <> body
@@ -1359,6 +1415,9 @@ pub fn render(
           institution: attr("institution", ""),
           lecturer: attr("lecturer", ""),
           date: attr("date", ""),
+          // optional: absent for courses without a cover image
+          cover: infra.v_first_attr_with_key(parsed, "cover")
+            |> option.map(fn(a) { a.val }),
         )
       let output_dir = "./" <> course_dir <> "/" <> output_dir_local_path <> "/"
 

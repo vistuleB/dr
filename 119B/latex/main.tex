@@ -59,6 +59,26 @@
 \title{Ordinary Differential Equations Lecture Notes \\ MATH 119B --- Spring 2012}
 \author{Dan Romik \\ Department of Mathematics, UC Davis}
 \date{February 3, 2026}
+\makeatletter
+\renewcommand\maketitle{%
+  \begin{titlepage}%
+    \null\vfil
+    \begin{center}%
+      {\LARGE \@title \par}%
+      \vskip 2.5em%
+      \includegraphics[width=\linewidth,height=0.5\textheight,keepaspectratio]{figures/optimalswitching.png}\par
+      \vskip 2.5em%
+      {\large \lineskip .75em%
+        \begin{tabular}[t]{c}%
+          \@author
+        \end{tabular}\par}%
+      \vskip 1.5em%
+      {\large \@date \par}%
+    \end{center}\par
+    \vfil\null
+  \end{titlepage}%
+}
+\makeatother
 
 \begin{document}
 \maketitle
@@ -101,8 +121,8 @@ and highly useful branch of mathematics called the
 \emph{calculus of variations} --- a kind of ``calculus on
 steroids'' (see Section \ref{sec:variational-calculus}).
 
-Our goal in this chapter is to give an introduction
-to this deep and beautiful part of the theory of
+Our goal in this chapter is to give an introduction to
+this deep and beautiful part of the theory of
 differential equations. For simplicity, we restrict
 the discussion mostly to systems with one degree of
 freedom, and comment only briefly on
@@ -173,14 +193,14 @@ Equivalently, this condition can be written as
 \]
 
 \noindent where $\mathbf{V}$ denotes the planar vector field
-$\mathbf{V}= (F,G)$ (we interpret the first
-coordinate of $\mathbf{V}$ as the ``$p$-coordinate''
-and the second coordinate as the ``$q$-coordinate''),
-and $\operatorname{div} \mathbf{V}$ denotes the
-divergence of $\mathbf{V}$. In physics, a vector
-field with this property is called \emph{divergence-free}
-or \emph{solenoidal}. Yet another way to write
-\eqref{eq:hamiltonian-sufficient} is
+$\mathbf{V}= (F,G)$ (we interpret the first coordinate
+of $\mathbf{V}$ as the ``$p$-coordinate'' and the
+second coordinate as the ``$q$-coordinate''), and
+$\operatorname{div} \mathbf{V}$ denotes the divergence
+of $\mathbf{V}$. In physics, a vector field with this
+property is called \emph{divergence-free} or \emph{solenoidal}.
+Yet another way to write \eqref{eq:hamiltonian-sufficient}
+is
 
 \begin{align*}
 \operatorname{curl} \mathbf{W} = 0,
@@ -190,8 +210,8 @@ or \emph{solenoidal}. Yet another way to write
 $\mathbf{W}=(G,-F)$, and $\operatorname{curl}$ is the
 (2-dimensional version of the) curl operator, defined
 by
-$\operatorname{curl}(A,B) = \frac{\partial
-A}{\partial q}-\frac{\partial B}{\partial p}$.
+$\operatorname{curl}(A,B) = \frac{\partial A}{\partial
+q}-\frac{\partial B}{\partial p}$.
 A vector field with this property is called
 \emph{curl-free} or \emph{irrotational}.
 
@@ -204,20 +224,19 @@ sufficient for the system to be Hamiltonian.
 \end{lem}
 
 \begin{proof}
-This is a slight reformulation of a familiar fact
-from vector calculus, that says that in a simply
-connected domain, a vector field $\mathbf{W}=(A,B)$
-is curl-free if and only if it is \emph{conservative}. A
-conservative vector field is one for which the line
-integral of the field between two points is
-independent of the contour connecting them, or
-equivalently, such that the line integral on any
-\emph{closed} contour vanishes. Such a vector field can
-always be represented as $\mathbf{W} = \nabla H$ (the
-gradient of $H$) for some scalar function $H$; one
-simply defines $H(p,q)$ as the line integral (which
-for a conservative field is independent of the path of
-integration)
+This is a slight reformulation of a familiar fact from
+vector calculus, that says that in a simply connected
+domain, a vector field $\mathbf{W}=(A,B)$ is curl-free
+if and only if it is \emph{conservative}. A conservative
+vector field is one for which the line integral of the
+field between two points is independent of the contour
+connecting them, or equivalently, such that the line
+integral on any \emph{closed} contour vanishes. Such a
+vector field can always be represented as
+$\mathbf{W} = \nabla H$ (the gradient of $H$) for some
+scalar function $H$; one simply defines $H(p,q)$ as
+the line integral (which for a conservative field is
+independent of the path of integration)
 
 \[
 H(p,q) = \int_{(p_0,q_0)}^{(p,q)} \mathbf{W}\cdot \mathbf{ds} = \int_{(p_0,q_0)}^{(p,q)} A\,dp + B\,dq
@@ -230,8 +249,8 @@ fundamental theorem of calculus. In our case,
 $\mathbf{W}=(G,-F)$ so the equation
 $\mathbf{W}=\nabla H$ gives exactly the pair of
 equations $F=-\frac{\partial H}{\partial q}$,
-$G=\frac{\partial H}{\partial p}$, with $H$ serving
-as the desired Hamiltonian.
+$G=\frac{\partial H}{\partial p}$, with $H$ serving as
+the desired Hamiltonian.
 \end{proof}
 
 \section{The Euler-Lagrange equation}
@@ -245,18 +264,18 @@ $L=L(\dot{q},q,t)$, the differential equation
 \end{split}
 \end{equation*}
 
-\noindent is called the \emph{Euler-Lagrange equation}. Note that
-the notation here may be slightly confusing: for the
+\noindent is called the \emph{Euler-Lagrange equation}. Note that the
+notation here may be slightly confusing: for the
 purpose of computing $L(\dot{q},q,t)$ and finding
 $\frac{\partial L}{\partial \dot{q}}$, one must think
 of $\dot{q}$ as an independent variable that has no
 connection to $q$. But once
-$\frac{\partial L}{\partial \dot{q}}$ is evaluated,
-to apply the time-derivative $\frac{d}{dt}$, one
-should think of $\dot{q}$ as the time-derivative of
-$q$. This leads to a second-order ordinary
-differential equation for the quantity $q$. The
-function $L$ is called the \emph{Lagrangian}.
+$\frac{\partial L}{\partial \dot{q}}$ is evaluated, to
+apply the time-derivative $\frac{d}{dt}$, one should
+think of $\dot{q}$ as the time-derivative of $q$. This
+leads to a second-order ordinary differential equation
+for the quantity $q$. The function $L$ is called the
+\emph{Lagrangian}.
 
 \section{Equivalence of the Lagrange and Hamilton formalisms}
 
@@ -358,10 +377,10 @@ equation of motion is
 \end{split}
 \end{equation*}
 
-\noindent where $U=U(q,t)$ is the potential energy per unit
-mass associated with the force $F$ at time $t$,
-defined by $U(q)=-\frac{1}{m}\int_{q_0}^ q F(u)\,du$.
-Define a Lagrangian $L=L(\dot{q},q,t)$ by
+\noindent where $U=U(q,t)$ is the potential energy per unit mass
+associated with the force $F$ at time $t$, defined by
+$U(q)=-\frac{1}{m}\int_{q_0}^ q F(u)\,du$. Define a
+Lagrangian $L=L(\dot{q},q,t)$ by
 
 \[
 L(\dot{q},q,t) = \tfrac12 \dot{q}^2 - U(q,t)
@@ -371,9 +390,9 @@ L(\dot{q},q,t) = \tfrac12 \dot{q}^2 - U(q,t)
 potential energy, divided by its mass). Now let us
 write the Euler-Lagrange equation for this Lagrangian.
 The relation
-$p=\frac{\partial L}{\partial q} = \dot{q}$ means
-that $p$ is simply equal to the velocity of the
-particle, and \eqref{eq:euler-lagrange} becomes
+$p=\frac{\partial L}{\partial q} = \dot{q}$ means that
+$p$ is simply equal to the velocity of the particle,
+and \eqref{eq:euler-lagrange} becomes
 
 \[
 \ddot{q} = \dot{p} = \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}} \right) = \frac{\partial L}{\partial q} = -\frac{\partial U}{\partial q},
@@ -391,18 +410,18 @@ H = p \dot{q} - L = \dot{q}^2 - \left( \tfrac12 \dot{q}^2 - U(q,t) \right)
 = \tfrac12 \dot{q}^2 + U(q,t),
 \end{align*}
 
-\noindent i.e., the Hamiltonian is the kinetic energy \emph{plus}
-the potential energy, or the total energy of the
-particle, divided by the mass.
+\noindent i.e., the Hamiltonian is the kinetic energy \emph{plus} the
+potential energy, or the total energy of the particle,
+divided by the mass.
 
 Let us now see whether this phenomenon can be
 generalized. Assume that the particle is now moving in
-\emph{three} dimensions, so its position $\mathbf{x}(t)$
-as a function of time is a vector, which varies under
-the influence of an external force field, which we
-take to be conservative. However, since we prefer to
-keep working with planar ODEs for the time being,
-assume that the motion of the particle is nonetheless
+\emph{three} dimensions, so its position $\mathbf{x}(t)$ as
+a function of time is a vector, which varies under the
+influence of an external force field, which we take to
+be conservative. However, since we prefer to keep
+working with planar ODEs for the time being, assume
+that the motion of the particle is nonetheless
 constrained to lie on some one-dimensional curve
 $\Gamma=\Gamma_t$ (which could itself be moving in
 space, so depends on $t$). For example, the physical
@@ -437,15 +456,15 @@ $q$:
 \mathbf{x} = \mathbf{x}(q,t).
 \end{align*}
 
-\noindent The idea is that $q$ is a parameter measuring
-position along the curve (in a way that may depend on
-$t$) in some way. For example, $q$ may measure arc
-length along the curve as measured from some known
-reference point $\mathbf{x_0}(t)$ on the curve. The
-details of the definition of $q$ depend on the
-specific problem (there are many possible choices of
-$q$ for a given situation) and are not important for
-the present analysis.
+\noindent The idea is that $q$ is a parameter measuring position
+along the curve (in a way that may depend on $t$) in
+some way. For example, $q$ may measure arc length
+along the curve as measured from some known reference
+point $\mathbf{x_0}(t)$ on the curve. The details of
+the definition of $q$ depend on the specific problem
+(there are many possible choices of $q$ for a given
+situation) and are not important for the present
+analysis.
 
 Let us now show that the equation of motion can be
 represented using the Lagrangian formalism as applied
@@ -457,9 +476,9 @@ have the relation
 \end{align*}
 
 \noindent since $\mathbf{G}$ acts normally to the curve and
-$\frac{\partial \mathbf{x}}{\partial q}$ is
-tangential to it. Then taking the scalar product of
-both sides of \eqref{eq:curve-forces} with
+$\frac{\partial \mathbf{x}}{\partial q}$ is tangential
+to it. Then taking the scalar product of both sides of
+\eqref{eq:curve-forces} with
 $\frac{\partial \mathbf{x}}{\partial q}$ gives
 
 \begin{align*}
@@ -522,9 +541,8 @@ and $\dot{q}$, we get
 \end{split}
 \end{equation*}
 
-\noindent Combining the results \eqref{eq:curveeq1},
-\eqref{eq:curveeq2} and \eqref{eq:curveeq3}, we get finally
-that
+\noindent Combining the results \eqref{eq:curveeq1}, \eqref{eq:curveeq2}
+and \eqref{eq:curveeq3}, we get finally that
 
 \begin{align*}
 \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}}\right)
@@ -555,17 +573,16 @@ E = K + U,
 \end{align*}
 
 \noindent where $U$ is the potential energy and
-$K = \tfrac12|\dot{x}|^2$ is the kinetic energy,
-which can be written more explicitly as
+$K = \tfrac12|\dot{x}|^2$ is the kinetic energy, which
+can be written more explicitly as
 
 \begin{align*}
 K = \tfrac12 \left|\frac{\partial \mathbf{x}}{\partial q}\right|^2 \dot{q}^2 + \left(\frac{\partial \mathbf{x}}{\partial q}\cdot\frac{\partial \mathbf{x}}{\partial t}\right)
 \dot{q} + \tfrac12\left|\frac{\partial \mathbf{x}}{\partial t}\right|^2,
 \end{align*}
 
-\noindent (a quadratic polynomial in $\dot{q}$). The
-generalized momentum coordinate $p$ is in this case
-given by
+\noindent (a quadratic polynomial in $\dot{q}$). The generalized
+momentum coordinate $p$ is in this case given by
 
 \begin{align*}
 p = \frac{\partial L}{\partial \dot{q}} =
@@ -594,13 +611,13 @@ this case $H=E$. However, in the general case the
 Hamiltonian differs from the energy of the system.
 
 \begin{example}[The harmonic oscillator]
-The one-dimensional harmonic oscillator corresponds
-to the motion of a particle in a parabolic potential
+The one-dimensional harmonic oscillator corresponds to
+the motion of a particle in a parabolic potential
 well, $U(q)=\tfrac12 k q^2$, where $k>0$, or
 equivalently, motion under a linear restoring force
-$F(q)=-m k q$ (e.g., an oscillating weight attached
-to an idealized elastic spring satisfiying Hooke's
-law). In this case we have
+$F(q)=-m k q$ (e.g., an oscillating weight attached to
+an idealized elastic spring satisfiying Hooke's law).
+In this case we have
 
 \begin{align*}
 L &= \tfrac12 \dot{q}^2 - \tfrac12 kq^2, \\
@@ -628,13 +645,13 @@ q = A\cos(\omega t) + B \sin(\omega t),
 
 \begin{example}[The simple pendulum]
 Next, consider the simple pendulum, which consists of
-a point mass $m$ attached to the end of a rigid rod
-of length $\ell$ and negligible mass, whose other end
-is fixed to a point and is free to rotate in one
-vertical plane. This simple mechanical system also
-exhibits oscillatory behavior, but its behavior is
-much richer and more complex due to the nonlinearity
-of the underlying equation of motion. Let us use the
+a point mass $m$ attached to the end of a rigid rod of
+length $\ell$ and negligible mass, whose other end is
+fixed to a point and is free to rotate in one vertical
+plane. This simple mechanical system also exhibits
+oscillatory behavior, but its behavior is much richer
+and more complex due to the nonlinearity of the
+underlying equation of motion. Let us use the
 Lagrangian formalism to derive the equation of motion.
 This is an example of the more generalized scenario of
 motion constrained to a curve (in this case a circle).
@@ -780,8 +797,8 @@ of the laws of mechanics briefly, although we will not
 develop this general theory here.
 
 Let the system be described by $n$ generalized
-coordinates $q_1, \ldots, q_n$. The Lagrangian will
-be a function of the coordinates and their time
+coordinates $q_1, \ldots, q_n$. The Lagrangian will be
+a function of the coordinates and their time
 derivatives (generalized velocities):
 
 \begin{align*}
@@ -931,14 +948,14 @@ system:
 L_1 L_2 \sin(\theta_1-\theta_2) + gL_2 \sin\theta_2.
 \end{align*}
 
-\noindent This system of two nonlinear coupled second-order
-ODEs is in practice impossible to solve analytically,
-and for certain values of the energy is known to
-exhibit chaotic behavior which is difficult to
-understand in any reasonable sense; see Figure 1.
-(Nonetheless, later in the course we will learn about
-some interesting things that can still be said about
-such systems.)
+\noindent This system of two nonlinear coupled second-order ODEs
+is in practice impossible to solve analytically, and
+for certain values of the energy is known to exhibit
+chaotic behavior which is difficult to understand in
+any reasonable sense; see Figure 1. (Nonetheless,
+later in the course we will learn about some
+interesting things that can still be said about such
+systems.)
 
 \begin{center}
 \includegraphics[width=0.60\linewidth]{figures/doublependulum-flips.png}\\[0.6em]
@@ -977,18 +994,18 @@ $\mathbf{A}=\mathbf{A}(x,y,z,t)$ such that
 \noindent The (scalar) function $\phi$ is called the \emph{electric
 potential}, and the vector $\mathbf{A}$ is called the
 \emph{magnetic potential}, or \emph{vector potential}. Note that
-$\mathbf{E}$ behaves exactly like a conventional
-force field, causing the particle an acceleration in
-the direction of $\mathbf{E}$ that is equal to the
-field magnitude multiplied by the (constant) scalar
-$q/m$, whereas the influence of the magnetic field
+$\mathbf{E}$ behaves exactly like a conventional force
+field, causing the particle an acceleration in the
+direction of $\mathbf{E}$ that is equal to the field
+magnitude multiplied by the (constant) scalar $q/m$,
+whereas the influence of the magnetic field
 $\mathbf{B}$ is of a more exotic nature, causing an
 acceleration that depends on the particle's \emph{velocity}
 in a direction perpendicular to its direction of
 motion.
 
-Show that motion under the Lorentz force is
-equivalent to the Euler-Lagrange equation
+Show that motion under the Lorentz force is equivalent
+to the Euler-Lagrange equation
 $\frac{d}{dt}\left(\frac{\partial L}{\partial
 \dot{\mathbf{x}}}\right)=\frac{\partial L}{\partial
 \mathbf{x}}$,
@@ -1052,17 +1069,17 @@ point). The eigenvalues are given by
 \noindent So we see that, when $b^2<ac,$ the eigenvalues are
 pure imaginary numbers, and recall that in that case
 the rest point is a center. On the other hand, when
-$b^2>ac$ the eigenvalues are the two real square
-roots $\pm \sqrt{b^2-ac}$. Since in that case we have
-one negative and one positive eigenvalue, the
-stability theory says that the rest point is a saddle
-point. (We assume that the Hessian matrix of second
-derivatives is non-degenerate, i.e., that
-$b^2\neq ac$, so that the usual criteria for
-stability apply.) Liouville's theorem, which we will
-discuss in a later section, will give another, more
-geometric, explanation why rest points cannot be
-asymptotically stable or unstable.
+$b^2>ac$ the eigenvalues are the two real square roots
+$\pm \sqrt{b^2-ac}$. Since in that case we have one
+negative and one positive eigenvalue, the stability
+theory says that the rest point is a saddle point. (We
+assume that the Hessian matrix of second derivatives
+is non-degenerate, i.e., that $b^2\neq ac$, so that
+the usual criteria for stability apply.) Liouville's
+theorem, which we will discuss in a later section,
+will give another, more geometric, explanation why
+rest points cannot be asymptotically stable or
+unstable.
 
 \section{The principle of least action}
 
@@ -1079,14 +1096,14 @@ The \emph{principle of least action} is the statement that
 if the system was in coordinate $q_0$ at time $t_0$
 and in coordinate $q_1$ at time $t_1$, then its
 trajectory between time $t_0$ and time $t_1$ is that
-curve which minimizes the action $A(t_0,t_1)$,
-subject to the constraints $q(t_0)=q_0, q(t_1)=q_1$.
-This is a surprising statement, which we will see is
-\emph{almost} equivalent to the Euler-Lagrange equation ---
-only almost, since, to get the equivalence, we will
-need to first modify the principle slightly to get the
-more precise version known as the \emph{principle of
-stationary action}.
+curve which minimizes the action $A(t_0,t_1)$, subject
+to the constraints $q(t_0)=q_0, q(t_1)=q_1$. This is a
+surprising statement, which we will see is \emph{almost}
+equivalent to the Euler-Lagrange equation --- only
+almost, since, to get the equivalence, we will need to
+first modify the principle slightly to get the more
+precise version known as the \emph{principle of stationary
+action}.
 
 The principle of least action can be thought of as a
 strange, \emph{non-causal} interpretation of the laws of
@@ -1176,9 +1193,9 @@ variables
 Here are some examples of variational problems.
 
 \begin{enumerate}[label=\arabic*.]
-\item What is the shortest curve in the plane connecting
-two points? We all know it is a straight line, but how
-can we prove it? (And how do we find the answer to the
+\item What is the shortest curve in the plane connecting two
+points? We all know it is a straight line, but how can
+we prove it? (And how do we find the answer to the
 same question on some complicated surface?)
 
 \item What is the curve of given length in the plane
@@ -1201,21 +1218,20 @@ system that minimizes the action?
 \end{enumerate}
 
 \noindent The basic idea involved in solving variational
-problems is as follows: if $q$ is an extremum
-(minimum or maximum) point of the functional $\Phi$,
-then it is also a \emph{local extremum}. That means that
-for any (sufficiently smooth) function
-$h:[t_0,t_1]\to \R$ satisfying $h(t_0)=h(t_1)=0$, the
-function
+problems is as follows: if $q$ is an extremum (minimum
+or maximum) point of the functional $\Phi$, then it is
+also a \emph{local extremum}. That means that for any
+(sufficiently smooth) function $h:[t_0,t_1]\to \R$
+satisfying $h(t_0)=h(t_1)=0$, the function
 
 \[
 \phi_{q,h}(s) = \Phi(q+s h)=\int_{t_0}^{t_1} L(\dot{q}(t)+sh'(t),q(t)+sh(t),t)\,dt
 \]
 
 \noindent (an ordinary function of a single real variable $s$)
-has a local extremum at $s=0$. From ordinary
-calculus, we know that the derivative of $\phi_{q,h}$
-at $0$ must be $0$:
+has a local extremum at $s=0$. From ordinary calculus,
+we know that the derivative of $\phi_{q,h}$ at $0$
+must be $0$:
 
 \[
 \phi_{q,h}'(0) = 0.
@@ -1255,8 +1271,8 @@ $\frac{\partial f}{\partial \mathbf{u}} = \nabla f
 \cdot \mathbf{u}$
 of a function of several variables in calculus, in
 that it measures the instantaneous rate of change of
-$\Phi$ if we start from the ``point'' $q$ and head
-off in a ``direction'' corresponding to the small
+$\Phi$ if we start from the ``point'' $q$ and head off
+in a ``direction'' corresponding to the small
 perturbation $s\cdot h$. We say that the function $q$
 is a \emph{stationary point} of $\Phi$ if
 $\delta\Phi_q(h) = 0$ for any (sufficiently smooth)
@@ -1361,11 +1377,11 @@ $y=ax+b$.
 
 \begin{example}[Brachistochrone problem]
 In this problem, we try to find the curve connecting
-the points $\mathbf{A}$ and $\mathbf{B}$ in the
-plane, for which a ball rolling downhill without
-friction from $\mathbf{A}$ to $\mathbf{B}$, with an
-initial velocity of $0$, will take the shortest time
-to arrive. We choose a coordinate system such that the
+the points $\mathbf{A}$ and $\mathbf{B}$ in the plane,
+for which a ball rolling downhill without friction
+from $\mathbf{A}$ to $\mathbf{B}$, with an initial
+velocity of $0$, will take the shortest time to
+arrive. We choose a coordinate system such that the
 $x$-axis is the \emph{vertical} axis and points downward
 for positive $x$, and such that $\mathbf{A}=(0,0)$,
 $\mathbf{B}=(x_b,y_b)$ with $x_b,y_b>0$. If the curve
@@ -1406,15 +1422,14 @@ L(q',q,x) = \frac{\sqrt{1+q'^2}}{\sqrt{2g x}}.
 \frac{q'(x)}{\sqrt{2 g x(1+q'(x)^2)}} = \alpha,
 \end{align*}
 
-\noindent where $\alpha$ is a constant. This can be rewritten
-as
+\noindent where $\alpha$ is a constant. This can be rewritten as
 
 \[
 \frac{q'(x)^2}{1+q'(x)^2} = x/\lambda,
 \]
 
-\noindent where $\lambda=(2\alpha^2 g)^{-1}$, and then solved
-by solving for $q'$ and integrating, giving the
+\noindent where $\lambda=(2\alpha^2 g)^{-1}$, and then solved by
+solving for $q'$ and integrating, giving the
 expression
 
 \begin{equation*} \tag{16}\label{eq:cycloidquadrature}
@@ -1447,8 +1462,8 @@ of a point on a wheel that rolls along the $y$-axis
 (the parameter $\theta$ represents the angle by which
 the wheel has rolled forward; see Figure 2). The
 scaling constant $a$ can now be chosen to fit the
-condition that $q(x_b)=y_b$, i.e., the curve must
-pass through the point $\mathbf{B}$. It may also be
+condition that $q(x_b)=y_b$, i.e., the curve must pass
+through the point $\mathbf{B}$. It may also be
 verified using \eqref{eq:cycloidquadrature} that the
 nonparametric equation for the cycloid is
 
@@ -1501,18 +1516,18 @@ set
 \mathbb{H} = \{ (x,y)\in \mathbb{R}^2\,:\, y>0 \}
 \end{align*}
 
-\noindent (known as the \emph{upper half plane} in complex
-analysis), together with a modified formula for the
-arc length of a line segment, namely
+\noindent (known as the \emph{upper half plane} in complex analysis),
+together with a modified formula for the arc length of
+a line segment, namely
 
 \begin{align*}
 ds = \frac{\sqrt{dx^2 + dy^2}}{y},
 \end{align*}
 
 \noindent which replaces the usual formula
-$ds = \sqrt{dx^2+dy^2}$ for the ordinary Euclidean
-arc length. In other words, in the hyperbolic plane,
-the higher you go, the more ``flat'' in the vertical
+$ds = \sqrt{dx^2+dy^2}$ for the ordinary Euclidean arc
+length. In other words, in the hyperbolic plane, the
+higher you go, the more ``flat'' in the vertical
 direction your hyperbolic length measurement becomes,
 in the sense that you need to traverse $y$ units of
 ordinary Euclidean distance for each unit of
@@ -1601,14 +1616,14 @@ $(x_1,y_1), (x_2,y_2)\in \mathbb{H}$.
 \end{xexercise}
 
 \begin{example}[Isoperimetric inequality]
-The \emph{isoperimetric problem} was the classical
-problem, discussed already by the ancient Greeks, of
-finding the simple closed curve in the plane with
-perimeter $L$ that bounds the largest area (in modern
-times the problem has been considerably generalized to
-higher dimensions, curved spaces etc.). The answer is
-that the so-called \emph{isoperimetric curve} is a circle,
-and can be derived using the calculus of variations. A
+The \emph{isoperimetric problem} was the classical problem,
+discussed already by the ancient Greeks, of finding
+the simple closed curve in the plane with perimeter
+$L$ that bounds the largest area (in modern times the
+problem has been considerably generalized to higher
+dimensions, curved spaces etc.). The answer is that
+the so-called \emph{isoperimetric curve} is a circle, and
+can be derived using the calculus of variations. A
 slight complication is that the problem involves
 minimizing a functional (the area bounded by the
 curve) subject to a constraint (representing the fixed
@@ -1653,10 +1668,10 @@ A_\lambda = \int_{x_0}^{x_1} q(x) + \lambda \sqrt{1+q'(x)^2}\,dx
 = \int_{x_0}^{x_1} L_\lambda(q',q)\,dx,
 \end{align*}
 
-\noindent where $L_\lambda$ is a new Lagrangian that is
-obtained by taking the ``original'' Lagrangian $L=q$
-and adding a constant multiple of the constraint
-function $\sqrt{1+q'^2}$. The price of replacing the
+\noindent where $L_\lambda$ is a new Lagrangian that is obtained
+by taking the ``original'' Lagrangian $L=q$ and adding
+a constant multiple of the constraint function
+$\sqrt{1+q'^2}$. The price of replacing the
 constrained problem by an unconstrained one is the
 introduction of an additional parameter, $\lambda$,
 known as the \emph{Lagrange multiplier}. After solving the
@@ -1745,38 +1760,36 @@ energy
 E = -\int_{x_1}^{x_2} \rho gy\,ds
 \]
 
-\noindent is minimized. Find the general equation for the
-shape.
+\noindent is minimized. Find the general equation for the shape.
 \end{xexercise}
 
 \begin{example}[The elastic rod]
-A thin elastic rod of length $L$ is made to bend as
-it is clamped horizontally between the two points
-$(0,0)$ and $(A,0)$ (where $A<L$). Its shape can be
-determined from the condition that the elastic energy
-is minimized. The energy is proportional to an
-integral along the curve of the square of its
-curvature:
+A thin elastic rod of length $L$ is made to bend as it
+is clamped horizontally between the two points $(0,0)$
+and $(A,0)$ (where $A<L$). Its shape can be determined
+from the condition that the elastic energy is
+minimized. The energy is proportional to an integral
+along the curve of the square of its curvature:
 
 \[
 E = \int \tfrac12 J (\textrm{curvature})^2\,ds = \tfrac12 J \int \kappa(s)^2 \,ds,
 \]
 
-\noindent where $J$ is a constant characteristic of the
-material and geometric cross section of the rod, and
-$ds$ denotes arc length. The curvature $\kappa(s)$ at
-a point along the curve is the reciprocal of the
-\emph{radius of curvature}, defined as the radius of a
-circle that can be brought to touch the curve
-tangentially in such a way that both the first and
-second derivatives of the curve and circle coincide.
+\noindent where $J$ is a constant characteristic of the material
+and geometric cross section of the rod, and $ds$
+denotes arc length. The curvature $\kappa(s)$ at a
+point along the curve is the reciprocal of the \emph{radius
+of curvature}, defined as the radius of a circle that
+can be brought to touch the curve tangentially in such
+a way that both the first and second derivatives of
+the curve and circle coincide.
 
-Let the shape of the rod be described by the
-functions $(x(s), y(s))$ of the arc length parameter
-$s$, which varies from $0$ to $L$. Let
-$\theta=\theta(s)$ be the angle between the positive
-$x$-axis and the tangent to the curve at the point
-$(x(s),y(s))$; i.e., we have the relations
+Let the shape of the rod be described by the functions
+$(x(s), y(s))$ of the arc length parameter $s$, which
+varies from $0$ to $L$. Let $\theta=\theta(s)$ be the
+angle between the positive $x$-axis and the tangent to
+the curve at the point $(x(s),y(s))$; i.e., we have
+the relations
 
 \begin{align*}
 \tan \theta = \frac{dy}{dx}, \quad \cos\theta = \frac{dx}{ds}, \quad \sin\theta = \frac{dy}{ds}.
@@ -1853,9 +1866,9 @@ moving through the air is
 
 \noindent where $\rho$ is the density of the material, $v$ is
 the velocity of motion and $L$ is the length of the
-body of the bullet. Find the optimal shape $q(x)$
-that results in the smallest resistance, subject to
-the conditions $q(0)=0, q(L)=R$.
+body of the bullet. Find the optimal shape $q(x)$ that
+results in the smallest resistance, subject to the
+conditions $q(0)=0, q(L)=R$.
 \end{xexercise}
 
 \section{The phase flow and Liouville's theorem}
@@ -1876,17 +1889,16 @@ mechanics --- the conservation of energy, of momentum,
 and of angular momentum --- as well as to more exotic
 conserved quantities that arise in specific problems.
 
-We now discuss a different kind of conserved
-quantity, one that is associated not with specific
-solutions, but rather with an entire family of
-solutions. What we will do is to start with an entire
-set of initial states in the phase space, then let
-those states evolve according to the dynamical
-equations. After some time $t$, the initial states
-have evolved to occupy some new set in the phase
-space. It turns out that the total \emph{area} of the set
-is conserved: this is the statement of Liouville's
-theorem.
+We now discuss a different kind of conserved quantity,
+one that is associated not with specific solutions,
+but rather with an entire family of solutions. What we
+will do is to start with an entire set of initial
+states in the phase space, then let those states
+evolve according to the dynamical equations. After
+some time $t$, the initial states have evolved to
+occupy some new set in the phase space. It turns out
+that the total \emph{area} of the set is conserved: this is
+the statement of Liouville's theorem.
 
 To state the theorem formally, given a Hamiltonian
 system \eqref{eq:hamiltoniansystem}, for each point
@@ -1896,8 +1908,8 @@ $(p(t),q(t))$, where $(p(t),q(t))$ are the solutions
 to the equations \eqref{eq:hamiltoniansystem} with initial
 condition $p(0)=p_0, q(0)=q_0$. (We assume that the
 system is such that the solutions exist for all time
-$t\ge 0$.) Thus, for each $t\ge 0$ we have
-constructed a mapping
+$t\ge 0$.) Thus, for each $t\ge 0$ we have constructed
+a mapping
 
 \[
 \varphi_t:\mathbb{R}^2\to\mathbb{R}^2,
@@ -1912,8 +1924,8 @@ the system: it describes how points ``flow'' along the
 solution lines of the system.
 
 \begin{thm}[Liouville's theorem]
-The phase flow preserves area. More precisely, given
-a region $E\subset\mathbb{R}^2$ with finite area, for
+The phase flow preserves area. More precisely, given a
+region $E\subset\mathbb{R}^2$ with finite area, for
 any $t\ge 0$ we have
 
 \begin{align*}
@@ -1959,10 +1971,9 @@ imply that
 = \iint_E \,dp_0\,dq_0 = \operatorname{area}(E),
 \end{align*}
 
-\noindent and therefore finish the proof. It will be
-instructive to do this by computing $J_t$ more
-generally for the generic (not necessarily
-Hamiltonian) planar system
+\noindent and therefore finish the proof. It will be instructive
+to do this by computing $J_t$ more generally for the
+generic (not necessarily Hamiltonian) planar system
 
 \begin{align*}
 \dot{p} = F(p,q,t), \qquad
@@ -2035,9 +2046,9 @@ the limit as $h\downarrow 0$ gives
 \lim_{h\downarrow 0} \left(\operatorname{tr}(A_t)J_t + O(h)\right) = \operatorname{tr}(A_t)J_t.
 \end{align*}
 
-\noindent The equation \eqref{eq:liou-jac-ode} is an easy scalar
-ODE for $J_t$, with the initial condition $J_0=1$.
-Its solution is
+\noindent The equation \eqref{eq:liou-jac-ode} is an easy scalar ODE
+for $J_t$, with the initial condition $J_0=1$. Its
+solution is
 
 \begin{equation*} \tag{19}\label{eq:liouville-jacobian}
 \begin{split}
@@ -2089,8 +2100,7 @@ matrix norm
 \lVert A \rVert = \sum_{i,j} |a_{i,j}|.
 \end{align*}
 
-\item Show that the unique solution to the linear vector
-ODE
+\item Show that the unique solution to the linear vector ODE
 
 \begin{align*}
 \dot{\mathbf{x}} = A \mathbf{x}
@@ -2127,11 +2137,11 @@ Prove the formula
 $\operatorname{tr}(A)$ denotes the trace of $A$.
 
 $\textbf{Hint.}$ Take determinants of both sides of
-the equation $\exp(A)=\exp(n^{-1} A)^n$, which is
-true by part (4) of the exercise above, then use the
-fact that $\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$ and
-the exercise above on determinants of matrices close
-to $I$.
+the equation $\exp(A)=\exp(n^{-1} A)^n$, which is true
+by part (4) of the exercise above, then use the fact
+that $\exp(n^{-1} A)=I+n^{-1}A + O(n^{-2})$ and the
+exercise above on determinants of matrices close to
+$I$.
 \end{xexercise}
 
 \begin{cor}
@@ -2165,18 +2175,18 @@ are either saddle points or centers.
 \end{cor}
 
 \begin{proof}
-An asymptotically stable or unstable rest point
-(which is either a node or a spiral) would imply that
-the phase flow either contracts or expands small disks
+An asymptotically stable or unstable rest point (which
+is either a node or a spiral) would imply that the
+phase flow either contracts or expands small disks
 around the rest point; by Liouville's theorem, this is
 impossible.
 \end{proof}
 
 \section{Poincaré recurrence theorem}
 
-Liouville's theorem is the starting point for a set
-of important investigations into the qualitative
-behavior of Hamiltonian systems. The following theorem
+Liouville's theorem is the starting point for a set of
+important investigations into the qualitative behavior
+of Hamiltonian systems. The following theorem
 illustrates the kind of conclusions that the theorem
 will enable us to draw.
 
@@ -2197,27 +2207,26 @@ etc.
 \end{thm}
 
 \begin{proof}
-The images of the neighborhood $N$ under $\varphi$
-are
+The images of the neighborhood $N$ under $\varphi$ are
 
 \begin{align*}
 N, \varphi(N), \varphi^2(N), \varphi^3(N), \ldots
 \end{align*}
 
-\noindent Since $\varphi$ preserves areas, these are all sets
-of equal area, which lie in the bounded region $D$.
-It follows that there must be two of them which
-intersect (otherwise the total area would be
-infinite), that is, we have
-$\varphi^k(N) \cap \varphi^\ell(N) \neq \emptyset$
-for some $k>\ell\ge 0$. If
-$\mathbf{p}_1, \mathbf{p}_2 \in N$ are two points
-such that
+\noindent Since $\varphi$ preserves areas, these are all sets of
+equal area, which lie in the bounded region $D$. It
+follows that there must be two of them which intersect
+(otherwise the total area would be infinite), that is,
+we have
+$\varphi^k(N) \cap \varphi^\ell(N) \neq \emptyset$ for
+some $k>\ell\ge 0$. If
+$\mathbf{p}_1, \mathbf{p}_2 \in N$ are two points such
+that
 $\varphi^\ell(\mathbf{p}_1)=\varphi^k(\mathbf{p}_2)=\varphi^\ell(\varphi^{k-\ell}(\mathbf{p}_2))$,
 then, since $\varphi$ is one-to-one, we get that
-$\varphi^{k-\ell}(\mathbf{p}_2)=\mathbf{p}_1$. We
-have shown that there is a point $\mathbf{p}_2\in N$
-and an integer $j>0$ such that
+$\varphi^{k-\ell}(\mathbf{p}_2)=\mathbf{p}_1$. We have
+shown that there is a point $\mathbf{p}_2\in N$ and an
+integer $j>0$ such that
 $\varphi^j(\mathbf{p}_2)\in N$, i.e., the point
 returned to $N$ after $j$ iterations. To prove the
 stronger claim that there is a point that returns to
@@ -2275,13 +2284,13 @@ f_A(T) = \frac{1}{T} \int_0^T 1_{\{ \mathbf{p}(t) \in A\}}\,dt,
 \end{align*}
 
 \noindent where the integrand is equal to $1$ if
-$\mathbf{p}(t)\in A$ or $0$ otherwise, and ask
-whether this quantity (which might be called the
-\emph{empirical frequency of visits to $A$}) might
-converge to an interesting limit (which will be a
-function of the set $A$) as $T\to\infty$. An ideal
-situation is one in which the limit does not depend on
-the initial condition $\mathbf{p}(0)$, and looks like
+$\mathbf{p}(t)\in A$ or $0$ otherwise, and ask whether
+this quantity (which might be called the \emph{empirical
+frequency of visits to $A$}) might converge to an
+interesting limit (which will be a function of the set
+$A$) as $T\to\infty$. An ideal situation is one in
+which the limit does not depend on the initial
+condition $\mathbf{p}(0)$, and looks like
 
 \begin{equation*} \tag{20}\label{eq:idealdensity}
 \begin{split}
@@ -2357,8 +2366,8 @@ but it is useful (and entertaining) nonetheless.
 We derive the solution under the assumption that
 $\theta(0) = 0$, $\dot{\theta}(0)>0$. Let
 $\lambda=g/\ell$, so the equation becomes
-$\ddot{\theta}+\lambda \sin \theta=0$. Conservation
-of energy gives the equation
+$\ddot{\theta}+\lambda \sin \theta=0$. Conservation of
+energy gives the equation
 
 \begin{equation*} \tag{21}\label{eq:pendulum-energy-cons}
 \begin{split}
@@ -2379,11 +2388,11 @@ brings \eqref{eq:pendulum-energy-cons} to the form
 \end{split}
 \end{equation*}
 
-\noindent Note that this already makes it easy to plot the
-phase portrait (in the $\theta$-$\dot{\theta}$ plane,
-or wrapped around a cylinder, since adding multiples
-of $2\pi$ to $\theta$ does not change the physical
-state of the system); see Figure 5.
+\noindent Note that this already makes it easy to plot the phase
+portrait (in the $\theta$-$\dot{\theta}$ plane, or
+wrapped around a cylinder, since adding multiples of
+$2\pi$ to $\theta$ does not change the physical state
+of the system); see Figure 5.
 
 \begin{center}
 \includegraphics[width=0.52\linewidth]{figures/pendulumphasediag.png}\hspace{0.02\linewidth}%
@@ -2395,10 +2404,9 @@ $y=\pm 2 \sqrt{\lambda\left(k^2-\sin^2(x/2)\right)}$
 for different values of $k$.}
 \end{center}
 
-\noindent The relation between the parameter $k$ and the
-initial angular velocity $\dot{\theta}(0)$ is found
-by setting $t=0$ in \eqref{eq:pendulum-energy-cons2},
-giving
+\noindent The relation between the parameter $k$ and the initial
+angular velocity $\dot{\theta}(0)$ is found by setting
+$t=0$ in \eqref{eq:pendulum-energy-cons2}, giving
 
 \begin{align*}
 k=\frac{1}{2\sqrt{\lambda}} \dot{\theta}(0).
@@ -2410,8 +2418,8 @@ periodic solutions (which are the solutions for which
 $\theta$ remains bounded) correspond to $0<k<1$, and
 that in that case we have
 $k=\sin (\theta_{\textrm{max}}/2)$ where
-$\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is
-the maximal angle that the pendulum will reach (or
+$\theta_{\textrm{max}}=\sup_{t\ge 0} \theta(t)$ is the
+maximal angle that the pendulum will reach (or
 approach asymptotically, in the case
 $\theta_{\textrm{max}}=\pi$). The equation
 \eqref{eq:pendulum-energy-cons2} is a first-order ODE, and
@@ -2505,8 +2513,8 @@ K(k) = \int_0^1 \frac{du}{\sqrt{(1-u^2)(1-k^2u^2)}}.
 K(k) = \int_0^{\pi/2} \frac{d\phi}{\sqrt{1-k^2 \sin^2\phi}},
 \end{align*}
 
-\noindent using the substitution $u=\sin \phi$. By symmetry,
-the period of oscillation of the pendulum is
+\noindent using the substitution $u=\sin \phi$. By symmetry, the
+period of oscillation of the pendulum is
 $4t_{\textrm{max}}$ (refer to Figure 5; the time from
 $0$ to $t_{\textrm{max}}$ represents a passage around
 one quadrant in the phase plane). So, we have derived
@@ -2518,8 +2526,8 @@ T= \frac{4}{\sqrt{\lambda}}K(k) = 4\sqrt{\frac{\ell}{g}} K(k)
 \end{align*}
 
 \noindent Since $K(0)=\pi/2$, for small values of
-$\theta_{\textrm{max}}$ we get the approximate
-formula for small oscillations
+$\theta_{\textrm{max}}$ we get the approximate formula
+for small oscillations
 
 \begin{align*}
 T \approx T_0 = 2\pi \sqrt{\frac{\ell}{g}}.
@@ -2612,13 +2620,13 @@ K(k^{-1}) - F(\pi/4,k^{-1}).
 $\omega_0$ approaches $0$.
 
 \begin{xexercise}[Compound pendulum]
-The falling tree problem is more accurately modeled
-by a \emph{compound pendulum}, where we assume the mass $m$
-is spread out uniformly along the length of the
-swinging rod, instead of being concentrated at its
-end. Show that the motion of a compound pendulum with
-length $\ell$ is equivalent to that of a simple
-pendulum with length $2\ell/3$.
+The falling tree problem is more accurately modeled by
+a \emph{compound pendulum}, where we assume the mass $m$ is
+spread out uniformly along the length of the swinging
+rod, instead of being concentrated at its end. Show
+that the motion of a compound pendulum with length
+$\ell$ is equivalent to that of a simple pendulum with
+length $2\ell/3$.
 \end{xexercise}
 
 \subsection{The speed of a wave of falling dominoes}
@@ -2636,17 +2644,16 @@ by C. J. Efthimiou and M. D. Johnson (\emph{SIAM Review}$\textbf{49}$ (2007), 11
 
 Let us fix some notation for the setup of our domino
 wave. We assume a row of standing dominoes of height
-$\ell$ is arranged on a plane, with a fixed
-horizontal distance of $d$ between each two
-successive dominoes. For simplicity, we will model
-each domino as a simple inverted pendulum with mass
-$m$ (it is not difficult to adapt the analysis to the
-case of a compound pendulum) and that its thickness is
-small compared to the inter-domino spacing $d$. We
-denote by $\beta$ the angle formed between two
-adjacent dominoes when one rotates around its contact
-point with the floor until it just touches the other;
-it is given by
+$\ell$ is arranged on a plane, with a fixed horizontal
+distance of $d$ between each two successive dominoes.
+For simplicity, we will model each domino as a simple
+inverted pendulum with mass $m$ (it is not difficult
+to adapt the analysis to the case of a compound
+pendulum) and that its thickness is small compared to
+the inter-domino spacing $d$. We denote by $\beta$ the
+angle formed between two adjacent dominoes when one
+rotates around its contact point with the floor until
+it just touches the other; it is given by
 
 \begin{align*}
 \beta = \sin^{-1}\frac{d}{\ell}.
@@ -2687,13 +2694,13 @@ angular velocity $\omega_0$ of one domino, ``domino
 $A$'', to the initial angular velocity $\omega_1$ of
 the next one in the row, ``domino $B$''. Two
 intermediate quantities that will play a role in the
-analysis are the angular velocity $\Omega_0$ of
-domino $A$\emph{just before} it collides with domino $B$,
-and its angular velocity $\Omega_1$\emph{immediately
-after} the collision. The relationships between the
-four quantities
-$\omega_0, \omega_1, \Omega_0, \Omega_1$ are
-determined by the conservation of energy and momentum.
+analysis are the angular velocity $\Omega_0$ of domino
+$A$\emph{just before} it collides with domino $B$, and its
+angular velocity $\Omega_1$\emph{immediately after} the
+collision. The relationships between the four
+quantities $\omega_0, \omega_1, \Omega_0, \Omega_1$
+are determined by the conservation of energy and
+momentum.
 
 First, conservation of energy during the motion of
 domino $A$ from the time it starts to rotate until it
@@ -2777,9 +2784,9 @@ will collide with will start its motion with an
 initial angular velocity equal to
 $\omega_1=H(\omega_0)$. That domino will collide with
 a third domino, which will acquire an initial angular
-velocity of $\omega_2=H(\omega_1)=H(H(\omega_0))$,
-and so forth: the $n$th domino in the chain will get
-an initial angular velocity of
+velocity of $\omega_2=H(\omega_1)=H(H(\omega_0))$, and
+so forth: the $n$th domino in the chain will get an
+initial angular velocity of
 
 \begin{align*}
 \omega_{n-1} = H^{n}(\omega_0) = H(H(H(\ldots H(\omega_0)))\ldots)
@@ -2841,9 +2848,9 @@ v_{\textrm{wave}} = \frac{d}{\tau} = k d \sqrt{\frac{g}{\ell}}
 \left( K(k^{-1})-F((\pi-\beta)/2,k^{-1}) \right)^{-1},
 \end{align*}
 
-\noindent Note that all quantities in this formula are
-expressed as functions of the ``free'' parameters
-$d, \ell$ and $g$.
+\noindent Note that all quantities in this formula are expressed
+as functions of the ``free'' parameters $d, \ell$ and
+$g$.
 
 \chapter{Part 2 — Discrete-time dynamics, chaos and ergodic theory}
 
@@ -2858,8 +2865,8 @@ commonly referred to as the \emph{state space}. In many
 cases $\Omega$ is a subset of $\mathbb{R}$ or the
 vector space $\mathbb{R}^d$. The state of the system
 as a function of time is a sequence
-$(x_n)_{n=0}^\infty$ of elements of $\Omega$; i.e.,
-it can be thought of as a function of time
+$(x_n)_{n=0}^\infty$ of elements of $\Omega$; i.e., it
+can be thought of as a function of time
 $n\mapsto x_n$, where the time variable takes only
 discrete values (and therefore is frequently denoted
 by the letter $n$ instead of $t$).
@@ -2868,9 +2875,9 @@ With a continuous-time system, we commonly use an
 ordinary differential equation $\dot{x}=F(x,t)$ to
 describe the \emph{dynamics}, i.e., the rules according to
 which the state of the system evolves. The analogous
-concept for a discrete-time system $(x_n)_{n\ge 0}$
-is called a \emph{difference equation}, which is an
-equation of the form
+concept for a discrete-time system $(x_n)_{n\ge 0}$ is
+called a \emph{difference equation}, which is an equation
+of the form
 
 \begin{equation*} \tag{29}\label{eq:differenceeq}
 \begin{split}
@@ -2879,14 +2886,14 @@ x_{n+1}-x_n &= F(x_n, n),
 \end{equation*}
 
 \noindent where $F$ is a function
-$F:\Omega\times \mathbb{N}_0\to\Omega$ (note that
-this only makes sense if the set $\Omega$ is a subset
-of a vector space so that the operation of subtraction
-is defined). Given a state $a \in \Omega$, we can
-solve the difference equation \eqref{eq:differenceeq}
-starting from the initial condition $x_0=a$. The
-solution is obtained (and is easily seen to be unique)
-by rewriting \eqref{eq:differenceeq} as
+$F:\Omega\times \mathbb{N}_0\to\Omega$ (note that this
+only makes sense if the set $\Omega$ is a subset of a
+vector space so that the operation of subtraction is
+defined). Given a state $a \in \Omega$, we can solve
+the difference equation \eqref{eq:differenceeq} starting
+from the initial condition $x_0=a$. The solution is
+obtained (and is easily seen to be unique) by
+rewriting \eqref{eq:differenceeq} as
 $x_{n+1}=x_n+F(x_n,n)$ and iterating this ``forward
 evolution'' rule, e.g.,
 
@@ -2976,9 +2983,9 @@ x_{n+1} = r x_n ,
 \end{align*}
 
 \noindent where $r\in\mathbb{R}$ is a constant, or
-$x_{n+1}-x_n = (r-1)x_n$ as a difference equation
-(so, like the ODE $\dot{x}(t)=cx(t)$, it is suitable
-to model situations in which the rate of change of a
+$x_{n+1}-x_n = (r-1)x_n$ as a difference equation (so,
+like the ODE $\dot{x}(t)=cx(t)$, it is suitable to
+model situations in which the rate of change of a
 quantity is proportional to it). The solution is the
 geometric sequence
 
@@ -3000,10 +3007,10 @@ F_{n+2}=F_{n+1}+F_n \qquad (n\ge0).
 \end{split}
 \end{equation*}
 
-\noindent Note that this is a \emph{second-order recurrence
-relation} --- the discrete-time analogue of a second
-order differential equation. In general, a
-second-order recurrence will have the form
+\noindent Note that this is a \emph{second-order recurrence relation}
+--- the discrete-time analogue of a second order
+differential equation. In general, a second-order
+recurrence will have the form
 
 \begin{align*}
 x_{n+2} &= T(x_n,x_{n+1},n),
@@ -3035,9 +3042,9 @@ Is there a systematic way to derive such mysterious
 formulas? As with ODEs, it is often more convenient to
 represent a second- (or higher-) order system as a
 first-order system. We can do this by constructing a
-new system whose state space is $\mathbb{R}^2$
-instead of $\mathbb{R}$, where the recurrence
-relation is given by
+new system whose state space is $\mathbb{R}^2$ instead
+of $\mathbb{R}$, where the recurrence relation is
+given by
 
 \begin{equation*} \tag{33}\label{eq:recurrence-fib-matrix}
 \begin{split}
@@ -3068,13 +3075,13 @@ into \eqref{eq:recurrence-fib-matrix}, we get
 \end{array}\right),
 \end{align*}
 
-\noindent which reproduces \eqref{eq:recurrence-fibonacci}.
-Denoting the $2\times 2$ matrix on the right-hand
-side of \eqref{eq:recurrence-fib-matrix} by $A$, the
-recurrence relation \eqref{eq:recurrence-fib-matrix} can
-be thought of as ``geometric growth with a matrix
-multiplier''. By analogy with the geometric growth
-example, it is easy to see that its solution is
+\noindent which reproduces \eqref{eq:recurrence-fibonacci}. Denoting
+the $2\times 2$ matrix on the right-hand side of
+\eqref{eq:recurrence-fib-matrix} by $A$, the recurrence
+relation \eqref{eq:recurrence-fib-matrix} can be thought
+of as ``geometric growth with a matrix multiplier''.
+By analogy with the geometric growth example, it is
+easy to see that its solution is
 
 \begin{equation*} \tag{34}\label{eq:fibonacci-matrixsol}
 \begin{split}
@@ -3095,25 +3102,23 @@ linear algebra.
 \begin{xexercise}
 Derive the formula \eqref{eq:fibonacci-closedform} by
 diagonalizing the matrix
-$A=\left(\begin{array}{cc}
-1&1\\0&1\end{array}\right)$
+$A=\left(\begin{array}{cc} 1&1\\0&1\end{array}\right)$
 and using the solution \eqref{eq:fibonacci-matrixsol}.
 \end{xexercise}
 
 \begin{example}[$3x+1$ map]
-On the state space $\Omega=\mathbb{N}$, define the
-map $T:\mathbb{N}\to\mathbb{N}$ by
+On the state space $\Omega=\mathbb{N}$, define the map
+$T:\mathbb{N}\to\mathbb{N}$ by
 
 \begin{align*}
 T(x) &= \begin{cases} x/2 & \textrm{if $x$ is even}, \\ 3x+1 & \textrm{if $x$ is odd}.
 \end{cases}
 \end{align*}
 
-\noindent It is interesting to ask what happens if we start
-from some initial value $x_0$ and apply the map to
-get the subsequent values
-$x_1=T(x_0), x_2=T(x_1)=T(T(x_0)),$ etc. Let's look
-at some examples:
+\noindent It is interesting to ask what happens if we start from
+some initial value $x_0$ and apply the map to get the
+subsequent values $x_1=T(x_0), x_2=T(x_1)=T(T(x_0)),$
+etc. Let's look at some examples:
 
 \begin{align*}
 x=1: \quad & 1\mapsto 4 \mapsto 2 \mapsto 1 \mapsto [\textrm{infinite cycle of }4,2,1], \\
@@ -3135,13 +3140,12 @@ this.
 
 \begin{example}[Discretized forward evolution of an ODE]
 If $\dot{x}=F(x)$ is an autonomous ODE (say on
-$\mathbb{R}$ or some region of $\mathbb{R}^d$), we
-can discretize time by allowing it to flow only in
-integer multiples of some fixed time step $\tau$.
-That is, we consider the phase flow
-$(\varphi_t)_{t\ge 0}$ of the system, and for each
-initial condition $x_0$ define a sequence
-$(x_n)_{n=0}^\infty$ by
+$\mathbb{R}$ or some region of $\mathbb{R}^d$), we can
+discretize time by allowing it to flow only in integer
+multiples of some fixed time step $\tau$. That is, we
+consider the phase flow $(\varphi_t)_{t\ge 0}$ of the
+system, and for each initial condition $x_0$ define a
+sequence $(x_n)_{n=0}^\infty$ by
 
 \[
 x_n = \varphi_{n\tau}(x_0) \qquad (n\ge 1).
@@ -3195,9 +3199,9 @@ example is given on page 279 of Strogatz's book
 
 \begin{example}[Logistic map]
 An important and fascinating example that we will
-spend a lot of time discussing is the \emph{logistic map}$L:[0,1]\to[0,1]$, a dynamical system with state
-space $\Omega=[0,1]$. It is actually not one map, but
-a family of maps $L=L_r$ where $0\le r\le 4$ is a
+spend a lot of time discussing is the \emph{logistic map}$L:[0,1]\to[0,1]$, a dynamical system with state space
+$\Omega=[0,1]$. It is actually not one map, but a
+family of maps $L=L_r$ where $0\le r\le 4$ is a
 parameter. The map $L_r$ is defined by the formula
 
 \begin{align*}
@@ -3327,15 +3331,14 @@ x+\alpha-1 & \textrm{if } 1-\alpha \le x\le 1.
 \end{align*}
 
 \noindent The reason for the name of this map is that if one
-considers the interval $[0,1]$ as a topological
-circle by identifying the two ends, the map
-corresponds to a rotation of the circle by the angle
-$2\pi \alpha$.
+considers the interval $[0,1]$ as a topological circle
+by identifying the two ends, the map corresponds to a
+rotation of the circle by the angle $2\pi \alpha$.
 \end{example}
 
 \begin{example}[Tent map]
-The tent maps are another one-parameter family of
-maps $\Lambda_a$, $0<a\le 2$, defined by
+The tent maps are another one-parameter family of maps
+$\Lambda_a$, $0<a\le 2$, defined by
 
 \begin{align*}
 \Lambda_a(x) &= \begin{cases}
@@ -3367,11 +3370,11 @@ G(x) &= \left\{ \frac{1}{x} \right\},
 \begin{xexercise}[Properties of the Gauss map]
 
 \begin{enumerate}[label=\arabic*.]
-\item Show (or read in a number theory textbook how to
-show) that the numbers $x\in [0,1]$ for which the
-sequence of iterates $G^n(x)$ eventually reaches $0$
-(and is therefore undefined for larger values of $n$)
-are precisely the rational numbers.
+\item Show (or read in a number theory textbook how to show)
+that the numbers $x\in [0,1]$ for which the sequence
+of iterates $G^n(x)$ eventually reaches $0$ (and is
+therefore undefined for larger values of $n$) are
+precisely the rational numbers.
 
 \item Show that the eventually periodic points of $G$
 (numbers $x$ for which for some $n$, $G^n(x)$ belongs
@@ -3402,8 +3405,8 @@ which are solutions of quadratic equations.
 (d)
 \end{minipage}\\[0.6em]
 {\small Figure 10: (a) The doubling map; (b) The circle
-rotation map $R_\alpha$ for $\alpha=0.3$; (c) the
-tent map $\Lambda_2$; (d) The Gauss map.}
+rotation map $R_\alpha$ for $\alpha=0.3$; (c) the tent
+map $\Lambda_2$; (d) The Gauss map.}
 \end{center}
 
 \section{Fixed points and cycles}
@@ -3423,26 +3426,26 @@ $T(x_1)=x_2, T(x_2)=x_3, \ldots, T(x_{n-1})=x_n,
 T(x_n)=x_1$.
 
 The fixed points can be found graphically by drawing
-the graph of $T$ and the graph of the curve $y=x$,
-and finding their intersections. Note that if
+the graph of $T$ and the graph of the curve $y=x$, and
+finding their intersections. Note that if
 $(x_j)_{j=1}^n$ is an $n$-cycle of $T$ then
 $x_1 = T(T(T(\ldots(T(x_1)))\ldots)$ (that is,
-iterating $T$$n$-times starting from $x_1$ leads
-back to $x_1$). The map $T$ iterated $n$ times is
-denoted $T^n$ (usually it is understood from the
-context that this represents an iteration rather than
-raising to a power; when there is risk of confusion
-one needs to be careful and say explicitly what is
-meant). So, the $n$-cycles can be found by first
-computing the iterated map $T^n$ and then finding the
-fixed points of $T^n$. Note that such a fixed point
-could turn out to be the first point of an $n$-cycle,
-or it could be a fixed point of $T$, or a fixed point
-of $T^k$ for some $k<n$ that is a divisor of $n$ (in
-this case we can use it to generate a $k$-cycle
-$x_1,T(x_1,\ldots,T^{k-1}(x_1)$). In practice,
-finding the $n$-cycles often becomes very hard to do
-when $n$ is larger than some very small number.
+iterating $T$$n$-times starting from $x_1$ leads back
+to $x_1$). The map $T$ iterated $n$ times is denoted
+$T^n$ (usually it is understood from the context that
+this represents an iteration rather than raising to a
+power; when there is risk of confusion one needs to be
+careful and say explicitly what is meant). So, the
+$n$-cycles can be found by first computing the
+iterated map $T^n$ and then finding the fixed points
+of $T^n$. Note that such a fixed point could turn out
+to be the first point of an $n$-cycle, or it could be
+a fixed point of $T$, or a fixed point of $T^k$ for
+some $k<n$ that is a divisor of $n$ (in this case we
+can use it to generate a $k$-cycle
+$x_1,T(x_1,\ldots,T^{k-1}(x_1)$). In practice, finding
+the $n$-cycles often becomes very hard to do when $n$
+is larger than some very small number.
 
 \begin{example}
 Consider the map $T(x)=x^2$ on $[0,1]$. The fixed
@@ -3455,38 +3458,38 @@ which means there are no $n$-cycles for $n>1$.
 \end{example}
 
 \begin{example}
-The doubling map $D(x)=2x\textrm{ mod }1$ has no
-fixed points. What about $2$-cycles? We have
+The doubling map $D(x)=2x\textrm{ mod }1$ has no fixed
+points. What about $2$-cycles? We have
 $D^2(x)=D(D(x))=4x\textrm{ mod }1$. The equation
 $x=D(D(x))$ has two solutions: $x_1=4x_1-1$ gives
-$x_1=1/3$; $x_2=4x_2-2=2/3 = D(x_1)$. So we have
-found a $2$-cycle $(1/3,2/3)$. In general, it is
-possible to identify all $k$-cycles, by noting an
-important connection between the doubling map and the
-binary expansion of a real number.
+$x_1=1/3$; $x_2=4x_2-2=2/3 = D(x_1)$. So we have found
+a $2$-cycle $(1/3,2/3)$. In general, it is possible to
+identify all $k$-cycles, by noting an important
+connection between the doubling map and the binary
+expansion of a real number.
 \end{example}
 
 \begin{xexercise}[$k$-cycles of the doubling map]
 Identify all the $k$-cycles of the doubling map, by
 using the connection with binary expansions (see the
 discussion in Section \ref{sec:normalnumbers}).
-Alternatively, plot $D^k(x)=2^k x \textrm{ mod }1$
-and use a graphical approach to identify all the
+Alternatively, plot $D^k(x)=2^k x \textrm{ mod }1$ and
+use a graphical approach to identify all the
 $k$-cycles.
 \end{xexercise}
 
 \section{Stability of fixed points}
 
-What happens to the system $x_{n+1}=T(x_n)$ if we
-move slightly away from a fixed point $x_*$? We will
-call the fixed point $x_*$\emph{asymptotically stable},
-or \emph{attracting}, if it has the property that for
-initial points $x_0$ in some small neighborhood
+What happens to the system $x_{n+1}=T(x_n)$ if we move
+slightly away from a fixed point $x_*$? We will call
+the fixed point $x_*$\emph{asymptotically stable}, or
+\emph{attracting}, if it has the property that for initial
+points $x_0$ in some small neighborhood
 $(x_*-\delta, x_*+\delta)$ of $x_*$, the sequence of
 iterates $x_n = T^n(x_0)$ converges to $x_*$. We will
 say that $x_*$ is \emph{asymptotically unstable}, or
-\emph{repelling}, if there is some $\delta>0$ such that
-for any initial point $x_0\neq x_*$, the sequence of
+\emph{repelling}, if there is some $\delta>0$ such that for
+any initial point $x_0\neq x_*$, the sequence of
 iterates $x_n=T^n(x_0)$ will eventually leave the
 interval $[x_*-\delta,x_*+\delta]$. It is also
 possible for a fixed point to exhibit a mixture of the
@@ -3495,18 +3498,17 @@ attracting for initial points $x_0>x_*$ and repelling
 for $x_0<x_*$.
 
 To understand the stability properties near a fixed
-point, consider the linear approximation to $T$
-around $x_*$ (assuming it is continuously
-differentiable in a neighborhood of the fixed point):
+point, consider the linear approximation to $T$ around
+$x_*$ (assuming it is continuously differentiable in a
+neighborhood of the fixed point):
 
 \begin{align*}
 T(x) &= T(x_*) + T'(x_*) (x-x_*) + o(x-x_*) \\ &= x_* + T'(x_*) (x-x_*) + o(x-x_*),
 \end{align*}
 
-\noindent i.e., if the initial point $x_0$ is near $x_*$ then
-by the neglecting the little-o $o(x-x_*)$ term, we
-see that for the first few values we have
-approximately
+\noindent i.e., if the initial point $x_0$ is near $x_*$ then by
+the neglecting the little-o $o(x-x_*)$ term, we see
+that for the first few values we have approximately
 
 \begin{align*}
 x_{n+1} - x_* \approx T'(x_*) (x_n-x_*),
@@ -3518,8 +3520,8 @@ x_{n+1} - x_* \approx T'(x_*) (x_n-x_*),
 y_{n+1} \approx \lambda y_n,
 \end{align*}
 
-\noindent which is the recurrence for geometric growth.
-Ignoring the small inaccuracy that comes from the
+\noindent which is the recurrence for geometric growth. Ignoring
+the small inaccuracy that comes from the
 linearization, clearly $y_n\to 0$ if $|\lambda|<1$,
 and $|y_n|$ becomes larger than some fixed small
 number $\delta>0$ if $|\lambda|>1$. Thus, we have
@@ -3534,8 +3536,8 @@ unstable.
 \end{lem}
 
 \begin{xexercise}
-Complete the argument sketched above to get a
-rigorous proof of \hyperref[lem-fixedpoint-stability]{Lemma~\ref*{lem-fixedpoint-stability}}.
+Complete the argument sketched above to get a rigorous
+proof of \hyperref[lem-fixedpoint-stability]{Lemma~\ref*{lem-fixedpoint-stability}}.
 \end{xexercise}
 
 \begin{example}
@@ -3553,9 +3555,9 @@ the unique fixed point of $T(x)=\cos x$. Note that
 $T'(x_*)=-\sin(x_*)\approx -0.673$, which shows that
 the fixed point is asymptotically stable. Note that
 the fact that $T'(x)<0$ means that the values of
-$x_n=\cos^n(0)$ will oscillate around $x_*$,
-producing values that are alternately bigger and
-smaller than $x_*$.
+$x_n=\cos^n(0)$ will oscillate around $x_*$, producing
+values that are alternately bigger and smaller than
+$x_*$.
 \end{example}
 
 \begin{xexercise}
@@ -3573,8 +3575,8 @@ Strogatz's book \emph{Nonlinear Dynamics and Chaos}.
 \section{Measures and measure preserving maps}
 
 Our study of maps so far has shown that even very
-simple maps such as the logistic map or the $3x+1$
-map can lead to extremely complicated behavior of the
+simple maps such as the logistic map or the $3x+1$ map
+can lead to extremely complicated behavior of the
 associated dynamical system. Is there any hope of
 understanding such complicated systems in some
 meaningful sense? Yes, there is. A key insight is that
@@ -3592,9 +3594,9 @@ map is \emph{measure preserving}.
 
 Let $\Omega$ be a set. The theory of probability
 measures can be developed in much greater generality,
-but for our purposes we will assume that $\Omega$ is
-a connected open (or closed) subset of $\mathbb{R}$
-or of $\mathbb{R}^d$. Thus, on $\Omega$ there is a
+but for our purposes we will assume that $\Omega$ is a
+connected open (or closed) subset of $\mathbb{R}$ or
+of $\mathbb{R}^d$. Thus, on $\Omega$ there is a
 natural ``measure'' $d\mathbf{x}$ of $d$-dimensional
 volume familiar from multivariate calculus. The
 probability measures that we will consider take the
@@ -3614,13 +3616,13 @@ $A\subset \Omega$ and returns a number
 P(A) = \int_A f(\mathbf{x})d\mathbf{x}.
 \]
 
-\noindent Both the function $f$, called the \emph{probability
-density function} associated with $P$, and the set $A$
-are assumed to be sufficiently well-behaved that
-$P(A)$ is defined. (You can learn about the precise
-technical definitions, which we will not discuss here,
-in an advanced class on real analysis, measure theory
-or probability theory). A set $A$ for which $P(A)$ is
+\noindent Both the function $f$, called the \emph{probability density
+function} associated with $P$, and the set $A$ are
+assumed to be sufficiently well-behaved that $P(A)$ is
+defined. (You can learn about the precise technical
+definitions, which we will not discuss here, in an
+advanced class on real analysis, measure theory or
+probability theory). A set $A$ for which $P(A)$ is
 defined is called a \emph{measurable set}. It is an
 annoying fact of life that not all sets are
 measurable, but in practice all sets that you are ever
@@ -3628,9 +3630,9 @@ likely to encounter will be measurable, so we will not
 worry about that.
 
 Now, if $T:\Omega\to \Omega$ is a map and $P$ is a
-probability measure on $\Omega$, we say that $T$\emph{preserves the measure $P$} (or \emph{is measure
-preserving for $P$}) if for any measurable set $A$
-the following identity holds:
+probability measure on $\Omega$, we say that $T$\emph{preserves the measure $P$} (or \emph{is measure preserving
+for $P$}) if for any measurable set $A$ the following
+identity holds:
 
 \[
 P(A) = P(T^{-1}(A)),
@@ -3642,8 +3644,8 @@ P(A) = P(T^{-1}(A)),
 \int_A f(\mathbf{x})d\mathbf{x} = \int_{T^{-1}(A)} f(\mathbf{x})d\mathbf{x}.
 \]
 
-\noindent For interval maps, it is sufficient to prove this
-when $A$ is an interval. The intuitive meaning of the
+\noindent For interval maps, it is sufficient to prove this when
+$A$ is an interval. The intuitive meaning of the
 definition is that if the measure $P$ represents the
 statistical distribution of a random element $x$ in
 $\Omega$ (corresponding to the state of the dynamical
@@ -3654,8 +3656,8 @@ probabilistic behavior is stationary with respect to
 the time dynamics. A dynamical system $(\Omega, T)$
 together with a probability measure $P$ that is
 preserved by $T$ is called a \emph{measure preserving
-system}. If $T$ preserves the measure $P$, we say
-that $P$ is an \emph{invariant measure} for $T$.
+system}. If $T$ preserves the measure $P$, we say that
+$P$ is an \emph{invariant measure} for $T$.
 
 \begin{example}[Circle rotation map]
 The circle rotation map $R_\alpha$ preserves the
@@ -3729,8 +3731,8 @@ P(L_4^{-1}(A)) &= \int_{L_4^{-1}(A)} f(x)\,dx \\ &=
 $\lambda_1(y)=\tfrac12(1-\sqrt{1-y}),
 \lambda_2(z)=\tfrac12(1+\sqrt{1-z})$
 (the functions $x=\lambda_{1,2}(w)$ are the two
-solutions of the equation $L_4(w)=x$), and we make
-the substitutions
+solutions of the equation $L_4(w)=x$), and we make the
+substitutions
 
 \begin{align*}
 y&=L_4(x) \leftrightarrow x=\lambda_1(y) \textrm{ in the first integral,} \\ z&=L_4(x) \leftrightarrow x=\lambda_2(z) \textrm{ in the second integral}.
@@ -3771,8 +3773,8 @@ L_4'(w) &=4(1-2w), \\ f(w)&=\frac{2}{\pi\sqrt{L_4(w)}}, \\ L_4(\lambda_1(x)) &= 
 
 \end{proof}
 
-\noindent The idea used in the proof above can be generalized
-to give a criterion for checking whether a map is
+\noindent The idea used in the proof above can be generalized to
+give a criterion for checking whether a map is
 measure-preserving.
 
 \begin{lem}
@@ -3780,8 +3782,8 @@ measure-preserving.
 Let $T:I\to I$ be an interval map that is piecewise
 smooth and monotonic, i.e., the interval $I$ can be
 decomposed into a union of finitely many subintervals
-on each of which $T$ is smooth and monotonic (in
-fact, the claim is true even if this is true for a
+on each of which $T$ is smooth and monotonic (in fact,
+the claim is true even if this is true for a
 subdivision into countably many subintervals). Then
 $T$ preserves the measure $P(dx)=f(x)dx$ if and only
 if the density $f(x)$ satisfies the equation
@@ -3799,8 +3801,8 @@ Prove \hyperref[lem:measure-pres]{Lemma~\ref*{lem:measure-pres}}.
 \end{xexercise}
 
 \begin{example}[Gauss map]
-The Gauss map $G(x)$ preserves the measure $\gamma$
-on $(0,1)$ (called \emph{Gauss measure}), defined by
+The Gauss map $G(x)$ preserves the measure $\gamma$ on
+$(0,1)$ (called \emph{Gauss measure}), defined by
 
 \[
 \gamma(dx) = \frac{1}{\log 2}\cdot \frac{1}{1+x}\,dx.
@@ -3813,8 +3815,7 @@ Use \hyperref[lem:measure-pres]{Lemma~\ref*{lem:measure-pres}} to prove this.
 \end{xexercise}
 
 \begin{xexercise}[Additive Gauss map]
-The additive Gauss map $g:[0,1]\to[0,1]$ is defined
-by
+The additive Gauss map $g:[0,1]\to[0,1]$ is defined by
 
 \begin{align*}
 g(x) = \begin{cases} \frac{x}{1-x} & \textrm{if }0\le x\le \tfrac12, \\
@@ -3858,8 +3859,8 @@ The interval map $N:[0,1]\to[0,1]$
 \end{align*}
 
 \noindent arises in the study of Pythagorean triples. (Figure
-11(b) explains why it is denoted by $N$.) Show that
-it preserves the measure
+11(b) explains why it is denoted by $N$.) Show that it
+preserves the measure
 
 \begin{align*}
 \pi(dx) = \frac{1}{x(1-x)}\,dx.
@@ -3904,8 +3905,8 @@ of points $(x,v)$ where $x$ is a point on the surface
 and $v$ is a tangent vector to the surface based at
 $x$ (representing the direction and speed in which a
 person standing at $x$ will start walking). The flow
-$\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$
-and maps it to a new pair $(x',v')=\varphi(x,v)$
+$\varphi_t(\cdot,\cdot)$ takes such a pair $(x,v)$ and
+maps it to a new pair $(x',v')=\varphi(x,v)$
 representing where the person will be, and which
 direction they will be pointing at, $t$ time units
 later. It can be shown that the geodesic flow
@@ -3936,12 +3937,11 @@ D. Birkhoff, \emph{American Math. Monthly}, April 1942.)
 
 \begin{example}[$3x+1$ map]
 One of the many (ultimately unsuccessful) attempts at
-solving the famous $3x+1$ problem mentioned in
-Section \ref{sec:ergodic-intro} was based on the
-observation that since the formula of the $3x+1$ map
-$T(x)$ depends on the parity of $x$, the range of
-definition of $T$ can be expanded to include numbers
-of the form
+solving the famous $3x+1$ problem mentioned in Section
+\ref{sec:ergodic-intro} was based on the observation that
+since the formula of the $3x+1$ map $T(x)$ depends on
+the parity of $x$, the range of definition of $T$ can
+be expanded to include numbers of the form
 
 \begin{align*}
 a_0 + a_1 \cdot 2 + a_2 \cdot 4 + a_3\cdot 8 + \ldots + a_n \cdot 2^n + \ldots = \sum_{n=0}^\infty a_n 2^n.
@@ -3973,16 +3973,16 @@ to less than $\epsilon$:
 \]
 
 \begin{xexercise}
-Prove that any countable set $E\subset \mathbb{R}$
-has measure 0.
+Prove that any countable set $E\subset \mathbb{R}$ has
+measure 0.
 \end{xexercise}
 
 \section{Invariant sets, ergodicity and the ergodic theorem}
 
-We now come to a key idea that underlies the basis
-for all of ergodic theory and explains the importance
-of invariant measures in discrete-time dynamics. Given
-a map $T:I\to I$ and the associated recurrence
+We now come to a key idea that underlies the basis for
+all of ergodic theory and explains the importance of
+invariant measures in discrete-time dynamics. Given a
+map $T:I\to I$ and the associated recurrence
 $x_{n+1}=T(x_n)$, for every sub-interval $A\subset I$
 we can compute the frequency of visits of the
 dynamical system to $A$, namely
@@ -3998,11 +3998,11 @@ $x$, the initial point. If we fix $n$ and $x$, the
 function $A\mapsto \mu_x^{(n)}(A)$ is a probability
 measure (but it is a discrete probability measure,
 which assigns a positive measure of $1/n$ to the
-specific points $x,T(x),\ldots,T^{n-1}(x)$, instead
-of the measures we considered earlier which were
-defined in terms of a density function $f(x)$). Now
-let $n\to\infty$ (for fixed $x$). If we are lucky,
-the probability measures $\mu_x^{(n)}(\cdot)$ will
+specific points $x,T(x),\ldots,T^{n-1}(x)$, instead of
+the measures we considered earlier which were defined
+in terms of a density function $f(x)$). Now let
+$n\to\infty$ (for fixed $x$). If we are lucky, the
+probability measures $\mu_x^{(n)}(\cdot)$ will
 converge to a limiting measure $P(dx)=f(x)dx$, in the
 sense that
 
@@ -4026,9 +4026,9 @@ P(T^{-1}(A)) &= \lim_{n\to\infty} \mu_x^{(n)}(T^{-1}(A)) \\ &
 
 \noindent It is therefore clear that an invariant measure which
 arises in this way encodes useful statistical
-information about the orbit of the point $x$ under
-the map $T$. On the other hand, the limiting measure
-may depend on $x$ (or we may have convergence to a
+information about the orbit of the point $x$ under the
+map $T$. On the other hand, the limiting measure may
+depend on $x$ (or we may have convergence to a
 limiting measure for some values of $x$, and fail to
 have convergence for other values). It turns out that
 for a wide family of maps, called \emph{ergodic} maps, the
@@ -4160,8 +4160,8 @@ is, if its binary expansion contains the digits 0 in 1
 in the right asymptotic frequency of $1/2$, and
 similarly contains each of the types of successive
 pairs ``$00$'', ``$01$'', ``$10$'' and ``$11$'' with
-asymptotic frequency $1/4$, each triple of digits
-with frequency $1/8$, etc. In other words, the binary
+asymptotic frequency $1/4$, each triple of digits with
+frequency $1/8$, etc. In other words, the binary
 expansion of a number that is normal to base $2$ is
 hard to distinguish (at least based on statistics)
 from the output of an ideal random number generator.
@@ -4176,14 +4176,14 @@ normal to base $10$. Define an interval map
 $E:(0,1)\to(0,1)$ that is related to the decimal
 expansion of a number in the same way that $D$ is
 related to the binary expansion, and use it to prove
-that almost every number $x\in(0,1)$ is normal to
-base $10$.
+that almost every number $x\in(0,1)$ is normal to base
+$10$.
 \end{xexercise}
 
 \section{Circle rotations and equidistribution on $(0,1)$}
 
-Our next application of the ergodic theorem will be
-to the circle rotation map
+Our next application of the ergodic theorem will be to
+the circle rotation map
 $R_\alpha(x)=x+\alpha\textrm{ mod }1$. Note that
 $R_\alpha^n(x)=x+n\alpha\textrm{ mod }1 = \left\{
 x+n\alpha \right\}$
@@ -4207,13 +4207,12 @@ E = \left[0, \tfrac{1}{2q}\right]
 \cup \left[\tfrac{q-1}{q}, \tfrac{2q-1}{2q}\right]
 \]
 
-\noindent is an example of a nontrivial invariant set. The
-other direction (that if $\alpha$ is irrational then
-the map is ergodic) can be proved using Fourier
-series. Here is a sketch of the proof. The idea is to
-check the ergodic theorem by taking some well-behaved
-function $g:[0,1)\to\mathbb{R}$ and looking at sums
-of the form
+\noindent is an example of a nontrivial invariant set. The other
+direction (that if $\alpha$ is irrational then the map
+is ergodic) can be proved using Fourier series. Here
+is a sketch of the proof. The idea is to check the
+ergodic theorem by taking some well-behaved function
+$g:[0,1)\to\mathbb{R}$ and looking at sums of the form
 
 \begin{align*}
 \mu_x^{(n)}(g) = \frac{1}{n} \sum_{k=0}^{n-1} g(R_\alpha^k(x))
@@ -4247,10 +4246,10 @@ trivial, and for $m\neq 0$ we have
 
 \end{proof}
 
-\noindent Applying the ergodic theorem, we get (see the
-exercise below the proof) the following famous result
-in number theory, proved in 1909 and 1910
-independently by Weyl, Sierpinski and Bohl.
+\noindent Applying the ergodic theorem, we get (see the exercise
+below the proof) the following famous result in number
+theory, proved in 1909 and 1910 independently by Weyl,
+Sierpinski and Bohl.
 
 \begin{thm}[Equidistribution theorem]
 If $\alpha\in(0,1)$ is irrational then for any
@@ -4291,8 +4290,8 @@ unproved fact from ergodic theory, which is that $L_4$
 is ergodic.
 
 \begin{thm}
-For all $0\le a<b\le 1$ and for all $x\in[0,1]$
-except on a set of measure $0$, we have
+For all $0\le a<b\le 1$ and for all $x\in[0,1]$ except
+on a set of measure $0$, we have
 
 \begin{align*}
 \frac{1}{n}\# &\left\{ 0\le k\le n-1\,:\, L_4^k(x) \in (a,b) \right\} \\
@@ -4315,8 +4314,8 @@ tent map $\Lambda_2$ by
 \noindent where $h(x) = \frac{2}{\pi}\arcsin(\sqrt{x})$. (Two
 interval maps that are related to each other via a
 relation of the type $T_1=h\circ T_2 h^{-1}$, where
-$h:I\to I$ is invertible, are called \emph{conjugate
-maps}, and share many similar properties.)
+$h:I\to I$ is invertible, are called \emph{conjugate maps},
+and share many similar properties.)
 
 \item Use this to prove that the tent map satisfies a
 similar statistical distribution result, namely that
@@ -4334,27 +4333,26 @@ have
 
 \section{Introduction: the problem of control}
 
-The dynamical systems we find in nature are plagued
-by a host of undesirable effects such as
-instabilities, unpredictable and chaotic behavior, and
-unwanted oscillations. Left to their own devices,
-ecosystems can suffer cycles of uninhibited growth
-followed by mass starvation; economies undergo
-cyclical downturns; human hearts go into fibrillation;
-aircraft would plunge down to earth; etc. The goal of
-control theory is to devise methods to steer dynamical
-systems away from unfavorable modes of behavior and
-towards desired ones, by manipulating the differential
-equation itself --- usually through manipulation of a
-specific term (or set of terms) present in the
-equation, known as the \emph{control function}. Control
-theory is a large field, and its proper study requires
-a separate concentrated effort. In these notes we will
-merely give a short introduction to the subject,
-focusing on a few simple examples which illustrate
-some of the main ideas of this fascinating (and
-extremely useful) subject and how it relates to the
-theory of ODEs.
+The dynamical systems we find in nature are plagued by
+a host of undesirable effects such as instabilities,
+unpredictable and chaotic behavior, and unwanted
+oscillations. Left to their own devices, ecosystems
+can suffer cycles of uninhibited growth followed by
+mass starvation; economies undergo cyclical downturns;
+human hearts go into fibrillation; aircraft would
+plunge down to earth; etc. The goal of control theory
+is to devise methods to steer dynamical systems away
+from unfavorable modes of behavior and towards desired
+ones, by manipulating the differential equation itself
+--- usually through manipulation of a specific term
+(or set of terms) present in the equation, known as
+the \emph{control function}. Control theory is a large
+field, and its proper study requires a separate
+concentrated effort. In these notes we will merely
+give a short introduction to the subject, focusing on
+a few simple examples which illustrate some of the
+main ideas of this fascinating (and extremely useful)
+subject and how it relates to the theory of ODEs.
 
 In mathematical terms, the problem of control can be
 formulated as follows. We are given a vector equation
@@ -4364,9 +4362,9 @@ of the form
 \dot{\mathbf{x}} = G(\mathbf{x},\mathbf{u},t)
 \end{align*}
 
-\noindent where $\mathbf{x}$ is a $d$-dimensional vector
-dynamic variable and $G:\mathbb{R}^{d+k+1}\to\R^d$ is
-a smooth function. We think of $\mathbf{u}$ as a
+\noindent where $\mathbf{x}$ is a $d$-dimensional vector dynamic
+variable and $G:\mathbb{R}^{d+k+1}\to\R^d$ is a smooth
+function. We think of $\mathbf{u}$ as a
 $k$-dimensional input that is a parameter to the
 equation. That is, given a curve $\mathbf{u}(t)$ in
 $\mathbf{R}^k$, we can plug it into the equation to
@@ -4393,8 +4391,8 @@ variable} (or variables), or \emph{control function}.
 If the control variable $\mathbf{u}$ at a given time
 $t$ needs to be specified simply as a function
 $\mathbf{u}(t)$ of time, without reference to the
-current state $\mathbf{x}(t)$ of the dynamical
-system, we are talking about control without feedback
+current state $\mathbf{x}(t)$ of the dynamical system,
+we are talking about control without feedback
 (technically, this is known as \emph{open-loop control}).
 Alternatively, if we allow $\mathbf{u}$ to be
 specified as a function $\mathbf{u}(\mathbf{x},t)$
@@ -4447,8 +4445,8 @@ vertical axis as a function $u(t)$ of time (which
 plays the role of the ``control function'' in this
 problem), and denote by $x$ the angle the pendulum
 forms with the \emph{upward-pointing vertical}, so that
-$x=0$ (rather than $x=\pi$ with the more commonly
-used angular coordinate) represents the unstable
+$x=0$ (rather than $x=\pi$ with the more commonly used
+angular coordinate) represents the unstable
 equilibrium point of the inverted pendulum. The
 position of the swinging mass is
 $\mathbf{r}=(\ell\sin x, \ell \cos x + u(t))$. We can
@@ -4473,8 +4471,7 @@ L &= \tfrac12 \ell^2 \dot{x}^2 + \tfrac12 \dot{u}^2 - \ell \dot{u} \dot{x} \sin 
 \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) &= \ell^2 \ddot{x} - \ell \ddot{u}\sin x - \ell \dot{u}\dot{x} \cos x,
 \end{align*}
 
-\noindent and the Euler-Lagrange equation for this Lagrangian
-is
+\noindent and the Euler-Lagrange equation for this Lagrangian is
 
 \begin{align*}
 \ddot{x} =\frac{g+\ddot{u}}{\ell} \sin x.
@@ -4559,33 +4556,33 @@ system, so we can represent it in vector notation as
 \end{equation*}
 
 \noindent where $\mathbf{x}=(x,y)^\top$ and
-$B_t = \left( \begin{array}{cc} 0&1 \\ \omega^2\pm
-A^2 & 0 \end{array}\right)$.
+$B_t = \left( \begin{array}{cc} 0&1 \\ \omega^2\pm A^2
+& 0 \end{array}\right)$.
 
 We are now in a position to study when (as a function
 of the parameters $a, T, \ell, g$) we can expect the
 system to be stable at $x=0$. The idea is to reduce
 the problem to understanding the stability of an
 autonomous discrete-time dynamical system which we can
-explicitly compute. For real numbers $t_0<t_1$,
-define a map $\psi_{t_0,t_1}:\R^2\to\R^2$, analogous
-to the phase flow map $\varphi_t$ we studied for
-autonomous systems, as follows:
+explicitly compute. For real numbers $t_0<t_1$, define
+a map $\psi_{t_0,t_1}:\R^2\to\R^2$, analogous to the
+phase flow map $\varphi_t$ we studied for autonomous
+systems, as follows:
 
 \begin{align*}
 \psi_{t_0,t_1}(\mathbf{x}_0) = &\ \mathbf{x}(t_1)\textrm{ where $\mathbf{x}(t)_{t\ge t_1}$ is the solution of the system (\ref{eq:kapitza-matrix})}\\ & \textrm{with initial condition $\mathbf{x}(t_0)=\mathbf{x}_0$}.
 \end{align*}
 
 \noindent That is, $\psi_{t_0,t_1}$ evolves a point forward in
-time from time $t_0$ to time $t_1$. (In the case of
-an autonomous system, we could write this as
+time from time $t_0$ to time $t_1$. (In the case of an
+autonomous system, we could write this as
 $\varphi_{t_1-t_0}(\mathbf{x}_0)$ since it would
 depend only on the duration of the evolution rather
 than the specific starting and ending times.) The
-evolution maps $\psi_{t_0,t_1}$ have several
-important properties. First, they are linear, since
-the system \eqref{eq:kapitza-matrix} is linear. Second,
-they satisfy the composition property
+evolution maps $\psi_{t_0,t_1}$ have several important
+properties. First, they are linear, since the system
+\eqref{eq:kapitza-matrix} is linear. Second, they satisfy
+the composition property
 
 \begin{align*}
 \psi_{t_0,t_2}(\mathbf{x}_0) = \psi_{t_1,t_2}( \psi_{t_0,t_1}(\mathbf{x}_0)) \ \ (t_0<t_1<t_2),
@@ -4599,8 +4596,8 @@ they satisfy the composition property
 \end{split}
 \end{equation*}
 
-\noindent since evolving a solution from time $t_0$ to $t_2$
-can be done by evolving it up to time $t_1$ and then
+\noindent since evolving a solution from time $t_0$ to $t_2$ can
+be done by evolving it up to time $t_1$ and then
 evolving the resulting point from $t_1$ to $t_2$.
 Third, because the matrix function $t\mapsto B_t$ in
 the equation \eqref{eq:kapitza-matrix} is periodic with
@@ -4674,10 +4671,10 @@ $\lambda_2=1/\lambda_1$ implies that
 \end{align*}
 
 \noindent in contradiction to the assumption that
-$|\operatorname{tr}(P)|<2$. The only other
-possibility is that $\lambda_1$ and $\lambda_2$ are
-conjugate complex numbers, which must lie on the unit
-circle, since
+$|\operatorname{tr}(P)|<2$. The only other possibility
+is that $\lambda_1$ and $\lambda_2$ are conjugate
+complex numbers, which must lie on the unit circle,
+since
 $\lambda_1\lambda_2 = \lambda_1 \overline{\lambda_1}=
 |\lambda_1|^2 = 1$.
 This implies that for some constant $C>0$, we have
@@ -4703,8 +4700,8 @@ $(\psi_{0,s})_{0\le s\le 2T}$ is the image of a
 compact interval $[0,2T]$ under a continuous map
 $s\mapsto \psi_{0,s}$, and therefore this set of
 matrices is compact, and hence bounded in norm, in the
-space of $2\times 2$ matrices. Therefore there is
-some constant $D>0$ such that
+space of $2\times 2$ matrices. Therefore there is some
+constant $D>0$ such that
 
 \begin{align*}
 \max_{0\le s\le 2T} |\psi_{0,s}(\mathbf{y}) | \le D |\mathbf{y}|
@@ -4723,8 +4720,8 @@ $\mathbf{x}=\mathbf{0}$ is a neutrally stable rest
 point of the system \eqref{eq:kapitza-matrix}.
 \end{proof}
 
-\noindent To compute $S_-$ and $S_+$, observe that they are
-both obtained by evolution of the system along time
+\noindent To compute $S_-$ and $S_+$, observe that they are both
+obtained by evolution of the system along time
 intervals for which the matrix $B_t$ is constant; for
 such intervals the system \eqref{eq:kapitza-matrix}
 behaves like an autonomous system, and can be solved
@@ -4779,10 +4776,10 @@ M_-^2 = -j^2 T^2 I.
 \noindent As a result, it is easy to evaluate the matrix
 exponentials $\exp(M_\pm)$ by directly summing the
 power series $\sum_{n=0}^\infty \frac{1}{n!}M_{\pm}^n$
-(since the even powers are scalar multiples of $I$
-and the odd powers are scalar multiples of $M_\pm$)
-to obtain the expressions in \eqref{eq:kapitza-mat-exp}.
-The computation is left as an exercise.
+(since the even powers are scalar multiples of $I$ and
+the odd powers are scalar multiples of $M_\pm$) to
+obtain the expressions in \eqref{eq:kapitza-mat-exp}. The
+computation is left as an exercise.
 \end{proof}
 
 \begin{xexercise}
@@ -4816,8 +4813,8 @@ By the formulas \eqref{eq:kapitza-mat-exp}, we have
 \noindent We can now prove:
 
 \begin{thm}
-There are values of the parameters $a, g, \ell, T$
-for which Kapitza's pendulum is stable.
+There are values of the parameters $a, g, \ell, T$ for
+which Kapitza's pendulum is stable.
 \end{thm}
 
 \begin{proof}
@@ -4860,12 +4857,11 @@ Represent $\sigma$ as a function of the variables
 $w, z$, then expand $\sigma$ in a Taylor series in
 $w,z$, including all terms up to and including order
 $4$ (i.e., all monomials of the form $w^i z^j$ for
-$0\le i+j\le 4$). From this approximation, deduce
-that if $w,z\to 0$ in such a way that $w<cz$ where $c$
-is a constant satisfying $0<c<\sqrt{2/3}$, then for
-small enough values of $w,z$ the stable regime
-$|\sigma|<2$ is entered, i.e., the motion becomes
-stable.
+$0\le i+j\le 4$). From this approximation, deduce that
+if $w,z\to 0$ in such a way that $w<cz$ where $c$ is a
+constant satisfying $0<c<\sqrt{2/3}$, then for small
+enough values of $w,z$ the stable regime $|\sigma|<2$
+is entered, i.e., the motion becomes stable.
 \end{xexercise}
 
 \section{Alternating gradient focusing}
@@ -4904,8 +4900,8 @@ effect along \emph{both} axes! Mathematically, the analysis
 showing the validity of the idea is virtually
 identical to the stability analysis we performed above
 for the inverted pendulum with an oscillating
-base.\footnote{See equations (2.11), (2.12), (2.33) and (2.34) in
-the paper \emph{Theory of the alternating gradient
+base.\footnote{See equations (2.11), (2.12), (2.33) and (2.34) in the
+paper \emph{Theory of the alternating gradient
 synchrotron}, by E. D. Courant and H. S. Snyder
 (Annals of Physics $\textbf{3}$ (1958), 1--48),
 available online at
@@ -4944,16 +4940,16 @@ equation
 \end{cases}
 \end{align*}
 
-\noindent The idea is that when the electromagnet is turned
-off, the particle experiences a downward acceleration
-due to the effect of gravity, and when the
-electromagnet is switched on, the attractive magnetic
-force causes an upward acceleration that overcomes
-gravity and exactly negates it. For simplicity, we
-choose units such that the gravitational constant $g$
-is equal to $1$, and assume that the acceleration
-when the electromagnet is switched on is exactly equal
-in magnitude (and opposite in its direction) to the
+\noindent The idea is that when the electromagnet is turned off,
+the particle experiences a downward acceleration due
+to the effect of gravity, and when the electromagnet
+is switched on, the attractive magnetic force causes
+an upward acceleration that overcomes gravity and
+exactly negates it. For simplicity, we choose units
+such that the gravitational constant $g$ is equal to
+$1$, and assume that the acceleration when the
+electromagnet is switched on is exactly equal in
+magnitude (and opposite in its direction) to the
 gravitational acceleration. The control variable $u$
 is a binary ``on/off'' variable that corresponds to
 the decision of when to activate the electromagnet (a
@@ -4975,8 +4971,8 @@ point at $x=0$ to which all the orbits converge.
 An obvious idea to try is to switch the electromagnet
 on when $x<0$ and off when $x>0$. That is, we try the
 control rule $u=-\operatorname{sgn}(x)$ (where
-$\operatorname{sgn}(x)=x/|x|$ is the signum
-function), leading to the equation of motion
+$\operatorname{sgn}(x)=x/|x|$ is the signum function),
+leading to the equation of motion
 
 \begin{equation*} \tag{43}\label{eq:magnet-unstable}
 \begin{split}
@@ -5017,8 +5013,8 @@ therefore
 x = x_0 + y_0(y_0-y)-\tfrac12(y_0-y)^2 = (x_0+\tfrac12 y_0^2)-\tfrac12 y^2,
 \end{align*}
 
-\noindent in other words, the solution curves of the system
-have the form $x=a-\tfrac12 y^2$ where $a$ is some
+\noindent in other words, the solution curves of the system have
+the form $x=a-\tfrac12 y^2$ where $a$ is some
 arbitrary parameter. This leads to the phase portrait
 shown in Figure 14.
 
@@ -5076,8 +5072,8 @@ be in a short time and do the toggling in advance in a
 way that will gradually reduce the size of the
 oscillations.
 
-Formally, the idea described above leads to a
-feedback rule of the type
+Formally, the idea described above leads to a feedback
+rule of the type
 
 \begin{align*}
 u = -\operatorname{sgn}(x+b\dot{x}),
@@ -5111,30 +5107,29 @@ equilibrium point is a non-smooth ``sliding motion''
 along a ``chattering curve'', shown in black.}
 \end{center}
 
-\noindent A look at the phase portrait suggests that the idea
-is successful, and indeed results in stable
-levitation. It is not difficult to confirm this
-analytically. One interesting behavior that emerges
-upon closer examination of the properties of this
-system is that when $(x,y)$ crosses the switching
-line $x+by=0$, if the point is close enough to the
-origin then the equation of motion becomes
-ill-defined, since the vector field
-$(y,-\operatorname{sgn}(x+by))$ starts pointing back
-towards the switching line. In practice, due to
-time-delay effects in any physical implementation of
-the system, the particle will undergo a ``sliding
-motion'' in which it oscillates violently around both
-sides of the switching motion, all the while still
-sliding towards the origin. This phenomenon has been
-referred to as \emph{chattering}, since in physical
-implementations where the binary switching is done
-using an electrical relay, the high frequency
+\noindent A look at the phase portrait suggests that the idea is
+successful, and indeed results in stable levitation.
+It is not difficult to confirm this analytically. One
+interesting behavior that emerges upon closer
+examination of the properties of this system is that
+when $(x,y)$ crosses the switching line $x+by=0$, if
+the point is close enough to the origin then the
+equation of motion becomes ill-defined, since the
+vector field $(y,-\operatorname{sgn}(x+by))$ starts
+pointing back towards the switching line. In practice,
+due to time-delay effects in any physical
+implementation of the system, the particle will
+undergo a ``sliding motion'' in which it oscillates
+violently around both sides of the switching motion,
+all the while still sliding towards the origin. This
+phenomenon has been referred to as \emph{chattering}, since
+in physical implementations where the binary switching
+is done using an electrical relay, the high frequency
 switching makes a chattering noise. We can estimate
 the rate at which the particle will approach the
 origin during the sliding motion stage: since the
-sliding motion happens very near the line $x+by=0$
-and we have the equation $\dot{x}=y$, the particle's
+sliding motion happens very near the line $x+by=0$ and
+we have the equation $\dot{x}=y$, the particle's
 position will approximately satisfy the ODE
 $\dot{x}=-x/b$, whose solution is given by
 
@@ -5149,8 +5144,8 @@ $1/b$.
 \begin{xexercise}
 
 \begin{enumerate}[label=\arabic*.]
-\item Show that the sliding motion for points along the
-line $x+by=0$ happens precisely for $|x|\le b^2$.
+\item Show that the sliding motion for points along the line
+$x+by=0$ happens precisely for $|x|\le b^2$.
 
 \item If we start the system at a point $(x_0,y_0)$ that
 lies on the switching line $x+by=0$, find a formula
@@ -5177,9 +5172,9 @@ is possible to prove that the optimal control rule is
 u(x) = -\operatorname{sgn}\left(x+\tfrac12 \dot{x}|\dot{x}|\right).
 \end{align*}
 
-\noindent This makes intuitive sense, since the idea behind
-this control rule is to toggle the electromagnet as
-soon as the state of the system reaches the curve
+\noindent This makes intuitive sense, since the idea behind this
+control rule is to toggle the electromagnet as soon as
+the state of the system reaches the curve
 $x=\tfrac12 y|y|$. The flow from that point on takes
 place along the parabola $x=\tfrac12 y^2$ (if $x>0$)
 or $x=-\tfrac12 y^2$ (if $x<0$) and leads directly to
@@ -5195,9 +5190,9 @@ control.}
 \end{center}
 
 \begin{xexercise}[Optimal switching time]
-Find a formula for the time $\tau(x,\dot{x})$ it
-takes the particle to get to the origin when the
-optimal switching rule is used.
+Find a formula for the time $\tau(x,\dot{x})$ it takes
+the particle to get to the origin when the optimal
+switching rule is used.
 \end{xexercise}
 
 \begin{center}
@@ -5237,19 +5232,19 @@ J = \int_{t_1}^{t_2}
 
 \noindent where $-\infty<t_1<t_2\le \infty$, $P$ is an
 $n\times n$ positive-definite matrix and $Q$ is an
-$m\times m$ positive-definite matrix. The idea is
-that we want to incentivize the controller to bring
+$m\times m$ positive-definite matrix. The idea is that
+we want to incentivize the controller to bring
 $\mathbf{x}$ to the origin as fast as possible by
 ``pushing'' on it as hard as possible; at the same
 time, in a typical situation the ``pushing'' also
 incurs a price since it uses resources such as
 electricity, fuel, etc. The problem of optimal control
 is to find the feedback-based solution
-$\mathbf{u}=\mathbf{u}(\mathbf{x})$ that minimizes
-the overall cost functional, which finds a balance
-between the cost of resources and the desire to
-achieve good performance. It turns out that the
-solution has the form
+$\mathbf{u}=\mathbf{u}(\mathbf{x})$ that minimizes the
+overall cost functional, which finds a balance between
+the cost of resources and the desire to achieve good
+performance. It turns out that the solution has the
+form
 
 \begin{equation*} \tag{47}\label{eq:lqp-gain-mat}
 \begin{split}
@@ -5257,26 +5252,25 @@ solution has the form
 \end{split}
 \end{equation*}
 
-\noindent where $K$ is a time-dependent linear operator which
-we will identify. Usually $K$ is expressed in the
-form $K(t_2-t)$, i.e., as a function of the
-``time-to-go'' variable $T=t_2-t$. The most
-interesting case is that of an infinite time horizon:
-$t_2=\infty$; in this case we look for a stationary
-solution in which $K$ is a constant matrix, called
-the \emph{gain matrix}.
+\noindent where $K$ is a time-dependent linear operator which we
+will identify. Usually $K$ is expressed in the form
+$K(t_2-t)$, i.e., as a function of the ``time-to-go''
+variable $T=t_2-t$. The most interesting case is that
+of an infinite time horizon: $t_2=\infty$; in this
+case we look for a stationary solution in which $K$ is
+a constant matrix, called the \emph{gain matrix}.
 
 Note that the mapping that takes a pair
 $(\mathbf{u},\mathbf{a})$ where $\mathbf{u}$ is the
 control function and $\mathbf{a}$ is the initial
-condition $\mathbf{x}(t_1)=\mathbf{a}$ to the
-solution of \eqref{eq:lqp-linear} is linear, and the cost
+condition $\mathbf{x}(t_1)=\mathbf{a}$ to the solution
+of \eqref{eq:lqp-linear} is linear, and the cost
 functional \eqref{eq:lqp-quadratic} is a quadratic
-expression in $\mathbf{x}$ and $\mathbf{u}$. Thus
-this type of problem is referred to as Linear
-Quadratic Performance (LQP) control. The main
-advantage of LQP control problems is that they have an
-explicit solution in terms of an ordinary differential
+expression in $\mathbf{x}$ and $\mathbf{u}$. Thus this
+type of problem is referred to as Linear Quadratic
+Performance (LQP) control. The main advantage of LQP
+control problems is that they have an explicit
+solution in terms of an ordinary differential
 equation, the Ricatti equation, which furthermore is
 easy to solve numerically.
 
@@ -5301,12 +5295,12 @@ I = \int_{t_1}^{t_2} (px^2+qu^2)\,dt
 \noindent for some numbers $p,q>0$. Note that, for a given
 control rule, to compute $I$ all that one needs to
 know is the initial condition $x(t_1)$ and the
-duration $T=t_2-t_1$ over which the cost is
-integrated (that is, changing the left endpoint $t_1$
-of the interval $[t_1,t_2]$ while keeping its length
-fixed will not change the cost functional). Let
-$I_*(w,T)$ denote the optimal control cost associated
-with an initial condition $x(t_1)=w$ and an interval
+duration $T=t_2-t_1$ over which the cost is integrated
+(that is, changing the left endpoint $t_1$ of the
+interval $[t_1,t_2]$ while keeping its length fixed
+will not change the cost functional). Let $I_*(w,T)$
+denote the optimal control cost associated with an
+initial condition $x(t_1)=w$ and an interval
 $[t_1,t_2]$ of length $T$:
 
 \begin{align*}
@@ -5316,10 +5310,10 @@ I_*(w,T) = \min_{\textrm{control rule $u$}} \int_{t_1}^{t_1+T} (p x^2+qu^2)\,dt
 
 \noindent In the derivation that follows, we assume that
 $t_2<\infty$ and that $I_*(w,T)$ is a smooth function
-of $w$ and $T$. Furthermore, it is not hard to see
-due to the quadratic nature of $I$ that the
-dependence of $I_*(w,T)$ on $w$ is also quadratic,
-i.e., we can write
+of $w$ and $T$. Furthermore, it is not hard to see due
+to the quadratic nature of $I$ that the dependence of
+$I_*(w,T)$ on $w$ is also quadratic, i.e., we can
+write
 
 \begin{align*}
 I_*(w,T) = v(T) w^2
@@ -5343,9 +5337,9 @@ I_*(w,T) = I_*(w,\delta) + I_*(z,T-\delta),
 \end{split}
 \end{equation*}
 
-\noindent where $z=x(t_1+\delta)$ is the value obtained from
-the solution of the optimal control problem with
-initial condition $x(t_1)=w$ for the interval
+\noindent where $z=x(t_1+\delta)$ is the value obtained from the
+solution of the optimal control problem with initial
+condition $x(t_1)=w$ for the interval
 $[t_1,t_1+\delta]$. When $\delta$ is small, we have
 the following linear approximations in $\delta$:
 
@@ -5357,10 +5351,10 @@ z &= w + \dot{x}(0)\delta + O(\delta)^2 = w + (aw+b u_*)\delta + O(\delta^2),
 \end{equation*}
 
 \noindent where $u_*$ is the value of the control variable at
-time $t=t_1$ when optimal control is used with
-initial condition $x(t_1)=w$ over the interval
-$[t_1,t_2]$. Note that like $I_*$, $u_*$ depends only
-on $w$ and $T=t_2-t_1$. Furthermore, by dimensional
+time $t=t_1$ when optimal control is used with initial
+condition $x(t_1)=w$ over the interval $[t_1,t_2]$.
+Note that like $I_*$, $u_*$ depends only on $w$ and
+$T=t_2-t_1$. Furthermore, by dimensional
 considerations, the dependence of $u_*$ on $w$ is
 linear, so we may write
 
@@ -5368,10 +5362,9 @@ linear, so we may write
 u_* = - k(T)w.
 \end{align*}
 
-\noindent The scalar quantity $k(T)$ is a gain factor,
-analogous to the operator $K$ mentioned above in
-connection with the LQP control problem in arbitrary
-dimension.
+\noindent The scalar quantity $k(T)$ is a gain factor, analogous
+to the operator $K$ mentioned above in connection with
+the LQP control problem in arbitrary dimension.
 
 Now, continuing \eqref{eq:lqp-subintervals}, we may
 further expand all terms on the right-hand side as
@@ -5443,8 +5436,8 @@ v'(T) = p + 2 a v(T) - \frac{b^2}{q} v(T)^2
 
 \noindent obtained by plugging the expression for $k(T)$ back
 into \eqref{eq:lqp-quadratic-poly}, with the initial
-condition $v(0)=0$. This is the \emph{Ricatti equation
-with constant coefficients}.
+condition $v(0)=0$. This is the \emph{Ricatti equation with
+constant coefficients}.
 
 \subsection{The case of an infinite time horizon}
 
@@ -5465,8 +5458,8 @@ v_\infty^2 - \frac{2aq}{b^2} v_\infty - \frac{pq}{b^2} = 0,
 v_\infty = \frac{aq}{b^2}\left( 1 \pm \sqrt{1+\frac{pb^2}{qa^2}}\right).
 \end{align*}
 
-\noindent Since we know that $v_\infty\ge 0$ and $p,q>0$, it
-can be checked that the correct choice of sign is:
+\noindent Since we know that $v_\infty\ge 0$ and $p,q>0$, it can
+be checked that the correct choice of sign is:
 
 \begin{align*}
 v_\infty = \begin{cases}
@@ -5479,8 +5472,8 @@ v_\infty = \begin{cases}
 \end{cases}
 \end{align*}
 
-\noindent The optimal control gain $k=k_\infty$ is then given
-as before by $k_\infty = b v_\infty/q$. Note that the
+\noindent The optimal control gain $k=k_\infty$ is then given as
+before by $k_\infty = b v_\infty/q$. Note that the
 case $a<0$ corresponds to a situation in which the
 object is stable even in the absence of a control
 force, i.e., if we take $u=0$.
@@ -5547,10 +5540,9 @@ $\theta=\theta(t)$ (representing the angle of the
 pendulum relative to the positive $x$-axis) and
 $x=x(t)$ (representing the displacement of the cart
 along the $x$-axis), satisfying the equations of
-motion\footnote{This example is based on a blog post written by
-Andrew Moylan on the website of Wolfram Research
-(maker of the $\texttt{Mathematica}$ software); see
-the link:
+motion\footnote{This example is based on a blog post written by Andrew
+Moylan on the website of Wolfram Research (maker of
+the $\texttt{Mathematica}$ software); see the link:
 \href{http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/}{http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/}}
 
 \begin{align*}
@@ -5639,28 +5631,47 @@ u = - x -5.97415\, \dot{x} + 14.8452\, \theta + 13.7966\, \dot{\theta}.
 
 \chapter*{Bibliographic notes}
 \addcontentsline{toc}{chapter}{Bibliographic notes}
-Here are the main sources I used during the preparation of these lecture notes. I had a lot of fun consulting these books, but had to leave out many beautiful topics. The interested reader is encouraged to continue his or her journey into the world of ODEs by looking into these more detailed sources. I especially recommend the books by Arnold, Banks and anything written by Richard Feynman (including his hilarious memoir \emph{Surely You're Joking, Mr. Feynman}).
+Here are the main sources I used during the
+preparation of these lecture notes. I had a lot of fun
+consulting these books, but had to leave out many
+beautiful topics. The interested reader is encouraged
+to continue his or her journey into the world of ODEs
+by looking into these more detailed sources. I
+especially recommend the books by Arnold, Banks and
+anything written by Richard Feynman (including his
+hilarious memoir \emph{Surely You're Joking, Mr. Feynman}).
 
 \textbf{Sources for Part 1}
 
 \begin{enumerate}[label=\arabic*.]
-\item V. I. Arnold, Mathematical Methods of Classical Mechanics, 2nd Ed. Springer, 1988.
+\item V. I. Arnold, Mathematical Methods of Classical
+Mechanics, 2nd Ed. Springer, 1988.
 
-\item R. B. Banks, Towing Icebergs, Falling Dominoes, and Other Adventures in Applied Mathematics. Princeton University Press, 1998.
+\item R. B. Banks, Towing Icebergs, Falling Dominoes, and
+Other Adventures in Applied Mathematics. Princeton
+University Press, 1998.
 
-\item R. Grimshaw, Nonlinear Ordinary Differential Equations. Blackwell Scientific Publications, 1990.
+\item R. Grimshaw, Nonlinear Ordinary Differential
+Equations. Blackwell Scientific Publications, 1990.
 
-\item J. K. Hunter, \href{http://www.math.ucdavis.edu/~hunter/m280_09/applied_math.html}{Lecture Notes on Applied Mathematics}, available online.
+\item J. K. Hunter, \href{http://www.math.ucdavis.edu/~hunter/m280_09/applied_math.html}{Lecture Notes on Applied
+Mathematics},
+available online.
 
-\item L. A. Pars, An Introduction to the Calculus of Variations. Heinemann Educational Books, 1962 (reprinted by Dover Publications, 2010).
+\item L. A. Pars, An Introduction to the Calculus of
+Variations. Heinemann Educational Books, 1962
+(reprinted by Dover Publications, 2010).
 \end{enumerate}
 
 \noindent \textbf{Sources for Part 2}
 
 \begin{enumerate}[label=\arabic*., start=6]
-\item D. Romik, Lecture Notes for Math 235B: Probability Theory, available online at \href{http://www.math.ucdavis.edu/~romik/teaching/mat235-2011-2012/\#235b}{http://www.math.ucdavis.edu/~romik/teaching/mat235-2011-2012/\#235b}
+\item D. Romik, Lecture Notes for Math 235B: Probability
+Theory, available online at
+\href{http://www.math.ucdavis.edu/~romik/teaching/mat235-2011-2012/\#235b}{http://www.math.ucdavis.edu/~romik/teaching/mat235-2011-2012/\#235b}
 
-\item S. H. Strogatz, Nonlinear Dynamics and Chaos. Westview Press, 1994.
+\item S. H. Strogatz, Nonlinear Dynamics and Chaos. Westview
+Press, 1994.
 \end{enumerate}
 
 \noindent \textbf{Sources for Part 3}
@@ -5668,9 +5679,14 @@ Here are the main sources I used during the preparation of these lecture notes. 
 \begin{enumerate}[label=\arabic*., start=8]
 \item Chapter 5 of Arnold's book listed above.
 
-\item R. P. Feynman, R. B. Leighton, M. Sands, The Feynman Lectures on Physics, Vol. II. Basic Books, 1964. (Chapter 29 has a discussion of alternating-gradient focusing and the inverted pendulum with an oscillating base.)
+\item R. P. Feynman, R. B. Leighton, M. Sands, The Feynman
+Lectures on Physics, Vol. II. Basic Books, 1964.
+(Chapter 29 has a discussion of alternating-gradient
+focusing and the inverted pendulum with an oscillating
+base.)
 
-\item O. L. R. Jacobs, Introduction to Control Theory. Oxford Science Publications, 1993.
+\item O. L. R. Jacobs, Introduction to Control Theory.
+Oxford Science Publications, 1993.
 \end{enumerate}
 
 \end{document}

@@ -189,6 +189,42 @@ const onKeyDown = (e) => {
 document.addEventListener("keydown", onKeyDown);
 
 // ---------------------------------------------------------------------------
+// Neighbour preloading: load the previous and next pages in the background as
+// soon as this one opens, so switching (nav arrows or ←/→) swaps in a page that
+// is already loaded and typeset instead of starting from scratch. Chromium
+// prerenders them via speculation rules; browsers without speculation rules
+// (Firefox) get a plain prefetch, which only caches the HTML.
+// ---------------------------------------------------------------------------
+const preloadNeighbours = () => {
+  const urls = [
+    ...new Set(
+      ["prev-page", "next-page"]
+        .map((id) => document.getElementById(id)?.href)
+        .filter(Boolean),
+    ),
+  ];
+  if (urls.length === 0) return;
+
+  if (HTMLScriptElement.supports?.("speculationrules")) {
+    const rules = document.createElement("script");
+    rules.type = "speculationrules";
+    rules.textContent = JSON.stringify({
+      prerender: [{ urls, eagerness: "immediate" }],
+      prefetch: [{ urls, eagerness: "immediate" }],
+    });
+    document.head.append(rules);
+  } else {
+    for (const href of urls) {
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.href = href;
+      document.head.append(link);
+    }
+  }
+};
+preloadNeighbours();
+
+// ---------------------------------------------------------------------------
 // Author mode (`--local`): source-linking tooltips.
 //
 // The pipeline (gated on `author_mode`) injects `t-3003` spans that carry a

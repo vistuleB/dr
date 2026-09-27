@@ -1,3 +1,4 @@
+import gleam/bit_array
 import gleam/dict
 import gleam/io
 import gleam/list
@@ -797,6 +798,24 @@ fn our_emitter(
   |> result.map(fn(fragment) { #(fragment, ds.NoFeedback) })
 }
 
+// favicon - embedded in every page as a data: URI, so switching pages never
+// waits on a request for it (the tab shows the browser's default globe in the
+// meantime); falls back to linking the file if it cannot be read
+fn inline_favicon(path: String, href: String) -> String {
+  case simplifile.read_bits(path) {
+    Ok(bits) ->
+      "data:image/svg+xml;base64," <> bit_array.base64_encode(bits, True)
+    Error(_) -> {
+      io.println(
+        "warning: could not read favicon '"
+        <> path
+        <> "'; linking to it instead",
+      )
+      href
+    }
+  }
+}
+
 fn existing_html_artifacts(output_dir: String) -> List(String) {
   case simplifile.read_directory(output_dir) {
     Ok(files) ->
@@ -954,7 +973,11 @@ pub fn render(arguments: ds.ParsedCLIArguments, course_dir: String) -> Nil {
   }
   let favicon = case infra.v_first_attr_with_key(parsed_contents, "favicon") {
     None -> panic as "__parent.wly did not specify any favicon attribute"
-    Some(x) -> x.val
+    Some(x) ->
+      inline_favicon(
+        course_dir <> "/" <> output_dir_local_path <> "/" <> x.val,
+        x.val,
+      )
   }
   io.println("")
   let document_info =

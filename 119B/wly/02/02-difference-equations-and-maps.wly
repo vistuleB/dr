@@ -359,36 +359,26 @@
         nearby initial conditions do not drift far apart. See
         Figure 9 for some examples.
 
-        |> figure
-            |> span
-                style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-                |> img
-                    src=figures/billiards-bunimovichstadium.png
-                    style=max-width: 100%; display: block; margin: 0 auto
+        |> ImageGrid
+            columns=2
+            |> GridImage
+                src=figures/billiards-bunimovichstadium.png
                 (a)
 
-            |> span
-                style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-                |> img
-                    src=figures/billiards-sinai.png
-                    style=max-width: 78%; display: block; margin: 0 auto
+            |> GridImage
+                src=figures/billiards-sinai.png
+                width=78%
                 (b)
 
-            |> span
-                style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-                |> img
-                    src=figures/billiard-ellipse.jpg
-                    style=max-width: 100%; display: block; margin: 0 auto
+            |> GridImage
+                src=figures/billiard-ellipse.jpg
                 (c)
 
-            |> span
-                style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-                |> img
-                    src=figures/billiard-hyperbola.jpg
-                    style=max-width: 100%; display: block; margin: 0 auto
+            |> GridImage
+                src=figures/billiard-hyperbola.jpg
                 (d)
 
-            |> figcaption
+            |> GridCaption
                 Figure 9: Billiard dynamical systems: (a) The
                 ``Bunimovich stadium''; (b) The ``Sinai billiard''
                 (source: Wikipedia); (c) and (d) billiard in an

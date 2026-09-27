@@ -456,17 +456,16 @@ fn statement_env(tag: String) -> Result(String, Nil) {
 // Figures
 //
 // Two source shapes are supported:
-//   235B: `figure` > (`img`+ , `figcaption`)          -- images directly
-//   119B: `figure` > (`span`(width%){ `img` (a) }+ , `figcaption`)
-//                                                       -- labelled panels
-// Each image/panel becomes a fixed-width box; boxes flow side by side and wrap
-// to a grid when a row exceeds \linewidth. The caption goes below. We do NOT use
+//   `figure` > (`img`+ , `figcaption`)       -- images directly (235B, 119B)
+//   `ImageGrid` > (`GridImage`+ , `GridCaption`)
+//                                            -- labelled multi-image sets (119B)
+// Each image becomes a fixed-width box, the caption goes below. We do NOT use
 // `\caption`/`figure` floats: the source hard-numbers figures ("Figure N:") in
 // the caption text and refers to them by that literal number in prose, so LaTeX
 // auto-numbering would clash.
 // ---------------------------------------------------------------------------
 
-// Width fraction (e.g. "0.44") from a CSS-ish `style` holding `width: N%` or
+// Width fraction (e.g. "0.55") from a CSS-ish `style` holding `width: N%` or
 // `max-width: N%` (the `width:` substring of `max-width:` matches too).
 fn style_width_fraction(style: Option(String), default: String) -> String {
   let assert Ok(re) = regexp.from_string("width:\\s*([0-9]+)")
@@ -493,64 +492,123 @@ fn img_to_latex(attrs: List(Attr)) -> String {
   "\\includegraphics[width=" <> frac <> "\\linewidth]{" <> src <> "}"
 }
 
-// A `span` panel (119B-style): a fixed-width box wrapping an image (shown at the
-// box's full width) and an optional label like "(a)", as a top-aligned minipage.
-fn span_panel_to_latex(
-  attrs: List(Attr),
+// The figure's caption child (`figcaption` / `GridCaption`), as small centered
+// text below the images, after the line break `newline`; "" when there is none.
+fn caption_to_latex(
   children: List(VXML),
+  tag: String,
+  newline: String,
   ctx: Ctx,
 ) -> String {
-  let frac = style_width_fraction(find_attr(attrs, "style"), "0.44")
-  let parts =
-    children
-    |> list.filter_map(fn(c) {
+  case
+    list.find_map(children, fn(c) {
       case c {
-        V(_, "img", ia, _) ->
-          Ok(
-            "\\includegraphics[width=\\linewidth]{"
-            <> { find_attr(ia, "src") |> option.unwrap("") }
-            <> "}",
-          )
-        V(_, "WriterlyBlankLine", _, _) -> Error(Nil)
-        _ ->
-          case string.trim(node_to_latex(c, ctx)) {
-            "" -> Error(Nil)
-            t -> Ok(t)
-          }
+        V(_, t, _, cc) if t == tag -> Ok(nodes_to_latex(cc, ctx))
+        _ -> Error(Nil)
       }
     })
-  "\\begin{minipage}[t]{"
-  <> frac
-  <> "\\linewidth}\\centering\n"
-  <> string.join(parts, "\\\\\n")
-  <> "\n\\end{minipage}"
+  {
+    Ok(text) -> newline <> "[0.6em]\n{\\small " <> string.trim(text) <> "}"
+    Error(_) -> ""
+  }
 }
 
 fn figure_to_latex(children: List(VXML), ctx: Ctx) -> String {
-  let panels =
+  let images =
     children
     |> list.filter_map(fn(c) {
       case c {
         V(_, "img", attrs, _) -> Ok(img_to_latex(attrs))
-        V(_, "span", attrs, sc) -> Ok(span_panel_to_latex(attrs, sc, ctx))
         _ -> Error(Nil)
       }
     })
-    // breakable gap: a row of panels wider than \linewidth wraps to a grid
+    // breakable gap: a row of images wider than \linewidth wraps
     |> string.join("\\hspace{0.02\\linewidth}%\n")
-  let caption =
+  "\n\\begin{center}\n"
+  <> images
+  <> caption_to_latex(children, "figcaption", "\\\\", ctx)
+  <> "\n\\end{center}\n"
+}
+
+// 440 -> "0.44", 286 -> "0.286", 1000 -> "1.0"
+fn permille_to_decimal(permille: Int) -> String {
+  let digits =
+    int.to_string(permille % 1000)
+    |> string.pad_start(3, "0")
+    |> string.to_graphemes
+    |> list.reverse
+    |> list.drop_while(fn(d) { d == "0" })
+    |> list.reverse
+    |> string.concat
+  int.to_string(permille / 1000)
+  <> "."
+  <> case digits {
+    "" -> "0"
+    _ -> digits
+  }
+}
+
+// One `GridImage`: a top-aligned minipage `cell_permille` of the line wide,
+// holding the image (at its `width=P%` of the cell, default the full cell) and
+// below it the optional label, e.g. "(a)".
+fn grid_image_to_latex(
+  attrs: List(Attr),
+  label: List(VXML),
+  cell_permille: Int,
+  ctx: Ctx,
+) -> String {
+  let src = find_attr(attrs, "src") |> option.unwrap("")
+  let width =
+    find_attr(attrs, "width")
+    |> option.then(fn(w) { string.drop_end(w, 1) |> int.parse |> option.from_result })
+  let width = case width {
+    Some(pct) if pct < 100 -> permille_to_decimal(pct * 10) <> "\\linewidth"
+    _ -> "\\linewidth"
+  }
+  let image = "\\includegraphics[width=" <> width <> "]{" <> src <> "}"
+  let body = case string.trim(nodes_to_latex(label, ctx)) {
+    "" -> image
+    text -> image <> "\\\\\n" <> text
+  }
+  "\\begin{minipage}[t]{"
+  <> permille_to_decimal(cell_permille)
+  <> "\\linewidth}\\centering\n"
+  <> body
+  <> "\n\\end{minipage}"
+}
+
+// An `ImageGrid` (in the canonical shape from `dr_normalize_image_grids`): its
+// `GridImage`s `columns` per row, then the `GridCaption` under the whole set.
+// The row breaks are `\\*` (no page break), so the set never splits across
+// pages. Same geometry as the HTML (`figure.image-grid` in shared/app.css): the
+// cells and their 2% gaps span 90% of the line, so a cell is
+// (90% - (columns - 1) * 2%) / columns wide — 44% for two columns.
+fn image_grid_to_latex(
+  attrs: List(Attr),
+  children: List(VXML),
+  ctx: Ctx,
+) -> String {
+  let columns =
+    find_attr(attrs, "columns")
+    |> option.then(fn(c) { int.parse(c) |> option.from_result })
+    |> option.unwrap(2)
+  let cell_permille = { 900 - 20 * { columns - 1 } } / columns
+  let rows =
     children
-    |> list.find_map(fn(c) {
+    |> list.filter_map(fn(c) {
       case c {
-        V(_, "figcaption", _, cc) -> Ok(nodes_to_latex(cc, ctx))
+        V(_, "GridImage", ia, label) ->
+          Ok(grid_image_to_latex(ia, label, cell_permille, ctx))
         _ -> Error(Nil)
       }
     })
-  let caption_latex = case caption {
-    Ok(text) -> "\\\\[0.6em]\n{\\small " <> string.trim(text) <> "}"
-    Error(_) -> ""
-  }
-  "\n\\begin{center}\n" <> panels <> caption_latex <> "\n\\end{center}\n"
+    |> list.sized_chunk(columns)
+    |> list.map(string.join(_, "\\hspace{0.02\\linewidth}%\n"))
+    |> string.join("\\\\*[1ex]\n")
+  "\n\\begin{center}\n"
+  <> rows
+  <> caption_to_latex(children, "GridCaption", "\\\\*", ctx)
+  <> "\n\\end{center}\n"
 }
 
 // ---------------------------------------------------------------------------
@@ -737,12 +795,13 @@ fn node_to_latex(vxml: VXML, ctx: Ctx) -> String {
           <> "\n\\end{proof}\n"
         }
         "figure" -> figure_to_latex(children, ctx)
+        "ImageGrid" -> image_grid_to_latex(attrs, children, ctx)
         // `img`/`figcaption` outside a `figure` are a fallback (normally the
         // `figure` case consumes them); render sensibly anyway.
         "img" ->
           "\n\\begin{center}\n" <> img_to_latex(attrs) <> "\n\\end{center}\n"
         "figcaption" -> "{\\small " <> nodes_to_latex(children, ctx) <> "}"
-        // a `span` outside a figure is just an inline grouping; emit its content
+        // a `span` is just an inline grouping; emit its content
         "span" -> nodes_to_latex(children, ctx)
         "MathBlock" -> mathblock_to_latex(vxml, ctx)
         "Math" -> gather_text(vxml)

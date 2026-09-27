@@ -85,6 +85,9 @@ pub fn pipeline(
     "WriterlyComment",
     "Footnote",
     "hr",
+    "ImageGrid",
+    "GridImage",
+    "GridCaption",
   ]
 
   let pre_transformation_html_tags = [
@@ -157,6 +160,11 @@ pub fn pipeline(
         writerly.is_commented_attribute_key(key)
       }),
       dl.unwrap_if_first_child("WriterlyBlankLine"),
+      // multi-image figures: validate `ImageGrid`/`GridImage`/`GridCaption`
+      // (hard error on anything malformed), then expand them into nested
+      // `figure`s, laid out by `figure.image-grid` in shared/app.css
+      local_dl.dr_normalize_image_grids(),
+      local_dl.dr_image_grids_to_html(),
       dl.append(#("Proof", "QED", infra.Continue)),
       dl.replace_with_arbitrary(#("QED", qed)),
       dl.prepend_attribute_as_wrapped_text(#("Definition", "label", label_span)),

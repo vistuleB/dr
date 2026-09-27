@@ -102,36 +102,25 @@
             |> li
                 Find a formula for all the fixed points of $G$.
 
-    |> figure
-        |> span
-            style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-            |> img
-                src=figures/doublingmap.png
-                style=max-width: 100%; display: block; margin: 0 auto
+    |> ImageGrid
+        columns=2
+        |> GridImage
+            src=figures/doublingmap.png
             (a)
 
-        |> span
-            style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-            |> img
-                src=figures/circlerotation03.png
-                style=max-width: 100%; display: block; margin: 0 auto
+        |> GridImage
+            src=figures/circlerotation03.png
             (b)
 
-        |> span
-            style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-            |> img
-                src=figures/tentmap.png
-                style=max-width: 100%; display: block; margin: 0 auto
+        |> GridImage
+            src=figures/tentmap.png
             (c)
 
-        |> span
-            style=display: inline-block; width: 44%; vertical-align: top; margin: 0 1%
-            |> img
-                src=figures/gaussmap.png
-                style=max-width: 100%; display: block; margin: 0 auto
+        |> GridImage
+            src=figures/gaussmap.png
             (d)
 
-        |> figcaption
+        |> GridCaption
             Figure 10: (a) The doubling map; (b) The circle
             rotation map $R_\alpha$ for $\alpha=0.3$; (c) the tent
             map $\Lambda_2$; (d) The Gauss map.

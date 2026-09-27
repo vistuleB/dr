@@ -210,14 +210,15 @@ into `main.gleam` alongside `--fmt`). Design:
   unbreakable `$\textbf{…}$` prose phrases that would otherwise run off the right
   margin. Vector fonts come from `\usepackage{lmodern}` (before `[T1]{fontenc}`);
   without it, this TeX install falls back to blurry Type-3 bitmap Computer Modern.
-- **Figures.** A `figure` becomes a centered, non-floating block whose panels flow
-  side by side and **wrap to a grid** when a row exceeds `\linewidth` (breakable
-  `\hspace` between panels in a `center`). Two source shapes are handled: a direct
-  `img` → `\includegraphics[width=0.N\linewidth]{src}` (235B; width from
-  `style=max-width: N%`), and a `span`(width%){ `img` + label } → a top-aligned
-  `minipage` panel with the image at full box width and its "(a)"/"(b)" label
-  below (119B's multi-panel figures). The `figcaption` renders as small centered
-  text below. Figures are NOT `\caption`/`figure` floats: the source hard-numbers
+- **Figures.** A `figure` becomes a centered, non-floating block whose images flow
+  side by side and **wrap** when a row exceeds `\linewidth` (breakable `\hspace`
+  between them in a `center`); each direct `img` →
+  `\includegraphics[width=0.N\linewidth]{src}` (width from `style=max-width: N%`).
+  A multi-image **`ImageGrid`** (see "Authoring rule: multi-image figures" below)
+  → `image_grid_to_latex`: `columns` top-aligned `minipage` cells per row (image
+  over its "(a)" label), explicit unbreakable row breaks (`\\*`, so the set never
+  splits across pages), then the `GridCaption`. The `figcaption`/`GridCaption`
+  renders as small centered text below. Figures are NOT `\caption`/`figure` floats: the source hard-numbers
   them ("Figure 1:", …) in the caption text and refers to them by that literal
   number in prose, so LaTeX auto-numbering would clash. The renderer copies the
   course's `public/figures/` next to the emitted `.tex` (`copy_figures`) so the
@@ -319,6 +320,52 @@ paragraph or bridged across by math/emphasis splitting. It carries no attributes
 and no children — it is a pure positional marker that is consumed during
 rendering (no `Indent` tag survives into either the HTML or the `.tex`).
 
+### Authoring rule: multi-image figures (`ImageGrid`)
+
+A figure made of several labelled images plus one caption for the whole set is
+written with three dedicated tags — **never** with hand-styled `span`s:
+
+```
+|> ImageGrid
+    columns=2
+    |> GridImage
+        src=figures/billiards-bunimovichstadium.png
+        (a)
+
+    |> GridImage
+        src=figures/billiards-sinai.png
+        width=78%
+        (b)
+
+    |> GridCaption
+        Figure 9: Billiard dynamical systems: (a) …
+```
+
+- `ImageGrid` — `columns=N` images per row (optional, default 2). Children:
+  one or more `GridImage`, then optionally one `GridCaption`, last.
+- `GridImage` — `src=` (required), `width=P%` (optional: the image's width
+  within its cell, default 100%), `original=` (optional, author-mode tooltip).
+  Its body text is the image's label ("(a)"); it may be omitted.
+- `GridCaption` — the caption for the whole set; no attributes.
+
+Both renderers share one geometry: the cells and their 2% gaps span 90% of the
+line, so a cell is `(90% − (columns−1)·2%) / columns` wide (44% for two
+columns). HTML: `figure.image-grid` / `figure.grid-image` in `shared/app.css`
+(`--columns` custom property; a short last row is centered). LaTeX:
+`image_grid_to_latex` in `latex_renderer.gleam`.
+
+**The shape is enforced, not trusted.** `dr_normalize_image_grids` (local
+desugarer, run early in **both** `pipeline.gleam` and `latex_pipeline.gleam`)
+validates it and emits the canonical form; any deviation is a hard
+`DesugaringError` at the offending source line — an unknown attribute (e.g. a
+leftover `style=`), an `img` inside a `GridImage`, a `GridImage`/`GridCaption`
+outside an `ImageGrid`, a caption that isn't last, a bad `columns`/`width`
+value, stray text in the grid. The HTML pipeline then expands the grid with
+`dr_image_grids_to_html` into nested `figure`s (`<figure class="image-grid"
+style="--columns: N">` > `<figure class="grid-image">` > `img` + `figcaption`,
+then the set's `figcaption`). The formatter (`--fmt`) knows the three tags and
+keeps a blank line before each `GridImage` and before the `GridCaption`.
+
 ### Post-render verification
 
 MathJax reports **no error** for the bug above — a lost `\\` yields valid-but-wrong TeX —
@@ -367,7 +414,7 @@ MATHJAX_VERSION=3
 The desugaring pipeline (`pub fn pipeline(course: String)`) transforms the parsed VXML tree into HTML-ready VXML. Key stages in order:
 
 1. **Tag validation** — `check_tags` against a pre-transformation approved list
-2. **Cleanup** — `delete("WriterlyComment")`, `delete_attribute_if` for `!!`-prefixed keys, `unwrap_if_first_child`
+2. **Cleanup** — `delete("WriterlyComment")`, `delete_attribute_if` for `!!`-prefixed keys, `unwrap_if_first_child`; then `dr_normalize_image_grids` + `dr_image_grids_to_html` (multi-image figures → nested HTML `figure`s)
 3. **QED / proof boilerplate** — appends QED symbol node to `Proof` tags, wraps proof labels
 4. **Semantic renaming** — `Definition`, `Example`, `Exercise`, `Lemma`, `Theorem` → `Statement` with `class` and `title` attributes
 5. **Counters** — appends counter attributes to `Document`, `Chapter`, `Section`; increments `ChapterCounter`, `SectionCounter`, `SubSectionCounter`, `StatementCounter`
@@ -387,7 +434,7 @@ The desugaring pipeline (`pub fn pipeline(course: String)`) transforms the parse
 19. **Post-transformation tag validation** — `check_tags` against the HTML-only approved list
 
 ### Document tags (pre-transformation)
-`Chapter`, `ChapterTitle`, `Definition`, `Document`, `Example`, `Exercise`, `Labeled`, `Lemma`, `Proof`, `Section`, `SectionTitle`, `SubSection`, `SubSectionTitle`, `Theorem`, `WriterlyBlankLine`, `footnote`, `li`, `ol`, `ul`
+`Chapter`, `ChapterTitle`, `Definition`, `Document`, `Example`, `Exercise`, `GridCaption`, `GridImage`, `ImageGrid`, `Labeled`, `Lemma`, `Proof`, `Section`, `SectionTitle`, `SubSection`, `SubSectionTitle`, `Theorem`, `WriterlyBlankLine`, `footnote`, `li`, `ol`, `ul`
 
 ### HTML tags (post-transformation)
 `Document`, `a`, `b`, `br`, `div`, `h1`, `h3`, `header`, `i`, `li`, `ol`, `p`, `span`, `ul`

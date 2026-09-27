@@ -58,6 +58,9 @@ const p_cannot_contain = [
   "figure",
   "img",
   "table",
+  "ImageGrid",
+  "GridImage",
+  "GridCaption",
 ]
 
 const p_cannot_be_contained_in = [
@@ -273,6 +276,7 @@ pub fn formatter_pipeline(
       dl.add_between(#("ol", "p", "WriterlyBlankLine")),
       dl.add_between(#("ul", "p", "WriterlyBlankLine")),
       dl.add_between(#("figure", "p", "WriterlyBlankLine")),
+      dl.add_between(#("ImageGrid", "p", "WriterlyBlankLine")),
       dl.add_between(#("Carousel", "p", "WriterlyBlankLine")),
       dl.add_between(#("pre", "p", "WriterlyBlankLine")),
       dl.add_between(#("div", "p", "WriterlyBlankLine")),
@@ -366,6 +370,19 @@ pub fn formatter_pipeline(
       )),
       dl.add_if_missing_before_but_not_before_first_child(#(
         "figure",
+        "WriterlyBlankLine",
+      )),
+      dl.add_if_missing_before_but_not_before_first_child(#(
+        "ImageGrid",
+        "WriterlyBlankLine",
+      )),
+      // a blank line between the images of an ImageGrid and before its caption
+      dl.add_if_missing_before_but_not_before_first_child(#(
+        "GridImage",
+        "WriterlyBlankLine",
+      )),
+      dl.add_if_missing_before_but_not_before_first_child(#(
+        "GridCaption",
         "WriterlyBlankLine",
       )),
       dl.add_if_missing_before_but_not_before_first_child(#(

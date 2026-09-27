@@ -57,6 +57,10 @@ pub fn latex_pipeline() -> List(infra.Desugarer) {
         writerly.is_commented_attribute_key(key)
       }),
       dl.unwrap_if_first_child("WriterlyBlankLine"),
+      // validate the multi-image figure tags and put them in the canonical
+      // shape `latex_renderer.image_grid_to_latex` expects (same step as the
+      // HTML pipeline, so both renderers accept exactly the same source)
+      local_dl.dr_normalize_image_grids(),
     ],
     // Recognize every standalone display environment (plus `$$`) as a
     // MathBlock, so the emitter can strip the `$$` and emit the environment

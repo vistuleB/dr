@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.21)  26 SEP 2026 04:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.21)  27 SEP 2026 11:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,7 +676,7 @@ Package pdftex.def Info: figures/billiards-bunimovichstadium.png  used on input
 File: figures/billiards-sinai.png Graphic file (type png)
 <use figures/billiards-sinai.png>
 Package pdftex.def Info: figures/billiards-sinai.png  used on input line 3270.
-(pdftex.def)             Requested size: 206.69334pt x 206.6921pt.
+(pdftex.def)             Requested size: 161.22055pt x 161.22205pt.
 <figures/billiard-ellipse.jpg, id=475, 155.58125pt x 145.54375pt>
 File: figures/billiard-ellipse.jpg Graphic file (type jpg)
 <use figures/billiard-ellipse.jpg>
@@ -915,7 +915,7 @@ onts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/t
 ype1/public/lm/lmtt10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/
 public/lm/lmtt9.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (80 pages, 4729964 bytes).
+Output written on main.pdf (80 pages, 4730012 bytes).
 PDF statistics:
  1134 PDF objects out of 1200 (max. 8388607)
  931 compressed objects within 10 object streams

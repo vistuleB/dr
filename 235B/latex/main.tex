@@ -59,6 +59,26 @@
 \title{Probability Theory Lecture Notes \\ MATH 235B --- Winter 2011}
 \author{Dan Romik \\ Department of Mathematics, UC Davis}
 \date{February 3, 2026}
+\makeatletter
+\renewcommand\maketitle{%
+  \begin{titlepage}%
+    \null\vfil
+    \begin{center}%
+      {\LARGE \@title \par}%
+      \vskip 2.5em%
+      \includegraphics[width=\linewidth,height=0.5\textheight,keepaspectratio]{figures/polyaurn.png}\par
+      \vskip 2.5em%
+      {\large \lineskip .75em%
+        \begin{tabular}[t]{c}%
+          \@author
+        \end{tabular}\par}%
+      \vskip 1.5em%
+      {\large \@date \par}%
+    \end{center}\par
+    \vfil\null
+  \end{titlepage}%
+}
+\makeatother
 
 \begin{document}
 \maketitle

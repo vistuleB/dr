@@ -1,6 +1,7 @@
 import gleam/int
 import gleam/list
 import gleam/option.{None, Some}
+import gleam/regexp
 import gleam/result
 import gleam/string
 import vxml.{type Attr, type VXML, Attr, T, V}
@@ -23,6 +24,8 @@ pub const name = "dr_normalize_image_grids"
 /// `latex_renderer.image_grid_to_latex`):
 ///
 ///   ImageGrid  columns=N                       N >= 1, default 2
+///              [column-gap=G%]                 % of the line, default 2%
+///              [row-gap=<length>]              em/ex/pt/mm/cm/in
 ///     GridImage  src=… [width=P%] [original=…]  1 <= P <= 100
 ///       <label, e.g. "(a)">                    optional
 ///     …
@@ -125,6 +128,40 @@ fn parse_positive_int(s: String) -> Result(Int, Nil) {
   }
 }
 
+// "8%" -> 8 (a whole, non-negative percentage)
+fn parse_percent(s: String) -> Result(Int, Nil) {
+  case string.ends_with(s, "%"), int.parse(string.drop_end(s, 1)) {
+    True, Ok(n) if n >= 0 -> Ok(n)
+    _, _ -> Error(Nil)
+  }
+}
+
+// a length both CSS and LaTeX read the same way, e.g. "1.5em"
+fn is_length(s: String) -> Bool {
+  let assert Ok(re) =
+    regexp.from_string("^[0-9]+(\\.[0-9]+)?(em|ex|pt|mm|cm|in)$")
+  regexp.check(re, s)
+}
+
+// Maps the (trimmed) value of each `key` attribute through `normalize`, which
+// returns the canonical value, or a message reported at the attribute's blame.
+fn normalize_attr(
+  attrs: List(Attr),
+  key: String,
+  normalize: fn(String) -> Result(String, String),
+) -> Result(List(Attr), DesugaringError) {
+  list.try_map(attrs, fn(a) {
+    case a.key == key {
+      False -> Ok(a)
+      True ->
+        case normalize(string.trim(a.val)) {
+          Ok(val) -> Ok(Attr(..a, val: val))
+          Error(message) -> fail(a.blame, message <> ", got '" <> a.val <> "'")
+        }
+    }
+  })
+}
+
 fn normalize_grid_image(
   blame: Blame,
   attrs: List(Attr),
@@ -146,26 +183,13 @@ fn normalize_grid_image(
       }
   })
   use attrs <- result.try(
-    list.try_map(attrs, fn(a) {
-      case a.key {
-        "width" -> {
-          let w = string.trim(a.val)
-          case
-            string.ends_with(w, "%"),
-            parse_positive_int(string.drop_end(w, 1))
-          {
-            True, Ok(pct) if pct <= 100 ->
-              Ok(Attr(..a, val: int.to_string(pct) <> "%"))
-            _, _ ->
-              fail(
-                a.blame,
-                "GridImage 'width' must be a percentage of its grid cell between 1% and 100%, got '"
-                  <> a.val
-                  <> "'",
-              )
-          }
-        }
-        _ -> Ok(a)
+    normalize_attr(attrs, "width", fn(w) {
+      case parse_percent(w) {
+        Ok(pct) if pct >= 1 && pct <= 100 -> Ok(int.to_string(pct) <> "%")
+        _ ->
+          Error(
+            "GridImage 'width' must be a percentage of its grid cell between 1% and 100%",
+          )
       }
     }),
   )
@@ -208,29 +232,53 @@ fn normalize_image_grid(
   attrs: List(Attr),
   children: List(VXML),
 ) -> Result(VXML, DesugaringError) {
-  use _ <- result.try(check_attrs("ImageGrid", attrs, ["columns"]))
-  use attrs <- result.try(case core.attrs_first_with_key(attrs, "columns") {
-    None -> Ok(list.append(attrs, [Attr(blame, "columns", default_columns)]))
-    Some(a) ->
-      case parse_positive_int(a.val) {
-        Ok(n) ->
-          Ok(
-            list.map(attrs, fn(x) {
-              case x.key {
-                "columns" -> Attr(..x, val: int.to_string(n))
-                _ -> x
-              }
-            }),
+  use _ <- result.try(
+    check_attrs("ImageGrid", attrs, ["columns", "column-gap", "row-gap"]),
+  )
+  let attrs = case core.attrs_first_with_key(attrs, "columns") {
+    None -> list.append(attrs, [Attr(blame, "columns", default_columns)])
+    Some(_) -> attrs
+  }
+  use attrs <- result.try(
+    normalize_attr(attrs, "columns", fn(c) {
+      case parse_positive_int(c) {
+        Ok(n) -> Ok(int.to_string(n))
+        Error(Nil) -> Error("ImageGrid 'columns' must be a positive whole number")
+      }
+    }),
+  )
+  let assert Some(Attr(_, _, columns)) =
+    core.attrs_first_with_key(attrs, "columns")
+  let assert Ok(columns) = int.parse(columns)
+  // the cells and their gaps span 90% of the line, so the gaps must leave room
+  use attrs <- result.try(
+    normalize_attr(attrs, "column-gap", fn(g) {
+      case parse_percent(g) {
+        Ok(pct) if pct * { columns - 1 } < 90 -> Ok(int.to_string(pct) <> "%")
+        Ok(_) ->
+          Error(
+            "ImageGrid 'column-gap' is too wide: the gaps between its "
+            <> int.to_string(columns)
+            <> " columns must total less than the 90% of the line the grid spans",
           )
         Error(Nil) ->
-          fail(
-            a.blame,
-            "ImageGrid 'columns' must be a positive whole number, got '"
-              <> a.val
-              <> "'",
+          Error(
+            "ImageGrid 'column-gap' must be a whole percentage of the line width, e.g. 4%",
           )
       }
-  })
+    }),
+  )
+  use attrs <- result.try(
+    normalize_attr(attrs, "row-gap", fn(g) {
+      case is_length(g) {
+        True -> Ok(g)
+        False ->
+          Error(
+            "ImageGrid 'row-gap' must be a length in em, ex, pt, mm, cm or in, e.g. 1.5em",
+          )
+      }
+    }),
+  )
   use children <- result.try(
     children
     |> list.filter(fn(c) { !is_blank(c) })
@@ -324,13 +372,15 @@ fn assertive_tests_data() -> List(testing.AssertiveTestDataNoParam) {
                 'Figure 1: two maps.'
       ",
     ),
-    // explicit `columns`, `width` and `original` are kept (values tidied);
-    // an unlabelled image and a grid without caption are fine
+    // explicit `columns`, gaps, `width` and `original` are kept (values
+    // tidied); an unlabelled image and a grid without caption are fine
     testing.data_no_param(
       source: "
         <> root
           <> ImageGrid
             columns= 3
+            column-gap= 6%
+            row-gap=1.5em
             <> GridImage
               src=figures/a.png
               width= 78%
@@ -344,6 +394,8 @@ fn assertive_tests_data() -> List(testing.AssertiveTestDataNoParam) {
         <> root
           <> ImageGrid
             columns=3
+            column-gap=6%
+            row-gap=1.5em
             <> GridImage
               src=figures/a.png
               width=78%

@@ -584,20 +584,27 @@ fn grid_image_to_latex(
 
 // An `ImageGrid` (in the canonical shape from `dr_normalize_image_grids`): its
 // `GridImage`s `columns` per row, then the `GridCaption` under the whole set.
-// The row breaks are `\\*` (no page break), so the set never splits across
-// pages. Same geometry as the HTML (`figure.image-grid` in shared/app.css): the
-// cells and their 2% gaps span 90% of the line, so a cell is
-// (90% - (columns - 1) * 2%) / columns wide — 44% for two columns.
+// The row breaks are `\\*[row-gap]` (no page break), so the set never splits
+// across pages. Same geometry as the HTML (`figure.image-grid` in
+// shared/app.css): the cells and their `column-gap`s span 90% of the line, so a
+// cell is (90% - (columns - 1) * column-gap) / columns wide — 44% for two
+// columns and the default 2% gap.
 fn image_grid_to_latex(
   attrs: List(Attr),
   children: List(VXML),
   ctx: Ctx,
 ) -> String {
-  let columns =
-    find_attr(attrs, "columns")
-    |> option.then(fn(c) { int.parse(c) |> option.from_result })
-    |> option.unwrap(2)
-  let cell_permille = { 900 - 20 * { columns - 1 } } / columns
+  let int_attr = fn(key, suffix, default) {
+    find_attr(attrs, key)
+    |> option.then(fn(v) {
+      string.drop_end(v, string.length(suffix)) |> int.parse |> option.from_result
+    })
+    |> option.unwrap(default)
+  }
+  let columns = int_attr("columns", "", 2)
+  let gap_permille = int_attr("column-gap", "%", 2) * 10
+  let row_gap = find_attr(attrs, "row-gap") |> option.unwrap("1ex")
+  let cell_permille = { 900 - gap_permille * { columns - 1 } } / columns
   let rows =
     children
     |> list.filter_map(fn(c) {
@@ -608,8 +615,11 @@ fn image_grid_to_latex(
       }
     })
     |> list.sized_chunk(columns)
-    |> list.map(string.join(_, "\\hspace{0.02\\linewidth}%\n"))
-    |> string.join("\\\\*[1ex]\n")
+    |> list.map(string.join(
+      _,
+      "\\hspace{" <> permille_to_decimal(gap_permille) <> "\\linewidth}%\n",
+    ))
+    |> string.join("\\\\*[" <> row_gap <> "]\n")
   "\n\\begin{center}\n"
   <> rows
   <> caption_to_latex(children, "GridCaption", "\\\\*", ctx)

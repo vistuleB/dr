@@ -104,6 +104,8 @@
 
     |> ImageGrid
         columns=2
+        column-gap=8%
+        row-gap=1.5em
         |> GridImage
             src=figures/doublingmap.png
             (a)

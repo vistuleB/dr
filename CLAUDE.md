@@ -217,7 +217,7 @@ into `main.gleam` alongside `--fmt`). Design:
   `\includegraphics[width=0.N\linewidth]{src}` (width from `style=max-width: N%`).
   A multi-image **`ImageGrid`** (see "Authoring rule: multi-image figures" below)
   → `image_grid_to_latex`: `columns` top-aligned `minipage` cells per row (image
-  over its "(a)" label), explicit unbreakable row breaks (`\\*`, so the set never
+  over its "(a)" label), explicit unbreakable row breaks (`\\*[row-gap]`, so the set never
   splits across pages), then the `GridCaption`. The `figcaption`/`GridCaption`
   renders as small centered text below. Figures are NOT `\caption`/`figure` floats: the source hard-numbers
   them ("Figure 1:", …) in the caption text and refers to them by that literal
@@ -342,29 +342,41 @@ written with three dedicated tags — **never** with hand-styled `span`s:
         Figure 9: Billiard dynamical systems: (a) …
 ```
 
-- `ImageGrid` — `columns=N` images per row (optional, default 2). Children:
-  one or more `GridImage`, then optionally one `GridCaption`, last.
+- `ImageGrid` — `columns=N` images per row (optional, default 2). Spacing
+  (both optional, named after CSS's grid/flex `column-gap` / `row-gap`):
+  `column-gap=G%` — horizontal space between images as a whole percentage of
+  the line width (default 2%); `row-gap=<length>` — vertical space between
+  rows of images, in `em`/`ex`/`pt`/`mm`/`cm`/`in`, the units CSS and LaTeX
+  read alike (default: web `1rem`, PDF `1ex`). `row-gap` never affects the
+  space above the `GridCaption`. Children: one or more `GridImage`, then
+  optionally one `GridCaption`, last. (119B §2.3's Figure 10 uses
+  `column-gap=8%` + `row-gap=1.5em` so its axis plots don't touch.)
 - `GridImage` — `src=` (required), `width=P%` (optional: the image's width
   within its cell, default 100%), `original=` (optional, author-mode tooltip).
   Its body text is the image's label ("(a)"); it may be omitted.
 - `GridCaption` — the caption for the whole set; no attributes.
 
-Both renderers share one geometry: the cells and their 2% gaps span 90% of the
-line, so a cell is `(90% − (columns−1)·2%) / columns` wide (44% for two
-columns). HTML: `figure.image-grid` / `figure.grid-image` in `shared/app.css`
-(`--columns` custom property; a short last row is centered). LaTeX:
-`image_grid_to_latex` in `latex_renderer.gleam`.
+Both renderers share one geometry: the cells and their `column-gap`s span 90%
+of the line, so a cell is `(90% − (columns−1)·gap) / columns` wide (44% for two
+columns at the default 2%; a wider gap shrinks the cells, and gaps totalling
+≥ 90% are rejected). HTML: `.grid-images` / `figure.grid-image` in
+`shared/app.css` (`--columns` / `--column-gap` / `--row-gap` custom
+properties; a short last row is centered). LaTeX: `image_grid_to_latex` in
+`latex_renderer.gleam` (`\hspace{gap}` between cells, `\\*[row-gap]` between
+rows).
 
 **The shape is enforced, not trusted.** `dr_normalize_image_grids` (local
 desugarer, run early in **both** `pipeline.gleam` and `latex_pipeline.gleam`)
 validates it and emits the canonical form; any deviation is a hard
 `DesugaringError` at the offending source line — an unknown attribute (e.g. a
 leftover `style=`), an `img` inside a `GridImage`, a `GridImage`/`GridCaption`
-outside an `ImageGrid`, a caption that isn't last, a bad `columns`/`width`
-value, stray text in the grid. The HTML pipeline then expands the grid with
-`dr_image_grids_to_html` into nested `figure`s (`<figure class="image-grid"
-style="--columns: N">` > `<figure class="grid-image">` > `img` + `figcaption`,
-then the set's `figcaption`). The formatter (`--fmt`) knows the three tags and
+outside an `ImageGrid`, a caption that isn't last, a bad
+`columns`/`column-gap`/`row-gap`/`width` value, stray text in the grid. The
+HTML pipeline then expands the grid with `dr_image_grids_to_html` into nested
+`figure`s (`<figure class="image-grid" style="--columns: N; --column-gap: …;
+--row-gap: …">` > `<div class="grid-images">` > `<figure class="grid-image">`
+> `img` + `figcaption`, then the set's `figcaption` after the `div`, so
+`row-gap` can't reach it). The formatter (`--fmt`) knows the three tags and
 keeps a blank line before each `GridImage` and before the `GridCaption`.
 
 ### Authoring rule: cover image and caption (`cover`, `cover-caption`)

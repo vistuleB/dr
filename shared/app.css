@@ -919,20 +919,26 @@ figure img {
 
 /* multi-image figure (`|> ImageGrid`, expanded by dr_image_grids_to_html):
    `--columns` images per row, each over its own "(a)" label, then the caption
-   for the whole set. The cells and their 2% gaps span 90% of the width, the
-   same geometry as the LaTeX renderer (image_grid_to_latex); a short last row
-   is centered. */
-figure.image-grid {
+   for the whole set (a normal figcaption, outside the rows, so `--row-gap`
+   never pushes it down). The cells and their `--column-gap`s span 90% of the
+   width, the same geometry as the LaTeX renderer (image_grid_to_latex); a
+   short last row is centered. `--column-gap` / `--row-gap` come from the
+   ImageGrid's `column-gap=` / `row-gap=` attributes. */
+.grid-images {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    column-gap: 2%;
-    row-gap: var(--space-sm);
+    column-gap: var(--column-gap, 2%);
+    row-gap: var(--row-gap, var(--space-sm));
 }
 
 figure.grid-image {
-    flex: 0 0 calc((90% - (var(--columns, 2) - 1) * 2%) / var(--columns, 2));
+    flex: 0 0
+        calc(
+            (90% - (var(--columns, 2) - 1) * var(--column-gap, 2%)) /
+                var(--columns, 2)
+        );
     margin: 0;
 }
 
@@ -946,11 +952,6 @@ figure.grid-image > figcaption {
     margin-top: 0.4rem;
     font: inherit;
     color: inherit;
-}
-
-figure.image-grid > figcaption {
-    flex-basis: 100%;
-    margin-top: 0;
 }
 
 figcaption {

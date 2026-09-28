@@ -45,6 +45,7 @@ dr/
 <course>/wly/
 ├── __parent.wly       # Root document — declares title, course, term, department,
 │                      #   institution, lecturer, date, banner attributes
+│                      #   (+ optional cover, cover-caption; see "Cover image")
 ├── 01/                # Chapter 1 (numbered subdirectories = chapters)
 │   ├── __parent.wly   # Chapter node
 │   ├── 01/            # Section 1.1 (nested subdirs = sections / subsections)
@@ -365,6 +366,38 @@ value, stray text in the grid. The HTML pipeline then expands the grid with
 style="--columns: N">` > `<figure class="grid-image">` > `img` + `figcaption`,
 then the set's `figcaption`). The formatter (`--fmt`) knows the three tags and
 keeps a blank line before each `GridImage` and before the `GridCaption`.
+
+### Authoring rule: cover image and caption (`cover`, `cover-caption`)
+
+Two optional `Document` attributes in `<course>/wly/__parent.wly`:
+
+```
+|> Document
+    …
+    cover=polyaurn.png
+    cover-caption=Pólya's urn: … the bold path converges to $1/2$.
+```
+
+- `cover` — the image shown between the title block and the table of contents
+  (HTML index page) and on the PDF title page. A bare filename resolves against
+  `public/figures/`; a value containing `/` is used verbatim. Must be PNG/JPG:
+  pdflatex cannot include SVG, so an SVG-authored cover ships as a same-named
+  PNG rendition next to its `.svg` source (235A `randomwalks`, 235B `polyaurn`).
+- `cover-caption` — optional, one line: prose plus `$math$`. Set in small
+  sans-serif italics, right-aligned so it ends flush with the image's right
+  edge. Use it for an explanation or an artwork credit; leave it out when the
+  image needs none (119B). Empty counts as absent; a `cover-caption` without a
+  `cover` is a `DesugaringError`.
+
+HTML: `dr_insert_cover_image` emits `<figure class="index__cover">` > `img`
+[+ `<figcaption class="index__cover__caption">`], inserted before the math /
+emphasis steps so the caption's `$…$` is typeset by MathJax. The figure is
+`width: fit-content` and the caption `width: 0; min-width: 100%` (see
+`shared/app.css`), so the caption wraps at the image's width, never widening it.
+LaTeX: `cover_image_latex` sets the image in a savebox and the caption in a
+`\parbox` of the image's scaled width (`\raggedleft\small\sffamily\slshape` —
+Latin Modern Sans's italic is its slanted shape), prose escaped via
+`emit_mixed`.
 
 ### Post-render verification
 

@@ -1,10 +1,9 @@
 import gleam/list
 import gleam/option
 import gleam/string
-import vxml.{type VXML, Attr, V}
-import vxml/blame.{type Blame}
+import vxml.{type Attr, type VXML, Attr, Line, T, V}
 import vxml_pipeline/authoring
-import vxml_pipeline/core.{type Desugarer, type DesugaringError}
+import vxml_pipeline/core.{type Desugarer, type DesugaringError, DesugaringError}
 import vxml_pipeline/nodemaps_2_transform as n2t
 import vxml_pipeline/testing
 
@@ -15,10 +14,18 @@ pub const name = "dr_insert_cover_image"
 // 🏖️🏖️🏖️🏖️🏖️🏖️🏖️🏖️🏖️🏖️🏖️🏖️
 
 /// Inserts the Document's `cover` image into the dr Index page (between the
-/// header and the table of contents). No-op when the Document has no `cover`
-/// attribute. A bare filename resolves against the `figures/` directory.
+/// header and the table of contents), as a `figure.index__cover` holding the
+/// `img` and, when the Document also has a `cover-caption`, a
+/// `figcaption.index__cover__caption` below it (small sans-serif italics,
+/// right-aligned under the image; see shared/app.css). No-op when the Document
+/// has no `cover` attribute; a `cover-caption` without a `cover` is an error. A
+/// bare filename resolves against the `figures/` directory. The caption is
+/// inserted as ordinary text, so later pipeline steps typeset its `$math$`.
 pub fn constructor() -> Desugarer {
-  authoring.no_param_desugarer(name: name, transform: inner_param_to_transform())
+  authoring.no_param_desugarer(
+    name: name,
+    transform: inner_param_to_transform(),
+  )
 }
 
 // 🌸🌸🌸🌸🌸🌸🌸
@@ -36,23 +43,40 @@ fn resolve_src(cover: String) -> String {
   }
 }
 
-fn cover_img(b: Blame, cover: String) -> VXML {
-  V(
-    b,
-    "img",
-    [
-      Attr(b, "class", "index__cover"),
-      Attr(b, "src", resolve_src(cover)),
-    ],
-    [],
-  )
+fn cover_figure(cover: Attr, caption: option.Option(Attr)) -> VXML {
+  let b = cover.blame
+  let img = V(b, "img", [Attr(b, "src", resolve_src(cover.val))], [])
+  let figcaption = case caption {
+    option.None -> []
+    option.Some(caption) -> [
+      V(
+        caption.blame,
+        "figcaption",
+        [Attr(caption.blame, "class", "index__cover__caption")],
+        [T(caption.blame, [Line(caption.blame, caption.val)])],
+      ),
+    ]
+  }
+  V(b, "figure", [Attr(b, "class", "index__cover")], [img, ..figcaption])
+}
+
+// An empty (or all-whitespace) `cover-caption=` counts as no caption.
+fn nonempty_caption(root: VXML) -> option.Option(Attr) {
+  case core.v_first_attr_with_key(root, "cover-caption") {
+    option.Some(caption) ->
+      case string.trim(caption.val) {
+        "" -> option.None
+        val -> option.Some(Attr(..caption, val: val))
+      }
+    option.None -> option.None
+  }
 }
 
 // Place the cover image right after the Index's `header` child, so it sits
 // between the title/author block and the table of contents (mirroring the
 // original lecture-notes title page). If the Index has no `header` (should not
 // happen in the dr layout), the cover is prepended as a safe fallback.
-fn insert_after_header(index_children: List(VXML), img: VXML) -> List(VXML) {
+fn insert_after_header(index_children: List(VXML), figure: VXML) -> List(VXML) {
   case
     list.split_while(index_children, fn(child) {
       case child {
@@ -61,23 +85,31 @@ fn insert_after_header(index_children: List(VXML), img: VXML) -> List(VXML) {
       }
     })
   {
-    #(before, [header, ..after]) -> list.flatten([before, [header, img], after])
-    #(_, []) -> [img, ..index_children]
+    #(before, [header, ..after]) ->
+      list.flatten([before, [header, figure], after])
+    #(_, []) -> [figure, ..index_children]
   }
 }
 
 fn at_root(root: VXML) -> Result(VXML, DesugaringError) {
   let assert V(_, "Document", _, children) = root
-  case core.v_first_attr_with_key(root, "cover") {
+  let caption = nonempty_caption(root)
+  case core.v_first_attr_with_key(root, "cover"), caption {
+    // a caption with nothing to caption is an authoring mistake
+    option.None, option.Some(caption) ->
+      Error(DesugaringError(
+        caption.blame,
+        "Document has a `cover-caption` but no `cover` image",
+      ))
     // A Document without a `cover` attribute is left untouched (no image).
-    option.None -> Ok(root)
-    option.Some(cover) -> {
-      let img = cover_img(cover.blame, cover.val)
+    option.None, option.None -> Ok(root)
+    option.Some(cover), _ -> {
+      let figure = cover_figure(cover, caption)
       let children =
         list.map(children, fn(child) {
           case child {
             V(b, "Index", attrs, index_children) ->
-              V(b, "Index", attrs, insert_after_header(index_children, img))
+              V(b, "Index", attrs, insert_after_header(index_children, figure))
             _ -> child
           }
         })
@@ -113,9 +145,10 @@ fn assertive_tests_data() -> List(testing.AssertiveTestDataNoParam) {
           <> Index
             <> Navigation
             <> header
-            <> img
+            <> figure
               class=index__cover
-              src=figures/optimalswitching.png
+              <> img
+                src=figures/optimalswitching.png
             <> ol
       ",
     ),
@@ -148,10 +181,59 @@ fn assertive_tests_data() -> List(testing.AssertiveTestDataNoParam) {
           cover=assets/front.svg
           <> Index
             <> header
-            <> img
+            <> figure
               class=index__cover
-              src=assets/front.svg
+              <> img
+                src=assets/front.svg
             <> ol
+      ",
+    ),
+    // cover-caption -> figcaption below the image, text left for the pipeline
+    testing.data_no_param(
+      source: "
+        <> Document
+          cover=polyaurn.png
+          cover-caption=The urn converges to $1/2$.
+          <> Index
+            <> header
+            <> ol
+      ",
+      expected: "
+        <> Document
+          cover=polyaurn.png
+          cover-caption=The urn converges to $1/2$.
+          <> Index
+            <> header
+            <> figure
+              class=index__cover
+              <> img
+                src=figures/polyaurn.png
+              <> figcaption
+                class=index__cover__caption
+                <>
+                  'The urn converges to $1/2$.'
+            <> ol
+      ",
+    ),
+    // an empty cover-caption counts as no caption
+    testing.data_no_param(
+      source: "
+        <> Document
+          cover=polyaurn.png
+          cover-caption=
+          <> Index
+            <> header
+      ",
+      expected: "
+        <> Document
+          cover=polyaurn.png
+          cover-caption=
+          <> Index
+            <> header
+            <> figure
+              class=index__cover
+              <> img
+                src=figures/polyaurn.png
       ",
     ),
   ]

@@ -10,3 +10,4 @@
     counter=EquationCounter
     favicon=favicon.svg
     cover=polyaurn.png
+    cover-caption=Pólya's urn: the fraction of red balls is a martingale, so each path converges — to a random limit, uniformly distributed on $[0,1]$. Time runs on a log scale; the bold path converges to $1/2$.

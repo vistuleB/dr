@@ -10,3 +10,4 @@
     counter=EquationCounter
     favicon=favicon.svg
     cover=randomwalks.png
+    cover-caption=Simple random walks from a common start. After $n$ steps a walk has strayed on the order of $\sqrt{n}$; the bold curves mark $\pm 2\sqrt{n}$, two standard deviations — the scale of the central limit theorem.

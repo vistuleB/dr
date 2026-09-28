@@ -60,13 +60,17 @@
 \author{Dan Romik \\ Department of Mathematics, UC Davis}
 \date{February 3, 2026}
 \makeatletter
+\newsavebox{\drcoverbox}
 \renewcommand\maketitle{%
   \begin{titlepage}%
     \null\vfil
     \begin{center}%
       {\LARGE \@title \par}%
       \vskip 2.5em%
-      \includegraphics[width=\linewidth,height=0.5\textheight,keepaspectratio]{figures/randomwalks.png}\par
+      \sbox\drcoverbox{\includegraphics[width=\linewidth,height=0.5\textheight,keepaspectratio]{figures/randomwalks.png}}%
+      \usebox\drcoverbox\par
+      \vskip .6em%
+      \parbox{\wd\drcoverbox}{\raggedleft\small\sffamily\slshape Simple random walks from a common start. After $n$ steps a walk has strayed on the order of $\sqrt{n}$; the bold curves mark $\pm 2\sqrt{n}$, two standard deviations — the scale of the central limit theorem.}\par
       \vskip 2.5em%
       {\large \lineskip .75em%
         \begin{tabular}[t]{c}%

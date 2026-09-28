@@ -60,13 +60,17 @@
 \author{Dan Romik \\ Department of Mathematics, UC Davis}
 \date{February 3, 2026}
 \makeatletter
+\newsavebox{\drcoverbox}
 \renewcommand\maketitle{%
   \begin{titlepage}%
     \null\vfil
     \begin{center}%
       {\LARGE \@title \par}%
       \vskip 2.5em%
-      \includegraphics[width=\linewidth,height=0.5\textheight,keepaspectratio]{figures/polyaurn.png}\par
+      \sbox\drcoverbox{\includegraphics[width=\linewidth,height=0.5\textheight,keepaspectratio]{figures/polyaurn.png}}%
+      \usebox\drcoverbox\par
+      \vskip .6em%
+      \parbox{\wd\drcoverbox}{\raggedleft\small\sffamily\slshape Pólya's urn: the fraction of red balls is a martingale, so each path converges — to a random limit, uniformly distributed on $[0,1]$. Time runs on a log scale; the bold path converges to $1/2$.}\par
       \vskip 2.5em%
       {\large \lineskip .75em%
         \begin{tabular}[t]{c}%

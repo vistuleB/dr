@@ -40,6 +40,9 @@ type DocumentInfo {
     // optional cover image, shown on the title page between the title and the
     // author; a bare filename resolves against the `figures/` directory
     cover: Option(String),
+    // optional caption under the cover (prose + `$math$`), set right-aligned
+    // in small sans-serif italics; ignored without a cover
+    cover_caption: Option(String),
   )
 }
 
@@ -560,7 +563,9 @@ fn grid_image_to_latex(
   let src = find_attr(attrs, "src") |> option.unwrap("")
   let width =
     find_attr(attrs, "width")
-    |> option.then(fn(w) { string.drop_end(w, 1) |> int.parse |> option.from_result })
+    |> option.then(fn(w) {
+      string.drop_end(w, 1) |> int.parse |> option.from_result
+    })
   let width = case width {
     Some(pct) if pct < 100 -> permille_to_decimal(pct * 10) <> "\\linewidth"
     _ -> "\\linewidth"
@@ -1085,6 +1090,31 @@ fn resolve_cover_src(cover: String) -> String {
   }
 }
 
+// The cover image line(s) of the title page. With a `cover-caption`, the image
+// is first set in a savebox so the caption's `\parbox` can take the image's
+// *actual* (keepaspectratio-scaled) width: the caption then ends flush with
+// the image's right edge rather than the text block's. The caption is small
+// sans-serif "italics" — `\slshape`, since Latin Modern Sans has no true italic
+// (its slanted shape is the sans italic) — with prose escaped and `$math$` kept.
+fn cover_image_latex(src: String, caption: Option(String)) -> String {
+  let graphic =
+    "\\includegraphics[width=\\linewidth,height=0.5\\textheight,keepaspectratio]{"
+    <> src
+    <> "}"
+  case caption {
+    None -> "      " <> graphic <> "\\par\n"
+    Some(caption) ->
+      "      \\sbox\\drcoverbox{"
+      <> graphic
+      <> "}%\n"
+      <> "      \\usebox\\drcoverbox\\par\n"
+      <> "      \\vskip .6em%\n"
+      <> "      \\parbox{\\wd\\drcoverbox}{\\raggedleft\\small\\sffamily\\slshape "
+      <> emit_mixed(caption)
+      <> "}\\par\n"
+  }
+}
+
 // When the Document has a cover image, redefine `\maketitle` so the cover sits
 // ON the title page, between the title/course/term block and the
 // author/department/date block. The image is bounded by `\linewidth` and half
@@ -1092,21 +1122,25 @@ fn resolve_cover_src(cover: String) -> String {
 // whole title page — title, cover, author, date — stays on a single page. The
 // `\null\vfil … \vfil\null` sandwich keeps the block vertically centered.
 // Courses without a cover keep the report class's default `\maketitle`. Generic:
-// the only document-specific value is the resolved image path.
+// the only document-specific values are the resolved image path and the
+// optional caption.
 fn cover_title_page_latex(di: DocumentInfo) -> String {
   case di.cover {
     None -> ""
     Some(cover) ->
       "\\makeatletter\n"
+      // the caption's savebox (see cover_image_latex)
+      <> case di.cover_caption {
+        Some(_) -> "\\newsavebox{\\drcoverbox}\n"
+        None -> ""
+      }
       <> "\\renewcommand\\maketitle{%\n"
       <> "  \\begin{titlepage}%\n"
       <> "    \\null\\vfil\n"
       <> "    \\begin{center}%\n"
       <> "      {\\LARGE \\@title \\par}%\n"
       <> "      \\vskip 2.5em%\n"
-      <> "      \\includegraphics[width=\\linewidth,height=0.5\\textheight,keepaspectratio]{"
-      <> resolve_cover_src(cover)
-      <> "}\\par\n"
+      <> cover_image_latex(resolve_cover_src(cover), di.cover_caption)
       <> "      \\vskip 2.5em%\n"
       <> "      {\\large \\lineskip .75em%\n"
       <> "        \\begin{tabular}[t]{c}%\n"
@@ -1477,6 +1511,15 @@ pub fn render(
           // optional: absent for courses without a cover image
           cover: infra.v_first_attr_with_key(parsed, "cover")
             |> option.map(fn(a) { a.val }),
+          // optional; an empty `cover-caption=` counts as none
+          cover_caption: infra.v_first_attr_with_key(parsed, "cover-caption")
+            |> option.map(fn(a) { string.trim(a.val) })
+            |> option.then(fn(c) {
+              case c {
+                "" -> None
+                _ -> Some(c)
+              }
+            }),
         )
       let output_dir = "./" <> course_dir <> "/" <> output_dir_local_path <> "/"
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.21)  27 SEP 2026 09:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.21)  28 SEP 2026 09:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -398,6 +398,7 @@ Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 24.
 Package hyperref Info: Option `bookmarksopen' set `true' on input line 24.
 \fitbox=\box57
 \c@thm=\count317
+\drcoverbox=\box58
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
 ef
@@ -406,24 +407,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -463,7 +464,7 @@ LaTeX Font Info:    ... okay on input line 83.
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count319
 \scratchdimen=\dimen174
-\scratchbox=\box58
+\scratchbox=\box59
 \nofMPsegments=\count320
 \nofMParguments=\count321
 \everyMPshowfont=\toks36
@@ -483,13 +484,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 83.
-Package microtype Info: Applying patch `item' on input line 83.
-Package microtype Info: Applying patch `toc' on input line 83.
-Package microtype Info: Applying patch `eqnum' on input line 83.
-Package microtype Info: Applying patch `footnote' on input line 83.
-Package microtype Info: Applying patch `verbatim' on input line 83.
-LaTeX Info: Redefining \microtypesetup on input line 83.
+LaTeX Info: Redefining \microtypecontext on input line 87.
+Package microtype Info: Applying patch `item' on input line 87.
+Package microtype Info: Applying patch `toc' on input line 87.
+Package microtype Info: Applying patch `eqnum' on input line 87.
+Package microtype Info: Applying patch `footnote' on input line 87.
+Package microtype Info: Applying patch `verbatim' on input line 87.
+LaTeX Info: Redefining \microtypesetup on input line 87.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -513,43 +514,53 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 83.
+Package hyperref Info: Link coloring ON on input line 87.
 <figures/randomwalks.png, id=4, 1084.05pt x 1084.05pt>
 File: figures/randomwalks.png Graphic file (type png)
 <use figures/randomwalks.png>
-Package pdftex.def Info: figures/randomwalks.png  used on input line 84.
+Package pdftex.def Info: figures/randomwalks.png  used on input line 88.
 (pdftex.def)             Requested size: 325.21751pt x 325.21751pt.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 8
+8.
+
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
-4.
+8.
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
-4.
+8.
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-84.
+88.
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-84.
+88.
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 84.
+(Font)              <10> on input line 88.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 84.
+(Font)              <7> on input line 88.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 84.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
+(Font)              <5> on input line 88.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 88.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -558,7 +569,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 88.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -567,14 +578,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 88.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 88.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 88.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 88.
+
 [1
 
 {/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/us
-r/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc} <./figures/r
-andomwalks.png>] (./main.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 2.
-
+r/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/t
+exlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texliv
+e/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/202
+6basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} <./figures/randomwalks.png>]
+(./main.toc
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
@@ -588,17 +608,15 @@ l.33 ...9}The gamma distribution}{41}{section.8.9}
 
  [3]
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
-8.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+02.
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [4
 
 {/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/lo
-cal/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texli
-ve/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
-26basic/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2026bas
-ic/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [5] [6] [7]
+cal/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [5] [6] [7]
+
 Chapter 2.
 [8
 
@@ -607,13 +625,13 @@ Chapter 3.
 [13
 
 ]
-Overfull \hbox (8.97777pt too wide) in paragraph at lines 920--926
+Overfull \hbox (8.97777pt too wide) in paragraph at lines 924--930
 [][]\T1/lmr/bx/n/10.95 (-20) Definition 3.7. []\T1/lmr/m/n/10.95 (-20) The $[]$
  (or $[]$, or just $[]$)
  []
 
 [14] [15]
-Overfull \hbox (7.96613pt too wide) in paragraph at lines 1134--1137
+Overfull \hbox (7.96613pt too wide) in paragraph at lines 1138--1141
 [][]\T1/lmr/bx/n/10.95 (-20) Example 3.15 \T1/lmr/m/n/10.95 (-20) (Uni-form ran
 -dom vari-ables)\T1/lmr/bx/n/10.95 (-20) . []\T1/lmr/m/n/10.95 (-20) We say tha
 t $[]$
@@ -622,7 +640,7 @@ t $[]$
 [16] [17]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1240--1247
+Underfull \hbox (badness 10000) in paragraph at lines 1244--1251
 [][]\T1/lmr/bx/n/10.95 (+20) Definition 4.3. []\T1/lmr/m/n/10.95 (+20) A $[]$ (
 or $[]$)
  []
@@ -647,11 +665,11 @@ Chapter 8.
 
 ] [37] [38] [39] [40] [41] [42]
 
-LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 3150
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 3154
 .
 
 
-LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 3150
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 3154
 .
 
 [43]
@@ -661,7 +679,7 @@ Chapter 9.
 ] [45] [46] [47] [48] [49] [50]
 Chapter 10.
 
-Overfull \hbox (18.7617pt too wide) in paragraph at lines 3677--3680
+Overfull \hbox (18.7617pt too wide) in paragraph at lines 3681--3684
 []\T1/lmr/m/n/10.95 (-20) Let $\OML/lmm/m/it/10.95 f \OT1/lmr/m/n/10.95 (-20) :
  [0\OML/lmm/m/it/10.95 ; \OT1/lmr/m/n/10.95 (-20) 1] \OMS/lmsy/m/n/10.95 ! \U/m
 sb/m/n/10.95 R$ \T1/lmr/m/n/10.95 (-20) be a con-tin-u-ous func-tion. De-fine t
@@ -671,7 +689,7 @@ he se-quence of $[]\OML/lmm/m/it/10.95 f$
 [51
 
 ] [52] [53] [54] [55] [56]
-Overfull \hbox (4.67606pt too wide) in paragraph at lines 4206--4212
+Overfull \hbox (4.67606pt too wide) in paragraph at lines 4210--4216
 [][]\T1/lmr/bx/n/10.95 (-20) Example 10.7. []\T1/lmr/m/n/10.95 (-20) Let $\OT1/
 lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 c[]\OT1/lmr/m/n/10.95 (-20) )[]$ \T1/l
 mr/m/n/10.95 (-20) be a se-quence of real num-bers. Con-sider the $[]$
@@ -684,7 +702,7 @@ Chapter 11.
 ] [59] [60]
 Chapter 12.
 
-Underfull \hbox (badness 1515) in paragraph at lines 4469--4479
+Underfull \hbox (badness 1515) in paragraph at lines 4473--4483
 [][]\T1/lmr/bx/n/10.95 (+20) Definition 12.1. []\T1/lmr/m/n/10.95 (+20) Let $\O
 T1/lmr/m/n/10.95 (+20) (\OML/lmm/m/it/10.95 F[]\OT1/lmr/m/n/10.95 (+20) )[]$ \T
 1/lmr/m/n/10.95 (+20) be a se-quence of dis-tri-bu-tion func-tions. We say that
@@ -699,9 +717,9 @@ Chapter 13.
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 4942.
+(Font)              <9> on input line 4946.
 
-Overfull \hbox (19.12048pt too wide) in paragraph at lines 4953--4957
+Overfull \hbox (19.12048pt too wide) in paragraph at lines 4957--4961
 \T1/lmr/m/n/10.95 (-20) (which is an ex-am-ple of a $[]$) and call this the $[]
 $
  []
@@ -721,14 +739,14 @@ Chapter 16.
 ] [81] [82] [83] [84
 
 ] [85] [86]
-Overfull \hbox (48.85054pt too wide) in paragraph at lines 6638--6642
+Overfull \hbox (48.85054pt too wide) in paragraph at lines 6642--6646
 \T1/lmr/m/n/10.95 (-20) is a prob-a-bil-ity mea-sure. This prob-a-bil-ity mea-s
 ure is called the $[]\OT1/lmr/m/n/10.95 (-20) P[][]\OML/lmm/m/it/10.95 f$\T1/lm
 r/m/n/10.95 (-20) . 
  []
 
 [87] [88] [89]
-Underfull \hbox (badness 1264) in paragraph at lines 6833--6838
+Underfull \hbox (badness 1264) in paragraph at lines 6837--6842
 []\T1/lmr/m/n/10.95 (+20) If $\OML/lmm/m/it/10.95 P; Q$ \T1/lmr/m/n/10.95 (+20)
  are two prob-a-bil-ity mea-sures on a mea-sur-able space $\OT1/lmr/m/n/10.95 (
 +20) (
@@ -743,11 +761,11 @@ L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14593 strings out of 469006
- 223787 string characters out of 5454813
- 690435 words of memory out of 5000000
- 42062 multiletter control sequences out of 15000+600000
- 765598 words of font info for 328 fonts, out of 8000000 for 9000
+ 14687 strings out of 469006
+ 225381 string characters out of 5454813
+ 690656 words of memory out of 5000000
+ 42128 multiletter control sequences out of 15000+600000
+ 783155 words of font info for 351 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  75i,21n,79p,1124b,1011s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></u
@@ -766,16 +784,17 @@ mr6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/lm/lmr8.pfb
 ></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/
 local/texlive/2026basic/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local
 /texlive/2026basic/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/local/texli
-ve/2026basic/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/20
-26basic/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2026basi
-c/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2026basic/texm
-f-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2026basic/texmf-dist
-/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026basic/t
-exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (102 pages, 885122 bytes).
+ve/2026basic/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2
+026basic/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2026ba
+sic/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2026basic/te
+xmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2026basic/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026basic/texmf
+-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (102 pages, 909484 bytes).
 PDF statistics:
- 1549 PDF objects out of 1728 (max. 8388607)
- 1378 compressed objects within 14 object streams
+ 1554 PDF objects out of 1728 (max. 8388607)
+ 1381 compressed objects within 14 object streams
  562 named destinations out of 1000 (max. 500000)
- 72270 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 82510 words of extra memory for PDF output out of 89155 (max. 10000000)
 

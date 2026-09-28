@@ -656,12 +656,34 @@ g[id^="mjx-eqn:eq:"] {
 }
 
 /* Optional cover image, sitting between the title header and the toc. Only
-   documents whose Document node carries a `cover` attribute emit one. */
+   documents whose Document node carries a `cover` attribute emit one: a
+   `figure` holding the image and, with `cover-caption`, a caption below it.
+   The figure shrinks to the image's width (capped by the column), so the
+   right-aligned caption ends exactly at the image's right edge. */
 .index__cover {
+    width: fit-content;
+    max-width: 100%;
+    margin: var(--space-xl) auto var(--space-lg);
+}
+
+.index__cover img {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: var(--space-xl) auto var(--space-lg);
+    margin: 0;
+}
+
+/* Small sans-serif italics, right-aligned under the image (sans, size and
+   colour come from the global figcaption rule). `width: 0` + `min-width: 100%`
+   keeps a long caption from widening the figure past the image: it wraps at
+   the image's width instead. */
+.index__cover__caption {
+    width: 0;
+    min-width: 100%;
+    max-width: none;
+    margin: 0.6rem 0 0;
+    font-style: italic;
+    text-align: right;
 }
 
 /* Three levels deep: chapter → section → subsection. Every level is a

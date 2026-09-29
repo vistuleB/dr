@@ -676,12 +676,13 @@ g[id^="mjx-eqn:eq:"] {
 /* Small sans-serif italics, right-aligned under the image (sans, size and
    colour come from the global figcaption rule). `width: 0` + `min-width: 100%`
    keeps a long caption from widening the figure past the image: it wraps at
-   the image's width instead. */
+   the image's width instead. Left padding reserves 5% of that image width. */
 .index__cover__caption {
     width: 0;
     min-width: 100%;
     max-width: none;
     margin: 0.6rem 0 0;
+    padding-left: 5%;
     font-style: italic;
     text-align: right;
 }

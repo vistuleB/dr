@@ -88,6 +88,10 @@
 }
 
 /* image tooltips: reveal on figure hover, tint the image */
+figure:has(> .t-3003) {
+  position: relative;
+}
+
 figure:hover > .t-3003 {
   visibility: visible;
   opacity: 1;

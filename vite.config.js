@@ -1,10 +1,10 @@
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
-import fs from "node:fs";
 import os from "node:os";
 import crypto from "node:crypto";
 import qrcode from "qrcode-terminal";
-import { execFile } from "child_process";
+import { checkCourse } from "./scripts/dev-checks.mjs";
+import { parseTooltipCommand, launchTooltip } from "./scripts/tooltip-launch.mjs";
 import { validatePort } from "./scripts/dev-options.mjs";
 
 export default defineConfig(({ mode }) => {
@@ -18,34 +18,6 @@ export default defineConfig(({ mode }) => {
   const serverHost = env.HOST || "127.0.0.1";
   const name = `vite ${rootPath} ${serverPort}-local server`;
   const projectRoot = path.resolve(process.cwd());
-
-  // open targets live under <course>/public; code --goto targets under <course>/wly.
-  const publicRoot = path.resolve(projectRoot, rootPath);
-  const wlyRoot = path.resolve(projectRoot, `${courseFolder}/wly`);
-  const isInside = (base, filePath) => {
-    const resolved = path.resolve(projectRoot, filePath);
-    return resolved === base || resolved.startsWith(base + path.sep);
-  };
-
-  const ALLOWED_COMMANDS = {
-    open: {
-      pattern: /^open\s+(\S+)$/,
-      executor: (match) => {
-        const target = match[1].trim();
-        if (!isInside(publicRoot, target)) return null;
-        if (!/\.(png|jpe?g|svg)$/i.test(target)) return null;
-        return { file: "open", args: [target] };
-      },
-    },
-    code: {
-      pattern: /^code\s+--goto\s+(.+):(\d+):(\d+)$/,
-      executor: (match) => {
-        const [, filePath, line, col] = match;
-        if (!isInside(wlyRoot, filePath)) return null;
-        return { file: "code", args: ["--goto", `${filePath}:${line}:${col}`] };
-      },
-    },
-  };
 
   const isLoopback = (addr) =>
     addr === "127.0.0.1" || addr === "::1" || addr === "::ffff:127.0.0.1";
@@ -78,44 +50,7 @@ export default defineConfig(({ mode }) => {
     return crypto.timingSafeEqual(Buffer.from(provided), Buffer.from(authToken));
   };
 
-  const validateAndSanitizeCommand = (cmd) => {
-    if (!cmd || typeof cmd !== "string") {
-      return null;
-    }
-
-    // Trim whitespace
-    cmd = cmd.trim();
-
-    // Check against each allowed command pattern
-    for (const [commandName, config] of Object.entries(ALLOWED_COMMANDS)) {
-      const match = cmd.match(config.pattern);
-      if (match) {
-        const sanitized = config.executor(match);
-        if (sanitized) {
-          console.log(`${name} validated command: ${commandName}`);
-          return sanitized;
-        }
-      }
-    }
-
-    console.warn(`${name} rejected invalid command: ${cmd}`);
-    return null;
-  };
-
-  // --- validate existence of a course ---
-  if (!fs.existsSync(courseFolder)) {
-    // check if the base directory even exists
-    console.error(
-      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[0m' not found.`,
-    );
-    process.exit(1);
-  } else if (!fs.existsSync(rootPath)) {
-    // base directory exists, but /public is missing
-    console.error(
-      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Course directory '\x1b[33m${courseFolder}\x1b[0m' does not have a '\x1b[33mpublic/\x1b[0m' folder.`,
-    );
-    process.exit(1);
-  }
+  checkCourse(projectRoot, courseFolder);
 
   return {
     root: rootPath,
@@ -156,7 +91,7 @@ export default defineConfig(({ mode }) => {
       },
       {
         // Author-mode (`--local`) source-linking tooltips POST here; each
-        // `cmd` is validated against ALLOWED_COMMANDS before being executed,
+        // `cmd` is validated by parseTooltipCommand before being executed,
         // so only `open <safe-path>` and `code --goto <path:line:col>` run.
         name: name,
         configureServer(server) {
@@ -193,14 +128,14 @@ export default defineConfig(({ mode }) => {
                   req.destroy();
                 }
               });
-              req.on("end", () => {
+              req.on("end", async () => {
                 if (aborted) return;
                 try {
                   const { cmd } = JSON.parse(body);
                   console.log(`${name} received '${cmd}'`);
 
                   // Validate and sanitize the command
-                  const sanitizedCmd = validateAndSanitizeCommand(cmd);
+                  const sanitizedCmd = parseTooltipCommand(cmd, projectRoot, courseFolder);
 
                   if (!sanitizedCmd) {
                     console.error(`${name} rejected command: ${cmd}`);
@@ -214,21 +149,14 @@ export default defineConfig(({ mode }) => {
                     return;
                   }
 
-                  execFile(
-                    sanitizedCmd.file,
-                    sanitizedCmd.args,
-                    { cwd: process.cwd() },
-                    (error) => {
-                      if (error)
-                        console.error(`${name} error: ${error.message}`);
-                    },
-                  );
-                  res.writeHead(200, { "Content-Type": "application/json" });
-                  res.end(JSON.stringify({ success: true }));
+                  const result = await launchTooltip(sanitizedCmd, { cwd: projectRoot });
+                  if (!result.success) console.error(`${name}: ${result.error}`);
+                  res.writeHead(result.status, { "Content-Type": "application/json" });
+                  res.end(JSON.stringify({ success: result.success, error: result.error }));
                 } catch (e) {
                   console.error(`${name} parse error:`, e);
-                  res.writeHead(400);
-                  res.end();
+                  res.writeHead(400, { "Content-Type": "application/json" });
+                  res.end(JSON.stringify({ success: false, error: "Invalid tooltip request" }));
                 }
               });
             });

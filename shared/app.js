@@ -260,7 +260,7 @@ const captureAuthToken = () => {
 };
 captureAuthToken();
 
-const sendCmdTo3003 = (command) => {
+const sendCmdTo3003 = async (command) => {
   const payload = { cmd: command };
   const url =
     window.location.protocol === "file:"
@@ -271,11 +271,19 @@ const sendCmdTo3003 = (command) => {
     const token = localStorage.getItem(AUTHOR_TOKEN_KEY);
     if (token) headers["X-Author-Token"] = token;
   } catch {}
-  fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(payload),
-  });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json();
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || `Server returned HTTP ${response.status}`);
+    }
+  } catch (error) {
+    window.alert(`Could not open tooltip target.\n${error.message}\nCheck that the local dev server is running. On a phone, rescan its QR code after a restart.`);
+  }
 };
 
 const authorModeInit = () => {

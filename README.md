@@ -182,3 +182,26 @@ Gleam command to use the local copy. `OFFLINE_MODE` and `MATHJAX_VERSION` are no
 server settings.
 
 Run the dev-launcher tests with `npm run test:dev`.
+
+## Startup checks and tooltip failures
+
+Startup checks for generated `index.html` and all five shared assets (`app.css`,
+`local.css`, `app.js`, `mathjax_setup.js`, `tex-svg.js`). Missing/broken links,
+links to the wrong shared file, and Git symlinks checked out as plain text produce
+an error with repair instructions. On Windows, enable Developer Mode and Git's
+`core.symlinks` support before checking out the links. Actual copies also work,
+but must be kept synchronized with `shared/`.
+
+Tooltips accept image paths containing spaces. The server waits for the launcher
+command to finish before reporting success; failures appear in a browser alert.
+A successful launcher exit confirms command completion, not that the GUI app
+finished loading the file. Missing `code` produces setup instructions. Image
+opening on Windows/Linux and source opening on Windows currently report an
+explicit unsupported-platform message rather than attempting an incompatible
+command. These diagnostics are tested using simulated platforms on macOS;
+Windows GUI launching has not been verified.
+
+On macOS, image tooltips use the default application for each file type. To change
+it: select a file in Finder, choose **Get Info (⌘I) → Open with**, select the app,
+and click **Change All…**. Repeat for SVG, PNG, JPEG, etc. Source-text tooltips
+explicitly use VS Code (`code --goto`), independently of the default `.wly` app.

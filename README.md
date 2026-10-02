@@ -136,20 +136,49 @@ As an example, say we would like to add `mathjax_setup.js` to course `235A`. We 
 1. `cd` into project root
 2. `ln -s ../../shared/mathjax_setup.js 235A/public/mathjax_setup.js`
 
-# Setting Environment
-
-Create a `.env` file at the root of the project
-
-```
-COURSE=235A
-OFFLINE_MODE=true
-MATHJAX_VERSION=3
-```
-
 # Running the local server
 
-Serve the default course specified in `.env` with
-`npm run dev`. Override the `COURSE` variable specified
-in `.env` by prefixing the command with a `COURSE=<dir>`, e.g., `COURSE=235B npm run dev`.
+Install the Node dependencies with `npm ci`. Generate HTML before serving it:
 
-HOST=0.0.0.0 npm run dev to access from mobile on the same network
+```sh
+gleam run -- --which 235A --local
+npm run dev -- --course 235A
+```
+
+The server serves `<course>/public/` at `http://127.0.0.1:3003`. It does not
+regenerate Writerly sources: rerun Gleam after editing `.wly` files.
+
+These commands work without shell-specific environment assignment syntax:
+
+```sh
+npm run dev -- --course 235B --port 3010
+npm run dev:mobile -- --course 119B
+npm run dev -- --course 119B --host 0.0.0.0
+npm run dev -- --help
+```
+
+`dev:mobile` listens on the local network. For author tooltips on a phone, scan
+the QR code printed by the server; its authorization token changes on restart.
+Source tooltips require the `code` command on the server's PATH. Image-opening
+currently uses macOS's `open`; portable startup does not yet imply Windows
+support for tooltip app launching or Git symlink checkout.
+
+Defaults can be set in the repository's `.env`:
+
+```dotenv
+COURSE=235A
+HOST=127.0.0.1
+PORT=3003
+```
+
+Precedence: command-line options, then shell environment variables, then `.env`,
+then the defaults above. Existing macOS/Linux commands such as
+`COURSE=235B npm run dev` still work. Unknown options, missing values, invalid
+ports, and occupied ports produce errors; the server does not silently pick
+another port (the author-tooling URLs must match).
+
+MathJax selection happens when generating HTML: add `--offline-mathjax` to the
+Gleam command to use the local copy. `OFFLINE_MODE` and `MATHJAX_VERSION` are not
+server settings.
+
+Run the dev-launcher tests with `npm run test:dev`.

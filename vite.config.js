@@ -5,22 +5,14 @@ import os from "node:os";
 import crypto from "node:crypto";
 import qrcode from "qrcode-terminal";
 import { execFile } from "child_process";
+import { validatePort } from "./scripts/dev-options.mjs";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
-  // disallow any param after `npm run dev`
-  const args = process.argv.slice(4); // anything beyond `node vite --config vite.config.js`
-  if (args.length !== 0) {
-    console.error(
-      `\n\x1b[41m\x1b[37m ERROR \x1b[0m Unknown command: '${args[0]}'. Please put '.env' arguments as prefixes to 'npm run'.`,
-    );
-    process.exit(1);
-  }
-
-  const courseFolder = env.COURSE || env.COURSE || "235A";
+  const courseFolder = env.COURSE || "235A";
   const rootPath = `${courseFolder}/public`;
-  const serverPort = Number(env.PORT || env.PORT) || 3003;
+  const serverPort = validatePort(env.PORT ?? "3003");
   // Loopback by default. Set HOST=0.0.0.0 to also listen on the LAN, e.g. to
   // open the notes on a phone at http://<your-lan-ip>:<port>/.
   const serverHost = env.HOST || "127.0.0.1";
@@ -246,6 +238,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: serverPort,
+      strictPort: true,
       host: serverHost,
       cors: {
         origin: ["http://localhost:*", "http://127.0.0.1:*"],

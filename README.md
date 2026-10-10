@@ -1,30 +1,127 @@
-# `--last-command` (VSCode build task integration)
+# dr
 
-The `--last-command` flag reruns the exact same arguments as the previous successful run,
-reading them from a local `.last-command` file written automatically at the end of each run.
+Writerly course notes for **235A, 235B, and 119B**, rendered to HTML or LaTeX.
+Run commands from this repository's root.
 
-This is useful when combined with a VSCode build task that fires on every `.wly` file save.
-Create `.vscode/tasks.json` in the project root (you can copy `sample_tasks_dot_json.json`
-from this repo as a starting point):
+## Quick start
+
+Install Gleam and Erlang/OTP for the renderer, and Node.js with npm for the local
+server. The installed Vite 8 dependency requires Node.js `^20.19.0 || >=22.12.0`.
 
 ```sh
+gleam deps download
+npm ci
+gleam run -- --which 235A --local
+npm run dev -- --course 235A
+```
+
+Open the URL printed by the server. Substitute `235B` or `119B` in both commands
+to work on another course. The renderer and server select their courses
+independently. Rerun Gleam after editing `.wly` source; the server does not run it.
+For HTML intended for publication, render without `--local` to omit author
+source-linking tooltips.
+
+## Project layout and renderer API
+
+| Path | Role |
+|---|---|
+| `<course>/wly/` | Writerly source, rooted at `__parent.wly` |
+| `<course>/public/` | Generated HTML, course assets, and links to shared assets |
+| `<course>/latex/` | Generated LaTeX and copied figures |
+| `shared/` | CSS, browser JavaScript, and local MathJax assets shared by all three courses |
+| `src/main.gleam` | CLI handling and dispatch to HTML, formatter, or LaTeX rendering |
+| `src/renderer.gleam`, `src/pipeline.gleam` | HTML renderer and its desugaring pipeline |
+| `src/latex_renderer.gleam`, `src/latex_pipeline.gleam` | LaTeX output |
+| `src/formatter_renderer.gleam`, `src/formatter_pipeline.gleam` | Writerly source formatting |
+| `src/desugarers/` | Project-specific desugarers |
+| `src/local_desugarers.gleam` | Generated registry of local desugarers and tests |
+| `scripts/`, `vite.config.js` | Local server startup, checks, and tooltip launch handling |
+
+The project uses published `writerly`, `vxml`, and `vxml_pipeline` packages;
+no sibling `wly/desugaring` checkout is required. `gleam.toml` requires
+`vxml_pipeline >= 0.4.3`, and `manifest.toml` records resolved versions.
+
+The current Gleam API uses `vxml_pipeline.Renderer`, `RendererParameters`, and
+`RendererOptions`. A `vxml_pipeline/core.Pipeline` is a list of `Desugarer`
+values. `vxml_pipeline/desugarers` supplies shared transformations;
+`local_desugarers` supplies this project's additions. Delimiter helpers come
+from `vxml_pipeline/delimiter_pipelines`, imported as `delimiters`.
+
+The renderer is assembled from an assembler, parser, filterer, pipeline,
+splitter, emitter, writer, and prettifier, then invoked with
+`ds.run_renderer(renderer, parameters, options)`. Writerly adapters live in
+`vxml_pipeline/writerly_defaults`: `default_writerly_assembler`,
+`default_writerly_parser`, and `default_writerly_emitter`. The HTML renderer
+uses its own splitter and emitter; the formatter uses the Writerly emitter.
+
+## Commands and maintenance
+
+```sh
+gleam run -- --help
+gleam run -- --track-help
+gleam run -- --which 235A --table
+gleam run -- --which 235A --local --offline-mathjax
+```
+
+`--which` selects the course for rendering and formatting. `--input-dir` is
+rejected by this project's CLI. For HTML, `--output-dir preview` writes beneath
+the selected course (`235A/preview/` in this example); it does not copy the
+public assets into that directory.
+
+The formatter rewrites `.wly` source in place by default. Its default line length
+is 55, with no indentation penalty:
+
+```sh
+gleam run -- --which 235A --fmt
+gleam run -- --which 235A --fmt 70 2
+```
+
+After adding a desugarer under `src/desugarers/`, regenerate the registry and
+run its tests. These maintenance commands do not require `--which`:
+
+```sh
+gleam run -- --generate
+gleam run -- --renumber
+gleam run -- --desugarer-tests
+gleam run -- --desugarer-tests dr_normalize_image_grids
+gleam run -m local_desugarer_tests
+```
+
+`--desugarers` combines blame renumbering, registry generation, and desugarer
+testing. Use `gleam build` to check compilation and `npm run test:dev` for the
+local-server tests.
+
+## `--last-command` (VSCode build task integration)
+
+The `--last-command` flag replays arguments from the local `.last-command` file.
+The HTML command writes this file **before** rendering, so a failed render can
+also become the saved command. Help, maintenance, formatter, and LaTeX runs do
+not replace it. Use `--last-command` on its own, without additional flags.
+
+The sample VS Code task provides a default build task (Cmd+Shift+B on macOS).
+It does not by itself enable running on every save; that requires separate
+editor automation. Create `.vscode/tasks.json` from the sample:
+
+```sh
+mkdir -p .vscode
 cp sample_tasks_dot_json.json .vscode/tasks.json
 ```
 
 The task runs `gleam run -- --last-command`, which picks up whatever flags you last used
 (e.g. `--which 235A --offline-mathjax`). The first time you run with `--last-command` you
-must have run the renderer at least once without it so that a `.last-command` file exists.
+must have invoked HTML rendering at least once without it so that a
+`.last-command` file exists.
 
-The `.last-command` file is local; add it to `.gitignore` if you do not want it committed.
+The `.last-command` file and `.vscode/` directory are already ignored by Git.
 
-# PDFLaTeX
+## PDFLaTeX
 
 On MacOS, install pdflatex with `brew install --cask basictex`
 
 Generate the LaTeX source for a course with `gleam run -- --which 235A --latex-monolithic`
 (writes `235A/latex/main.tex`), then convert it to a PDF with `pdflatex main.tex`.
 
-## LaTeX output flags
+### LaTeX output flags
 
 One flag per run selects how finely the source is split across files. Every flag
 requires `--which <course>` and writes into `<course>/latex/`. The output root is
@@ -108,7 +205,7 @@ cd 235A/latex && pdflatex main.tex && pdflatex main.tex && pdflatex main.tex
 `latexmk -pdf main.tex` does the reruns for you automatically (install it with
 `tlmgr install latexmk` if it isn't already available).
 
-## Forcing a paragraph indent (`|> Indent`)
+### Forcing a paragraph indent (`|> Indent`)
 
 In the LaTeX output, the first line of the paragraph right after a display, list,
 or theorem-like block is **not** indented (the emitter inserts `\noindent`) —
@@ -129,14 +226,19 @@ adds an `indent` class to the paragraph on the HTML side (currently styled as a
 no-op, since these notes separate paragraphs with blank lines rather than
 indents).
 
-# Add a shared asset to a course
+## Shared assets
 
-As an example, say we would like to add `mathjax_setup.js` to course `235A`. We would follow these steps
+All three courses already link `app.css`, `local.css`, `app.js`,
+`mathjax_setup.js`, and `tex-svg.js` to the corresponding files in `shared/`.
+Edit those shared files once to update all courses.
+
+For a new shared asset, put it in `shared/` and create a relative symlink in each
+course that uses it. For example, when the destination does not already exist:
 
 1. `cd` into project root
 2. `ln -s ../../shared/mathjax_setup.js 235A/public/mathjax_setup.js`
 
-# Running the local server
+## Running the local server
 
 Install the Node dependencies with `npm ci`. Generate HTML before serving it:
 
@@ -183,7 +285,7 @@ server settings.
 
 Run the dev-launcher tests with `npm run test:dev`.
 
-## Startup checks and tooltip failures
+### Startup checks and tooltip failures
 
 Startup checks for generated `index.html` and all five shared assets (`app.css`,
 `local.css`, `app.js`, `mathjax_setup.js`, `tex-svg.js`). Missing/broken links,
